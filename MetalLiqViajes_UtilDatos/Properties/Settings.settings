@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sinapsys.Datos.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MetalApps" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UtilSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Metal\Modulo\UtilSQL.Config</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

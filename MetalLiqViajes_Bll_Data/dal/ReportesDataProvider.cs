@@ -1,0 +1,375 @@
+using System;
+using System.Data;
+using System.Data.Common;
+using Sinapsys.Datos;
+using LiqViajes_Bll_Data.Security;
+using System.Runtime.Serialization;
+
+namespace LiqViajes_Bll_Data
+{
+	/// <summary>
+	/// Data Access Layer class for Reportes object
+	/// </summary>
+	/// <remarks>
+	/// This class is a Singleton
+	/// </remarks>
+	public partial class ReportesDataProvider
+	{
+		/// <summary>
+		/// Internal member for create this singleton
+		/// </summary>
+		private static ReportesDataProvider MySingleObj = null;
+
+		/// <summary>
+		/// Protected constructor to avoid access this singleton other way than calling the Instance method
+		/// </summary>
+		public ReportesDataProvider()
+		{
+
+		}
+
+		/// <summary>
+		/// Instance accessor for this singleton
+		/// </summary>
+		public static ReportesDataProvider Instance
+		{
+			get
+			{
+				if (MySingleObj == null)
+				{
+					MySingleObj = new ReportesDataProvider();
+				}
+
+				return MySingleObj;
+			}
+		}
+
+		/// <summary>
+		/// Creates a new record into Reportes by passing all fields
+		/// </summary>
+		/// <param name="Descripcion"></param>
+		/// <param name="Activo"></param>
+		/// <param name="strSQql"></param>
+		public void Create(int Codigo, string Descripcion, bool? Activo, string strSQql,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (datosTransaccion != null) LocalDataProvider = datosTransaccion;
+				else
+				{
+					if (DataProvider.Concurrente)
+					{
+						LocalDataProvider = new Sinapsys.Datos.SQL();
+						LocalDataProvider.Conectar(DataProvider.Alias, false);
+					}
+					else
+					{
+						LocalDataProvider = DataProvider.Datos;
+					}
+					disconnect = DataProvider.ValidateConnection();
+				}
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+
+				paramlist.AddWithValue("@Codigo",Codigo);
+				if (Descripcion !=null)
+				{
+					paramlist.AddWithValue("@Descripcion",Descripcion);
+				}
+				if (Activo !=null)
+				{
+					paramlist.AddWithValue("@Activo",Activo);
+				}
+				if (strSQql !=null)
+				{
+					paramlist.AddWithValue("@strSQql",strSQql);
+				}
+				LocalDataProvider.EjecutarProcedimiento("dbo.ReportesCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Updates one record into Reportes by passing all fields
+		/// </summary>
+		/// <param name="Codigo"></param>
+		/// <param name="Descripcion"></param>
+		/// <param name="Activo"></param>
+		/// <param name="strSQql"></param>
+		public void Update(int Codigo, string Descripcion, bool? Activo, string strSQql,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (datosTransaccion != null) LocalDataProvider = datosTransaccion;
+				else
+				{
+					if (DataProvider.Concurrente)
+					{
+						LocalDataProvider = new Sinapsys.Datos.SQL();
+						LocalDataProvider.Conectar(DataProvider.Alias, false);
+					}
+					else
+					{
+						LocalDataProvider = DataProvider.Datos;
+					}
+					disconnect = DataProvider.ValidateConnection();
+				}
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@Codigo",Codigo);
+				if (Descripcion !=null)
+				{
+					paramlist.AddWithValue("@Descripcion",Descripcion);
+				}
+				if (Activo !=null)
+				{
+					paramlist.AddWithValue("@Activo",Activo);
+				}
+				if (strSQql !=null)
+				{
+					paramlist.AddWithValue("@strSQql",strSQql);
+				}
+				LocalDataProvider.EjecutarProcedimiento("dbo.ReportesUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Deletes one record from Reportes by passing all key fields
+		/// </summary>
+		/// <param name="Codigo"></param>
+		public void Delete(int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (datosTransaccion != null) LocalDataProvider = datosTransaccion;
+				else
+				{
+					if (DataProvider.Concurrente)
+					{
+						LocalDataProvider = new Sinapsys.Datos.SQL();
+						LocalDataProvider.Conectar(DataProvider.Alias, false);
+					}
+					else
+					{
+						LocalDataProvider = DataProvider.Datos;
+					}
+					disconnect = DataProvider.ValidateConnection();
+				}
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@Codigo",Codigo);
+				LocalDataProvider.EjecutarProcedimiento("dbo.ReportesDelete", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Gets one record from Reportes passing all key fields
+		/// </summary>
+		/// <param name="Codigo"></param>
+		/// <returns>A DataTable object containing the data</returns>
+		public DataTable Get(int Codigo)
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (DataProvider.Concurrente)
+				{
+					LocalDataProvider = new Sinapsys.Datos.SQL();
+					LocalDataProvider.Conectar(DataProvider.Alias, false);
+				}
+				else
+				{
+					LocalDataProvider = DataProvider.Datos;
+				}
+				disconnect = DataProvider.ValidateConnection();
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@Codigo",Codigo);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.ReportesGet", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Gets all records from Reportes
+		/// </summary>
+		/// <returns>A DataTable object containing all records data</returns>
+		public DataTable GetAll()
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (DataProvider.Concurrente)
+				{
+					LocalDataProvider = new Sinapsys.Datos.SQL();
+					LocalDataProvider.Conectar(DataProvider.Alias, false);
+				}
+				else
+				{
+					LocalDataProvider = DataProvider.Datos;
+				}
+				disconnect = DataProvider.ValidateConnection();
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+				return LocalDataProvider.EjecutarProcedimiento("dbo.ReportesGetAll", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Gets all records from Reportes applying filter and sort criteria
+		/// </summary>
+		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>
+		/// <param name="pagesize">Contents the number of records per page (0 for returns all records).</param>
+		/// <param name="filter">Contents the criteria (as SQL sentence) for filter records (ex. Qty > 0).</param>
+		/// <param name="sort">Contents the criteria (as SQL sentence) for filter records (ex. Name ASC).</param>
+		/// <param name="extablesfilter">Contents extra tables for make relations in filter operations (ex. extratable).</param>
+		/// <param name="extablesfieldsfilter">Contents extra tables's fields for make relations in filter operations  (ex. extratable.field)</param>
+		/// <param name="extablesrelationsfilter">Contents the relations with extra tables in filter operations (ex. table.id=extratable.id).</param>
+		/// <param name="extablessort">Contents extra tables for make relations in sort operations (ex. extratable).</param>
+		/// <param name="extablesfieldssort">Contents extra tables's fields for make relations in sort operations  (ex. extratable.field)</param>
+		/// <param name="extablesrelationssort">Contents the relations with extra tables in sort operations (ex. table.id=extratable.id).</param>
+		/// <returns>A DataTable object containing all records data</returns>
+		public DataTable GetFilter(int pagenum, int pagesize, string filter, string sort, string extablesfilter, string extablesfieldsfilter, string extablesrelationsfilter, string extablessort, string extablesfieldssort, string extablesrelationssort)
+		{
+			try 
+			{
+
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (DataProvider.Concurrente)
+				{
+					LocalDataProvider = new Sinapsys.Datos.SQL();
+					LocalDataProvider.Conectar(DataProvider.Alias, false);
+				}
+				else
+				{
+					LocalDataProvider = DataProvider.Datos;
+				}
+				disconnect = DataProvider.ValidateConnection();
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@cctReturnType","S");
+				paramlist.AddWithValue("@intPageNo", pagenum);
+				paramlist.AddWithValue("@intPageSize", pagesize);
+				paramlist.AddWithValue("@strFilter", filter);
+				paramlist.AddWithValue("@strSort", sort);
+				paramlist.AddWithValue("@strExtraTablesFilter",extablesfilter);
+				paramlist.AddWithValue("@strExtraTablesFieldsFilter",  extablesfieldsfilter);
+				paramlist.AddWithValue("@strExtraTablesRelationsFilter", extablesrelationsfilter);
+				paramlist.AddWithValue("@strExtraTablesSort", extablessort);
+				paramlist.AddWithValue("@strExtraTablesFieldsSort", extablesfieldssort);
+				paramlist.AddWithValue("@strExtraTablesRelationsSort",extablesrelationssort);
+
+				return LocalDataProvider.EjecutarProcedimiento("dbo.ReportesGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		public DataTable GetFilter( string filter, string sort)
+		{
+			return GetFilter(0,0, filter, sort, "","","","","","");
+		}
+
+		public DataTable GetFilter(string filter, string sort, string extablesfilter, string extablesfieldsfilter, string extablesrelationsfilter, string extablessort, string extablesfieldssort, string extablesrelationssort)
+		{
+			return GetFilter(0,0, filter, sort, extablesfilter, extablesfieldsfilter, extablesrelationsfilter, extablessort, extablesfieldssort, extablesrelationssort);
+		}
+
+		/// <summary>
+		/// Gets the numbers of records from Reportes applying filter and sort criteria
+		/// </summary>
+		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>
+		/// <param name="pagesize">Contents the number of records per page (0 for returns all records).</param>
+		/// <param name="filter">Contents the criteria (as SQL sentence) for filter records (ex. Qty > 0).</param>
+		/// <param name="sort">Contents the criteria (as SQL sentence) for filter records (ex. Name ASC).</param>
+		/// <param name="extablesfilter">Contents extra tables for make relations in filter operations (ex. extratable).</param>
+		/// <param name="extablesfieldsfilter">Contents extra tables's fields for make relations in filter operations  (ex. extratable.field)</param>
+		/// <param name="extablesrelationsfilter">Contents the relations with extra tables in filter operations (ex. table.id=extratable.id).</param>
+		/// <param name="extablessort">Contents extra tables for make relations in sort operations (ex. extratable).</param>
+		/// <param name="extablesfieldssort">Contents extra tables's fields for make relations in sort operations  (ex. extratable.field)</param>
+		/// <param name="extablesrelationssort">Contents the relations with extra tables in sort operations (ex. table.id=extratable.id).</param>
+		/// <returns>A int value containing the numbers of records</returns>
+		public int GetFilterCount(int pagenum, int pagesize, string filter, string sort, string extablesfilter, string extablesfieldsfilter, string extablesrelationsfilter, string extablessort, string extablesfieldssort, string extablesrelationssort)
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (DataProvider.Concurrente)
+				{
+					LocalDataProvider = new Sinapsys.Datos.SQL();
+					LocalDataProvider.Conectar(DataProvider.Alias, false);
+				}
+				else
+				{
+					LocalDataProvider = DataProvider.Datos;
+				}
+				disconnect = DataProvider.ValidateConnection();
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@cctReturnType","C");
+				paramlist.AddWithValue("@intPageNo", pagenum);
+				paramlist.AddWithValue("@intPageSize", pagesize);
+				paramlist.AddWithValue("@strFilter", filter);
+				paramlist.AddWithValue("@strSort", sort);
+				paramlist.AddWithValue("@strExtraTablesFilter",extablesfilter);
+				paramlist.AddWithValue("@strExtraTablesFieldsFilter",  extablesfieldsfilter);
+				paramlist.AddWithValue("@strExtraTablesRelationsFilter", extablesrelationsfilter);
+				paramlist.AddWithValue("@strExtraTablesSort", extablessort);
+				paramlist.AddWithValue("@strExtraTablesFieldsSort", extablesfieldssort);
+				paramlist.AddWithValue("@strExtraTablesRelationsSort",extablesrelationssort);
+
+				return (int) LocalDataProvider.EjecutarProcedimiento("dbo.ReportesGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0];
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+	}
+}

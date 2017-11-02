@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99D94A85-A3F9-4C2C-8E5F-D70E7ED59350}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LiqViajes_Bll_Data</RootNamespace>
+    <AssemblyName>LiqViajes_Bll_Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bll\A2MontoEscrito.cs" />
+    <Compile Include="bll\AnticiposDms.cs" />
+    <Compile Include="bll\Catalogo.cs" />
+    <Compile Include="bll\Ciudades.cs" />
+    <Compile Include="bll\Cuentas.cs" />
+    <Compile Include="bll\CuentasVarios.cs" />
+    <Compile Include="bll\Departamentos.cs" />
+    <Compile Include="bll\documentos_che.cs" />
+    <Compile Include="bll\documentos_monto.cs" />
+    <Compile Include="bll\Documento_Referencia.cs" />
+    <Compile Include="bll\Fecha.cs" />
+    <Compile Include="bll\legalizacionViajes.cs" />
+    <Compile Include="bll\LiquidacionAnticipos.cs" />
+    <Compile Include="bll\LiquidacionGastos.cs" />
+    <Compile Include="bll\LiquidacionPlanilla.cs" />
+    <Compile Include="bll\LiquidacionPlanillaDet.cs" />
+    <Compile Include="bll\LiquidacionRutas.cs" />
+    <Compile Include="bll\LiquidacionRutasCombustible.cs" />
+    <Compile Include="bll\LiquidacionRutasObs.cs" />
+    <Compile Include="bll\LiquidacionSaldoConductor.cs" />
+    <Compile Include="bll\LiquidacionVehiculo.cs" />
+    <Compile Include="bll\MarcasVehiculos.cs" />
+    <Compile Include="bll\novedades_nomina.cs" />
+    <Compile Include="bll\ObservacioneComplementarias.cs" />
+    <Compile Include="bll\Opciones.cs" />
+    <Compile Include="bll\OpcionesDetNivelI.cs" />
+    <Compile Include="bll\OpcionesDetNivelII.cs" />
+    <Compile Include="bll\OpcionesDetNivelIII.cs" />
+    <Compile Include="bll\Paises.cs" />
+    <Compile Include="bll\Parametros.cs" />
+    <Compile Include="bll\ParametrosGenerales.cs" />
+    <Compile Include="bll\RangoKilometros.cs" />
+    <Compile Include="bll\RegistrosBorrados.cs" />
+    <Compile Include="bll\Reportes.cs" />
+    <Compile Include="bll\RutaNueva.cs" />
+    <Compile Include="bll\Rutas.cs" />
+    <Compile Include="bll\RutasAbreviaturas.cs" />
+    <Compile Include="bll\RutasAgrupaPeajes.cs" />
+    <Compile Include="bll\RutasAgrupaPeajesDet.cs" />
+    <Compile Include="bll\RutasCombustible.cs" />
+    <Compile Include="bll\RutasCuentas.cs" />
+    <Compile Include="bll\RutasDet.cs" />
+    <Compile Include="bll\RutasMaestroPeajes.cs" />
+    <Compile Include="bll\Rutas_Peajes.cs" />
+    <Compile Include="bll\Rutas_Peajes_Detalle.cs" />
+    <Compile Include="bll\Status.cs" />
+    <Compile Include="bll\tablagLocal.cs" />
+    <Compile Include="bll\Tareas.cs" />
+    <Compile Include="bll\TempLiqMetal.cs" />
+    <Compile Include="bll\Tempo_tblLiquidacionRutas.cs" />
+    <Compile Include="bll\Tempo_tblLiquidacionRutasObs.cs" />
+    <Compile Include="bll\Terceros.cs" />
+    <Compile Include="bll\TercerosConductores.cs" />
+    <Compile Include="bll\TercerosConductoresWinFor.cs" />
+    <Compile Include="bll\TipoMantenimiento.cs" />
+    <Compile Include="bll\TipoTrailer.cs" />
+    <Compile Include="bll\TipoVehiculo.cs" />
+    <Compile Include="bll\TramosAsignadosRuta.cs" />
+    <Compile Include="bll\TramosConsultaAnticipos.cs" />
+    <Compile Include="bll\TramosGastos.cs" />
+    <Compile Include="bll\TramosLavadas.cs" />
+    <Compile Include="bll\TramosMovViajes.cs" />
+    <Compile Include="bll\TramosReportesLiqVehiculos.cs" />
+    <Compile Include="bll\Usuarios.cs" />
+    <Compile Include="bll\VehiculoCCosto.cs" />
+    <Compile Include="bll\VehiculoCombustible.cs" />
+    <Compile Include="bll\VehiculoForWin.cs" />
+    <Compile Include="bll\VehiculosKmMantenimiento.cs" />
+    <Compile Include="bll\VehiculosKmMantenimientoDet.cs" />
+    <Compile Include="bll\VehiculosKmMantenimientoDetAcum.cs" />
+    <Compile Include="bll\VehiculoTraylers.cs" />
+    <Compile Include="bll\y_novedades_Liq.cs" />
+    <Compile Include="bll_add\AnticiposDms.cs" />
+    <Compile Include="bll_add\LiquidacionPlanilla.cs" />
+    <Compile Include="bll_add\LiquidacionVehiculo.cs" />
+    <Compile Include="bll_add\TramosAsignadosRuta.cs" />
+    <Compile Include="bll_add\TramosConsultaAnticipos.cs" />
+    <Compile Include="bll_add\TramosGastos.cs" />
+    <Compile Include="bll_add\TramosLavadas.cs" />
+    <Compile Include="bll_add\TramosMovViajes.cs" />
+    <Compile Include="bll_add\TramosReportesLiqVehiculos.cs" />
+    <Compile Include="bll_add\VehiculoCCosto.cs" />
+    <Compile Include="dal\A2MontoEscritoDataProvider.cs" />
+    <Compile Include="dal\AnticiposDmsDataProvider.cs" />
+    <Compile Include="dal\CatalogoDataProvider.cs" />
+    <Compile Include="dal\CiudadesDataProvider.cs" />
+    <Compile Include="dal\CuentasDataProvider.cs" />
+    <Compile Include="dal\CuentasVariosDataProvider.cs" />
+    <Compile Include="dal\DepartamentosDataProvider.cs" />
+    <Compile Include="dal\documentos_cheDataProvider.cs" />
+    <Compile Include="dal\documentos_montoDataProvider.cs" />
+    <Compile Include="dal\Documento_ReferenciaDataProvider.cs" />
+    <Compile Include="dal\FechaDataProvider.cs" />
+    <Compile Include="dal\legalizacionViajesDataProvider.cs" />
+    <Compile Include="dal\LiquidacionAnticiposDataProvider.cs" />
+    <Compile Include="dal\LiquidacionGastosDataProvider.cs" />
+    <Compile Include="dal\LiquidacionPlanillaDataProvider.cs" />
+    <Compile Include="dal\LiquidacionPlanillaDetDataProvider.cs" />
+    <Compile Include="dal\LiquidacionRutasCombustibleDataProvider.cs" />
+    <Compile Include="dal\LiquidacionRutasDataProvider.cs" />
+    <Compile Include="dal\LiquidacionRutasObsDataProvider.cs" />
+    <Compile Include="dal\LiquidacionSaldoConductorDataProvider.cs" />
+    <Compile Include="dal\LiquidacionVehiculoDataProvider.cs" />
+    <Compile Include="dal\MarcasVehiculosDataProvider.cs" />
+    <Compile Include="dal\novedades_nominaDataProvider.cs" />
+    <Compile Include="dal\ObservacioneComplementariasDataProvider.cs" />
+    <Compile Include="dal\OpcionesDataProvider.cs" />
+    <Compile Include="dal\OpcionesDetNivelIDataProvider.cs" />
+    <Compile Include="dal\OpcionesDetNivelIIDataProvider.cs" />
+    <Compile Include="dal\OpcionesDetNivelIIIDataProvider.cs" />
+    <Compile Include="dal\PaisesDataProvider.cs" />
+    <Compile Include="dal\ParametrosDataProvider.cs" />
+    <Compile Include="dal\ParametrosGeneralesDataProvider.cs" />
+    <Compile Include="dal\RangoKilometrosDataProvider.cs" />
+    <Compile Include="dal\RegistrosBorradosDataProvider.cs" />
+    <Compile Include="dal\ReportesDataProvider.cs" />
+    <Compile Include="dal\RutaNuevaDataProvider.cs" />
+    <Compile Include="dal\RutasAbreviaturasDataProvider.cs" />
+    <Compile Include="dal\RutasAgrupaPeajesDataProvider.cs" />
+    <Compile Include="dal\RutasAgrupaPeajesDetDataProvider.cs" />
+    <Compile Include="dal\RutasCombustibleDataProvider.cs" />
+    <Compile Include="dal\RutasCuentasDataProvider.cs" />
+    <Compile Include="dal\RutasDataProvider.cs" />
+    <Compile Include="dal\RutasDetDataProvider.cs" />
+    <Compile Include="dal\RutasMaestroPeajesDataProvider.cs" />
+    <Compile Include="dal\Rutas_PeajesDataProvider.cs" />
+    <Compile Include="dal\Rutas_Peajes_DetalleDataProvider.cs" />
+    <Compile Include="dal\StatusDataProvider.cs" />
+    <Compile Include="dal\tablagLocalDataProvider.cs" />
+    <Compile Include="dal\TareasDataProvider.cs" />
+    <Compile Include="dal\TempLiqMetalDataProvider.cs" />
+    <Compile Include="dal\Tempo_tblLiquidacionRutasDataProvider.cs" />
+    <Compile Include="dal\Tempo_tblLiquidacionRutasObsDataProvider.cs" />
+    <Compile Include="dal\TercerosConductoresDataProvider.cs" />
+    <Compile Include="dal\TercerosConductoresWinForDataProvider.cs" />
+    <Compile Include="dal\TercerosDataProvider.cs" />
+    <Compile Include="dal\TipoMantenimientoDataProvider.cs" />
+    <Compile Include="dal\TipoTrailerDataProvider.cs" />
+    <Compile Include="dal\TipoVehiculoDataProvider.cs" />
+    <Compile Include="dal\TramosAsignadosRutaDataProvider.cs" />
+    <Compile Include="dal\TramosConsultaAnticiposDataProvider.cs" />
+    <Compile Include="dal\TramosGastosDataProvider.cs" />
+    <Compile Include="dal\TramosLavadasDataProvider.cs" />
+    <Compile Include="dal\TramosMovViajesDataProvider.cs" />
+    <Compile Include="dal\TramosReportesLiqVehiculosDataProvider.cs" />
+    <Compile Include="dal\UsuariosDataProvider.cs" />
+    <Compile Include="dal\VehiculoCCostoDataProvider.cs" />
+    <Compile Include="dal\VehiculoCombustibleDataProvider.cs" />
+    <Compile Include="dal\VehiculoForWinDataProvider.cs" />
+    <Compile Include="dal\VehiculosKmMantenimientoDataProvider.cs" />
+    <Compile Include="dal\VehiculosKmMantenimientoDetAcumDataProvider.cs" />
+    <Compile Include="dal\VehiculosKmMantenimientoDetDataProvider.cs" />
+    <Compile Include="dal\VehiculoTraylersDataProvider.cs" />
+    <Compile Include="dal\y_novedades_LiqDataProvider.cs" />
+    <Compile Include="dal_add\AnticiposDmsDataProvider.cs" />
+    <Compile Include="dal_add\LiquidacionPlanillaDataProvider.cs" />
+    <Compile Include="dal_add\LiquidacionVehiculoDataProvider.cs" />
+    <Compile Include="dal_add\TramosAsignadosRutaDataProvider.cs" />
+    <Compile Include="dal_add\TramosConsultaAnticiposDataProvider.cs" />
+    <Compile Include="dal_add\TramosGastosDataProvider.cs" />
+    <Compile Include="dal_add\TramosLavadasDataProvider.cs" />
+    <Compile Include="dal_add\TramosMovViajesDataProvider.cs" />
+    <Compile Include="dal_add\TramosReportesLiqVehiculosDataProvider.cs" />
+    <Compile Include="dal_add\VehiculoCCostoDataProvider.cs" />
+    <Compile Include="DataProvider.cs" />
+    <Compile Include="dto\A2MontoEscrito.cs" />
+    <Compile Include="dto\AnticiposDms.cs" />
+    <Compile Include="dto\Catalogo.cs" />
+    <Compile Include="dto\Ciudades.cs" />
+    <Compile Include="dto\Cuentas.cs" />
+    <Compile Include="dto\CuentasVarios.cs" />
+    <Compile Include="dto\Departamentos.cs" />
+    <Compile Include="dto\documentos_che.cs" />
+    <Compile Include="dto\documentos_monto.cs" />
+    <Compile Include="dto\Documento_Referencia.cs" />
+    <Compile Include="dto\Fecha.cs" />
+    <Compile Include="dto\legalizacionViajes.cs" />
+    <Compile Include="dto\LiquidacionAnticipos.cs" />
+    <Compile Include="dto\LiquidacionGastos.cs" />
+    <Compile Include="dto\LiquidacionPlanilla.cs" />
+    <Compile Include="dto\LiquidacionPlanillaDet.cs" />
+    <Compile Include="dto\LiquidacionRutas.cs" />
+    <Compile Include="dto\LiquidacionRutasCombustible.cs" />
+    <Compile Include="dto\LiquidacionRutasObs.cs" />
+    <Compile Include="dto\LiquidacionSaldoConductor.cs" />
+    <Compile Include="dto\LiquidacionVehiculo.cs" />
+    <Compile Include="dto\MarcasVehiculos.cs" />
+    <Compile Include="dto\novedades_nomina.cs" />
+    <Compile Include="dto\ObservacioneComplementarias.cs" />
+    <Compile Include="dto\Opciones.cs" />
+    <Compile Include="dto\OpcionesDetNivelI.cs" />
+    <Compile Include="dto\OpcionesDetNivelII.cs" />
+    <Compile Include="dto\OpcionesDetNivelIII.cs" />
+    <Compile Include="dto\Paises.cs" />
+    <Compile Include="dto\Parametros.cs" />
+    <Compile Include="dto\ParametrosGenerales.cs" />
+    <Compile Include="dto\RangoKilometros.cs" />
+    <Compile Include="dto\RegistrosBorrados.cs" />
+    <Compile Include="dto\Reportes.cs" />
+    <Compile Include="dto\RutaNueva.cs" />
+    <Compile Include="dto\Rutas.cs" />
+    <Compile Include="dto\RutasAbreviaturas.cs" />
+    <Compile Include="dto\RutasAgrupaPeajes.cs" />
+    <Compile Include="dto\RutasAgrupaPeajesDet.cs" />
+    <Compile Include="dto\RutasCombustible.cs" />
+    <Compile Include="dto\RutasCuentas.cs" />
+    <Compile Include="dto\RutasDet.cs" />
+    <Compile Include="dto\RutasMaestroPeajes.cs" />
+    <Compile Include="dto\Rutas_Peajes.cs" />
+    <Compile Include="dto\Rutas_Peajes_Detalle.cs" />
+    <Compile Include="dto\Status.cs" />
+    <Compile Include="dto\tablagLocal.cs" />
+    <Compile Include="dto\Tareas.cs" />
+    <Compile Include="dto\TempLiqMetal.cs" />
+    <Compile Include="dto\Tempo_tblLiquidacionRutas.cs" />
+    <Compile Include="dto\Tempo_tblLiquidacionRutasObs.cs" />
+    <Compile Include="dto\Terceros.cs" />
+    <Compile Include="dto\TercerosConductores.cs" />
+    <Compile Include="dto\TercerosConductoresWinFor.cs" />
+    <Compile Include="dto\TipoMantenimiento.cs" />
+    <Compile Include="dto\TipoTrailer.cs" />
+    <Compile Include="dto\TipoVehiculo.cs" />
+    <Compile Include="dto\TramosAsignadosRuta.cs" />
+    <Compile Include="dto\TramosConsultaAnticipos.cs" />
+    <Compile Include="dto\TramosGastos.cs" />
+    <Compile Include="dto\TramosLavadas.cs" />
+    <Compile Include="dto\TramosMovViajes.cs" />
+    <Compile Include="dto\TramosReportesLiqVehiculos.cs" />
+    <Compile Include="dto\Usuarios.cs" />
+    <Compile Include="dto\VehiculoCCosto.cs" />
+    <Compile Include="dto\VehiculoCombustible.cs" />
+    <Compile Include="dto\VehiculoForWin.cs" />
+    <Compile Include="dto\VehiculosKmMantenimiento.cs" />
+    <Compile Include="dto\VehiculosKmMantenimientoDet.cs" />
+    <Compile Include="dto\VehiculosKmMantenimientoDetAcum.cs" />
+    <Compile Include="dto\VehiculoTraylers.cs" />
+    <Compile Include="dto\y_novedades_Liq.cs" />
+    <Compile Include="dto_add\LiquidacionPlanilla.cs" />
+    <Compile Include="dto_add\TramosAsignadosRuta.cs" />
+    <Compile Include="dto_add\LiquidacionVehiculo.cs" />
+    <Compile Include="dto_add\RegistroViajeDTO.cs" />
+    <Compile Include="dto_add\TramosGastos.cs" />
+    <Compile Include="dto_add\TramosMovViajes.cs" />
+    <Compile Include="IBLLObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyComparer.cs" />
+    <Compile Include="Security.cs" />
+    <Compile Include="SerializableList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MetalLiqViajes_UtilDatos\MetalLiqViajes_UtilDatos.csproj">
+      <Project>{b7d9381f-5764-4efe-ae20-bbd5c2e40316}</Project>
+      <Name>MetalLiqViajes_UtilDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
