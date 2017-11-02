@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalLiqViajes_Bll_Data", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalLiqViajes_UtilDatos", "MetalLiqViajes_UtilDatos\MetalLiqViajes_UtilDatos.csproj", "{B7D9381F-5764-4EFE-AE20-BBD5C2E40316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalLiqViajes_Forms", "..\LiquidacionViajes\MetalLiqViajes_Forms\MetalLiqViajes_Forms\MetalLiqViajes_Forms.csproj", "{C08C0618-7EBD-4EEB-9A6F-68FCF0FDEC44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalLiqViajes_Forms", "MetalLiqViajes_Forms\MetalLiqViajes_Forms\MetalLiqViajes_Forms.csproj", "{C08C0618-7EBD-4EEB-9A6F-68FCF0FDEC44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
