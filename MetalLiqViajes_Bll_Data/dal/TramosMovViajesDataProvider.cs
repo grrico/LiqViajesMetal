@@ -124,7 +124,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into TramosMovViajes by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="IdRegistro"></param>
 		/// <param name="Cedula"></param>
 		/// <param name="NombreConductor"></param>
@@ -133,7 +132,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="ValorTotal"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="DescripcionPeaje"></param>
-		public void Update(long Codigo, long? IdRegistro, string Cedula, string NombreConductor, string Cuenta, string DescripcionCuenta, decimal? ValorTotal, DateTime? Fecha, string DescripcionPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(long? IdRegistro, string Cedula, string NombreConductor, string Cuenta, string DescripcionCuenta, decimal? ValorTotal, DateTime? Fecha, string DescripcionPeaje, long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

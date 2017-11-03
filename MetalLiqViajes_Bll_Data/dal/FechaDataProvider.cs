@@ -209,7 +209,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into Fecha by passing all fields
 		/// </summary>
-		/// <param name="PK_Date"></param>
 		/// <param name="Date_Name"></param>
 		/// <param name="Year"></param>
 		/// <param name="Year_Name"></param>
@@ -235,7 +234,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Month_Of_Trimester_Name"></param>
 		/// <param name="Trimester_Of_Year"></param>
 		/// <param name="Trimester_Of_Year_Name"></param>
-		public void Update(DateTime PK_Date, string Date_Name, DateTime? Year, string Year_Name, DateTime? Trimester, string Trimester_Name, DateTime? Month, string Month_Name, DateTime? Week, string Week_Name, int? Day_Of_Year, string Day_Of_Year_Name, int? Day_Of_Trimester, string Day_Of_Trimester_Name, int? Day_Of_Month, string Day_Of_Month_Name, int? Day_Of_Week, string Day_Of_Week_Name, int? Week_Of_Year, string Week_Of_Year_Name, int? Month_Of_Year, string Month_Of_Year_Name, int? Month_Of_Trimester, string Month_Of_Trimester_Name, int? Trimester_Of_Year, string Trimester_Of_Year_Name,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="PK_Date"></param>
+		public void Update(string Date_Name, DateTime? Year, string Year_Name, DateTime? Trimester, string Trimester_Name, DateTime? Month, string Month_Name, DateTime? Week, string Week_Name, int? Day_Of_Year, string Day_Of_Year_Name, int? Day_Of_Trimester, string Day_Of_Trimester_Name, int? Day_Of_Month, string Day_Of_Month_Name, int? Day_Of_Week, string Day_Of_Week_Name, int? Week_Of_Year, string Week_Of_Year_Name, int? Month_Of_Year, string Month_Of_Year_Name, int? Month_Of_Trimester, string Month_Of_Trimester_Name, int? Trimester_Of_Year, string Trimester_Of_Year_Name, DateTime PK_Date,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

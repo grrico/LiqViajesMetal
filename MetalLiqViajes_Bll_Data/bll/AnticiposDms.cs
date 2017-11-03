@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				anticiposdms.Dms_Codigo = (int) dr["Dms_Codigo"];
 				anticiposdms.Dms_Tipo = dr.IsNull("Dms_Tipo") ? null :(string) dr["Dms_Tipo"];
 				anticiposdms.Dms_Numero = dr.IsNull("Dms_Numero") ? null :(int?) dr["Dms_Numero"];
 				anticiposdms.Dms_Modelo = dr.IsNull("Dms_Modelo") ? null :(string) dr["Dms_Modelo"];
@@ -78,6 +77,7 @@ namespace LiqViajes_Bll_Data
 				anticiposdms.Dms_Usuario = dr.IsNull("Dms_Usuario") ? null :(string) dr["Dms_Usuario"];
 				anticiposdms.Dms_FechaReal = dr.IsNull("Dms_FechaReal") ? null :(DateTime?) dr["Dms_FechaReal"];
 				anticiposdms.Dms_NombreTercero = dr.IsNull("Dms_NombreTercero") ? null :(string) dr["Dms_NombreTercero"];
+				anticiposdms.Dms_Codigo = (int) dr["Dms_Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -169,7 +169,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an AnticiposDms object by passing all object's fields
 		/// </summary>
-		/// <param name="Dms_Codigo">int that contents the Dms_Codigo value for the AnticiposDms object</param>
 		/// <param name="Dms_Tipo">string that contents the Dms_Tipo value for the AnticiposDms object</param>
 		/// <param name="Dms_Numero">int that contents the Dms_Numero value for the AnticiposDms object</param>
 		/// <param name="Dms_Modelo">string that contents the Dms_Modelo value for the AnticiposDms object</param>
@@ -195,7 +194,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Dms_Usuario">string that contents the Dms_Usuario value for the AnticiposDms object</param>
 		/// <param name="Dms_FechaReal">DateTime that contents the Dms_FechaReal value for the AnticiposDms object</param>
 		/// <param name="Dms_NombreTercero">string that contents the Dms_NombreTercero value for the AnticiposDms object</param>
-		public void Update(int Dms_Codigo, string Dms_Tipo, int? Dms_Numero, string Dms_Modelo, byte? Dms_Sw, string Dms_Placa, int? Dms_lngIdRegistroViaje, decimal? Dms_lngIdRegistroViajeTramo, decimal? Dms_Nit, DateTime? Dms_Fecha, decimal? Dms_ValorTotal, decimal? Dms_ValorAplicado, decimal? Dms_ValorAnticipo, int? Dms_Chk, string Dms_Nota, string Dms_Documento, double? Dms_CodBanco, string Dms_NombreBanco, string Dms_DescripcionModelo, string Dms_Cuenta1, string Dms_Cuenta2, string Dms_DescripcionCta1, string Dms_DescripcionCta2, string Dms_Usuario, DateTime? Dms_FechaReal, string Dms_NombreTercero, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Dms_Codigo">int that contents the Dms_Codigo value for the AnticiposDms object</param>
+		public void Update(string Dms_Tipo, int? Dms_Numero, string Dms_Modelo, byte? Dms_Sw, string Dms_Placa, int? Dms_lngIdRegistroViaje, decimal? Dms_lngIdRegistroViajeTramo, decimal? Dms_Nit, DateTime? Dms_Fecha, decimal? Dms_ValorTotal, decimal? Dms_ValorAplicado, decimal? Dms_ValorAnticipo, int? Dms_Chk, string Dms_Nota, string Dms_Documento, double? Dms_CodBanco, string Dms_NombreBanco, string Dms_DescripcionModelo, string Dms_Cuenta1, string Dms_Cuenta2, string Dms_DescripcionCta1, string Dms_DescripcionCta2, string Dms_Usuario, DateTime? Dms_FechaReal, string Dms_NombreTercero, int Dms_Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -225,7 +225,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Dms_Usuario = Dms_Usuario;
 				new_values.Dms_FechaReal = Dms_FechaReal;
 				new_values.Dms_NombreTercero = Dms_NombreTercero;
-				AnticiposDmsDataProvider.Instance.Update(Dms_Codigo, Dms_Tipo, Dms_Numero, Dms_Modelo, Dms_Sw, Dms_Placa, Dms_lngIdRegistroViaje, Dms_lngIdRegistroViajeTramo, Dms_Nit, Dms_Fecha, Dms_ValorTotal, Dms_ValorAplicado, Dms_ValorAnticipo, Dms_Chk, Dms_Nota, Dms_Documento, Dms_CodBanco, Dms_NombreBanco, Dms_DescripcionModelo, Dms_Cuenta1, Dms_Cuenta2, Dms_DescripcionCta1, Dms_DescripcionCta2, Dms_Usuario, Dms_FechaReal, Dms_NombreTercero,"AnticiposDms",datosTransaccion);
+				AnticiposDmsDataProvider.Instance.Update(Dms_Tipo, Dms_Numero, Dms_Modelo, Dms_Sw, Dms_Placa, Dms_lngIdRegistroViaje, Dms_lngIdRegistroViajeTramo, Dms_Nit, Dms_Fecha, Dms_ValorTotal, Dms_ValorAplicado, Dms_ValorAnticipo, Dms_Chk, Dms_Nota, Dms_Documento, Dms_CodBanco, Dms_NombreBanco, Dms_DescripcionModelo, Dms_Cuenta1, Dms_Cuenta2, Dms_DescripcionCta1, Dms_DescripcionCta2, Dms_Usuario, Dms_FechaReal, Dms_NombreTercero, Dms_Codigo,"AnticiposDms",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -239,7 +239,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="anticiposdms">An instance of AnticiposDms for reference</param>
 		public void Update(AnticiposDms anticiposdms,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(anticiposdms.Dms_Codigo, anticiposdms.Dms_Tipo, anticiposdms.Dms_Numero, anticiposdms.Dms_Modelo, anticiposdms.Dms_Sw, anticiposdms.Dms_Placa, anticiposdms.Dms_lngIdRegistroViaje, anticiposdms.Dms_lngIdRegistroViajeTramo, anticiposdms.Dms_Nit, anticiposdms.Dms_Fecha, anticiposdms.Dms_ValorTotal, anticiposdms.Dms_ValorAplicado, anticiposdms.Dms_ValorAnticipo, anticiposdms.Dms_Chk, anticiposdms.Dms_Nota, anticiposdms.Dms_Documento, anticiposdms.Dms_CodBanco, anticiposdms.Dms_NombreBanco, anticiposdms.Dms_DescripcionModelo, anticiposdms.Dms_Cuenta1, anticiposdms.Dms_Cuenta2, anticiposdms.Dms_DescripcionCta1, anticiposdms.Dms_DescripcionCta2, anticiposdms.Dms_Usuario, anticiposdms.Dms_FechaReal, anticiposdms.Dms_NombreTercero);
+			Update(anticiposdms.Dms_Tipo, anticiposdms.Dms_Numero, anticiposdms.Dms_Modelo, anticiposdms.Dms_Sw, anticiposdms.Dms_Placa, anticiposdms.Dms_lngIdRegistroViaje, anticiposdms.Dms_lngIdRegistroViajeTramo, anticiposdms.Dms_Nit, anticiposdms.Dms_Fecha, anticiposdms.Dms_ValorTotal, anticiposdms.Dms_ValorAplicado, anticiposdms.Dms_ValorAnticipo, anticiposdms.Dms_Chk, anticiposdms.Dms_Nota, anticiposdms.Dms_Documento, anticiposdms.Dms_CodBanco, anticiposdms.Dms_NombreBanco, anticiposdms.Dms_DescripcionModelo, anticiposdms.Dms_Cuenta1, anticiposdms.Dms_Cuenta2, anticiposdms.Dms_DescripcionCta1, anticiposdms.Dms_DescripcionCta2, anticiposdms.Dms_Usuario, anticiposdms.Dms_FechaReal, anticiposdms.Dms_NombreTercero, anticiposdms.Dms_Codigo);
 		}
 
 		/// <summary>
@@ -391,9 +391,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Dms_Codigo":
-					return anticiposdms.Dms_Codigo.GetType();
-
 				case "Dms_Tipo":
 					return anticiposdms.Dms_Tipo.GetType();
 
@@ -468,6 +465,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Dms_NombreTercero":
 					return anticiposdms.Dms_NombreTercero.GetType();
+
+				case "Dms_Codigo":
+					return anticiposdms.Dms_Codigo.GetType();
 
 			}
 

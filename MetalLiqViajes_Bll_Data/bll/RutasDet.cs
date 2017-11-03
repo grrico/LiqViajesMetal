@@ -52,11 +52,11 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				rutasdet.strNombrePeaje = dr.IsNull("strNombrePeaje") ? null :(string) dr["strNombrePeaje"];
+				rutasdet.curValorPeaje = dr.IsNull("curValorPeaje") ? null :(decimal?) dr["curValorPeaje"];
 				rutasdet.lngIdItemdReg = (int) dr["lngIdItemdReg"];
 				rutasdet.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
 				rutasdet.lngIdPeaje = (int) dr["lngIdPeaje"];
-				rutasdet.strNombrePeaje = dr.IsNull("strNombrePeaje") ? null :(string) dr["strNombrePeaje"];
-				rutasdet.curValorPeaje = dr.IsNull("curValorPeaje") ? null :(decimal?) dr["curValorPeaje"];
 			}
 			catch (Exception ex)
 			{
@@ -109,19 +109,19 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasDet object by passing all object's fields
 		/// </summary>
+		/// <param name="strNombrePeaje">string that contents the strNombrePeaje value for the RutasDet object</param>
+		/// <param name="curValorPeaje">decimal that contents the curValorPeaje value for the RutasDet object</param>
 		/// <param name="lngIdItemdReg">int that contents the lngIdItemdReg value for the RutasDet object</param>
 		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the RutasDet object</param>
 		/// <param name="lngIdPeaje">int that contents the lngIdPeaje value for the RutasDet object</param>
-		/// <param name="strNombrePeaje">string that contents the strNombrePeaje value for the RutasDet object</param>
-		/// <param name="curValorPeaje">decimal that contents the curValorPeaje value for the RutasDet object</param>
-		public void Update(int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje, string strNombrePeaje, decimal? curValorPeaje, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(string strNombrePeaje, decimal? curValorPeaje, int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasDet new_values = new RutasDet();
 				new_values.strNombrePeaje = strNombrePeaje;
 				new_values.curValorPeaje = curValorPeaje;
-				RutasDetDataProvider.Instance.Update(lngIdItemdReg, lngIdRegistrRuta, lngIdPeaje, strNombrePeaje, curValorPeaje,"RutasDet",datosTransaccion);
+				RutasDetDataProvider.Instance.Update(strNombrePeaje, curValorPeaje, lngIdItemdReg, lngIdRegistrRuta, lngIdPeaje,"RutasDet",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -135,7 +135,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasdet">An instance of RutasDet for reference</param>
 		public void Update(RutasDet rutasdet,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasdet.lngIdItemdReg, rutasdet.lngIdRegistrRuta, rutasdet.lngIdPeaje, rutasdet.strNombrePeaje, rutasdet.curValorPeaje);
+			Update(rutasdet.strNombrePeaje, rutasdet.curValorPeaje, rutasdet.lngIdItemdReg, rutasdet.lngIdRegistrRuta, rutasdet.lngIdPeaje);
 		}
 
 		/// <summary>
@@ -295,6 +295,12 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "strNombrePeaje":
+					return rutasdet.strNombrePeaje.GetType();
+
+				case "curValorPeaje":
+					return rutasdet.curValorPeaje.GetType();
+
 				case "lngIdItemdReg":
 					return rutasdet.lngIdItemdReg.GetType();
 
@@ -303,12 +309,6 @@ namespace LiqViajes_Bll_Data
 
 				case "lngIdPeaje":
 					return rutasdet.lngIdPeaje.GetType();
-
-				case "strNombrePeaje":
-					return rutasdet.strNombrePeaje.GetType();
-
-				case "curValorPeaje":
-					return rutasdet.curValorPeaje.GetType();
 
 			}
 

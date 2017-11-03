@@ -52,13 +52,13 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tramosconsultaanticipos.Codigo = (long) dr["Codigo"];
 				tramosconsultaanticipos.IdRegistroViajeTramo = dr.IsNull("IdRegistroViajeTramo") ? null :(long?) dr["IdRegistroViajeTramo"];
 				tramosconsultaanticipos.Tipo = dr.IsNull("Tipo") ? null :(string) dr["Tipo"];
 				tramosconsultaanticipos.Documento = dr.IsNull("Documento") ? null :(long?) dr["Documento"];
 				tramosconsultaanticipos.NombreBanco = dr.IsNull("NombreBanco") ? null :(string) dr["NombreBanco"];
 				tramosconsultaanticipos.ValorAnticipo = dr.IsNull("ValorAnticipo") ? null :(decimal?) dr["ValorAnticipo"];
 				tramosconsultaanticipos.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
+				tramosconsultaanticipos.Codigo = (long) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -117,14 +117,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TramosConsultaAnticipos object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">long that contents the Codigo value for the TramosConsultaAnticipos object</param>
 		/// <param name="IdRegistroViajeTramo">long that contents the IdRegistroViajeTramo value for the TramosConsultaAnticipos object</param>
 		/// <param name="Tipo">string that contents the Tipo value for the TramosConsultaAnticipos object</param>
 		/// <param name="Documento">long that contents the Documento value for the TramosConsultaAnticipos object</param>
 		/// <param name="NombreBanco">string that contents the NombreBanco value for the TramosConsultaAnticipos object</param>
 		/// <param name="ValorAnticipo">decimal that contents the ValorAnticipo value for the TramosConsultaAnticipos object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the TramosConsultaAnticipos object</param>
-		public void Update(long Codigo, long? IdRegistroViajeTramo, string Tipo, long? Documento, string NombreBanco, decimal? ValorAnticipo, DateTime? Fecha, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">long that contents the Codigo value for the TramosConsultaAnticipos object</param>
+		public void Update(long? IdRegistroViajeTramo, string Tipo, long? Documento, string NombreBanco, decimal? ValorAnticipo, DateTime? Fecha, long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -135,7 +135,7 @@ namespace LiqViajes_Bll_Data
 				new_values.NombreBanco = NombreBanco;
 				new_values.ValorAnticipo = ValorAnticipo;
 				new_values.Fecha = Fecha;
-				TramosConsultaAnticiposDataProvider.Instance.Update(Codigo, IdRegistroViajeTramo, Tipo, Documento, NombreBanco, ValorAnticipo, Fecha,"TramosConsultaAnticipos",datosTransaccion);
+				TramosConsultaAnticiposDataProvider.Instance.Update(IdRegistroViajeTramo, Tipo, Documento, NombreBanco, ValorAnticipo, Fecha, Codigo,"TramosConsultaAnticipos",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -149,7 +149,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tramosconsultaanticipos">An instance of TramosConsultaAnticipos for reference</param>
 		public void Update(TramosConsultaAnticipos tramosconsultaanticipos,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tramosconsultaanticipos.Codigo, tramosconsultaanticipos.IdRegistroViajeTramo, tramosconsultaanticipos.Tipo, tramosconsultaanticipos.Documento, tramosconsultaanticipos.NombreBanco, tramosconsultaanticipos.ValorAnticipo, tramosconsultaanticipos.Fecha);
+			Update(tramosconsultaanticipos.IdRegistroViajeTramo, tramosconsultaanticipos.Tipo, tramosconsultaanticipos.Documento, tramosconsultaanticipos.NombreBanco, tramosconsultaanticipos.ValorAnticipo, tramosconsultaanticipos.Fecha, tramosconsultaanticipos.Codigo);
 		}
 
 		/// <summary>
@@ -305,9 +305,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return tramosconsultaanticipos.Codigo.GetType();
-
 				case "IdRegistroViajeTramo":
 					return tramosconsultaanticipos.IdRegistroViajeTramo.GetType();
 
@@ -325,6 +322,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Fecha":
 					return tramosconsultaanticipos.Fecha.GetType();
+
+				case "Codigo":
+					return tramosconsultaanticipos.Codigo.GetType();
 
 			}
 

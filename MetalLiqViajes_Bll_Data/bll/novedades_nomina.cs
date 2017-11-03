@@ -52,11 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				novedades_nomina.IdNovedad = (int) dr["IdNovedad"];
-				novedades_nomina.nomina = (string) dr["nomina"];
-				novedades_nomina.contrato = (int) dr["contrato"];
-				novedades_nomina.nit = (string) dr["nit"];
-				novedades_nomina.idperiodo = (int) dr["idperiodo"];
 				novedades_nomina.concepto = Convert.ToInt16(dr["concepto"]);
 				novedades_nomina.fecha = (DateTime) dr["fecha"];
 				novedades_nomina.mes = dr.IsNull("mes") ? null :(byte?) dr["mes"];
@@ -65,8 +60,6 @@ namespace LiqViajes_Bll_Data
 				novedades_nomina.valor = dr.IsNull("valor") ? null :(decimal?) dr["valor"];
 				novedades_nomina.horas = dr.IsNull("horas") ? null :(float?) dr["horas"];
 				novedades_nomina.dias = dr.IsNull("dias") ? null :(float?) dr["dias"];
-				novedades_nomina.centro = (int) dr["centro"];
-				novedades_nomina.planta = (byte) dr["planta"];
 				novedades_nomina.turno = dr.IsNull("turno") ? null :(byte?) dr["turno"];
 				novedades_nomina.estado = dr.IsNull("estado") ? null :(char?) ((string) dr["estado"])[0];
 				novedades_nomina.nro_presta = dr.IsNull("nro_presta") ? null :(int?) dr["nro_presta"];
@@ -76,6 +69,13 @@ namespace LiqViajes_Bll_Data
 				novedades_nomina.tipo_doc = dr.IsNull("tipo_doc") ? null :(string) dr["tipo_doc"];
 				novedades_nomina.numero_doc = dr.IsNull("numero_doc") ? null :(int?) dr["numero_doc"];
 				novedades_nomina.cuota = dr.IsNull("cuota") ? null :(int?) dr["cuota"];
+				novedades_nomina.IdNovedad = (int) dr["IdNovedad"];
+				novedades_nomina.nomina = (string) dr["nomina"];
+				novedades_nomina.contrato = (int) dr["contrato"];
+				novedades_nomina.nit = (string) dr["nit"];
+				novedades_nomina.idperiodo = (int) dr["idperiodo"];
+				novedades_nomina.centro = (int) dr["centro"];
+				novedades_nomina.planta = (byte) dr["planta"];
 			}
 			catch (Exception ex)
 			{
@@ -157,11 +157,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an novedades_nomina object by passing all object's fields
 		/// </summary>
-		/// <param name="IdNovedad">int that contents the IdNovedad value for the novedades_nomina object</param>
-		/// <param name="nomina">string that contents the nomina value for the novedades_nomina object</param>
-		/// <param name="contrato">int that contents the contrato value for the novedades_nomina object</param>
-		/// <param name="nit">string that contents the nit value for the novedades_nomina object</param>
-		/// <param name="idperiodo">int that contents the idperiodo value for the novedades_nomina object</param>
 		/// <param name="concepto">short that contents the concepto value for the novedades_nomina object</param>
 		/// <param name="fecha">DateTime that contents the fecha value for the novedades_nomina object</param>
 		/// <param name="mes">byte that contents the mes value for the novedades_nomina object</param>
@@ -170,8 +165,6 @@ namespace LiqViajes_Bll_Data
 		/// <param name="valor">decimal that contents the valor value for the novedades_nomina object</param>
 		/// <param name="horas">float that contents the horas value for the novedades_nomina object</param>
 		/// <param name="dias">float that contents the dias value for the novedades_nomina object</param>
-		/// <param name="centro">int that contents the centro value for the novedades_nomina object</param>
-		/// <param name="planta">byte that contents the planta value for the novedades_nomina object</param>
 		/// <param name="turno">byte that contents the turno value for the novedades_nomina object</param>
 		/// <param name="estado">char that contents the estado value for the novedades_nomina object</param>
 		/// <param name="nro_presta">int that contents the nro_presta value for the novedades_nomina object</param>
@@ -181,7 +174,14 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tipo_doc">string that contents the tipo_doc value for the novedades_nomina object</param>
 		/// <param name="numero_doc">int that contents the numero_doc value for the novedades_nomina object</param>
 		/// <param name="cuota">int that contents the cuota value for the novedades_nomina object</param>
-		public void Update(int IdNovedad, string nomina, int contrato, string nit, int idperiodo, short concepto, DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, int centro, byte planta, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool? sumar, string oficio, string tipo_doc, int? numero_doc, int? cuota, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="IdNovedad">int that contents the IdNovedad value for the novedades_nomina object</param>
+		/// <param name="nomina">string that contents the nomina value for the novedades_nomina object</param>
+		/// <param name="contrato">int that contents the contrato value for the novedades_nomina object</param>
+		/// <param name="nit">string that contents the nit value for the novedades_nomina object</param>
+		/// <param name="idperiodo">int that contents the idperiodo value for the novedades_nomina object</param>
+		/// <param name="centro">int that contents the centro value for the novedades_nomina object</param>
+		/// <param name="planta">byte that contents the planta value for the novedades_nomina object</param>
+		public void Update(short concepto, DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool? sumar, string oficio, string tipo_doc, int? numero_doc, int? cuota, int IdNovedad, string nomina, int contrato, string nit, int idperiodo, int centro, byte planta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -203,7 +203,7 @@ namespace LiqViajes_Bll_Data
 				new_values.tipo_doc = tipo_doc;
 				new_values.numero_doc = numero_doc;
 				new_values.cuota = cuota;
-				novedades_nominaDataProvider.Instance.Update(IdNovedad, nomina, contrato, nit, idperiodo, concepto, fecha, mes, ano, periodo, valor, horas, dias, centro, planta, turno, estado, nro_presta, cpto_interes, sumar, oficio, tipo_doc, numero_doc, cuota,"novedades_nomina",datosTransaccion);
+				novedades_nominaDataProvider.Instance.Update(concepto, fecha, mes, ano, periodo, valor, horas, dias, turno, estado, nro_presta, cpto_interes, sumar, oficio, tipo_doc, numero_doc, cuota, IdNovedad, nomina, contrato, nit, idperiodo, centro, planta,"novedades_nomina",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -217,7 +217,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="novedades_nomina">An instance of novedades_nomina for reference</param>
 		public void Update(novedades_nomina novedades_nomina,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(novedades_nomina.IdNovedad, novedades_nomina.nomina, novedades_nomina.contrato, novedades_nomina.nit, novedades_nomina.idperiodo, novedades_nomina.concepto, novedades_nomina.fecha, novedades_nomina.mes, novedades_nomina.ano, novedades_nomina.periodo, novedades_nomina.valor, novedades_nomina.horas, novedades_nomina.dias, novedades_nomina.centro, novedades_nomina.planta, novedades_nomina.turno, novedades_nomina.estado, novedades_nomina.nro_presta, novedades_nomina.cpto_interes, novedades_nomina.sumar, novedades_nomina.oficio, novedades_nomina.tipo_doc, novedades_nomina.numero_doc, novedades_nomina.cuota);
+			Update(novedades_nomina.concepto, novedades_nomina.fecha, novedades_nomina.mes, novedades_nomina.ano, novedades_nomina.periodo, novedades_nomina.valor, novedades_nomina.horas, novedades_nomina.dias, novedades_nomina.turno, novedades_nomina.estado, novedades_nomina.nro_presta, novedades_nomina.cpto_interes, novedades_nomina.sumar, novedades_nomina.oficio, novedades_nomina.tipo_doc, novedades_nomina.numero_doc, novedades_nomina.cuota, novedades_nomina.IdNovedad, novedades_nomina.nomina, novedades_nomina.contrato, novedades_nomina.nit, novedades_nomina.idperiodo, novedades_nomina.centro, novedades_nomina.planta);
 		}
 
 		/// <summary>
@@ -381,21 +381,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "IdNovedad":
-					return novedades_nomina.IdNovedad.GetType();
-
-				case "nomina":
-					return novedades_nomina.nomina.GetType();
-
-				case "contrato":
-					return novedades_nomina.contrato.GetType();
-
-				case "nit":
-					return novedades_nomina.nit.GetType();
-
-				case "idperiodo":
-					return novedades_nomina.idperiodo.GetType();
-
 				case "concepto":
 					return novedades_nomina.concepto.GetType();
 
@@ -419,12 +404,6 @@ namespace LiqViajes_Bll_Data
 
 				case "dias":
 					return novedades_nomina.dias.GetType();
-
-				case "centro":
-					return novedades_nomina.centro.GetType();
-
-				case "planta":
-					return novedades_nomina.planta.GetType();
 
 				case "turno":
 					return novedades_nomina.turno.GetType();
@@ -452,6 +431,27 @@ namespace LiqViajes_Bll_Data
 
 				case "cuota":
 					return novedades_nomina.cuota.GetType();
+
+				case "IdNovedad":
+					return novedades_nomina.IdNovedad.GetType();
+
+				case "nomina":
+					return novedades_nomina.nomina.GetType();
+
+				case "contrato":
+					return novedades_nomina.contrato.GetType();
+
+				case "nit":
+					return novedades_nomina.nit.GetType();
+
+				case "idperiodo":
+					return novedades_nomina.idperiodo.GetType();
+
+				case "centro":
+					return novedades_nomina.centro.GetType();
+
+				case "planta":
+					return novedades_nomina.planta.GetType();
 
 			}
 

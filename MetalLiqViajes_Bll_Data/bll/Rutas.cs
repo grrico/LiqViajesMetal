@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutas.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
 				rutas.strRutaAnticipoGrupoOrigen = dr.IsNull("strRutaAnticipoGrupoOrigen") ? null :(string) dr["strRutaAnticipoGrupoOrigen"];
 				rutas.strRutaAnticipoGrupoDestino = dr.IsNull("strRutaAnticipoGrupoDestino") ? null :(string) dr["strRutaAnticipoGrupoDestino"];
 				rutas.strRutaAnticipoGrupo = dr.IsNull("strRutaAnticipoGrupo") ? null :(string) dr["strRutaAnticipoGrupo"];
@@ -126,6 +125,7 @@ namespace LiqViajes_Bll_Data
 				rutas.CurCargue = dr.IsNull("CurCargue") ? null :(decimal?) dr["CurCargue"];
 				rutas.CurDescargue = dr.IsNull("CurDescargue") ? null :(decimal?) dr["CurDescargue"];
 				rutas.LogAnticipoACPM = dr.IsNull("LogAnticipoACPM") ? null :(bool?) dr["LogAnticipoACPM"];
+				rutas.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
 			}
 			catch (Exception ex)
 			{
@@ -318,7 +318,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Rutas object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupoOrigen">string that contents the strRutaAnticipoGrupoOrigen value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupoDestino">string that contents the strRutaAnticipoGrupoDestino value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupo">string that contents the strRutaAnticipoGrupo value for the Rutas object</param>
@@ -392,7 +391,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CurCargue">decimal that contents the CurCargue value for the Rutas object</param>
 		/// <param name="CurDescargue">decimal that contents the CurDescargue value for the Rutas object</param>
 		/// <param name="LogAnticipoACPM">bool that contents the LogAnticipoACPM value for the Rutas object</param>
-		public void Update(int lngIdRegistrRuta, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the Rutas object</param>
+		public void Update(string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM, int lngIdRegistrRuta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -470,7 +470,7 @@ namespace LiqViajes_Bll_Data
 				new_values.CurCargue = CurCargue;
 				new_values.CurDescargue = CurDescargue;
 				new_values.LogAnticipoACPM = LogAnticipoACPM;
-				RutasDataProvider.Instance.Update(lngIdRegistrRuta, strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, strRutaAnticipoGrupo, strRutaAnticipo, TipoVehiculoCodigo, TipoVehiculo, TipoTrailerCodigo, Peso, Programa, logViajeVacio, floGalones, curValorGalon, cutCombustible, CombustibleCarretera, lngIdNroPeajes, cutPeaje, strNombrePeajes, cutVariosLlantas, cutVariosCelada, cutVariosPropina, cutVarios, Llamadas, Taxi, Aseo, cutVariosLlantasVacio, cutVariosCeladaVacio, cutVariosPropinaVacio, cutVariosVacio, Viaticos, cutParticipacion, cutParticipacionVacio, curHotelCarretera, curHotelCiudad, curHotel, curHotelCarreteraVacio, curHotelCiudadVacio, curHotelVacio, intTiempoCargue, intTiempoDescargue, intTiempoAduana, intTotalTrayecto, intTotalTiempo, curComida, intTiempoCargueVacio, intTiempoDescargueVacio, intTiempoAduanaVacio, intTotalTrayectoVacio, intTotalTiempoVacio, curComidaVacio, curDesvareManoRepuestos, curDesvareManoObra, cutSaldo, cutSaldoVacio, cutKmts, logActualizaPeajes, intFactorKmPorGalon, logEstadoRuta, ParqueaderoCarretera, ParqueaderoCiudad, MontadaLLantaCarretera, MontadaLLantaCiudad, AjusteCarretera, Lavada, Amarres, Engradasa, Calibrada, Liquidado, logVacio, Papeleria, logFavorito, CurCargue, CurDescargue, LogAnticipoACPM,"Rutas",datosTransaccion);
+				RutasDataProvider.Instance.Update(strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, strRutaAnticipoGrupo, strRutaAnticipo, TipoVehiculoCodigo, TipoVehiculo, TipoTrailerCodigo, Peso, Programa, logViajeVacio, floGalones, curValorGalon, cutCombustible, CombustibleCarretera, lngIdNroPeajes, cutPeaje, strNombrePeajes, cutVariosLlantas, cutVariosCelada, cutVariosPropina, cutVarios, Llamadas, Taxi, Aseo, cutVariosLlantasVacio, cutVariosCeladaVacio, cutVariosPropinaVacio, cutVariosVacio, Viaticos, cutParticipacion, cutParticipacionVacio, curHotelCarretera, curHotelCiudad, curHotel, curHotelCarreteraVacio, curHotelCiudadVacio, curHotelVacio, intTiempoCargue, intTiempoDescargue, intTiempoAduana, intTotalTrayecto, intTotalTiempo, curComida, intTiempoCargueVacio, intTiempoDescargueVacio, intTiempoAduanaVacio, intTotalTrayectoVacio, intTotalTiempoVacio, curComidaVacio, curDesvareManoRepuestos, curDesvareManoObra, cutSaldo, cutSaldoVacio, cutKmts, logActualizaPeajes, intFactorKmPorGalon, logEstadoRuta, ParqueaderoCarretera, ParqueaderoCiudad, MontadaLLantaCarretera, MontadaLLantaCiudad, AjusteCarretera, Lavada, Amarres, Engradasa, Calibrada, Liquidado, logVacio, Papeleria, logFavorito, CurCargue, CurDescargue, LogAnticipoACPM, lngIdRegistrRuta,"Rutas",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -484,7 +484,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutas">An instance of Rutas for reference</param>
 		public void Update(Rutas rutas,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutas.lngIdRegistrRuta, rutas.strRutaAnticipoGrupoOrigen, rutas.strRutaAnticipoGrupoDestino, rutas.strRutaAnticipoGrupo, rutas.strRutaAnticipo, rutas.TipoVehiculoCodigo, rutas.TipoVehiculo, rutas.TipoTrailerCodigo, rutas.Peso, rutas.Programa, rutas.logViajeVacio, rutas.floGalones, rutas.curValorGalon, rutas.cutCombustible, rutas.CombustibleCarretera, rutas.lngIdNroPeajes, rutas.cutPeaje, rutas.strNombrePeajes, rutas.cutVariosLlantas, rutas.cutVariosCelada, rutas.cutVariosPropina, rutas.cutVarios, rutas.Llamadas, rutas.Taxi, rutas.Aseo, rutas.cutVariosLlantasVacio, rutas.cutVariosCeladaVacio, rutas.cutVariosPropinaVacio, rutas.cutVariosVacio, rutas.Viaticos, rutas.cutParticipacion, rutas.cutParticipacionVacio, rutas.curHotelCarretera, rutas.curHotelCiudad, rutas.curHotel, rutas.curHotelCarreteraVacio, rutas.curHotelCiudadVacio, rutas.curHotelVacio, rutas.intTiempoCargue, rutas.intTiempoDescargue, rutas.intTiempoAduana, rutas.intTotalTrayecto, rutas.intTotalTiempo, rutas.curComida, rutas.intTiempoCargueVacio, rutas.intTiempoDescargueVacio, rutas.intTiempoAduanaVacio, rutas.intTotalTrayectoVacio, rutas.intTotalTiempoVacio, rutas.curComidaVacio, rutas.curDesvareManoRepuestos, rutas.curDesvareManoObra, rutas.cutSaldo, rutas.cutSaldoVacio, rutas.cutKmts, rutas.logActualizaPeajes, rutas.intFactorKmPorGalon, rutas.logEstadoRuta, rutas.ParqueaderoCarretera, rutas.ParqueaderoCiudad, rutas.MontadaLLantaCarretera, rutas.MontadaLLantaCiudad, rutas.AjusteCarretera, rutas.Lavada, rutas.Amarres, rutas.Engradasa, rutas.Calibrada, rutas.Liquidado, rutas.logVacio, rutas.Papeleria, rutas.logFavorito, rutas.CurCargue, rutas.CurDescargue, rutas.LogAnticipoACPM);
+			Update(rutas.strRutaAnticipoGrupoOrigen, rutas.strRutaAnticipoGrupoDestino, rutas.strRutaAnticipoGrupo, rutas.strRutaAnticipo, rutas.TipoVehiculoCodigo, rutas.TipoVehiculo, rutas.TipoTrailerCodigo, rutas.Peso, rutas.Programa, rutas.logViajeVacio, rutas.floGalones, rutas.curValorGalon, rutas.cutCombustible, rutas.CombustibleCarretera, rutas.lngIdNroPeajes, rutas.cutPeaje, rutas.strNombrePeajes, rutas.cutVariosLlantas, rutas.cutVariosCelada, rutas.cutVariosPropina, rutas.cutVarios, rutas.Llamadas, rutas.Taxi, rutas.Aseo, rutas.cutVariosLlantasVacio, rutas.cutVariosCeladaVacio, rutas.cutVariosPropinaVacio, rutas.cutVariosVacio, rutas.Viaticos, rutas.cutParticipacion, rutas.cutParticipacionVacio, rutas.curHotelCarretera, rutas.curHotelCiudad, rutas.curHotel, rutas.curHotelCarreteraVacio, rutas.curHotelCiudadVacio, rutas.curHotelVacio, rutas.intTiempoCargue, rutas.intTiempoDescargue, rutas.intTiempoAduana, rutas.intTotalTrayecto, rutas.intTotalTiempo, rutas.curComida, rutas.intTiempoCargueVacio, rutas.intTiempoDescargueVacio, rutas.intTiempoAduanaVacio, rutas.intTotalTrayectoVacio, rutas.intTotalTiempoVacio, rutas.curComidaVacio, rutas.curDesvareManoRepuestos, rutas.curDesvareManoObra, rutas.cutSaldo, rutas.cutSaldoVacio, rutas.cutKmts, rutas.logActualizaPeajes, rutas.intFactorKmPorGalon, rutas.logEstadoRuta, rutas.ParqueaderoCarretera, rutas.ParqueaderoCiudad, rutas.MontadaLLantaCarretera, rutas.MontadaLLantaCiudad, rutas.AjusteCarretera, rutas.Lavada, rutas.Amarres, rutas.Engradasa, rutas.Calibrada, rutas.Liquidado, rutas.logVacio, rutas.Papeleria, rutas.logFavorito, rutas.CurCargue, rutas.CurDescargue, rutas.LogAnticipoACPM, rutas.lngIdRegistrRuta);
 		}
 
 		/// <summary>
@@ -543,14 +543,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Rutas rutas = null;
-				DataTable dt = RutasDataProvider.Instance.Get(lngIdRegistrRuta);
-				if ((dt.Rows.Count > 0))
+				rutas= MasterTables.Rutas.Where(r => r.lngIdRegistrRuta== lngIdRegistrRuta).FirstOrDefault();
+				if (rutas== null)
 				{
-					rutas = new Rutas();
-					DataRow dr = dt.Rows[0];
-					ReadData(rutas, dr, generateUndo);
+					MasterTables.Reset("Rutas");
+					rutas= MasterTables.Rutas.Where(r => r.lngIdRegistrRuta== lngIdRegistrRuta).FirstOrDefault();
 				}
-
+				if (generateUndo) rutas.GenerateUndo();
 
 				return rutas;
 			}
@@ -692,9 +691,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistrRuta":
-					return rutas.lngIdRegistrRuta.GetType();
-
 				case "strRutaAnticipoGrupoOrigen":
 					return rutas.strRutaAnticipoGrupoOrigen.GetType();
 
@@ -913,6 +909,9 @@ namespace LiqViajes_Bll_Data
 
 				case "LogAnticipoACPM":
 					return rutas.LogAnticipoACPM.GetType();
+
+				case "lngIdRegistrRuta":
+					return rutas.lngIdRegistrRuta.GetType();
 
 			}
 

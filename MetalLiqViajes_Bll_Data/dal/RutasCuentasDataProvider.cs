@@ -251,7 +251,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutasCuentas by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="cutCombustible"></param>
 		/// <param name="cutPeaje"></param>
 		/// <param name="cutVariosLlantas"></param>
@@ -286,7 +285,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CombustibleCarretera"></param>
 		/// <param name="CurCargue"></param>
 		/// <param name="CurDescargue"></param>
-		public void Update(int lngIdRegistrRuta, string cutCombustible, string cutPeaje, string cutVariosLlantas, string cutVariosCelada, string cutVariosPropina, string cutVarios, string cutVariosLlantasVacio, string cutVariosCeladaVacio, string cutVariosPropinaVacio, string cutVariosVacio, string cutParticipacion, string cutParticipacionVacio, string curHotel, string curHotelVacio, string curComida, string curComidaVacio, string curDesvareManoRepuestos, string curDesvareManoObra, string cutSaldo, string cutKmts, string ParqueaderoCarretera, string ParqueaderoCiudad, string MontadaLLantaCarretera, string Papeleria, string AjusteCarretera, string Aseo, string Amarres, string Engradasa, string Calibrada, string Taxi, string Lavada, string CombustibleCarretera, string CurCargue, string CurDescargue,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistrRuta"></param>
+		public void Update(string cutCombustible, string cutPeaje, string cutVariosLlantas, string cutVariosCelada, string cutVariosPropina, string cutVarios, string cutVariosLlantasVacio, string cutVariosCeladaVacio, string cutVariosPropinaVacio, string cutVariosVacio, string cutParticipacion, string cutParticipacionVacio, string curHotel, string curHotelVacio, string curComida, string curComidaVacio, string curDesvareManoRepuestos, string curDesvareManoObra, string cutSaldo, string cutKmts, string ParqueaderoCarretera, string ParqueaderoCiudad, string MontadaLLantaCarretera, string Papeleria, string AjusteCarretera, string Aseo, string Amarres, string Engradasa, string Calibrada, string Taxi, string Lavada, string CombustibleCarretera, string CurCargue, string CurDescargue, int lngIdRegistrRuta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

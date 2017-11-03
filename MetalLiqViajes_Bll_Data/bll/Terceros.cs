@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				terceros.NitConductor = (decimal) dr["NitConductor"];
 				terceros.Identificacion = dr.IsNull("Identificacion") ? null :(long?) dr["Identificacion"];
 				terceros.TipoIdentificacion = dr.IsNull("TipoIdentificacion") ? null :(char?) ((string) dr["TipoIdentificacion"])[0];
 				terceros.Digito = dr.IsNull("Digito") ? null :(byte?) dr["Digito"];
@@ -66,6 +65,7 @@ namespace LiqViajes_Bll_Data
 				terceros.Telefono2 = dr.IsNull("Telefono2") ? null :(string) dr["Telefono2"];
 				terceros.Telefono3 = dr.IsNull("Telefono3") ? null :(string) dr["Telefono3"];
 				terceros.ApartadoAreo = dr.IsNull("ApartadoAreo") ? null :(string) dr["ApartadoAreo"];
+				terceros.NitConductor = (decimal) dr["NitConductor"];
 			}
 			catch (Exception ex)
 			{
@@ -133,7 +133,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Terceros object by passing all object's fields
 		/// </summary>
-		/// <param name="NitConductor">decimal that contents the NitConductor value for the Terceros object</param>
 		/// <param name="Identificacion">long that contents the Identificacion value for the Terceros object</param>
 		/// <param name="TipoIdentificacion">char that contents the TipoIdentificacion value for the Terceros object</param>
 		/// <param name="Digito">byte that contents the Digito value for the Terceros object</param>
@@ -147,7 +146,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Telefono2">string that contents the Telefono2 value for the Terceros object</param>
 		/// <param name="Telefono3">string that contents the Telefono3 value for the Terceros object</param>
 		/// <param name="ApartadoAreo">string that contents the ApartadoAreo value for the Terceros object</param>
-		public void Update(decimal NitConductor, long? Identificacion, char? TipoIdentificacion, byte? Digito, string NombreCompleto, string Concepto_3, int? CentroCosto, string Direccion, string NombreCiudad, string Pais, string Telefono1, string Telefono2, string Telefono3, string ApartadoAreo, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="NitConductor">decimal that contents the NitConductor value for the Terceros object</param>
+		public void Update(long? Identificacion, char? TipoIdentificacion, byte? Digito, string NombreCompleto, string Concepto_3, int? CentroCosto, string Direccion, string NombreCiudad, string Pais, string Telefono1, string Telefono2, string Telefono3, string ApartadoAreo, decimal NitConductor, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -165,7 +165,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Telefono2 = Telefono2;
 				new_values.Telefono3 = Telefono3;
 				new_values.ApartadoAreo = ApartadoAreo;
-				TercerosDataProvider.Instance.Update(NitConductor, Identificacion, TipoIdentificacion, Digito, NombreCompleto, Concepto_3, CentroCosto, Direccion, NombreCiudad, Pais, Telefono1, Telefono2, Telefono3, ApartadoAreo,"Terceros",datosTransaccion);
+				TercerosDataProvider.Instance.Update(Identificacion, TipoIdentificacion, Digito, NombreCompleto, Concepto_3, CentroCosto, Direccion, NombreCiudad, Pais, Telefono1, Telefono2, Telefono3, ApartadoAreo, NitConductor,"Terceros",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -179,7 +179,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="terceros">An instance of Terceros for reference</param>
 		public void Update(Terceros terceros,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(terceros.NitConductor, terceros.Identificacion, terceros.TipoIdentificacion, terceros.Digito, terceros.NombreCompleto, terceros.Concepto_3, terceros.CentroCosto, terceros.Direccion, terceros.NombreCiudad, terceros.Pais, terceros.Telefono1, terceros.Telefono2, terceros.Telefono3, terceros.ApartadoAreo);
+			Update(terceros.Identificacion, terceros.TipoIdentificacion, terceros.Digito, terceros.NombreCompleto, terceros.Concepto_3, terceros.CentroCosto, terceros.Direccion, terceros.NombreCiudad, terceros.Pais, terceros.Telefono1, terceros.Telefono2, terceros.Telefono3, terceros.ApartadoAreo, terceros.NitConductor);
 		}
 
 		/// <summary>
@@ -234,14 +234,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Terceros terceros = null;
-				DataTable dt = TercerosDataProvider.Instance.Get(NitConductor);
-				if ((dt.Rows.Count > 0))
+				terceros= MasterTables.Terceros.Where(r => r.NitConductor== NitConductor).FirstOrDefault();
+				if (terceros== null)
 				{
-					terceros = new Terceros();
-					DataRow dr = dt.Rows[0];
-					ReadData(terceros, dr, generateUndo);
+					MasterTables.Reset("Terceros");
+					terceros= MasterTables.Terceros.Where(r => r.NitConductor== NitConductor).FirstOrDefault();
 				}
-
+				if (generateUndo) terceros.GenerateUndo();
 
 				return terceros;
 			}
@@ -331,9 +330,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "NitConductor":
-					return terceros.NitConductor.GetType();
-
 				case "Identificacion":
 					return terceros.Identificacion.GetType();
 
@@ -372,6 +368,9 @@ namespace LiqViajes_Bll_Data
 
 				case "ApartadoAreo":
 					return terceros.ApartadoAreo.GetType();
+
+				case "NitConductor":
+					return terceros.NitConductor.GetType();
 
 			}
 

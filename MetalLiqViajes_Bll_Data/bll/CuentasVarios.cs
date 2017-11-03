@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				cuentasvarios.strCuenta = (string) dr["strCuenta"];
 				cuentasvarios.strDescripcion = dr.IsNull("strDescripcion") ? null :(string) dr["strDescripcion"];
 				cuentasvarios.nitTercero = dr.IsNull("nitTercero") ? null :(string) dr["nitTercero"];
+				cuentasvarios.strCuenta = (string) dr["strCuenta"];
 			}
 			catch (Exception ex)
 			{
@@ -100,17 +100,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an CuentasVarios object by passing all object's fields
 		/// </summary>
-		/// <param name="strCuenta">string that contents the strCuenta value for the CuentasVarios object</param>
 		/// <param name="strDescripcion">string that contents the strDescripcion value for the CuentasVarios object</param>
 		/// <param name="nitTercero">string that contents the nitTercero value for the CuentasVarios object</param>
-		public void Update(string strCuenta, string strDescripcion, string nitTercero, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="strCuenta">string that contents the strCuenta value for the CuentasVarios object</param>
+		public void Update(string strDescripcion, string nitTercero, string strCuenta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				CuentasVarios new_values = new CuentasVarios();
 				new_values.strDescripcion = strDescripcion;
 				new_values.nitTercero = nitTercero;
-				CuentasVariosDataProvider.Instance.Update(strCuenta, strDescripcion, nitTercero,"CuentasVarios",datosTransaccion);
+				CuentasVariosDataProvider.Instance.Update(strDescripcion, nitTercero, strCuenta,"CuentasVarios",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="cuentasvarios">An instance of CuentasVarios for reference</param>
 		public void Update(CuentasVarios cuentasvarios,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(cuentasvarios.strCuenta, cuentasvarios.strDescripcion, cuentasvarios.nitTercero);
+			Update(cuentasvarios.strDescripcion, cuentasvarios.nitTercero, cuentasvarios.strCuenta);
 		}
 
 		/// <summary>
@@ -161,14 +161,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				CuentasVarios cuentasvarios = null;
-				DataTable dt = CuentasVariosDataProvider.Instance.Get(strCuenta);
-				if ((dt.Rows.Count > 0))
+				cuentasvarios= MasterTables.CuentasVarios.Where(r => r.strCuenta== strCuenta).FirstOrDefault();
+				if (cuentasvarios== null)
 				{
-					cuentasvarios = new CuentasVarios();
-					DataRow dr = dt.Rows[0];
-					ReadData(cuentasvarios, dr, generateUndo);
+					MasterTables.Reset("CuentasVarios");
+					cuentasvarios= MasterTables.CuentasVarios.Where(r => r.strCuenta== strCuenta).FirstOrDefault();
 				}
-
+				if (generateUndo) cuentasvarios.GenerateUndo();
 
 				return cuentasvarios;
 			}
@@ -258,14 +257,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "strCuenta":
-					return cuentasvarios.strCuenta.GetType();
-
 				case "strDescripcion":
 					return cuentasvarios.strDescripcion.GetType();
 
 				case "nitTercero":
 					return cuentasvarios.nitTercero.GetType();
+
+				case "strCuenta":
+					return cuentasvarios.strCuenta.GetType();
 
 			}
 

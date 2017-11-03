@@ -100,12 +100,12 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutasDet by passing all fields
 		/// </summary>
+		/// <param name="strNombrePeaje"></param>
+		/// <param name="curValorPeaje"></param>
 		/// <param name="lngIdItemdReg"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="lngIdPeaje"></param>
-		/// <param name="strNombrePeaje"></param>
-		/// <param name="curValorPeaje"></param>
-		public void Update(int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje, string strNombrePeaje, decimal? curValorPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(string strNombrePeaje, decimal? curValorPeaje, int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

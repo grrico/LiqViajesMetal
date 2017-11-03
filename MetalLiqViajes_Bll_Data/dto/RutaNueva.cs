@@ -232,9 +232,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the RutaNueva's lngIdRegistrRuta value
-		private int m_lngIdRegistrRuta;
-
 		// Field for storing the RutaNueva's strRutaAnticipoGrupoOrigen value
 		private string m_strRutaAnticipoGrupoOrigen;
 
@@ -403,6 +400,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the RutaNueva's logEstadoRuta value
 		private double? m_logEstadoRuta;
 
+		// Field for storing the RutaNueva's lngIdRegistrRuta value
+		private int m_lngIdRegistrRuta;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -416,20 +416,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the RutaNueva's lngIdRegistrRuta value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistrRuta
-		{
-			get { return m_lngIdRegistrRuta; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistrRuta = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the RutaNueva's strRutaAnticipoGrupoOrigen value (string)
 		/// </summary>
@@ -1214,11 +1200,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the RutaNueva's lngIdRegistrRuta value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistrRuta
+		{
+			get { return m_lngIdRegistrRuta; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistrRuta = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				case "strRutaAnticipoGrupoOrigen": return strRutaAnticipoGrupoOrigen;
 				case "strRutaAnticipoGrupoDestino": return strRutaAnticipoGrupoDestino;
 				case "strRutaAnticipoGrupo": return strRutaAnticipoGrupo;
@@ -1275,6 +1274,7 @@ namespace LiqViajes_Bll_Data
 				case "logActualizaPeajes": return logActualizaPeajes;
 				case "intFactorKmPorGalon": return intFactorKmPorGalon;
 				case "logEstadoRuta": return logEstadoRuta;
+				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				default: return null;
 			}
 		}

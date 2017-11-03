@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutasmaestropeajes.lngIdPeaje = (int) dr["lngIdPeaje"];
 				rutasmaestropeajes.strNombrePeaje = dr.IsNull("strNombrePeaje") ? null :(string) dr["strNombrePeaje"];
 				rutasmaestropeajes.Activo = (bool) dr["Activo"];
 				rutasmaestropeajes.curValorTipo1 = dr.IsNull("curValorTipo1") ? null :(decimal?) dr["curValorTipo1"];
@@ -62,6 +61,7 @@ namespace LiqViajes_Bll_Data
 				rutasmaestropeajes.curValorTipo5 = dr.IsNull("curValorTipo5") ? null :(decimal?) dr["curValorTipo5"];
 				rutasmaestropeajes.curValorTipo6 = dr.IsNull("curValorTipo6") ? null :(decimal?) dr["curValorTipo6"];
 				rutasmaestropeajes.curValorTipo7 = dr.IsNull("curValorTipo7") ? null :(decimal?) dr["curValorTipo7"];
+				rutasmaestropeajes.lngIdPeaje = (int) dr["lngIdPeaje"];
 			}
 			catch (Exception ex)
 			{
@@ -126,7 +126,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasMaestroPeajes object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdPeaje">int that contents the lngIdPeaje value for the RutasMaestroPeajes object</param>
 		/// <param name="strNombrePeaje">string that contents the strNombrePeaje value for the RutasMaestroPeajes object</param>
 		/// <param name="Activo">bool that contents the Activo value for the RutasMaestroPeajes object</param>
 		/// <param name="curValorTipo1">decimal that contents the curValorTipo1 value for the RutasMaestroPeajes object</param>
@@ -136,7 +135,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="curValorTipo5">decimal that contents the curValorTipo5 value for the RutasMaestroPeajes object</param>
 		/// <param name="curValorTipo6">decimal that contents the curValorTipo6 value for the RutasMaestroPeajes object</param>
 		/// <param name="curValorTipo7">decimal that contents the curValorTipo7 value for the RutasMaestroPeajes object</param>
-		public void Update(int lngIdPeaje, string strNombrePeaje, bool Activo, decimal? curValorTipo1, decimal? curValorTipo2, decimal? curValorTipo3, decimal? curValorTipo4, decimal? curValorTipo5, decimal? curValorTipo6, decimal? curValorTipo7, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdPeaje">int that contents the lngIdPeaje value for the RutasMaestroPeajes object</param>
+		public void Update(string strNombrePeaje, bool Activo, decimal? curValorTipo1, decimal? curValorTipo2, decimal? curValorTipo3, decimal? curValorTipo4, decimal? curValorTipo5, decimal? curValorTipo6, decimal? curValorTipo7, int lngIdPeaje, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -150,7 +150,7 @@ namespace LiqViajes_Bll_Data
 				new_values.curValorTipo5 = curValorTipo5;
 				new_values.curValorTipo6 = curValorTipo6;
 				new_values.curValorTipo7 = curValorTipo7;
-				RutasMaestroPeajesDataProvider.Instance.Update(lngIdPeaje, strNombrePeaje, Activo, curValorTipo1, curValorTipo2, curValorTipo3, curValorTipo4, curValorTipo5, curValorTipo6, curValorTipo7,"RutasMaestroPeajes",datosTransaccion);
+				RutasMaestroPeajesDataProvider.Instance.Update(strNombrePeaje, Activo, curValorTipo1, curValorTipo2, curValorTipo3, curValorTipo4, curValorTipo5, curValorTipo6, curValorTipo7, lngIdPeaje,"RutasMaestroPeajes",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -164,7 +164,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasmaestropeajes">An instance of RutasMaestroPeajes for reference</param>
 		public void Update(RutasMaestroPeajes rutasmaestropeajes,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasmaestropeajes.lngIdPeaje, rutasmaestropeajes.strNombrePeaje, rutasmaestropeajes.Activo, rutasmaestropeajes.curValorTipo1, rutasmaestropeajes.curValorTipo2, rutasmaestropeajes.curValorTipo3, rutasmaestropeajes.curValorTipo4, rutasmaestropeajes.curValorTipo5, rutasmaestropeajes.curValorTipo6, rutasmaestropeajes.curValorTipo7);
+			Update(rutasmaestropeajes.strNombrePeaje, rutasmaestropeajes.Activo, rutasmaestropeajes.curValorTipo1, rutasmaestropeajes.curValorTipo2, rutasmaestropeajes.curValorTipo3, rutasmaestropeajes.curValorTipo4, rutasmaestropeajes.curValorTipo5, rutasmaestropeajes.curValorTipo6, rutasmaestropeajes.curValorTipo7, rutasmaestropeajes.lngIdPeaje);
 		}
 
 		/// <summary>
@@ -223,14 +223,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				RutasMaestroPeajes rutasmaestropeajes = null;
-				DataTable dt = RutasMaestroPeajesDataProvider.Instance.Get(lngIdPeaje);
-				if ((dt.Rows.Count > 0))
+				rutasmaestropeajes= MasterTables.RutasMaestroPeajes.Where(r => r.lngIdPeaje== lngIdPeaje).FirstOrDefault();
+				if (rutasmaestropeajes== null)
 				{
-					rutasmaestropeajes = new RutasMaestroPeajes();
-					DataRow dr = dt.Rows[0];
-					ReadData(rutasmaestropeajes, dr, generateUndo);
+					MasterTables.Reset("RutasMaestroPeajes");
+					rutasmaestropeajes= MasterTables.RutasMaestroPeajes.Where(r => r.lngIdPeaje== lngIdPeaje).FirstOrDefault();
 				}
-
+				if (generateUndo) rutasmaestropeajes.GenerateUndo();
 
 				return rutasmaestropeajes;
 			}
@@ -320,9 +319,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdPeaje":
-					return rutasmaestropeajes.lngIdPeaje.GetType();
-
 				case "strNombrePeaje":
 					return rutasmaestropeajes.strNombrePeaje.GetType();
 
@@ -349,6 +345,9 @@ namespace LiqViajes_Bll_Data
 
 				case "curValorTipo7":
 					return rutasmaestropeajes.curValorTipo7.GetType();
+
+				case "lngIdPeaje":
+					return rutasmaestropeajes.lngIdPeaje.GetType();
 
 			}
 

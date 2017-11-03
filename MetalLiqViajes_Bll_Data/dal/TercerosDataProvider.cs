@@ -149,7 +149,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into Terceros by passing all fields
 		/// </summary>
-		/// <param name="NitConductor"></param>
 		/// <param name="Identificacion"></param>
 		/// <param name="TipoIdentificacion"></param>
 		/// <param name="Digito"></param>
@@ -163,7 +162,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Telefono2"></param>
 		/// <param name="Telefono3"></param>
 		/// <param name="ApartadoAreo"></param>
-		public void Update(decimal NitConductor, long? Identificacion, char? TipoIdentificacion, byte? Digito, string NombreCompleto, string Concepto_3, int? CentroCosto, string Direccion, string NombreCiudad, string Pais, string Telefono1, string Telefono2, string Telefono3, string ApartadoAreo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="NitConductor"></param>
+		public void Update(long? Identificacion, char? TipoIdentificacion, byte? Digito, string NombreCompleto, string Concepto_3, int? CentroCosto, string Direccion, string NombreCiudad, string Pais, string Telefono1, string Telefono2, string Telefono3, string ApartadoAreo, decimal NitConductor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

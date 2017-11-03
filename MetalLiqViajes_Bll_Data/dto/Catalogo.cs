@@ -82,9 +82,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Catalogo's nombre_empresa value
-		private string m_nombre_empresa;
-
 		// Field for storing the Catalogo's fecha_actual value
 		private DateTime m_fecha_actual;
 
@@ -103,6 +100,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Catalogo's telefono value
 		private string m_telefono;
 
+		// Field for storing the Catalogo's nombre_empresa value
+		private string m_nombre_empresa;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -116,20 +116,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Catalogo's nombre_empresa value (string)
-		/// </summary>
-		[DataMember]
-		public string nombre_empresa
-		{
-			get { return m_nombre_empresa; }
-			set 
-			{
-				m_changed=true;
-				m_nombre_empresa = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Catalogo's fecha_actual value (DateTime)
 		/// </summary>
@@ -214,17 +200,31 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Catalogo's nombre_empresa value (string)
+		/// </summary>
+		[DataMember]
+		public string nombre_empresa
+		{
+			get { return m_nombre_empresa; }
+			set 
+			{
+				m_changed=true;
+				m_nombre_empresa = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "nombre_empresa": return nombre_empresa;
 				case "fecha_actual": return fecha_actual;
 				case "sigla": return sigla;
 				case "nit": return nit;
 				case "version": return version;
 				case "direccion": return direccion;
 				case "telefono": return telefono;
+				case "nombre_empresa": return nombre_empresa;
 				default: return null;
 			}
 		}

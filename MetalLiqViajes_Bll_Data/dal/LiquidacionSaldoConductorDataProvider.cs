@@ -115,15 +115,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionSaldoConductor by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistro"></param>
-		/// <param name="intNitConductor"></param>
 		/// <param name="curValorSaldo"></param>
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="sw"></param>
 		/// <param name="strTipo"></param>
 		/// <param name="numero"></param>
 		/// <param name="lngIdRegistroLiq"></param>
-		public void Update(int lngIdRegistro, decimal intNitConductor, decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro"></param>
+		/// <param name="intNitConductor"></param>
+		public void Update(decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq, int lngIdRegistro, decimal intNitConductor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

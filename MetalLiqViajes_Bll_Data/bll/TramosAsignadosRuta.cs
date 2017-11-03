@@ -52,10 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tramosasignadosruta.RegistroId = (long) dr["RegistroId"];
-				tramosasignadosruta.Registro = (long) dr["Registro"];
-				tramosasignadosruta.RegistrRuta = (long) dr["RegistrRuta"];
-				tramosasignadosruta.RegistroRuttaAJC = (long) dr["RegistroRuttaAJC"];
 				tramosasignadosruta.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
 				tramosasignadosruta.liquidado = (bool) dr["liquidado"];
 				tramosasignadosruta.Asignado = (int) dr["Asignado"];
@@ -120,6 +116,10 @@ namespace LiqViajes_Bll_Data
 				tramosasignadosruta.CantidadReal = dr.IsNull("CantidadReal") ? null :(decimal?) dr["CantidadReal"];
 				tramosasignadosruta.LogAnticipoACPM = dr.IsNull("LogAnticipoACPM") ? null :(bool?) dr["LogAnticipoACPM"];
 				tramosasignadosruta.PlacaTrailer = dr.IsNull("PlacaTrailer") ? null :(string) dr["PlacaTrailer"];
+				tramosasignadosruta.RegistroId = (long) dr["RegistroId"];
+				tramosasignadosruta.Registro = (long) dr["Registro"];
+				tramosasignadosruta.RegistrRuta = (long) dr["RegistrRuta"];
+				tramosasignadosruta.RegistroRuttaAJC = (long) dr["RegistroRuttaAJC"];
 			}
 			catch (Exception ex)
 			{
@@ -297,10 +297,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TramosAsignadosRuta object by passing all object's fields
 		/// </summary>
-		/// <param name="RegistroId">long that contents the RegistroId value for the TramosAsignadosRuta object</param>
-		/// <param name="Registro">long that contents the Registro value for the TramosAsignadosRuta object</param>
-		/// <param name="RegistrRuta">long that contents the RegistrRuta value for the TramosAsignadosRuta object</param>
-		/// <param name="RegistroRuttaAJC">long that contents the RegistroRuttaAJC value for the TramosAsignadosRuta object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the TramosAsignadosRuta object</param>
 		/// <param name="liquidado">bool that contents the liquidado value for the TramosAsignadosRuta object</param>
 		/// <param name="Asignado">int that contents the Asignado value for the TramosAsignadosRuta object</param>
@@ -365,7 +361,11 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CantidadReal">decimal that contents the CantidadReal value for the TramosAsignadosRuta object</param>
 		/// <param name="LogAnticipoACPM">bool that contents the LogAnticipoACPM value for the TramosAsignadosRuta object</param>
 		/// <param name="PlacaTrailer">string that contents the PlacaTrailer value for the TramosAsignadosRuta object</param>
-		public void Update(long RegistroId, long Registro, long RegistrRuta, long RegistroRuttaAJC, DateTime? Fecha, bool liquidado, int Asignado, int Vacio, bool? logAjuste, int Peso, bool? EstadoRuta, string Trailer, int TipoVeh, string DesTipoVeh, int TipoTrailer, string Origen, string Destino, string Tramos, decimal? CantidadGalones, decimal? ValorGalones, decimal? ValorCOmbustible, decimal? Viaticos, decimal? SalarioVariable, decimal? TotalViaticos, decimal? TotalDescuentoViaticos, decimal? Total_Viaticos, int? NroPeajes, decimal? ValorPeajes, decimal? Llantas, decimal? CeladaParqueaderoCarretera, decimal? Propina, decimal? TotalVarios, decimal? LlantasVacios, decimal? CeladaVacia, decimal? PropinaVacia, decimal? VariosVacios, decimal? ValorCargue, decimal? ValorDescargue, decimal? Hotel, int? HotelDiasCarretera, int? HotelDiasCiudad, decimal? HotelVacio, decimal? TiempoReal, decimal? TotalComida, decimal? TiempoRutaVacio, decimal? ComidaVacio, decimal? DesvareRepuestos, decimal? DesvareManoObra, decimal? TotalKm, decimal ParqueaderoCarretera, decimal ParqueaderoCiudad, decimal MontaLlantaCarretera, decimal Papeleria, decimal AjusteCarretera, decimal? CombustibleCarretera, decimal Amarres, decimal Engrasada, decimal Calibrada, decimal? Aseo, decimal? Taxi, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorFactorCalculo, decimal? ValorAnticipo, decimal? CantidadReal, bool? LogAnticipoACPM, string PlacaTrailer, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="RegistroId">long that contents the RegistroId value for the TramosAsignadosRuta object</param>
+		/// <param name="Registro">long that contents the Registro value for the TramosAsignadosRuta object</param>
+		/// <param name="RegistrRuta">long that contents the RegistrRuta value for the TramosAsignadosRuta object</param>
+		/// <param name="RegistroRuttaAJC">long that contents the RegistroRuttaAJC value for the TramosAsignadosRuta object</param>
+		public void Update(DateTime? Fecha, bool liquidado, int Asignado, int Vacio, bool? logAjuste, int Peso, bool? EstadoRuta, string Trailer, int TipoVeh, string DesTipoVeh, int TipoTrailer, string Origen, string Destino, string Tramos, decimal? CantidadGalones, decimal? ValorGalones, decimal? ValorCOmbustible, decimal? Viaticos, decimal? SalarioVariable, decimal? TotalViaticos, decimal? TotalDescuentoViaticos, decimal? Total_Viaticos, int? NroPeajes, decimal? ValorPeajes, decimal? Llantas, decimal? CeladaParqueaderoCarretera, decimal? Propina, decimal? TotalVarios, decimal? LlantasVacios, decimal? CeladaVacia, decimal? PropinaVacia, decimal? VariosVacios, decimal? ValorCargue, decimal? ValorDescargue, decimal? Hotel, int? HotelDiasCarretera, int? HotelDiasCiudad, decimal? HotelVacio, decimal? TiempoReal, decimal? TotalComida, decimal? TiempoRutaVacio, decimal? ComidaVacio, decimal? DesvareRepuestos, decimal? DesvareManoObra, decimal? TotalKm, decimal ParqueaderoCarretera, decimal ParqueaderoCiudad, decimal MontaLlantaCarretera, decimal Papeleria, decimal AjusteCarretera, decimal? CombustibleCarretera, decimal Amarres, decimal Engrasada, decimal Calibrada, decimal? Aseo, decimal? Taxi, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorFactorCalculo, decimal? ValorAnticipo, decimal? CantidadReal, bool? LogAnticipoACPM, string PlacaTrailer, long RegistroId, long Registro, long RegistrRuta, long RegistroRuttaAJC, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -434,7 +434,7 @@ namespace LiqViajes_Bll_Data
 				new_values.CantidadReal = CantidadReal;
 				new_values.LogAnticipoACPM = LogAnticipoACPM;
 				new_values.PlacaTrailer = PlacaTrailer;
-				TramosAsignadosRutaDataProvider.Instance.Update(RegistroId, Registro, RegistrRuta, RegistroRuttaAJC, Fecha, liquidado, Asignado, Vacio, logAjuste, Peso, EstadoRuta, Trailer, TipoVeh, DesTipoVeh, TipoTrailer, Origen, Destino, Tramos, CantidadGalones, ValorGalones, ValorCOmbustible, Viaticos, SalarioVariable, TotalViaticos, TotalDescuentoViaticos, Total_Viaticos, NroPeajes, ValorPeajes, Llantas, CeladaParqueaderoCarretera, Propina, TotalVarios, LlantasVacios, CeladaVacia, PropinaVacia, VariosVacios, ValorCargue, ValorDescargue, Hotel, HotelDiasCarretera, HotelDiasCiudad, HotelVacio, TiempoReal, TotalComida, TiempoRutaVacio, ComidaVacio, DesvareRepuestos, DesvareManoObra, TotalKm, ParqueaderoCarretera, ParqueaderoCiudad, MontaLlantaCarretera, Papeleria, AjusteCarretera, CombustibleCarretera, Amarres, Engrasada, Calibrada, Aseo, Taxi, Contenedor1, Contenedor2, FactorCalculoDia, ValorFactorCalculo, ValorAnticipo, CantidadReal, LogAnticipoACPM, PlacaTrailer,"TramosAsignadosRuta",datosTransaccion);
+				TramosAsignadosRutaDataProvider.Instance.Update(Fecha, liquidado, Asignado, Vacio, logAjuste, Peso, EstadoRuta, Trailer, TipoVeh, DesTipoVeh, TipoTrailer, Origen, Destino, Tramos, CantidadGalones, ValorGalones, ValorCOmbustible, Viaticos, SalarioVariable, TotalViaticos, TotalDescuentoViaticos, Total_Viaticos, NroPeajes, ValorPeajes, Llantas, CeladaParqueaderoCarretera, Propina, TotalVarios, LlantasVacios, CeladaVacia, PropinaVacia, VariosVacios, ValorCargue, ValorDescargue, Hotel, HotelDiasCarretera, HotelDiasCiudad, HotelVacio, TiempoReal, TotalComida, TiempoRutaVacio, ComidaVacio, DesvareRepuestos, DesvareManoObra, TotalKm, ParqueaderoCarretera, ParqueaderoCiudad, MontaLlantaCarretera, Papeleria, AjusteCarretera, CombustibleCarretera, Amarres, Engrasada, Calibrada, Aseo, Taxi, Contenedor1, Contenedor2, FactorCalculoDia, ValorFactorCalculo, ValorAnticipo, CantidadReal, LogAnticipoACPM, PlacaTrailer, RegistroId, Registro, RegistrRuta, RegistroRuttaAJC,"TramosAsignadosRuta",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -448,7 +448,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tramosasignadosruta">An instance of TramosAsignadosRuta for reference</param>
 		public void Update(TramosAsignadosRuta tramosasignadosruta,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tramosasignadosruta.RegistroId, tramosasignadosruta.Registro, tramosasignadosruta.RegistrRuta, tramosasignadosruta.RegistroRuttaAJC, tramosasignadosruta.Fecha, tramosasignadosruta.liquidado, tramosasignadosruta.Asignado, tramosasignadosruta.Vacio, tramosasignadosruta.logAjuste, tramosasignadosruta.Peso, tramosasignadosruta.EstadoRuta, tramosasignadosruta.Trailer, tramosasignadosruta.TipoVeh, tramosasignadosruta.DesTipoVeh, tramosasignadosruta.TipoTrailer, tramosasignadosruta.Origen, tramosasignadosruta.Destino, tramosasignadosruta.Tramos, tramosasignadosruta.CantidadGalones, tramosasignadosruta.ValorGalones, tramosasignadosruta.ValorCOmbustible, tramosasignadosruta.Viaticos, tramosasignadosruta.SalarioVariable, tramosasignadosruta.TotalViaticos, tramosasignadosruta.TotalDescuentoViaticos, tramosasignadosruta.Total_Viaticos, tramosasignadosruta.NroPeajes, tramosasignadosruta.ValorPeajes, tramosasignadosruta.Llantas, tramosasignadosruta.CeladaParqueaderoCarretera, tramosasignadosruta.Propina, tramosasignadosruta.TotalVarios, tramosasignadosruta.LlantasVacios, tramosasignadosruta.CeladaVacia, tramosasignadosruta.PropinaVacia, tramosasignadosruta.VariosVacios, tramosasignadosruta.ValorCargue, tramosasignadosruta.ValorDescargue, tramosasignadosruta.Hotel, tramosasignadosruta.HotelDiasCarretera, tramosasignadosruta.HotelDiasCiudad, tramosasignadosruta.HotelVacio, tramosasignadosruta.TiempoReal, tramosasignadosruta.TotalComida, tramosasignadosruta.TiempoRutaVacio, tramosasignadosruta.ComidaVacio, tramosasignadosruta.DesvareRepuestos, tramosasignadosruta.DesvareManoObra, tramosasignadosruta.TotalKm, tramosasignadosruta.ParqueaderoCarretera, tramosasignadosruta.ParqueaderoCiudad, tramosasignadosruta.MontaLlantaCarretera, tramosasignadosruta.Papeleria, tramosasignadosruta.AjusteCarretera, tramosasignadosruta.CombustibleCarretera, tramosasignadosruta.Amarres, tramosasignadosruta.Engrasada, tramosasignadosruta.Calibrada, tramosasignadosruta.Aseo, tramosasignadosruta.Taxi, tramosasignadosruta.Contenedor1, tramosasignadosruta.Contenedor2, tramosasignadosruta.FactorCalculoDia, tramosasignadosruta.ValorFactorCalculo, tramosasignadosruta.ValorAnticipo, tramosasignadosruta.CantidadReal, tramosasignadosruta.LogAnticipoACPM, tramosasignadosruta.PlacaTrailer);
+			Update(tramosasignadosruta.Fecha, tramosasignadosruta.liquidado, tramosasignadosruta.Asignado, tramosasignadosruta.Vacio, tramosasignadosruta.logAjuste, tramosasignadosruta.Peso, tramosasignadosruta.EstadoRuta, tramosasignadosruta.Trailer, tramosasignadosruta.TipoVeh, tramosasignadosruta.DesTipoVeh, tramosasignadosruta.TipoTrailer, tramosasignadosruta.Origen, tramosasignadosruta.Destino, tramosasignadosruta.Tramos, tramosasignadosruta.CantidadGalones, tramosasignadosruta.ValorGalones, tramosasignadosruta.ValorCOmbustible, tramosasignadosruta.Viaticos, tramosasignadosruta.SalarioVariable, tramosasignadosruta.TotalViaticos, tramosasignadosruta.TotalDescuentoViaticos, tramosasignadosruta.Total_Viaticos, tramosasignadosruta.NroPeajes, tramosasignadosruta.ValorPeajes, tramosasignadosruta.Llantas, tramosasignadosruta.CeladaParqueaderoCarretera, tramosasignadosruta.Propina, tramosasignadosruta.TotalVarios, tramosasignadosruta.LlantasVacios, tramosasignadosruta.CeladaVacia, tramosasignadosruta.PropinaVacia, tramosasignadosruta.VariosVacios, tramosasignadosruta.ValorCargue, tramosasignadosruta.ValorDescargue, tramosasignadosruta.Hotel, tramosasignadosruta.HotelDiasCarretera, tramosasignadosruta.HotelDiasCiudad, tramosasignadosruta.HotelVacio, tramosasignadosruta.TiempoReal, tramosasignadosruta.TotalComida, tramosasignadosruta.TiempoRutaVacio, tramosasignadosruta.ComidaVacio, tramosasignadosruta.DesvareRepuestos, tramosasignadosruta.DesvareManoObra, tramosasignadosruta.TotalKm, tramosasignadosruta.ParqueaderoCarretera, tramosasignadosruta.ParqueaderoCiudad, tramosasignadosruta.MontaLlantaCarretera, tramosasignadosruta.Papeleria, tramosasignadosruta.AjusteCarretera, tramosasignadosruta.CombustibleCarretera, tramosasignadosruta.Amarres, tramosasignadosruta.Engrasada, tramosasignadosruta.Calibrada, tramosasignadosruta.Aseo, tramosasignadosruta.Taxi, tramosasignadosruta.Contenedor1, tramosasignadosruta.Contenedor2, tramosasignadosruta.FactorCalculoDia, tramosasignadosruta.ValorFactorCalculo, tramosasignadosruta.ValorAnticipo, tramosasignadosruta.CantidadReal, tramosasignadosruta.LogAnticipoACPM, tramosasignadosruta.PlacaTrailer, tramosasignadosruta.RegistroId, tramosasignadosruta.Registro, tramosasignadosruta.RegistrRuta, tramosasignadosruta.RegistroRuttaAJC);
 		}
 
 		/// <summary>
@@ -610,18 +610,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "RegistroId":
-					return tramosasignadosruta.RegistroId.GetType();
-
-				case "Registro":
-					return tramosasignadosruta.Registro.GetType();
-
-				case "RegistrRuta":
-					return tramosasignadosruta.RegistrRuta.GetType();
-
-				case "RegistroRuttaAJC":
-					return tramosasignadosruta.RegistroRuttaAJC.GetType();
-
 				case "Fecha":
 					return tramosasignadosruta.Fecha.GetType();
 
@@ -813,6 +801,18 @@ namespace LiqViajes_Bll_Data
 
 				case "PlacaTrailer":
 					return tramosasignadosruta.PlacaTrailer.GetType();
+
+				case "RegistroId":
+					return tramosasignadosruta.RegistroId.GetType();
+
+				case "Registro":
+					return tramosasignadosruta.Registro.GetType();
+
+				case "RegistrRuta":
+					return tramosasignadosruta.RegistrRuta.GetType();
+
+				case "RegistroRuttaAJC":
+					return tramosasignadosruta.RegistroRuttaAJC.GetType();
 
 			}
 

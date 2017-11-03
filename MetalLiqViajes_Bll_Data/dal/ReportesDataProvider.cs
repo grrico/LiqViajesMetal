@@ -99,11 +99,11 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into Reportes by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="Descripcion"></param>
 		/// <param name="Activo"></param>
 		/// <param name="strSQql"></param>
-		public void Update(int Codigo, string Descripcion, bool? Activo, string strSQql,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(string Descripcion, bool? Activo, string strSQql, int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

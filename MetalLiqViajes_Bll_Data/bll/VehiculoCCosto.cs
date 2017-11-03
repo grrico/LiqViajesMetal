@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				vehiculoccosto.lngIdRegistro = (int) dr["lngIdRegistro"];
 				vehiculoccosto.lngIdUsuario = dr.IsNull("lngIdUsuario") ? null :(double?) dr["lngIdUsuario"];
 				vehiculoccosto.strPlaca = dr.IsNull("strPlaca") ? null :(string) dr["strPlaca"];
 				vehiculoccosto.centro = dr.IsNull("centro") ? null :(double?) dr["centro"];
@@ -98,6 +97,7 @@ namespace LiqViajes_Bll_Data
 				vehiculoccosto.dtmFechaInicioTarjetaOper = dr.IsNull("dtmFechaInicioTarjetaOper") ? null :(DateTime?) dr["dtmFechaInicioTarjetaOper"];
 				vehiculoccosto.dtmFechaVenceTarjetaOper = dr.IsNull("dtmFechaVenceTarjetaOper") ? null :(DateTime?) dr["dtmFechaVenceTarjetaOper"];
 				vehiculoccosto.logVencimientoFecha = dr.IsNull("logVencimientoFecha") ? null :(bool?) dr["logVencimientoFecha"];
+				vehiculoccosto.lngIdRegistro = (int) dr["lngIdRegistro"];
 			}
 			catch (Exception ex)
 			{
@@ -234,7 +234,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an VehiculoCCosto object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculoCCosto object</param>
 		/// <param name="lngIdUsuario">double that contents the lngIdUsuario value for the VehiculoCCosto object</param>
 		/// <param name="strPlaca">string that contents the strPlaca value for the VehiculoCCosto object</param>
 		/// <param name="centro">double that contents the centro value for the VehiculoCCosto object</param>
@@ -280,7 +279,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaInicioTarjetaOper">DateTime that contents the dtmFechaInicioTarjetaOper value for the VehiculoCCosto object</param>
 		/// <param name="dtmFechaVenceTarjetaOper">DateTime that contents the dtmFechaVenceTarjetaOper value for the VehiculoCCosto object</param>
 		/// <param name="logVencimientoFecha">bool that contents the logVencimientoFecha value for the VehiculoCCosto object</param>
-		public void Update(int lngIdRegistro, double? lngIdUsuario, string strPlaca, double? centro, int? TipoTrailerCodigo, int? TipoVehiculoCodigo, string Descripcion, DateTime? dtmFechaIngreso, DateTime? dtmFechaEgreso, double? nitPropietario, string strMarca, double? lngModelo, double? lngMovil, double? strCelular, double? strTipoMotor, string strColor, string strMotor, string strChasis, bool? logCamarote, decimal? CapacidadGalores, decimal? floGalonesReserva, decimal? floCantGalonesReserva, decimal? floTolerancia, double? cutPeso, double? cutCapacidad, double? lngEjes, double? logActivo, double? lngLlantas, string strPolizaObligatorio, double? nitProvedorOblig, DateTime? dtmFechaInicioOblig, DateTime? dtmFechaVenceOblig, string strPolizaTodoRiesgo, double? nitProvedorTodo, DateTime? dtmFechaInicioTodo, DateTime? dtmFechaVenceTodo, string strCertifMovilizacion, DateTime? dtmFechaInicioMoviliz, DateTime? dtmFechaVenceMoviliz, string strGases, DateTime? dtmFechaInicioGases, DateTime? dtmFechaVenceGases, string strTarjetaOper, DateTime? dtmFechaInicioTarjetaOper, DateTime? dtmFechaVenceTarjetaOper, bool? logVencimientoFecha, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculoCCosto object</param>
+		public void Update(double? lngIdUsuario, string strPlaca, double? centro, int? TipoTrailerCodigo, int? TipoVehiculoCodigo, string Descripcion, DateTime? dtmFechaIngreso, DateTime? dtmFechaEgreso, double? nitPropietario, string strMarca, double? lngModelo, double? lngMovil, double? strCelular, double? strTipoMotor, string strColor, string strMotor, string strChasis, bool? logCamarote, decimal? CapacidadGalores, decimal? floGalonesReserva, decimal? floCantGalonesReserva, decimal? floTolerancia, double? cutPeso, double? cutCapacidad, double? lngEjes, double? logActivo, double? lngLlantas, string strPolizaObligatorio, double? nitProvedorOblig, DateTime? dtmFechaInicioOblig, DateTime? dtmFechaVenceOblig, string strPolizaTodoRiesgo, double? nitProvedorTodo, DateTime? dtmFechaInicioTodo, DateTime? dtmFechaVenceTodo, string strCertifMovilizacion, DateTime? dtmFechaInicioMoviliz, DateTime? dtmFechaVenceMoviliz, string strGases, DateTime? dtmFechaInicioGases, DateTime? dtmFechaVenceGases, string strTarjetaOper, DateTime? dtmFechaInicioTarjetaOper, DateTime? dtmFechaVenceTarjetaOper, bool? logVencimientoFecha, int lngIdRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -330,7 +330,7 @@ namespace LiqViajes_Bll_Data
 				new_values.dtmFechaInicioTarjetaOper = dtmFechaInicioTarjetaOper;
 				new_values.dtmFechaVenceTarjetaOper = dtmFechaVenceTarjetaOper;
 				new_values.logVencimientoFecha = logVencimientoFecha;
-				VehiculoCCostoDataProvider.Instance.Update(lngIdRegistro, lngIdUsuario, strPlaca, centro, TipoTrailerCodigo, TipoVehiculoCodigo, Descripcion, dtmFechaIngreso, dtmFechaEgreso, nitPropietario, strMarca, lngModelo, lngMovil, strCelular, strTipoMotor, strColor, strMotor, strChasis, logCamarote, CapacidadGalores, floGalonesReserva, floCantGalonesReserva, floTolerancia, cutPeso, cutCapacidad, lngEjes, logActivo, lngLlantas, strPolizaObligatorio, nitProvedorOblig, dtmFechaInicioOblig, dtmFechaVenceOblig, strPolizaTodoRiesgo, nitProvedorTodo, dtmFechaInicioTodo, dtmFechaVenceTodo, strCertifMovilizacion, dtmFechaInicioMoviliz, dtmFechaVenceMoviliz, strGases, dtmFechaInicioGases, dtmFechaVenceGases, strTarjetaOper, dtmFechaInicioTarjetaOper, dtmFechaVenceTarjetaOper, logVencimientoFecha,"VehiculoCCosto",datosTransaccion);
+				VehiculoCCostoDataProvider.Instance.Update(lngIdUsuario, strPlaca, centro, TipoTrailerCodigo, TipoVehiculoCodigo, Descripcion, dtmFechaIngreso, dtmFechaEgreso, nitPropietario, strMarca, lngModelo, lngMovil, strCelular, strTipoMotor, strColor, strMotor, strChasis, logCamarote, CapacidadGalores, floGalonesReserva, floCantGalonesReserva, floTolerancia, cutPeso, cutCapacidad, lngEjes, logActivo, lngLlantas, strPolizaObligatorio, nitProvedorOblig, dtmFechaInicioOblig, dtmFechaVenceOblig, strPolizaTodoRiesgo, nitProvedorTodo, dtmFechaInicioTodo, dtmFechaVenceTodo, strCertifMovilizacion, dtmFechaInicioMoviliz, dtmFechaVenceMoviliz, strGases, dtmFechaInicioGases, dtmFechaVenceGases, strTarjetaOper, dtmFechaInicioTarjetaOper, dtmFechaVenceTarjetaOper, logVencimientoFecha, lngIdRegistro,"VehiculoCCosto",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -344,7 +344,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="vehiculoccosto">An instance of VehiculoCCosto for reference</param>
 		public void Update(VehiculoCCosto vehiculoccosto,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(vehiculoccosto.lngIdRegistro, vehiculoccosto.lngIdUsuario, vehiculoccosto.strPlaca, vehiculoccosto.centro, vehiculoccosto.TipoTrailerCodigo, vehiculoccosto.TipoVehiculoCodigo, vehiculoccosto.Descripcion, vehiculoccosto.dtmFechaIngreso, vehiculoccosto.dtmFechaEgreso, vehiculoccosto.nitPropietario, vehiculoccosto.strMarca, vehiculoccosto.lngModelo, vehiculoccosto.lngMovil, vehiculoccosto.strCelular, vehiculoccosto.strTipoMotor, vehiculoccosto.strColor, vehiculoccosto.strMotor, vehiculoccosto.strChasis, vehiculoccosto.logCamarote, vehiculoccosto.CapacidadGalores, vehiculoccosto.floGalonesReserva, vehiculoccosto.floCantGalonesReserva, vehiculoccosto.floTolerancia, vehiculoccosto.cutPeso, vehiculoccosto.cutCapacidad, vehiculoccosto.lngEjes, vehiculoccosto.logActivo, vehiculoccosto.lngLlantas, vehiculoccosto.strPolizaObligatorio, vehiculoccosto.nitProvedorOblig, vehiculoccosto.dtmFechaInicioOblig, vehiculoccosto.dtmFechaVenceOblig, vehiculoccosto.strPolizaTodoRiesgo, vehiculoccosto.nitProvedorTodo, vehiculoccosto.dtmFechaInicioTodo, vehiculoccosto.dtmFechaVenceTodo, vehiculoccosto.strCertifMovilizacion, vehiculoccosto.dtmFechaInicioMoviliz, vehiculoccosto.dtmFechaVenceMoviliz, vehiculoccosto.strGases, vehiculoccosto.dtmFechaInicioGases, vehiculoccosto.dtmFechaVenceGases, vehiculoccosto.strTarjetaOper, vehiculoccosto.dtmFechaInicioTarjetaOper, vehiculoccosto.dtmFechaVenceTarjetaOper, vehiculoccosto.logVencimientoFecha);
+			Update(vehiculoccosto.lngIdUsuario, vehiculoccosto.strPlaca, vehiculoccosto.centro, vehiculoccosto.TipoTrailerCodigo, vehiculoccosto.TipoVehiculoCodigo, vehiculoccosto.Descripcion, vehiculoccosto.dtmFechaIngreso, vehiculoccosto.dtmFechaEgreso, vehiculoccosto.nitPropietario, vehiculoccosto.strMarca, vehiculoccosto.lngModelo, vehiculoccosto.lngMovil, vehiculoccosto.strCelular, vehiculoccosto.strTipoMotor, vehiculoccosto.strColor, vehiculoccosto.strMotor, vehiculoccosto.strChasis, vehiculoccosto.logCamarote, vehiculoccosto.CapacidadGalores, vehiculoccosto.floGalonesReserva, vehiculoccosto.floCantGalonesReserva, vehiculoccosto.floTolerancia, vehiculoccosto.cutPeso, vehiculoccosto.cutCapacidad, vehiculoccosto.lngEjes, vehiculoccosto.logActivo, vehiculoccosto.lngLlantas, vehiculoccosto.strPolizaObligatorio, vehiculoccosto.nitProvedorOblig, vehiculoccosto.dtmFechaInicioOblig, vehiculoccosto.dtmFechaVenceOblig, vehiculoccosto.strPolizaTodoRiesgo, vehiculoccosto.nitProvedorTodo, vehiculoccosto.dtmFechaInicioTodo, vehiculoccosto.dtmFechaVenceTodo, vehiculoccosto.strCertifMovilizacion, vehiculoccosto.dtmFechaInicioMoviliz, vehiculoccosto.dtmFechaVenceMoviliz, vehiculoccosto.strGases, vehiculoccosto.dtmFechaInicioGases, vehiculoccosto.dtmFechaVenceGases, vehiculoccosto.strTarjetaOper, vehiculoccosto.dtmFechaInicioTarjetaOper, vehiculoccosto.dtmFechaVenceTarjetaOper, vehiculoccosto.logVencimientoFecha, vehiculoccosto.lngIdRegistro);
 		}
 
 		/// <summary>
@@ -403,14 +403,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				VehiculoCCosto vehiculoccosto = null;
-				DataTable dt = VehiculoCCostoDataProvider.Instance.Get(lngIdRegistro);
-				if ((dt.Rows.Count > 0))
+				vehiculoccosto= MasterTables.VehiculoCCosto.Where(r => r.lngIdRegistro== lngIdRegistro).FirstOrDefault();
+				if (vehiculoccosto== null)
 				{
-					vehiculoccosto = new VehiculoCCosto();
-					DataRow dr = dt.Rows[0];
-					ReadData(vehiculoccosto, dr, generateUndo);
+					MasterTables.Reset("VehiculoCCosto");
+					vehiculoccosto= MasterTables.VehiculoCCosto.Where(r => r.lngIdRegistro== lngIdRegistro).FirstOrDefault();
 				}
-
+				if (generateUndo) vehiculoccosto.GenerateUndo();
 
 				return vehiculoccosto;
 			}
@@ -500,9 +499,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return vehiculoccosto.lngIdRegistro.GetType();
-
 				case "lngIdUsuario":
 					return vehiculoccosto.lngIdUsuario.GetType();
 
@@ -637,6 +633,9 @@ namespace LiqViajes_Bll_Data
 
 				case "logVencimientoFecha":
 					return vehiculoccosto.logVencimientoFecha.GetType();
+
+				case "lngIdRegistro":
+					return vehiculoccosto.lngIdRegistro.GetType();
 
 			}
 

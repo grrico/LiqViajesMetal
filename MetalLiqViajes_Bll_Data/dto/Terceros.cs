@@ -103,9 +103,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Terceros's NitConductor value
-		private decimal m_NitConductor;
-
 		// Field for storing the Terceros's Identificacion value
 		private long? m_Identificacion;
 
@@ -145,6 +142,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Terceros's ApartadoAreo value
 		private string m_ApartadoAreo;
 
+		// Field for storing the Terceros's NitConductor value
+		private decimal m_NitConductor;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 		// Field for storing the reference to foreign LiquidacionVehiculoList object accessed by NitConductor
@@ -161,20 +161,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Terceros's NitConductor value (decimal)
-		/// </summary>
-		[DataMember]
-		public decimal NitConductor
-		{
-			get { return m_NitConductor; }
-			set 
-			{
-				m_changed=true;
-				m_NitConductor = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Terceros's Identificacion value (long)
 		/// </summary>
@@ -357,11 +343,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Terceros's NitConductor value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal NitConductor
+		{
+			get { return m_NitConductor; }
+			set 
+			{
+				m_changed=true;
+				m_NitConductor = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "NitConductor": return NitConductor;
 				case "Identificacion": return Identificacion;
 				case "TipoIdentificacion": return TipoIdentificacion;
 				case "Digito": return Digito;
@@ -375,6 +374,7 @@ namespace LiqViajes_Bll_Data
 				case "Telefono2": return Telefono2;
 				case "Telefono3": return Telefono3;
 				case "ApartadoAreo": return ApartadoAreo;
+				case "NitConductor": return NitConductor;
 				default: return null;
 			}
 		}

@@ -52,12 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				y_novedades_liq.IdNovedad = (int) dr["IdNovedad"];
-				y_novedades_liq.nomina = (string) dr["nomina"];
-				y_novedades_liq.contrato = (int) dr["contrato"];
-				y_novedades_liq.nit = (decimal) dr["nit"];
-				y_novedades_liq.idperiodo = (int) dr["idperiodo"];
-				y_novedades_liq.concepto = Convert.ToInt16(dr["concepto"]);
 				y_novedades_liq.fecha = (DateTime) dr["fecha"];
 				y_novedades_liq.mes = dr.IsNull("mes") ? null :(byte?) dr["mes"];
 				y_novedades_liq.ano = dr.IsNull("ano") ? null :(short?)Convert.ToInt16(dr["ano"]);
@@ -65,14 +59,20 @@ namespace LiqViajes_Bll_Data
 				y_novedades_liq.valor = dr.IsNull("valor") ? null :(decimal?) dr["valor"];
 				y_novedades_liq.horas = dr.IsNull("horas") ? null :(float?) dr["horas"];
 				y_novedades_liq.dias = dr.IsNull("dias") ? null :(float?) dr["dias"];
-				y_novedades_liq.centro = (int) dr["centro"];
-				y_novedades_liq.planta = (byte) dr["planta"];
 				y_novedades_liq.turno = dr.IsNull("turno") ? null :(byte?) dr["turno"];
 				y_novedades_liq.estado = dr.IsNull("estado") ? null :(char?) ((string) dr["estado"])[0];
 				y_novedades_liq.nro_presta = dr.IsNull("nro_presta") ? null :(int?) dr["nro_presta"];
 				y_novedades_liq.cpto_interes = dr.IsNull("cpto_interes") ? null :(short?)Convert.ToInt16(dr["cpto_interes"]);
 				y_novedades_liq.sumar = (bool) dr["sumar"];
 				y_novedades_liq.oficio = dr.IsNull("oficio") ? null :(string) dr["oficio"];
+				y_novedades_liq.IdNovedad = (int) dr["IdNovedad"];
+				y_novedades_liq.nomina = (string) dr["nomina"];
+				y_novedades_liq.contrato = (int) dr["contrato"];
+				y_novedades_liq.nit = (decimal) dr["nit"];
+				y_novedades_liq.idperiodo = (int) dr["idperiodo"];
+				y_novedades_liq.concepto = Convert.ToInt16(dr["concepto"]);
+				y_novedades_liq.centro = (int) dr["centro"];
+				y_novedades_liq.planta = (byte) dr["planta"];
 			}
 			catch (Exception ex)
 			{
@@ -152,12 +152,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an y_novedades_Liq object by passing all object's fields
 		/// </summary>
-		/// <param name="IdNovedad">int that contents the IdNovedad value for the y_novedades_Liq object</param>
-		/// <param name="nomina">string that contents the nomina value for the y_novedades_Liq object</param>
-		/// <param name="contrato">int that contents the contrato value for the y_novedades_Liq object</param>
-		/// <param name="nit">decimal that contents the nit value for the y_novedades_Liq object</param>
-		/// <param name="idperiodo">int that contents the idperiodo value for the y_novedades_Liq object</param>
-		/// <param name="concepto">short that contents the concepto value for the y_novedades_Liq object</param>
 		/// <param name="fecha">DateTime that contents the fecha value for the y_novedades_Liq object</param>
 		/// <param name="mes">byte that contents the mes value for the y_novedades_Liq object</param>
 		/// <param name="ano">short that contents the ano value for the y_novedades_Liq object</param>
@@ -165,15 +159,21 @@ namespace LiqViajes_Bll_Data
 		/// <param name="valor">decimal that contents the valor value for the y_novedades_Liq object</param>
 		/// <param name="horas">float that contents the horas value for the y_novedades_Liq object</param>
 		/// <param name="dias">float that contents the dias value for the y_novedades_Liq object</param>
-		/// <param name="centro">int that contents the centro value for the y_novedades_Liq object</param>
-		/// <param name="planta">byte that contents the planta value for the y_novedades_Liq object</param>
 		/// <param name="turno">byte that contents the turno value for the y_novedades_Liq object</param>
 		/// <param name="estado">char that contents the estado value for the y_novedades_Liq object</param>
 		/// <param name="nro_presta">int that contents the nro_presta value for the y_novedades_Liq object</param>
 		/// <param name="cpto_interes">short that contents the cpto_interes value for the y_novedades_Liq object</param>
 		/// <param name="sumar">bool that contents the sumar value for the y_novedades_Liq object</param>
 		/// <param name="oficio">string that contents the oficio value for the y_novedades_Liq object</param>
-		public void Update(int IdNovedad, string nomina, int contrato, decimal nit, int idperiodo, short concepto, DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, int centro, byte planta, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool sumar, string oficio, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="IdNovedad">int that contents the IdNovedad value for the y_novedades_Liq object</param>
+		/// <param name="nomina">string that contents the nomina value for the y_novedades_Liq object</param>
+		/// <param name="contrato">int that contents the contrato value for the y_novedades_Liq object</param>
+		/// <param name="nit">decimal that contents the nit value for the y_novedades_Liq object</param>
+		/// <param name="idperiodo">int that contents the idperiodo value for the y_novedades_Liq object</param>
+		/// <param name="concepto">short that contents the concepto value for the y_novedades_Liq object</param>
+		/// <param name="centro">int that contents the centro value for the y_novedades_Liq object</param>
+		/// <param name="planta">byte that contents the planta value for the y_novedades_Liq object</param>
+		public void Update(DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool sumar, string oficio, int IdNovedad, string nomina, int contrato, decimal nit, int idperiodo, short concepto, int centro, byte planta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -191,7 +191,7 @@ namespace LiqViajes_Bll_Data
 				new_values.cpto_interes = cpto_interes;
 				new_values.sumar = sumar;
 				new_values.oficio = oficio;
-				y_novedades_LiqDataProvider.Instance.Update(IdNovedad, nomina, contrato, nit, idperiodo, concepto, fecha, mes, ano, periodo, valor, horas, dias, centro, planta, turno, estado, nro_presta, cpto_interes, sumar, oficio,"y_novedades_Liq",datosTransaccion);
+				y_novedades_LiqDataProvider.Instance.Update(fecha, mes, ano, periodo, valor, horas, dias, turno, estado, nro_presta, cpto_interes, sumar, oficio, IdNovedad, nomina, contrato, nit, idperiodo, concepto, centro, planta,"y_novedades_Liq",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -205,7 +205,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="y_novedades_liq">An instance of y_novedades_Liq for reference</param>
 		public void Update(y_novedades_Liq y_novedades_liq,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(y_novedades_liq.IdNovedad, y_novedades_liq.nomina, y_novedades_liq.contrato, y_novedades_liq.nit, y_novedades_liq.idperiodo, y_novedades_liq.concepto, y_novedades_liq.fecha, y_novedades_liq.mes, y_novedades_liq.ano, y_novedades_liq.periodo, y_novedades_liq.valor, y_novedades_liq.horas, y_novedades_liq.dias, y_novedades_liq.centro, y_novedades_liq.planta, y_novedades_liq.turno, y_novedades_liq.estado, y_novedades_liq.nro_presta, y_novedades_liq.cpto_interes, y_novedades_liq.sumar, y_novedades_liq.oficio);
+			Update(y_novedades_liq.fecha, y_novedades_liq.mes, y_novedades_liq.ano, y_novedades_liq.periodo, y_novedades_liq.valor, y_novedades_liq.horas, y_novedades_liq.dias, y_novedades_liq.turno, y_novedades_liq.estado, y_novedades_liq.nro_presta, y_novedades_liq.cpto_interes, y_novedades_liq.sumar, y_novedades_liq.oficio, y_novedades_liq.IdNovedad, y_novedades_liq.nomina, y_novedades_liq.contrato, y_novedades_liq.nit, y_novedades_liq.idperiodo, y_novedades_liq.concepto, y_novedades_liq.centro, y_novedades_liq.planta);
 		}
 
 		/// <summary>
@@ -375,24 +375,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "IdNovedad":
-					return y_novedades_liq.IdNovedad.GetType();
-
-				case "nomina":
-					return y_novedades_liq.nomina.GetType();
-
-				case "contrato":
-					return y_novedades_liq.contrato.GetType();
-
-				case "nit":
-					return y_novedades_liq.nit.GetType();
-
-				case "idperiodo":
-					return y_novedades_liq.idperiodo.GetType();
-
-				case "concepto":
-					return y_novedades_liq.concepto.GetType();
-
 				case "fecha":
 					return y_novedades_liq.fecha.GetType();
 
@@ -414,12 +396,6 @@ namespace LiqViajes_Bll_Data
 				case "dias":
 					return y_novedades_liq.dias.GetType();
 
-				case "centro":
-					return y_novedades_liq.centro.GetType();
-
-				case "planta":
-					return y_novedades_liq.planta.GetType();
-
 				case "turno":
 					return y_novedades_liq.turno.GetType();
 
@@ -437,6 +413,30 @@ namespace LiqViajes_Bll_Data
 
 				case "oficio":
 					return y_novedades_liq.oficio.GetType();
+
+				case "IdNovedad":
+					return y_novedades_liq.IdNovedad.GetType();
+
+				case "nomina":
+					return y_novedades_liq.nomina.GetType();
+
+				case "contrato":
+					return y_novedades_liq.contrato.GetType();
+
+				case "nit":
+					return y_novedades_liq.nit.GetType();
+
+				case "idperiodo":
+					return y_novedades_liq.idperiodo.GetType();
+
+				case "concepto":
+					return y_novedades_liq.concepto.GetType();
+
+				case "centro":
+					return y_novedades_liq.centro.GetType();
+
+				case "planta":
+					return y_novedades_liq.planta.GetType();
 
 			}
 

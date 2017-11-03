@@ -113,13 +113,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into ObservacioneComplementarias by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
 		/// <param name="Cuenta"></param>
 		/// <param name="Fila"></param>
 		/// <param name="DetalleObservacion"></param>
-		public void Update(int Codigo, string Origen, string Destino, string Cuenta, int? Fila, string DetalleObservacion,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(string Origen, string Destino, string Cuenta, int? Fila, string DetalleObservacion, int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -205,8 +205,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblTercerosConductoresWinFor by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistro"></param>
-		/// <param name="lngIdUsuario"></param>
 		/// <param name="strTipoIdentificacion"></param>
 		/// <param name="IntNit"></param>
 		/// <param name="intDigito"></param>
@@ -231,7 +229,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmVenceTarjetaTripulante"></param>
 		/// <param name="strCarnetEmpresa"></param>
 		/// <param name="strCarnetComunicaciones"></param>
-		public void Update(int lngIdRegistro, int lngIdUsuario, int? strTipoIdentificacion, int? IntNit, int? intDigito, int? strNombres, int? strDireccion, int? logEstado, int? logConductor, int? strPlaca, int? lngIdCiudad, int? strTelefono, int? strTelefonoAux, int? strTelCelular, int? strTelCelularAux, int? strFax, int? IntAAereo, int? StrPais, int? nitProvedor, int? intNoLicenciaConduc, int? intCategoria, int? strTarjetaTripulante, int? dtmFechaVenceLicencia, int? dtmVenceTarjetaTripulante, int? strCarnetEmpresa, int? strCarnetComunicaciones,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro"></param>
+		/// <param name="lngIdUsuario"></param>
+		public void Update(int? strTipoIdentificacion, int? IntNit, int? intDigito, int? strNombres, int? strDireccion, int? logEstado, int? logConductor, int? strPlaca, int? lngIdCiudad, int? strTelefono, int? strTelefonoAux, int? strTelCelular, int? strTelCelularAux, int? strFax, int? IntAAereo, int? StrPais, int? nitProvedor, int? intNoLicenciaConduc, int? intCategoria, int? strTarjetaTripulante, int? dtmFechaVenceLicencia, int? dtmVenceTarjetaTripulante, int? strCarnetEmpresa, int? strCarnetComunicaciones, int lngIdRegistro, int lngIdUsuario,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

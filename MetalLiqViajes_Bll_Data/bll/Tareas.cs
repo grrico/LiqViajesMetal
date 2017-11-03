@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tareas.lngIdTarea = (int) dr["lngIdTarea"];
 				tareas.strAsunto = dr.IsNull("strAsunto") ? null :(string) dr["strAsunto"];
 				tareas.dtmFechaInicio = dr.IsNull("dtmFechaInicio") ? null :(DateTime?) dr["dtmFechaInicio"];
 				tareas.strFechavencimiento = dr.IsNull("strFechavencimiento") ? null :(DateTime?) dr["strFechavencimiento"];
@@ -62,6 +61,7 @@ namespace LiqViajes_Bll_Data
 				tareas.logFinalizada = dr.IsNull("logFinalizada") ? null :(bool?) dr["logFinalizada"];
 				tareas.Notas = dr.IsNull("Notas") ? null :(string) dr["Notas"];
 				tareas.lngIdStatus = dr.IsNull("lngIdStatus") ? null :(int?) dr["lngIdStatus"];
+				tareas.lngIdTarea = (int) dr["lngIdTarea"];
 			}
 			catch (Exception ex)
 			{
@@ -126,7 +126,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Tareas object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdTarea">int that contents the lngIdTarea value for the Tareas object</param>
 		/// <param name="strAsunto">string that contents the strAsunto value for the Tareas object</param>
 		/// <param name="dtmFechaInicio">DateTime that contents the dtmFechaInicio value for the Tareas object</param>
 		/// <param name="strFechavencimiento">DateTime that contents the strFechavencimiento value for the Tareas object</param>
@@ -136,7 +135,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="logFinalizada">bool that contents the logFinalizada value for the Tareas object</param>
 		/// <param name="Notas">string that contents the Notas value for the Tareas object</param>
 		/// <param name="lngIdStatus">int that contents the lngIdStatus value for the Tareas object</param>
-		public void Update(int lngIdTarea, string strAsunto, DateTime? dtmFechaInicio, DateTime? strFechavencimiento, bool? logAvisa, DateTime? FechaAviso, DateTime? Fechadefinalización, bool? logFinalizada, string Notas, int? lngIdStatus, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdTarea">int that contents the lngIdTarea value for the Tareas object</param>
+		public void Update(string strAsunto, DateTime? dtmFechaInicio, DateTime? strFechavencimiento, bool? logAvisa, DateTime? FechaAviso, DateTime? Fechadefinalización, bool? logFinalizada, string Notas, int? lngIdStatus, int lngIdTarea, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -150,7 +150,7 @@ namespace LiqViajes_Bll_Data
 				new_values.logFinalizada = logFinalizada;
 				new_values.Notas = Notas;
 				new_values.lngIdStatus = lngIdStatus;
-				TareasDataProvider.Instance.Update(lngIdTarea, strAsunto, dtmFechaInicio, strFechavencimiento, logAvisa, FechaAviso, Fechadefinalización, logFinalizada, Notas, lngIdStatus,"Tareas",datosTransaccion);
+				TareasDataProvider.Instance.Update(strAsunto, dtmFechaInicio, strFechavencimiento, logAvisa, FechaAviso, Fechadefinalización, logFinalizada, Notas, lngIdStatus, lngIdTarea,"Tareas",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -164,7 +164,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tareas">An instance of Tareas for reference</param>
 		public void Update(Tareas tareas,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tareas.lngIdTarea, tareas.strAsunto, tareas.dtmFechaInicio, tareas.strFechavencimiento, tareas.logAvisa, tareas.FechaAviso, tareas.Fechadefinalización, tareas.logFinalizada, tareas.Notas, tareas.lngIdStatus);
+			Update(tareas.strAsunto, tareas.dtmFechaInicio, tareas.strFechavencimiento, tareas.logAvisa, tareas.FechaAviso, tareas.Fechadefinalización, tareas.logFinalizada, tareas.Notas, tareas.lngIdStatus, tareas.lngIdTarea);
 		}
 
 		/// <summary>
@@ -320,9 +320,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdTarea":
-					return tareas.lngIdTarea.GetType();
-
 				case "strAsunto":
 					return tareas.strAsunto.GetType();
 
@@ -349,6 +346,9 @@ namespace LiqViajes_Bll_Data
 
 				case "lngIdStatus":
 					return tareas.lngIdStatus.GetType();
+
+				case "lngIdTarea":
+					return tareas.lngIdTarea.GetType();
 
 			}
 

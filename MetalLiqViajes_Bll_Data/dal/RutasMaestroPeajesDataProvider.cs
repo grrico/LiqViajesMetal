@@ -130,7 +130,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutasMaestroPeajes by passing all fields
 		/// </summary>
-		/// <param name="lngIdPeaje"></param>
 		/// <param name="strNombrePeaje"></param>
 		/// <param name="Activo"></param>
 		/// <param name="curValorTipo1"></param>
@@ -140,7 +139,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="curValorTipo5"></param>
 		/// <param name="curValorTipo6"></param>
 		/// <param name="curValorTipo7"></param>
-		public void Update(int lngIdPeaje, string strNombrePeaje, bool Activo, decimal? curValorTipo1, decimal? curValorTipo2, decimal? curValorTipo3, decimal? curValorTipo4, decimal? curValorTipo5, decimal? curValorTipo6, decimal? curValorTipo7,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdPeaje"></param>
+		public void Update(string strNombrePeaje, bool Activo, decimal? curValorTipo1, decimal? curValorTipo2, decimal? curValorTipo3, decimal? curValorTipo4, decimal? curValorTipo5, decimal? curValorTipo6, decimal? curValorTipo7, int lngIdPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

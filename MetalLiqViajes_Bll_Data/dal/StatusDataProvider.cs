@@ -93,9 +93,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblStatus by passing all fields
 		/// </summary>
-		/// <param name="lngIdStatus"></param>
 		/// <param name="strStatus"></param>
-		public void Update(int lngIdStatus, string strStatus,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdStatus"></param>
+		public void Update(string strStatus, int lngIdStatus,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

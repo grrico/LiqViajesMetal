@@ -198,7 +198,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionVehiculo by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistro"></param>
 		/// <param name="strPlaca"></param>
 		/// <param name="intNitConductor"></param>
 		/// <param name="curGastos"></param>
@@ -221,7 +220,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="logLiquKilometros"></param>
 		/// <param name="curValorKilometros"></param>
 		/// <param name="Kilometros"></param>
-		public void Update(int lngIdRegistro, string strPlaca, decimal? intNitConductor, decimal? curGastos, decimal? curAnticipos, decimal? curTotal, DateTime? dtmFechaModif, bool? logLiquidado, float? sngRentabilidad, decimal? curValorFleteAcum, bool? logDesplazaVacio, bool? logSePuedeLiquidar, decimal? curValorFlete, decimal? curvalorUtilidad, decimal? curValorRentabilidad, decimal? TotalGalones, decimal? cutCombustible, decimal? cutParticipacion, decimal? cutParticipacionVacio, bool? logLiquParticipacion, bool? logLiquKilometros, decimal? curValorKilometros, int? Kilometros,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro"></param>
+		public void Update(string strPlaca, decimal? intNitConductor, decimal? curGastos, decimal? curAnticipos, decimal? curTotal, DateTime? dtmFechaModif, bool? logLiquidado, float? sngRentabilidad, decimal? curValorFleteAcum, bool? logDesplazaVacio, bool? logSePuedeLiquidar, decimal? curValorFlete, decimal? curvalorUtilidad, decimal? curValorRentabilidad, decimal? TotalGalones, decimal? cutCombustible, decimal? cutParticipacion, decimal? cutParticipacionVacio, bool? logLiquParticipacion, bool? logLiquKilometros, decimal? curValorKilometros, int? Kilometros, int lngIdRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

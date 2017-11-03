@@ -53,12 +53,12 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				documento_referencia.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
-				documento_referencia.sw = (byte) dr["sw"];
-				documento_referencia.tipo = (string) dr["tipo"];
-				documento_referencia.numero = (int) dr["numero"];
 				documento_referencia.fecha = (DateTime) dr["fecha"];
 				documento_referencia.valor = (decimal) dr["valor"];
 				documento_referencia.ValorCruce = dr.IsNull("ValorCruce") ? null :(decimal?) dr["ValorCruce"];
+				documento_referencia.sw = (byte) dr["sw"];
+				documento_referencia.tipo = (string) dr["tipo"];
+				documento_referencia.numero = (int) dr["numero"];
 			}
 			catch (Exception ex)
 			{
@@ -111,13 +111,13 @@ namespace LiqViajes_Bll_Data
 		/// Updates an Documento_Referencia object by passing all object's fields
 		/// </summary>
 		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the Documento_Referencia object</param>
-		/// <param name="sw">byte that contents the sw value for the Documento_Referencia object</param>
-		/// <param name="tipo">string that contents the tipo value for the Documento_Referencia object</param>
-		/// <param name="numero">int that contents the numero value for the Documento_Referencia object</param>
 		/// <param name="fecha">DateTime that contents the fecha value for the Documento_Referencia object</param>
 		/// <param name="valor">decimal that contents the valor value for the Documento_Referencia object</param>
 		/// <param name="ValorCruce">decimal that contents the ValorCruce value for the Documento_Referencia object</param>
-		public void Update(int? lngIdRegistro, byte sw, string tipo, int numero, DateTime fecha, decimal valor, decimal? ValorCruce, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="sw">byte that contents the sw value for the Documento_Referencia object</param>
+		/// <param name="tipo">string that contents the tipo value for the Documento_Referencia object</param>
+		/// <param name="numero">int that contents the numero value for the Documento_Referencia object</param>
+		public void Update(int? lngIdRegistro, DateTime fecha, decimal valor, decimal? ValorCruce, byte sw, string tipo, int numero, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -126,7 +126,7 @@ namespace LiqViajes_Bll_Data
 				new_values.fecha = fecha;
 				new_values.valor = valor;
 				new_values.ValorCruce = ValorCruce;
-				Documento_ReferenciaDataProvider.Instance.Update(lngIdRegistro, sw, tipo, numero, fecha, valor, ValorCruce,"Documento_Referencia",datosTransaccion);
+				Documento_ReferenciaDataProvider.Instance.Update(lngIdRegistro, fecha, valor, ValorCruce, sw, tipo, numero,"Documento_Referencia",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="documento_referencia">An instance of Documento_Referencia for reference</param>
 		public void Update(Documento_Referencia documento_referencia,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(documento_referencia.lngIdRegistro, documento_referencia.sw, documento_referencia.tipo, documento_referencia.numero, documento_referencia.fecha, documento_referencia.valor, documento_referencia.ValorCruce);
+			Update(documento_referencia.lngIdRegistro, documento_referencia.fecha, documento_referencia.valor, documento_referencia.ValorCruce, documento_referencia.sw, documento_referencia.tipo, documento_referencia.numero);
 		}
 
 		/// <summary>
@@ -299,15 +299,6 @@ namespace LiqViajes_Bll_Data
 				case "lngIdRegistro":
 					return documento_referencia.lngIdRegistro.GetType();
 
-				case "sw":
-					return documento_referencia.sw.GetType();
-
-				case "tipo":
-					return documento_referencia.tipo.GetType();
-
-				case "numero":
-					return documento_referencia.numero.GetType();
-
 				case "fecha":
 					return documento_referencia.fecha.GetType();
 
@@ -316,6 +307,15 @@ namespace LiqViajes_Bll_Data
 
 				case "ValorCruce":
 					return documento_referencia.ValorCruce.GetType();
+
+				case "sw":
+					return documento_referencia.sw.GetType();
+
+				case "tipo":
+					return documento_referencia.tipo.GetType();
+
+				case "numero":
+					return documento_referencia.numero.GetType();
 
 			}
 

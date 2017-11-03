@@ -145,8 +145,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblVehiculosKmMantenimiento by passing all fields
 		/// </summary>
-		/// <param name="strPlaca"></param>
-		/// <param name="lngIdTipoMantenimiento"></param>
 		/// <param name="dtmFechaUltimoCambio"></param>
 		/// <param name="intKmUltimoCambio"></param>
 		/// <param name="intKmSiguiente"></param>
@@ -159,7 +157,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strLugarDetener"></param>
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="lngIdUsuario"></param>
-		public void Update(string strPlaca, int lngIdTipoMantenimiento, DateTime? dtmFechaUltimoCambio, int? intKmUltimoCambio, int? intKmSiguiente, int? intKmAcumulado, DateTime? dtmFechaUltimoUltimoAcumu, int? intKmAlarma1, int? intKmAlarma2, bool? logAvisa, DateTime? dtmFechaDetener, string strLugarDetener, DateTime? dtmFechaModif, int? lngIdUsuario,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="strPlaca"></param>
+		/// <param name="lngIdTipoMantenimiento"></param>
+		public void Update(DateTime? dtmFechaUltimoCambio, int? intKmUltimoCambio, int? intKmSiguiente, int? intKmAcumulado, DateTime? dtmFechaUltimoUltimoAcumu, int? intKmAlarma1, int? intKmAlarma2, bool? logAvisa, DateTime? dtmFechaDetener, string strLugarDetener, DateTime? dtmFechaModif, int? lngIdUsuario, string strPlaca, int lngIdTipoMantenimiento,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

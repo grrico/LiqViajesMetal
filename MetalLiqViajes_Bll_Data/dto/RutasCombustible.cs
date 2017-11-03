@@ -76,9 +76,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the RutasCombustible's lngIdRegistro value
-		private int m_lngIdRegistro;
-
 		// Field for storing the RutasCombustible's strNombreGrupo value
 		private string m_strNombreGrupo;
 
@@ -90,6 +87,9 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the RutasCombustible's DescripcionVehiculo value
 		private string m_DescripcionVehiculo;
+
+		// Field for storing the RutasCombustible's lngIdRegistro value
+		private int m_lngIdRegistro;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -104,20 +104,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the RutasCombustible's lngIdRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistro
-		{
-			get { return m_lngIdRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistro = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the RutasCombustible's strNombreGrupo value (string)
 		/// </summary>
@@ -174,15 +160,29 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the RutasCombustible's lngIdRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistro": return lngIdRegistro;
 				case "strNombreGrupo": return strNombreGrupo;
 				case "cutCombustible": return cutCombustible;
 				case "TipoVehiculo": return TipoVehiculo;
 				case "DescripcionVehiculo": return DescripcionVehiculo;
+				case "lngIdRegistro": return lngIdRegistro;
 				default: return null;
 			}
 		}

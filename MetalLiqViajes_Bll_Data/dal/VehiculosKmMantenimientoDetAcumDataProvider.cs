@@ -118,14 +118,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblVehiculosKmMantenimientoDetAcum by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistro"></param>
 		/// <param name="strPlaca"></param>
 		/// <param name="strDetalleAcumuado"></param>
 		/// <param name="drmFechaMovimiento"></param>
 		/// <param name="intKmMovimiento"></param>
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="lngIdUsuario"></param>
-		public void Update(int lngIdRegistro, string strPlaca, string strDetalleAcumuado, DateTime? drmFechaMovimiento, int? intKmMovimiento, DateTime? dtmFechaModif, int? lngIdUsuario,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro"></param>
+		public void Update(string strPlaca, string strDetalleAcumuado, DateTime? drmFechaMovimiento, int? intKmMovimiento, DateTime? dtmFechaModif, int? lngIdUsuario, int lngIdRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

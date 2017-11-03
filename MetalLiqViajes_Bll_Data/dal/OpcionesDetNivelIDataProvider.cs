@@ -134,7 +134,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblOpcionesDetNivelI by passing all fields
 		/// </summary>
-		/// <param name="lngIdOpcion"></param>
 		/// <param name="strDescOpcion"></param>
 		/// <param name="strPrograma"></param>
 		/// <param name="strParametros"></param>
@@ -145,7 +144,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="logExpandeNode"></param>
 		/// <param name="strString"></param>
 		/// <param name="strColHidden"></param>
-		public void Update(int lngIdOpcion, string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, bool? logExpandeNode, string strString, char? strColHidden,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdOpcion"></param>
+		public void Update(string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, bool? logExpandeNode, string strString, char? strColHidden, int lngIdOpcion,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

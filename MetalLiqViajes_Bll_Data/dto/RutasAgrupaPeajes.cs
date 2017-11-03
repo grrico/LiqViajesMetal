@@ -67,11 +67,11 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the RutasAgrupaPeajes's lngIdGrupo value
-		private int m_lngIdGrupo;
-
 		// Field for storing the RutasAgrupaPeajes's strNombreGrupo value
 		private string m_strNombreGrupo;
+
+		// Field for storing the RutasAgrupaPeajes's lngIdGrupo value
+		private int m_lngIdGrupo;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -87,20 +87,6 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the RutasAgrupaPeajes's lngIdGrupo value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdGrupo
-		{
-			get { return m_lngIdGrupo; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdGrupo = value;
-			}
-		}
-
-		/// <summary>
 		/// Attribute for access the RutasAgrupaPeajes's strNombreGrupo value (string)
 		/// </summary>
 		[DataMember]
@@ -114,12 +100,26 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the RutasAgrupaPeajes's lngIdGrupo value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdGrupo
+		{
+			get { return m_lngIdGrupo; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdGrupo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdGrupo": return lngIdGrupo;
 				case "strNombreGrupo": return strNombreGrupo;
+				case "lngIdGrupo": return lngIdGrupo;
 				default: return null;
 			}
 		}

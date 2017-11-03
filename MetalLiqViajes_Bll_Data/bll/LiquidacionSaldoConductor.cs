@@ -52,14 +52,14 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionsaldoconductor.lngIdRegistro = (int) dr["lngIdRegistro"];
-				liquidacionsaldoconductor.intNitConductor = (decimal) dr["intNitConductor"];
 				liquidacionsaldoconductor.curValorSaldo = dr.IsNull("curValorSaldo") ? null :(decimal?) dr["curValorSaldo"];
 				liquidacionsaldoconductor.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
 				liquidacionsaldoconductor.sw = dr.IsNull("sw") ? null :(byte?) dr["sw"];
 				liquidacionsaldoconductor.strTipo = dr.IsNull("strTipo") ? null :(string) dr["strTipo"];
 				liquidacionsaldoconductor.numero = dr.IsNull("numero") ? null :(int?) dr["numero"];
 				liquidacionsaldoconductor.lngIdRegistroLiq = dr.IsNull("lngIdRegistroLiq") ? null :(int?) dr["lngIdRegistroLiq"];
+				liquidacionsaldoconductor.lngIdRegistro = (int) dr["lngIdRegistro"];
+				liquidacionsaldoconductor.intNitConductor = (decimal) dr["intNitConductor"];
 			}
 			catch (Exception ex)
 			{
@@ -114,15 +114,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionSaldoConductor object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionSaldoConductor object</param>
-		/// <param name="intNitConductor">decimal that contents the intNitConductor value for the LiquidacionSaldoConductor object</param>
 		/// <param name="curValorSaldo">decimal that contents the curValorSaldo value for the LiquidacionSaldoConductor object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the LiquidacionSaldoConductor object</param>
 		/// <param name="sw">byte that contents the sw value for the LiquidacionSaldoConductor object</param>
 		/// <param name="strTipo">string that contents the strTipo value for the LiquidacionSaldoConductor object</param>
 		/// <param name="numero">int that contents the numero value for the LiquidacionSaldoConductor object</param>
 		/// <param name="lngIdRegistroLiq">int that contents the lngIdRegistroLiq value for the LiquidacionSaldoConductor object</param>
-		public void Update(int lngIdRegistro, decimal intNitConductor, decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionSaldoConductor object</param>
+		/// <param name="intNitConductor">decimal that contents the intNitConductor value for the LiquidacionSaldoConductor object</param>
+		public void Update(decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq, int lngIdRegistro, decimal intNitConductor, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -133,7 +133,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strTipo = strTipo;
 				new_values.numero = numero;
 				new_values.lngIdRegistroLiq = lngIdRegistroLiq;
-				LiquidacionSaldoConductorDataProvider.Instance.Update(lngIdRegistro, intNitConductor, curValorSaldo, dtmFechaModif, sw, strTipo, numero, lngIdRegistroLiq,"LiquidacionSaldoConductor",datosTransaccion);
+				LiquidacionSaldoConductorDataProvider.Instance.Update(curValorSaldo, dtmFechaModif, sw, strTipo, numero, lngIdRegistroLiq, lngIdRegistro, intNitConductor,"LiquidacionSaldoConductor",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -147,7 +147,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionsaldoconductor">An instance of LiquidacionSaldoConductor for reference</param>
 		public void Update(LiquidacionSaldoConductor liquidacionsaldoconductor,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionsaldoconductor.lngIdRegistro, liquidacionsaldoconductor.intNitConductor, liquidacionsaldoconductor.curValorSaldo, liquidacionsaldoconductor.dtmFechaModif, liquidacionsaldoconductor.sw, liquidacionsaldoconductor.strTipo, liquidacionsaldoconductor.numero, liquidacionsaldoconductor.lngIdRegistroLiq);
+			Update(liquidacionsaldoconductor.curValorSaldo, liquidacionsaldoconductor.dtmFechaModif, liquidacionsaldoconductor.sw, liquidacionsaldoconductor.strTipo, liquidacionsaldoconductor.numero, liquidacionsaldoconductor.lngIdRegistroLiq, liquidacionsaldoconductor.lngIdRegistro, liquidacionsaldoconductor.intNitConductor);
 		}
 
 		/// <summary>
@@ -301,12 +301,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return liquidacionsaldoconductor.lngIdRegistro.GetType();
-
-				case "intNitConductor":
-					return liquidacionsaldoconductor.intNitConductor.GetType();
-
 				case "curValorSaldo":
 					return liquidacionsaldoconductor.curValorSaldo.GetType();
 
@@ -324,6 +318,12 @@ namespace LiqViajes_Bll_Data
 
 				case "lngIdRegistroLiq":
 					return liquidacionsaldoconductor.lngIdRegistroLiq.GetType();
+
+				case "lngIdRegistro":
+					return liquidacionsaldoconductor.lngIdRegistro.GetType();
+
+				case "intNitConductor":
+					return liquidacionsaldoconductor.intNitConductor.GetType();
 
 			}
 

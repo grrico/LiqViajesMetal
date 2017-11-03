@@ -209,7 +209,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into AnticiposDms by passing all fields
 		/// </summary>
-		/// <param name="Dms_Codigo"></param>
 		/// <param name="Dms_Tipo"></param>
 		/// <param name="Dms_Numero"></param>
 		/// <param name="Dms_Modelo"></param>
@@ -235,7 +234,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Dms_Usuario"></param>
 		/// <param name="Dms_FechaReal"></param>
 		/// <param name="Dms_NombreTercero"></param>
-		public void Update(int Dms_Codigo, string Dms_Tipo, int? Dms_Numero, string Dms_Modelo, byte? Dms_Sw, string Dms_Placa, int? Dms_lngIdRegistroViaje, decimal? Dms_lngIdRegistroViajeTramo, decimal? Dms_Nit, DateTime? Dms_Fecha, decimal? Dms_ValorTotal, decimal? Dms_ValorAplicado, decimal? Dms_ValorAnticipo, int? Dms_Chk, string Dms_Nota, string Dms_Documento, double? Dms_CodBanco, string Dms_NombreBanco, string Dms_DescripcionModelo, string Dms_Cuenta1, string Dms_Cuenta2, string Dms_DescripcionCta1, string Dms_DescripcionCta2, string Dms_Usuario, DateTime? Dms_FechaReal, string Dms_NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Dms_Codigo"></param>
+		public void Update(string Dms_Tipo, int? Dms_Numero, string Dms_Modelo, byte? Dms_Sw, string Dms_Placa, int? Dms_lngIdRegistroViaje, decimal? Dms_lngIdRegistroViajeTramo, decimal? Dms_Nit, DateTime? Dms_Fecha, decimal? Dms_ValorTotal, decimal? Dms_ValorAplicado, decimal? Dms_ValorAnticipo, int? Dms_Chk, string Dms_Nota, string Dms_Documento, double? Dms_CodBanco, string Dms_NombreBanco, string Dms_DescripcionModelo, string Dms_Cuenta1, string Dms_Cuenta2, string Dms_DescripcionCta1, string Dms_DescripcionCta2, string Dms_Usuario, DateTime? Dms_FechaReal, string Dms_NombreTercero, int Dms_Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

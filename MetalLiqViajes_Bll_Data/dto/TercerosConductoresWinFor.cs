@@ -138,12 +138,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TercerosConductoresWinFor's lngIdRegistro value
-		private int m_lngIdRegistro;
-
-		// Field for storing the TercerosConductoresWinFor's lngIdUsuario value
-		private int m_lngIdUsuario;
-
 		// Field for storing the TercerosConductoresWinFor's strTipoIdentificacion value
 		private int? m_strTipoIdentificacion;
 
@@ -216,6 +210,12 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TercerosConductoresWinFor's strCarnetComunicaciones value
 		private int? m_strCarnetComunicaciones;
 
+		// Field for storing the TercerosConductoresWinFor's lngIdRegistro value
+		private int m_lngIdRegistro;
+
+		// Field for storing the TercerosConductoresWinFor's lngIdUsuario value
+		private int m_lngIdUsuario;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -229,34 +229,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TercerosConductoresWinFor's lngIdRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistro
-		{
-			get { return m_lngIdRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistro = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the TercerosConductoresWinFor's lngIdUsuario value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdUsuario
-		{
-			get { return m_lngIdUsuario; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdUsuario = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TercerosConductoresWinFor's strTipoIdentificacion value (int)
 		/// </summary>
@@ -593,12 +565,38 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TercerosConductoresWinFor's lngIdRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the TercerosConductoresWinFor's lngIdUsuario value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdUsuario
+		{
+			get { return m_lngIdUsuario; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdUsuario = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistro": return lngIdRegistro;
-				case "lngIdUsuario": return lngIdUsuario;
 				case "strTipoIdentificacion": return strTipoIdentificacion;
 				case "IntNit": return IntNit;
 				case "intDigito": return intDigito;
@@ -623,6 +621,8 @@ namespace LiqViajes_Bll_Data
 				case "dtmVenceTarjetaTripulante": return dtmVenceTarjetaTripulante;
 				case "strCarnetEmpresa": return strCarnetEmpresa;
 				case "strCarnetComunicaciones": return strCarnetComunicaciones;
+				case "lngIdRegistro": return lngIdRegistro;
+				case "lngIdUsuario": return lngIdUsuario;
 				default: return null;
 			}
 		}

@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				parametrosgenerales.Codigo = (int) dr["Codigo"];
 				parametrosgenerales.Descipcion = dr.IsNull("Descipcion") ? null :(string) dr["Descipcion"];
 				parametrosgenerales.ValorParametro = dr.IsNull("ValorParametro") ? null :(string) dr["ValorParametro"];
+				parametrosgenerales.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -105,17 +105,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an ParametrosGenerales object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the ParametrosGenerales object</param>
 		/// <param name="Descipcion">string that contents the Descipcion value for the ParametrosGenerales object</param>
 		/// <param name="ValorParametro">string that contents the ValorParametro value for the ParametrosGenerales object</param>
-		public void Update(int Codigo, string Descipcion, string ValorParametro, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">int that contents the Codigo value for the ParametrosGenerales object</param>
+		public void Update(string Descipcion, string ValorParametro, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				ParametrosGenerales new_values = new ParametrosGenerales();
 				new_values.Descipcion = Descipcion;
 				new_values.ValorParametro = ValorParametro;
-				ParametrosGeneralesDataProvider.Instance.Update(Codigo, Descipcion, ValorParametro,"ParametrosGenerales",datosTransaccion);
+				ParametrosGeneralesDataProvider.Instance.Update(Descipcion, ValorParametro, Codigo,"ParametrosGenerales",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -129,7 +129,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="parametrosgenerales">An instance of ParametrosGenerales for reference</param>
 		public void Update(ParametrosGenerales parametrosgenerales,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(parametrosgenerales.Codigo, parametrosgenerales.Descipcion, parametrosgenerales.ValorParametro);
+			Update(parametrosgenerales.Descipcion, parametrosgenerales.ValorParametro, parametrosgenerales.Codigo);
 		}
 
 		/// <summary>
@@ -285,14 +285,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return parametrosgenerales.Codigo.GetType();
-
 				case "Descipcion":
 					return parametrosgenerales.Descipcion.GetType();
 
 				case "ValorParametro":
 					return parametrosgenerales.ValorParametro.GetType();
+
+				case "Codigo":
+					return parametrosgenerales.Codigo.GetType();
 
 			}
 

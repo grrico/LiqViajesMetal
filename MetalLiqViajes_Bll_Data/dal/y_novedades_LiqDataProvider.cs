@@ -154,12 +154,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into y_novedades_Liq by passing all fields
 		/// </summary>
-		/// <param name="IdNovedad"></param>
-		/// <param name="nomina"></param>
-		/// <param name="contrato"></param>
-		/// <param name="nit"></param>
-		/// <param name="idperiodo"></param>
-		/// <param name="concepto"></param>
 		/// <param name="fecha"></param>
 		/// <param name="mes"></param>
 		/// <param name="ano"></param>
@@ -167,15 +161,21 @@ namespace LiqViajes_Bll_Data
 		/// <param name="valor"></param>
 		/// <param name="horas"></param>
 		/// <param name="dias"></param>
-		/// <param name="centro"></param>
-		/// <param name="planta"></param>
 		/// <param name="turno"></param>
 		/// <param name="estado"></param>
 		/// <param name="nro_presta"></param>
 		/// <param name="cpto_interes"></param>
 		/// <param name="sumar"></param>
 		/// <param name="oficio"></param>
-		public void Update(int IdNovedad, string nomina, int contrato, decimal nit, int idperiodo, short concepto, DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, int centro, byte planta, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool sumar, string oficio,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="IdNovedad"></param>
+		/// <param name="nomina"></param>
+		/// <param name="contrato"></param>
+		/// <param name="nit"></param>
+		/// <param name="idperiodo"></param>
+		/// <param name="concepto"></param>
+		/// <param name="centro"></param>
+		/// <param name="planta"></param>
+		public void Update(DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool sumar, string oficio, int IdNovedad, string nomina, int contrato, decimal nit, int idperiodo, short concepto, int centro, byte planta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -123,7 +123,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionRutasObs by passing all fields
 		/// </summary>
-		/// <param name="lngItemsId"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="lngIdRegistro"></param>
@@ -131,7 +130,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strObservacion"></param>
 		/// <param name="nitTercero"></param>
 		/// <param name="dtmFechaModif"></param>
-		public void Update(int lngItemsId, int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, int? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngItemsId"></param>
+		public void Update(int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, int? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif, int lngItemsId,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -52,12 +52,12 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				observacionecomplementarias.Codigo = (int) dr["Codigo"];
 				observacionecomplementarias.Origen = dr.IsNull("Origen") ? null :(string) dr["Origen"];
 				observacionecomplementarias.Destino = dr.IsNull("Destino") ? null :(string) dr["Destino"];
 				observacionecomplementarias.Cuenta = dr.IsNull("Cuenta") ? null :(string) dr["Cuenta"];
 				observacionecomplementarias.Fila = dr.IsNull("Fila") ? null :(int?) dr["Fila"];
 				observacionecomplementarias.DetalleObservacion = dr.IsNull("DetalleObservacion") ? null :(string) dr["DetalleObservacion"];
+				observacionecomplementarias.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -114,13 +114,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an ObservacioneComplementarias object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the ObservacioneComplementarias object</param>
 		/// <param name="Origen">string that contents the Origen value for the ObservacioneComplementarias object</param>
 		/// <param name="Destino">string that contents the Destino value for the ObservacioneComplementarias object</param>
 		/// <param name="Cuenta">string that contents the Cuenta value for the ObservacioneComplementarias object</param>
 		/// <param name="Fila">int that contents the Fila value for the ObservacioneComplementarias object</param>
 		/// <param name="DetalleObservacion">string that contents the DetalleObservacion value for the ObservacioneComplementarias object</param>
-		public void Update(int Codigo, string Origen, string Destino, string Cuenta, int? Fila, string DetalleObservacion, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">int that contents the Codigo value for the ObservacioneComplementarias object</param>
+		public void Update(string Origen, string Destino, string Cuenta, int? Fila, string DetalleObservacion, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -130,7 +130,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Cuenta = Cuenta;
 				new_values.Fila = Fila;
 				new_values.DetalleObservacion = DetalleObservacion;
-				ObservacioneComplementariasDataProvider.Instance.Update(Codigo, Origen, Destino, Cuenta, Fila, DetalleObservacion,"ObservacioneComplementarias",datosTransaccion);
+				ObservacioneComplementariasDataProvider.Instance.Update(Origen, Destino, Cuenta, Fila, DetalleObservacion, Codigo,"ObservacioneComplementarias",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="observacionecomplementarias">An instance of ObservacioneComplementarias for reference</param>
 		public void Update(ObservacioneComplementarias observacionecomplementarias,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(observacionecomplementarias.Codigo, observacionecomplementarias.Origen, observacionecomplementarias.Destino, observacionecomplementarias.Cuenta, observacionecomplementarias.Fila, observacionecomplementarias.DetalleObservacion);
+			Update(observacionecomplementarias.Origen, observacionecomplementarias.Destino, observacionecomplementarias.Cuenta, observacionecomplementarias.Fila, observacionecomplementarias.DetalleObservacion, observacionecomplementarias.Codigo);
 		}
 
 		/// <summary>
@@ -300,9 +300,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return observacionecomplementarias.Codigo.GetType();
-
 				case "Origen":
 					return observacionecomplementarias.Origen.GetType();
 
@@ -317,6 +314,9 @@ namespace LiqViajes_Bll_Data
 
 				case "DetalleObservacion":
 					return observacionecomplementarias.DetalleObservacion.GetType();
+
+				case "Codigo":
+					return observacionecomplementarias.Codigo.GetType();
 
 			}
 

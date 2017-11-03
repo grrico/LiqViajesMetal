@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionrutasobs.lngItemsId = (int) dr["lngItemsId"];
 				liquidacionrutasobs.lngIdRegistrRutaItemId = dr.IsNull("lngIdRegistrRutaItemId") ? null :(int?) dr["lngIdRegistrRutaItemId"];
 				liquidacionrutasobs.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(int?) dr["lngIdRegistrRuta"];
 				liquidacionrutasobs.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
@@ -60,6 +59,7 @@ namespace LiqViajes_Bll_Data
 				liquidacionrutasobs.strObservacion = dr.IsNull("strObservacion") ? null :(string) dr["strObservacion"];
 				liquidacionrutasobs.nitTercero = dr.IsNull("nitTercero") ? null :(string) dr["nitTercero"];
 				liquidacionrutasobs.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
+				liquidacionrutasobs.lngItemsId = (int) dr["lngItemsId"];
 			}
 			catch (Exception ex)
 			{
@@ -120,7 +120,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionRutasObs object by passing all object's fields
 		/// </summary>
-		/// <param name="lngItemsId">int that contents the lngItemsId value for the LiquidacionRutasObs object</param>
 		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionRutasObs object</param>
 		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionRutasObs object</param>
 		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionRutasObs object</param>
@@ -128,7 +127,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strObservacion">string that contents the strObservacion value for the LiquidacionRutasObs object</param>
 		/// <param name="nitTercero">string that contents the nitTercero value for the LiquidacionRutasObs object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the LiquidacionRutasObs object</param>
-		public void Update(int lngItemsId, int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, int? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngItemsId">int that contents the lngItemsId value for the LiquidacionRutasObs object</param>
+		public void Update(int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, int? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif, int lngItemsId, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strObservacion = strObservacion;
 				new_values.nitTercero = nitTercero;
 				new_values.dtmFechaModif = dtmFechaModif;
-				LiquidacionRutasObsDataProvider.Instance.Update(lngItemsId, lngIdRegistrRutaItemId, lngIdRegistrRuta, lngIdRegistro, strCampo, strObservacion, nitTercero, dtmFechaModif,"LiquidacionRutasObs",datosTransaccion);
+				LiquidacionRutasObsDataProvider.Instance.Update(lngIdRegistrRutaItemId, lngIdRegistrRuta, lngIdRegistro, strCampo, strObservacion, nitTercero, dtmFechaModif, lngItemsId,"LiquidacionRutasObs",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -154,7 +154,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionrutasobs">An instance of LiquidacionRutasObs for reference</param>
 		public void Update(LiquidacionRutasObs liquidacionrutasobs,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionrutasobs.lngItemsId, liquidacionrutasobs.lngIdRegistrRutaItemId, liquidacionrutasobs.lngIdRegistrRuta, liquidacionrutasobs.lngIdRegistro, liquidacionrutasobs.strCampo, liquidacionrutasobs.strObservacion, liquidacionrutasobs.nitTercero, liquidacionrutasobs.dtmFechaModif);
+			Update(liquidacionrutasobs.lngIdRegistrRutaItemId, liquidacionrutasobs.lngIdRegistrRuta, liquidacionrutasobs.lngIdRegistro, liquidacionrutasobs.strCampo, liquidacionrutasobs.strObservacion, liquidacionrutasobs.nitTercero, liquidacionrutasobs.dtmFechaModif, liquidacionrutasobs.lngItemsId);
 		}
 
 		/// <summary>
@@ -310,9 +310,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngItemsId":
-					return liquidacionrutasobs.lngItemsId.GetType();
-
 				case "lngIdRegistrRutaItemId":
 					return liquidacionrutasobs.lngIdRegistrRutaItemId.GetType();
 
@@ -333,6 +330,9 @@ namespace LiqViajes_Bll_Data
 
 				case "dtmFechaModif":
 					return liquidacionrutasobs.dtmFechaModif.GetType();
+
+				case "lngItemsId":
+					return liquidacionrutasobs.lngItemsId.GetType();
 
 			}
 

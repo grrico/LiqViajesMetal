@@ -96,12 +96,12 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRangoKilometros by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="RangoInicial"></param>
 		/// <param name="RangoFinal"></param>
 		/// <param name="Kilometros"></param>
 		/// <param name="Valor"></param>
-		public void Update(int Codigo, float RangoInicial, float RangoFinal, float Kilometros, decimal Valor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(float RangoInicial, float RangoFinal, float Kilometros, decimal Valor, int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				vehiculoskmmantenimientodet.lngIdRegistro = (int) dr["lngIdRegistro"];
 				vehiculoskmmantenimientodet.strPlaca = dr.IsNull("strPlaca") ? null :(string) dr["strPlaca"];
 				vehiculoskmmantenimientodet.lngIdTipoMantenimiento = dr.IsNull("lngIdTipoMantenimiento") ? null :(int?) dr["lngIdTipoMantenimiento"];
 				vehiculoskmmantenimientodet.dtmFechaMovimiento = dr.IsNull("dtmFechaMovimiento") ? null :(DateTime?) dr["dtmFechaMovimiento"];
@@ -63,6 +62,7 @@ namespace LiqViajes_Bll_Data
 				vehiculoskmmantenimientodet.strObservaciones = dr.IsNull("strObservaciones") ? null :(string) dr["strObservaciones"];
 				vehiculoskmmantenimientodet.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
 				vehiculoskmmantenimientodet.lngIdUsuario = dr.IsNull("lngIdUsuario") ? null :(int?) dr["lngIdUsuario"];
+				vehiculoskmmantenimientodet.lngIdRegistro = (int) dr["lngIdRegistro"];
 			}
 			catch (Exception ex)
 			{
@@ -129,7 +129,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an VehiculosKmMantenimientoDet object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculosKmMantenimientoDet object</param>
 		/// <param name="strPlaca">string that contents the strPlaca value for the VehiculosKmMantenimientoDet object</param>
 		/// <param name="lngIdTipoMantenimiento">int that contents the lngIdTipoMantenimiento value for the VehiculosKmMantenimientoDet object</param>
 		/// <param name="dtmFechaMovimiento">DateTime that contents the dtmFechaMovimiento value for the VehiculosKmMantenimientoDet object</param>
@@ -140,7 +139,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strObservaciones">string that contents the strObservaciones value for the VehiculosKmMantenimientoDet object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the VehiculosKmMantenimientoDet object</param>
 		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the VehiculosKmMantenimientoDet object</param>
-		public void Update(int lngIdRegistro, string strPlaca, int? lngIdTipoMantenimiento, DateTime? dtmFechaMovimiento, int? intKmUltimoCambio, int? intKmSiguiente, int? intAcumulado, int? intKmRestantes, string strObservaciones, DateTime? dtmFechaModif, int? lngIdUsuario, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculosKmMantenimientoDet object</param>
+		public void Update(string strPlaca, int? lngIdTipoMantenimiento, DateTime? dtmFechaMovimiento, int? intKmUltimoCambio, int? intKmSiguiente, int? intAcumulado, int? intKmRestantes, string strObservaciones, DateTime? dtmFechaModif, int? lngIdUsuario, int lngIdRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -155,7 +155,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strObservaciones = strObservaciones;
 				new_values.dtmFechaModif = dtmFechaModif;
 				new_values.lngIdUsuario = lngIdUsuario;
-				VehiculosKmMantenimientoDetDataProvider.Instance.Update(lngIdRegistro, strPlaca, lngIdTipoMantenimiento, dtmFechaMovimiento, intKmUltimoCambio, intKmSiguiente, intAcumulado, intKmRestantes, strObservaciones, dtmFechaModif, lngIdUsuario,"VehiculosKmMantenimientoDet",datosTransaccion);
+				VehiculosKmMantenimientoDetDataProvider.Instance.Update(strPlaca, lngIdTipoMantenimiento, dtmFechaMovimiento, intKmUltimoCambio, intKmSiguiente, intAcumulado, intKmRestantes, strObservaciones, dtmFechaModif, lngIdUsuario, lngIdRegistro,"VehiculosKmMantenimientoDet",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -169,7 +169,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="vehiculoskmmantenimientodet">An instance of VehiculosKmMantenimientoDet for reference</param>
 		public void Update(VehiculosKmMantenimientoDet vehiculoskmmantenimientodet,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(vehiculoskmmantenimientodet.lngIdRegistro, vehiculoskmmantenimientodet.strPlaca, vehiculoskmmantenimientodet.lngIdTipoMantenimiento, vehiculoskmmantenimientodet.dtmFechaMovimiento, vehiculoskmmantenimientodet.intKmUltimoCambio, vehiculoskmmantenimientodet.intKmSiguiente, vehiculoskmmantenimientodet.intAcumulado, vehiculoskmmantenimientodet.intKmRestantes, vehiculoskmmantenimientodet.strObservaciones, vehiculoskmmantenimientodet.dtmFechaModif, vehiculoskmmantenimientodet.lngIdUsuario);
+			Update(vehiculoskmmantenimientodet.strPlaca, vehiculoskmmantenimientodet.lngIdTipoMantenimiento, vehiculoskmmantenimientodet.dtmFechaMovimiento, vehiculoskmmantenimientodet.intKmUltimoCambio, vehiculoskmmantenimientodet.intKmSiguiente, vehiculoskmmantenimientodet.intAcumulado, vehiculoskmmantenimientodet.intKmRestantes, vehiculoskmmantenimientodet.strObservaciones, vehiculoskmmantenimientodet.dtmFechaModif, vehiculoskmmantenimientodet.lngIdUsuario, vehiculoskmmantenimientodet.lngIdRegistro);
 		}
 
 		/// <summary>
@@ -325,9 +325,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return vehiculoskmmantenimientodet.lngIdRegistro.GetType();
-
 				case "strPlaca":
 					return vehiculoskmmantenimientodet.strPlaca.GetType();
 
@@ -357,6 +354,9 @@ namespace LiqViajes_Bll_Data
 
 				case "lngIdUsuario":
 					return vehiculoskmmantenimientodet.lngIdUsuario.GetType();
+
+				case "lngIdRegistro":
+					return vehiculoskmmantenimientodet.lngIdRegistro.GetType();
 
 			}
 

@@ -67,11 +67,11 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Paises's lngIdPais value
-		private int m_lngIdPais;
-
 		// Field for storing the Paises's strNombrePais value
 		private string m_strNombrePais;
+
+		// Field for storing the Paises's lngIdPais value
+		private int m_lngIdPais;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -87,20 +87,6 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the Paises's lngIdPais value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdPais
-		{
-			get { return m_lngIdPais; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdPais = value;
-			}
-		}
-
-		/// <summary>
 		/// Attribute for access the Paises's strNombrePais value (string)
 		/// </summary>
 		[DataMember]
@@ -114,12 +100,26 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Paises's lngIdPais value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdPais
+		{
+			get { return m_lngIdPais; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdPais = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdPais": return lngIdPais;
 				case "strNombrePais": return strNombrePais;
+				case "lngIdPais": return lngIdPais;
 				default: return null;
 			}
 		}

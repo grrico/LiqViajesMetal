@@ -52,10 +52,10 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				reportes.Codigo = (int) dr["Codigo"];
 				reportes.Descripcion = dr.IsNull("Descripcion") ? null :(string) dr["Descripcion"];
 				reportes.Activo = dr.IsNull("Activo") ? null :(bool?) dr["Activo"];
 				reportes.strSQql = dr.IsNull("strSQql") ? null :(string) dr["strSQql"];
+				reportes.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -103,11 +103,11 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Reportes object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the Reportes object</param>
 		/// <param name="Descripcion">string that contents the Descripcion value for the Reportes object</param>
 		/// <param name="Activo">bool that contents the Activo value for the Reportes object</param>
 		/// <param name="strSQql">string that contents the strSQql value for the Reportes object</param>
-		public void Update(int Codigo, string Descripcion, bool? Activo, string strSQql, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">int that contents the Codigo value for the Reportes object</param>
+		public void Update(string Descripcion, bool? Activo, string strSQql, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -115,7 +115,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Descripcion = Descripcion;
 				new_values.Activo = Activo;
 				new_values.strSQql = strSQql;
-				ReportesDataProvider.Instance.Update(Codigo, Descripcion, Activo, strSQql,"Reportes",datosTransaccion);
+				ReportesDataProvider.Instance.Update(Descripcion, Activo, strSQql, Codigo,"Reportes",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -129,7 +129,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="reportes">An instance of Reportes for reference</param>
 		public void Update(Reportes reportes,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(reportes.Codigo, reportes.Descripcion, reportes.Activo, reportes.strSQql);
+			Update(reportes.Descripcion, reportes.Activo, reportes.strSQql, reportes.Codigo);
 		}
 
 		/// <summary>
@@ -281,9 +281,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return reportes.Codigo.GetType();
-
 				case "Descripcion":
 					return reportes.Descripcion.GetType();
 
@@ -292,6 +289,9 @@ namespace LiqViajes_Bll_Data
 
 				case "strSQql":
 					return reportes.strSQql.GetType();
+
+				case "Codigo":
+					return reportes.Codigo.GetType();
 
 			}
 

@@ -183,12 +183,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the VehiculoForWin's lngIdRegistro value
-		private int m_lngIdRegistro;
-
-		// Field for storing the VehiculoForWin's lngIdUsuario value
-		private int m_lngIdUsuario;
-
 		// Field for storing the VehiculoForWin's strPlaca value
 		private int m_strPlaca;
 
@@ -306,6 +300,12 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the VehiculoForWin's logVencimientoFecha value
 		private int? m_logVencimientoFecha;
 
+		// Field for storing the VehiculoForWin's lngIdRegistro value
+		private int m_lngIdRegistro;
+
+		// Field for storing the VehiculoForWin's lngIdUsuario value
+		private int m_lngIdUsuario;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -319,34 +319,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the VehiculoForWin's lngIdRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistro
-		{
-			get { return m_lngIdRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistro = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the VehiculoForWin's lngIdUsuario value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdUsuario
-		{
-			get { return m_lngIdUsuario; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdUsuario = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the VehiculoForWin's strPlaca value (int)
 		/// </summary>
@@ -893,12 +865,38 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the VehiculoForWin's lngIdRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VehiculoForWin's lngIdUsuario value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdUsuario
+		{
+			get { return m_lngIdUsuario; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdUsuario = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistro": return lngIdRegistro;
-				case "lngIdUsuario": return lngIdUsuario;
 				case "strPlaca": return strPlaca;
 				case "centro": return centro;
 				case "TipoVehiculoCodigo": return TipoVehiculoCodigo;
@@ -938,6 +936,8 @@ namespace LiqViajes_Bll_Data
 				case "dtmFechaInicioTarjetaOper": return dtmFechaInicioTarjetaOper;
 				case "dtmFechaVenceTarjetaOper": return dtmFechaVenceTarjetaOper;
 				case "logVencimientoFecha": return logVencimientoFecha;
+				case "lngIdRegistro": return lngIdRegistro;
+				case "lngIdUsuario": return lngIdUsuario;
 				default: return null;
 			}
 		}

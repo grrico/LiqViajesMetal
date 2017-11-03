@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tramosreportesliqvehiculos.Registro = (long) dr["Registro"];
 				tramosreportesliqvehiculos.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
 				tramosreportesliqvehiculos.Centro = dr.IsNull("Centro") ? null :(double?) dr["Centro"];
 				tramosreportesliqvehiculos.Marca = dr.IsNull("Marca") ? null :(string) dr["Marca"];
@@ -63,6 +62,7 @@ namespace LiqViajes_Bll_Data
 				tramosreportesliqvehiculos.TotalGatos = dr.IsNull("TotalGatos") ? null :(decimal?) dr["TotalGatos"];
 				tramosreportesliqvehiculos.TotalAnticipos = dr.IsNull("TotalAnticipos") ? null :(decimal?) dr["TotalAnticipos"];
 				tramosreportesliqvehiculos.TotalGeneral = dr.IsNull("TotalGeneral") ? null :(decimal?) dr["TotalGeneral"];
+				tramosreportesliqvehiculos.Registro = (long) dr["Registro"];
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TramosReportesLiqVehiculos object by passing all object's fields
 		/// </summary>
-		/// <param name="Registro">long that contents the Registro value for the TramosReportesLiqVehiculos object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the TramosReportesLiqVehiculos object</param>
 		/// <param name="Centro">double that contents the Centro value for the TramosReportesLiqVehiculos object</param>
 		/// <param name="Marca">string that contents the Marca value for the TramosReportesLiqVehiculos object</param>
@@ -135,7 +134,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="TotalGatos">decimal that contents the TotalGatos value for the TramosReportesLiqVehiculos object</param>
 		/// <param name="TotalAnticipos">decimal that contents the TotalAnticipos value for the TramosReportesLiqVehiculos object</param>
 		/// <param name="TotalGeneral">decimal that contents the TotalGeneral value for the TramosReportesLiqVehiculos object</param>
-		public void Update(long Registro, DateTime? Fecha, double? Centro, string Marca, string Placa, double? Modelo, string CedulaConductor, string NombreConductor, decimal? TotalGatos, decimal? TotalAnticipos, decimal? TotalGeneral, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Registro">long that contents the Registro value for the TramosReportesLiqVehiculos object</param>
+		public void Update(DateTime? Fecha, double? Centro, string Marca, string Placa, double? Modelo, string CedulaConductor, string NombreConductor, decimal? TotalGatos, decimal? TotalAnticipos, decimal? TotalGeneral, long Registro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -150,7 +150,7 @@ namespace LiqViajes_Bll_Data
 				new_values.TotalGatos = TotalGatos;
 				new_values.TotalAnticipos = TotalAnticipos;
 				new_values.TotalGeneral = TotalGeneral;
-				TramosReportesLiqVehiculosDataProvider.Instance.Update(Registro, Fecha, Centro, Marca, Placa, Modelo, CedulaConductor, NombreConductor, TotalGatos, TotalAnticipos, TotalGeneral,"TramosReportesLiqVehiculos",datosTransaccion);
+				TramosReportesLiqVehiculosDataProvider.Instance.Update(Fecha, Centro, Marca, Placa, Modelo, CedulaConductor, NombreConductor, TotalGatos, TotalAnticipos, TotalGeneral, Registro,"TramosReportesLiqVehiculos",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -164,7 +164,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tramosreportesliqvehiculos">An instance of TramosReportesLiqVehiculos for reference</param>
 		public void Update(TramosReportesLiqVehiculos tramosreportesliqvehiculos,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tramosreportesliqvehiculos.Registro, tramosreportesliqvehiculos.Fecha, tramosreportesliqvehiculos.Centro, tramosreportesliqvehiculos.Marca, tramosreportesliqvehiculos.Placa, tramosreportesliqvehiculos.Modelo, tramosreportesliqvehiculos.CedulaConductor, tramosreportesliqvehiculos.NombreConductor, tramosreportesliqvehiculos.TotalGatos, tramosreportesliqvehiculos.TotalAnticipos, tramosreportesliqvehiculos.TotalGeneral);
+			Update(tramosreportesliqvehiculos.Fecha, tramosreportesliqvehiculos.Centro, tramosreportesliqvehiculos.Marca, tramosreportesliqvehiculos.Placa, tramosreportesliqvehiculos.Modelo, tramosreportesliqvehiculos.CedulaConductor, tramosreportesliqvehiculos.NombreConductor, tramosreportesliqvehiculos.TotalGatos, tramosreportesliqvehiculos.TotalAnticipos, tramosreportesliqvehiculos.TotalGeneral, tramosreportesliqvehiculos.Registro);
 		}
 
 		/// <summary>
@@ -316,9 +316,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Registro":
-					return tramosreportesliqvehiculos.Registro.GetType();
-
 				case "Fecha":
 					return tramosreportesliqvehiculos.Fecha.GetType();
 
@@ -348,6 +345,9 @@ namespace LiqViajes_Bll_Data
 
 				case "TotalGeneral":
 					return tramosreportesliqvehiculos.TotalGeneral.GetType();
+
+				case "Registro":
+					return tramosreportesliqvehiculos.Registro.GetType();
 
 			}
 

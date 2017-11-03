@@ -115,9 +115,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the LiquidacionRutasCombustible's Codigo value
-		private long m_Codigo;
-
 		// Field for storing the LiquidacionRutasCombustible's lngIdRegistrRutaItemId value
 		private int? m_lngIdRegistrRutaItemId;
 
@@ -169,6 +166,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionRutasCombustible's strObservaciones value
 		private string m_strObservaciones;
 
+		// Field for storing the LiquidacionRutasCombustible's Codigo value
+		private long m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -182,20 +182,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the LiquidacionRutasCombustible's Codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the LiquidacionRutasCombustible's lngIdRegistrRutaItemId value (int)
 		/// </summary>
@@ -434,11 +420,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the LiquidacionRutasCombustible's Codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
 				case "lngIdRegistro": return lngIdRegistro;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
@@ -456,6 +455,7 @@ namespace LiqViajes_Bll_Data
 				case "curValorGalonComplentario": return curValorGalonComplentario;
 				case "cutCombustibleComplementario": return cutCombustibleComplementario;
 				case "strObservaciones": return strObservaciones;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

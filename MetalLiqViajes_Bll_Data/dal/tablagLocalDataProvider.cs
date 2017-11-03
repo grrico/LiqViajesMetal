@@ -99,11 +99,11 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tablagLocal by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="ano"></param>
 		/// <param name="periodo"></param>
 		/// <param name="fecha"></param>
-		public void Update(int Codigo, int? ano, int? periodo, DateTime? fecha,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(int? ano, int? periodo, DateTime? fecha, int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

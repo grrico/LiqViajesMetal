@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionvehiculo.lngIdRegistro = (int) dr["lngIdRegistro"];
 				liquidacionvehiculo.strPlaca = dr.IsNull("strPlaca") ? null :(string) dr["strPlaca"];
 				liquidacionvehiculo.intNitConductor = dr.IsNull("intNitConductor") ? null :(decimal?) dr["intNitConductor"];
 				liquidacionvehiculo.curGastos = dr.IsNull("curGastos") ? null :(decimal?) dr["curGastos"];
@@ -75,6 +74,7 @@ namespace LiqViajes_Bll_Data
 				liquidacionvehiculo.logLiquKilometros = dr.IsNull("logLiquKilometros") ? null :(bool?) dr["logLiquKilometros"];
 				liquidacionvehiculo.curValorKilometros = dr.IsNull("curValorKilometros") ? null :(decimal?) dr["curValorKilometros"];
 				liquidacionvehiculo.Kilometros = dr.IsNull("Kilometros") ? null :(int?) dr["Kilometros"];
+				liquidacionvehiculo.lngIdRegistro = (int) dr["lngIdRegistro"];
 			}
 			catch (Exception ex)
 			{
@@ -165,7 +165,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionVehiculo object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionVehiculo object</param>
 		/// <param name="strPlaca">string that contents the strPlaca value for the LiquidacionVehiculo object</param>
 		/// <param name="intNitConductor">decimal that contents the intNitConductor value for the LiquidacionVehiculo object</param>
 		/// <param name="curGastos">decimal that contents the curGastos value for the LiquidacionVehiculo object</param>
@@ -188,7 +187,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="logLiquKilometros">bool that contents the logLiquKilometros value for the LiquidacionVehiculo object</param>
 		/// <param name="curValorKilometros">decimal that contents the curValorKilometros value for the LiquidacionVehiculo object</param>
 		/// <param name="Kilometros">int that contents the Kilometros value for the LiquidacionVehiculo object</param>
-		public void Update(int lngIdRegistro, string strPlaca, decimal? intNitConductor, decimal? curGastos, decimal? curAnticipos, decimal? curTotal, DateTime? dtmFechaModif, bool? logLiquidado, float? sngRentabilidad, decimal? curValorFleteAcum, bool? logDesplazaVacio, bool? logSePuedeLiquidar, decimal? curValorFlete, decimal? curvalorUtilidad, decimal? curValorRentabilidad, decimal? TotalGalones, decimal? cutCombustible, decimal? cutParticipacion, decimal? cutParticipacionVacio, bool? logLiquParticipacion, bool? logLiquKilometros, decimal? curValorKilometros, int? Kilometros, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionVehiculo object</param>
+		public void Update(string strPlaca, decimal? intNitConductor, decimal? curGastos, decimal? curAnticipos, decimal? curTotal, DateTime? dtmFechaModif, bool? logLiquidado, float? sngRentabilidad, decimal? curValorFleteAcum, bool? logDesplazaVacio, bool? logSePuedeLiquidar, decimal? curValorFlete, decimal? curvalorUtilidad, decimal? curValorRentabilidad, decimal? TotalGalones, decimal? cutCombustible, decimal? cutParticipacion, decimal? cutParticipacionVacio, bool? logLiquParticipacion, bool? logLiquKilometros, decimal? curValorKilometros, int? Kilometros, int lngIdRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -215,7 +215,7 @@ namespace LiqViajes_Bll_Data
 				new_values.logLiquKilometros = logLiquKilometros;
 				new_values.curValorKilometros = curValorKilometros;
 				new_values.Kilometros = Kilometros;
-				LiquidacionVehiculoDataProvider.Instance.Update(lngIdRegistro, strPlaca, intNitConductor, curGastos, curAnticipos, curTotal, dtmFechaModif, logLiquidado, sngRentabilidad, curValorFleteAcum, logDesplazaVacio, logSePuedeLiquidar, curValorFlete, curvalorUtilidad, curValorRentabilidad, TotalGalones, cutCombustible, cutParticipacion, cutParticipacionVacio, logLiquParticipacion, logLiquKilometros, curValorKilometros, Kilometros,"LiquidacionVehiculo",datosTransaccion);
+				LiquidacionVehiculoDataProvider.Instance.Update(strPlaca, intNitConductor, curGastos, curAnticipos, curTotal, dtmFechaModif, logLiquidado, sngRentabilidad, curValorFleteAcum, logDesplazaVacio, logSePuedeLiquidar, curValorFlete, curvalorUtilidad, curValorRentabilidad, TotalGalones, cutCombustible, cutParticipacion, cutParticipacionVacio, logLiquParticipacion, logLiquKilometros, curValorKilometros, Kilometros, lngIdRegistro,"LiquidacionVehiculo",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -229,7 +229,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionvehiculo">An instance of LiquidacionVehiculo for reference</param>
 		public void Update(LiquidacionVehiculo liquidacionvehiculo,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionvehiculo.lngIdRegistro, liquidacionvehiculo.strPlaca, liquidacionvehiculo.intNitConductor, liquidacionvehiculo.curGastos, liquidacionvehiculo.curAnticipos, liquidacionvehiculo.curTotal, liquidacionvehiculo.dtmFechaModif, liquidacionvehiculo.logLiquidado, liquidacionvehiculo.sngRentabilidad, liquidacionvehiculo.curValorFleteAcum, liquidacionvehiculo.logDesplazaVacio, liquidacionvehiculo.logSePuedeLiquidar, liquidacionvehiculo.curValorFlete, liquidacionvehiculo.curvalorUtilidad, liquidacionvehiculo.curValorRentabilidad, liquidacionvehiculo.TotalGalones, liquidacionvehiculo.cutCombustible, liquidacionvehiculo.cutParticipacion, liquidacionvehiculo.cutParticipacionVacio, liquidacionvehiculo.logLiquParticipacion, liquidacionvehiculo.logLiquKilometros, liquidacionvehiculo.curValorKilometros, liquidacionvehiculo.Kilometros);
+			Update(liquidacionvehiculo.strPlaca, liquidacionvehiculo.intNitConductor, liquidacionvehiculo.curGastos, liquidacionvehiculo.curAnticipos, liquidacionvehiculo.curTotal, liquidacionvehiculo.dtmFechaModif, liquidacionvehiculo.logLiquidado, liquidacionvehiculo.sngRentabilidad, liquidacionvehiculo.curValorFleteAcum, liquidacionvehiculo.logDesplazaVacio, liquidacionvehiculo.logSePuedeLiquidar, liquidacionvehiculo.curValorFlete, liquidacionvehiculo.curvalorUtilidad, liquidacionvehiculo.curValorRentabilidad, liquidacionvehiculo.TotalGalones, liquidacionvehiculo.cutCombustible, liquidacionvehiculo.cutParticipacion, liquidacionvehiculo.cutParticipacionVacio, liquidacionvehiculo.logLiquParticipacion, liquidacionvehiculo.logLiquKilometros, liquidacionvehiculo.curValorKilometros, liquidacionvehiculo.Kilometros, liquidacionvehiculo.lngIdRegistro);
 		}
 
 		/// <summary>
@@ -411,9 +411,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return liquidacionvehiculo.lngIdRegistro.GetType();
-
 				case "strPlaca":
 					return liquidacionvehiculo.strPlaca.GetType();
 
@@ -479,6 +476,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Kilometros":
 					return liquidacionvehiculo.Kilometros.GetType();
+
+				case "lngIdRegistro":
+					return liquidacionvehiculo.lngIdRegistro.GetType();
 
 			}
 

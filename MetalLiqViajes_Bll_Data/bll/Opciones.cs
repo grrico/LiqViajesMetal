@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				opciones.lngIdOpcion = (int) dr["lngIdOpcion"];
 				opciones.strDescOpcion = dr.IsNull("strDescOpcion") ? null :(string) dr["strDescOpcion"];
 				opciones.strPrograma = dr.IsNull("strPrograma") ? null :(string) dr["strPrograma"];
 				opciones.strParametros = dr.IsNull("strParametros") ? null :(string) dr["strParametros"];
@@ -61,6 +60,7 @@ namespace LiqViajes_Bll_Data
 				opciones.intOrden = dr.IsNull("intOrden") ? null :(int?) dr["intOrden"];
 				opciones.WebBrowser = dr.IsNull("WebBrowser") ? null :(bool?) dr["WebBrowser"];
 				opciones.logExpandeNode = dr.IsNull("logExpandeNode") ? null :(bool?) dr["logExpandeNode"];
+				opciones.lngIdOpcion = (int) dr["lngIdOpcion"];
 			}
 			catch (Exception ex)
 			{
@@ -118,7 +118,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Opciones object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdOpcion">int that contents the lngIdOpcion value for the Opciones object</param>
 		/// <param name="strDescOpcion">string that contents the strDescOpcion value for the Opciones object</param>
 		/// <param name="strPrograma">string that contents the strPrograma value for the Opciones object</param>
 		/// <param name="strParametros">string that contents the strParametros value for the Opciones object</param>
@@ -127,7 +126,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="intOrden">int that contents the intOrden value for the Opciones object</param>
 		/// <param name="WebBrowser">bool that contents the WebBrowser value for the Opciones object</param>
 		/// <param name="logExpandeNode">bool that contents the logExpandeNode value for the Opciones object</param>
-		public void Update(int lngIdOpcion, string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, bool? logExpandeNode, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdOpcion">int that contents the lngIdOpcion value for the Opciones object</param>
+		public void Update(string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, bool? logExpandeNode, int lngIdOpcion, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 				new_values.intOrden = intOrden;
 				new_values.WebBrowser = WebBrowser;
 				new_values.logExpandeNode = logExpandeNode;
-				OpcionesDataProvider.Instance.Update(lngIdOpcion, strDescOpcion, strPrograma, strParametros, lngIdOpcionPadre, strTipoOpcion, intOrden, WebBrowser, logExpandeNode,"Opciones",datosTransaccion);
+				OpcionesDataProvider.Instance.Update(strDescOpcion, strPrograma, strParametros, lngIdOpcionPadre, strTipoOpcion, intOrden, WebBrowser, logExpandeNode, lngIdOpcion,"Opciones",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -154,7 +154,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="opciones">An instance of Opciones for reference</param>
 		public void Update(Opciones opciones,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(opciones.lngIdOpcion, opciones.strDescOpcion, opciones.strPrograma, opciones.strParametros, opciones.lngIdOpcionPadre, opciones.strTipoOpcion, opciones.intOrden, opciones.WebBrowser, opciones.logExpandeNode);
+			Update(opciones.strDescOpcion, opciones.strPrograma, opciones.strParametros, opciones.lngIdOpcionPadre, opciones.strTipoOpcion, opciones.intOrden, opciones.WebBrowser, opciones.logExpandeNode, opciones.lngIdOpcion);
 		}
 
 		/// <summary>
@@ -209,14 +209,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Opciones opciones = null;
-				DataTable dt = OpcionesDataProvider.Instance.Get(lngIdOpcion);
-				if ((dt.Rows.Count > 0))
+				opciones= MasterTables.Opciones.Where(r => r.lngIdOpcion== lngIdOpcion).FirstOrDefault();
+				if (opciones== null)
 				{
-					opciones = new Opciones();
-					DataRow dr = dt.Rows[0];
-					ReadData(opciones, dr, generateUndo);
+					MasterTables.Reset("Opciones");
+					opciones= MasterTables.Opciones.Where(r => r.lngIdOpcion== lngIdOpcion).FirstOrDefault();
 				}
-
+				if (generateUndo) opciones.GenerateUndo();
 
 				return opciones;
 			}
@@ -306,9 +305,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdOpcion":
-					return opciones.lngIdOpcion.GetType();
-
 				case "strDescOpcion":
 					return opciones.strDescOpcion.GetType();
 
@@ -332,6 +328,9 @@ namespace LiqViajes_Bll_Data
 
 				case "logExpandeNode":
 					return opciones.logExpandeNode.GetType();
+
+				case "lngIdOpcion":
+					return opciones.lngIdOpcion.GetType();
 
 			}
 

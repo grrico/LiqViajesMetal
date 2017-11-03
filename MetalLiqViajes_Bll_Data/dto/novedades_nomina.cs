@@ -127,21 +127,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the novedades_nomina's IdNovedad value
-		private int m_IdNovedad;
-
-		// Field for storing the novedades_nomina's nomina value
-		private string m_nomina;
-
-		// Field for storing the novedades_nomina's contrato value
-		private int m_contrato;
-
-		// Field for storing the novedades_nomina's nit value
-		private string m_nit;
-
-		// Field for storing the novedades_nomina's idperiodo value
-		private int m_idperiodo;
-
 		// Field for storing the novedades_nomina's concepto value
 		private short m_concepto;
 
@@ -165,12 +150,6 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the novedades_nomina's dias value
 		private float? m_dias;
-
-		// Field for storing the novedades_nomina's centro value
-		private int m_centro;
-
-		// Field for storing the novedades_nomina's planta value
-		private byte m_planta;
 
 		// Field for storing the novedades_nomina's turno value
 		private byte? m_turno;
@@ -199,6 +178,27 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the novedades_nomina's cuota value
 		private int? m_cuota;
 
+		// Field for storing the novedades_nomina's IdNovedad value
+		private int m_IdNovedad;
+
+		// Field for storing the novedades_nomina's nomina value
+		private string m_nomina;
+
+		// Field for storing the novedades_nomina's contrato value
+		private int m_contrato;
+
+		// Field for storing the novedades_nomina's nit value
+		private string m_nit;
+
+		// Field for storing the novedades_nomina's idperiodo value
+		private int m_idperiodo;
+
+		// Field for storing the novedades_nomina's centro value
+		private int m_centro;
+
+		// Field for storing the novedades_nomina's planta value
+		private byte m_planta;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -212,76 +212,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the novedades_nomina's IdNovedad value (int)
-		/// </summary>
-		[DataMember]
-		public int IdNovedad
-		{
-			get { return m_IdNovedad; }
-			set 
-			{
-				m_changed=true;
-				m_IdNovedad = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the novedades_nomina's nomina value (string)
-		/// </summary>
-		[DataMember]
-		public string nomina
-		{
-			get { return m_nomina; }
-			set 
-			{
-				m_changed=true;
-				m_nomina = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the novedades_nomina's contrato value (int)
-		/// </summary>
-		[DataMember]
-		public int contrato
-		{
-			get { return m_contrato; }
-			set 
-			{
-				m_changed=true;
-				m_contrato = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the novedades_nomina's nit value (string)
-		/// </summary>
-		[DataMember]
-		public string nit
-		{
-			get { return m_nit; }
-			set 
-			{
-				m_changed=true;
-				m_nit = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the novedades_nomina's idperiodo value (int)
-		/// </summary>
-		[DataMember]
-		public int idperiodo
-		{
-			get { return m_idperiodo; }
-			set 
-			{
-				m_changed=true;
-				m_idperiodo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the novedades_nomina's concepto value (short)
 		/// </summary>
@@ -391,34 +321,6 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_dias = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the novedades_nomina's centro value (int)
-		/// </summary>
-		[DataMember]
-		public int centro
-		{
-			get { return m_centro; }
-			set 
-			{
-				m_changed=true;
-				m_centro = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the novedades_nomina's planta value (byte)
-		/// </summary>
-		[DataMember]
-		public byte planta
-		{
-			get { return m_planta; }
-			set 
-			{
-				m_changed=true;
-				m_planta = value;
 			}
 		}
 
@@ -548,15 +450,108 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the novedades_nomina's IdNovedad value (int)
+		/// </summary>
+		[DataMember]
+		public int IdNovedad
+		{
+			get { return m_IdNovedad; }
+			set 
+			{
+				m_changed=true;
+				m_IdNovedad = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the novedades_nomina's nomina value (string)
+		/// </summary>
+		[DataMember]
+		public string nomina
+		{
+			get { return m_nomina; }
+			set 
+			{
+				m_changed=true;
+				m_nomina = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the novedades_nomina's contrato value (int)
+		/// </summary>
+		[DataMember]
+		public int contrato
+		{
+			get { return m_contrato; }
+			set 
+			{
+				m_changed=true;
+				m_contrato = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the novedades_nomina's nit value (string)
+		/// </summary>
+		[DataMember]
+		public string nit
+		{
+			get { return m_nit; }
+			set 
+			{
+				m_changed=true;
+				m_nit = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the novedades_nomina's idperiodo value (int)
+		/// </summary>
+		[DataMember]
+		public int idperiodo
+		{
+			get { return m_idperiodo; }
+			set 
+			{
+				m_changed=true;
+				m_idperiodo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the novedades_nomina's centro value (int)
+		/// </summary>
+		[DataMember]
+		public int centro
+		{
+			get { return m_centro; }
+			set 
+			{
+				m_changed=true;
+				m_centro = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the novedades_nomina's planta value (byte)
+		/// </summary>
+		[DataMember]
+		public byte planta
+		{
+			get { return m_planta; }
+			set 
+			{
+				m_changed=true;
+				m_planta = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "IdNovedad": return IdNovedad;
-				case "nomina": return nomina;
-				case "contrato": return contrato;
-				case "nit": return nit;
-				case "idperiodo": return idperiodo;
 				case "concepto": return concepto;
 				case "fecha": return fecha;
 				case "mes": return mes;
@@ -565,8 +560,6 @@ namespace LiqViajes_Bll_Data
 				case "valor": return valor;
 				case "horas": return horas;
 				case "dias": return dias;
-				case "centro": return centro;
-				case "planta": return planta;
 				case "turno": return turno;
 				case "estado": return estado;
 				case "nro_presta": return nro_presta;
@@ -576,6 +569,13 @@ namespace LiqViajes_Bll_Data
 				case "tipo_doc": return tipo_doc;
 				case "numero_doc": return numero_doc;
 				case "cuota": return cuota;
+				case "IdNovedad": return IdNovedad;
+				case "nomina": return nomina;
+				case "contrato": return contrato;
+				case "nit": return nit;
+				case "idperiodo": return idperiodo;
+				case "centro": return centro;
+				case "planta": return planta;
 				default: return null;
 			}
 		}

@@ -82,9 +82,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TramosConsultaAnticipos's Codigo value
-		private long m_Codigo;
-
 		// Field for storing the TramosConsultaAnticipos's IdRegistroViajeTramo value
 		private long? m_IdRegistroViajeTramo;
 
@@ -103,6 +100,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TramosConsultaAnticipos's Fecha value
 		private DateTime? m_Fecha;
 
+		// Field for storing the TramosConsultaAnticipos's Codigo value
+		private long m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -116,20 +116,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TramosConsultaAnticipos's Codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TramosConsultaAnticipos's IdRegistroViajeTramo value (long)
 		/// </summary>
@@ -214,17 +200,31 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TramosConsultaAnticipos's Codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "IdRegistroViajeTramo": return IdRegistroViajeTramo;
 				case "Tipo": return Tipo;
 				case "Documento": return Documento;
 				case "NombreBanco": return NombreBanco;
 				case "ValorAnticipo": return ValorAnticipo;
 				case "Fecha": return Fecha;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

@@ -52,8 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tercerosconductoreswinfor.lngIdRegistro = (int) dr["lngIdRegistro"];
-				tercerosconductoreswinfor.lngIdUsuario = (int) dr["lngIdUsuario"];
 				tercerosconductoreswinfor.strTipoIdentificacion = dr.IsNull("strTipoIdentificacion") ? null :(int?) dr["strTipoIdentificacion"];
 				tercerosconductoreswinfor.IntNit = dr.IsNull("IntNit") ? null :(int?) dr["IntNit"];
 				tercerosconductoreswinfor.intDigito = dr.IsNull("intDigito") ? null :(int?) dr["intDigito"];
@@ -78,6 +76,8 @@ namespace LiqViajes_Bll_Data
 				tercerosconductoreswinfor.dtmVenceTarjetaTripulante = dr.IsNull("dtmVenceTarjetaTripulante") ? null :(int?) dr["dtmVenceTarjetaTripulante"];
 				tercerosconductoreswinfor.strCarnetEmpresa = dr.IsNull("strCarnetEmpresa") ? null :(int?) dr["strCarnetEmpresa"];
 				tercerosconductoreswinfor.strCarnetComunicaciones = dr.IsNull("strCarnetComunicaciones") ? null :(int?) dr["strCarnetComunicaciones"];
+				tercerosconductoreswinfor.lngIdRegistro = (int) dr["lngIdRegistro"];
+				tercerosconductoreswinfor.lngIdUsuario = (int) dr["lngIdUsuario"];
 			}
 			catch (Exception ex)
 			{
@@ -168,8 +168,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TercerosConductoresWinFor object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the TercerosConductoresWinFor object</param>
-		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the TercerosConductoresWinFor object</param>
 		/// <param name="strTipoIdentificacion">int that contents the strTipoIdentificacion value for the TercerosConductoresWinFor object</param>
 		/// <param name="IntNit">int that contents the IntNit value for the TercerosConductoresWinFor object</param>
 		/// <param name="intDigito">int that contents the intDigito value for the TercerosConductoresWinFor object</param>
@@ -194,7 +192,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmVenceTarjetaTripulante">int that contents the dtmVenceTarjetaTripulante value for the TercerosConductoresWinFor object</param>
 		/// <param name="strCarnetEmpresa">int that contents the strCarnetEmpresa value for the TercerosConductoresWinFor object</param>
 		/// <param name="strCarnetComunicaciones">int that contents the strCarnetComunicaciones value for the TercerosConductoresWinFor object</param>
-		public void Update(int lngIdRegistro, int lngIdUsuario, int? strTipoIdentificacion, int? IntNit, int? intDigito, int? strNombres, int? strDireccion, int? logEstado, int? logConductor, int? strPlaca, int? lngIdCiudad, int? strTelefono, int? strTelefonoAux, int? strTelCelular, int? strTelCelularAux, int? strFax, int? IntAAereo, int? StrPais, int? nitProvedor, int? intNoLicenciaConduc, int? intCategoria, int? strTarjetaTripulante, int? dtmFechaVenceLicencia, int? dtmVenceTarjetaTripulante, int? strCarnetEmpresa, int? strCarnetComunicaciones, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the TercerosConductoresWinFor object</param>
+		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the TercerosConductoresWinFor object</param>
+		public void Update(int? strTipoIdentificacion, int? IntNit, int? intDigito, int? strNombres, int? strDireccion, int? logEstado, int? logConductor, int? strPlaca, int? lngIdCiudad, int? strTelefono, int? strTelefonoAux, int? strTelCelular, int? strTelCelularAux, int? strFax, int? IntAAereo, int? StrPais, int? nitProvedor, int? intNoLicenciaConduc, int? intCategoria, int? strTarjetaTripulante, int? dtmFechaVenceLicencia, int? dtmVenceTarjetaTripulante, int? strCarnetEmpresa, int? strCarnetComunicaciones, int lngIdRegistro, int lngIdUsuario, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -223,7 +223,7 @@ namespace LiqViajes_Bll_Data
 				new_values.dtmVenceTarjetaTripulante = dtmVenceTarjetaTripulante;
 				new_values.strCarnetEmpresa = strCarnetEmpresa;
 				new_values.strCarnetComunicaciones = strCarnetComunicaciones;
-				TercerosConductoresWinForDataProvider.Instance.Update(lngIdRegistro, lngIdUsuario, strTipoIdentificacion, IntNit, intDigito, strNombres, strDireccion, logEstado, logConductor, strPlaca, lngIdCiudad, strTelefono, strTelefonoAux, strTelCelular, strTelCelularAux, strFax, IntAAereo, StrPais, nitProvedor, intNoLicenciaConduc, intCategoria, strTarjetaTripulante, dtmFechaVenceLicencia, dtmVenceTarjetaTripulante, strCarnetEmpresa, strCarnetComunicaciones,"TercerosConductoresWinFor",datosTransaccion);
+				TercerosConductoresWinForDataProvider.Instance.Update(strTipoIdentificacion, IntNit, intDigito, strNombres, strDireccion, logEstado, logConductor, strPlaca, lngIdCiudad, strTelefono, strTelefonoAux, strTelCelular, strTelCelularAux, strFax, IntAAereo, StrPais, nitProvedor, intNoLicenciaConduc, intCategoria, strTarjetaTripulante, dtmFechaVenceLicencia, dtmVenceTarjetaTripulante, strCarnetEmpresa, strCarnetComunicaciones, lngIdRegistro, lngIdUsuario,"TercerosConductoresWinFor",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -237,7 +237,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tercerosconductoreswinfor">An instance of TercerosConductoresWinFor for reference</param>
 		public void Update(TercerosConductoresWinFor tercerosconductoreswinfor,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tercerosconductoreswinfor.lngIdRegistro, tercerosconductoreswinfor.lngIdUsuario, tercerosconductoreswinfor.strTipoIdentificacion, tercerosconductoreswinfor.IntNit, tercerosconductoreswinfor.intDigito, tercerosconductoreswinfor.strNombres, tercerosconductoreswinfor.strDireccion, tercerosconductoreswinfor.logEstado, tercerosconductoreswinfor.logConductor, tercerosconductoreswinfor.strPlaca, tercerosconductoreswinfor.lngIdCiudad, tercerosconductoreswinfor.strTelefono, tercerosconductoreswinfor.strTelefonoAux, tercerosconductoreswinfor.strTelCelular, tercerosconductoreswinfor.strTelCelularAux, tercerosconductoreswinfor.strFax, tercerosconductoreswinfor.IntAAereo, tercerosconductoreswinfor.StrPais, tercerosconductoreswinfor.nitProvedor, tercerosconductoreswinfor.intNoLicenciaConduc, tercerosconductoreswinfor.intCategoria, tercerosconductoreswinfor.strTarjetaTripulante, tercerosconductoreswinfor.dtmFechaVenceLicencia, tercerosconductoreswinfor.dtmVenceTarjetaTripulante, tercerosconductoreswinfor.strCarnetEmpresa, tercerosconductoreswinfor.strCarnetComunicaciones);
+			Update(tercerosconductoreswinfor.strTipoIdentificacion, tercerosconductoreswinfor.IntNit, tercerosconductoreswinfor.intDigito, tercerosconductoreswinfor.strNombres, tercerosconductoreswinfor.strDireccion, tercerosconductoreswinfor.logEstado, tercerosconductoreswinfor.logConductor, tercerosconductoreswinfor.strPlaca, tercerosconductoreswinfor.lngIdCiudad, tercerosconductoreswinfor.strTelefono, tercerosconductoreswinfor.strTelefonoAux, tercerosconductoreswinfor.strTelCelular, tercerosconductoreswinfor.strTelCelularAux, tercerosconductoreswinfor.strFax, tercerosconductoreswinfor.IntAAereo, tercerosconductoreswinfor.StrPais, tercerosconductoreswinfor.nitProvedor, tercerosconductoreswinfor.intNoLicenciaConduc, tercerosconductoreswinfor.intCategoria, tercerosconductoreswinfor.strTarjetaTripulante, tercerosconductoreswinfor.dtmFechaVenceLicencia, tercerosconductoreswinfor.dtmVenceTarjetaTripulante, tercerosconductoreswinfor.strCarnetEmpresa, tercerosconductoreswinfor.strCarnetComunicaciones, tercerosconductoreswinfor.lngIdRegistro, tercerosconductoreswinfor.lngIdUsuario);
 		}
 
 		/// <summary>
@@ -391,12 +391,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return tercerosconductoreswinfor.lngIdRegistro.GetType();
-
-				case "lngIdUsuario":
-					return tercerosconductoreswinfor.lngIdUsuario.GetType();
-
 				case "strTipoIdentificacion":
 					return tercerosconductoreswinfor.strTipoIdentificacion.GetType();
 
@@ -468,6 +462,12 @@ namespace LiqViajes_Bll_Data
 
 				case "strCarnetComunicaciones":
 					return tercerosconductoreswinfor.strCarnetComunicaciones.GetType();
+
+				case "lngIdRegistro":
+					return tercerosconductoreswinfor.lngIdRegistro.GetType();
+
+				case "lngIdUsuario":
+					return tercerosconductoreswinfor.lngIdUsuario.GetType();
 
 			}
 

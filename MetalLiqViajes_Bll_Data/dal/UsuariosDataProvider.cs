@@ -123,7 +123,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblUsuarios by passing all fields
 		/// </summary>
-		/// <param name="lngIdUsuario"></param>
 		/// <param name="strLogin"></param>
 		/// <param name="strNombre"></param>
 		/// <param name="strPassword"></param>
@@ -131,7 +130,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Excell"></param>
 		/// <param name="Modifica_gastos"></param>
 		/// <param name="Modifica_cd"></param>
-		public void Update(int lngIdUsuario, string strLogin, string strNombre, string strPassword, DateTime? dtmFechaSistema, bool? Excell, bool? Modifica_gastos, bool? Modifica_cd,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdUsuario"></param>
+		public void Update(string strLogin, string strNombre, string strPassword, DateTime? dtmFechaSistema, bool? Excell, bool? Modifica_gastos, bool? Modifica_cd, int lngIdUsuario,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

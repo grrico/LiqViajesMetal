@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				opcionesdetnivelii.lngIdOpcion = (int) dr["lngIdOpcion"];
 				opcionesdetnivelii.strDescOpcion = dr.IsNull("strDescOpcion") ? null :(string) dr["strDescOpcion"];
 				opcionesdetnivelii.strPrograma = dr.IsNull("strPrograma") ? null :(string) dr["strPrograma"];
 				opcionesdetnivelii.strParametros = dr.IsNull("strParametros") ? null :(string) dr["strParametros"];
@@ -60,6 +59,7 @@ namespace LiqViajes_Bll_Data
 				opcionesdetnivelii.strTipoOpcion = dr.IsNull("strTipoOpcion") ? null :(string) dr["strTipoOpcion"];
 				opcionesdetnivelii.intOrden = dr.IsNull("intOrden") ? null :(int?) dr["intOrden"];
 				opcionesdetnivelii.WebBrowser = dr.IsNull("WebBrowser") ? null :(bool?) dr["WebBrowser"];
+				opcionesdetnivelii.lngIdOpcion = (int) dr["lngIdOpcion"];
 			}
 			catch (Exception ex)
 			{
@@ -115,7 +115,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an OpcionesDetNivelII object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdOpcion">int that contents the lngIdOpcion value for the OpcionesDetNivelII object</param>
 		/// <param name="strDescOpcion">string that contents the strDescOpcion value for the OpcionesDetNivelII object</param>
 		/// <param name="strPrograma">string that contents the strPrograma value for the OpcionesDetNivelII object</param>
 		/// <param name="strParametros">string that contents the strParametros value for the OpcionesDetNivelII object</param>
@@ -123,7 +122,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strTipoOpcion">string that contents the strTipoOpcion value for the OpcionesDetNivelII object</param>
 		/// <param name="intOrden">int that contents the intOrden value for the OpcionesDetNivelII object</param>
 		/// <param name="WebBrowser">bool that contents the WebBrowser value for the OpcionesDetNivelII object</param>
-		public void Update(int lngIdOpcion, string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdOpcion">int that contents the lngIdOpcion value for the OpcionesDetNivelII object</param>
+		public void Update(string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, int lngIdOpcion, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -135,7 +135,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strTipoOpcion = strTipoOpcion;
 				new_values.intOrden = intOrden;
 				new_values.WebBrowser = WebBrowser;
-				OpcionesDetNivelIIDataProvider.Instance.Update(lngIdOpcion, strDescOpcion, strPrograma, strParametros, lngIdOpcionPadre, strTipoOpcion, intOrden, WebBrowser,"OpcionesDetNivelII",datosTransaccion);
+				OpcionesDetNivelIIDataProvider.Instance.Update(strDescOpcion, strPrograma, strParametros, lngIdOpcionPadre, strTipoOpcion, intOrden, WebBrowser, lngIdOpcion,"OpcionesDetNivelII",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -149,7 +149,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="opcionesdetnivelii">An instance of OpcionesDetNivelII for reference</param>
 		public void Update(OpcionesDetNivelII opcionesdetnivelii,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(opcionesdetnivelii.lngIdOpcion, opcionesdetnivelii.strDescOpcion, opcionesdetnivelii.strPrograma, opcionesdetnivelii.strParametros, opcionesdetnivelii.lngIdOpcionPadre, opcionesdetnivelii.strTipoOpcion, opcionesdetnivelii.intOrden, opcionesdetnivelii.WebBrowser);
+			Update(opcionesdetnivelii.strDescOpcion, opcionesdetnivelii.strPrograma, opcionesdetnivelii.strParametros, opcionesdetnivelii.lngIdOpcionPadre, opcionesdetnivelii.strTipoOpcion, opcionesdetnivelii.intOrden, opcionesdetnivelii.WebBrowser, opcionesdetnivelii.lngIdOpcion);
 		}
 
 		/// <summary>
@@ -301,9 +301,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdOpcion":
-					return opcionesdetnivelii.lngIdOpcion.GetType();
-
 				case "strDescOpcion":
 					return opcionesdetnivelii.strDescOpcion.GetType();
 
@@ -324,6 +321,9 @@ namespace LiqViajes_Bll_Data
 
 				case "WebBrowser":
 					return opcionesdetnivelii.WebBrowser.GetType();
+
+				case "lngIdOpcion":
+					return opcionesdetnivelii.lngIdOpcion.GetType();
 
 			}
 

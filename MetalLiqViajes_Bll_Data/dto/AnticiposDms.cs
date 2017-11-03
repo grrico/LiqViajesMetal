@@ -139,9 +139,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the AnticiposDms's Dms_Codigo value
-		private int m_Dms_Codigo;
-
 		// Field for storing the AnticiposDms's Dms_Tipo value
 		private string m_Dms_Tipo;
 
@@ -217,6 +214,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the AnticiposDms's Dms_NombreTercero value
 		private string m_Dms_NombreTercero;
 
+		// Field for storing the AnticiposDms's Dms_Codigo value
+		private int m_Dms_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -230,20 +230,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the AnticiposDms's Dms_Codigo value (int)
-		/// </summary>
-		[DataMember]
-		public int Dms_Codigo
-		{
-			get { return m_Dms_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Dms_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the AnticiposDms's Dms_Tipo value (string)
 		/// </summary>
@@ -594,11 +580,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the AnticiposDms's Dms_Codigo value (int)
+		/// </summary>
+		[DataMember]
+		public int Dms_Codigo
+		{
+			get { return m_Dms_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Dms_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Dms_Codigo": return Dms_Codigo;
 				case "Dms_Tipo": return Dms_Tipo;
 				case "Dms_Numero": return Dms_Numero;
 				case "Dms_Modelo": return Dms_Modelo;
@@ -624,6 +623,7 @@ namespace LiqViajes_Bll_Data
 				case "Dms_Usuario": return Dms_Usuario;
 				case "Dms_FechaReal": return Dms_FechaReal;
 				case "Dms_NombreTercero": return Dms_NombreTercero;
+				case "Dms_Codigo": return Dms_Codigo;
 				default: return null;
 			}
 		}

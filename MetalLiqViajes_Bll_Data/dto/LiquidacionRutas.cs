@@ -310,9 +310,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the LiquidacionRutas's lngIdRegistrRutaItemId value
-		private int m_lngIdRegistrRutaItemId;
-
 		// Field for storing the LiquidacionRutas's lngIdRegistrRuta value
 		private int? m_lngIdRegistrRuta;
 
@@ -559,6 +556,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionRutas's logLiquParticipacion value
 		private bool? m_logLiquParticipacion;
 
+		// Field for storing the LiquidacionRutas's lngIdRegistrRutaItemId value
+		private int m_lngIdRegistrRutaItemId;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 		// Field for storing the reference to LiquidacionVehiculo accessed by lngIdRegistro
@@ -578,20 +578,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the LiquidacionRutas's lngIdRegistrRutaItemId value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistrRutaItemId
-		{
-			get { return m_lngIdRegistrRutaItemId; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistrRutaItemId = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the LiquidacionRutas's lngIdRegistrRuta value (int)
 		/// </summary>
@@ -1746,11 +1732,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the LiquidacionRutas's lngIdRegistrRutaItemId value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistrRutaItemId
+		{
+			get { return m_lngIdRegistrRutaItemId; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistrRutaItemId = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				case "lngIdRegistro": return lngIdRegistro;
 				case "lngIdRegistrRutaItemIdAjc": return lngIdRegistrRutaItemIdAjc;
@@ -1833,6 +1832,7 @@ namespace LiqViajes_Bll_Data
 				case "CurCargue": return CurCargue;
 				case "CurDescargue": return CurDescargue;
 				case "logLiquParticipacion": return logLiquParticipacion;
+				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
 				default: return null;
 			}
 		}

@@ -94,10 +94,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblCuentasVarios by passing all fields
 		/// </summary>
-		/// <param name="strCuenta"></param>
 		/// <param name="strDescripcion"></param>
 		/// <param name="nitTercero"></param>
-		public void Update(string strCuenta, string strDescripcion, string nitTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="strCuenta"></param>
+		public void Update(string strDescripcion, string nitTercero, string strCuenta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

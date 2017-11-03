@@ -134,7 +134,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into TramosReportesLiqVehiculos by passing all fields
 		/// </summary>
-		/// <param name="Registro"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="Centro"></param>
 		/// <param name="Marca"></param>
@@ -145,7 +144,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="TotalGatos"></param>
 		/// <param name="TotalAnticipos"></param>
 		/// <param name="TotalGeneral"></param>
-		public void Update(long Registro, DateTime? Fecha, double? Centro, string Marca, string Placa, double? Modelo, string CedulaConductor, string NombreConductor, decimal? TotalGatos, decimal? TotalAnticipos, decimal? TotalGeneral,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Registro"></param>
+		public void Update(DateTime? Fecha, double? Centro, string Marca, string Placa, double? Modelo, string CedulaConductor, string NombreConductor, decimal? TotalGatos, decimal? TotalAnticipos, decimal? TotalGeneral, long Registro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

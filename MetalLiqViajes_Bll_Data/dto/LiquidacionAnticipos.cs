@@ -135,38 +135,14 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the LiquidacionAnticipos's lngIdRegistroViaje value
-		private int m_lngIdRegistroViaje;
-
-		// Field for storing the LiquidacionAnticipos's lngIdRegistroViajeTramo value
-		private decimal m_lngIdRegistroViajeTramo;
-
-		// Field for storing the LiquidacionAnticipos's intNitConductor value
-		private decimal m_intNitConductor;
-
 		// Field for storing the LiquidacionAnticipos's strConductor value
 		private string m_strConductor;
-
-		// Field for storing the LiquidacionAnticipos's strPlaca value
-		private string m_strPlaca;
 
 		// Field for storing the LiquidacionAnticipos's dtmFechaMovimiento value
 		private DateTime? m_dtmFechaMovimiento;
 
-		// Field for storing the LiquidacionAnticipos's lngIdBanco value
-		private double m_lngIdBanco;
-
 		// Field for storing the LiquidacionAnticipos's strdescripcionBanco value
 		private string m_strdescripcionBanco;
-
-		// Field for storing the LiquidacionAnticipos's intDocumento value
-		private int m_intDocumento;
-
-		// Field for storing the LiquidacionAnticipos's strModelo value
-		private string m_strModelo;
-
-		// Field for storing the LiquidacionAnticipos's strtipo value
-		private string m_strtipo;
 
 		// Field for storing the LiquidacionAnticipos's sw value
 		private byte? m_sw;
@@ -216,6 +192,30 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionAnticipos's logLiquidado value
 		private bool? m_logLiquidado;
 
+		// Field for storing the LiquidacionAnticipos's lngIdRegistroViaje value
+		private int m_lngIdRegistroViaje;
+
+		// Field for storing the LiquidacionAnticipos's lngIdRegistroViajeTramo value
+		private decimal m_lngIdRegistroViajeTramo;
+
+		// Field for storing the LiquidacionAnticipos's intNitConductor value
+		private decimal m_intNitConductor;
+
+		// Field for storing the LiquidacionAnticipos's strPlaca value
+		private string m_strPlaca;
+
+		// Field for storing the LiquidacionAnticipos's lngIdBanco value
+		private double m_lngIdBanco;
+
+		// Field for storing the LiquidacionAnticipos's intDocumento value
+		private int m_intDocumento;
+
+		// Field for storing the LiquidacionAnticipos's strModelo value
+		private string m_strModelo;
+
+		// Field for storing the LiquidacionAnticipos's strtipo value
+		private string m_strtipo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -230,48 +230,6 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's lngIdRegistroViaje value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistroViaje
-		{
-			get { return m_lngIdRegistroViaje; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistroViaje = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's lngIdRegistroViajeTramo value (decimal)
-		/// </summary>
-		[DataMember]
-		public decimal lngIdRegistroViajeTramo
-		{
-			get { return m_lngIdRegistroViajeTramo; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistroViajeTramo = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's intNitConductor value (decimal)
-		/// </summary>
-		[DataMember]
-		public decimal intNitConductor
-		{
-			get { return m_intNitConductor; }
-			set 
-			{
-				m_changed=true;
-				m_intNitConductor = value;
-			}
-		}
-
-		/// <summary>
 		/// Attribute for access the LiquidacionAnticipos's strConductor value (string)
 		/// </summary>
 		[DataMember]
@@ -282,20 +240,6 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_strConductor = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's strPlaca value (string)
-		/// </summary>
-		[DataMember]
-		public string strPlaca
-		{
-			get { return m_strPlaca; }
-			set 
-			{
-				m_changed=true;
-				m_strPlaca = value;
 			}
 		}
 
@@ -314,20 +258,6 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's lngIdBanco value (double)
-		/// </summary>
-		[DataMember]
-		public double lngIdBanco
-		{
-			get { return m_lngIdBanco; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdBanco = value;
-			}
-		}
-
-		/// <summary>
 		/// Attribute for access the LiquidacionAnticipos's strdescripcionBanco value (string)
 		/// </summary>
 		[DataMember]
@@ -338,48 +268,6 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_strdescripcionBanco = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's intDocumento value (int)
-		/// </summary>
-		[DataMember]
-		public int intDocumento
-		{
-			get { return m_intDocumento; }
-			set 
-			{
-				m_changed=true;
-				m_intDocumento = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's strModelo value (string)
-		/// </summary>
-		[DataMember]
-		public string strModelo
-		{
-			get { return m_strModelo; }
-			set 
-			{
-				m_changed=true;
-				m_strModelo = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionAnticipos's strtipo value (string)
-		/// </summary>
-		[DataMember]
-		public string strtipo
-		{
-			get { return m_strtipo; }
-			set 
-			{
-				m_changed=true;
-				m_strtipo = value;
 			}
 		}
 
@@ -607,21 +495,125 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's lngIdRegistroViaje value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistroViaje
+		{
+			get { return m_lngIdRegistroViaje; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistroViaje = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's lngIdRegistroViajeTramo value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal lngIdRegistroViajeTramo
+		{
+			get { return m_lngIdRegistroViajeTramo; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistroViajeTramo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's intNitConductor value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal intNitConductor
+		{
+			get { return m_intNitConductor; }
+			set 
+			{
+				m_changed=true;
+				m_intNitConductor = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's strPlaca value (string)
+		/// </summary>
+		[DataMember]
+		public string strPlaca
+		{
+			get { return m_strPlaca; }
+			set 
+			{
+				m_changed=true;
+				m_strPlaca = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's lngIdBanco value (double)
+		/// </summary>
+		[DataMember]
+		public double lngIdBanco
+		{
+			get { return m_lngIdBanco; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdBanco = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's intDocumento value (int)
+		/// </summary>
+		[DataMember]
+		public int intDocumento
+		{
+			get { return m_intDocumento; }
+			set 
+			{
+				m_changed=true;
+				m_intDocumento = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's strModelo value (string)
+		/// </summary>
+		[DataMember]
+		public string strModelo
+		{
+			get { return m_strModelo; }
+			set 
+			{
+				m_changed=true;
+				m_strModelo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionAnticipos's strtipo value (string)
+		/// </summary>
+		[DataMember]
+		public string strtipo
+		{
+			get { return m_strtipo; }
+			set 
+			{
+				m_changed=true;
+				m_strtipo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistroViaje": return lngIdRegistroViaje;
-				case "lngIdRegistroViajeTramo": return lngIdRegistroViajeTramo;
-				case "intNitConductor": return intNitConductor;
 				case "strConductor": return strConductor;
-				case "strPlaca": return strPlaca;
 				case "dtmFechaMovimiento": return dtmFechaMovimiento;
-				case "lngIdBanco": return lngIdBanco;
 				case "strdescripcionBanco": return strdescripcionBanco;
-				case "intDocumento": return intDocumento;
-				case "strModelo": return strModelo;
-				case "strtipo": return strtipo;
 				case "sw": return sw;
 				case "dtmFechaMovDMS": return dtmFechaMovDMS;
 				case "strCuenta": return strCuenta;
@@ -638,6 +630,14 @@ namespace LiqViajes_Bll_Data
 				case "dtmFechaModif": return dtmFechaModif;
 				case "logAnulado": return logAnulado;
 				case "logLiquidado": return logLiquidado;
+				case "lngIdRegistroViaje": return lngIdRegistroViaje;
+				case "lngIdRegistroViajeTramo": return lngIdRegistroViajeTramo;
+				case "intNitConductor": return intNitConductor;
+				case "strPlaca": return strPlaca;
+				case "lngIdBanco": return lngIdBanco;
+				case "intDocumento": return intDocumento;
+				case "strModelo": return strModelo;
+				case "strtipo": return strtipo;
 				default: return null;
 			}
 		}

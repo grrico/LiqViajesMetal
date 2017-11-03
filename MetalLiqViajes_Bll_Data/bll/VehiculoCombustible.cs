@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				vehiculocombustible.Codigo = (long) dr["Codigo"];
 				vehiculocombustible.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
 				vehiculocombustible.tblLiquidacionRutasCombustibleCodigo = dr.IsNull("tblLiquidacionRutasCombustibleCodigo") ? null :(long?) dr["tblLiquidacionRutasCombustibleCodigo"];
 				vehiculocombustible.Placa = dr.IsNull("Placa") ? null :(string) dr["Placa"];
@@ -67,6 +66,7 @@ namespace LiqViajes_Bll_Data
 				vehiculocombustible.tipo = (string) dr["tipo"];
 				vehiculocombustible.numero = (int) dr["numero"];
 				vehiculocombustible.strObservaciones = dr.IsNull("strObservaciones") ? null :(string) dr["strObservaciones"];
+				vehiculocombustible.Codigo = (long) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -141,7 +141,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an VehiculoCombustible object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">long that contents the Codigo value for the VehiculoCombustible object</param>
 		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculoCombustible object</param>
 		/// <param name="tblLiquidacionRutasCombustibleCodigo">long that contents the tblLiquidacionRutasCombustibleCodigo value for the VehiculoCombustible object</param>
 		/// <param name="Placa">string that contents the Placa value for the VehiculoCombustible object</param>
@@ -156,7 +155,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tipo">string that contents the tipo value for the VehiculoCombustible object</param>
 		/// <param name="numero">int that contents the numero value for the VehiculoCombustible object</param>
 		/// <param name="strObservaciones">string that contents the strObservaciones value for the VehiculoCombustible object</param>
-		public void Update(long Codigo, int? lngIdRegistro, long? tblLiquidacionRutasCombustibleCodigo, string Placa, DateTime? FechaTanqueo, decimal? GalonesReserva, decimal? GalonesTanqueo, decimal? ValorGalon, decimal? ValorCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, byte sw, string tipo, int numero, string strObservaciones, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">long that contents the Codigo value for the VehiculoCombustible object</param>
+		public void Update(int? lngIdRegistro, long? tblLiquidacionRutasCombustibleCodigo, string Placa, DateTime? FechaTanqueo, decimal? GalonesReserva, decimal? GalonesTanqueo, decimal? ValorGalon, decimal? ValorCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, byte sw, string tipo, int numero, string strObservaciones, long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -175,7 +175,7 @@ namespace LiqViajes_Bll_Data
 				new_values.tipo = tipo;
 				new_values.numero = numero;
 				new_values.strObservaciones = strObservaciones;
-				VehiculoCombustibleDataProvider.Instance.Update(Codigo, lngIdRegistro, tblLiquidacionRutasCombustibleCodigo, Placa, FechaTanqueo, GalonesReserva, GalonesTanqueo, ValorGalon, ValorCombustible, nitTerceroComplentario, NombreTerceroComplementario, sw, tipo, numero, strObservaciones,"VehiculoCombustible",datosTransaccion);
+				VehiculoCombustibleDataProvider.Instance.Update(lngIdRegistro, tblLiquidacionRutasCombustibleCodigo, Placa, FechaTanqueo, GalonesReserva, GalonesTanqueo, ValorGalon, ValorCombustible, nitTerceroComplentario, NombreTerceroComplementario, sw, tipo, numero, strObservaciones, Codigo,"VehiculoCombustible",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -189,7 +189,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="vehiculocombustible">An instance of VehiculoCombustible for reference</param>
 		public void Update(VehiculoCombustible vehiculocombustible,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(vehiculocombustible.Codigo, vehiculocombustible.lngIdRegistro, vehiculocombustible.tblLiquidacionRutasCombustibleCodigo, vehiculocombustible.Placa, vehiculocombustible.FechaTanqueo, vehiculocombustible.GalonesReserva, vehiculocombustible.GalonesTanqueo, vehiculocombustible.ValorGalon, vehiculocombustible.ValorCombustible, vehiculocombustible.nitTerceroComplentario, vehiculocombustible.NombreTerceroComplementario, vehiculocombustible.sw, vehiculocombustible.tipo, vehiculocombustible.numero, vehiculocombustible.strObservaciones);
+			Update(vehiculocombustible.lngIdRegistro, vehiculocombustible.tblLiquidacionRutasCombustibleCodigo, vehiculocombustible.Placa, vehiculocombustible.FechaTanqueo, vehiculocombustible.GalonesReserva, vehiculocombustible.GalonesTanqueo, vehiculocombustible.ValorGalon, vehiculocombustible.ValorCombustible, vehiculocombustible.nitTerceroComplentario, vehiculocombustible.NombreTerceroComplementario, vehiculocombustible.sw, vehiculocombustible.tipo, vehiculocombustible.numero, vehiculocombustible.strObservaciones, vehiculocombustible.Codigo);
 		}
 
 		/// <summary>
@@ -345,9 +345,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return vehiculocombustible.Codigo.GetType();
-
 				case "lngIdRegistro":
 					return vehiculocombustible.lngIdRegistro.GetType();
 
@@ -389,6 +386,9 @@ namespace LiqViajes_Bll_Data
 
 				case "strObservaciones":
 					return vehiculocombustible.strObservaciones.GetType();
+
+				case "Codigo":
+					return vehiculocombustible.Codigo.GetType();
 
 			}
 

@@ -113,13 +113,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionPlanillaDet by passing all fields
 		/// </summary>
-		/// <param name="lngIdItemd"></param>
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="strNoPlanilla"></param>
 		/// <param name="dtmFechaModif"></param>
-		public void Update(int lngIdItemd, int? lngIdRegistro, int? lngIdRegistrRuta, int? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdItemd"></param>
+		public void Update(int? lngIdRegistro, int? lngIdRegistrRuta, int? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif, int lngIdItemd,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

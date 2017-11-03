@@ -106,9 +106,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the VehiculoCombustible's Codigo value
-		private long m_Codigo;
-
 		// Field for storing the VehiculoCombustible's lngIdRegistro value
 		private int? m_lngIdRegistro;
 
@@ -151,6 +148,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the VehiculoCombustible's strObservaciones value
 		private string m_strObservaciones;
 
+		// Field for storing the VehiculoCombustible's Codigo value
+		private long m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -164,20 +164,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the VehiculoCombustible's Codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the VehiculoCombustible's lngIdRegistro value (int)
 		/// </summary>
@@ -374,11 +360,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the VehiculoCombustible's Codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "lngIdRegistro": return lngIdRegistro;
 				case "tblLiquidacionRutasCombustibleCodigo": return tblLiquidacionRutasCombustibleCodigo;
 				case "Placa": return Placa;
@@ -393,6 +392,7 @@ namespace LiqViajes_Bll_Data
 				case "tipo": return tipo;
 				case "numero": return numero;
 				case "strObservaciones": return strObservaciones;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

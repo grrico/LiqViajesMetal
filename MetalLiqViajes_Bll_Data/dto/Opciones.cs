@@ -88,9 +88,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Opciones's lngIdOpcion value
-		private int m_lngIdOpcion;
-
 		// Field for storing the Opciones's strDescOpcion value
 		private string m_strDescOpcion;
 
@@ -115,6 +112,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Opciones's logExpandeNode value
 		private bool? m_logExpandeNode;
 
+		// Field for storing the Opciones's lngIdOpcion value
+		private int m_lngIdOpcion;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -128,20 +128,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Opciones's lngIdOpcion value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdOpcion
-		{
-			get { return m_lngIdOpcion; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdOpcion = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Opciones's strDescOpcion value (string)
 		/// </summary>
@@ -254,11 +240,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Opciones's lngIdOpcion value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdOpcion
+		{
+			get { return m_lngIdOpcion; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdOpcion = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdOpcion": return lngIdOpcion;
 				case "strDescOpcion": return strDescOpcion;
 				case "strPrograma": return strPrograma;
 				case "strParametros": return strParametros;
@@ -267,6 +266,7 @@ namespace LiqViajes_Bll_Data
 				case "intOrden": return intOrden;
 				case "WebBrowser": return WebBrowser;
 				case "logExpandeNode": return logExpandeNode;
+				case "lngIdOpcion": return lngIdOpcion;
 				default: return null;
 			}
 		}

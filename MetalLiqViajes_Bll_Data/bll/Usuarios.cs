@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				usuarios.lngIdUsuario = (int) dr["lngIdUsuario"];
 				usuarios.strLogin = dr.IsNull("strLogin") ? null :(string) dr["strLogin"];
 				usuarios.strNombre = dr.IsNull("strNombre") ? null :(string) dr["strNombre"];
 				usuarios.strPassword = dr.IsNull("strPassword") ? null :(string) dr["strPassword"];
@@ -60,6 +59,7 @@ namespace LiqViajes_Bll_Data
 				usuarios.Excell = dr.IsNull("Excell") ? null :(bool?) dr["Excell"];
 				usuarios.Modifica_gastos = dr.IsNull("Modifica_gastos") ? null :(bool?) dr["Modifica_gastos"];
 				usuarios.Modifica_cd = dr.IsNull("Modifica_cd") ? null :(bool?) dr["Modifica_cd"];
+				usuarios.lngIdUsuario = (int) dr["lngIdUsuario"];
 			}
 			catch (Exception ex)
 			{
@@ -120,7 +120,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Usuarios object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the Usuarios object</param>
 		/// <param name="strLogin">string that contents the strLogin value for the Usuarios object</param>
 		/// <param name="strNombre">string that contents the strNombre value for the Usuarios object</param>
 		/// <param name="strPassword">string that contents the strPassword value for the Usuarios object</param>
@@ -128,7 +127,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Excell">bool that contents the Excell value for the Usuarios object</param>
 		/// <param name="Modifica_gastos">bool that contents the Modifica_gastos value for the Usuarios object</param>
 		/// <param name="Modifica_cd">bool that contents the Modifica_cd value for the Usuarios object</param>
-		public void Update(int lngIdUsuario, string strLogin, string strNombre, string strPassword, DateTime? dtmFechaSistema, bool? Excell, bool? Modifica_gastos, bool? Modifica_cd, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the Usuarios object</param>
+		public void Update(string strLogin, string strNombre, string strPassword, DateTime? dtmFechaSistema, bool? Excell, bool? Modifica_gastos, bool? Modifica_cd, int lngIdUsuario, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Excell = Excell;
 				new_values.Modifica_gastos = Modifica_gastos;
 				new_values.Modifica_cd = Modifica_cd;
-				UsuariosDataProvider.Instance.Update(lngIdUsuario, strLogin, strNombre, strPassword, dtmFechaSistema, Excell, Modifica_gastos, Modifica_cd,"Usuarios",datosTransaccion);
+				UsuariosDataProvider.Instance.Update(strLogin, strNombre, strPassword, dtmFechaSistema, Excell, Modifica_gastos, Modifica_cd, lngIdUsuario,"Usuarios",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -154,7 +154,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="usuarios">An instance of Usuarios for reference</param>
 		public void Update(Usuarios usuarios,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(usuarios.lngIdUsuario, usuarios.strLogin, usuarios.strNombre, usuarios.strPassword, usuarios.dtmFechaSistema, usuarios.Excell, usuarios.Modifica_gastos, usuarios.Modifica_cd);
+			Update(usuarios.strLogin, usuarios.strNombre, usuarios.strPassword, usuarios.dtmFechaSistema, usuarios.Excell, usuarios.Modifica_gastos, usuarios.Modifica_cd, usuarios.lngIdUsuario);
 		}
 
 		/// <summary>
@@ -213,14 +213,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Usuarios usuarios = null;
-				DataTable dt = UsuariosDataProvider.Instance.Get(lngIdUsuario);
-				if ((dt.Rows.Count > 0))
+				usuarios= MasterTables.Usuarios.Where(r => r.lngIdUsuario== lngIdUsuario).FirstOrDefault();
+				if (usuarios== null)
 				{
-					usuarios = new Usuarios();
-					DataRow dr = dt.Rows[0];
-					ReadData(usuarios, dr, generateUndo);
+					MasterTables.Reset("Usuarios");
+					usuarios= MasterTables.Usuarios.Where(r => r.lngIdUsuario== lngIdUsuario).FirstOrDefault();
 				}
-
+				if (generateUndo) usuarios.GenerateUndo();
 
 				return usuarios;
 			}
@@ -310,9 +309,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdUsuario":
-					return usuarios.lngIdUsuario.GetType();
-
 				case "strLogin":
 					return usuarios.strLogin.GetType();
 
@@ -333,6 +329,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Modifica_cd":
 					return usuarios.Modifica_cd.GetType();
+
+				case "lngIdUsuario":
+					return usuarios.lngIdUsuario.GetType();
 
 			}
 

@@ -149,7 +149,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblVehiculoCombustible by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="tblLiquidacionRutasCombustibleCodigo"></param>
 		/// <param name="Placa"></param>
@@ -164,7 +163,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tipo"></param>
 		/// <param name="numero"></param>
 		/// <param name="strObservaciones"></param>
-		public void Update(long Codigo, int? lngIdRegistro, long? tblLiquidacionRutasCombustibleCodigo, string Placa, DateTime? FechaTanqueo, decimal? GalonesReserva, decimal? GalonesTanqueo, decimal? ValorGalon, decimal? ValorCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, byte sw, string tipo, int numero, string strObservaciones,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(int? lngIdRegistro, long? tblLiquidacionRutasCombustibleCodigo, string Placa, DateTime? FechaTanqueo, decimal? GalonesReserva, decimal? GalonesTanqueo, decimal? ValorGalon, decimal? ValorCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, byte sw, string tipo, int numero, string strObservaciones, long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

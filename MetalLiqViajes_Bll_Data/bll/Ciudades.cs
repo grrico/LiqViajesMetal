@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				ciudades.lngIdCiudad = (int) dr["lngIdCiudad"];
 				ciudades.lngIdDepartamento = (int) dr["lngIdDepartamento"];
 				ciudades.strNombreCiudad = (string) dr["strNombreCiudad"];
+				ciudades.lngIdCiudad = (int) dr["lngIdCiudad"];
 			}
 			catch (Exception ex)
 			{
@@ -100,17 +100,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Ciudades object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdCiudad">int that contents the lngIdCiudad value for the Ciudades object</param>
 		/// <param name="lngIdDepartamento">int that contents the lngIdDepartamento value for the Ciudades object</param>
 		/// <param name="strNombreCiudad">string that contents the strNombreCiudad value for the Ciudades object</param>
-		public void Update(int lngIdCiudad, int lngIdDepartamento, string strNombreCiudad, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdCiudad">int that contents the lngIdCiudad value for the Ciudades object</param>
+		public void Update(int lngIdDepartamento, string strNombreCiudad, int lngIdCiudad, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				Ciudades new_values = new Ciudades();
 				new_values.lngIdDepartamento = lngIdDepartamento;
 				new_values.strNombreCiudad = strNombreCiudad;
-				CiudadesDataProvider.Instance.Update(lngIdCiudad, lngIdDepartamento, strNombreCiudad,"Ciudades",datosTransaccion);
+				CiudadesDataProvider.Instance.Update(lngIdDepartamento, strNombreCiudad, lngIdCiudad,"Ciudades",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="ciudades">An instance of Ciudades for reference</param>
 		public void Update(Ciudades ciudades,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(ciudades.lngIdCiudad, ciudades.lngIdDepartamento, ciudades.strNombreCiudad);
+			Update(ciudades.lngIdDepartamento, ciudades.strNombreCiudad, ciudades.lngIdCiudad);
 		}
 
 		/// <summary>
@@ -179,14 +179,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Ciudades ciudades = null;
-				DataTable dt = CiudadesDataProvider.Instance.Get(lngIdCiudad);
-				if ((dt.Rows.Count > 0))
+				ciudades= MasterTables.Ciudades.Where(r => r.lngIdCiudad== lngIdCiudad).FirstOrDefault();
+				if (ciudades== null)
 				{
-					ciudades = new Ciudades();
-					DataRow dr = dt.Rows[0];
-					ReadData(ciudades, dr, generateUndo);
+					MasterTables.Reset("Ciudades");
+					ciudades= MasterTables.Ciudades.Where(r => r.lngIdCiudad== lngIdCiudad).FirstOrDefault();
 				}
-
+				if (generateUndo) ciudades.GenerateUndo();
 
 				return ciudades;
 			}
@@ -276,14 +275,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdCiudad":
-					return ciudades.lngIdCiudad.GetType();
-
 				case "lngIdDepartamento":
 					return ciudades.lngIdDepartamento.GetType();
 
 				case "strNombreCiudad":
 					return ciudades.strNombreCiudad.GetType();
+
+				case "lngIdCiudad":
+					return ciudades.lngIdCiudad.GetType();
 
 			}
 

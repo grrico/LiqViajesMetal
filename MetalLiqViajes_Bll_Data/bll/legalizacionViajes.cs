@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				legalizacionviajes.Codigo = (long) dr["Codigo"];
 				legalizacionviajes.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
 				legalizacionviajes.sw = dr.IsNull("sw") ? null :(byte?) dr["sw"];
 				legalizacionviajes.tipo = dr.IsNull("tipo") ? null :(string) dr["tipo"];
@@ -65,6 +64,7 @@ namespace LiqViajes_Bll_Data
 				legalizacionviajes.descripcion = dr.IsNull("descripcion") ? null :(string) dr["descripcion"];
 				legalizacionviajes.valor = dr.IsNull("valor") ? null :(decimal?) dr["valor"];
 				legalizacionviajes.notas = dr.IsNull("notas") ? null :(string) dr["notas"];
+				legalizacionviajes.Codigo = (long) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -135,7 +135,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an legalizacionViajes object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">long that contents the Codigo value for the legalizacionViajes object</param>
 		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the legalizacionViajes object</param>
 		/// <param name="sw">byte that contents the sw value for the legalizacionViajes object</param>
 		/// <param name="tipo">string that contents the tipo value for the legalizacionViajes object</param>
@@ -148,7 +147,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="descripcion">string that contents the descripcion value for the legalizacionViajes object</param>
 		/// <param name="valor">decimal that contents the valor value for the legalizacionViajes object</param>
 		/// <param name="notas">string that contents the notas value for the legalizacionViajes object</param>
-		public void Update(long Codigo, int? lngIdRegistro, byte? sw, string tipo, long? numero, int? seq, DateTime? Fecha, decimal? nit, int? centro, string cuenta, string descripcion, decimal? valor, string notas, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">long that contents the Codigo value for the legalizacionViajes object</param>
+		public void Update(int? lngIdRegistro, byte? sw, string tipo, long? numero, int? seq, DateTime? Fecha, decimal? nit, int? centro, string cuenta, string descripcion, decimal? valor, string notas, long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -165,7 +165,7 @@ namespace LiqViajes_Bll_Data
 				new_values.descripcion = descripcion;
 				new_values.valor = valor;
 				new_values.notas = notas;
-				legalizacionViajesDataProvider.Instance.Update(Codigo, lngIdRegistro, sw, tipo, numero, seq, Fecha, nit, centro, cuenta, descripcion, valor, notas,"legalizacionViajes",datosTransaccion);
+				legalizacionViajesDataProvider.Instance.Update(lngIdRegistro, sw, tipo, numero, seq, Fecha, nit, centro, cuenta, descripcion, valor, notas, Codigo,"legalizacionViajes",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -179,7 +179,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="legalizacionviajes">An instance of legalizacionViajes for reference</param>
 		public void Update(legalizacionViajes legalizacionviajes,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(legalizacionviajes.Codigo, legalizacionviajes.lngIdRegistro, legalizacionviajes.sw, legalizacionviajes.tipo, legalizacionviajes.numero, legalizacionviajes.seq, legalizacionviajes.Fecha, legalizacionviajes.nit, legalizacionviajes.centro, legalizacionviajes.cuenta, legalizacionviajes.descripcion, legalizacionviajes.valor, legalizacionviajes.notas);
+			Update(legalizacionviajes.lngIdRegistro, legalizacionviajes.sw, legalizacionviajes.tipo, legalizacionviajes.numero, legalizacionviajes.seq, legalizacionviajes.Fecha, legalizacionviajes.nit, legalizacionviajes.centro, legalizacionviajes.cuenta, legalizacionviajes.descripcion, legalizacionviajes.valor, legalizacionviajes.notas, legalizacionviajes.Codigo);
 		}
 
 		/// <summary>
@@ -335,9 +335,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return legalizacionviajes.Codigo.GetType();
-
 				case "lngIdRegistro":
 					return legalizacionviajes.lngIdRegistro.GetType();
 
@@ -373,6 +370,9 @@ namespace LiqViajes_Bll_Data
 
 				case "notas":
 					return legalizacionviajes.notas.GetType();
+
+				case "Codigo":
+					return legalizacionviajes.Codigo.GetType();
 
 			}
 

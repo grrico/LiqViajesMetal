@@ -52,8 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				vehiculoforwin.lngIdRegistro = (int) dr["lngIdRegistro"];
-				vehiculoforwin.lngIdUsuario = (int) dr["lngIdUsuario"];
 				vehiculoforwin.strPlaca = (int) dr["strPlaca"];
 				vehiculoforwin.centro = dr.IsNull("centro") ? null :(int?) dr["centro"];
 				vehiculoforwin.TipoVehiculoCodigo = dr.IsNull("TipoVehiculoCodigo") ? null :(int?) dr["TipoVehiculoCodigo"];
@@ -93,6 +91,8 @@ namespace LiqViajes_Bll_Data
 				vehiculoforwin.dtmFechaInicioTarjetaOper = dr.IsNull("dtmFechaInicioTarjetaOper") ? null :(int?) dr["dtmFechaInicioTarjetaOper"];
 				vehiculoforwin.dtmFechaVenceTarjetaOper = dr.IsNull("dtmFechaVenceTarjetaOper") ? null :(int?) dr["dtmFechaVenceTarjetaOper"];
 				vehiculoforwin.logVencimientoFecha = dr.IsNull("logVencimientoFecha") ? null :(int?) dr["logVencimientoFecha"];
+				vehiculoforwin.lngIdRegistro = (int) dr["lngIdRegistro"];
+				vehiculoforwin.lngIdUsuario = (int) dr["lngIdUsuario"];
 			}
 			catch (Exception ex)
 			{
@@ -213,8 +213,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an VehiculoForWin object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculoForWin object</param>
-		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the VehiculoForWin object</param>
 		/// <param name="strPlaca">int that contents the strPlaca value for the VehiculoForWin object</param>
 		/// <param name="centro">int that contents the centro value for the VehiculoForWin object</param>
 		/// <param name="TipoVehiculoCodigo">int that contents the TipoVehiculoCodigo value for the VehiculoForWin object</param>
@@ -254,7 +252,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaInicioTarjetaOper">int that contents the dtmFechaInicioTarjetaOper value for the VehiculoForWin object</param>
 		/// <param name="dtmFechaVenceTarjetaOper">int that contents the dtmFechaVenceTarjetaOper value for the VehiculoForWin object</param>
 		/// <param name="logVencimientoFecha">int that contents the logVencimientoFecha value for the VehiculoForWin object</param>
-		public void Update(int lngIdRegistro, int lngIdUsuario, int strPlaca, int? centro, int? TipoVehiculoCodigo, string Descripcion, int? dtmFechaIngreso, int? dtmFechaEgreso, int? nitPropietario, int? strMarca, int? lngModelo, int? lngMovil, int? strCelular, int? strTipoMotor, int? strColor, int? strMotor, int? strChasis, int? logCamarote, int? cutPeso, int? cutCapacidad, int? lngEjes, int? logActivo, int? lngLlantas, int? strPolizaObligatorio, int? nitProvedorOblig, int? dtmFechaInicioOblig, int? dtmFechaVenceOblig, int? strPolizaTodoRiesgo, int? nitProvedorTodo, int? dtmFechaInicioTodo, int? dtmFechaVenceTodo, int? strCertifMovilizacion, int? dtmFechaInicioMoviliz, int? dtmFechaVenceMoviliz, int? strGases, int? dtmFechaInicioGases, int? dtmFechaVenceGases, int? strTarjetaOper, int? dtmFechaInicioTarjetaOper, int? dtmFechaVenceTarjetaOper, int? logVencimientoFecha, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculoForWin object</param>
+		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the VehiculoForWin object</param>
+		public void Update(int strPlaca, int? centro, int? TipoVehiculoCodigo, string Descripcion, int? dtmFechaIngreso, int? dtmFechaEgreso, int? nitPropietario, int? strMarca, int? lngModelo, int? lngMovil, int? strCelular, int? strTipoMotor, int? strColor, int? strMotor, int? strChasis, int? logCamarote, int? cutPeso, int? cutCapacidad, int? lngEjes, int? logActivo, int? lngLlantas, int? strPolizaObligatorio, int? nitProvedorOblig, int? dtmFechaInicioOblig, int? dtmFechaVenceOblig, int? strPolizaTodoRiesgo, int? nitProvedorTodo, int? dtmFechaInicioTodo, int? dtmFechaVenceTodo, int? strCertifMovilizacion, int? dtmFechaInicioMoviliz, int? dtmFechaVenceMoviliz, int? strGases, int? dtmFechaInicioGases, int? dtmFechaVenceGases, int? strTarjetaOper, int? dtmFechaInicioTarjetaOper, int? dtmFechaVenceTarjetaOper, int? logVencimientoFecha, int lngIdRegistro, int lngIdUsuario, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -298,7 +298,7 @@ namespace LiqViajes_Bll_Data
 				new_values.dtmFechaInicioTarjetaOper = dtmFechaInicioTarjetaOper;
 				new_values.dtmFechaVenceTarjetaOper = dtmFechaVenceTarjetaOper;
 				new_values.logVencimientoFecha = logVencimientoFecha;
-				VehiculoForWinDataProvider.Instance.Update(lngIdRegistro, lngIdUsuario, strPlaca, centro, TipoVehiculoCodigo, Descripcion, dtmFechaIngreso, dtmFechaEgreso, nitPropietario, strMarca, lngModelo, lngMovil, strCelular, strTipoMotor, strColor, strMotor, strChasis, logCamarote, cutPeso, cutCapacidad, lngEjes, logActivo, lngLlantas, strPolizaObligatorio, nitProvedorOblig, dtmFechaInicioOblig, dtmFechaVenceOblig, strPolizaTodoRiesgo, nitProvedorTodo, dtmFechaInicioTodo, dtmFechaVenceTodo, strCertifMovilizacion, dtmFechaInicioMoviliz, dtmFechaVenceMoviliz, strGases, dtmFechaInicioGases, dtmFechaVenceGases, strTarjetaOper, dtmFechaInicioTarjetaOper, dtmFechaVenceTarjetaOper, logVencimientoFecha,"VehiculoForWin",datosTransaccion);
+				VehiculoForWinDataProvider.Instance.Update(strPlaca, centro, TipoVehiculoCodigo, Descripcion, dtmFechaIngreso, dtmFechaEgreso, nitPropietario, strMarca, lngModelo, lngMovil, strCelular, strTipoMotor, strColor, strMotor, strChasis, logCamarote, cutPeso, cutCapacidad, lngEjes, logActivo, lngLlantas, strPolizaObligatorio, nitProvedorOblig, dtmFechaInicioOblig, dtmFechaVenceOblig, strPolizaTodoRiesgo, nitProvedorTodo, dtmFechaInicioTodo, dtmFechaVenceTodo, strCertifMovilizacion, dtmFechaInicioMoviliz, dtmFechaVenceMoviliz, strGases, dtmFechaInicioGases, dtmFechaVenceGases, strTarjetaOper, dtmFechaInicioTarjetaOper, dtmFechaVenceTarjetaOper, logVencimientoFecha, lngIdRegistro, lngIdUsuario,"VehiculoForWin",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -312,7 +312,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="vehiculoforwin">An instance of VehiculoForWin for reference</param>
 		public void Update(VehiculoForWin vehiculoforwin,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(vehiculoforwin.lngIdRegistro, vehiculoforwin.lngIdUsuario, vehiculoforwin.strPlaca, vehiculoforwin.centro, vehiculoforwin.TipoVehiculoCodigo, vehiculoforwin.Descripcion, vehiculoforwin.dtmFechaIngreso, vehiculoforwin.dtmFechaEgreso, vehiculoforwin.nitPropietario, vehiculoforwin.strMarca, vehiculoforwin.lngModelo, vehiculoforwin.lngMovil, vehiculoforwin.strCelular, vehiculoforwin.strTipoMotor, vehiculoforwin.strColor, vehiculoforwin.strMotor, vehiculoforwin.strChasis, vehiculoforwin.logCamarote, vehiculoforwin.cutPeso, vehiculoforwin.cutCapacidad, vehiculoforwin.lngEjes, vehiculoforwin.logActivo, vehiculoforwin.lngLlantas, vehiculoforwin.strPolizaObligatorio, vehiculoforwin.nitProvedorOblig, vehiculoforwin.dtmFechaInicioOblig, vehiculoforwin.dtmFechaVenceOblig, vehiculoforwin.strPolizaTodoRiesgo, vehiculoforwin.nitProvedorTodo, vehiculoforwin.dtmFechaInicioTodo, vehiculoforwin.dtmFechaVenceTodo, vehiculoforwin.strCertifMovilizacion, vehiculoforwin.dtmFechaInicioMoviliz, vehiculoforwin.dtmFechaVenceMoviliz, vehiculoforwin.strGases, vehiculoforwin.dtmFechaInicioGases, vehiculoforwin.dtmFechaVenceGases, vehiculoforwin.strTarjetaOper, vehiculoforwin.dtmFechaInicioTarjetaOper, vehiculoforwin.dtmFechaVenceTarjetaOper, vehiculoforwin.logVencimientoFecha);
+			Update(vehiculoforwin.strPlaca, vehiculoforwin.centro, vehiculoforwin.TipoVehiculoCodigo, vehiculoforwin.Descripcion, vehiculoforwin.dtmFechaIngreso, vehiculoforwin.dtmFechaEgreso, vehiculoforwin.nitPropietario, vehiculoforwin.strMarca, vehiculoforwin.lngModelo, vehiculoforwin.lngMovil, vehiculoforwin.strCelular, vehiculoforwin.strTipoMotor, vehiculoforwin.strColor, vehiculoforwin.strMotor, vehiculoforwin.strChasis, vehiculoforwin.logCamarote, vehiculoforwin.cutPeso, vehiculoforwin.cutCapacidad, vehiculoforwin.lngEjes, vehiculoforwin.logActivo, vehiculoforwin.lngLlantas, vehiculoforwin.strPolizaObligatorio, vehiculoforwin.nitProvedorOblig, vehiculoforwin.dtmFechaInicioOblig, vehiculoforwin.dtmFechaVenceOblig, vehiculoforwin.strPolizaTodoRiesgo, vehiculoforwin.nitProvedorTodo, vehiculoforwin.dtmFechaInicioTodo, vehiculoforwin.dtmFechaVenceTodo, vehiculoforwin.strCertifMovilizacion, vehiculoforwin.dtmFechaInicioMoviliz, vehiculoforwin.dtmFechaVenceMoviliz, vehiculoforwin.strGases, vehiculoforwin.dtmFechaInicioGases, vehiculoforwin.dtmFechaVenceGases, vehiculoforwin.strTarjetaOper, vehiculoforwin.dtmFechaInicioTarjetaOper, vehiculoforwin.dtmFechaVenceTarjetaOper, vehiculoforwin.logVencimientoFecha, vehiculoforwin.lngIdRegistro, vehiculoforwin.lngIdUsuario);
 		}
 
 		/// <summary>
@@ -466,12 +466,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return vehiculoforwin.lngIdRegistro.GetType();
-
-				case "lngIdUsuario":
-					return vehiculoforwin.lngIdUsuario.GetType();
-
 				case "strPlaca":
 					return vehiculoforwin.strPlaca.GetType();
 
@@ -588,6 +582,12 @@ namespace LiqViajes_Bll_Data
 
 				case "logVencimientoFecha":
 					return vehiculoforwin.logVencimientoFecha.GetType();
+
+				case "lngIdRegistro":
+					return vehiculoforwin.lngIdRegistro.GetType();
+
+				case "lngIdUsuario":
+					return vehiculoforwin.lngIdUsuario.GetType();
 
 			}
 

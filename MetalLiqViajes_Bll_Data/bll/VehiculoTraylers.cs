@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				vehiculotraylers.Trayler = (string) dr["Trayler"];
 				vehiculotraylers.Placa = dr.IsNull("Placa") ? null :(string) dr["Placa"];
 				vehiculotraylers.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
 				vehiculotraylers.lngIdRegistrRutaItemId = dr.IsNull("lngIdRegistrRutaItemId") ? null :(int?) dr["lngIdRegistrRutaItemId"];
@@ -60,6 +59,7 @@ namespace LiqViajes_Bll_Data
 				vehiculotraylers.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
 				vehiculotraylers.Liquidado = dr.IsNull("Liquidado") ? null :(bool?) dr["Liquidado"];
 				vehiculotraylers.Orden = dr.IsNull("Orden") ? null :(int?) dr["Orden"];
+				vehiculotraylers.Trayler = (string) dr["Trayler"];
 			}
 			catch (Exception ex)
 			{
@@ -115,7 +115,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an VehiculoTraylers object by passing all object's fields
 		/// </summary>
-		/// <param name="Trayler">string that contents the Trayler value for the VehiculoTraylers object</param>
 		/// <param name="Placa">string that contents the Placa value for the VehiculoTraylers object</param>
 		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the VehiculoTraylers object</param>
 		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the VehiculoTraylers object</param>
@@ -123,7 +122,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Fecha">DateTime that contents the Fecha value for the VehiculoTraylers object</param>
 		/// <param name="Liquidado">bool that contents the Liquidado value for the VehiculoTraylers object</param>
 		/// <param name="Orden">int that contents the Orden value for the VehiculoTraylers object</param>
-		public void Update(string Trayler, string Placa, int? lngIdRegistro, int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, DateTime? Fecha, bool? Liquidado, int? Orden, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Trayler">string that contents the Trayler value for the VehiculoTraylers object</param>
+		public void Update(string Placa, int? lngIdRegistro, int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, DateTime? Fecha, bool? Liquidado, int? Orden, string Trayler, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -135,7 +135,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Fecha = Fecha;
 				new_values.Liquidado = Liquidado;
 				new_values.Orden = Orden;
-				VehiculoTraylersDataProvider.Instance.Update(Trayler, Placa, lngIdRegistro, lngIdRegistrRutaItemId, lngIdRegistrRuta, Fecha, Liquidado, Orden,"VehiculoTraylers",datosTransaccion);
+				VehiculoTraylersDataProvider.Instance.Update(Placa, lngIdRegistro, lngIdRegistrRutaItemId, lngIdRegistrRuta, Fecha, Liquidado, Orden, Trayler,"VehiculoTraylers",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -149,7 +149,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="vehiculotraylers">An instance of VehiculoTraylers for reference</param>
 		public void Update(VehiculoTraylers vehiculotraylers,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(vehiculotraylers.Trayler, vehiculotraylers.Placa, vehiculotraylers.lngIdRegistro, vehiculotraylers.lngIdRegistrRutaItemId, vehiculotraylers.lngIdRegistrRuta, vehiculotraylers.Fecha, vehiculotraylers.Liquidado, vehiculotraylers.Orden);
+			Update(vehiculotraylers.Placa, vehiculotraylers.lngIdRegistro, vehiculotraylers.lngIdRegistrRutaItemId, vehiculotraylers.lngIdRegistrRuta, vehiculotraylers.Fecha, vehiculotraylers.Liquidado, vehiculotraylers.Orden, vehiculotraylers.Trayler);
 		}
 
 		/// <summary>
@@ -283,9 +283,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Trayler":
-					return vehiculotraylers.Trayler.GetType();
-
 				case "Placa":
 					return vehiculotraylers.Placa.GetType();
 
@@ -306,6 +303,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Orden":
 					return vehiculotraylers.Orden.GetType();
+
+				case "Trayler":
+					return vehiculotraylers.Trayler.GetType();
 
 			}
 

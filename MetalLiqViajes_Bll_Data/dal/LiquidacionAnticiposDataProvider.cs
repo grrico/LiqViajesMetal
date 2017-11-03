@@ -190,17 +190,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionAnticipos by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistroViaje"></param>
-		/// <param name="lngIdRegistroViajeTramo"></param>
-		/// <param name="intNitConductor"></param>
 		/// <param name="strConductor"></param>
-		/// <param name="strPlaca"></param>
 		/// <param name="dtmFechaMovimiento"></param>
-		/// <param name="lngIdBanco"></param>
 		/// <param name="strdescripcionBanco"></param>
-		/// <param name="intDocumento"></param>
-		/// <param name="strModelo"></param>
-		/// <param name="strtipo"></param>
 		/// <param name="sw"></param>
 		/// <param name="dtmFechaMovDMS"></param>
 		/// <param name="strCuenta"></param>
@@ -217,7 +209,15 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="logAnulado"></param>
 		/// <param name="logLiquidado"></param>
-		public void Update(int lngIdRegistroViaje, decimal lngIdRegistroViajeTramo, decimal intNitConductor, string strConductor, string strPlaca, DateTime? dtmFechaMovimiento, double lngIdBanco, string strdescripcionBanco, int intDocumento, string strModelo, string strtipo, byte? sw, DateTime? dtmFechaMovDMS, string strCuenta, string strCuenta2, string strdescripcionCuenta, string strdescripcionCuenta2, decimal? curValor, string strdescripcionModelo, string strNota, string strdocumento, string strUsuarioDMS, DateTime? dtmfechahoraSYSDMS, int? intUsuario, DateTime? dtmFechaModif, bool? logAnulado, bool? logLiquidado,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistroViaje"></param>
+		/// <param name="lngIdRegistroViajeTramo"></param>
+		/// <param name="intNitConductor"></param>
+		/// <param name="strPlaca"></param>
+		/// <param name="lngIdBanco"></param>
+		/// <param name="intDocumento"></param>
+		/// <param name="strModelo"></param>
+		/// <param name="strtipo"></param>
+		public void Update(string strConductor, DateTime? dtmFechaMovimiento, string strdescripcionBanco, byte? sw, DateTime? dtmFechaMovDMS, string strCuenta, string strCuenta2, string strdescripcionCuenta, string strdescripcionCuenta2, decimal? curValor, string strdescripcionModelo, string strNota, string strdocumento, string strUsuarioDMS, DateTime? dtmfechahoraSYSDMS, int? intUsuario, DateTime? dtmFechaModif, bool? logAnulado, bool? logLiquidado, int lngIdRegistroViaje, decimal lngIdRegistroViajeTramo, decimal intNitConductor, string strPlaca, double lngIdBanco, int intDocumento, string strModelo, string strtipo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

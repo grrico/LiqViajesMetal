@@ -94,10 +94,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblParametros by passing all fields
 		/// </summary>
-		/// <param name="lngIdParaMetro"></param>
 		/// <param name="intBanco"></param>
 		/// <param name="LogAvisarConductores"></param>
-		public void Update(int lngIdParaMetro, int? intBanco, bool? LogAvisarConductores,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdParaMetro"></param>
+		public void Update(int? intBanco, bool? LogAvisarConductores, int lngIdParaMetro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

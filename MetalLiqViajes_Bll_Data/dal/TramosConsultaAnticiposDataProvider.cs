@@ -118,14 +118,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into TramosConsultaAnticipos by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="IdRegistroViajeTramo"></param>
 		/// <param name="Tipo"></param>
 		/// <param name="Documento"></param>
 		/// <param name="NombreBanco"></param>
 		/// <param name="ValorAnticipo"></param>
 		/// <param name="Fecha"></param>
-		public void Update(long Codigo, long? IdRegistroViajeTramo, string Tipo, long? Documento, string NombreBanco, decimal? ValorAnticipo, DateTime? Fecha,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(long? IdRegistroViajeTramo, string Tipo, long? Documento, string NombreBanco, decimal? ValorAnticipo, DateTime? Fecha, long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

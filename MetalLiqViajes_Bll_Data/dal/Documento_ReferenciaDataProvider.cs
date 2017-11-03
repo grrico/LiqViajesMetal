@@ -101,13 +101,13 @@ namespace LiqViajes_Bll_Data
 		/// Updates one record into tblDocumento_Referencia by passing all fields
 		/// </summary>
 		/// <param name="lngIdRegistro"></param>
-		/// <param name="sw"></param>
-		/// <param name="tipo"></param>
-		/// <param name="numero"></param>
 		/// <param name="fecha"></param>
 		/// <param name="valor"></param>
 		/// <param name="ValorCruce"></param>
-		public void Update(int? lngIdRegistro, byte sw, string tipo, int numero, DateTime fecha, decimal valor, decimal? ValorCruce,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="sw"></param>
+		/// <param name="tipo"></param>
+		/// <param name="numero"></param>
+		public void Update(int? lngIdRegistro, DateTime fecha, decimal valor, decimal? ValorCruce, byte sw, string tipo, int numero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -82,9 +82,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TramosLavadas's lngIdRegistroViaje value
-		private long m_lngIdRegistroViaje;
-
 		// Field for storing the TramosLavadas's Origen value
 		private string m_Origen;
 
@@ -103,6 +100,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TramosLavadas's Valor value
 		private decimal? m_Valor;
 
+		// Field for storing the TramosLavadas's lngIdRegistroViaje value
+		private long m_lngIdRegistroViaje;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -116,20 +116,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TramosLavadas's lngIdRegistroViaje value (long)
-		/// </summary>
-		[DataMember]
-		public long lngIdRegistroViaje
-		{
-			get { return m_lngIdRegistroViaje; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistroViaje = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TramosLavadas's Origen value (string)
 		/// </summary>
@@ -214,17 +200,31 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TramosLavadas's lngIdRegistroViaje value (long)
+		/// </summary>
+		[DataMember]
+		public long lngIdRegistroViaje
+		{
+			get { return m_lngIdRegistroViaje; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistroViaje = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistroViaje": return lngIdRegistroViaje;
 				case "Origen": return Origen;
 				case "Destino": return Destino;
 				case "Liquidado": return Liquidado;
 				case "Fecha": return Fecha;
 				case "Placa": return Placa;
 				case "Valor": return Valor;
+				case "lngIdRegistroViaje": return lngIdRegistroViaje;
 				default: return null;
 			}
 		}

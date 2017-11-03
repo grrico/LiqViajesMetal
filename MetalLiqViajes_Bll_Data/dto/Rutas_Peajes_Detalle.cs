@@ -77,15 +77,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Rutas_Peajes_Detalle's codigo value
-		private long m_codigo;
-
-		// Field for storing the Rutas_Peajes_Detalle's Rutas_PeajesCodigo value
-		private long m_Rutas_PeajesCodigo;
-
-		// Field for storing the Rutas_Peajes_Detalle's lngIdPeaje value
-		private int m_lngIdPeaje;
-
 		// Field for storing the Rutas_Peajes_Detalle's Secuencia value
 		private int? m_Secuencia;
 
@@ -94,6 +85,15 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the Rutas_Peajes_Detalle's fechaModificacion value
 		private DateTime? m_fechaModificacion;
+
+		// Field for storing the Rutas_Peajes_Detalle's codigo value
+		private long m_codigo;
+
+		// Field for storing the Rutas_Peajes_Detalle's Rutas_PeajesCodigo value
+		private long m_Rutas_PeajesCodigo;
+
+		// Field for storing the Rutas_Peajes_Detalle's lngIdPeaje value
+		private int m_lngIdPeaje;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -108,48 +108,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Rutas_Peajes_Detalle's codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long codigo
-		{
-			get { return m_codigo; }
-			set 
-			{
-				m_changed=true;
-				m_codigo = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the Rutas_Peajes_Detalle's Rutas_PeajesCodigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Rutas_PeajesCodigo
-		{
-			get { return m_Rutas_PeajesCodigo; }
-			set 
-			{
-				m_changed=true;
-				m_Rutas_PeajesCodigo = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the Rutas_Peajes_Detalle's lngIdPeaje value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdPeaje
-		{
-			get { return m_lngIdPeaje; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdPeaje = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Rutas_Peajes_Detalle's Secuencia value (int)
 		/// </summary>
@@ -192,16 +150,58 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Rutas_Peajes_Detalle's codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long codigo
+		{
+			get { return m_codigo; }
+			set 
+			{
+				m_changed=true;
+				m_codigo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the Rutas_Peajes_Detalle's Rutas_PeajesCodigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Rutas_PeajesCodigo
+		{
+			get { return m_Rutas_PeajesCodigo; }
+			set 
+			{
+				m_changed=true;
+				m_Rutas_PeajesCodigo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the Rutas_Peajes_Detalle's lngIdPeaje value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdPeaje
+		{
+			get { return m_lngIdPeaje; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdPeaje = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "codigo": return codigo;
-				case "Rutas_PeajesCodigo": return Rutas_PeajesCodigo;
-				case "lngIdPeaje": return lngIdPeaje;
 				case "Secuencia": return Secuencia;
 				case "Excluido": return Excluido;
 				case "fechaModificacion": return fechaModificacion;
+				case "codigo": return codigo;
+				case "Rutas_PeajesCodigo": return Rutas_PeajesCodigo;
+				case "lngIdPeaje": return lngIdPeaje;
 				default: return null;
 			}
 		}

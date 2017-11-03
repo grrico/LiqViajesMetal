@@ -84,12 +84,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the LiquidacionSaldoConductor's lngIdRegistro value
-		private int m_lngIdRegistro;
-
-		// Field for storing the LiquidacionSaldoConductor's intNitConductor value
-		private decimal m_intNitConductor;
-
 		// Field for storing the LiquidacionSaldoConductor's curValorSaldo value
 		private decimal? m_curValorSaldo;
 
@@ -108,6 +102,12 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionSaldoConductor's lngIdRegistroLiq value
 		private int? m_lngIdRegistroLiq;
 
+		// Field for storing the LiquidacionSaldoConductor's lngIdRegistro value
+		private int m_lngIdRegistro;
+
+		// Field for storing the LiquidacionSaldoConductor's intNitConductor value
+		private decimal m_intNitConductor;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -121,34 +121,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the LiquidacionSaldoConductor's lngIdRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistro
-		{
-			get { return m_lngIdRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistro = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionSaldoConductor's intNitConductor value (decimal)
-		/// </summary>
-		[DataMember]
-		public decimal intNitConductor
-		{
-			get { return m_intNitConductor; }
-			set 
-			{
-				m_changed=true;
-				m_intNitConductor = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the LiquidacionSaldoConductor's curValorSaldo value (decimal)
 		/// </summary>
@@ -233,18 +205,46 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the LiquidacionSaldoConductor's lngIdRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionSaldoConductor's intNitConductor value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal intNitConductor
+		{
+			get { return m_intNitConductor; }
+			set 
+			{
+				m_changed=true;
+				m_intNitConductor = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistro": return lngIdRegistro;
-				case "intNitConductor": return intNitConductor;
 				case "curValorSaldo": return curValorSaldo;
 				case "dtmFechaModif": return dtmFechaModif;
 				case "sw": return sw;
 				case "strTipo": return strTipo;
 				case "numero": return numero;
 				case "lngIdRegistroLiq": return lngIdRegistroLiq;
+				case "lngIdRegistro": return lngIdRegistro;
+				case "intNitConductor": return intNitConductor;
 				default: return null;
 			}
 		}

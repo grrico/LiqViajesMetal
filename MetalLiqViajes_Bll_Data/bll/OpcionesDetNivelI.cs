@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				opcionesdetniveli.lngIdOpcion = (int) dr["lngIdOpcion"];
 				opcionesdetniveli.strDescOpcion = dr.IsNull("strDescOpcion") ? null :(string) dr["strDescOpcion"];
 				opcionesdetniveli.strPrograma = dr.IsNull("strPrograma") ? null :(string) dr["strPrograma"];
 				opcionesdetniveli.strParametros = dr.IsNull("strParametros") ? null :(string) dr["strParametros"];
@@ -63,6 +62,7 @@ namespace LiqViajes_Bll_Data
 				opcionesdetniveli.logExpandeNode = dr.IsNull("logExpandeNode") ? null :(bool?) dr["logExpandeNode"];
 				opcionesdetniveli.strString = dr.IsNull("strString") ? null :(string) dr["strString"];
 				opcionesdetniveli.strColHidden = dr.IsNull("strColHidden") ? null :(char?) ((string) dr["strColHidden"])[0];
+				opcionesdetniveli.lngIdOpcion = (int) dr["lngIdOpcion"];
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an OpcionesDetNivelI object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdOpcion">int that contents the lngIdOpcion value for the OpcionesDetNivelI object</param>
 		/// <param name="strDescOpcion">string that contents the strDescOpcion value for the OpcionesDetNivelI object</param>
 		/// <param name="strPrograma">string that contents the strPrograma value for the OpcionesDetNivelI object</param>
 		/// <param name="strParametros">string that contents the strParametros value for the OpcionesDetNivelI object</param>
@@ -135,7 +134,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="logExpandeNode">bool that contents the logExpandeNode value for the OpcionesDetNivelI object</param>
 		/// <param name="strString">string that contents the strString value for the OpcionesDetNivelI object</param>
 		/// <param name="strColHidden">char that contents the strColHidden value for the OpcionesDetNivelI object</param>
-		public void Update(int lngIdOpcion, string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, bool? logExpandeNode, string strString, char? strColHidden, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdOpcion">int that contents the lngIdOpcion value for the OpcionesDetNivelI object</param>
+		public void Update(string strDescOpcion, string strPrograma, string strParametros, int? lngIdOpcionPadre, string strTipoOpcion, int? intOrden, bool? WebBrowser, bool? logExpandeNode, string strString, char? strColHidden, int lngIdOpcion, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -150,7 +150,7 @@ namespace LiqViajes_Bll_Data
 				new_values.logExpandeNode = logExpandeNode;
 				new_values.strString = strString;
 				new_values.strColHidden = strColHidden;
-				OpcionesDetNivelIDataProvider.Instance.Update(lngIdOpcion, strDescOpcion, strPrograma, strParametros, lngIdOpcionPadre, strTipoOpcion, intOrden, WebBrowser, logExpandeNode, strString, strColHidden,"OpcionesDetNivelI",datosTransaccion);
+				OpcionesDetNivelIDataProvider.Instance.Update(strDescOpcion, strPrograma, strParametros, lngIdOpcionPadre, strTipoOpcion, intOrden, WebBrowser, logExpandeNode, strString, strColHidden, lngIdOpcion,"OpcionesDetNivelI",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -164,7 +164,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="opcionesdetniveli">An instance of OpcionesDetNivelI for reference</param>
 		public void Update(OpcionesDetNivelI opcionesdetniveli,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(opcionesdetniveli.lngIdOpcion, opcionesdetniveli.strDescOpcion, opcionesdetniveli.strPrograma, opcionesdetniveli.strParametros, opcionesdetniveli.lngIdOpcionPadre, opcionesdetniveli.strTipoOpcion, opcionesdetniveli.intOrden, opcionesdetniveli.WebBrowser, opcionesdetniveli.logExpandeNode, opcionesdetniveli.strString, opcionesdetniveli.strColHidden);
+			Update(opcionesdetniveli.strDescOpcion, opcionesdetniveli.strPrograma, opcionesdetniveli.strParametros, opcionesdetniveli.lngIdOpcionPadre, opcionesdetniveli.strTipoOpcion, opcionesdetniveli.intOrden, opcionesdetniveli.WebBrowser, opcionesdetniveli.logExpandeNode, opcionesdetniveli.strString, opcionesdetniveli.strColHidden, opcionesdetniveli.lngIdOpcion);
 		}
 
 		/// <summary>
@@ -316,9 +316,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdOpcion":
-					return opcionesdetniveli.lngIdOpcion.GetType();
-
 				case "strDescOpcion":
 					return opcionesdetniveli.strDescOpcion.GetType();
 
@@ -348,6 +345,9 @@ namespace LiqViajes_Bll_Data
 
 				case "strColHidden":
 					return opcionesdetniveli.strColHidden.GetType();
+
+				case "lngIdOpcion":
+					return opcionesdetniveli.lngIdOpcion.GetType();
 
 			}
 

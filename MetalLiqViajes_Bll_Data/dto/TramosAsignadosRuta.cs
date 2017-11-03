@@ -262,18 +262,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TramosAsignadosRuta's RegistroId value
-		private long m_RegistroId;
-
-		// Field for storing the TramosAsignadosRuta's Registro value
-		private long m_Registro;
-
-		// Field for storing the TramosAsignadosRuta's RegistrRuta value
-		private long m_RegistrRuta;
-
-		// Field for storing the TramosAsignadosRuta's RegistroRuttaAJC value
-		private long m_RegistroRuttaAJC;
-
 		// Field for storing the TramosAsignadosRuta's Fecha value
 		private DateTime? m_Fecha;
 
@@ -466,6 +454,18 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TramosAsignadosRuta's PlacaTrailer value
 		private string m_PlacaTrailer;
 
+		// Field for storing the TramosAsignadosRuta's RegistroId value
+		private long m_RegistroId;
+
+		// Field for storing the TramosAsignadosRuta's Registro value
+		private long m_Registro;
+
+		// Field for storing the TramosAsignadosRuta's RegistrRuta value
+		private long m_RegistrRuta;
+
+		// Field for storing the TramosAsignadosRuta's RegistroRuttaAJC value
+		private long m_RegistroRuttaAJC;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -479,62 +479,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TramosAsignadosRuta's RegistroId value (long)
-		/// </summary>
-		[DataMember]
-		public long RegistroId
-		{
-			get { return m_RegistroId; }
-			set 
-			{
-				m_changed=true;
-				m_RegistroId = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the TramosAsignadosRuta's Registro value (long)
-		/// </summary>
-		[DataMember]
-		public long Registro
-		{
-			get { return m_Registro; }
-			set 
-			{
-				m_changed=true;
-				m_Registro = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the TramosAsignadosRuta's RegistrRuta value (long)
-		/// </summary>
-		[DataMember]
-		public long RegistrRuta
-		{
-			get { return m_RegistrRuta; }
-			set 
-			{
-				m_changed=true;
-				m_RegistrRuta = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the TramosAsignadosRuta's RegistroRuttaAJC value (long)
-		/// </summary>
-		[DataMember]
-		public long RegistroRuttaAJC
-		{
-			get { return m_RegistroRuttaAJC; }
-			set 
-			{
-				m_changed=true;
-				m_RegistroRuttaAJC = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TramosAsignadosRuta's Fecha value (DateTime)
 		/// </summary>
@@ -1431,14 +1375,66 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TramosAsignadosRuta's RegistroId value (long)
+		/// </summary>
+		[DataMember]
+		public long RegistroId
+		{
+			get { return m_RegistroId; }
+			set 
+			{
+				m_changed=true;
+				m_RegistroId = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the TramosAsignadosRuta's Registro value (long)
+		/// </summary>
+		[DataMember]
+		public long Registro
+		{
+			get { return m_Registro; }
+			set 
+			{
+				m_changed=true;
+				m_Registro = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the TramosAsignadosRuta's RegistrRuta value (long)
+		/// </summary>
+		[DataMember]
+		public long RegistrRuta
+		{
+			get { return m_RegistrRuta; }
+			set 
+			{
+				m_changed=true;
+				m_RegistrRuta = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the TramosAsignadosRuta's RegistroRuttaAJC value (long)
+		/// </summary>
+		[DataMember]
+		public long RegistroRuttaAJC
+		{
+			get { return m_RegistroRuttaAJC; }
+			set 
+			{
+				m_changed=true;
+				m_RegistroRuttaAJC = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "RegistroId": return RegistroId;
-				case "Registro": return Registro;
-				case "RegistrRuta": return RegistrRuta;
-				case "RegistroRuttaAJC": return RegistroRuttaAJC;
 				case "Fecha": return Fecha;
 				case "liquidado": return liquidado;
 				case "Asignado": return Asignado;
@@ -1503,6 +1499,10 @@ namespace LiqViajes_Bll_Data
 				case "CantidadReal": return CantidadReal;
 				case "LogAnticipoACPM": return LogAnticipoACPM;
 				case "PlacaTrailer": return PlacaTrailer;
+				case "RegistroId": return RegistroId;
+				case "Registro": return Registro;
+				case "RegistrRuta": return RegistrRuta;
+				case "RegistroRuttaAJC": return RegistroRuttaAJC;
 				default: return null;
 			}
 		}

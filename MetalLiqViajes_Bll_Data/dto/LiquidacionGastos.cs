@@ -141,21 +141,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the LiquidacionGastos's lngIdRegistrRutaItemId value
-		private int m_lngIdRegistrRutaItemId;
-
-		// Field for storing the LiquidacionGastos's lngIdRegistroViaje value
-		private decimal m_lngIdRegistroViaje;
-
-		// Field for storing the LiquidacionGastos's lngIdRegistrRuta value
-		private int m_lngIdRegistrRuta;
-
-		// Field for storing the LiquidacionGastos's strCuenta value
-		private string m_strCuenta;
-
-		// Field for storing the LiquidacionGastos's intRowRegistro value
-		private int m_intRowRegistro;
-
 		// Field for storing the LiquidacionGastos's strDescripcionCuenta value
 		private string m_strDescripcionCuenta;
 
@@ -225,6 +210,21 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionGastos's AntipoConductor value
 		private bool? m_AntipoConductor;
 
+		// Field for storing the LiquidacionGastos's lngIdRegistrRutaItemId value
+		private int m_lngIdRegistrRutaItemId;
+
+		// Field for storing the LiquidacionGastos's lngIdRegistroViaje value
+		private decimal m_lngIdRegistroViaje;
+
+		// Field for storing the LiquidacionGastos's lngIdRegistrRuta value
+		private int m_lngIdRegistrRuta;
+
+		// Field for storing the LiquidacionGastos's strCuenta value
+		private string m_strCuenta;
+
+		// Field for storing the LiquidacionGastos's intRowRegistro value
+		private int m_intRowRegistro;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 		// Field for storing the reference to LiquidacionRutas accessed by lngIdRegistrRutaItemId
@@ -241,82 +241,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the LiquidacionGastos's lngIdRegistrRutaItemId value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistrRutaItemId
-		{
-			get { return m_lngIdRegistrRutaItemId; }
-			set
-			{
-				m_changed=true;
-				m_lngIdRegistrRutaItemId = value;
-
-				if ((m_LiquidacionRutas != null) && (m_LiquidacionRutas.lngIdRegistrRutaItemId != m_lngIdRegistrRutaItemId))
-				{
-					// we need to reset the reference because it is now invalid
-					m_LiquidacionRutas = null;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionGastos's lngIdRegistroViaje value (decimal)
-		/// </summary>
-		[DataMember]
-		public decimal lngIdRegistroViaje
-		{
-			get { return m_lngIdRegistroViaje; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistroViaje = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionGastos's lngIdRegistrRuta value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistrRuta
-		{
-			get { return m_lngIdRegistrRuta; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistrRuta = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionGastos's strCuenta value (string)
-		/// </summary>
-		[DataMember]
-		public string strCuenta
-		{
-			get { return m_strCuenta; }
-			set 
-			{
-				m_changed=true;
-				m_strCuenta = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the LiquidacionGastos's intRowRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int intRowRegistro
-		{
-			get { return m_intRowRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_intRowRegistro = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the LiquidacionGastos's strDescripcionCuenta value (string)
 		/// </summary>
@@ -639,15 +563,86 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the LiquidacionGastos's lngIdRegistrRutaItemId value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistrRutaItemId
+		{
+			get { return m_lngIdRegistrRutaItemId; }
+			set
+			{
+				m_changed=true;
+				m_lngIdRegistrRutaItemId = value;
+
+				if ((m_LiquidacionRutas != null) && (m_LiquidacionRutas.lngIdRegistrRutaItemId != m_lngIdRegistrRutaItemId))
+				{
+					// we need to reset the reference because it is now invalid
+					m_LiquidacionRutas = null;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionGastos's lngIdRegistroViaje value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal lngIdRegistroViaje
+		{
+			get { return m_lngIdRegistroViaje; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistroViaje = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionGastos's lngIdRegistrRuta value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistrRuta
+		{
+			get { return m_lngIdRegistrRuta; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistrRuta = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionGastos's strCuenta value (string)
+		/// </summary>
+		[DataMember]
+		public string strCuenta
+		{
+			get { return m_strCuenta; }
+			set 
+			{
+				m_changed=true;
+				m_strCuenta = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionGastos's intRowRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int intRowRegistro
+		{
+			get { return m_intRowRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_intRowRegistro = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
-				case "lngIdRegistroViaje": return lngIdRegistroViaje;
-				case "lngIdRegistrRuta": return lngIdRegistrRuta;
-				case "strCuenta": return strCuenta;
-				case "intRowRegistro": return intRowRegistro;
 				case "strDescripcionCuenta": return strDescripcionCuenta;
 				case "strDescripcion": return strDescripcion;
 				case "dtmFechaAsignacion": return dtmFechaAsignacion;
@@ -671,6 +666,11 @@ namespace LiqViajes_Bll_Data
 				case "cutCombustible": return cutCombustible;
 				case "LogAnticipoACPM": return LogAnticipoACPM;
 				case "AntipoConductor": return AntipoConductor;
+				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
+				case "lngIdRegistroViaje": return lngIdRegistroViaje;
+				case "lngIdRegistrRuta": return lngIdRegistrRuta;
+				case "strCuenta": return strCuenta;
+				case "intRowRegistro": return intRowRegistro;
 				default: return null;
 			}
 		}

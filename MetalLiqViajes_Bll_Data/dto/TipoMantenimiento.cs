@@ -79,9 +79,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TipoMantenimiento's lngIdTipoMantenimiento value
-		private int m_lngIdTipoMantenimiento;
-
 		// Field for storing the TipoMantenimiento's strTipoMantenimiento value
 		private string m_strTipoMantenimiento;
 
@@ -97,6 +94,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TipoMantenimiento's intValorAviso2 value
 		private float? m_intValorAviso2;
 
+		// Field for storing the TipoMantenimiento's lngIdTipoMantenimiento value
+		private int m_lngIdTipoMantenimiento;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -110,20 +110,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TipoMantenimiento's lngIdTipoMantenimiento value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdTipoMantenimiento
-		{
-			get { return m_lngIdTipoMantenimiento; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdTipoMantenimiento = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TipoMantenimiento's strTipoMantenimiento value (string)
 		/// </summary>
@@ -194,16 +180,30 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TipoMantenimiento's lngIdTipoMantenimiento value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdTipoMantenimiento
+		{
+			get { return m_lngIdTipoMantenimiento; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdTipoMantenimiento = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdTipoMantenimiento": return lngIdTipoMantenimiento;
 				case "strTipoMantenimiento": return strTipoMantenimiento;
 				case "logActivar": return logActivar;
 				case "intValorMantenimiento": return intValorMantenimiento;
 				case "intValorAviso": return intValorAviso;
 				case "intValorAviso2": return intValorAviso2;
+				case "lngIdTipoMantenimiento": return lngIdTipoMantenimiento;
 				default: return null;
 			}
 		}

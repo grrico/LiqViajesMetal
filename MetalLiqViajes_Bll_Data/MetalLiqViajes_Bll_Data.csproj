@@ -293,6 +293,7 @@
     <Compile Include="dto_add\TramosGastos.cs" />
     <Compile Include="dto_add\TramosMovViajes.cs" />
     <Compile Include="IBLLObject.cs" />
+    <Compile Include="MasterTables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyComparer.cs" />
     <Compile Include="Security.cs" />

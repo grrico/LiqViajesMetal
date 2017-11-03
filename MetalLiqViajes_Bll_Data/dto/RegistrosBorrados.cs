@@ -112,9 +112,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the RegistrosBorrados's lngIdRegistroViaje value
-		private int m_lngIdRegistroViaje;
-
 		// Field for storing the RegistrosBorrados's lngIdRegistroViajeTramo value
 		private int? m_lngIdRegistroViajeTramo;
 
@@ -163,6 +160,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the RegistrosBorrados's logAnulado value
 		private bool? m_logAnulado;
 
+		// Field for storing the RegistrosBorrados's lngIdRegistroViaje value
+		private int m_lngIdRegistroViaje;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -176,20 +176,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the RegistrosBorrados's lngIdRegistroViaje value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistroViaje
-		{
-			get { return m_lngIdRegistroViaje; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistroViaje = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the RegistrosBorrados's lngIdRegistroViajeTramo value (int)
 		/// </summary>
@@ -414,11 +400,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the RegistrosBorrados's lngIdRegistroViaje value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistroViaje
+		{
+			get { return m_lngIdRegistroViaje; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistroViaje = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistroViaje": return lngIdRegistroViaje;
 				case "lngIdRegistroViajeTramo": return lngIdRegistroViajeTramo;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				case "strRutaAnticipo": return strRutaAnticipo;
@@ -435,6 +434,7 @@ namespace LiqViajes_Bll_Data
 				case "strObservaciones": return strObservaciones;
 				case "intCantidad": return intCantidad;
 				case "logAnulado": return logAnulado;
+				case "lngIdRegistroViaje": return lngIdRegistroViaje;
 				default: return null;
 			}
 		}

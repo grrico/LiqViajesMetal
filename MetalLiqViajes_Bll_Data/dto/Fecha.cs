@@ -139,9 +139,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Fecha's PK_Date value
-		private DateTime m_PK_Date;
-
 		// Field for storing the Fecha's Date_Name value
 		private string m_Date_Name;
 
@@ -217,6 +214,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Fecha's Trimester_Of_Year_Name value
 		private string m_Trimester_Of_Year_Name;
 
+		// Field for storing the Fecha's PK_Date value
+		private DateTime m_PK_Date;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -230,20 +230,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Fecha's PK_Date value (DateTime)
-		/// </summary>
-		[DataMember]
-		public DateTime PK_Date
-		{
-			get { return m_PK_Date; }
-			set 
-			{
-				m_changed=true;
-				m_PK_Date = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Fecha's Date_Name value (string)
 		/// </summary>
@@ -594,11 +580,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Fecha's PK_Date value (DateTime)
+		/// </summary>
+		[DataMember]
+		public DateTime PK_Date
+		{
+			get { return m_PK_Date; }
+			set 
+			{
+				m_changed=true;
+				m_PK_Date = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "PK_Date": return PK_Date;
 				case "Date_Name": return Date_Name;
 				case "Year": return Year;
 				case "Year_Name": return Year_Name;
@@ -624,6 +623,7 @@ namespace LiqViajes_Bll_Data
 				case "Month_Of_Trimester_Name": return Month_Of_Trimester_Name;
 				case "Trimester_Of_Year": return Trimester_Of_Year;
 				case "Trimester_Of_Year_Name": return Trimester_Of_Year_Name;
+				case "PK_Date": return PK_Date;
 				default: return null;
 			}
 		}

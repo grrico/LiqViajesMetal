@@ -83,15 +83,6 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Documento_Referencia's lngIdRegistro value
 		private int? m_lngIdRegistro;
 
-		// Field for storing the Documento_Referencia's sw value
-		private byte m_sw;
-
-		// Field for storing the Documento_Referencia's tipo value
-		private string m_tipo;
-
-		// Field for storing the Documento_Referencia's numero value
-		private int m_numero;
-
 		// Field for storing the Documento_Referencia's fecha value
 		private DateTime m_fecha;
 
@@ -100,6 +91,15 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the Documento_Referencia's ValorCruce value
 		private decimal? m_ValorCruce;
+
+		// Field for storing the Documento_Referencia's sw value
+		private byte m_sw;
+
+		// Field for storing the Documento_Referencia's tipo value
+		private string m_tipo;
+
+		// Field for storing the Documento_Referencia's numero value
+		private int m_numero;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -125,48 +125,6 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_lngIdRegistro = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the Documento_Referencia's sw value (byte)
-		/// </summary>
-		[DataMember]
-		public byte sw
-		{
-			get { return m_sw; }
-			set 
-			{
-				m_changed=true;
-				m_sw = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the Documento_Referencia's tipo value (string)
-		/// </summary>
-		[DataMember]
-		public string tipo
-		{
-			get { return m_tipo; }
-			set 
-			{
-				m_changed=true;
-				m_tipo = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the Documento_Referencia's numero value (int)
-		/// </summary>
-		[DataMember]
-		public int numero
-		{
-			get { return m_numero; }
-			set 
-			{
-				m_changed=true;
-				m_numero = value;
 			}
 		}
 
@@ -212,17 +170,59 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Documento_Referencia's sw value (byte)
+		/// </summary>
+		[DataMember]
+		public byte sw
+		{
+			get { return m_sw; }
+			set 
+			{
+				m_changed=true;
+				m_sw = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the Documento_Referencia's tipo value (string)
+		/// </summary>
+		[DataMember]
+		public string tipo
+		{
+			get { return m_tipo; }
+			set 
+			{
+				m_changed=true;
+				m_tipo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the Documento_Referencia's numero value (int)
+		/// </summary>
+		[DataMember]
+		public int numero
+		{
+			get { return m_numero; }
+			set 
+			{
+				m_changed=true;
+				m_numero = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
 				case "lngIdRegistro": return lngIdRegistro;
-				case "sw": return sw;
-				case "tipo": return tipo;
-				case "numero": return numero;
 				case "fecha": return fecha;
 				case "valor": return valor;
 				case "ValorCruce": return ValorCruce;
+				case "sw": return sw;
+				case "tipo": return tipo;
+				case "numero": return numero;
 				default: return null;
 			}
 		}

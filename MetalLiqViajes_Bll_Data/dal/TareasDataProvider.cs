@@ -133,7 +133,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblTareas by passing all fields
 		/// </summary>
-		/// <param name="lngIdTarea"></param>
 		/// <param name="strAsunto"></param>
 		/// <param name="dtmFechaInicio"></param>
 		/// <param name="strFechavencimiento"></param>
@@ -143,7 +142,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="logFinalizada"></param>
 		/// <param name="Notas"></param>
 		/// <param name="lngIdStatus"></param>
-		public void Update(int lngIdTarea, string strAsunto, DateTime? dtmFechaInicio, DateTime? strFechavencimiento, bool? logAvisa, DateTime? FechaAviso, DateTime? Fechadefinalización, bool? logFinalizada, string Notas, int? lngIdStatus,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdTarea"></param>
+		public void Update(string strAsunto, DateTime? dtmFechaInicio, DateTime? strFechavencimiento, bool? logAvisa, DateTime? FechaAviso, DateTime? Fechadefinalización, bool? logFinalizada, string Notas, int? lngIdStatus, int lngIdTarea,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

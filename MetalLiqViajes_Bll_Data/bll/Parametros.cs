@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				parametros.lngIdParaMetro = (int) dr["lngIdParaMetro"];
 				parametros.intBanco = dr.IsNull("intBanco") ? null :(int?) dr["intBanco"];
 				parametros.LogAvisarConductores = dr.IsNull("LogAvisarConductores") ? null :(bool?) dr["LogAvisarConductores"];
+				parametros.lngIdParaMetro = (int) dr["lngIdParaMetro"];
 			}
 			catch (Exception ex)
 			{
@@ -100,17 +100,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Parametros object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdParaMetro">int that contents the lngIdParaMetro value for the Parametros object</param>
 		/// <param name="intBanco">int that contents the intBanco value for the Parametros object</param>
 		/// <param name="LogAvisarConductores">bool that contents the LogAvisarConductores value for the Parametros object</param>
-		public void Update(int lngIdParaMetro, int? intBanco, bool? LogAvisarConductores, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdParaMetro">int that contents the lngIdParaMetro value for the Parametros object</param>
+		public void Update(int? intBanco, bool? LogAvisarConductores, int lngIdParaMetro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				Parametros new_values = new Parametros();
 				new_values.intBanco = intBanco;
 				new_values.LogAvisarConductores = LogAvisarConductores;
-				ParametrosDataProvider.Instance.Update(lngIdParaMetro, intBanco, LogAvisarConductores,"Parametros",datosTransaccion);
+				ParametrosDataProvider.Instance.Update(intBanco, LogAvisarConductores, lngIdParaMetro,"Parametros",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="parametros">An instance of Parametros for reference</param>
 		public void Update(Parametros parametros,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(parametros.lngIdParaMetro, parametros.intBanco, parametros.LogAvisarConductores);
+			Update(parametros.intBanco, parametros.LogAvisarConductores, parametros.lngIdParaMetro);
 		}
 
 		/// <summary>
@@ -179,14 +179,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Parametros parametros = null;
-				DataTable dt = ParametrosDataProvider.Instance.Get(lngIdParaMetro);
-				if ((dt.Rows.Count > 0))
+				parametros= MasterTables.Parametros.Where(r => r.lngIdParaMetro== lngIdParaMetro).FirstOrDefault();
+				if (parametros== null)
 				{
-					parametros = new Parametros();
-					DataRow dr = dt.Rows[0];
-					ReadData(parametros, dr, generateUndo);
+					MasterTables.Reset("Parametros");
+					parametros= MasterTables.Parametros.Where(r => r.lngIdParaMetro== lngIdParaMetro).FirstOrDefault();
 				}
-
+				if (generateUndo) parametros.GenerateUndo();
 
 				return parametros;
 			}
@@ -276,14 +275,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdParaMetro":
-					return parametros.lngIdParaMetro.GetType();
-
 				case "intBanco":
 					return parametros.intBanco.GetType();
 
 				case "LogAvisarConductores":
 					return parametros.LogAvisarConductores.GetType();
+
+				case "lngIdParaMetro":
+					return parametros.lngIdParaMetro.GetType();
 
 			}
 

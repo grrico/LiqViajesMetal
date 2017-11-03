@@ -105,21 +105,6 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the documentos_che's sw value
 		private byte m_sw;
 
-		// Field for storing the documentos_che's tipo value
-		private string m_tipo;
-
-		// Field for storing the documentos_che's numero value
-		private int m_numero;
-
-		// Field for storing the documentos_che's banco value
-		private short m_banco;
-
-		// Field for storing the documentos_che's documento value
-		private string m_documento;
-
-		// Field for storing the documentos_che's forma_pago value
-		private byte m_forma_pago;
-
 		// Field for storing the documentos_che's fecha value
 		private DateTime m_fecha;
 
@@ -147,6 +132,21 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the documentos_che's iva_tarjeta value
 		private decimal? m_iva_tarjeta;
 
+		// Field for storing the documentos_che's tipo value
+		private string m_tipo;
+
+		// Field for storing the documentos_che's numero value
+		private int m_numero;
+
+		// Field for storing the documentos_che's banco value
+		private short m_banco;
+
+		// Field for storing the documentos_che's documento value
+		private string m_documento;
+
+		// Field for storing the documentos_che's forma_pago value
+		private byte m_forma_pago;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -171,76 +171,6 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_sw = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the documentos_che's tipo value (string)
-		/// </summary>
-		[DataMember]
-		public string tipo
-		{
-			get { return m_tipo; }
-			set 
-			{
-				m_changed=true;
-				m_tipo = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the documentos_che's numero value (int)
-		/// </summary>
-		[DataMember]
-		public int numero
-		{
-			get { return m_numero; }
-			set 
-			{
-				m_changed=true;
-				m_numero = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the documentos_che's banco value (short)
-		/// </summary>
-		[DataMember]
-		public short banco
-		{
-			get { return m_banco; }
-			set 
-			{
-				m_changed=true;
-				m_banco = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the documentos_che's documento value (string)
-		/// </summary>
-		[DataMember]
-		public string documento
-		{
-			get { return m_documento; }
-			set 
-			{
-				m_changed=true;
-				m_documento = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the documentos_che's forma_pago value (byte)
-		/// </summary>
-		[DataMember]
-		public byte forma_pago
-		{
-			get { return m_forma_pago; }
-			set 
-			{
-				m_changed=true;
-				m_forma_pago = value;
 			}
 		}
 
@@ -370,16 +300,81 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the documentos_che's tipo value (string)
+		/// </summary>
+		[DataMember]
+		public string tipo
+		{
+			get { return m_tipo; }
+			set 
+			{
+				m_changed=true;
+				m_tipo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the documentos_che's numero value (int)
+		/// </summary>
+		[DataMember]
+		public int numero
+		{
+			get { return m_numero; }
+			set 
+			{
+				m_changed=true;
+				m_numero = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the documentos_che's banco value (short)
+		/// </summary>
+		[DataMember]
+		public short banco
+		{
+			get { return m_banco; }
+			set 
+			{
+				m_changed=true;
+				m_banco = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the documentos_che's documento value (string)
+		/// </summary>
+		[DataMember]
+		public string documento
+		{
+			get { return m_documento; }
+			set 
+			{
+				m_changed=true;
+				m_documento = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the documentos_che's forma_pago value (byte)
+		/// </summary>
+		[DataMember]
+		public byte forma_pago
+		{
+			get { return m_forma_pago; }
+			set 
+			{
+				m_changed=true;
+				m_forma_pago = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
 				case "sw": return sw;
-				case "tipo": return tipo;
-				case "numero": return numero;
-				case "banco": return banco;
-				case "documento": return documento;
-				case "forma_pago": return forma_pago;
 				case "fecha": return fecha;
 				case "valor": return valor;
 				case "consignar_en": return consignar_en;
@@ -389,6 +384,11 @@ namespace LiqViajes_Bll_Data
 				case "fecha_devolucion": return fecha_devolucion;
 				case "cuenta_banco": return cuenta_banco;
 				case "iva_tarjeta": return iva_tarjeta;
+				case "tipo": return tipo;
+				case "numero": return numero;
+				case "banco": return banco;
+				case "documento": return documento;
+				case "forma_pago": return forma_pago;
 				default: return null;
 			}
 		}

@@ -148,7 +148,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into legalizacionViajes by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="sw"></param>
 		/// <param name="tipo"></param>
@@ -161,7 +160,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="descripcion"></param>
 		/// <param name="valor"></param>
 		/// <param name="notas"></param>
-		public void Update(long Codigo, int? lngIdRegistro, byte? sw, string tipo, long? numero, int? seq, DateTime? Fecha, decimal? nit, int? centro, string cuenta, string descripcion, decimal? valor, string notas,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(int? lngIdRegistro, byte? sw, string tipo, long? numero, int? seq, DateTime? Fecha, decimal? nit, int? centro, string cuenta, string descripcion, decimal? valor, string notas, long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

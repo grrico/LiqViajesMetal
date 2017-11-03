@@ -127,11 +127,6 @@ namespace LiqViajes_Bll_Data
 		/// Updates one record into documentos_che by passing all fields
 		/// </summary>
 		/// <param name="sw"></param>
-		/// <param name="tipo"></param>
-		/// <param name="numero"></param>
-		/// <param name="banco"></param>
-		/// <param name="documento"></param>
-		/// <param name="forma_pago"></param>
 		/// <param name="fecha"></param>
 		/// <param name="valor"></param>
 		/// <param name="consignar_en"></param>
@@ -141,7 +136,12 @@ namespace LiqViajes_Bll_Data
 		/// <param name="fecha_devolucion"></param>
 		/// <param name="cuenta_banco"></param>
 		/// <param name="iva_tarjeta"></param>
-		public void Update(byte sw, string tipo, int numero, short banco, string documento, byte forma_pago, DateTime fecha, decimal valor, short consignar_en, string devuelto, string tipo_consignacion, int? numero_consignacion, DateTime? fecha_devolucion, string cuenta_banco, decimal? iva_tarjeta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="tipo"></param>
+		/// <param name="numero"></param>
+		/// <param name="banco"></param>
+		/// <param name="documento"></param>
+		/// <param name="forma_pago"></param>
+		public void Update(byte sw, DateTime fecha, decimal valor, short consignar_en, string devuelto, string tipo_consignacion, int? numero_consignacion, DateTime? fecha_devolucion, string cuenta_banco, decimal? iva_tarjeta, string tipo, int numero, short banco, string documento, byte forma_pago,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

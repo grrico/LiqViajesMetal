@@ -52,13 +52,13 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				catalogo.nombre_empresa = (string) dr["nombre_empresa"];
 				catalogo.fecha_actual = (DateTime) dr["fecha_actual"];
 				catalogo.sigla = (string) dr["sigla"];
 				catalogo.nit = (int) dr["nit"];
 				catalogo.version = (int) dr["version"];
 				catalogo.direccion = (string) dr["direccion"];
 				catalogo.telefono = (string) dr["telefono"];
+				catalogo.nombre_empresa = (string) dr["nombre_empresa"];
 			}
 			catch (Exception ex)
 			{
@@ -112,14 +112,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Catalogo object by passing all object's fields
 		/// </summary>
-		/// <param name="nombre_empresa">string that contents the nombre_empresa value for the Catalogo object</param>
 		/// <param name="fecha_actual">DateTime that contents the fecha_actual value for the Catalogo object</param>
 		/// <param name="sigla">string that contents the sigla value for the Catalogo object</param>
 		/// <param name="nit">int that contents the nit value for the Catalogo object</param>
 		/// <param name="version">int that contents the version value for the Catalogo object</param>
 		/// <param name="direccion">string that contents the direccion value for the Catalogo object</param>
 		/// <param name="telefono">string that contents the telefono value for the Catalogo object</param>
-		public void Update(string nombre_empresa, DateTime fecha_actual, string sigla, int nit, int version, string direccion, string telefono, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="nombre_empresa">string that contents the nombre_empresa value for the Catalogo object</param>
+		public void Update(DateTime fecha_actual, string sigla, int nit, int version, string direccion, string telefono, string nombre_empresa, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -130,7 +130,7 @@ namespace LiqViajes_Bll_Data
 				new_values.version = version;
 				new_values.direccion = direccion;
 				new_values.telefono = telefono;
-				CatalogoDataProvider.Instance.Update(nombre_empresa, fecha_actual, sigla, nit, version, direccion, telefono,"Catalogo",datosTransaccion);
+				CatalogoDataProvider.Instance.Update(fecha_actual, sigla, nit, version, direccion, telefono, nombre_empresa,"Catalogo",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="catalogo">An instance of Catalogo for reference</param>
 		public void Update(Catalogo catalogo,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(catalogo.nombre_empresa, catalogo.fecha_actual, catalogo.sigla, catalogo.nit, catalogo.version, catalogo.direccion, catalogo.telefono);
+			Update(catalogo.fecha_actual, catalogo.sigla, catalogo.nit, catalogo.version, catalogo.direccion, catalogo.telefono, catalogo.nombre_empresa);
 		}
 
 		/// <summary>
@@ -181,14 +181,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Catalogo catalogo = null;
-				DataTable dt = CatalogoDataProvider.Instance.Get(nombre_empresa);
-				if ((dt.Rows.Count > 0))
+				catalogo= MasterTables.Catalogo.Where(r => r.nombre_empresa== nombre_empresa).FirstOrDefault();
+				if (catalogo== null)
 				{
-					catalogo = new Catalogo();
-					DataRow dr = dt.Rows[0];
-					ReadData(catalogo, dr, generateUndo);
+					MasterTables.Reset("Catalogo");
+					catalogo= MasterTables.Catalogo.Where(r => r.nombre_empresa== nombre_empresa).FirstOrDefault();
 				}
-
+				if (generateUndo) catalogo.GenerateUndo();
 
 				return catalogo;
 			}
@@ -278,9 +277,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "nombre_empresa":
-					return catalogo.nombre_empresa.GetType();
-
 				case "fecha_actual":
 					return catalogo.fecha_actual.GetType();
 
@@ -298,6 +294,9 @@ namespace LiqViajes_Bll_Data
 
 				case "telefono":
 					return catalogo.telefono.GetType();
+
+				case "nombre_empresa":
+					return catalogo.nombre_empresa.GetType();
 
 			}
 

@@ -67,11 +67,11 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the MarcasVehiculos's lngIdRegistro value
-		private int m_lngIdRegistro;
-
 		// Field for storing the MarcasVehiculos's strMarca value
 		private string m_strMarca;
+
+		// Field for storing the MarcasVehiculos's lngIdRegistro value
+		private int m_lngIdRegistro;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -87,20 +87,6 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the MarcasVehiculos's lngIdRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistro
-		{
-			get { return m_lngIdRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistro = value;
-			}
-		}
-
-		/// <summary>
 		/// Attribute for access the MarcasVehiculos's strMarca value (string)
 		/// </summary>
 		[DataMember]
@@ -114,12 +100,26 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the MarcasVehiculos's lngIdRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistro": return lngIdRegistro;
 				case "strMarca": return strMarca;
+				case "lngIdRegistro": return lngIdRegistro;
 				default: return null;
 			}
 		}

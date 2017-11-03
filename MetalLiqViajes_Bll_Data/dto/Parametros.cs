@@ -70,14 +70,14 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Parametros's lngIdParaMetro value
-		private int m_lngIdParaMetro;
-
 		// Field for storing the Parametros's intBanco value
 		private int? m_intBanco;
 
 		// Field for storing the Parametros's LogAvisarConductores value
 		private bool? m_LogAvisarConductores;
+
+		// Field for storing the Parametros's lngIdParaMetro value
+		private int m_lngIdParaMetro;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -92,20 +92,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Parametros's lngIdParaMetro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdParaMetro
-		{
-			get { return m_lngIdParaMetro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdParaMetro = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Parametros's intBanco value (int)
 		/// </summary>
@@ -134,13 +120,27 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Parametros's lngIdParaMetro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdParaMetro
+		{
+			get { return m_lngIdParaMetro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdParaMetro = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdParaMetro": return lngIdParaMetro;
 				case "intBanco": return intBanco;
 				case "LogAvisarConductores": return LogAvisarConductores;
+				case "lngIdParaMetro": return lngIdParaMetro;
 				default: return null;
 			}
 		}

@@ -52,11 +52,11 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutascombustible.lngIdRegistro = (int) dr["lngIdRegistro"];
 				rutascombustible.strNombreGrupo = dr.IsNull("strNombreGrupo") ? null :(string) dr["strNombreGrupo"];
 				rutascombustible.cutCombustible = dr.IsNull("cutCombustible") ? null :(decimal?) dr["cutCombustible"];
 				rutascombustible.TipoVehiculo = dr.IsNull("TipoVehiculo") ? null :(string) dr["TipoVehiculo"];
 				rutascombustible.DescripcionVehiculo = dr.IsNull("DescripcionVehiculo") ? null :(string) dr["DescripcionVehiculo"];
+				rutascombustible.lngIdRegistro = (int) dr["lngIdRegistro"];
 			}
 			catch (Exception ex)
 			{
@@ -111,12 +111,12 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasCombustible object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the RutasCombustible object</param>
 		/// <param name="strNombreGrupo">string that contents the strNombreGrupo value for the RutasCombustible object</param>
 		/// <param name="cutCombustible">decimal that contents the cutCombustible value for the RutasCombustible object</param>
 		/// <param name="TipoVehiculo">string that contents the TipoVehiculo value for the RutasCombustible object</param>
 		/// <param name="DescripcionVehiculo">string that contents the DescripcionVehiculo value for the RutasCombustible object</param>
-		public void Update(int lngIdRegistro, string strNombreGrupo, decimal? cutCombustible, string TipoVehiculo, string DescripcionVehiculo, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the RutasCombustible object</param>
+		public void Update(string strNombreGrupo, decimal? cutCombustible, string TipoVehiculo, string DescripcionVehiculo, int lngIdRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -125,7 +125,7 @@ namespace LiqViajes_Bll_Data
 				new_values.cutCombustible = cutCombustible;
 				new_values.TipoVehiculo = TipoVehiculo;
 				new_values.DescripcionVehiculo = DescripcionVehiculo;
-				RutasCombustibleDataProvider.Instance.Update(lngIdRegistro, strNombreGrupo, cutCombustible, TipoVehiculo, DescripcionVehiculo,"RutasCombustible",datosTransaccion);
+				RutasCombustibleDataProvider.Instance.Update(strNombreGrupo, cutCombustible, TipoVehiculo, DescripcionVehiculo, lngIdRegistro,"RutasCombustible",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -139,7 +139,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutascombustible">An instance of RutasCombustible for reference</param>
 		public void Update(RutasCombustible rutascombustible,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutascombustible.lngIdRegistro, rutascombustible.strNombreGrupo, rutascombustible.cutCombustible, rutascombustible.TipoVehiculo, rutascombustible.DescripcionVehiculo);
+			Update(rutascombustible.strNombreGrupo, rutascombustible.cutCombustible, rutascombustible.TipoVehiculo, rutascombustible.DescripcionVehiculo, rutascombustible.lngIdRegistro);
 		}
 
 		/// <summary>
@@ -198,14 +198,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				RutasCombustible rutascombustible = null;
-				DataTable dt = RutasCombustibleDataProvider.Instance.Get(lngIdRegistro);
-				if ((dt.Rows.Count > 0))
+				rutascombustible= MasterTables.RutasCombustible.Where(r => r.lngIdRegistro== lngIdRegistro).FirstOrDefault();
+				if (rutascombustible== null)
 				{
-					rutascombustible = new RutasCombustible();
-					DataRow dr = dt.Rows[0];
-					ReadData(rutascombustible, dr, generateUndo);
+					MasterTables.Reset("RutasCombustible");
+					rutascombustible= MasterTables.RutasCombustible.Where(r => r.lngIdRegistro== lngIdRegistro).FirstOrDefault();
 				}
-
+				if (generateUndo) rutascombustible.GenerateUndo();
 
 				return rutascombustible;
 			}
@@ -295,9 +294,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return rutascombustible.lngIdRegistro.GetType();
-
 				case "strNombreGrupo":
 					return rutascombustible.strNombreGrupo.GetType();
 
@@ -309,6 +305,9 @@ namespace LiqViajes_Bll_Data
 
 				case "DescripcionVehiculo":
 					return rutascombustible.DescripcionVehiculo.GetType();
+
+				case "lngIdRegistro":
+					return rutascombustible.lngIdRegistro.GetType();
 
 			}
 

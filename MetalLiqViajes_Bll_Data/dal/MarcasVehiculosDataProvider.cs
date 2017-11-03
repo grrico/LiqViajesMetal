@@ -93,9 +93,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblMarcasVehiculos by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistro"></param>
 		/// <param name="strMarca"></param>
-		public void Update(int lngIdRegistro, string strMarca,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro"></param>
+		public void Update(string strMarca, int lngIdRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

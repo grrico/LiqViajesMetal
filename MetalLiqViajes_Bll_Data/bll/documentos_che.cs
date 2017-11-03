@@ -53,11 +53,6 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				documentos_che.sw = (byte) dr["sw"];
-				documentos_che.tipo = (string) dr["tipo"];
-				documentos_che.numero = (int) dr["numero"];
-				documentos_che.banco = Convert.ToInt16(dr["banco"]);
-				documentos_che.documento = (string) dr["documento"];
-				documentos_che.forma_pago = (byte) dr["forma_pago"];
 				documentos_che.fecha = (DateTime) dr["fecha"];
 				documentos_che.valor = (decimal) dr["valor"];
 				documentos_che.consignar_en = Convert.ToInt16(dr["consignar_en"]);
@@ -67,6 +62,11 @@ namespace LiqViajes_Bll_Data
 				documentos_che.fecha_devolucion = dr.IsNull("fecha_devolucion") ? null :(DateTime?) dr["fecha_devolucion"];
 				documentos_che.cuenta_banco = dr.IsNull("cuenta_banco") ? null :(string) dr["cuenta_banco"];
 				documentos_che.iva_tarjeta = dr.IsNull("iva_tarjeta") ? null :(decimal?) dr["iva_tarjeta"];
+				documentos_che.tipo = (string) dr["tipo"];
+				documentos_che.numero = (int) dr["numero"];
+				documentos_che.banco = Convert.ToInt16(dr["banco"]);
+				documentos_che.documento = (string) dr["documento"];
+				documentos_che.forma_pago = (byte) dr["forma_pago"];
 			}
 			catch (Exception ex)
 			{
@@ -133,11 +133,6 @@ namespace LiqViajes_Bll_Data
 		/// Updates an documentos_che object by passing all object's fields
 		/// </summary>
 		/// <param name="sw">byte that contents the sw value for the documentos_che object</param>
-		/// <param name="tipo">string that contents the tipo value for the documentos_che object</param>
-		/// <param name="numero">int that contents the numero value for the documentos_che object</param>
-		/// <param name="banco">short that contents the banco value for the documentos_che object</param>
-		/// <param name="documento">string that contents the documento value for the documentos_che object</param>
-		/// <param name="forma_pago">byte that contents the forma_pago value for the documentos_che object</param>
 		/// <param name="fecha">DateTime that contents the fecha value for the documentos_che object</param>
 		/// <param name="valor">decimal that contents the valor value for the documentos_che object</param>
 		/// <param name="consignar_en">short that contents the consignar_en value for the documentos_che object</param>
@@ -147,7 +142,12 @@ namespace LiqViajes_Bll_Data
 		/// <param name="fecha_devolucion">DateTime that contents the fecha_devolucion value for the documentos_che object</param>
 		/// <param name="cuenta_banco">string that contents the cuenta_banco value for the documentos_che object</param>
 		/// <param name="iva_tarjeta">decimal that contents the iva_tarjeta value for the documentos_che object</param>
-		public void Update(byte sw, string tipo, int numero, short banco, string documento, byte forma_pago, DateTime fecha, decimal valor, short consignar_en, string devuelto, string tipo_consignacion, int? numero_consignacion, DateTime? fecha_devolucion, string cuenta_banco, decimal? iva_tarjeta, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="tipo">string that contents the tipo value for the documentos_che object</param>
+		/// <param name="numero">int that contents the numero value for the documentos_che object</param>
+		/// <param name="banco">short that contents the banco value for the documentos_che object</param>
+		/// <param name="documento">string that contents the documento value for the documentos_che object</param>
+		/// <param name="forma_pago">byte that contents the forma_pago value for the documentos_che object</param>
+		public void Update(byte sw, DateTime fecha, decimal valor, short consignar_en, string devuelto, string tipo_consignacion, int? numero_consignacion, DateTime? fecha_devolucion, string cuenta_banco, decimal? iva_tarjeta, string tipo, int numero, short banco, string documento, byte forma_pago, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -162,7 +162,7 @@ namespace LiqViajes_Bll_Data
 				new_values.fecha_devolucion = fecha_devolucion;
 				new_values.cuenta_banco = cuenta_banco;
 				new_values.iva_tarjeta = iva_tarjeta;
-				documentos_cheDataProvider.Instance.Update(sw, tipo, numero, banco, documento, forma_pago, fecha, valor, consignar_en, devuelto, tipo_consignacion, numero_consignacion, fecha_devolucion, cuenta_banco, iva_tarjeta,"documentos_che",datosTransaccion);
+				documentos_cheDataProvider.Instance.Update(sw, fecha, valor, consignar_en, devuelto, tipo_consignacion, numero_consignacion, fecha_devolucion, cuenta_banco, iva_tarjeta, tipo, numero, banco, documento, forma_pago,"documentos_che",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -176,7 +176,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="documentos_che">An instance of documentos_che for reference</param>
 		public void Update(documentos_che documentos_che,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(documentos_che.sw, documentos_che.tipo, documentos_che.numero, documentos_che.banco, documentos_che.documento, documentos_che.forma_pago, documentos_che.fecha, documentos_che.valor, documentos_che.consignar_en, documentos_che.devuelto, documentos_che.tipo_consignacion, documentos_che.numero_consignacion, documentos_che.fecha_devolucion, documentos_che.cuenta_banco, documentos_che.iva_tarjeta);
+			Update(documentos_che.sw, documentos_che.fecha, documentos_che.valor, documentos_che.consignar_en, documentos_che.devuelto, documentos_che.tipo_consignacion, documentos_che.numero_consignacion, documentos_che.fecha_devolucion, documentos_che.cuenta_banco, documentos_che.iva_tarjeta, documentos_che.tipo, documentos_che.numero, documentos_che.banco, documentos_che.documento, documentos_che.forma_pago);
 		}
 
 		/// <summary>
@@ -339,21 +339,6 @@ namespace LiqViajes_Bll_Data
 				case "sw":
 					return documentos_che.sw.GetType();
 
-				case "tipo":
-					return documentos_che.tipo.GetType();
-
-				case "numero":
-					return documentos_che.numero.GetType();
-
-				case "banco":
-					return documentos_che.banco.GetType();
-
-				case "documento":
-					return documentos_che.documento.GetType();
-
-				case "forma_pago":
-					return documentos_che.forma_pago.GetType();
-
 				case "fecha":
 					return documentos_che.fecha.GetType();
 
@@ -380,6 +365,21 @@ namespace LiqViajes_Bll_Data
 
 				case "iva_tarjeta":
 					return documentos_che.iva_tarjeta.GetType();
+
+				case "tipo":
+					return documentos_che.tipo.GetType();
+
+				case "numero":
+					return documentos_che.numero.GetType();
+
+				case "banco":
+					return documentos_che.banco.GetType();
+
+				case "documento":
+					return documentos_che.documento.GetType();
+
+				case "forma_pago":
+					return documentos_che.forma_pago.GetType();
 
 			}
 

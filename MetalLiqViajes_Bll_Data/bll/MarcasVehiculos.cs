@@ -52,8 +52,8 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				marcasvehiculos.lngIdRegistro = (int) dr["lngIdRegistro"];
 				marcasvehiculos.strMarca = dr.IsNull("strMarca") ? null :(string) dr["strMarca"];
+				marcasvehiculos.lngIdRegistro = (int) dr["lngIdRegistro"];
 			}
 			catch (Exception ex)
 			{
@@ -102,15 +102,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an MarcasVehiculos object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the MarcasVehiculos object</param>
 		/// <param name="strMarca">string that contents the strMarca value for the MarcasVehiculos object</param>
-		public void Update(int lngIdRegistro, string strMarca, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the MarcasVehiculos object</param>
+		public void Update(string strMarca, int lngIdRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				MarcasVehiculos new_values = new MarcasVehiculos();
 				new_values.strMarca = strMarca;
-				MarcasVehiculosDataProvider.Instance.Update(lngIdRegistro, strMarca,"MarcasVehiculos",datosTransaccion);
+				MarcasVehiculosDataProvider.Instance.Update(strMarca, lngIdRegistro,"MarcasVehiculos",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="marcasvehiculos">An instance of MarcasVehiculos for reference</param>
 		public void Update(MarcasVehiculos marcasvehiculos,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(marcasvehiculos.lngIdRegistro, marcasvehiculos.strMarca);
+			Update(marcasvehiculos.strMarca, marcasvehiculos.lngIdRegistro);
 		}
 
 		/// <summary>
@@ -183,14 +183,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				MarcasVehiculos marcasvehiculos = null;
-				DataTable dt = MarcasVehiculosDataProvider.Instance.Get(lngIdRegistro);
-				if ((dt.Rows.Count > 0))
+				marcasvehiculos= MasterTables.MarcasVehiculos.Where(r => r.lngIdRegistro== lngIdRegistro).FirstOrDefault();
+				if (marcasvehiculos== null)
 				{
-					marcasvehiculos = new MarcasVehiculos();
-					DataRow dr = dt.Rows[0];
-					ReadData(marcasvehiculos, dr, generateUndo);
+					MasterTables.Reset("MarcasVehiculos");
+					marcasvehiculos= MasterTables.MarcasVehiculos.Where(r => r.lngIdRegistro== lngIdRegistro).FirstOrDefault();
 				}
-
+				if (generateUndo) marcasvehiculos.GenerateUndo();
 
 				return marcasvehiculos;
 			}
@@ -280,11 +279,11 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistro":
-					return marcasvehiculos.lngIdRegistro.GetType();
-
 				case "strMarca":
 					return marcasvehiculos.strMarca.GetType();
+
+				case "lngIdRegistro":
+					return marcasvehiculos.lngIdRegistro.GetType();
 
 			}
 

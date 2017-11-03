@@ -96,14 +96,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblCatalogo by passing all fields
 		/// </summary>
-		/// <param name="nombre_empresa"></param>
 		/// <param name="fecha_actual"></param>
 		/// <param name="sigla"></param>
 		/// <param name="nit"></param>
 		/// <param name="version"></param>
 		/// <param name="direccion"></param>
 		/// <param name="telefono"></param>
-		public void Update(string nombre_empresa, DateTime fecha_actual, string sigla, int nit, int version, string direccion, string telefono,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="nombre_empresa"></param>
+		public void Update(DateTime fecha_actual, string sigla, int nit, int version, string direccion, string telefono, string nombre_empresa,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -52,12 +52,12 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tramosgastos.Codigo = (long) dr["Codigo"];
 				tramosgastos.IdRegistroViaje = (long) dr["IdRegistroViaje"];
 				tramosgastos.Cuenta = dr.IsNull("Cuenta") ? null :(string) dr["Cuenta"];
 				tramosgastos.DescripcionCuenta = dr.IsNull("DescripcionCuenta") ? null :(string) dr["DescripcionCuenta"];
 				tramosgastos.ValorTotal = dr.IsNull("ValorTotal") ? null :(decimal?) dr["ValorTotal"];
 				tramosgastos.DescripcionTercero = dr.IsNull("DescripcionTercero") ? null :(string) dr["DescripcionTercero"];
+				tramosgastos.Codigo = (long) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -114,13 +114,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TramosGastos object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">long that contents the Codigo value for the TramosGastos object</param>
 		/// <param name="IdRegistroViaje">long that contents the IdRegistroViaje value for the TramosGastos object</param>
 		/// <param name="Cuenta">string that contents the Cuenta value for the TramosGastos object</param>
 		/// <param name="DescripcionCuenta">string that contents the DescripcionCuenta value for the TramosGastos object</param>
 		/// <param name="ValorTotal">decimal that contents the ValorTotal value for the TramosGastos object</param>
 		/// <param name="DescripcionTercero">string that contents the DescripcionTercero value for the TramosGastos object</param>
-		public void Update(long Codigo, long IdRegistroViaje, string Cuenta, string DescripcionCuenta, decimal? ValorTotal, string DescripcionTercero, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">long that contents the Codigo value for the TramosGastos object</param>
+		public void Update(long IdRegistroViaje, string Cuenta, string DescripcionCuenta, decimal? ValorTotal, string DescripcionTercero, long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -130,7 +130,7 @@ namespace LiqViajes_Bll_Data
 				new_values.DescripcionCuenta = DescripcionCuenta;
 				new_values.ValorTotal = ValorTotal;
 				new_values.DescripcionTercero = DescripcionTercero;
-				TramosGastosDataProvider.Instance.Update(Codigo, IdRegistroViaje, Cuenta, DescripcionCuenta, ValorTotal, DescripcionTercero,"TramosGastos",datosTransaccion);
+				TramosGastosDataProvider.Instance.Update(IdRegistroViaje, Cuenta, DescripcionCuenta, ValorTotal, DescripcionTercero, Codigo,"TramosGastos",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tramosgastos">An instance of TramosGastos for reference</param>
 		public void Update(TramosGastos tramosgastos,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tramosgastos.Codigo, tramosgastos.IdRegistroViaje, tramosgastos.Cuenta, tramosgastos.DescripcionCuenta, tramosgastos.ValorTotal, tramosgastos.DescripcionTercero);
+			Update(tramosgastos.IdRegistroViaje, tramosgastos.Cuenta, tramosgastos.DescripcionCuenta, tramosgastos.ValorTotal, tramosgastos.DescripcionTercero, tramosgastos.Codigo);
 		}
 
 		/// <summary>
@@ -300,9 +300,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return tramosgastos.Codigo.GetType();
-
 				case "IdRegistroViaje":
 					return tramosgastos.IdRegistroViaje.GetType();
 
@@ -317,6 +314,9 @@ namespace LiqViajes_Bll_Data
 
 				case "DescripcionTercero":
 					return tramosgastos.DescripcionTercero.GetType();
+
+				case "Codigo":
+					return tramosgastos.Codigo.GetType();
 
 			}
 

@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionrutascombustible.Codigo = (long) dr["Codigo"];
 				liquidacionrutascombustible.lngIdRegistrRutaItemId = dr.IsNull("lngIdRegistrRutaItemId") ? null :(int?) dr["lngIdRegistrRutaItemId"];
 				liquidacionrutascombustible.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
 				liquidacionrutascombustible.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(int?) dr["lngIdRegistrRuta"];
@@ -70,6 +69,7 @@ namespace LiqViajes_Bll_Data
 				liquidacionrutascombustible.curValorGalonComplentario = dr.IsNull("curValorGalonComplentario") ? null :(decimal?) dr["curValorGalonComplentario"];
 				liquidacionrutascombustible.cutCombustibleComplementario = dr.IsNull("cutCombustibleComplementario") ? null :(decimal?) dr["cutCombustibleComplementario"];
 				liquidacionrutascombustible.strObservaciones = dr.IsNull("strObservaciones") ? null :(string) dr["strObservaciones"];
+				liquidacionrutascombustible.Codigo = (long) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -150,7 +150,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionRutasCombustible object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">long that contents the Codigo value for the LiquidacionRutasCombustible object</param>
 		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionRutasCombustible object</param>
 		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionRutasCombustible object</param>
 		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionRutasCombustible object</param>
@@ -168,7 +167,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="curValorGalonComplentario">decimal that contents the curValorGalonComplentario value for the LiquidacionRutasCombustible object</param>
 		/// <param name="cutCombustibleComplementario">decimal that contents the cutCombustibleComplementario value for the LiquidacionRutasCombustible object</param>
 		/// <param name="strObservaciones">string that contents the strObservaciones value for the LiquidacionRutasCombustible object</param>
-		public void Update(long Codigo, int? lngIdRegistrRutaItemId, int? lngIdRegistro, int? lngIdRegistrRuta, int? intRowRegistro, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string nitTercero, string NombreTercero, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, decimal? floGalonesComplementario, decimal? curValorGalonComplentario, decimal? cutCombustibleComplementario, string strObservaciones, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">long that contents the Codigo value for the LiquidacionRutasCombustible object</param>
+		public void Update(int? lngIdRegistrRutaItemId, int? lngIdRegistro, int? lngIdRegistrRuta, int? intRowRegistro, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string nitTercero, string NombreTercero, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, decimal? floGalonesComplementario, decimal? curValorGalonComplentario, decimal? cutCombustibleComplementario, string strObservaciones, long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -190,7 +190,7 @@ namespace LiqViajes_Bll_Data
 				new_values.curValorGalonComplentario = curValorGalonComplentario;
 				new_values.cutCombustibleComplementario = cutCombustibleComplementario;
 				new_values.strObservaciones = strObservaciones;
-				LiquidacionRutasCombustibleDataProvider.Instance.Update(Codigo, lngIdRegistrRutaItemId, lngIdRegistro, lngIdRegistrRuta, intRowRegistro, strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, nitTercero, NombreTercero, floGalones, curValorGalon, cutCombustible, nitTerceroComplentario, NombreTerceroComplementario, floGalonesComplementario, curValorGalonComplentario, cutCombustibleComplementario, strObservaciones,"LiquidacionRutasCombustible",datosTransaccion);
+				LiquidacionRutasCombustibleDataProvider.Instance.Update(lngIdRegistrRutaItemId, lngIdRegistro, lngIdRegistrRuta, intRowRegistro, strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, nitTercero, NombreTercero, floGalones, curValorGalon, cutCombustible, nitTerceroComplentario, NombreTerceroComplementario, floGalonesComplementario, curValorGalonComplentario, cutCombustibleComplementario, strObservaciones, Codigo,"LiquidacionRutasCombustible",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -204,7 +204,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionrutascombustible">An instance of LiquidacionRutasCombustible for reference</param>
 		public void Update(LiquidacionRutasCombustible liquidacionrutascombustible,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionrutascombustible.Codigo, liquidacionrutascombustible.lngIdRegistrRutaItemId, liquidacionrutascombustible.lngIdRegistro, liquidacionrutascombustible.lngIdRegistrRuta, liquidacionrutascombustible.intRowRegistro, liquidacionrutascombustible.strRutaAnticipoGrupoOrigen, liquidacionrutascombustible.strRutaAnticipoGrupoDestino, liquidacionrutascombustible.nitTercero, liquidacionrutascombustible.NombreTercero, liquidacionrutascombustible.floGalones, liquidacionrutascombustible.curValorGalon, liquidacionrutascombustible.cutCombustible, liquidacionrutascombustible.nitTerceroComplentario, liquidacionrutascombustible.NombreTerceroComplementario, liquidacionrutascombustible.floGalonesComplementario, liquidacionrutascombustible.curValorGalonComplentario, liquidacionrutascombustible.cutCombustibleComplementario, liquidacionrutascombustible.strObservaciones);
+			Update(liquidacionrutascombustible.lngIdRegistrRutaItemId, liquidacionrutascombustible.lngIdRegistro, liquidacionrutascombustible.lngIdRegistrRuta, liquidacionrutascombustible.intRowRegistro, liquidacionrutascombustible.strRutaAnticipoGrupoOrigen, liquidacionrutascombustible.strRutaAnticipoGrupoDestino, liquidacionrutascombustible.nitTercero, liquidacionrutascombustible.NombreTercero, liquidacionrutascombustible.floGalones, liquidacionrutascombustible.curValorGalon, liquidacionrutascombustible.cutCombustible, liquidacionrutascombustible.nitTerceroComplentario, liquidacionrutascombustible.NombreTerceroComplementario, liquidacionrutascombustible.floGalonesComplementario, liquidacionrutascombustible.curValorGalonComplentario, liquidacionrutascombustible.cutCombustibleComplementario, liquidacionrutascombustible.strObservaciones, liquidacionrutascombustible.Codigo);
 		}
 
 		/// <summary>
@@ -360,9 +360,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return liquidacionrutascombustible.Codigo.GetType();
-
 				case "lngIdRegistrRutaItemId":
 					return liquidacionrutascombustible.lngIdRegistrRutaItemId.GetType();
 
@@ -413,6 +410,9 @@ namespace LiqViajes_Bll_Data
 
 				case "strObservaciones":
 					return liquidacionrutascombustible.strObservaciones.GetType();
+
+				case "Codigo":
+					return liquidacionrutascombustible.Codigo.GetType();
 
 			}
 

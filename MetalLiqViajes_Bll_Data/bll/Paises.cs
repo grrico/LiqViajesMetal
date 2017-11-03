@@ -52,8 +52,8 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				paises.lngIdPais = (int) dr["lngIdPais"];
 				paises.strNombrePais = (string) dr["strNombrePais"];
+				paises.lngIdPais = (int) dr["lngIdPais"];
 			}
 			catch (Exception ex)
 			{
@@ -102,15 +102,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Paises object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdPais">int that contents the lngIdPais value for the Paises object</param>
 		/// <param name="strNombrePais">string that contents the strNombrePais value for the Paises object</param>
-		public void Update(int lngIdPais, string strNombrePais, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdPais">int that contents the lngIdPais value for the Paises object</param>
+		public void Update(string strNombrePais, int lngIdPais, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				Paises new_values = new Paises();
 				new_values.strNombrePais = strNombrePais;
-				PaisesDataProvider.Instance.Update(lngIdPais, strNombrePais,"Paises",datosTransaccion);
+				PaisesDataProvider.Instance.Update(strNombrePais, lngIdPais,"Paises",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="paises">An instance of Paises for reference</param>
 		public void Update(Paises paises,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(paises.lngIdPais, paises.strNombrePais);
+			Update(paises.strNombrePais, paises.lngIdPais);
 		}
 
 		/// <summary>
@@ -183,14 +183,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Paises paises = null;
-				DataTable dt = PaisesDataProvider.Instance.Get(lngIdPais);
-				if ((dt.Rows.Count > 0))
+				paises= MasterTables.Paises.Where(r => r.lngIdPais== lngIdPais).FirstOrDefault();
+				if (paises== null)
 				{
-					paises = new Paises();
-					DataRow dr = dt.Rows[0];
-					ReadData(paises, dr, generateUndo);
+					MasterTables.Reset("Paises");
+					paises= MasterTables.Paises.Where(r => r.lngIdPais== lngIdPais).FirstOrDefault();
 				}
-
+				if (generateUndo) paises.GenerateUndo();
 
 				return paises;
 			}
@@ -280,11 +279,11 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdPais":
-					return paises.lngIdPais.GetType();
-
 				case "strNombrePais":
 					return paises.strNombrePais.GetType();
+
+				case "lngIdPais":
+					return paises.lngIdPais.GetType();
 
 			}
 

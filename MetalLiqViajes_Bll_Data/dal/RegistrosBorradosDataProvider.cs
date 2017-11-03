@@ -162,7 +162,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRegistrosBorrados by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistroViaje"></param>
 		/// <param name="lngIdRegistroViajeTramo"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="strRutaAnticipo"></param>
@@ -179,7 +178,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strObservaciones"></param>
 		/// <param name="intCantidad"></param>
 		/// <param name="logAnulado"></param>
-		public void Update(int lngIdRegistroViaje, int? lngIdRegistroViajeTramo, int? lngIdRegistrRuta, string strRutaAnticipo, double? intNitConductor, string strConductor, string strPlaca, int? lngIdBanco, int? intDocumento, string strCuenta, decimal? curDebito, decimal? curCredito, decimal? curSaldo, DateTime? dtmFechaModif, string strObservaciones, int? intCantidad, bool? logAnulado,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistroViaje"></param>
+		public void Update(int? lngIdRegistroViajeTramo, int? lngIdRegistrRuta, string strRutaAnticipo, double? intNitConductor, string strConductor, string strPlaca, int? lngIdBanco, int? intDocumento, string strCuenta, decimal? curDebito, decimal? curCredito, decimal? curSaldo, DateTime? dtmFechaModif, string strObservaciones, int? intCantidad, bool? logAnulado, int lngIdRegistroViaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

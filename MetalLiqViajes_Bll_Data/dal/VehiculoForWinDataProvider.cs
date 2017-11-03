@@ -277,8 +277,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblVehiculoForWin by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistro"></param>
-		/// <param name="lngIdUsuario"></param>
 		/// <param name="strPlaca"></param>
 		/// <param name="centro"></param>
 		/// <param name="TipoVehiculoCodigo"></param>
@@ -318,7 +316,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaInicioTarjetaOper"></param>
 		/// <param name="dtmFechaVenceTarjetaOper"></param>
 		/// <param name="logVencimientoFecha"></param>
-		public void Update(int lngIdRegistro, int lngIdUsuario, int strPlaca, int? centro, int? TipoVehiculoCodigo, string Descripcion, int? dtmFechaIngreso, int? dtmFechaEgreso, int? nitPropietario, int? strMarca, int? lngModelo, int? lngMovil, int? strCelular, int? strTipoMotor, int? strColor, int? strMotor, int? strChasis, int? logCamarote, int? cutPeso, int? cutCapacidad, int? lngEjes, int? logActivo, int? lngLlantas, int? strPolizaObligatorio, int? nitProvedorOblig, int? dtmFechaInicioOblig, int? dtmFechaVenceOblig, int? strPolizaTodoRiesgo, int? nitProvedorTodo, int? dtmFechaInicioTodo, int? dtmFechaVenceTodo, int? strCertifMovilizacion, int? dtmFechaInicioMoviliz, int? dtmFechaVenceMoviliz, int? strGases, int? dtmFechaInicioGases, int? dtmFechaVenceGases, int? strTarjetaOper, int? dtmFechaInicioTarjetaOper, int? dtmFechaVenceTarjetaOper, int? logVencimientoFecha,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistro"></param>
+		/// <param name="lngIdUsuario"></param>
+		public void Update(int strPlaca, int? centro, int? TipoVehiculoCodigo, string Descripcion, int? dtmFechaIngreso, int? dtmFechaEgreso, int? nitPropietario, int? strMarca, int? lngModelo, int? lngMovil, int? strCelular, int? strTipoMotor, int? strColor, int? strMotor, int? strChasis, int? logCamarote, int? cutPeso, int? cutCapacidad, int? lngEjes, int? logActivo, int? lngLlantas, int? strPolizaObligatorio, int? nitProvedorOblig, int? dtmFechaInicioOblig, int? dtmFechaVenceOblig, int? strPolizaTodoRiesgo, int? nitProvedorTodo, int? dtmFechaInicioTodo, int? dtmFechaVenceTodo, int? strCertifMovilizacion, int? dtmFechaInicioMoviliz, int? dtmFechaVenceMoviliz, int? strGases, int? dtmFechaInicioGases, int? dtmFechaVenceGases, int? strTarjetaOper, int? dtmFechaInicioTarjetaOper, int? dtmFechaVenceTarjetaOper, int? logVencimientoFecha, int lngIdRegistro, int lngIdUsuario,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

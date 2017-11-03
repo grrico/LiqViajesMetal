@@ -85,9 +85,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the VehiculoTraylers's Trayler value
-		private string m_Trayler;
-
 		// Field for storing the VehiculoTraylers's Placa value
 		private string m_Placa;
 
@@ -109,6 +106,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the VehiculoTraylers's Orden value
 		private int? m_Orden;
 
+		// Field for storing the VehiculoTraylers's Trayler value
+		private string m_Trayler;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -122,20 +122,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the VehiculoTraylers's Trayler value (string)
-		/// </summary>
-		[DataMember]
-		public string Trayler
-		{
-			get { return m_Trayler; }
-			set 
-			{
-				m_changed=true;
-				m_Trayler = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the VehiculoTraylers's Placa value (string)
 		/// </summary>
@@ -234,11 +220,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the VehiculoTraylers's Trayler value (string)
+		/// </summary>
+		[DataMember]
+		public string Trayler
+		{
+			get { return m_Trayler; }
+			set 
+			{
+				m_changed=true;
+				m_Trayler = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Trayler": return Trayler;
 				case "Placa": return Placa;
 				case "lngIdRegistro": return lngIdRegistro;
 				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
@@ -246,6 +245,7 @@ namespace LiqViajes_Bll_Data
 				case "Fecha": return Fecha;
 				case "Liquidado": return Liquidado;
 				case "Orden": return Orden;
+				case "Trayler": return Trayler;
 				default: return null;
 			}
 		}

@@ -88,9 +88,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TramosMovViajes's Codigo value
-		private long m_Codigo;
-
 		// Field for storing the TramosMovViajes's IdRegistro value
 		private long? m_IdRegistro;
 
@@ -115,6 +112,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TramosMovViajes's DescripcionPeaje value
 		private string m_DescripcionPeaje;
 
+		// Field for storing the TramosMovViajes's Codigo value
+		private long m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -128,20 +128,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TramosMovViajes's Codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TramosMovViajes's IdRegistro value (long)
 		/// </summary>
@@ -254,11 +240,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TramosMovViajes's Codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "IdRegistro": return IdRegistro;
 				case "Cedula": return Cedula;
 				case "NombreConductor": return NombreConductor;
@@ -267,6 +266,7 @@ namespace LiqViajes_Bll_Data
 				case "ValorTotal": return ValorTotal;
 				case "Fecha": return Fecha;
 				case "DescripcionPeaje": return DescripcionPeaje;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

@@ -52,10 +52,10 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tablaglocal.Codigo = (int) dr["Codigo"];
 				tablaglocal.ano = dr.IsNull("ano") ? null :(int?) dr["ano"];
 				tablaglocal.periodo = dr.IsNull("periodo") ? null :(int?) dr["periodo"];
 				tablaglocal.fecha = dr.IsNull("fecha") ? null :(DateTime?) dr["fecha"];
+				tablaglocal.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -103,11 +103,11 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an tablagLocal object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the tablagLocal object</param>
 		/// <param name="ano">int that contents the ano value for the tablagLocal object</param>
 		/// <param name="periodo">int that contents the periodo value for the tablagLocal object</param>
 		/// <param name="fecha">DateTime that contents the fecha value for the tablagLocal object</param>
-		public void Update(int Codigo, int? ano, int? periodo, DateTime? fecha, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">int that contents the Codigo value for the tablagLocal object</param>
+		public void Update(int? ano, int? periodo, DateTime? fecha, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -115,7 +115,7 @@ namespace LiqViajes_Bll_Data
 				new_values.ano = ano;
 				new_values.periodo = periodo;
 				new_values.fecha = fecha;
-				tablagLocalDataProvider.Instance.Update(Codigo, ano, periodo, fecha,"tablagLocal",datosTransaccion);
+				tablagLocalDataProvider.Instance.Update(ano, periodo, fecha, Codigo,"tablagLocal",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -129,7 +129,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tablaglocal">An instance of tablagLocal for reference</param>
 		public void Update(tablagLocal tablaglocal,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tablaglocal.Codigo, tablaglocal.ano, tablaglocal.periodo, tablaglocal.fecha);
+			Update(tablaglocal.ano, tablaglocal.periodo, tablaglocal.fecha, tablaglocal.Codigo);
 		}
 
 		/// <summary>
@@ -281,9 +281,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return tablaglocal.Codigo.GetType();
-
 				case "ano":
 					return tablaglocal.ano.GetType();
 
@@ -292,6 +289,9 @@ namespace LiqViajes_Bll_Data
 
 				case "fecha":
 					return tablaglocal.fecha.GetType();
+
+				case "Codigo":
+					return tablaglocal.Codigo.GetType();
 
 			}
 

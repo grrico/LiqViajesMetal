@@ -113,13 +113,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblTipoMantenimiento by passing all fields
 		/// </summary>
-		/// <param name="lngIdTipoMantenimiento"></param>
 		/// <param name="strTipoMantenimiento"></param>
 		/// <param name="logActivar"></param>
 		/// <param name="intValorMantenimiento"></param>
 		/// <param name="intValorAviso"></param>
 		/// <param name="intValorAviso2"></param>
-		public void Update(int lngIdTipoMantenimiento, string strTipoMantenimiento, bool? logActivar, float? intValorMantenimiento, float? intValorAviso, float? intValorAviso2,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdTipoMantenimiento"></param>
+		public void Update(string strTipoMantenimiento, bool? logActivar, float? intValorMantenimiento, float? intValorAviso, float? intValorAviso2, int lngIdTipoMantenimiento,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

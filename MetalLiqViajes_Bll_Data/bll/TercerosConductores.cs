@@ -52,8 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tercerosconductores.strTipoIdentificacion = (string) dr["strTipoIdentificacion"];
-				tercerosconductores.IntNit = (double) dr["IntNit"];
 				tercerosconductores.intDigito = dr.IsNull("intDigito") ? null :(int?) dr["intDigito"];
 				tercerosconductores.strNombres = dr.IsNull("strNombres") ? null :(string) dr["strNombres"];
 				tercerosconductores.strDireccion = dr.IsNull("strDireccion") ? null :(string) dr["strDireccion"];
@@ -79,6 +77,8 @@ namespace LiqViajes_Bll_Data
 				tercerosconductores.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
 				tercerosconductores.logActualizado = dr.IsNull("logActualizado") ? null :(bool?) dr["logActualizado"];
 				tercerosconductores.lngIdUsuario = dr.IsNull("lngIdUsuario") ? null :(int?) dr["lngIdUsuario"];
+				tercerosconductores.strTipoIdentificacion = (string) dr["strTipoIdentificacion"];
+				tercerosconductores.IntNit = (double) dr["IntNit"];
 			}
 			catch (Exception ex)
 			{
@@ -171,8 +171,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TercerosConductores object by passing all object's fields
 		/// </summary>
-		/// <param name="strTipoIdentificacion">string that contents the strTipoIdentificacion value for the TercerosConductores object</param>
-		/// <param name="IntNit">double that contents the IntNit value for the TercerosConductores object</param>
 		/// <param name="intDigito">int that contents the intDigito value for the TercerosConductores object</param>
 		/// <param name="strNombres">string that contents the strNombres value for the TercerosConductores object</param>
 		/// <param name="strDireccion">string that contents the strDireccion value for the TercerosConductores object</param>
@@ -198,7 +196,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the TercerosConductores object</param>
 		/// <param name="logActualizado">bool that contents the logActualizado value for the TercerosConductores object</param>
 		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the TercerosConductores object</param>
-		public void Update(string strTipoIdentificacion, double IntNit, int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="strTipoIdentificacion">string that contents the strTipoIdentificacion value for the TercerosConductores object</param>
+		/// <param name="IntNit">double that contents the IntNit value for the TercerosConductores object</param>
+		public void Update(int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario, string strTipoIdentificacion, double IntNit, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -228,7 +228,7 @@ namespace LiqViajes_Bll_Data
 				new_values.dtmFechaModif = dtmFechaModif;
 				new_values.logActualizado = logActualizado;
 				new_values.lngIdUsuario = lngIdUsuario;
-				TercerosConductoresDataProvider.Instance.Update(strTipoIdentificacion, IntNit, intDigito, strNombres, strDireccion, logEstado, logConductor, strPlaca, lngIdCiudad, strTelefono, strTelefonoAux, strTelCelular, strTelCelularAux, strFax, IntAAereo, StrPais, nitProvedor, intNoLicenciaConduc, intCategoria, strTarjetaTripulante, dtmFechaVenceLicencia, dtmVenceTarjetaTripulante, strCarnetEmpresa, strCarnetComunicaciones, dtmFechaModif, logActualizado, lngIdUsuario,"TercerosConductores",datosTransaccion);
+				TercerosConductoresDataProvider.Instance.Update(intDigito, strNombres, strDireccion, logEstado, logConductor, strPlaca, lngIdCiudad, strTelefono, strTelefonoAux, strTelCelular, strTelCelularAux, strFax, IntAAereo, StrPais, nitProvedor, intNoLicenciaConduc, intCategoria, strTarjetaTripulante, dtmFechaVenceLicencia, dtmVenceTarjetaTripulante, strCarnetEmpresa, strCarnetComunicaciones, dtmFechaModif, logActualizado, lngIdUsuario, strTipoIdentificacion, IntNit,"TercerosConductores",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -242,7 +242,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tercerosconductores">An instance of TercerosConductores for reference</param>
 		public void Update(TercerosConductores tercerosconductores,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tercerosconductores.strTipoIdentificacion, tercerosconductores.IntNit, tercerosconductores.intDigito, tercerosconductores.strNombres, tercerosconductores.strDireccion, tercerosconductores.logEstado, tercerosconductores.logConductor, tercerosconductores.strPlaca, tercerosconductores.lngIdCiudad, tercerosconductores.strTelefono, tercerosconductores.strTelefonoAux, tercerosconductores.strTelCelular, tercerosconductores.strTelCelularAux, tercerosconductores.strFax, tercerosconductores.IntAAereo, tercerosconductores.StrPais, tercerosconductores.nitProvedor, tercerosconductores.intNoLicenciaConduc, tercerosconductores.intCategoria, tercerosconductores.strTarjetaTripulante, tercerosconductores.dtmFechaVenceLicencia, tercerosconductores.dtmVenceTarjetaTripulante, tercerosconductores.strCarnetEmpresa, tercerosconductores.strCarnetComunicaciones, tercerosconductores.dtmFechaModif, tercerosconductores.logActualizado, tercerosconductores.lngIdUsuario);
+			Update(tercerosconductores.intDigito, tercerosconductores.strNombres, tercerosconductores.strDireccion, tercerosconductores.logEstado, tercerosconductores.logConductor, tercerosconductores.strPlaca, tercerosconductores.lngIdCiudad, tercerosconductores.strTelefono, tercerosconductores.strTelefonoAux, tercerosconductores.strTelCelular, tercerosconductores.strTelCelularAux, tercerosconductores.strFax, tercerosconductores.IntAAereo, tercerosconductores.StrPais, tercerosconductores.nitProvedor, tercerosconductores.intNoLicenciaConduc, tercerosconductores.intCategoria, tercerosconductores.strTarjetaTripulante, tercerosconductores.dtmFechaVenceLicencia, tercerosconductores.dtmVenceTarjetaTripulante, tercerosconductores.strCarnetEmpresa, tercerosconductores.strCarnetComunicaciones, tercerosconductores.dtmFechaModif, tercerosconductores.logActualizado, tercerosconductores.lngIdUsuario, tercerosconductores.strTipoIdentificacion, tercerosconductores.IntNit);
 		}
 
 		/// <summary>
@@ -396,12 +396,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "strTipoIdentificacion":
-					return tercerosconductores.strTipoIdentificacion.GetType();
-
-				case "IntNit":
-					return tercerosconductores.IntNit.GetType();
-
 				case "intDigito":
 					return tercerosconductores.intDigito.GetType();
 
@@ -476,6 +470,12 @@ namespace LiqViajes_Bll_Data
 
 				case "lngIdUsuario":
 					return tercerosconductores.lngIdUsuario.GetType();
+
+				case "strTipoIdentificacion":
+					return tercerosconductores.strTipoIdentificacion.GetType();
+
+				case "IntNit":
+					return tercerosconductores.IntNit.GetType();
 
 			}
 

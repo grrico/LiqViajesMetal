@@ -52,13 +52,13 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tramoslavadas.lngIdRegistroViaje = (long) dr["lngIdRegistroViaje"];
 				tramoslavadas.Origen = dr.IsNull("Origen") ? null :(string) dr["Origen"];
 				tramoslavadas.Destino = dr.IsNull("Destino") ? null :(string) dr["Destino"];
 				tramoslavadas.Liquidado = dr.IsNull("Liquidado") ? null :(bool?) dr["Liquidado"];
 				tramoslavadas.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
 				tramoslavadas.Placa = dr.IsNull("Placa") ? null :(string) dr["Placa"];
 				tramoslavadas.Valor = dr.IsNull("Valor") ? null :(decimal?) dr["Valor"];
+				tramoslavadas.lngIdRegistroViaje = (long) dr["lngIdRegistroViaje"];
 			}
 			catch (Exception ex)
 			{
@@ -112,14 +112,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TramosLavadas object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistroViaje">long that contents the lngIdRegistroViaje value for the TramosLavadas object</param>
 		/// <param name="Origen">string that contents the Origen value for the TramosLavadas object</param>
 		/// <param name="Destino">string that contents the Destino value for the TramosLavadas object</param>
 		/// <param name="Liquidado">bool that contents the Liquidado value for the TramosLavadas object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the TramosLavadas object</param>
 		/// <param name="Placa">string that contents the Placa value for the TramosLavadas object</param>
 		/// <param name="Valor">decimal that contents the Valor value for the TramosLavadas object</param>
-		public void Update(long lngIdRegistroViaje, string Origen, string Destino, bool? Liquidado, DateTime? Fecha, string Placa, decimal? Valor, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistroViaje">long that contents the lngIdRegistroViaje value for the TramosLavadas object</param>
+		public void Update(string Origen, string Destino, bool? Liquidado, DateTime? Fecha, string Placa, decimal? Valor, long lngIdRegistroViaje, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -130,7 +130,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Fecha = Fecha;
 				new_values.Placa = Placa;
 				new_values.Valor = Valor;
-				TramosLavadasDataProvider.Instance.Update(lngIdRegistroViaje, Origen, Destino, Liquidado, Fecha, Placa, Valor,"TramosLavadas",datosTransaccion);
+				TramosLavadasDataProvider.Instance.Update(Origen, Destino, Liquidado, Fecha, Placa, Valor, lngIdRegistroViaje,"TramosLavadas",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tramoslavadas">An instance of TramosLavadas for reference</param>
 		public void Update(TramosLavadas tramoslavadas,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tramoslavadas.lngIdRegistroViaje, tramoslavadas.Origen, tramoslavadas.Destino, tramoslavadas.Liquidado, tramoslavadas.Fecha, tramoslavadas.Placa, tramoslavadas.Valor);
+			Update(tramoslavadas.Origen, tramoslavadas.Destino, tramoslavadas.Liquidado, tramoslavadas.Fecha, tramoslavadas.Placa, tramoslavadas.Valor, tramoslavadas.lngIdRegistroViaje);
 		}
 
 		/// <summary>
@@ -296,9 +296,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistroViaje":
-					return tramoslavadas.lngIdRegistroViaje.GetType();
-
 				case "Origen":
 					return tramoslavadas.Origen.GetType();
 
@@ -316,6 +313,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Valor":
 					return tramoslavadas.Valor.GetType();
+
+				case "lngIdRegistroViaje":
+					return tramoslavadas.lngIdRegistroViaje.GetType();
 
 			}
 

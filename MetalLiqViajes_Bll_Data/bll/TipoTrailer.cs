@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tipotrailer.Codigo = (int) dr["Codigo"];
 				tipotrailer.Trailer = dr.IsNull("Trailer") ? null :(string) dr["Trailer"];
 				tipotrailer.Descripcion = dr.IsNull("Descripcion") ? null :(string) dr["Descripcion"];
+				tipotrailer.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -100,17 +100,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TipoTrailer object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the TipoTrailer object</param>
 		/// <param name="Trailer">string that contents the Trailer value for the TipoTrailer object</param>
 		/// <param name="Descripcion">string that contents the Descripcion value for the TipoTrailer object</param>
-		public void Update(int Codigo, string Trailer, string Descripcion, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">int that contents the Codigo value for the TipoTrailer object</param>
+		public void Update(string Trailer, string Descripcion, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				TipoTrailer new_values = new TipoTrailer();
 				new_values.Trailer = Trailer;
 				new_values.Descripcion = Descripcion;
-				TipoTrailerDataProvider.Instance.Update(Codigo, Trailer, Descripcion,"TipoTrailer",datosTransaccion);
+				TipoTrailerDataProvider.Instance.Update(Trailer, Descripcion, Codigo,"TipoTrailer",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tipotrailer">An instance of TipoTrailer for reference</param>
 		public void Update(TipoTrailer tipotrailer,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tipotrailer.Codigo, tipotrailer.Trailer, tipotrailer.Descripcion);
+			Update(tipotrailer.Trailer, tipotrailer.Descripcion, tipotrailer.Codigo);
 		}
 
 		/// <summary>
@@ -179,14 +179,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				TipoTrailer tipotrailer = null;
-				DataTable dt = TipoTrailerDataProvider.Instance.Get(Codigo);
-				if ((dt.Rows.Count > 0))
+				tipotrailer= MasterTables.TipoTrailer.Where(r => r.Codigo== Codigo).FirstOrDefault();
+				if (tipotrailer== null)
 				{
-					tipotrailer = new TipoTrailer();
-					DataRow dr = dt.Rows[0];
-					ReadData(tipotrailer, dr, generateUndo);
+					MasterTables.Reset("TipoTrailer");
+					tipotrailer= MasterTables.TipoTrailer.Where(r => r.Codigo== Codigo).FirstOrDefault();
 				}
-
+				if (generateUndo) tipotrailer.GenerateUndo();
 
 				return tipotrailer;
 			}
@@ -276,14 +275,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return tipotrailer.Codigo.GetType();
-
 				case "Trailer":
 					return tipotrailer.Trailer.GetType();
 
 				case "Descripcion":
 					return tipotrailer.Descripcion.GetType();
+
+				case "Codigo":
+					return tipotrailer.Codigo.GetType();
 
 			}
 

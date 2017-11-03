@@ -91,9 +91,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Tareas's lngIdTarea value
-		private int m_lngIdTarea;
-
 		// Field for storing the Tareas's strAsunto value
 		private string m_strAsunto;
 
@@ -121,6 +118,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Tareas's lngIdStatus value
 		private int? m_lngIdStatus;
 
+		// Field for storing the Tareas's lngIdTarea value
+		private int m_lngIdTarea;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -134,20 +134,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Tareas's lngIdTarea value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdTarea
-		{
-			get { return m_lngIdTarea; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdTarea = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Tareas's strAsunto value (string)
 		/// </summary>
@@ -274,11 +260,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Tareas's lngIdTarea value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdTarea
+		{
+			get { return m_lngIdTarea; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdTarea = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdTarea": return lngIdTarea;
 				case "strAsunto": return strAsunto;
 				case "dtmFechaInicio": return dtmFechaInicio;
 				case "strFechavencimiento": return strFechavencimiento;
@@ -288,6 +287,7 @@ namespace LiqViajes_Bll_Data
 				case "logFinalizada": return logFinalizada;
 				case "Notas": return Notas;
 				case "lngIdStatus": return lngIdStatus;
+				case "lngIdTarea": return lngIdTarea;
 				default: return null;
 			}
 		}

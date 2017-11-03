@@ -52,8 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				vehiculoskmmantenimiento.strPlaca = (string) dr["strPlaca"];
-				vehiculoskmmantenimiento.lngIdTipoMantenimiento = (int) dr["lngIdTipoMantenimiento"];
 				vehiculoskmmantenimiento.dtmFechaUltimoCambio = dr.IsNull("dtmFechaUltimoCambio") ? null :(DateTime?) dr["dtmFechaUltimoCambio"];
 				vehiculoskmmantenimiento.intKmUltimoCambio = dr.IsNull("intKmUltimoCambio") ? null :(int?) dr["intKmUltimoCambio"];
 				vehiculoskmmantenimiento.intKmSiguiente = dr.IsNull("intKmSiguiente") ? null :(int?) dr["intKmSiguiente"];
@@ -66,6 +64,8 @@ namespace LiqViajes_Bll_Data
 				vehiculoskmmantenimiento.strLugarDetener = dr.IsNull("strLugarDetener") ? null :(string) dr["strLugarDetener"];
 				vehiculoskmmantenimiento.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
 				vehiculoskmmantenimiento.lngIdUsuario = dr.IsNull("lngIdUsuario") ? null :(int?) dr["lngIdUsuario"];
+				vehiculoskmmantenimiento.strPlaca = (string) dr["strPlaca"];
+				vehiculoskmmantenimiento.lngIdTipoMantenimiento = (int) dr["lngIdTipoMantenimiento"];
 			}
 			catch (Exception ex)
 			{
@@ -132,8 +132,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an VehiculosKmMantenimiento object by passing all object's fields
 		/// </summary>
-		/// <param name="strPlaca">string that contents the strPlaca value for the VehiculosKmMantenimiento object</param>
-		/// <param name="lngIdTipoMantenimiento">int that contents the lngIdTipoMantenimiento value for the VehiculosKmMantenimiento object</param>
 		/// <param name="dtmFechaUltimoCambio">DateTime that contents the dtmFechaUltimoCambio value for the VehiculosKmMantenimiento object</param>
 		/// <param name="intKmUltimoCambio">int that contents the intKmUltimoCambio value for the VehiculosKmMantenimiento object</param>
 		/// <param name="intKmSiguiente">int that contents the intKmSiguiente value for the VehiculosKmMantenimiento object</param>
@@ -146,7 +144,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strLugarDetener">string that contents the strLugarDetener value for the VehiculosKmMantenimiento object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the VehiculosKmMantenimiento object</param>
 		/// <param name="lngIdUsuario">int that contents the lngIdUsuario value for the VehiculosKmMantenimiento object</param>
-		public void Update(string strPlaca, int lngIdTipoMantenimiento, DateTime? dtmFechaUltimoCambio, int? intKmUltimoCambio, int? intKmSiguiente, int? intKmAcumulado, DateTime? dtmFechaUltimoUltimoAcumu, int? intKmAlarma1, int? intKmAlarma2, bool? logAvisa, DateTime? dtmFechaDetener, string strLugarDetener, DateTime? dtmFechaModif, int? lngIdUsuario, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="strPlaca">string that contents the strPlaca value for the VehiculosKmMantenimiento object</param>
+		/// <param name="lngIdTipoMantenimiento">int that contents the lngIdTipoMantenimiento value for the VehiculosKmMantenimiento object</param>
+		public void Update(DateTime? dtmFechaUltimoCambio, int? intKmUltimoCambio, int? intKmSiguiente, int? intKmAcumulado, DateTime? dtmFechaUltimoUltimoAcumu, int? intKmAlarma1, int? intKmAlarma2, bool? logAvisa, DateTime? dtmFechaDetener, string strLugarDetener, DateTime? dtmFechaModif, int? lngIdUsuario, string strPlaca, int lngIdTipoMantenimiento, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -163,7 +163,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strLugarDetener = strLugarDetener;
 				new_values.dtmFechaModif = dtmFechaModif;
 				new_values.lngIdUsuario = lngIdUsuario;
-				VehiculosKmMantenimientoDataProvider.Instance.Update(strPlaca, lngIdTipoMantenimiento, dtmFechaUltimoCambio, intKmUltimoCambio, intKmSiguiente, intKmAcumulado, dtmFechaUltimoUltimoAcumu, intKmAlarma1, intKmAlarma2, logAvisa, dtmFechaDetener, strLugarDetener, dtmFechaModif, lngIdUsuario,"VehiculosKmMantenimiento",datosTransaccion);
+				VehiculosKmMantenimientoDataProvider.Instance.Update(dtmFechaUltimoCambio, intKmUltimoCambio, intKmSiguiente, intKmAcumulado, dtmFechaUltimoUltimoAcumu, intKmAlarma1, intKmAlarma2, logAvisa, dtmFechaDetener, strLugarDetener, dtmFechaModif, lngIdUsuario, strPlaca, lngIdTipoMantenimiento,"VehiculosKmMantenimiento",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -177,7 +177,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="vehiculoskmmantenimiento">An instance of VehiculosKmMantenimiento for reference</param>
 		public void Update(VehiculosKmMantenimiento vehiculoskmmantenimiento,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(vehiculoskmmantenimiento.strPlaca, vehiculoskmmantenimiento.lngIdTipoMantenimiento, vehiculoskmmantenimiento.dtmFechaUltimoCambio, vehiculoskmmantenimiento.intKmUltimoCambio, vehiculoskmmantenimiento.intKmSiguiente, vehiculoskmmantenimiento.intKmAcumulado, vehiculoskmmantenimiento.dtmFechaUltimoUltimoAcumu, vehiculoskmmantenimiento.intKmAlarma1, vehiculoskmmantenimiento.intKmAlarma2, vehiculoskmmantenimiento.logAvisa, vehiculoskmmantenimiento.dtmFechaDetener, vehiculoskmmantenimiento.strLugarDetener, vehiculoskmmantenimiento.dtmFechaModif, vehiculoskmmantenimiento.lngIdUsuario);
+			Update(vehiculoskmmantenimiento.dtmFechaUltimoCambio, vehiculoskmmantenimiento.intKmUltimoCambio, vehiculoskmmantenimiento.intKmSiguiente, vehiculoskmmantenimiento.intKmAcumulado, vehiculoskmmantenimiento.dtmFechaUltimoUltimoAcumu, vehiculoskmmantenimiento.intKmAlarma1, vehiculoskmmantenimiento.intKmAlarma2, vehiculoskmmantenimiento.logAvisa, vehiculoskmmantenimiento.dtmFechaDetener, vehiculoskmmantenimiento.strLugarDetener, vehiculoskmmantenimiento.dtmFechaModif, vehiculoskmmantenimiento.lngIdUsuario, vehiculoskmmantenimiento.strPlaca, vehiculoskmmantenimiento.lngIdTipoMantenimiento);
 		}
 
 		/// <summary>
@@ -331,12 +331,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "strPlaca":
-					return vehiculoskmmantenimiento.strPlaca.GetType();
-
-				case "lngIdTipoMantenimiento":
-					return vehiculoskmmantenimiento.lngIdTipoMantenimiento.GetType();
-
 				case "dtmFechaUltimoCambio":
 					return vehiculoskmmantenimiento.dtmFechaUltimoCambio.GetType();
 
@@ -372,6 +366,12 @@ namespace LiqViajes_Bll_Data
 
 				case "lngIdUsuario":
 					return vehiculoskmmantenimiento.lngIdUsuario.GetType();
+
+				case "strPlaca":
+					return vehiculoskmmantenimiento.strPlaca.GetType();
+
+				case "lngIdTipoMantenimiento":
+					return vehiculoskmmantenimiento.lngIdTipoMantenimiento.GetType();
 
 			}
 

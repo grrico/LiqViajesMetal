@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				fecha.PK_Date = (DateTime) dr["PK_Date"];
 				fecha.Date_Name = dr.IsNull("Date_Name") ? null :(string) dr["Date_Name"];
 				fecha.Year = dr.IsNull("Year") ? null :(DateTime?) dr["Year"];
 				fecha.Year_Name = dr.IsNull("Year_Name") ? null :(string) dr["Year_Name"];
@@ -78,6 +77,7 @@ namespace LiqViajes_Bll_Data
 				fecha.Month_Of_Trimester_Name = dr.IsNull("Month_Of_Trimester_Name") ? null :(string) dr["Month_Of_Trimester_Name"];
 				fecha.Trimester_Of_Year = dr.IsNull("Trimester_Of_Year") ? null :(int?) dr["Trimester_Of_Year"];
 				fecha.Trimester_Of_Year_Name = dr.IsNull("Trimester_Of_Year_Name") ? null :(string) dr["Trimester_Of_Year_Name"];
+				fecha.PK_Date = (DateTime) dr["PK_Date"];
 			}
 			catch (Exception ex)
 			{
@@ -169,7 +169,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Fecha object by passing all object's fields
 		/// </summary>
-		/// <param name="PK_Date">DateTime that contents the PK_Date value for the Fecha object</param>
 		/// <param name="Date_Name">string that contents the Date_Name value for the Fecha object</param>
 		/// <param name="Year">DateTime that contents the Year value for the Fecha object</param>
 		/// <param name="Year_Name">string that contents the Year_Name value for the Fecha object</param>
@@ -195,7 +194,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Month_Of_Trimester_Name">string that contents the Month_Of_Trimester_Name value for the Fecha object</param>
 		/// <param name="Trimester_Of_Year">int that contents the Trimester_Of_Year value for the Fecha object</param>
 		/// <param name="Trimester_Of_Year_Name">string that contents the Trimester_Of_Year_Name value for the Fecha object</param>
-		public void Update(DateTime PK_Date, string Date_Name, DateTime? Year, string Year_Name, DateTime? Trimester, string Trimester_Name, DateTime? Month, string Month_Name, DateTime? Week, string Week_Name, int? Day_Of_Year, string Day_Of_Year_Name, int? Day_Of_Trimester, string Day_Of_Trimester_Name, int? Day_Of_Month, string Day_Of_Month_Name, int? Day_Of_Week, string Day_Of_Week_Name, int? Week_Of_Year, string Week_Of_Year_Name, int? Month_Of_Year, string Month_Of_Year_Name, int? Month_Of_Trimester, string Month_Of_Trimester_Name, int? Trimester_Of_Year, string Trimester_Of_Year_Name, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="PK_Date">DateTime that contents the PK_Date value for the Fecha object</param>
+		public void Update(string Date_Name, DateTime? Year, string Year_Name, DateTime? Trimester, string Trimester_Name, DateTime? Month, string Month_Name, DateTime? Week, string Week_Name, int? Day_Of_Year, string Day_Of_Year_Name, int? Day_Of_Trimester, string Day_Of_Trimester_Name, int? Day_Of_Month, string Day_Of_Month_Name, int? Day_Of_Week, string Day_Of_Week_Name, int? Week_Of_Year, string Week_Of_Year_Name, int? Month_Of_Year, string Month_Of_Year_Name, int? Month_Of_Trimester, string Month_Of_Trimester_Name, int? Trimester_Of_Year, string Trimester_Of_Year_Name, DateTime PK_Date, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -225,7 +225,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Month_Of_Trimester_Name = Month_Of_Trimester_Name;
 				new_values.Trimester_Of_Year = Trimester_Of_Year;
 				new_values.Trimester_Of_Year_Name = Trimester_Of_Year_Name;
-				FechaDataProvider.Instance.Update(PK_Date, Date_Name, Year, Year_Name, Trimester, Trimester_Name, Month, Month_Name, Week, Week_Name, Day_Of_Year, Day_Of_Year_Name, Day_Of_Trimester, Day_Of_Trimester_Name, Day_Of_Month, Day_Of_Month_Name, Day_Of_Week, Day_Of_Week_Name, Week_Of_Year, Week_Of_Year_Name, Month_Of_Year, Month_Of_Year_Name, Month_Of_Trimester, Month_Of_Trimester_Name, Trimester_Of_Year, Trimester_Of_Year_Name,"Fecha",datosTransaccion);
+				FechaDataProvider.Instance.Update(Date_Name, Year, Year_Name, Trimester, Trimester_Name, Month, Month_Name, Week, Week_Name, Day_Of_Year, Day_Of_Year_Name, Day_Of_Trimester, Day_Of_Trimester_Name, Day_Of_Month, Day_Of_Month_Name, Day_Of_Week, Day_Of_Week_Name, Week_Of_Year, Week_Of_Year_Name, Month_Of_Year, Month_Of_Year_Name, Month_Of_Trimester, Month_Of_Trimester_Name, Trimester_Of_Year, Trimester_Of_Year_Name, PK_Date,"Fecha",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -239,7 +239,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="fecha">An instance of Fecha for reference</param>
 		public void Update(Fecha fecha,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(fecha.PK_Date, fecha.Date_Name, fecha.Year, fecha.Year_Name, fecha.Trimester, fecha.Trimester_Name, fecha.Month, fecha.Month_Name, fecha.Week, fecha.Week_Name, fecha.Day_Of_Year, fecha.Day_Of_Year_Name, fecha.Day_Of_Trimester, fecha.Day_Of_Trimester_Name, fecha.Day_Of_Month, fecha.Day_Of_Month_Name, fecha.Day_Of_Week, fecha.Day_Of_Week_Name, fecha.Week_Of_Year, fecha.Week_Of_Year_Name, fecha.Month_Of_Year, fecha.Month_Of_Year_Name, fecha.Month_Of_Trimester, fecha.Month_Of_Trimester_Name, fecha.Trimester_Of_Year, fecha.Trimester_Of_Year_Name);
+			Update(fecha.Date_Name, fecha.Year, fecha.Year_Name, fecha.Trimester, fecha.Trimester_Name, fecha.Month, fecha.Month_Name, fecha.Week, fecha.Week_Name, fecha.Day_Of_Year, fecha.Day_Of_Year_Name, fecha.Day_Of_Trimester, fecha.Day_Of_Trimester_Name, fecha.Day_Of_Month, fecha.Day_Of_Month_Name, fecha.Day_Of_Week, fecha.Day_Of_Week_Name, fecha.Week_Of_Year, fecha.Week_Of_Year_Name, fecha.Month_Of_Year, fecha.Month_Of_Year_Name, fecha.Month_Of_Trimester, fecha.Month_Of_Trimester_Name, fecha.Trimester_Of_Year, fecha.Trimester_Of_Year_Name, fecha.PK_Date);
 		}
 
 		/// <summary>
@@ -294,14 +294,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Fecha fecha = null;
-				DataTable dt = FechaDataProvider.Instance.Get(PK_Date);
-				if ((dt.Rows.Count > 0))
+				fecha= MasterTables.Fecha.Where(r => r.PK_Date== PK_Date).FirstOrDefault();
+				if (fecha== null)
 				{
-					fecha = new Fecha();
-					DataRow dr = dt.Rows[0];
-					ReadData(fecha, dr, generateUndo);
+					MasterTables.Reset("Fecha");
+					fecha= MasterTables.Fecha.Where(r => r.PK_Date== PK_Date).FirstOrDefault();
 				}
-
+				if (generateUndo) fecha.GenerateUndo();
 
 				return fecha;
 			}
@@ -391,9 +390,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "PK_Date":
-					return fecha.PK_Date.GetType();
-
 				case "Date_Name":
 					return fecha.Date_Name.GetType();
 
@@ -468,6 +464,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Trimester_Of_Year_Name":
 					return fecha.Trimester_Of_Year_Name.GetType();
+
+				case "PK_Date":
+					return fecha.PK_Date.GetType();
 
 			}
 

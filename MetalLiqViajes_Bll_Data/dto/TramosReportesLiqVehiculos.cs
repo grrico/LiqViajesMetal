@@ -94,9 +94,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TramosReportesLiqVehiculos's Registro value
-		private long m_Registro;
-
 		// Field for storing the TramosReportesLiqVehiculos's Fecha value
 		private DateTime? m_Fecha;
 
@@ -127,6 +124,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TramosReportesLiqVehiculos's TotalGeneral value
 		private decimal? m_TotalGeneral;
 
+		// Field for storing the TramosReportesLiqVehiculos's Registro value
+		private long m_Registro;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -140,20 +140,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TramosReportesLiqVehiculos's Registro value (long)
-		/// </summary>
-		[DataMember]
-		public long Registro
-		{
-			get { return m_Registro; }
-			set 
-			{
-				m_changed=true;
-				m_Registro = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TramosReportesLiqVehiculos's Fecha value (DateTime)
 		/// </summary>
@@ -294,11 +280,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TramosReportesLiqVehiculos's Registro value (long)
+		/// </summary>
+		[DataMember]
+		public long Registro
+		{
+			get { return m_Registro; }
+			set 
+			{
+				m_changed=true;
+				m_Registro = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Registro": return Registro;
 				case "Fecha": return Fecha;
 				case "Centro": return Centro;
 				case "Marca": return Marca;
@@ -309,6 +308,7 @@ namespace LiqViajes_Bll_Data
 				case "TotalGatos": return TotalGatos;
 				case "TotalAnticipos": return TotalAnticipos;
 				case "TotalGeneral": return TotalGeneral;
+				case "Registro": return Registro;
 				default: return null;
 			}
 		}

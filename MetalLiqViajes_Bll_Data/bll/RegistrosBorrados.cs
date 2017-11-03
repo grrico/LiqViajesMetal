@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				registrosborrados.lngIdRegistroViaje = (int) dr["lngIdRegistroViaje"];
 				registrosborrados.lngIdRegistroViajeTramo = dr.IsNull("lngIdRegistroViajeTramo") ? null :(int?) dr["lngIdRegistroViajeTramo"];
 				registrosborrados.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(int?) dr["lngIdRegistrRuta"];
 				registrosborrados.strRutaAnticipo = (string) dr["strRutaAnticipo"];
@@ -69,6 +68,7 @@ namespace LiqViajes_Bll_Data
 				registrosborrados.strObservaciones = dr.IsNull("strObservaciones") ? null :(string) dr["strObservaciones"];
 				registrosborrados.intCantidad = dr.IsNull("intCantidad") ? null :(int?) dr["intCantidad"];
 				registrosborrados.logAnulado = dr.IsNull("logAnulado") ? null :(bool?) dr["logAnulado"];
+				registrosborrados.lngIdRegistroViaje = (int) dr["lngIdRegistroViaje"];
 			}
 			catch (Exception ex)
 			{
@@ -147,7 +147,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RegistrosBorrados object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistroViaje">int that contents the lngIdRegistroViaje value for the RegistrosBorrados object</param>
 		/// <param name="lngIdRegistroViajeTramo">int that contents the lngIdRegistroViajeTramo value for the RegistrosBorrados object</param>
 		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the RegistrosBorrados object</param>
 		/// <param name="strRutaAnticipo">string that contents the strRutaAnticipo value for the RegistrosBorrados object</param>
@@ -164,7 +163,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strObservaciones">string that contents the strObservaciones value for the RegistrosBorrados object</param>
 		/// <param name="intCantidad">int that contents the intCantidad value for the RegistrosBorrados object</param>
 		/// <param name="logAnulado">bool that contents the logAnulado value for the RegistrosBorrados object</param>
-		public void Update(int lngIdRegistroViaje, int? lngIdRegistroViajeTramo, int? lngIdRegistrRuta, string strRutaAnticipo, double? intNitConductor, string strConductor, string strPlaca, int? lngIdBanco, int? intDocumento, string strCuenta, decimal? curDebito, decimal? curCredito, decimal? curSaldo, DateTime? dtmFechaModif, string strObservaciones, int? intCantidad, bool? logAnulado, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistroViaje">int that contents the lngIdRegistroViaje value for the RegistrosBorrados object</param>
+		public void Update(int? lngIdRegistroViajeTramo, int? lngIdRegistrRuta, string strRutaAnticipo, double? intNitConductor, string strConductor, string strPlaca, int? lngIdBanco, int? intDocumento, string strCuenta, decimal? curDebito, decimal? curCredito, decimal? curSaldo, DateTime? dtmFechaModif, string strObservaciones, int? intCantidad, bool? logAnulado, int lngIdRegistroViaje, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -185,7 +185,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strObservaciones = strObservaciones;
 				new_values.intCantidad = intCantidad;
 				new_values.logAnulado = logAnulado;
-				RegistrosBorradosDataProvider.Instance.Update(lngIdRegistroViaje, lngIdRegistroViajeTramo, lngIdRegistrRuta, strRutaAnticipo, intNitConductor, strConductor, strPlaca, lngIdBanco, intDocumento, strCuenta, curDebito, curCredito, curSaldo, dtmFechaModif, strObservaciones, intCantidad, logAnulado,"RegistrosBorrados",datosTransaccion);
+				RegistrosBorradosDataProvider.Instance.Update(lngIdRegistroViajeTramo, lngIdRegistrRuta, strRutaAnticipo, intNitConductor, strConductor, strPlaca, lngIdBanco, intDocumento, strCuenta, curDebito, curCredito, curSaldo, dtmFechaModif, strObservaciones, intCantidad, logAnulado, lngIdRegistroViaje,"RegistrosBorrados",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -199,7 +199,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="registrosborrados">An instance of RegistrosBorrados for reference</param>
 		public void Update(RegistrosBorrados registrosborrados,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(registrosborrados.lngIdRegistroViaje, registrosborrados.lngIdRegistroViajeTramo, registrosborrados.lngIdRegistrRuta, registrosborrados.strRutaAnticipo, registrosborrados.intNitConductor, registrosborrados.strConductor, registrosborrados.strPlaca, registrosborrados.lngIdBanco, registrosborrados.intDocumento, registrosborrados.strCuenta, registrosborrados.curDebito, registrosborrados.curCredito, registrosborrados.curSaldo, registrosborrados.dtmFechaModif, registrosborrados.strObservaciones, registrosborrados.intCantidad, registrosborrados.logAnulado);
+			Update(registrosborrados.lngIdRegistroViajeTramo, registrosborrados.lngIdRegistrRuta, registrosborrados.strRutaAnticipo, registrosborrados.intNitConductor, registrosborrados.strConductor, registrosborrados.strPlaca, registrosborrados.lngIdBanco, registrosborrados.intDocumento, registrosborrados.strCuenta, registrosborrados.curDebito, registrosborrados.curCredito, registrosborrados.curSaldo, registrosborrados.dtmFechaModif, registrosborrados.strObservaciones, registrosborrados.intCantidad, registrosborrados.logAnulado, registrosborrados.lngIdRegistroViaje);
 		}
 
 		/// <summary>
@@ -258,14 +258,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				RegistrosBorrados registrosborrados = null;
-				DataTable dt = RegistrosBorradosDataProvider.Instance.Get(lngIdRegistroViaje);
-				if ((dt.Rows.Count > 0))
+				registrosborrados= MasterTables.RegistrosBorrados.Where(r => r.lngIdRegistroViaje== lngIdRegistroViaje).FirstOrDefault();
+				if (registrosborrados== null)
 				{
-					registrosborrados = new RegistrosBorrados();
-					DataRow dr = dt.Rows[0];
-					ReadData(registrosborrados, dr, generateUndo);
+					MasterTables.Reset("RegistrosBorrados");
+					registrosborrados= MasterTables.RegistrosBorrados.Where(r => r.lngIdRegistroViaje== lngIdRegistroViaje).FirstOrDefault();
 				}
-
+				if (generateUndo) registrosborrados.GenerateUndo();
 
 				return registrosborrados;
 			}
@@ -355,9 +354,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistroViaje":
-					return registrosborrados.lngIdRegistroViaje.GetType();
-
 				case "lngIdRegistroViajeTramo":
 					return registrosborrados.lngIdRegistroViajeTramo.GetType();
 
@@ -405,6 +401,9 @@ namespace LiqViajes_Bll_Data
 
 				case "logAnulado":
 					return registrosborrados.logAnulado.GetType();
+
+				case "lngIdRegistroViaje":
+					return registrosborrados.lngIdRegistroViaje.GetType();
 
 			}
 

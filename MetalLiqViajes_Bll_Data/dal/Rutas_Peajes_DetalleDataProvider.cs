@@ -105,13 +105,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutas_Peajes_Detalle by passing all fields
 		/// </summary>
-		/// <param name="codigo"></param>
-		/// <param name="Rutas_PeajesCodigo"></param>
-		/// <param name="lngIdPeaje"></param>
 		/// <param name="Secuencia"></param>
 		/// <param name="Excluido"></param>
 		/// <param name="fechaModificacion"></param>
-		public void Update(long codigo, long Rutas_PeajesCodigo, int lngIdPeaje, int? Secuencia, bool? Excluido, DateTime? fechaModificacion,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="codigo"></param>
+		/// <param name="Rutas_PeajesCodigo"></param>
+		/// <param name="lngIdPeaje"></param>
+		public void Update(int? Secuencia, bool? Excluido, DateTime? fechaModificacion, long codigo, long Rutas_PeajesCodigo, int lngIdPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				departamentos.lngIdDepartamento = (int) dr["lngIdDepartamento"];
 				departamentos.lngIdPais = (int) dr["lngIdPais"];
 				departamentos.strNombre = (string) dr["strNombre"];
+				departamentos.lngIdDepartamento = (int) dr["lngIdDepartamento"];
 			}
 			catch (Exception ex)
 			{
@@ -100,17 +100,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Departamentos object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdDepartamento">int that contents the lngIdDepartamento value for the Departamentos object</param>
 		/// <param name="lngIdPais">int that contents the lngIdPais value for the Departamentos object</param>
 		/// <param name="strNombre">string that contents the strNombre value for the Departamentos object</param>
-		public void Update(int lngIdDepartamento, int lngIdPais, string strNombre, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdDepartamento">int that contents the lngIdDepartamento value for the Departamentos object</param>
+		public void Update(int lngIdPais, string strNombre, int lngIdDepartamento, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				Departamentos new_values = new Departamentos();
 				new_values.lngIdPais = lngIdPais;
 				new_values.strNombre = strNombre;
-				DepartamentosDataProvider.Instance.Update(lngIdDepartamento, lngIdPais, strNombre,"Departamentos",datosTransaccion);
+				DepartamentosDataProvider.Instance.Update(lngIdPais, strNombre, lngIdDepartamento,"Departamentos",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="departamentos">An instance of Departamentos for reference</param>
 		public void Update(Departamentos departamentos,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(departamentos.lngIdDepartamento, departamentos.lngIdPais, departamentos.strNombre);
+			Update(departamentos.lngIdPais, departamentos.strNombre, departamentos.lngIdDepartamento);
 		}
 
 		/// <summary>
@@ -179,14 +179,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Departamentos departamentos = null;
-				DataTable dt = DepartamentosDataProvider.Instance.Get(lngIdDepartamento);
-				if ((dt.Rows.Count > 0))
+				departamentos= MasterTables.Departamentos.Where(r => r.lngIdDepartamento== lngIdDepartamento).FirstOrDefault();
+				if (departamentos== null)
 				{
-					departamentos = new Departamentos();
-					DataRow dr = dt.Rows[0];
-					ReadData(departamentos, dr, generateUndo);
+					MasterTables.Reset("Departamentos");
+					departamentos= MasterTables.Departamentos.Where(r => r.lngIdDepartamento== lngIdDepartamento).FirstOrDefault();
 				}
-
+				if (generateUndo) departamentos.GenerateUndo();
 
 				return departamentos;
 			}
@@ -276,14 +275,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdDepartamento":
-					return departamentos.lngIdDepartamento.GetType();
-
 				case "lngIdPais":
 					return departamentos.lngIdPais.GetType();
 
 				case "strNombre":
 					return departamentos.strNombre.GetType();
+
+				case "lngIdDepartamento":
+					return departamentos.lngIdDepartamento.GetType();
 
 			}
 

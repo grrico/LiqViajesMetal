@@ -169,11 +169,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into novedades_nomina by passing all fields
 		/// </summary>
-		/// <param name="IdNovedad"></param>
-		/// <param name="nomina"></param>
-		/// <param name="contrato"></param>
-		/// <param name="nit"></param>
-		/// <param name="idperiodo"></param>
 		/// <param name="concepto"></param>
 		/// <param name="fecha"></param>
 		/// <param name="mes"></param>
@@ -182,8 +177,6 @@ namespace LiqViajes_Bll_Data
 		/// <param name="valor"></param>
 		/// <param name="horas"></param>
 		/// <param name="dias"></param>
-		/// <param name="centro"></param>
-		/// <param name="planta"></param>
 		/// <param name="turno"></param>
 		/// <param name="estado"></param>
 		/// <param name="nro_presta"></param>
@@ -193,7 +186,14 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tipo_doc"></param>
 		/// <param name="numero_doc"></param>
 		/// <param name="cuota"></param>
-		public void Update(int IdNovedad, string nomina, int contrato, string nit, int idperiodo, short concepto, DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, int centro, byte planta, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool? sumar, string oficio, string tipo_doc, int? numero_doc, int? cuota,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="IdNovedad"></param>
+		/// <param name="nomina"></param>
+		/// <param name="contrato"></param>
+		/// <param name="nit"></param>
+		/// <param name="idperiodo"></param>
+		/// <param name="centro"></param>
+		/// <param name="planta"></param>
+		public void Update(short concepto, DateTime fecha, byte? mes, short? ano, int? periodo, decimal? valor, float? horas, float? dias, byte? turno, char? estado, int? nro_presta, short? cpto_interes, bool? sumar, string oficio, string tipo_doc, int? numero_doc, int? cuota, int IdNovedad, string nomina, int contrato, string nit, int idperiodo, int centro, byte planta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -79,9 +79,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the ObservacioneComplementarias's Codigo value
-		private int m_Codigo;
-
 		// Field for storing the ObservacioneComplementarias's Origen value
 		private string m_Origen;
 
@@ -97,6 +94,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the ObservacioneComplementarias's DetalleObservacion value
 		private string m_DetalleObservacion;
 
+		// Field for storing the ObservacioneComplementarias's Codigo value
+		private int m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -110,20 +110,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the ObservacioneComplementarias's Codigo value (int)
-		/// </summary>
-		[DataMember]
-		public int Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the ObservacioneComplementarias's Origen value (string)
 		/// </summary>
@@ -194,16 +180,30 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the ObservacioneComplementarias's Codigo value (int)
+		/// </summary>
+		[DataMember]
+		public int Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "Origen": return Origen;
 				case "Destino": return Destino;
 				case "Cuenta": return Cuenta;
 				case "Fila": return Fila;
 				case "DetalleObservacion": return DetalleObservacion;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

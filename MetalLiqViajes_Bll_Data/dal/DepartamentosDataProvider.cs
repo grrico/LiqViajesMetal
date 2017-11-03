@@ -88,10 +88,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblDepartamentos by passing all fields
 		/// </summary>
-		/// <param name="lngIdDepartamento"></param>
 		/// <param name="lngIdPais"></param>
 		/// <param name="strNombre"></param>
-		public void Update(int lngIdDepartamento, int lngIdPais, string strNombre,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdDepartamento"></param>
+		public void Update(int lngIdPais, string strNombre, int lngIdDepartamento,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -100,9 +100,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the legalizacionViajes's Codigo value
-		private long m_Codigo;
-
 		// Field for storing the legalizacionViajes's lngIdRegistro value
 		private int? m_lngIdRegistro;
 
@@ -139,6 +136,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the legalizacionViajes's notas value
 		private string m_notas;
 
+		// Field for storing the legalizacionViajes's Codigo value
+		private long m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -152,20 +152,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the legalizacionViajes's Codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the legalizacionViajes's lngIdRegistro value (int)
 		/// </summary>
@@ -334,11 +320,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the legalizacionViajes's Codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "lngIdRegistro": return lngIdRegistro;
 				case "sw": return sw;
 				case "tipo": return tipo;
@@ -351,6 +350,7 @@ namespace LiqViajes_Bll_Data
 				case "descripcion": return descripcion;
 				case "valor": return valor;
 				case "notas": return notas;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

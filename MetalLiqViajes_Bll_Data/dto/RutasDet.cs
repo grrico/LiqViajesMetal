@@ -74,6 +74,12 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
+		// Field for storing the RutasDet's strNombrePeaje value
+		private string m_strNombrePeaje;
+
+		// Field for storing the RutasDet's curValorPeaje value
+		private decimal? m_curValorPeaje;
+
 		// Field for storing the RutasDet's lngIdItemdReg value
 		private int m_lngIdItemdReg;
 
@@ -82,12 +88,6 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the RutasDet's lngIdPeaje value
 		private int m_lngIdPeaje;
-
-		// Field for storing the RutasDet's strNombrePeaje value
-		private string m_strNombrePeaje;
-
-		// Field for storing the RutasDet's curValorPeaje value
-		private decimal? m_curValorPeaje;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -102,6 +102,34 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the RutasDet's strNombrePeaje value (string)
+		/// </summary>
+		[DataMember]
+		public string strNombrePeaje
+		{
+			get { return m_strNombrePeaje; }
+			set 
+			{
+				m_changed=true;
+				m_strNombrePeaje = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the RutasDet's curValorPeaje value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal? curValorPeaje
+		{
+			get { return m_curValorPeaje; }
+			set 
+			{
+				m_changed=true;
+				m_curValorPeaje = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the RutasDet's lngIdItemdReg value (int)
 		/// </summary>
@@ -144,43 +172,15 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Attribute for access the RutasDet's strNombrePeaje value (string)
-		/// </summary>
-		[DataMember]
-		public string strNombrePeaje
-		{
-			get { return m_strNombrePeaje; }
-			set 
-			{
-				m_changed=true;
-				m_strNombrePeaje = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the RutasDet's curValorPeaje value (decimal)
-		/// </summary>
-		[DataMember]
-		public decimal? curValorPeaje
-		{
-			get { return m_curValorPeaje; }
-			set 
-			{
-				m_changed=true;
-				m_curValorPeaje = value;
-			}
-		}
-
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
+				case "strNombrePeaje": return strNombrePeaje;
+				case "curValorPeaje": return curValorPeaje;
 				case "lngIdItemdReg": return lngIdItemdReg;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				case "lngIdPeaje": return lngIdPeaje;
-				case "strNombrePeaje": return strNombrePeaje;
-				case "curValorPeaje": return curValorPeaje;
 				default: return null;
 			}
 		}

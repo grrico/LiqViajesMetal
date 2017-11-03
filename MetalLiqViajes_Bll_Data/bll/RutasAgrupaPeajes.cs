@@ -52,8 +52,8 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutasagrupapeajes.lngIdGrupo = (int) dr["lngIdGrupo"];
 				rutasagrupapeajes.strNombreGrupo = dr.IsNull("strNombreGrupo") ? null :(string) dr["strNombreGrupo"];
+				rutasagrupapeajes.lngIdGrupo = (int) dr["lngIdGrupo"];
 			}
 			catch (Exception ex)
 			{
@@ -102,15 +102,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasAgrupaPeajes object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdGrupo">int that contents the lngIdGrupo value for the RutasAgrupaPeajes object</param>
 		/// <param name="strNombreGrupo">string that contents the strNombreGrupo value for the RutasAgrupaPeajes object</param>
-		public void Update(int lngIdGrupo, string strNombreGrupo, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdGrupo">int that contents the lngIdGrupo value for the RutasAgrupaPeajes object</param>
+		public void Update(string strNombreGrupo, int lngIdGrupo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasAgrupaPeajes new_values = new RutasAgrupaPeajes();
 				new_values.strNombreGrupo = strNombreGrupo;
-				RutasAgrupaPeajesDataProvider.Instance.Update(lngIdGrupo, strNombreGrupo,"RutasAgrupaPeajes",datosTransaccion);
+				RutasAgrupaPeajesDataProvider.Instance.Update(strNombreGrupo, lngIdGrupo,"RutasAgrupaPeajes",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasagrupapeajes">An instance of RutasAgrupaPeajes for reference</param>
 		public void Update(RutasAgrupaPeajes rutasagrupapeajes,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasagrupapeajes.lngIdGrupo, rutasagrupapeajes.strNombreGrupo);
+			Update(rutasagrupapeajes.strNombreGrupo, rutasagrupapeajes.lngIdGrupo);
 		}
 
 		/// <summary>
@@ -183,14 +183,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				RutasAgrupaPeajes rutasagrupapeajes = null;
-				DataTable dt = RutasAgrupaPeajesDataProvider.Instance.Get(lngIdGrupo);
-				if ((dt.Rows.Count > 0))
+				rutasagrupapeajes= MasterTables.RutasAgrupaPeajes.Where(r => r.lngIdGrupo== lngIdGrupo).FirstOrDefault();
+				if (rutasagrupapeajes== null)
 				{
-					rutasagrupapeajes = new RutasAgrupaPeajes();
-					DataRow dr = dt.Rows[0];
-					ReadData(rutasagrupapeajes, dr, generateUndo);
+					MasterTables.Reset("RutasAgrupaPeajes");
+					rutasagrupapeajes= MasterTables.RutasAgrupaPeajes.Where(r => r.lngIdGrupo== lngIdGrupo).FirstOrDefault();
 				}
-
+				if (generateUndo) rutasagrupapeajes.GenerateUndo();
 
 				return rutasagrupapeajes;
 			}
@@ -280,11 +279,11 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdGrupo":
-					return rutasagrupapeajes.lngIdGrupo.GetType();
-
 				case "strNombreGrupo":
 					return rutasagrupapeajes.strNombreGrupo.GetType();
+
+				case "lngIdGrupo":
+					return rutasagrupapeajes.lngIdGrupo.GetType();
 
 			}
 

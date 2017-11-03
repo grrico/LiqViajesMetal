@@ -52,12 +52,12 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tipomantenimiento.lngIdTipoMantenimiento = (int) dr["lngIdTipoMantenimiento"];
 				tipomantenimiento.strTipoMantenimiento = dr.IsNull("strTipoMantenimiento") ? null :(string) dr["strTipoMantenimiento"];
 				tipomantenimiento.logActivar = dr.IsNull("logActivar") ? null :(bool?) dr["logActivar"];
 				tipomantenimiento.intValorMantenimiento = dr.IsNull("intValorMantenimiento") ? null :(float?) dr["intValorMantenimiento"];
 				tipomantenimiento.intValorAviso = dr.IsNull("intValorAviso") ? null :(float?) dr["intValorAviso"];
 				tipomantenimiento.intValorAviso2 = dr.IsNull("intValorAviso2") ? null :(float?) dr["intValorAviso2"];
+				tipomantenimiento.lngIdTipoMantenimiento = (int) dr["lngIdTipoMantenimiento"];
 			}
 			catch (Exception ex)
 			{
@@ -114,13 +114,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TipoMantenimiento object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdTipoMantenimiento">int that contents the lngIdTipoMantenimiento value for the TipoMantenimiento object</param>
 		/// <param name="strTipoMantenimiento">string that contents the strTipoMantenimiento value for the TipoMantenimiento object</param>
 		/// <param name="logActivar">bool that contents the logActivar value for the TipoMantenimiento object</param>
 		/// <param name="intValorMantenimiento">float that contents the intValorMantenimiento value for the TipoMantenimiento object</param>
 		/// <param name="intValorAviso">float that contents the intValorAviso value for the TipoMantenimiento object</param>
 		/// <param name="intValorAviso2">float that contents the intValorAviso2 value for the TipoMantenimiento object</param>
-		public void Update(int lngIdTipoMantenimiento, string strTipoMantenimiento, bool? logActivar, float? intValorMantenimiento, float? intValorAviso, float? intValorAviso2, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdTipoMantenimiento">int that contents the lngIdTipoMantenimiento value for the TipoMantenimiento object</param>
+		public void Update(string strTipoMantenimiento, bool? logActivar, float? intValorMantenimiento, float? intValorAviso, float? intValorAviso2, int lngIdTipoMantenimiento, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -130,7 +130,7 @@ namespace LiqViajes_Bll_Data
 				new_values.intValorMantenimiento = intValorMantenimiento;
 				new_values.intValorAviso = intValorAviso;
 				new_values.intValorAviso2 = intValorAviso2;
-				TipoMantenimientoDataProvider.Instance.Update(lngIdTipoMantenimiento, strTipoMantenimiento, logActivar, intValorMantenimiento, intValorAviso, intValorAviso2,"TipoMantenimiento",datosTransaccion);
+				TipoMantenimientoDataProvider.Instance.Update(strTipoMantenimiento, logActivar, intValorMantenimiento, intValorAviso, intValorAviso2, lngIdTipoMantenimiento,"TipoMantenimiento",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tipomantenimiento">An instance of TipoMantenimiento for reference</param>
 		public void Update(TipoMantenimiento tipomantenimiento,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tipomantenimiento.lngIdTipoMantenimiento, tipomantenimiento.strTipoMantenimiento, tipomantenimiento.logActivar, tipomantenimiento.intValorMantenimiento, tipomantenimiento.intValorAviso, tipomantenimiento.intValorAviso2);
+			Update(tipomantenimiento.strTipoMantenimiento, tipomantenimiento.logActivar, tipomantenimiento.intValorMantenimiento, tipomantenimiento.intValorAviso, tipomantenimiento.intValorAviso2, tipomantenimiento.lngIdTipoMantenimiento);
 		}
 
 		/// <summary>
@@ -300,9 +300,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdTipoMantenimiento":
-					return tipomantenimiento.lngIdTipoMantenimiento.GetType();
-
 				case "strTipoMantenimiento":
 					return tipomantenimiento.strTipoMantenimiento.GetType();
 
@@ -317,6 +314,9 @@ namespace LiqViajes_Bll_Data
 
 				case "intValorAviso2":
 					return tipomantenimiento.intValorAviso2.GetType();
+
+				case "lngIdTipoMantenimiento":
+					return tipomantenimiento.lngIdTipoMantenimiento.GetType();
 
 			}
 

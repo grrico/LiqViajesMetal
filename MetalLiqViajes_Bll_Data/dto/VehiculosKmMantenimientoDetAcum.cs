@@ -82,9 +82,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the VehiculosKmMantenimientoDetAcum's lngIdRegistro value
-		private int m_lngIdRegistro;
-
 		// Field for storing the VehiculosKmMantenimientoDetAcum's strPlaca value
 		private string m_strPlaca;
 
@@ -103,6 +100,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the VehiculosKmMantenimientoDetAcum's lngIdUsuario value
 		private int? m_lngIdUsuario;
 
+		// Field for storing the VehiculosKmMantenimientoDetAcum's lngIdRegistro value
+		private int m_lngIdRegistro;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -116,20 +116,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the VehiculosKmMantenimientoDetAcum's lngIdRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistro
-		{
-			get { return m_lngIdRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistro = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the VehiculosKmMantenimientoDetAcum's strPlaca value (string)
 		/// </summary>
@@ -214,17 +200,31 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the VehiculosKmMantenimientoDetAcum's lngIdRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistro": return lngIdRegistro;
 				case "strPlaca": return strPlaca;
 				case "strDetalleAcumuado": return strDetalleAcumuado;
 				case "drmFechaMovimiento": return drmFechaMovimiento;
 				case "intKmMovimiento": return intKmMovimiento;
 				case "dtmFechaModif": return dtmFechaModif;
 				case "lngIdUsuario": return lngIdUsuario;
+				case "lngIdRegistro": return lngIdRegistro;
 				default: return null;
 			}
 		}

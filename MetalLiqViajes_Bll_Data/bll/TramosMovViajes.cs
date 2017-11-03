@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				tramosmovviajes.Codigo = (long) dr["Codigo"];
 				tramosmovviajes.IdRegistro = dr.IsNull("IdRegistro") ? null :(long?) dr["IdRegistro"];
 				tramosmovviajes.Cedula = dr.IsNull("Cedula") ? null :(string) dr["Cedula"];
 				tramosmovviajes.NombreConductor = dr.IsNull("NombreConductor") ? null :(string) dr["NombreConductor"];
@@ -61,6 +60,7 @@ namespace LiqViajes_Bll_Data
 				tramosmovviajes.ValorTotal = dr.IsNull("ValorTotal") ? null :(decimal?) dr["ValorTotal"];
 				tramosmovviajes.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
 				tramosmovviajes.DescripcionPeaje = dr.IsNull("DescripcionPeaje") ? null :(string) dr["DescripcionPeaje"];
+				tramosmovviajes.Codigo = (long) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -118,7 +118,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TramosMovViajes object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">long that contents the Codigo value for the TramosMovViajes object</param>
 		/// <param name="IdRegistro">long that contents the IdRegistro value for the TramosMovViajes object</param>
 		/// <param name="Cedula">string that contents the Cedula value for the TramosMovViajes object</param>
 		/// <param name="NombreConductor">string that contents the NombreConductor value for the TramosMovViajes object</param>
@@ -127,7 +126,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="ValorTotal">decimal that contents the ValorTotal value for the TramosMovViajes object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the TramosMovViajes object</param>
 		/// <param name="DescripcionPeaje">string that contents the DescripcionPeaje value for the TramosMovViajes object</param>
-		public void Update(long Codigo, long? IdRegistro, string Cedula, string NombreConductor, string Cuenta, string DescripcionCuenta, decimal? ValorTotal, DateTime? Fecha, string DescripcionPeaje, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">long that contents the Codigo value for the TramosMovViajes object</param>
+		public void Update(long? IdRegistro, string Cedula, string NombreConductor, string Cuenta, string DescripcionCuenta, decimal? ValorTotal, DateTime? Fecha, string DescripcionPeaje, long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 				new_values.ValorTotal = ValorTotal;
 				new_values.Fecha = Fecha;
 				new_values.DescripcionPeaje = DescripcionPeaje;
-				TramosMovViajesDataProvider.Instance.Update(Codigo, IdRegistro, Cedula, NombreConductor, Cuenta, DescripcionCuenta, ValorTotal, Fecha, DescripcionPeaje,"TramosMovViajes",datosTransaccion);
+				TramosMovViajesDataProvider.Instance.Update(IdRegistro, Cedula, NombreConductor, Cuenta, DescripcionCuenta, ValorTotal, Fecha, DescripcionPeaje, Codigo,"TramosMovViajes",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -154,7 +154,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tramosmovviajes">An instance of TramosMovViajes for reference</param>
 		public void Update(TramosMovViajes tramosmovviajes,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tramosmovviajes.Codigo, tramosmovviajes.IdRegistro, tramosmovviajes.Cedula, tramosmovviajes.NombreConductor, tramosmovviajes.Cuenta, tramosmovviajes.DescripcionCuenta, tramosmovviajes.ValorTotal, tramosmovviajes.Fecha, tramosmovviajes.DescripcionPeaje);
+			Update(tramosmovviajes.IdRegistro, tramosmovviajes.Cedula, tramosmovviajes.NombreConductor, tramosmovviajes.Cuenta, tramosmovviajes.DescripcionCuenta, tramosmovviajes.ValorTotal, tramosmovviajes.Fecha, tramosmovviajes.DescripcionPeaje, tramosmovviajes.Codigo);
 		}
 
 		/// <summary>
@@ -306,9 +306,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return tramosmovviajes.Codigo.GetType();
-
 				case "IdRegistro":
 					return tramosmovviajes.IdRegistro.GetType();
 
@@ -332,6 +329,9 @@ namespace LiqViajes_Bll_Data
 
 				case "DescripcionPeaje":
 					return tramosmovviajes.DescripcionPeaje.GetType();
+
+				case "Codigo":
+					return tramosmovviajes.Codigo.GetType();
 
 			}
 

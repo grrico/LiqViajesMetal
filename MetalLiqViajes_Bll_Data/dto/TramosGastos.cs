@@ -79,9 +79,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TramosGastos's Codigo value
-		private long m_Codigo;
-
 		// Field for storing the TramosGastos's IdRegistroViaje value
 		private long m_IdRegistroViaje;
 
@@ -97,6 +94,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TramosGastos's DescripcionTercero value
 		private string m_DescripcionTercero;
 
+		// Field for storing the TramosGastos's Codigo value
+		private long m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -110,20 +110,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TramosGastos's Codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TramosGastos's IdRegistroViaje value (long)
 		/// </summary>
@@ -194,16 +180,30 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TramosGastos's Codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "IdRegistroViaje": return IdRegistroViaje;
 				case "Cuenta": return Cuenta;
 				case "DescripcionCuenta": return DescripcionCuenta;
 				case "ValorTotal": return ValorTotal;
 				case "DescripcionTercero": return DescripcionTercero;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

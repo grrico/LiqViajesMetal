@@ -79,9 +79,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Rutas_Peajes's Codigo value
-		private int m_Codigo;
-
 		// Field for storing the Rutas_Peajes's strRutaAnticipoGrupoOrigen value
 		private string m_strRutaAnticipoGrupoOrigen;
 
@@ -97,6 +94,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Rutas_Peajes's FechaActualizacion value
 		private DateTime? m_FechaActualizacion;
 
+		// Field for storing the Rutas_Peajes's Codigo value
+		private int m_Codigo;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -110,20 +110,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Rutas_Peajes's Codigo value (int)
-		/// </summary>
-		[DataMember]
-		public int Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Rutas_Peajes's strRutaAnticipoGrupoOrigen value (string)
 		/// </summary>
@@ -194,16 +180,30 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Rutas_Peajes's Codigo value (int)
+		/// </summary>
+		[DataMember]
+		public int Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "strRutaAnticipoGrupoOrigen": return strRutaAnticipoGrupoOrigen;
 				case "strRutaAnticipoGrupoDestino": return strRutaAnticipoGrupoDestino;
 				case "strRutaAnticipo": return strRutaAnticipo;
 				case "logActualizado": return logActualizado;
 				case "FechaActualizacion": return FechaActualizacion;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

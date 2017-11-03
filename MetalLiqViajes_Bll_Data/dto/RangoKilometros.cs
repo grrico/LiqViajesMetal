@@ -76,9 +76,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the RangoKilometros's Codigo value
-		private int m_Codigo;
-
 		// Field for storing the RangoKilometros's RangoInicial value
 		private float m_RangoInicial;
 
@@ -90,6 +87,9 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the RangoKilometros's Valor value
 		private decimal m_Valor;
+
+		// Field for storing the RangoKilometros's Codigo value
+		private int m_Codigo;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -104,20 +104,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the RangoKilometros's Codigo value (int)
-		/// </summary>
-		[DataMember]
-		public int Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the RangoKilometros's RangoInicial value (float)
 		/// </summary>
@@ -174,15 +160,29 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the RangoKilometros's Codigo value (int)
+		/// </summary>
+		[DataMember]
+		public int Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
 				case "RangoInicial": return RangoInicial;
 				case "RangoFinal": return RangoFinal;
 				case "Kilometros": return Kilometros;
 				case "Valor": return Valor;
+				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

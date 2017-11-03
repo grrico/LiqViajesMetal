@@ -141,12 +141,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the TercerosConductores's strTipoIdentificacion value
-		private string m_strTipoIdentificacion;
-
-		// Field for storing the TercerosConductores's IntNit value
-		private double m_IntNit;
-
 		// Field for storing the TercerosConductores's intDigito value
 		private int? m_intDigito;
 
@@ -222,6 +216,12 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TercerosConductores's lngIdUsuario value
 		private int? m_lngIdUsuario;
 
+		// Field for storing the TercerosConductores's strTipoIdentificacion value
+		private string m_strTipoIdentificacion;
+
+		// Field for storing the TercerosConductores's IntNit value
+		private double m_IntNit;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -235,34 +235,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the TercerosConductores's strTipoIdentificacion value (string)
-		/// </summary>
-		[DataMember]
-		public string strTipoIdentificacion
-		{
-			get { return m_strTipoIdentificacion; }
-			set 
-			{
-				m_changed=true;
-				m_strTipoIdentificacion = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the TercerosConductores's IntNit value (double)
-		/// </summary>
-		[DataMember]
-		public double IntNit
-		{
-			get { return m_IntNit; }
-			set 
-			{
-				m_changed=true;
-				m_IntNit = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the TercerosConductores's intDigito value (int)
 		/// </summary>
@@ -613,12 +585,38 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the TercerosConductores's strTipoIdentificacion value (string)
+		/// </summary>
+		[DataMember]
+		public string strTipoIdentificacion
+		{
+			get { return m_strTipoIdentificacion; }
+			set 
+			{
+				m_changed=true;
+				m_strTipoIdentificacion = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the TercerosConductores's IntNit value (double)
+		/// </summary>
+		[DataMember]
+		public double IntNit
+		{
+			get { return m_IntNit; }
+			set 
+			{
+				m_changed=true;
+				m_IntNit = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "strTipoIdentificacion": return strTipoIdentificacion;
-				case "IntNit": return IntNit;
 				case "intDigito": return intDigito;
 				case "strNombres": return strNombres;
 				case "strDireccion": return strDireccion;
@@ -644,6 +642,8 @@ namespace LiqViajes_Bll_Data
 				case "dtmFechaModif": return dtmFechaModif;
 				case "logActualizado": return logActualizado;
 				case "lngIdUsuario": return lngIdUsuario;
+				case "strTipoIdentificacion": return strTipoIdentificacion;
+				case "IntNit": return IntNit;
 				default: return null;
 			}
 		}

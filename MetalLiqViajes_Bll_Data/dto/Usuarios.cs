@@ -85,9 +85,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Usuarios's lngIdUsuario value
-		private int m_lngIdUsuario;
-
 		// Field for storing the Usuarios's strLogin value
 		private string m_strLogin;
 
@@ -109,6 +106,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Usuarios's Modifica_cd value
 		private bool? m_Modifica_cd;
 
+		// Field for storing the Usuarios's lngIdUsuario value
+		private int m_lngIdUsuario;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -122,20 +122,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Usuarios's lngIdUsuario value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdUsuario
-		{
-			get { return m_lngIdUsuario; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdUsuario = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Usuarios's strLogin value (string)
 		/// </summary>
@@ -234,11 +220,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Usuarios's lngIdUsuario value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdUsuario
+		{
+			get { return m_lngIdUsuario; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdUsuario = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdUsuario": return lngIdUsuario;
 				case "strLogin": return strLogin;
 				case "strNombre": return strNombre;
 				case "strPassword": return strPassword;
@@ -246,6 +245,7 @@ namespace LiqViajes_Bll_Data
 				case "Excell": return Excell;
 				case "Modifica_gastos": return Modifica_gastos;
 				case "Modifica_cd": return Modifica_cd;
+				case "lngIdUsuario": return lngIdUsuario;
 				default: return null;
 			}
 		}

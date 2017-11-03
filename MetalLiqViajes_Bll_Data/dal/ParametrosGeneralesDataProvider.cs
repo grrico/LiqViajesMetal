@@ -98,10 +98,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into ParametrosGenerales by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="Descipcion"></param>
 		/// <param name="ValorParametro"></param>
-		public void Update(int Codigo, string Descipcion, string ValorParametro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(string Descipcion, string ValorParametro, int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

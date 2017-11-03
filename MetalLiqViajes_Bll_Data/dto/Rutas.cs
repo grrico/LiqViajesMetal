@@ -283,9 +283,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Rutas's lngIdRegistrRuta value
-		private int m_lngIdRegistrRuta;
-
 		// Field for storing the Rutas's strRutaAnticipoGrupoOrigen value
 		private string m_strRutaAnticipoGrupoOrigen;
 
@@ -505,6 +502,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Rutas's LogAnticipoACPM value
 		private bool? m_LogAnticipoACPM;
 
+		// Field for storing the Rutas's lngIdRegistrRuta value
+		private int m_lngIdRegistrRuta;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 		// Field for storing the reference to TipoTrailer accessed by TipoTrailerCodigo
@@ -524,20 +524,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Rutas's lngIdRegistrRuta value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistrRuta
-		{
-			get { return m_lngIdRegistrRuta; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistrRuta = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Rutas's strRutaAnticipoGrupoOrigen value (string)
 		/// </summary>
@@ -1572,11 +1558,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Rutas's lngIdRegistrRuta value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistrRuta
+		{
+			get { return m_lngIdRegistrRuta; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistrRuta = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				case "strRutaAnticipoGrupoOrigen": return strRutaAnticipoGrupoOrigen;
 				case "strRutaAnticipoGrupoDestino": return strRutaAnticipoGrupoDestino;
 				case "strRutaAnticipoGrupo": return strRutaAnticipoGrupo;
@@ -1650,6 +1649,7 @@ namespace LiqViajes_Bll_Data
 				case "CurCargue": return CurCargue;
 				case "CurDescargue": return CurDescargue;
 				case "LogAnticipoACPM": return LogAnticipoACPM;
+				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				default: return null;
 			}
 		}
@@ -1675,9 +1675,10 @@ namespace LiqViajes_Bll_Data
 			{
 				if (m_TiposTrailers == null)
 				{
-					if (m_TipoTrailerCodigo != null)
+					m_TiposTrailers = MasterTables.TipoTrailer.Where(tmp=>tmp.Codigo==m_TipoTrailerCodigo ).FirstOrDefault();
+					if (m_TiposTrailers == null)
 					{
-						m_TiposTrailers = TipoTrailerController.Instance.Get((int)m_TipoTrailerCodigo);
+						m_TiposTrailers = new TipoTrailer();
 					}
 				}
 
@@ -1707,9 +1708,10 @@ namespace LiqViajes_Bll_Data
 			{
 				if (m_TiposVehiculos == null)
 				{
-					if (m_TipoVehiculoCodigo != null)
+					m_TiposVehiculos = MasterTables.TipoVehiculo.Where(tmp=>tmp.Codigo==m_TipoVehiculoCodigo ).FirstOrDefault();
+					if (m_TiposVehiculos == null)
 					{
-						m_TiposVehiculos = TipoVehiculoController.Instance.Get((int)m_TipoVehiculoCodigo);
+						m_TiposVehiculos = new TipoVehiculo();
 					}
 				}
 

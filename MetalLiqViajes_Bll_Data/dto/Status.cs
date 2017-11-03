@@ -67,11 +67,11 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Status's lngIdStatus value
-		private int m_lngIdStatus;
-
 		// Field for storing the Status's strStatus value
 		private string m_strStatus;
+
+		// Field for storing the Status's lngIdStatus value
+		private int m_lngIdStatus;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -87,20 +87,6 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the Status's lngIdStatus value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdStatus
-		{
-			get { return m_lngIdStatus; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdStatus = value;
-			}
-		}
-
-		/// <summary>
 		/// Attribute for access the Status's strStatus value (string)
 		/// </summary>
 		[DataMember]
@@ -114,12 +100,26 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Status's lngIdStatus value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdStatus
+		{
+			get { return m_lngIdStatus; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdStatus = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdStatus": return lngIdStatus;
 				case "strStatus": return strStatus;
+				case "lngIdStatus": return lngIdStatus;
 				default: return null;
 			}
 		}

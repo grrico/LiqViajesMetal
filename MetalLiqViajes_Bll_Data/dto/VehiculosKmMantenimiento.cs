@@ -102,12 +102,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the VehiculosKmMantenimiento's strPlaca value
-		private string m_strPlaca;
-
-		// Field for storing the VehiculosKmMantenimiento's lngIdTipoMantenimiento value
-		private int m_lngIdTipoMantenimiento;
-
 		// Field for storing the VehiculosKmMantenimiento's dtmFechaUltimoCambio value
 		private DateTime? m_dtmFechaUltimoCambio;
 
@@ -144,6 +138,12 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the VehiculosKmMantenimiento's lngIdUsuario value
 		private int? m_lngIdUsuario;
 
+		// Field for storing the VehiculosKmMantenimiento's strPlaca value
+		private string m_strPlaca;
+
+		// Field for storing the VehiculosKmMantenimiento's lngIdTipoMantenimiento value
+		private int m_lngIdTipoMantenimiento;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -157,34 +157,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the VehiculosKmMantenimiento's strPlaca value (string)
-		/// </summary>
-		[DataMember]
-		public string strPlaca
-		{
-			get { return m_strPlaca; }
-			set 
-			{
-				m_changed=true;
-				m_strPlaca = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the VehiculosKmMantenimiento's lngIdTipoMantenimiento value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdTipoMantenimiento
-		{
-			get { return m_lngIdTipoMantenimiento; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdTipoMantenimiento = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the VehiculosKmMantenimiento's dtmFechaUltimoCambio value (DateTime)
 		/// </summary>
@@ -353,12 +325,38 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the VehiculosKmMantenimiento's strPlaca value (string)
+		/// </summary>
+		[DataMember]
+		public string strPlaca
+		{
+			get { return m_strPlaca; }
+			set 
+			{
+				m_changed=true;
+				m_strPlaca = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VehiculosKmMantenimiento's lngIdTipoMantenimiento value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdTipoMantenimiento
+		{
+			get { return m_lngIdTipoMantenimiento; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdTipoMantenimiento = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "strPlaca": return strPlaca;
-				case "lngIdTipoMantenimiento": return lngIdTipoMantenimiento;
 				case "dtmFechaUltimoCambio": return dtmFechaUltimoCambio;
 				case "intKmUltimoCambio": return intKmUltimoCambio;
 				case "intKmSiguiente": return intKmSiguiente;
@@ -371,6 +369,8 @@ namespace LiqViajes_Bll_Data
 				case "strLugarDetener": return strLugarDetener;
 				case "dtmFechaModif": return dtmFechaModif;
 				case "lngIdUsuario": return lngIdUsuario;
+				case "strPlaca": return strPlaca;
+				case "lngIdTipoMantenimiento": return lngIdTipoMantenimiento;
 				default: return null;
 			}
 		}

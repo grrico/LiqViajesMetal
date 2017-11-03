@@ -114,14 +114,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into TramosLavadas by passing all fields
 		/// </summary>
-		/// <param name="lngIdRegistroViaje"></param>
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
 		/// <param name="Liquidado"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="Placa"></param>
 		/// <param name="Valor"></param>
-		public void Update(long lngIdRegistroViaje, string Origen, string Destino, bool? Liquidado, DateTime? Fecha, string Placa, decimal? Valor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistroViaje"></param>
+		public void Update(string Origen, string Destino, bool? Liquidado, DateTime? Fecha, string Placa, decimal? Valor, long lngIdRegistroViaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

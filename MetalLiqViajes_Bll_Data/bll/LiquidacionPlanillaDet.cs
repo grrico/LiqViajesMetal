@@ -52,12 +52,12 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionplanilladet.lngIdItemd = (int) dr["lngIdItemd"];
 				liquidacionplanilladet.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
 				liquidacionplanilladet.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(int?) dr["lngIdRegistrRuta"];
 				liquidacionplanilladet.lngIdRegistrRutaItemId = dr.IsNull("lngIdRegistrRutaItemId") ? null :(int?) dr["lngIdRegistrRutaItemId"];
 				liquidacionplanilladet.strNoPlanilla = dr.IsNull("strNoPlanilla") ? null :(string) dr["strNoPlanilla"];
 				liquidacionplanilladet.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
+				liquidacionplanilladet.lngIdItemd = (int) dr["lngIdItemd"];
 			}
 			catch (Exception ex)
 			{
@@ -114,13 +114,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionPlanillaDet object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdItemd">int that contents the lngIdItemd value for the LiquidacionPlanillaDet object</param>
 		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionPlanillaDet object</param>
 		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionPlanillaDet object</param>
 		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionPlanillaDet object</param>
 		/// <param name="strNoPlanilla">string that contents the strNoPlanilla value for the LiquidacionPlanillaDet object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the LiquidacionPlanillaDet object</param>
-		public void Update(int lngIdItemd, int? lngIdRegistro, int? lngIdRegistrRuta, int? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdItemd">int that contents the lngIdItemd value for the LiquidacionPlanillaDet object</param>
+		public void Update(int? lngIdRegistro, int? lngIdRegistrRuta, int? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif, int lngIdItemd, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -130,7 +130,7 @@ namespace LiqViajes_Bll_Data
 				new_values.lngIdRegistrRutaItemId = lngIdRegistrRutaItemId;
 				new_values.strNoPlanilla = strNoPlanilla;
 				new_values.dtmFechaModif = dtmFechaModif;
-				LiquidacionPlanillaDetDataProvider.Instance.Update(lngIdItemd, lngIdRegistro, lngIdRegistrRuta, lngIdRegistrRutaItemId, strNoPlanilla, dtmFechaModif,"LiquidacionPlanillaDet",datosTransaccion);
+				LiquidacionPlanillaDetDataProvider.Instance.Update(lngIdRegistro, lngIdRegistrRuta, lngIdRegistrRutaItemId, strNoPlanilla, dtmFechaModif, lngIdItemd,"LiquidacionPlanillaDet",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionplanilladet">An instance of LiquidacionPlanillaDet for reference</param>
 		public void Update(LiquidacionPlanillaDet liquidacionplanilladet,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionplanilladet.lngIdItemd, liquidacionplanilladet.lngIdRegistro, liquidacionplanilladet.lngIdRegistrRuta, liquidacionplanilladet.lngIdRegistrRutaItemId, liquidacionplanilladet.strNoPlanilla, liquidacionplanilladet.dtmFechaModif);
+			Update(liquidacionplanilladet.lngIdRegistro, liquidacionplanilladet.lngIdRegistrRuta, liquidacionplanilladet.lngIdRegistrRutaItemId, liquidacionplanilladet.strNoPlanilla, liquidacionplanilladet.dtmFechaModif, liquidacionplanilladet.lngIdItemd);
 		}
 
 		/// <summary>
@@ -300,9 +300,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdItemd":
-					return liquidacionplanilladet.lngIdItemd.GetType();
-
 				case "lngIdRegistro":
 					return liquidacionplanilladet.lngIdRegistro.GetType();
 
@@ -317,6 +314,9 @@ namespace LiqViajes_Bll_Data
 
 				case "dtmFechaModif":
 					return liquidacionplanilladet.dtmFechaModif.GetType();
+
+				case "lngIdItemd":
+					return liquidacionplanilladet.lngIdItemd.GetType();
 
 			}
 

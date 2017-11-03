@@ -90,10 +90,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutasAgrupaPeajesDet by passing all fields
 		/// </summary>
+		/// <param name="intSecuencia"></param>
 		/// <param name="lngIdGrupo"></param>
 		/// <param name="lngIdPeaje"></param>
-		/// <param name="intSecuencia"></param>
-		public void Update(int lngIdGrupo, int lngIdPeaje, int? intSecuencia,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int? intSecuencia, int lngIdGrupo, int lngIdPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

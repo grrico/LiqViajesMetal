@@ -85,9 +85,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the LiquidacionRutasObs's lngItemsId value
-		private int m_lngItemsId;
-
 		// Field for storing the LiquidacionRutasObs's lngIdRegistrRutaItemId value
 		private int? m_lngIdRegistrRutaItemId;
 
@@ -109,6 +106,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionRutasObs's dtmFechaModif value
 		private DateTime? m_dtmFechaModif;
 
+		// Field for storing the LiquidacionRutasObs's lngItemsId value
+		private int m_lngItemsId;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -122,20 +122,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the LiquidacionRutasObs's lngItemsId value (int)
-		/// </summary>
-		[DataMember]
-		public int lngItemsId
-		{
-			get { return m_lngItemsId; }
-			set 
-			{
-				m_changed=true;
-				m_lngItemsId = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the LiquidacionRutasObs's lngIdRegistrRutaItemId value (int)
 		/// </summary>
@@ -234,11 +220,24 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the LiquidacionRutasObs's lngItemsId value (int)
+		/// </summary>
+		[DataMember]
+		public int lngItemsId
+		{
+			get { return m_lngItemsId; }
+			set 
+			{
+				m_changed=true;
+				m_lngItemsId = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngItemsId": return lngItemsId;
 				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				case "lngIdRegistro": return lngIdRegistro;
@@ -246,6 +245,7 @@ namespace LiqViajes_Bll_Data
 				case "strObservacion": return strObservacion;
 				case "nitTercero": return nitTercero;
 				case "dtmFechaModif": return dtmFechaModif;
+				case "lngItemsId": return lngItemsId;
 				default: return null;
 			}
 		}

@@ -130,7 +130,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblCuentas by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
 		/// <param name="strCuenta"></param>
 		/// <param name="strDescripcion"></param>
 		/// <param name="logAnticipo"></param>
@@ -140,7 +139,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strCuentaAplica"></param>
 		/// <param name="strCuentaNiif"></param>
 		/// <param name="Norma"></param>
-		public void Update(int Codigo, string strCuenta, string strDescripcion, bool? logAnticipo, string nitTercero, int? intNoColReferencia, double? sngPorcenrajeAplica, string strCuentaAplica, string strCuentaNiif, string Norma,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo"></param>
+		public void Update(string strCuenta, string strDescripcion, bool? logAnticipo, string nitTercero, int? intNoColReferencia, double? sngPorcenrajeAplica, string strCuentaAplica, string strCuentaNiif, string Norma, int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -52,7 +52,6 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				cuentas.Codigo = (int) dr["Codigo"];
 				cuentas.strCuenta = (string) dr["strCuenta"];
 				cuentas.strDescripcion = dr.IsNull("strDescripcion") ? null :(string) dr["strDescripcion"];
 				cuentas.logAnticipo = dr.IsNull("logAnticipo") ? null :(bool?) dr["logAnticipo"];
@@ -62,6 +61,7 @@ namespace LiqViajes_Bll_Data
 				cuentas.strCuentaAplica = dr.IsNull("strCuentaAplica") ? null :(string) dr["strCuentaAplica"];
 				cuentas.strCuentaNiif = dr.IsNull("strCuentaNiif") ? null :(string) dr["strCuentaNiif"];
 				cuentas.Norma = dr.IsNull("Norma") ? null :(string) dr["Norma"];
+				cuentas.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -126,7 +126,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Cuentas object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the Cuentas object</param>
 		/// <param name="strCuenta">string that contents the strCuenta value for the Cuentas object</param>
 		/// <param name="strDescripcion">string that contents the strDescripcion value for the Cuentas object</param>
 		/// <param name="logAnticipo">bool that contents the logAnticipo value for the Cuentas object</param>
@@ -136,7 +135,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strCuentaAplica">string that contents the strCuentaAplica value for the Cuentas object</param>
 		/// <param name="strCuentaNiif">string that contents the strCuentaNiif value for the Cuentas object</param>
 		/// <param name="Norma">string that contents the Norma value for the Cuentas object</param>
-		public void Update(int Codigo, string strCuenta, string strDescripcion, bool? logAnticipo, string nitTercero, int? intNoColReferencia, double? sngPorcenrajeAplica, string strCuentaAplica, string strCuentaNiif, string Norma, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">int that contents the Codigo value for the Cuentas object</param>
+		public void Update(string strCuenta, string strDescripcion, bool? logAnticipo, string nitTercero, int? intNoColReferencia, double? sngPorcenrajeAplica, string strCuentaAplica, string strCuentaNiif, string Norma, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -150,7 +150,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strCuentaAplica = strCuentaAplica;
 				new_values.strCuentaNiif = strCuentaNiif;
 				new_values.Norma = Norma;
-				CuentasDataProvider.Instance.Update(Codigo, strCuenta, strDescripcion, logAnticipo, nitTercero, intNoColReferencia, sngPorcenrajeAplica, strCuentaAplica, strCuentaNiif, Norma,"Cuentas",datosTransaccion);
+				CuentasDataProvider.Instance.Update(strCuenta, strDescripcion, logAnticipo, nitTercero, intNoColReferencia, sngPorcenrajeAplica, strCuentaAplica, strCuentaNiif, Norma, Codigo,"Cuentas",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -164,7 +164,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="cuentas">An instance of Cuentas for reference</param>
 		public void Update(Cuentas cuentas,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(cuentas.Codigo, cuentas.strCuenta, cuentas.strDescripcion, cuentas.logAnticipo, cuentas.nitTercero, cuentas.intNoColReferencia, cuentas.sngPorcenrajeAplica, cuentas.strCuentaAplica, cuentas.strCuentaNiif, cuentas.Norma);
+			Update(cuentas.strCuenta, cuentas.strDescripcion, cuentas.logAnticipo, cuentas.nitTercero, cuentas.intNoColReferencia, cuentas.sngPorcenrajeAplica, cuentas.strCuentaAplica, cuentas.strCuentaNiif, cuentas.Norma, cuentas.Codigo);
 		}
 
 		/// <summary>
@@ -223,14 +223,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				Cuentas cuentas = null;
-				DataTable dt = CuentasDataProvider.Instance.Get(Codigo);
-				if ((dt.Rows.Count > 0))
+				cuentas= MasterTables.Cuentas.Where(r => r.Codigo== Codigo).FirstOrDefault();
+				if (cuentas== null)
 				{
-					cuentas = new Cuentas();
-					DataRow dr = dt.Rows[0];
-					ReadData(cuentas, dr, generateUndo);
+					MasterTables.Reset("Cuentas");
+					cuentas= MasterTables.Cuentas.Where(r => r.Codigo== Codigo).FirstOrDefault();
 				}
-
+				if (generateUndo) cuentas.GenerateUndo();
 
 				return cuentas;
 			}
@@ -320,9 +319,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return cuentas.Codigo.GetType();
-
 				case "strCuenta":
 					return cuentas.strCuenta.GetType();
 
@@ -349,6 +345,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Norma":
 					return cuentas.Norma.GetType();
+
+				case "Codigo":
+					return cuentas.Codigo.GetType();
 
 			}
 

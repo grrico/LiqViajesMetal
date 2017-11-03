@@ -210,8 +210,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblTercerosConductores by passing all fields
 		/// </summary>
-		/// <param name="strTipoIdentificacion"></param>
-		/// <param name="IntNit"></param>
 		/// <param name="intDigito"></param>
 		/// <param name="strNombres"></param>
 		/// <param name="strDireccion"></param>
@@ -237,7 +235,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="logActualizado"></param>
 		/// <param name="lngIdUsuario"></param>
-		public void Update(string strTipoIdentificacion, double IntNit, int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="strTipoIdentificacion"></param>
+		/// <param name="IntNit"></param>
+		public void Update(int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario, string strTipoIdentificacion, double IntNit,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

@@ -119,7 +119,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblVehiculoTraylers by passing all fields
 		/// </summary>
-		/// <param name="Trayler"></param>
 		/// <param name="Placa"></param>
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
@@ -127,7 +126,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Fecha"></param>
 		/// <param name="Liquidado"></param>
 		/// <param name="Orden"></param>
-		public void Update(string Trayler, string Placa, int? lngIdRegistro, int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, DateTime? Fecha, bool? Liquidado, int? Orden,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Trayler"></param>
+		public void Update(string Placa, int? lngIdRegistro, int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, DateTime? Fecha, bool? Liquidado, int? Orden, string Trayler,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

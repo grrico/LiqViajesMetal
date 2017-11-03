@@ -70,14 +70,14 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the CuentasVarios's strCuenta value
-		private string m_strCuenta;
-
 		// Field for storing the CuentasVarios's strDescripcion value
 		private string m_strDescripcion;
 
 		// Field for storing the CuentasVarios's nitTercero value
 		private string m_nitTercero;
+
+		// Field for storing the CuentasVarios's strCuenta value
+		private string m_strCuenta;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -92,20 +92,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the CuentasVarios's strCuenta value (string)
-		/// </summary>
-		[DataMember]
-		public string strCuenta
-		{
-			get { return m_strCuenta; }
-			set 
-			{
-				m_changed=true;
-				m_strCuenta = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the CuentasVarios's strDescripcion value (string)
 		/// </summary>
@@ -134,13 +120,27 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the CuentasVarios's strCuenta value (string)
+		/// </summary>
+		[DataMember]
+		public string strCuenta
+		{
+			get { return m_strCuenta; }
+			set 
+			{
+				m_changed=true;
+				m_strCuenta = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "strCuenta": return strCuenta;
 				case "strDescripcion": return strDescripcion;
 				case "nitTercero": return nitTercero;
+				case "strCuenta": return strCuenta;
 				default: return null;
 			}
 		}

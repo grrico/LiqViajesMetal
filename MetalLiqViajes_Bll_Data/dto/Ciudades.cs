@@ -70,14 +70,14 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Ciudades's lngIdCiudad value
-		private int m_lngIdCiudad;
-
 		// Field for storing the Ciudades's lngIdDepartamento value
 		private int m_lngIdDepartamento;
 
 		// Field for storing the Ciudades's strNombreCiudad value
 		private string m_strNombreCiudad;
+
+		// Field for storing the Ciudades's lngIdCiudad value
+		private int m_lngIdCiudad;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -92,20 +92,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Ciudades's lngIdCiudad value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdCiudad
-		{
-			get { return m_lngIdCiudad; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdCiudad = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Ciudades's lngIdDepartamento value (int)
 		/// </summary>
@@ -134,13 +120,27 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Ciudades's lngIdCiudad value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdCiudad
+		{
+			get { return m_lngIdCiudad; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdCiudad = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "lngIdCiudad": return lngIdCiudad;
 				case "lngIdDepartamento": return lngIdDepartamento;
 				case "strNombreCiudad": return strNombreCiudad;
+				case "lngIdCiudad": return lngIdCiudad;
 				default: return null;
 			}
 		}

@@ -52,8 +52,8 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				status.lngIdStatus = (int) dr["lngIdStatus"];
 				status.strStatus = dr.IsNull("strStatus") ? null :(string) dr["strStatus"];
+				status.lngIdStatus = (int) dr["lngIdStatus"];
 			}
 			catch (Exception ex)
 			{
@@ -102,15 +102,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Status object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdStatus">int that contents the lngIdStatus value for the Status object</param>
 		/// <param name="strStatus">string that contents the strStatus value for the Status object</param>
-		public void Update(int lngIdStatus, string strStatus, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdStatus">int that contents the lngIdStatus value for the Status object</param>
+		public void Update(string strStatus, int lngIdStatus, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				Status new_values = new Status();
 				new_values.strStatus = strStatus;
-				StatusDataProvider.Instance.Update(lngIdStatus, strStatus,"Status",datosTransaccion);
+				StatusDataProvider.Instance.Update(strStatus, lngIdStatus,"Status",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="status">An instance of Status for reference</param>
 		public void Update(Status status,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(status.lngIdStatus, status.strStatus);
+			Update(status.strStatus, status.lngIdStatus);
 		}
 
 		/// <summary>
@@ -280,11 +280,11 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdStatus":
-					return status.lngIdStatus.GetType();
-
 				case "strStatus":
 					return status.strStatus.GetType();
+
+				case "lngIdStatus":
+					return status.lngIdStatus.GetType();
 
 			}
 

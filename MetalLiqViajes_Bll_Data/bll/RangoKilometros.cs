@@ -52,11 +52,11 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rangokilometros.Codigo = (int) dr["Codigo"];
 				rangokilometros.RangoInicial = (float) dr["RangoInicial"];
 				rangokilometros.RangoFinal = (float) dr["RangoFinal"];
 				rangokilometros.Kilometros = (float) dr["Kilometros"];
 				rangokilometros.Valor = (decimal) dr["Valor"];
+				rangokilometros.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -111,12 +111,12 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RangoKilometros object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the RangoKilometros object</param>
 		/// <param name="RangoInicial">float that contents the RangoInicial value for the RangoKilometros object</param>
 		/// <param name="RangoFinal">float that contents the RangoFinal value for the RangoKilometros object</param>
 		/// <param name="Kilometros">float that contents the Kilometros value for the RangoKilometros object</param>
 		/// <param name="Valor">decimal that contents the Valor value for the RangoKilometros object</param>
-		public void Update(int Codigo, float RangoInicial, float RangoFinal, float Kilometros, decimal Valor, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Codigo">int that contents the Codigo value for the RangoKilometros object</param>
+		public void Update(float RangoInicial, float RangoFinal, float Kilometros, decimal Valor, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -125,7 +125,7 @@ namespace LiqViajes_Bll_Data
 				new_values.RangoFinal = RangoFinal;
 				new_values.Kilometros = Kilometros;
 				new_values.Valor = Valor;
-				RangoKilometrosDataProvider.Instance.Update(Codigo, RangoInicial, RangoFinal, Kilometros, Valor,"RangoKilometros",datosTransaccion);
+				RangoKilometrosDataProvider.Instance.Update(RangoInicial, RangoFinal, Kilometros, Valor, Codigo,"RangoKilometros",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -139,7 +139,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rangokilometros">An instance of RangoKilometros for reference</param>
 		public void Update(RangoKilometros rangokilometros,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rangokilometros.Codigo, rangokilometros.RangoInicial, rangokilometros.RangoFinal, rangokilometros.Kilometros, rangokilometros.Valor);
+			Update(rangokilometros.RangoInicial, rangokilometros.RangoFinal, rangokilometros.Kilometros, rangokilometros.Valor, rangokilometros.Codigo);
 		}
 
 		/// <summary>
@@ -198,14 +198,13 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				RangoKilometros rangokilometros = null;
-				DataTable dt = RangoKilometrosDataProvider.Instance.Get(Codigo);
-				if ((dt.Rows.Count > 0))
+				rangokilometros= MasterTables.RangoKilometros.Where(r => r.Codigo== Codigo).FirstOrDefault();
+				if (rangokilometros== null)
 				{
-					rangokilometros = new RangoKilometros();
-					DataRow dr = dt.Rows[0];
-					ReadData(rangokilometros, dr, generateUndo);
+					MasterTables.Reset("RangoKilometros");
+					rangokilometros= MasterTables.RangoKilometros.Where(r => r.Codigo== Codigo).FirstOrDefault();
 				}
-
+				if (generateUndo) rangokilometros.GenerateUndo();
 
 				return rangokilometros;
 			}
@@ -295,9 +294,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Codigo":
-					return rangokilometros.Codigo.GetType();
-
 				case "RangoInicial":
 					return rangokilometros.RangoInicial.GetType();
 
@@ -309,6 +305,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Valor":
 					return rangokilometros.Valor.GetType();
+
+				case "Codigo":
+					return rangokilometros.Codigo.GetType();
 
 			}
 

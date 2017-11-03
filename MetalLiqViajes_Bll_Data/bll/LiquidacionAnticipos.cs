@@ -52,17 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionanticipos.lngIdRegistroViaje = (int) dr["lngIdRegistroViaje"];
-				liquidacionanticipos.lngIdRegistroViajeTramo = (decimal) dr["lngIdRegistroViajeTramo"];
-				liquidacionanticipos.intNitConductor = (decimal) dr["intNitConductor"];
 				liquidacionanticipos.strConductor = dr.IsNull("strConductor") ? null :(string) dr["strConductor"];
-				liquidacionanticipos.strPlaca = (string) dr["strPlaca"];
 				liquidacionanticipos.dtmFechaMovimiento = dr.IsNull("dtmFechaMovimiento") ? null :(DateTime?) dr["dtmFechaMovimiento"];
-				liquidacionanticipos.lngIdBanco = (double) dr["lngIdBanco"];
 				liquidacionanticipos.strdescripcionBanco = dr.IsNull("strdescripcionBanco") ? null :(string) dr["strdescripcionBanco"];
-				liquidacionanticipos.intDocumento = (int) dr["intDocumento"];
-				liquidacionanticipos.strModelo = (string) dr["strModelo"];
-				liquidacionanticipos.strtipo = (string) dr["strtipo"];
 				liquidacionanticipos.sw = dr.IsNull("sw") ? null :(byte?) dr["sw"];
 				liquidacionanticipos.dtmFechaMovDMS = dr.IsNull("dtmFechaMovDMS") ? null :(DateTime?) dr["dtmFechaMovDMS"];
 				liquidacionanticipos.strCuenta = dr.IsNull("strCuenta") ? null :(string) dr["strCuenta"];
@@ -79,6 +71,14 @@ namespace LiqViajes_Bll_Data
 				liquidacionanticipos.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
 				liquidacionanticipos.logAnulado = dr.IsNull("logAnulado") ? null :(bool?) dr["logAnulado"];
 				liquidacionanticipos.logLiquidado = dr.IsNull("logLiquidado") ? null :(bool?) dr["logLiquidado"];
+				liquidacionanticipos.lngIdRegistroViaje = (int) dr["lngIdRegistroViaje"];
+				liquidacionanticipos.lngIdRegistroViajeTramo = (decimal) dr["lngIdRegistroViajeTramo"];
+				liquidacionanticipos.intNitConductor = (decimal) dr["intNitConductor"];
+				liquidacionanticipos.strPlaca = (string) dr["strPlaca"];
+				liquidacionanticipos.lngIdBanco = (double) dr["lngIdBanco"];
+				liquidacionanticipos.intDocumento = (int) dr["intDocumento"];
+				liquidacionanticipos.strModelo = (string) dr["strModelo"];
+				liquidacionanticipos.strtipo = (string) dr["strtipo"];
 			}
 			catch (Exception ex)
 			{
@@ -170,17 +170,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionAnticipos object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistroViaje">int that contents the lngIdRegistroViaje value for the LiquidacionAnticipos object</param>
-		/// <param name="lngIdRegistroViajeTramo">decimal that contents the lngIdRegistroViajeTramo value for the LiquidacionAnticipos object</param>
-		/// <param name="intNitConductor">decimal that contents the intNitConductor value for the LiquidacionAnticipos object</param>
 		/// <param name="strConductor">string that contents the strConductor value for the LiquidacionAnticipos object</param>
-		/// <param name="strPlaca">string that contents the strPlaca value for the LiquidacionAnticipos object</param>
 		/// <param name="dtmFechaMovimiento">DateTime that contents the dtmFechaMovimiento value for the LiquidacionAnticipos object</param>
-		/// <param name="lngIdBanco">double that contents the lngIdBanco value for the LiquidacionAnticipos object</param>
 		/// <param name="strdescripcionBanco">string that contents the strdescripcionBanco value for the LiquidacionAnticipos object</param>
-		/// <param name="intDocumento">int that contents the intDocumento value for the LiquidacionAnticipos object</param>
-		/// <param name="strModelo">string that contents the strModelo value for the LiquidacionAnticipos object</param>
-		/// <param name="strtipo">string that contents the strtipo value for the LiquidacionAnticipos object</param>
 		/// <param name="sw">byte that contents the sw value for the LiquidacionAnticipos object</param>
 		/// <param name="dtmFechaMovDMS">DateTime that contents the dtmFechaMovDMS value for the LiquidacionAnticipos object</param>
 		/// <param name="strCuenta">string that contents the strCuenta value for the LiquidacionAnticipos object</param>
@@ -197,7 +189,15 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the LiquidacionAnticipos object</param>
 		/// <param name="logAnulado">bool that contents the logAnulado value for the LiquidacionAnticipos object</param>
 		/// <param name="logLiquidado">bool that contents the logLiquidado value for the LiquidacionAnticipos object</param>
-		public void Update(int lngIdRegistroViaje, decimal lngIdRegistroViajeTramo, decimal intNitConductor, string strConductor, string strPlaca, DateTime? dtmFechaMovimiento, double lngIdBanco, string strdescripcionBanco, int intDocumento, string strModelo, string strtipo, byte? sw, DateTime? dtmFechaMovDMS, string strCuenta, string strCuenta2, string strdescripcionCuenta, string strdescripcionCuenta2, decimal? curValor, string strdescripcionModelo, string strNota, string strdocumento, string strUsuarioDMS, DateTime? dtmfechahoraSYSDMS, int? intUsuario, DateTime? dtmFechaModif, bool? logAnulado, bool? logLiquidado, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="lngIdRegistroViaje">int that contents the lngIdRegistroViaje value for the LiquidacionAnticipos object</param>
+		/// <param name="lngIdRegistroViajeTramo">decimal that contents the lngIdRegistroViajeTramo value for the LiquidacionAnticipos object</param>
+		/// <param name="intNitConductor">decimal that contents the intNitConductor value for the LiquidacionAnticipos object</param>
+		/// <param name="strPlaca">string that contents the strPlaca value for the LiquidacionAnticipos object</param>
+		/// <param name="lngIdBanco">double that contents the lngIdBanco value for the LiquidacionAnticipos object</param>
+		/// <param name="intDocumento">int that contents the intDocumento value for the LiquidacionAnticipos object</param>
+		/// <param name="strModelo">string that contents the strModelo value for the LiquidacionAnticipos object</param>
+		/// <param name="strtipo">string that contents the strtipo value for the LiquidacionAnticipos object</param>
+		public void Update(string strConductor, DateTime? dtmFechaMovimiento, string strdescripcionBanco, byte? sw, DateTime? dtmFechaMovDMS, string strCuenta, string strCuenta2, string strdescripcionCuenta, string strdescripcionCuenta2, decimal? curValor, string strdescripcionModelo, string strNota, string strdocumento, string strUsuarioDMS, DateTime? dtmfechahoraSYSDMS, int? intUsuario, DateTime? dtmFechaModif, bool? logAnulado, bool? logLiquidado, int lngIdRegistroViaje, decimal lngIdRegistroViajeTramo, decimal intNitConductor, string strPlaca, double lngIdBanco, int intDocumento, string strModelo, string strtipo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -221,7 +221,7 @@ namespace LiqViajes_Bll_Data
 				new_values.dtmFechaModif = dtmFechaModif;
 				new_values.logAnulado = logAnulado;
 				new_values.logLiquidado = logLiquidado;
-				LiquidacionAnticiposDataProvider.Instance.Update(lngIdRegistroViaje, lngIdRegistroViajeTramo, intNitConductor, strConductor, strPlaca, dtmFechaMovimiento, lngIdBanco, strdescripcionBanco, intDocumento, strModelo, strtipo, sw, dtmFechaMovDMS, strCuenta, strCuenta2, strdescripcionCuenta, strdescripcionCuenta2, curValor, strdescripcionModelo, strNota, strdocumento, strUsuarioDMS, dtmfechahoraSYSDMS, intUsuario, dtmFechaModif, logAnulado, logLiquidado,"LiquidacionAnticipos",datosTransaccion);
+				LiquidacionAnticiposDataProvider.Instance.Update(strConductor, dtmFechaMovimiento, strdescripcionBanco, sw, dtmFechaMovDMS, strCuenta, strCuenta2, strdescripcionCuenta, strdescripcionCuenta2, curValor, strdescripcionModelo, strNota, strdocumento, strUsuarioDMS, dtmfechahoraSYSDMS, intUsuario, dtmFechaModif, logAnulado, logLiquidado, lngIdRegistroViaje, lngIdRegistroViajeTramo, intNitConductor, strPlaca, lngIdBanco, intDocumento, strModelo, strtipo,"LiquidacionAnticipos",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -235,7 +235,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionanticipos">An instance of LiquidacionAnticipos for reference</param>
 		public void Update(LiquidacionAnticipos liquidacionanticipos,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionanticipos.lngIdRegistroViaje, liquidacionanticipos.lngIdRegistroViajeTramo, liquidacionanticipos.intNitConductor, liquidacionanticipos.strConductor, liquidacionanticipos.strPlaca, liquidacionanticipos.dtmFechaMovimiento, liquidacionanticipos.lngIdBanco, liquidacionanticipos.strdescripcionBanco, liquidacionanticipos.intDocumento, liquidacionanticipos.strModelo, liquidacionanticipos.strtipo, liquidacionanticipos.sw, liquidacionanticipos.dtmFechaMovDMS, liquidacionanticipos.strCuenta, liquidacionanticipos.strCuenta2, liquidacionanticipos.strdescripcionCuenta, liquidacionanticipos.strdescripcionCuenta2, liquidacionanticipos.curValor, liquidacionanticipos.strdescripcionModelo, liquidacionanticipos.strNota, liquidacionanticipos.strdocumento, liquidacionanticipos.strUsuarioDMS, liquidacionanticipos.dtmfechahoraSYSDMS, liquidacionanticipos.intUsuario, liquidacionanticipos.dtmFechaModif, liquidacionanticipos.logAnulado, liquidacionanticipos.logLiquidado);
+			Update(liquidacionanticipos.strConductor, liquidacionanticipos.dtmFechaMovimiento, liquidacionanticipos.strdescripcionBanco, liquidacionanticipos.sw, liquidacionanticipos.dtmFechaMovDMS, liquidacionanticipos.strCuenta, liquidacionanticipos.strCuenta2, liquidacionanticipos.strdescripcionCuenta, liquidacionanticipos.strdescripcionCuenta2, liquidacionanticipos.curValor, liquidacionanticipos.strdescripcionModelo, liquidacionanticipos.strNota, liquidacionanticipos.strdocumento, liquidacionanticipos.strUsuarioDMS, liquidacionanticipos.dtmfechahoraSYSDMS, liquidacionanticipos.intUsuario, liquidacionanticipos.dtmFechaModif, liquidacionanticipos.logAnulado, liquidacionanticipos.logLiquidado, liquidacionanticipos.lngIdRegistroViaje, liquidacionanticipos.lngIdRegistroViajeTramo, liquidacionanticipos.intNitConductor, liquidacionanticipos.strPlaca, liquidacionanticipos.lngIdBanco, liquidacionanticipos.intDocumento, liquidacionanticipos.strModelo, liquidacionanticipos.strtipo);
 		}
 
 		/// <summary>
@@ -405,38 +405,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "lngIdRegistroViaje":
-					return liquidacionanticipos.lngIdRegistroViaje.GetType();
-
-				case "lngIdRegistroViajeTramo":
-					return liquidacionanticipos.lngIdRegistroViajeTramo.GetType();
-
-				case "intNitConductor":
-					return liquidacionanticipos.intNitConductor.GetType();
-
 				case "strConductor":
 					return liquidacionanticipos.strConductor.GetType();
-
-				case "strPlaca":
-					return liquidacionanticipos.strPlaca.GetType();
 
 				case "dtmFechaMovimiento":
 					return liquidacionanticipos.dtmFechaMovimiento.GetType();
 
-				case "lngIdBanco":
-					return liquidacionanticipos.lngIdBanco.GetType();
-
 				case "strdescripcionBanco":
 					return liquidacionanticipos.strdescripcionBanco.GetType();
-
-				case "intDocumento":
-					return liquidacionanticipos.intDocumento.GetType();
-
-				case "strModelo":
-					return liquidacionanticipos.strModelo.GetType();
-
-				case "strtipo":
-					return liquidacionanticipos.strtipo.GetType();
 
 				case "sw":
 					return liquidacionanticipos.sw.GetType();
@@ -485,6 +461,30 @@ namespace LiqViajes_Bll_Data
 
 				case "logLiquidado":
 					return liquidacionanticipos.logLiquidado.GetType();
+
+				case "lngIdRegistroViaje":
+					return liquidacionanticipos.lngIdRegistroViaje.GetType();
+
+				case "lngIdRegistroViajeTramo":
+					return liquidacionanticipos.lngIdRegistroViajeTramo.GetType();
+
+				case "intNitConductor":
+					return liquidacionanticipos.intNitConductor.GetType();
+
+				case "strPlaca":
+					return liquidacionanticipos.strPlaca.GetType();
+
+				case "lngIdBanco":
+					return liquidacionanticipos.lngIdBanco.GetType();
+
+				case "intDocumento":
+					return liquidacionanticipos.intDocumento.GetType();
+
+				case "strModelo":
+					return liquidacionanticipos.strModelo.GetType();
+
+				case "strtipo":
+					return liquidacionanticipos.strtipo.GetType();
 
 			}
 

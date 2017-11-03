@@ -366,10 +366,6 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into TramosAsignadosRuta by passing all fields
 		/// </summary>
-		/// <param name="RegistroId"></param>
-		/// <param name="Registro"></param>
-		/// <param name="RegistrRuta"></param>
-		/// <param name="RegistroRuttaAJC"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="liquidado"></param>
 		/// <param name="Asignado"></param>
@@ -434,7 +430,11 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CantidadReal"></param>
 		/// <param name="LogAnticipoACPM"></param>
 		/// <param name="PlacaTrailer"></param>
-		public void Update(long RegistroId, long Registro, long RegistrRuta, long RegistroRuttaAJC, DateTime? Fecha, bool liquidado, int Asignado, int Vacio, bool? logAjuste, int Peso, bool? EstadoRuta, string Trailer, int TipoVeh, string DesTipoVeh, int TipoTrailer, string Origen, string Destino, string Tramos, decimal? CantidadGalones, decimal? ValorGalones, decimal? ValorCOmbustible, decimal? Viaticos, decimal? SalarioVariable, decimal? TotalViaticos, decimal? TotalDescuentoViaticos, decimal? Total_Viaticos, int? NroPeajes, decimal? ValorPeajes, decimal? Llantas, decimal? CeladaParqueaderoCarretera, decimal? Propina, decimal? TotalVarios, decimal? LlantasVacios, decimal? CeladaVacia, decimal? PropinaVacia, decimal? VariosVacios, decimal? ValorCargue, decimal? ValorDescargue, decimal? Hotel, int? HotelDiasCarretera, int? HotelDiasCiudad, decimal? HotelVacio, decimal? TiempoReal, decimal? TotalComida, decimal? TiempoRutaVacio, decimal? ComidaVacio, decimal? DesvareRepuestos, decimal? DesvareManoObra, decimal? TotalKm, decimal ParqueaderoCarretera, decimal ParqueaderoCiudad, decimal MontaLlantaCarretera, decimal Papeleria, decimal AjusteCarretera, decimal? CombustibleCarretera, decimal Amarres, decimal Engrasada, decimal Calibrada, decimal? Aseo, decimal? Taxi, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorFactorCalculo, decimal? ValorAnticipo, decimal? CantidadReal, bool? LogAnticipoACPM, string PlacaTrailer,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="RegistroId"></param>
+		/// <param name="Registro"></param>
+		/// <param name="RegistrRuta"></param>
+		/// <param name="RegistroRuttaAJC"></param>
+		public void Update(DateTime? Fecha, bool liquidado, int Asignado, int Vacio, bool? logAjuste, int Peso, bool? EstadoRuta, string Trailer, int TipoVeh, string DesTipoVeh, int TipoTrailer, string Origen, string Destino, string Tramos, decimal? CantidadGalones, decimal? ValorGalones, decimal? ValorCOmbustible, decimal? Viaticos, decimal? SalarioVariable, decimal? TotalViaticos, decimal? TotalDescuentoViaticos, decimal? Total_Viaticos, int? NroPeajes, decimal? ValorPeajes, decimal? Llantas, decimal? CeladaParqueaderoCarretera, decimal? Propina, decimal? TotalVarios, decimal? LlantasVacios, decimal? CeladaVacia, decimal? PropinaVacia, decimal? VariosVacios, decimal? ValorCargue, decimal? ValorDescargue, decimal? Hotel, int? HotelDiasCarretera, int? HotelDiasCiudad, decimal? HotelVacio, decimal? TiempoReal, decimal? TotalComida, decimal? TiempoRutaVacio, decimal? ComidaVacio, decimal? DesvareRepuestos, decimal? DesvareManoObra, decimal? TotalKm, decimal ParqueaderoCarretera, decimal ParqueaderoCiudad, decimal MontaLlantaCarretera, decimal Papeleria, decimal AjusteCarretera, decimal? CombustibleCarretera, decimal Amarres, decimal Engrasada, decimal Calibrada, decimal? Aseo, decimal? Taxi, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorFactorCalculo, decimal? ValorAnticipo, decimal? CantidadReal, bool? LogAnticipoACPM, string PlacaTrailer, long RegistroId, long Registro, long RegistrRuta, long RegistroRuttaAJC,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
