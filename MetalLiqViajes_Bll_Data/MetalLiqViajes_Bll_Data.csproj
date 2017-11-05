@@ -122,6 +122,7 @@
     <Compile Include="bll\VehiculoTraylers.cs" />
     <Compile Include="bll\y_novedades_Liq.cs" />
     <Compile Include="bll_add\AnticiposDms.cs" />
+    <Compile Include="bll_add\LiquidacionGastos.cs" />
     <Compile Include="bll_add\LiquidacionPlanilla.cs" />
     <Compile Include="bll_add\LiquidacionVehiculo.cs" />
     <Compile Include="bll_add\TramosAsignadosRuta.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="dal\VehiculoTraylersDataProvider.cs" />
     <Compile Include="dal\y_novedades_LiqDataProvider.cs" />
     <Compile Include="dal_add\AnticiposDmsDataProvider.cs" />
+    <Compile Include="dal_add\LiquidacionGastosDataProvider.cs" />
     <Compile Include="dal_add\LiquidacionPlanillaDataProvider.cs" />
     <Compile Include="dal_add\LiquidacionVehiculoDataProvider.cs" />
     <Compile Include="dal_add\TramosAsignadosRutaDataProvider.cs" />
@@ -286,6 +288,7 @@
     <Compile Include="dto\VehiculosKmMantenimientoDetAcum.cs" />
     <Compile Include="dto\VehiculoTraylers.cs" />
     <Compile Include="dto\y_novedades_Liq.cs" />
+    <Compile Include="dto_add\LiquidacionGastos.cs" />
     <Compile Include="dto_add\LiquidacionPlanilla.cs" />
     <Compile Include="dto_add\TramosAsignadosRuta.cs" />
     <Compile Include="dto_add\LiquidacionVehiculo.cs" />
@@ -298,6 +301,7 @@
     <Compile Include="PropertyComparer.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="SerializableList.cs" />
+    <Compile Include="Utils\Helps.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MetalLiqViajes_UtilDatos\MetalLiqViajes_UtilDatos.csproj">

@@ -7,8 +7,8 @@ using System.Runtime.Serialization;
 
 namespace LiqViajes_Bll_Data
 {
-
-	public partial class LiquidacionVehiculoDataProvider
+  
+    public partial class LiquidacionVehiculoDataProvider
 	{
         public DataTable GetBy_RegistroViajesDTO(int Ano, int Mes)
         {
@@ -32,6 +32,35 @@ namespace LiqViajes_Bll_Data
                 paramlist.AddWithValue("@Ano", Ano);
                 paramlist.AddWithValue("@Mes", Mes);
                 return LocalDataProvider.EjecutarProcedimiento("dbo.Add_RegistroViajeDTOGetBy_RegistroViajesAno", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+            }
+            catch (Exception ex)
+            {
+                Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+                throw ex;
+            }
+        }
+
+        public DataTable GetBy_RegistroViajes(long idRegistro)
+        {
+            try
+            {
+                Sinapsys.Datos.SQL LocalDataProvider;
+                bool disconnect = false;
+                if (DataProvider.Concurrente)
+                {
+                    LocalDataProvider = new Sinapsys.Datos.SQL();
+                    LocalDataProvider.Conectar(DataProvider.Alias, false);
+                }
+                else
+                {
+                    LocalDataProvider = DataProvider.Datos;
+                }
+                disconnect = DataProvider.ValidateConnection();
+                System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+                System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+                System.Collections.Hashtable nullExit = null;
+                paramlist.AddWithValue("@lngIdRegistro", idRegistro);
+                return LocalDataProvider.EjecutarProcedimiento("dbo.Add_RegistroViajeDTOGetBy_RegistroViajes", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
             }
             catch (Exception ex)
             {

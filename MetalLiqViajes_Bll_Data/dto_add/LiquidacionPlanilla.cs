@@ -41,14 +41,10 @@ namespace LiqViajes_Bll_Data
         {
             get
             {
-                if (m_Rutas != null)
+                if (m_Rutas != null && m_Rutas.lngIdRegistrRuta == this.lngIdRegistrRuta)
                 {
-                    if (m_Rutas.lngIdRegistrRuta == this.lngIdRegistrRuta)
-                    {
-                        m_Rutas = null;
-                    }                    
+                    m_Rutas = null;
                 }
-
                 if (m_Rutas == null)
                 {
                     m_Rutas = RutasController.Instance.Get(this.lngIdRegistrRuta);

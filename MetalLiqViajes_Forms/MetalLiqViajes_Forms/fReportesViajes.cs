@@ -30,7 +30,6 @@ namespace MetalLiqViajes_Forms
         private List<LiquidacionRutas> liquidacionrutaslist;
         private LiquidacionRutas liquidacionrutas;
 
-
         private UtiliDRegistro utilidregistro;
         private UtilYear utilyear;
         private UtilMonth ultilmonth;
@@ -91,12 +90,14 @@ namespace MetalLiqViajes_Forms
             comboBoxMonth.DataSource = ultilmonthlist.ToList();
             comboBoxYear.DataSource = utilyearlist.OrderByDescending(o => o.YearId).ToList();
 
-            iCargaCompleta = true;
 
             comboBoxMonth.SelectedIndex = (DateTime.Now.Month) - 1;
 
             this.Cursor = Cursors.Default;
 
+            btnQuitarFintro.Visible = false;
+
+            iCargaCompleta = true;
         }
 
         private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,16 +117,116 @@ namespace MetalLiqViajes_Forms
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
+
             ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
             CargaRegistroViaje(utilyear.YearId);
+        }
+
+        private void btnBuscaViajes_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (textBoxiRegistroViaje.Text == "")
+                {
+                    DialogResult result3 = MessageBox.Show("Debe ingresar el registro del viajes?",
+                        "Buscar un viaje en la base de datos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1);
+
+                    return;
+                }
+
+                if (!LiqViajes_Bll_Data.Helps.IsNumeric(textBoxiRegistroViaje.Text))
+                {
+                    DialogResult result3 = MessageBox.Show("En registro debe ser numerico",
+                        "Buscar un viaje en la base de datos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1);
+
+                    return;
+
+                }
+
+                long idRegistro = long.Parse(textBoxiRegistroViaje.Text);
+
+                //  busca primero en la lista
+                registroviajelistFiltro = new List<RegistroViajeDTO>();
+
+                if (registroviajelist != null && registroviajelist.Count > 0)
+                {
+                    registroviajelistFiltro = registroviajelist.Where(p => p.IdRegistro == idRegistro).ToList();
+                    // la lista tiene registros 
+                }
+
+
+                if (registroviajelistFiltro.Count == 0)
+                {
+
+                    registroviajelistFiltro = LiqViajes_Bll_Data.LiquidacionVehiculoController.Instance.GetBy_RegistroViajes(idRegistro);
+                }
+                if (registroviajelistFiltro.Count == 0)
+                {
+                    DialogResult result3 = MessageBox.Show("No hey Registro",
+                               "Carga de Datos",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Information,
+                               MessageBoxDefaultButton.Button1);
+                    return;
+                }
+                utilidregistro = comboBoxRegViaje.SelectedItem as UtiliDRegistro;
+                dataGridViewViajes.DataSource = registroviajelistFiltro;
+                dataGridViewViajes.Refresh();
+
+                btnQuitarFintro.Visible = true;
+
+                dataGridViewConductor.Enabled = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                carlaExection(ex);
+            }
+        }
+
+        private static void carlaExection(Exception ex)
+        {
+            DialogResult result3 = MessageBox.Show(ex.Message,
+               "Error Cargando Datos",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Information,
+               MessageBoxDefaultButton.Button1);
+        }
+
+        private void btnQuitarFintro_Click(object sender, EventArgs e)
+        {
+            dataGridViewViajes.DataSource = registroviajelist;
+            dataGridViewViajes.Refresh();
+
+            btnQuitarFintro.Visible = false;
+            dataGridViewConductor.Enabled = true;
+
         }
 
         private void CargaRegistroViaje(int Ano)
         {
 
             registroviajelist = LiqViajes_Bll_Data.LiquidacionVehiculoController.Instance.GetBy_RegistroViajesAnoDTO(Ano, ultilmonth.MonthId);
-
-            //  crea resumen por conductor
+            if (registroviajelist.Count == 0)
+            {
+                if (iCargaCompleta)
+                {
+                    DialogResult result3 = MessageBox.Show("No hey Registro",
+                               "Carga de Datos",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Information,
+                               MessageBoxDefaultButton.Button1);
+                    return;
+                }
+            }
 
             var distinctconductor = registroviajelist.AsEnumerable()
             .Select(row => new
@@ -252,43 +353,6 @@ namespace MetalLiqViajes_Forms
         {
             iRegistroViajeDTO = dataGridViewViajes.Rows[e.RowIndex].DataBoundItem as LiqViajes_Bll_Data.RegistroViajeDTO;
 
-            tramosAsignadosList = TramosAsignadosRutaController.Instance.GetBy_lngIdRegistro(int.Parse(iRegistroViajeDTO.IdRegistro.ToString()));
-
-            dataGridViewLiqRutas.DataSource = tramosAsignadosList.ToList();
-            dataGridViewLiqRutas.Refresh();
-
-            Nit = iRegistroViajeDTO.NitConductor;
-            anticiposdmslist = LiqViajes_Bll_Data.AnticiposDmsController.Instance.GetBy_DocumentoNit(long.Parse(iRegistroViajeDTO.NitConductor), iRegistroViajeDTO.IdRegistro).ToList();
-
-            try
-            {
-                //decimal Dms_ValorAnticipo = 0;
-                //decimal Dms_ValorAplicado = 0;
-                //decimal Dms_ValorTotal = 0;
-
-                anticiposdms = new AnticiposDms();
-                anticiposdms.Dms_Chk = 0;
-                anticiposdms.Dms_ValorAnticipo = 0;
-                anticiposdms.Dms_ValorAplicado = 0;
-                anticiposdms.Dms_ValorTotal = 0;
-                foreach (var item in anticiposdmslist)
-                {
-                    if (item.Dms_ValorAnticipo != null)
-                        anticiposdms.Dms_ValorAnticipo += item.Dms_ValorAnticipo.Value;
-                    if (item.Dms_ValorAplicado != null)
-                        anticiposdms.Dms_ValorAplicado += item.Dms_ValorAplicado.Value;
-                    if (item.Dms_ValorTotal != null)
-                        anticiposdms.Dms_ValorTotal += item.Dms_ValorTotal.Value;
-                }
-                anticiposdmslist.Add(anticiposdms);
-
-                dataGridViewAnticipo.DataSource = anticiposdmslist.ToList();
-                dataGridViewAnticipo.Refresh();
-            }
-            catch (Exception ex)
-            {
-            }
-
         }
 
         private void dataGridViewLiqRutas_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -296,10 +360,19 @@ namespace MetalLiqViajes_Forms
             tramosAsignados = dataGridViewLiqRutas.Rows[e.RowIndex].DataBoundItem as TramosAsignadosRuta;
 
             tramosGastosList = LiqViajes_Bll_Data.TramosGastosController.Instance.GetBy_RegistroViaje(tramosAsignados.Registro);
+
+            TramosGastos tramosgastos = new TramosGastos();
+
+            tramosgastos.Codigo = 0;
+            tramosgastos.DescripcionCuenta = "Gran total_Gran total";
+            tramosgastos.ValorTotal = tramosGastosList.Sum(t => t.ValorTotal);
+
+            tramosGastosList.Add(tramosgastos);
+
             dataGridViewCuentasGastos.DataSource = tramosGastosList.ToList();
             dataGridViewCuentasGastos.Refresh();
 
-            dataGridViewLavadas.DataSource = LiqViajes_Bll_Data.TramosLavadasController.Instance.GetBy_RegistroViaje(conductor.Cedula);
+            dataGridViewLavadas.DataSource = LiqViajes_Bll_Data.TramosLavadasController.Instance.GetBy_RegistroViaje(decimal.Parse(iRegistroViajeDTO.NitConductor));
             dataGridViewLavadas.Refresh();
         }
 
@@ -320,11 +393,78 @@ namespace MetalLiqViajes_Forms
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (tabControl.SelectedIndex == 1)
+            {
+
+                // carga los tramos
+                try
+                {
+                    if (iRegistroViajeDTO == null)
+                    {
+                        tabControl.SelectedIndex = 0;
+                        return;
+                    }
+
+                    if (tramosAsignadosList != null && tramosAsignadosList.Count > 0 && tramosAsignadosList.FirstOrDefault().RegistroId == iRegistroViajeDTO.IdRegistro)
+                    {
+                        tramosAsignadosList = TramosAsignadosRutaController.Instance.GetBy_lngIdRegistro(int.Parse(iRegistroViajeDTO.IdRegistro.ToString()));
+                        dataGridViewLiqRutas.DataSource = tramosAsignadosList.ToList();
+                        dataGridViewLiqRutas.Refresh();
+
+                        Nit = iRegistroViajeDTO.NitConductor;
+                        anticiposdmslist = LiqViajes_Bll_Data.AnticiposDmsController.Instance.GetBy_DocumentoNit(long.Parse(iRegistroViajeDTO.NitConductor), iRegistroViajeDTO.IdRegistro).ToList();
+
+                        anticiposdms = new AnticiposDms();
+                        anticiposdms.Dms_Chk = 0;
+                        anticiposdms.Dms_ValorAnticipo = anticiposdmslist.Sum(s => s.Dms_ValorAnticipo.Value);
+                        anticiposdms.Dms_ValorAplicado = anticiposdmslist.Sum(s => s.Dms_ValorAplicado.Value);
+                        anticiposdms.Dms_ValorTotal = anticiposdmslist.Sum(s => s.Dms_ValorTotal.Value);
+                        anticiposdmslist.Add(anticiposdms);
+
+                        dataGridViewAnticipo.DataSource = anticiposdmslist.ToList();
+                        dataGridViewAnticipo.Refresh();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    carlaExection(ex);
+                }
+            }
             if (tabControl.SelectedIndex == 2)
             {
-                CargarReporte();
+                try
+                {
+                    if (tramosAsignados == null)
+                    {
+                        tabControl.SelectedIndex = 1;
+                        return;
+                    }
+
+                    List<LiqViajes_Bll_Data.LiquidacionGastos> liquidacionGastosList = LiqViajes_Bll_Data.LiquidacionGastosController.Instance.GetBy_lngIdRegistrRuta(tramosAsignados.RegistroId);
+                    dataGridViewLiqGastos.DataSource = liquidacionGastosList.ToList();
+                }
+                catch (Exception ex)
+                {
+                    carlaExection(ex);
+                }
 
             }
+
+            if (tabControl.SelectedIndex == 3)
+            {
+                try
+                {
+                    tabControl.SelectedIndex = 0;
+                    CargarReporte();
+                }
+                catch (Exception ex)
+                {
+                    carlaExection(ex);
+                }
+
+            }
+
+
         }
 
 
@@ -370,5 +510,6 @@ namespace MetalLiqViajes_Forms
             reportViewer.LocalReport.Refresh();
             reportViewer.RefreshReport();
         }
+
     }
 }

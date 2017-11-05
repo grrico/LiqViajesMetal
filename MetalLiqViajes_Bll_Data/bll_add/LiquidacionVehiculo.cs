@@ -43,6 +43,27 @@ namespace LiqViajes_Bll_Data
             }
         }
 
+        public List<RegistroViajeDTO> GetBy_RegistroViajes(long idRegistro)
+        {
+            try
+            {
+                List<RegistroViajeDTO> registroviajelist = new List<RegistroViajeDTO>();
+                RegistroViajeDTO iRegistroViajeDTO = null;
+                DataTable dt = LiquidacionVehiculoDataProvider.Instance.GetBy_RegistroViajes(idRegistro);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    iRegistroViajeDTO = new RegistroViajeDTO();
+                    ReadDataRegistroViajeDTO(iRegistroViajeDTO, dr);
+                    registroviajelist.Add(iRegistroViajeDTO);
+                }
+                return registroviajelist;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         private void ReadDataRegistroViajeDTO(RegistroViajeDTO iRegistroViajeDTO, DataRow dr)
         {

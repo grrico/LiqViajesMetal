@@ -16,17 +16,15 @@ using System.Runtime.Serialization;
 
 namespace LiqViajes_Bll_Data
 {
-
-    public partial class TramosGastos : IDTOObject
-    {
-
+	public partial class LiquidacionGastos : IDTOObject
+	{
         private string detalleCuenta;
 
         public string DetalleCuenta
         {
             get
             {
-                return detalleCuenta= mDetalleCuenta();
+                return detalleCuenta = mDetalleCuenta();
             }
 
             set
@@ -37,9 +35,10 @@ namespace LiqViajes_Bll_Data
 
         private string mDetalleCuenta()
         {
-            string[] comando = DescripcionCuenta.Split('_');
-            string detalle= comando[1];
+            string[] comando = this.strDescripcionCuenta.Split('_');
+            string detalle = comando[1];
             return detalle;
         }
+
     }
 }

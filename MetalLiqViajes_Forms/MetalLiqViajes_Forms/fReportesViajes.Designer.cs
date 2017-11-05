@@ -49,6 +49,10 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReportesViajes));
             this.LiquidacionVehiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LiquidacionPlanillaBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -68,6 +72,9 @@
             this.conductorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxiRegistroViaje = new System.Windows.Forms.TextBox();
+            this.btnQuitarFintro = new System.Windows.Forms.Button();
+            this.btnBuscaViajes = new System.Windows.Forms.Button();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.comboBoxYear = new System.Windows.Forms.ComboBox();
             this.comboBoxRegViaje = new System.Windows.Forms.ComboBox();
@@ -195,8 +202,22 @@
             this.anticiposDmsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.dataGridViewLiqGastos = new System.Windows.Forms.DataGridView();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.intRowRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strDescripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curValorTramoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curValorAdicionalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curValorTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strObservacionesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -235,6 +256,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnticipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anticiposDmsListBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqGastos)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -296,6 +321,7 @@
             this.valorGastosDataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dataGridViewConductor.DataSource = this.conductorBindingSource1;
+            this.dataGridViewConductor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewConductor.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
@@ -373,6 +399,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBoxiRegistroViaje);
+            this.panel2.Controls.Add(this.btnQuitarFintro);
+            this.panel2.Controls.Add(this.btnBuscaViajes);
             this.panel2.Controls.Add(this.btnRefrescar);
             this.panel2.Controls.Add(this.comboBoxYear);
             this.panel2.Controls.Add(this.comboBoxRegViaje);
@@ -388,13 +417,42 @@
             this.panel2.Size = new System.Drawing.Size(245, 193);
             this.panel2.TabIndex = 2;
             // 
+            // textBoxiRegistroViaje
+            // 
+            this.textBoxiRegistroViaje.Location = new System.Drawing.Point(81, 95);
+            this.textBoxiRegistroViaje.Name = "textBoxiRegistroViaje";
+            this.textBoxiRegistroViaje.Size = new System.Drawing.Size(100, 20);
+            this.textBoxiRegistroViaje.TabIndex = 3;
+            // 
+            // btnQuitarFintro
+            // 
+            this.btnQuitarFintro.Image = global::MetalLiqViajes_Forms.Properties.Resources.ClearFilter2HS;
+            this.btnQuitarFintro.Location = new System.Drawing.Point(212, 150);
+            this.btnQuitarFintro.Name = "btnQuitarFintro";
+            this.btnQuitarFintro.Size = new System.Drawing.Size(24, 21);
+            this.btnQuitarFintro.TabIndex = 2;
+            this.btnQuitarFintro.UseVisualStyleBackColor = true;
+            this.btnQuitarFintro.Click += new System.EventHandler(this.btnQuitarFintro_Click);
+            // 
+            // btnBuscaViajes
+            // 
+            this.btnBuscaViajes.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
+            this.btnBuscaViajes.Location = new System.Drawing.Point(187, 95);
+            this.btnBuscaViajes.Name = "btnBuscaViajes";
+            this.btnBuscaViajes.Size = new System.Drawing.Size(49, 21);
+            this.btnBuscaViajes.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.btnBuscaViajes, "Busca un Viaje en la base de datos");
+            this.btnBuscaViajes.UseVisualStyleBackColor = true;
+            this.btnBuscaViajes.Click += new System.EventHandler(this.btnBuscaViajes_Click);
+            // 
             // btnRefrescar
             // 
             this.btnRefrescar.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
-            this.btnRefrescar.Location = new System.Drawing.Point(190, 87);
+            this.btnRefrescar.Location = new System.Drawing.Point(187, 39);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(49, 21);
             this.btnRefrescar.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.btnRefrescar, "Lee información por Año y Mes");
             this.btnRefrescar.UseVisualStyleBackColor = true;
             this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
@@ -403,7 +461,7 @@
             this.comboBoxYear.FormattingEnabled = true;
             this.comboBoxYear.Location = new System.Drawing.Point(81, 12);
             this.comboBoxYear.Name = "comboBoxYear";
-            this.comboBoxYear.Size = new System.Drawing.Size(103, 21);
+            this.comboBoxYear.Size = new System.Drawing.Size(100, 21);
             this.comboBoxYear.TabIndex = 1;
             this.comboBoxYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxYear_SelectedIndexChanged);
             // 
@@ -412,9 +470,9 @@
             this.comboBoxRegViaje.DataSource = this.utiliDRegistroBindingSource;
             this.comboBoxRegViaje.DisplayMember = "idRegistro";
             this.comboBoxRegViaje.FormattingEnabled = true;
-            this.comboBoxRegViaje.Location = new System.Drawing.Point(79, 87);
+            this.comboBoxRegViaje.Location = new System.Drawing.Point(81, 121);
             this.comboBoxRegViaje.Name = "comboBoxRegViaje";
-            this.comboBoxRegViaje.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxRegViaje.Size = new System.Drawing.Size(100, 21);
             this.comboBoxRegViaje.TabIndex = 1;
             this.comboBoxRegViaje.ValueMember = "idRegistro";
             this.comboBoxRegViaje.SelectedIndexChanged += new System.EventHandler(this.comboBoxRegViaje_SelectedIndexChanged);
@@ -437,9 +495,9 @@
             this.comboBoxPlaca.DataSource = this.utilPlacaBindingSource;
             this.comboBoxPlaca.DisplayMember = "Placa";
             this.comboBoxPlaca.FormattingEnabled = true;
-            this.comboBoxPlaca.Location = new System.Drawing.Point(80, 62);
+            this.comboBoxPlaca.Location = new System.Drawing.Point(81, 62);
             this.comboBoxPlaca.Name = "comboBoxPlaca";
-            this.comboBoxPlaca.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxPlaca.Size = new System.Drawing.Size(100, 21);
             this.comboBoxPlaca.TabIndex = 1;
             this.comboBoxPlaca.ValueMember = "Placa";
             this.comboBoxPlaca.SelectedIndexChanged += new System.EventHandler(this.comboBoxPlaca_SelectedIndexChanged);
@@ -460,9 +518,9 @@
             // comboBoxMonth
             // 
             this.comboBoxMonth.FormattingEnabled = true;
-            this.comboBoxMonth.Location = new System.Drawing.Point(80, 39);
+            this.comboBoxMonth.Location = new System.Drawing.Point(81, 39);
             this.comboBoxMonth.Name = "comboBoxMonth";
-            this.comboBoxMonth.Size = new System.Drawing.Size(103, 21);
+            this.comboBoxMonth.Size = new System.Drawing.Size(100, 21);
             this.comboBoxMonth.TabIndex = 1;
             this.comboBoxMonth.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonth_SelectedIndexChanged);
             // 
@@ -478,7 +536,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 87);
+            this.label4.Location = new System.Drawing.Point(19, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 0;
@@ -589,6 +647,7 @@
             this.dataGridViewLiqRutas.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewLiqRutas.Name = "dataGridViewLiqRutas";
             this.dataGridViewLiqRutas.ReadOnly = true;
+            this.dataGridViewLiqRutas.RowHeadersWidth = 10;
             this.dataGridViewLiqRutas.Size = new System.Drawing.Size(960, 220);
             this.dataGridViewLiqRutas.TabIndex = 0;
             this.dataGridViewLiqRutas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqRutas_RowEnter);
@@ -1103,6 +1162,7 @@
             this.dataGridViewLavadas.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewLavadas.Name = "dataGridViewLavadas";
             this.dataGridViewLavadas.ReadOnly = true;
+            this.dataGridViewLavadas.RowHeadersWidth = 10;
             this.dataGridViewLavadas.Size = new System.Drawing.Size(348, 193);
             this.dataGridViewLavadas.TabIndex = 0;
             // 
@@ -1197,6 +1257,7 @@
             this.dataGridViewCuentasGastos.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewCuentasGastos.Name = "dataGridViewCuentasGastos";
             this.dataGridViewCuentasGastos.ReadOnly = true;
+            this.dataGridViewCuentasGastos.RowHeadersWidth = 10;
             this.dataGridViewCuentasGastos.Size = new System.Drawing.Size(602, 193);
             this.dataGridViewCuentasGastos.TabIndex = 0;
             // 
@@ -1245,6 +1306,7 @@
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage4);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
@@ -1516,6 +1578,68 @@
             this.tabPage2.Text = "Detalle";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.panel6);
+            this.tabPage4.Controls.Add(this.panel5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(970, 431);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Liquidación";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(3, 70);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(964, 358);
+            this.panel6.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.dataGridViewLiqGastos);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(964, 358);
+            this.panel7.TabIndex = 0;
+            // 
+            // dataGridViewLiqGastos
+            // 
+            this.dataGridViewLiqGastos.AllowUserToAddRows = false;
+            this.dataGridViewLiqGastos.AllowUserToDeleteRows = false;
+            this.dataGridViewLiqGastos.AutoGenerateColumns = false;
+            this.dataGridViewLiqGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLiqGastos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.intRowRegistro,
+            this.strCuenta,
+            this.dataGridViewTextBoxColumn4,
+            this.strDescripcionDataGridViewTextBoxColumn,
+            this.curValorTramoDataGridViewTextBoxColumn,
+            this.curValorAdicionalDataGridViewTextBoxColumn,
+            this.curValorTotalDataGridViewTextBoxColumn,
+            this.strObservacionesDataGridViewTextBoxColumn});
+            this.dataGridViewLiqGastos.DataSource = this.liquidacionGastosListBindingSource;
+            this.dataGridViewLiqGastos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewLiqGastos.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewLiqGastos.Name = "dataGridViewLiqGastos";
+            this.dataGridViewLiqGastos.ReadOnly = true;
+            this.dataGridViewLiqGastos.RowHeadersWidth = 10;
+            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(964, 358);
+            this.dataGridViewLiqGastos.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(964, 67);
+            this.panel5.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.reportViewer);
@@ -1549,6 +1673,83 @@
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.Size = new System.Drawing.Size(970, 431);
             this.reportViewer.TabIndex = 0;
+            // 
+            // intRowRegistro
+            // 
+            this.intRowRegistro.DataPropertyName = "intRowRegistro";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = "0";
+            this.intRowRegistro.DefaultCellStyle = dataGridViewCellStyle16;
+            this.intRowRegistro.HeaderText = "Fila";
+            this.intRowRegistro.Name = "intRowRegistro";
+            this.intRowRegistro.ReadOnly = true;
+            // 
+            // strCuenta
+            // 
+            this.strCuenta.DataPropertyName = "strCuenta";
+            this.strCuenta.HeaderText = "Cuenta";
+            this.strCuenta.Name = "strCuenta";
+            this.strCuenta.ReadOnly = true;
+            this.strCuenta.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DetalleCuenta";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Detalle";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 220;
+            // 
+            // strDescripcionDataGridViewTextBoxColumn
+            // 
+            this.strDescripcionDataGridViewTextBoxColumn.DataPropertyName = "strDescripcion";
+            this.strDescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.strDescripcionDataGridViewTextBoxColumn.Name = "strDescripcionDataGridViewTextBoxColumn";
+            this.strDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.strDescripcionDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // curValorTramoDataGridViewTextBoxColumn
+            // 
+            this.curValorTramoDataGridViewTextBoxColumn.DataPropertyName = "curValorTramo";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            dataGridViewCellStyle17.NullValue = "0";
+            this.curValorTramoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
+            this.curValorTramoDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.curValorTramoDataGridViewTextBoxColumn.Name = "curValorTramoDataGridViewTextBoxColumn";
+            this.curValorTramoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.curValorTramoDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // curValorAdicionalDataGridViewTextBoxColumn
+            // 
+            this.curValorAdicionalDataGridViewTextBoxColumn.DataPropertyName = "curValorAdicional";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            dataGridViewCellStyle18.NullValue = "0";
+            this.curValorAdicionalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
+            this.curValorAdicionalDataGridViewTextBoxColumn.HeaderText = "Adicional";
+            this.curValorAdicionalDataGridViewTextBoxColumn.Name = "curValorAdicionalDataGridViewTextBoxColumn";
+            this.curValorAdicionalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curValorTotalDataGridViewTextBoxColumn
+            // 
+            this.curValorTotalDataGridViewTextBoxColumn.DataPropertyName = "curValorTotal";
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N0";
+            dataGridViewCellStyle19.NullValue = "0";
+            this.curValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            this.curValorTotalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.curValorTotalDataGridViewTextBoxColumn.Name = "curValorTotalDataGridViewTextBoxColumn";
+            this.curValorTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // strObservacionesDataGridViewTextBoxColumn
+            // 
+            this.strObservacionesDataGridViewTextBoxColumn.DataPropertyName = "strObservaciones";
+            this.strObservacionesDataGridViewTextBoxColumn.HeaderText = "Observación";
+            this.strObservacionesDataGridViewTextBoxColumn.Name = "strObservacionesDataGridViewTextBoxColumn";
+            this.strObservacionesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.strObservacionesDataGridViewTextBoxColumn.Width = 300;
             // 
             // fReportesViajes
             // 
@@ -1599,6 +1800,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnticipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.anticiposDmsListBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqGastos)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1757,5 +1962,22 @@
         private System.Windows.Forms.BindingSource TramosReportesLiqVehiculosBindingSource;
         private System.Windows.Forms.BindingSource TramosConsultaAnticiposBindingSource;
         private System.Windows.Forms.BindingSource TramosMovViajesBindingSource;
+        private System.Windows.Forms.TextBox textBoxiRegistroViaje;
+        private System.Windows.Forms.Button btnBuscaViajes;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnQuitarFintro;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.DataGridView dataGridViewLiqGastos;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intRowRegistro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strCuenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strDescripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curValorTramoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curValorAdicionalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curValorTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strObservacionesDataGridViewTextBoxColumn;
     }
 }
