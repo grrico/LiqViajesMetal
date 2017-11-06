@@ -204,6 +204,7 @@
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.dataGridViewLiqGastos = new System.Windows.Forms.DataGridView();
             this.intRowRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.strCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -212,7 +213,21 @@
             this.curValorTramoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.curValorAdicionalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.curValorTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreTercero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.strObservacionesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitter5 = new System.Windows.Forms.Splitter();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.comboBoxTerceros = new System.Windows.Forms.ComboBox();
+            this.tercerosDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxTotal = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxAdicional = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxValor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.splitter4 = new System.Windows.Forms.Splitter();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -258,7 +273,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.anticiposDmsListBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqGastos)).BeginInit();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1579,7 +1597,9 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.dataGridViewLiqGastos);
+            this.tabPage4.Controls.Add(this.panel8);
+            this.tabPage4.Controls.Add(this.splitter5);
+            this.tabPage4.Controls.Add(this.panel7);
             this.tabPage4.Controls.Add(this.splitter4);
             this.tabPage4.Controls.Add(this.panel6);
             this.tabPage4.Controls.Add(this.panel5);
@@ -1590,6 +1610,15 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Liquidación";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.dataGridViewLiqGastos);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(3, 53);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(690, 284);
+            this.panel8.TabIndex = 5;
             // 
             // dataGridViewLiqGastos
             // 
@@ -1605,16 +1634,19 @@
             this.curValorTramoDataGridViewTextBoxColumn,
             this.curValorAdicionalDataGridViewTextBoxColumn,
             this.curValorTotalDataGridViewTextBoxColumn,
+            this.NombreTercero,
             this.strObservacionesDataGridViewTextBoxColumn});
             this.dataGridViewLiqGastos.DataSource = this.liquidacionGastosListBindingSource;
             this.dataGridViewLiqGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewLiqGastos.Location = new System.Drawing.Point(3, 53);
+            this.dataGridViewLiqGastos.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewLiqGastos.Name = "dataGridViewLiqGastos";
             this.dataGridViewLiqGastos.RowHeadersWidth = 10;
-            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(964, 214);
+            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(690, 284);
             this.dataGridViewLiqGastos.TabIndex = 0;
             this.dataGridViewLiqGastos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewLiqGastos_CellValidating);
-            this.dataGridViewLiqGastos.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewLiqGastos_RowPostPaint);
+            this.dataGridViewLiqGastos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewLiqGastos_DataBindingComplete);
+            this.dataGridViewLiqGastos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_RowEnter);
+           
             // 
             // intRowRegistro
             // 
@@ -1625,6 +1657,7 @@
             this.intRowRegistro.DefaultCellStyle = dataGridViewCellStyle16;
             this.intRowRegistro.HeaderText = "Fila";
             this.intRowRegistro.Name = "intRowRegistro";
+            this.intRowRegistro.Width = 60;
             // 
             // strCuenta
             // 
@@ -1678,6 +1711,14 @@
             this.curValorTotalDataGridViewTextBoxColumn.HeaderText = "Total";
             this.curValorTotalDataGridViewTextBoxColumn.Name = "curValorTotalDataGridViewTextBoxColumn";
             // 
+            // NombreTercero
+            // 
+            this.NombreTercero.DataPropertyName = "NombreTercero";
+            this.NombreTercero.HeaderText = "NombreTercero";
+            this.NombreTercero.Name = "NombreTercero";
+            this.NombreTercero.ReadOnly = true;
+            this.NombreTercero.Width = 220;
+            // 
             // strObservacionesDataGridViewTextBoxColumn
             // 
             this.strObservacionesDataGridViewTextBoxColumn.DataPropertyName = "strObservaciones";
@@ -1687,11 +1728,137 @@
             this.strObservacionesDataGridViewTextBoxColumn.Name = "strObservacionesDataGridViewTextBoxColumn";
             this.strObservacionesDataGridViewTextBoxColumn.Width = 300;
             // 
+            // splitter5
+            // 
+            this.splitter5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter5.Location = new System.Drawing.Point(693, 53);
+            this.splitter5.Name = "splitter5";
+            this.splitter5.Size = new System.Drawing.Size(10, 284);
+            this.splitter5.TabIndex = 4;
+            this.splitter5.TabStop = false;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.comboBoxTerceros);
+            this.panel7.Controls.Add(this.textBox3);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Controls.Add(this.textBoxTotal);
+            this.panel7.Controls.Add(this.label9);
+            this.panel7.Controls.Add(this.label7);
+            this.panel7.Controls.Add(this.textBoxAdicional);
+            this.panel7.Controls.Add(this.label6);
+            this.panel7.Controls.Add(this.textBoxValor);
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(703, 53);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(264, 284);
+            this.panel7.TabIndex = 3;
+            // 
+            // comboBoxTerceros
+            // 
+            this.comboBoxTerceros.DataSource = this.tercerosDTOBindingSource;
+            this.comboBoxTerceros.DisplayMember = "NombreTercero";
+            this.comboBoxTerceros.FormattingEnabled = true;
+            this.comboBoxTerceros.Location = new System.Drawing.Point(6, 109);
+            this.comboBoxTerceros.Name = "comboBoxTerceros";
+            this.comboBoxTerceros.Size = new System.Drawing.Size(253, 21);
+            this.comboBoxTerceros.TabIndex = 2;
+            this.comboBoxTerceros.ValueMember = "Nit";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Location = new System.Drawing.Point(6, 155);
+            this.textBox3.MaxLength = 500;
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(255, 123);
+            this.textBox3.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 139);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Observación";
+            // 
+            // textBoxTotal
+            // 
+            this.textBoxTotal.Enabled = false;
+            this.textBoxTotal.Location = new System.Drawing.Point(114, 63);
+            this.textBoxTotal.Name = "textBoxTotal";
+            this.textBoxTotal.Size = new System.Drawing.Size(145, 20);
+            this.textBoxTotal.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(68, 66);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Total:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Tercero:";
+            // 
+            // textBoxAdicional
+            // 
+            this.textBoxAdicional.Location = new System.Drawing.Point(114, 32);
+            this.textBoxAdicional.Name = "textBoxAdicional";
+            this.textBoxAdicional.Size = new System.Drawing.Size(145, 20);
+            this.textBoxAdicional.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Valor Adicional:";
+            // 
+            // textBoxValor
+            // 
+            this.textBoxValor.Enabled = false;
+            this.textBoxValor.Location = new System.Drawing.Point(114, 6);
+            this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.Size = new System.Drawing.Size(145, 20);
+            this.textBoxValor.TabIndex = 1;
+            this.textBoxValor.TextChanged += new System.EventHandler(this.textBoxValor_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(64, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Valor: ";
+            // 
             // splitter4
             // 
             this.splitter4.BackColor = System.Drawing.Color.Cornsilk;
+            this.splitter4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitter4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter4.Location = new System.Drawing.Point(3, 267);
+            this.splitter4.Location = new System.Drawing.Point(3, 337);
             this.splitter4.Name = "splitter4";
             this.splitter4.Size = new System.Drawing.Size(964, 10);
             this.splitter4.TabIndex = 2;
@@ -1700,9 +1867,9 @@
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(3, 277);
+            this.panel6.Location = new System.Drawing.Point(3, 347);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(964, 151);
+            this.panel6.Size = new System.Drawing.Size(964, 81);
             this.panel6.TabIndex = 1;
             // 
             // panel5
@@ -1797,7 +1964,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.anticiposDmsListBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqGastos)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1965,6 +2136,20 @@
         private System.Windows.Forms.DataGridView dataGridViewLiqGastos;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Splitter splitter4;
+        private System.Windows.Forms.Splitter splitter5;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ComboBox comboBoxTerceros;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxTotal;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxAdicional;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxValor;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.BindingSource tercerosDTOBindingSource;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DataGridViewTextBoxColumn intRowRegistro;
         private System.Windows.Forms.DataGridViewTextBoxColumn strCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -1972,6 +2157,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn curValorTramoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn curValorAdicionalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn curValorTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreTercero;
         private System.Windows.Forms.DataGridViewTextBoxColumn strObservacionesDataGridViewTextBoxColumn;
     }
 }

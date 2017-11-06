@@ -70,7 +70,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="cutCombustible"></param>
 		/// <param name="LogAnticipoACPM"></param>
 		/// <param name="AntipoConductor"></param>
-		public void Create(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="NombreTercero"></param>
+		public void Create(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -191,6 +192,10 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@AntipoConductor",AntipoConductor);
 				}
+				if (NombreTercero !=null)
+				{
+					paramlist.AddWithValue("@NombreTercero",NombreTercero);
+				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.LiquidacionGastosCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
@@ -203,6 +208,11 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionGastos by passing all fields
 		/// </summary>
+		/// <param name="lngIdRegistrRutaItemId"></param>
+		/// <param name="lngIdRegistroViaje"></param>
+		/// <param name="lngIdRegistrRuta"></param>
+		/// <param name="strCuenta"></param>
+		/// <param name="intRowRegistro"></param>
 		/// <param name="strDescripcionCuenta"></param>
 		/// <param name="strDescripcion"></param>
 		/// <param name="dtmFechaAsignacion"></param>
@@ -226,12 +236,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="cutCombustible"></param>
 		/// <param name="LogAnticipoACPM"></param>
 		/// <param name="AntipoConductor"></param>
-		/// <param name="lngIdRegistrRutaItemId"></param>
-		/// <param name="lngIdRegistroViaje"></param>
-		/// <param name="lngIdRegistrRuta"></param>
-		/// <param name="strCuenta"></param>
-		/// <param name="intRowRegistro"></param>
-		public void Update(string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="NombreTercero"></param>
+		public void Update(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -350,6 +356,10 @@ namespace LiqViajes_Bll_Data
 				if (AntipoConductor !=null)
 				{
 					paramlist.AddWithValue("@AntipoConductor",AntipoConductor);
+				}
+				if (NombreTercero !=null)
+				{
+					paramlist.AddWithValue("@NombreTercero",NombreTercero);
 				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.LiquidacionGastosUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}

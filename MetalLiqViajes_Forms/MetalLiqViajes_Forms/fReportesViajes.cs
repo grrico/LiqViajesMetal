@@ -406,8 +406,11 @@ namespace MetalLiqViajes_Forms
                 {
                     dataGridViewLiqGastos.Columns[i].ReadOnly = true;
                 }
-
             }
+            List<LiqViajes_Bll_Data.TercerosDTO> tercerosDTOList = LiqViajes_Bll_Data.TercerosController.Instance.GetByTercerosDms();
+            comboBoxTerceros.DataSource = tercerosDTOList;
+            comboBoxTerceros.SelectedIndex = 0;
+            comboBoxTerceros.Refresh();
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -588,39 +591,22 @@ namespace MetalLiqViajes_Forms
             reportViewer.RefreshReport();
         }
 
-        private void dataGridViewLiqGastos_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-
-            LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
-
-            switch (liqgastos.intRowRegistro)
-            {
-                case 14:
-                case 16:
-                case 17:
-                case 23:
-                case 27:
-                case 28:
-                case 29:
-                    dataGridViewLiqGastos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Moccasin;
-                    dataGridViewLiqGastos.Rows[e.RowIndex].Visible = false;
-                    break;
-                case 990:
-                    dataGridViewLiqGastos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.SlateBlue;
-                    break;
-                default:
-                    break;
-            }
-
-        }
-
         private void dataGridViewLiqGastos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             string name = dataGridViewLiqGastos.Columns[e.ColumnIndex].DataPropertyName;
             if (name == "curValorAdicional")
             {
+                #region Valor Adicional Gasto
+                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
+
+                if (liqgastos.intRowRegistro == 13)
+                {
+                    //e.Cancel = true;
+                    return;
+                }
+
                 DataGridViewCell cellValue = dataGridViewLiqGastos.CurrentCell;
-                if (!LiqViajes_Bll_Data.Helps.IsNumeric(cellValue.ToString()))
+                if (!LiqViajes_Bll_Data.Helps.IsNumeric(e.FormattedValue.ToString()))
                 {
                     DialogResult result3 = MessageBox.Show("En registro debe ser numerico",
                         "Buscar un viaje en la base de datos",
@@ -628,19 +614,144 @@ namespace MetalLiqViajes_Forms
                         MessageBoxIcon.Information,
                         MessageBoxDefaultButton.Button1);
                     e.Cancel = true;
+                    return;
                 }
-                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
-                DataGridViewCell Cell = dataGridViewLiqGastos.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                if (liqgastos.curValorAdicional != decimal.Parse(e.FormattedValue.ToString()))
+                {
+                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == liqgastos.intRowRegistro);
+                    liqgastos.GenerateUndo();
+
+                    liqgastos.curValorAdicional = decimal.Parse(e.FormattedValue.ToString());
+                    liquidacionGastosList[index].curValorAdicional = liqgastos.curValorAdicional;
+
+                    string error = "";
+                    if (!LiquidacionGastosController.Instance.UpdateChanges(liqgastos, out error))
+                        MessageBox.Show("Error Actualizado " + error, "Error actualizando la tabla  LiquidacionGastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
+                    index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
 
-                int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
-
-                liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
-                liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
-                liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
-
+                    liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
+                    liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
+                    liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
+                }
+                #endregion
             }
+            if (name == "strObservaciones")
+            {
+                #region observaciones
+                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
+                DataGridViewCell cellValue = dataGridViewLiqGastos.CurrentCell;
+
+                if (liqgastos.strObservaciones != e.FormattedValue.ToString())
+                {
+                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == liqgastos.intRowRegistro);
+
+                    liqgastos.GenerateUndo();
+                    liqgastos.strObservaciones = e.FormattedValue.ToString().ToUpper();
+                    liquidacionGastosList[index].strObservaciones = e.FormattedValue.ToString().ToUpper();
+                    string error = "";
+                    if (!LiquidacionGastosController.Instance.UpdateChanges(liqgastos, out error))
+                        MessageBox.Show("Error Actualizado " + error, "Error actualizando la tabla  LiquidacionGastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                #endregion
+            }
+
+        }
+
+        private void dataGridViewLiqGastos_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
+
+
+            decimal numero = decimal.Parse(liqgastos.curValorTramo.ToString());
+            textBoxValor.Text = numero.ToString("N0");
+
+            numero = decimal.Parse(liqgastos.curValorAdicional.ToString());
+            textBoxAdicional.Text = numero.ToString("N0");
+
+            numero = decimal.Parse(liqgastos.curValorTotal.ToString());
+            textBoxTotal.Text = numero.ToString("N0");
+
+        }
+
+        private void textBoxValor_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string valorTexto = textBoxValor.Text.Replace(",", "");
+                if (valorTexto != "")
+                {
+                    decimal valor = decimal.Parse(valorTexto);
+                    string st = textBoxValor.Text.Replace(",", "");
+                    if (st != "")
+                    {
+                        try
+                        {
+                            bool final = false;
+                            int pos = textBoxValor.SelectionStart;
+                            final = (pos == textBoxValor.Text.Length);
+                            double numero = Convert.ToDouble(textBoxValor.Text);
+                            textBoxValor.Text = numero.ToString("N0");
+                            if (final) pos++;
+                            textBoxValor.SelectionStart = pos;
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Debe ingresar un valor numérico", "Jurídico", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxValor.Text = "";
+                textBoxValor.Refresh();
+            }
+        }
+
+        private void dataGridViewLiqGastos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < dataGridViewLiqGastos.RowCount; i++)
+            {
+                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[i].DataBoundItem as LiquidacionGastos;
+                switch (liqgastos.intRowRegistro)
+                {
+
+                    case 10:
+                    case 11:
+                    case 12:
+
+                        System.Windows.Forms.DataGridViewCellStyle norStyle = new System.Windows.Forms.DataGridViewCellStyle();
+                        norStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle = norStyle;
+
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.MintCream;
+                        break;
+                    case 13:
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
+                        break;
+                    case 14:
+                    case 16:
+                    case 17:
+                    case 23:
+                    case 27:
+                    case 28:
+                    case 29:
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.Moccasin;
+                        dataGridViewLiqGastos.Rows[i].Visible = false;
+                        break;
+                    case 990:
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.SlateBlue;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+
         }
     }
 }

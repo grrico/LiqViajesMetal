@@ -18,6 +18,7 @@ namespace LiqViajes_Bll_Data
 {
 	public partial class LiquidacionGastos : IDTOObject
 	{
+
         private string detalleCuenta;
 
         public string DetalleCuenta
@@ -39,6 +40,6 @@ namespace LiqViajes_Bll_Data
             string detalle = comando[1];
             return detalle;
         }
-
+       
     }
 }
