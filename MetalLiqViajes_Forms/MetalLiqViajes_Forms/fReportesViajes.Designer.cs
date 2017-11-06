@@ -1613,11 +1613,8 @@
             this.dataGridViewLiqGastos.RowHeadersWidth = 10;
             this.dataGridViewLiqGastos.Size = new System.Drawing.Size(964, 214);
             this.dataGridViewLiqGastos.TabIndex = 0;
-            this.dataGridViewLiqGastos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_CellEnter);
-            this.dataGridViewLiqGastos.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_CellValidated);
             this.dataGridViewLiqGastos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewLiqGastos_CellValidating);
             this.dataGridViewLiqGastos.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewLiqGastos_RowPostPaint);
-            this.dataGridViewLiqGastos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridViewLiqGastos_RowPrePaint);
             // 
             // intRowRegistro
             // 
