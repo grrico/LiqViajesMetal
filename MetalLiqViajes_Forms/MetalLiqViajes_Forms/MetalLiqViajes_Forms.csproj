@@ -107,6 +107,12 @@
     <Compile Include="fReportesViajes.Designer.cs">
       <DependentUpon>fReportesViajes.cs</DependentUpon>
     </Compile>
+    <Compile Include="GastosCambios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GastosCambios.Designer.cs">
+      <DependentUpon>GastosCambios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\UtilClass.cs" />
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fReportesViajes.resx">
       <DependentUpon>fReportesViajes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GastosCambios.resx">
+      <DependentUpon>GastosCambios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

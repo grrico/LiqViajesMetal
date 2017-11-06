@@ -352,7 +352,12 @@ namespace MetalLiqViajes_Forms
         private void dataGridViewViajes_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             iRegistroViajeDTO = dataGridViewViajes.Rows[e.RowIndex].DataBoundItem as LiqViajes_Bll_Data.RegistroViajeDTO;
+            TituloRegistro();
+        }
 
+        private void TituloRegistro()
+        {
+            this.Text = "Viaje: " + iRegistroViajeDTO.IdRegistro + " - Conductor : " + iRegistroViajeDTO.NombreConductor;
         }
 
         private void dataGridViewLiqRutas_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -404,25 +409,16 @@ namespace MetalLiqViajes_Forms
                         tabControl.SelectedIndex = 0;
                         return;
                     }
-
-                    if (tramosAsignadosList != null && tramosAsignadosList.Count > 0 && tramosAsignadosList.FirstOrDefault().RegistroId == iRegistroViajeDTO.IdRegistro)
+                    if (tramosAsignadosList == null)
                     {
-                        tramosAsignadosList = TramosAsignadosRutaController.Instance.GetBy_lngIdRegistro(int.Parse(iRegistroViajeDTO.IdRegistro.ToString()));
-                        dataGridViewLiqRutas.DataSource = tramosAsignadosList.ToList();
-                        dataGridViewLiqRutas.Refresh();
-
-                        Nit = iRegistroViajeDTO.NitConductor;
-                        anticiposdmslist = LiqViajes_Bll_Data.AnticiposDmsController.Instance.GetBy_DocumentoNit(long.Parse(iRegistroViajeDTO.NitConductor), iRegistroViajeDTO.IdRegistro).ToList();
-
-                        anticiposdms = new AnticiposDms();
-                        anticiposdms.Dms_Chk = 0;
-                        anticiposdms.Dms_ValorAnticipo = anticiposdmslist.Sum(s => s.Dms_ValorAnticipo.Value);
-                        anticiposdms.Dms_ValorAplicado = anticiposdmslist.Sum(s => s.Dms_ValorAplicado.Value);
-                        anticiposdms.Dms_ValorTotal = anticiposdmslist.Sum(s => s.Dms_ValorTotal.Value);
-                        anticiposdmslist.Add(anticiposdms);
-
-                        dataGridViewAnticipo.DataSource = anticiposdmslist.ToList();
-                        dataGridViewAnticipo.Refresh();
+                        CargarDatosDetalle();
+                    }
+                    else
+                    {
+                        if (tramosAsignadosList.FirstOrDefault().Registro != iRegistroViajeDTO.IdRegistro)
+                        {
+                            CargarDatosDetalle();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -441,6 +437,54 @@ namespace MetalLiqViajes_Forms
                     }
 
                     List<LiqViajes_Bll_Data.LiquidacionGastos> liquidacionGastosList = LiqViajes_Bll_Data.LiquidacionGastosController.Instance.GetBy_lngIdRegistrRuta(tramosAsignados.RegistroId);
+
+                    LiqViajes_Bll_Data.LiquidacionGastos liqgastos = new LiquidacionGastos();
+                    liqgastos.intRowRegistro = 990;
+                    liqgastos.strCuenta = "";
+                    liqgastos.strDescripcion = "";
+                    liqgastos.strDescripcionCuenta = "000_Total General";
+                    liqgastos.strObservaciones = "";
+                    liqgastos.curValorTramo = 0;// liquidacionGastosList.Sum(t => t.curValorTramo);
+                    liqgastos.curValorAdicional = 0;//liquidacionGastosList.Sum(t => t.curValorAdicional);
+                    liqgastos.curValorTotal = 0;//liquidacionGastosList.Sum(t => t.curValorTotal);
+
+                    foreach (var item in liquidacionGastosList)
+                    {
+
+                        switch (item.intRowRegistro)
+                        {
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 13:
+                            case 14:
+                            case 16:
+                            case 17:
+                            case 23:
+                            case 27:
+                            case 28:
+                            case 29:
+                                break;
+                            default:
+                                liqgastos.curValorTramo += item.curValorTramo.Value;
+                                liqgastos.curValorAdicional += item.curValorAdicional.Value;
+                                liqgastos.curValorTotal += item.curValorTotal.Value;
+                                break;
+                        }
+                    }
+
+                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
+
+                    liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
+                    liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
+                    liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
+
+
+                    liquidacionGastosList.Add(liqgastos);
+
                     dataGridViewLiqGastos.DataSource = liquidacionGastosList.ToList();
                 }
                 catch (Exception ex)
@@ -467,6 +511,25 @@ namespace MetalLiqViajes_Forms
 
         }
 
+        private void CargarDatosDetalle()
+        {
+            tramosAsignadosList = TramosAsignadosRutaController.Instance.GetBy_lngIdRegistro(int.Parse(iRegistroViajeDTO.IdRegistro.ToString()));
+            dataGridViewLiqRutas.DataSource = tramosAsignadosList.ToList();
+            dataGridViewLiqRutas.Refresh();
+
+            Nit = iRegistroViajeDTO.NitConductor;
+            anticiposdmslist = LiqViajes_Bll_Data.AnticiposDmsController.Instance.GetBy_DocumentoNit(long.Parse(iRegistroViajeDTO.NitConductor), iRegistroViajeDTO.IdRegistro).ToList();
+
+            anticiposdms = new AnticiposDms();
+            anticiposdms.Dms_Chk = 0;
+            anticiposdms.Dms_ValorAnticipo = anticiposdmslist.Sum(s => s.Dms_ValorAnticipo.Value);
+            anticiposdms.Dms_ValorAplicado = anticiposdmslist.Sum(s => s.Dms_ValorAplicado.Value);
+            anticiposdms.Dms_ValorTotal = anticiposdmslist.Sum(s => s.Dms_ValorTotal.Value);
+            anticiposdmslist.Add(anticiposdms);
+
+            dataGridViewAnticipo.DataSource = anticiposdmslist.ToList();
+            dataGridViewAnticipo.Refresh();
+        }
 
         private void CargarReporte()
         {
@@ -511,5 +574,96 @@ namespace MetalLiqViajes_Forms
             reportViewer.RefreshReport();
         }
 
+        private void dataGridViewLiqGastos_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewLiqGastos_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
+
+            switch (liqgastos.intRowRegistro)
+            {
+                case 14:
+                case 16:
+                case 17:
+                case 23:
+                case 27:
+                case 28:
+                case 29:
+                    dataGridViewLiqGastos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Moccasin;
+                    dataGridViewLiqGastos.Rows[e.RowIndex].Visible = false;
+                    break;
+                case 990:
+                    dataGridViewLiqGastos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.SlateBlue;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void dataGridViewLiqGastos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string name = dataGridViewLiqGastos.Columns[e.ColumnIndex].DataPropertyName;
+            if (name == "curValorAdicional")
+            {
+                dataGridViewLiqGastos.Columns[e.ColumnIndex].ReadOnly = false;
+            }
+            else
+            {
+                dataGridViewLiqGastos.Columns[e.ColumnIndex].ReadOnly = true;
+            }
+        }
+
+        private void dataGridViewLiqGastos_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell clickedCell = dataGridViewLiqGastos.Rows[0].Cells[e.ColumnIndex];
+            if (!clickedCell.ReadOnly)
+            {
+                try
+                {
+                    int valor = 0;
+                    foreach (DataGridViewRow filas in dataGridViewLiqGastos.Rows)
+                    {
+                        valor += Convert.ToInt32(filas.Cells[0].Value);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DialogResult result3 = MessageBox.Show(ex.Message,
+                    "Actualizar Valores Adicionales",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
+
+                }
+            }
+        }
+
+        private void dataGridViewLiqGastos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            DataGridViewCell clickedCell = dataGridViewLiqGastos.Rows[0].Cells[e.ColumnIndex];
+            if (!clickedCell.ReadOnly)
+            {
+                try
+                {
+                    int valor = 0;
+                    foreach (DataGridViewRow filas in dataGridViewLiqGastos.Rows)
+                    {
+                        valor += Convert.ToInt32(filas.Cells[0].Value);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DialogResult result3 = MessageBox.Show(ex.Message,
+                    "Actualizar Valores Adicionales",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
+
+                }
+            }
+        }
     }
 }

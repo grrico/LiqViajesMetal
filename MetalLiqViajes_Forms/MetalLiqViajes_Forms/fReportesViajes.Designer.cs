@@ -44,15 +44,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReportesViajes));
             this.LiquidacionVehiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LiquidacionPlanillaBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -203,13 +204,7 @@
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewLiqGastos = new System.Windows.Forms.DataGridView();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.intRowRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.strCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -218,6 +213,12 @@
             this.curValorAdicionalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.curValorTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.strObservacionesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitter4 = new System.Windows.Forms.Splitter();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -257,8 +258,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.anticiposDmsListBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqGastos)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
@@ -1580,6 +1579,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dataGridViewLiqGastos);
+            this.tabPage4.Controls.Add(this.splitter4);
             this.tabPage4.Controls.Add(this.panel6);
             this.tabPage4.Controls.Add(this.panel5);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -1589,24 +1590,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Liquidación";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.panel7);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 70);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(964, 358);
-            this.panel6.TabIndex = 1;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.dataGridViewLiqGastos);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(964, 358);
-            this.panel7.TabIndex = 0;
             // 
             // dataGridViewLiqGastos
             // 
@@ -1625,19 +1608,112 @@
             this.strObservacionesDataGridViewTextBoxColumn});
             this.dataGridViewLiqGastos.DataSource = this.liquidacionGastosListBindingSource;
             this.dataGridViewLiqGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewLiqGastos.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewLiqGastos.Location = new System.Drawing.Point(3, 53);
             this.dataGridViewLiqGastos.Name = "dataGridViewLiqGastos";
-            this.dataGridViewLiqGastos.ReadOnly = true;
             this.dataGridViewLiqGastos.RowHeadersWidth = 10;
-            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(964, 358);
+            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(964, 214);
             this.dataGridViewLiqGastos.TabIndex = 0;
+            this.dataGridViewLiqGastos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_CellEnter);
+            this.dataGridViewLiqGastos.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_CellValidated);
+            this.dataGridViewLiqGastos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewLiqGastos_CellValidating);
+            this.dataGridViewLiqGastos.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewLiqGastos_RowPostPaint);
+            this.dataGridViewLiqGastos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridViewLiqGastos_RowPrePaint);
+            // 
+            // intRowRegistro
+            // 
+            this.intRowRegistro.DataPropertyName = "intRowRegistro";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = "0";
+            this.intRowRegistro.DefaultCellStyle = dataGridViewCellStyle16;
+            this.intRowRegistro.HeaderText = "Fila";
+            this.intRowRegistro.Name = "intRowRegistro";
+            // 
+            // strCuenta
+            // 
+            this.strCuenta.DataPropertyName = "strCuenta";
+            this.strCuenta.HeaderText = "Cuenta";
+            this.strCuenta.Name = "strCuenta";
+            this.strCuenta.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DetalleCuenta";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Detalle";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 220;
+            // 
+            // strDescripcionDataGridViewTextBoxColumn
+            // 
+            this.strDescripcionDataGridViewTextBoxColumn.DataPropertyName = "strDescripcion";
+            this.strDescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.strDescripcionDataGridViewTextBoxColumn.Name = "strDescripcionDataGridViewTextBoxColumn";
+            this.strDescripcionDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // curValorTramoDataGridViewTextBoxColumn
+            // 
+            this.curValorTramoDataGridViewTextBoxColumn.DataPropertyName = "curValorTramo";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            dataGridViewCellStyle17.NullValue = "0";
+            this.curValorTramoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
+            this.curValorTramoDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.curValorTramoDataGridViewTextBoxColumn.Name = "curValorTramoDataGridViewTextBoxColumn";
+            this.curValorTramoDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // curValorAdicionalDataGridViewTextBoxColumn
+            // 
+            this.curValorAdicionalDataGridViewTextBoxColumn.DataPropertyName = "curValorAdicional";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            dataGridViewCellStyle18.NullValue = "0";
+            this.curValorAdicionalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
+            this.curValorAdicionalDataGridViewTextBoxColumn.HeaderText = "Adicional";
+            this.curValorAdicionalDataGridViewTextBoxColumn.Name = "curValorAdicionalDataGridViewTextBoxColumn";
+            // 
+            // curValorTotalDataGridViewTextBoxColumn
+            // 
+            this.curValorTotalDataGridViewTextBoxColumn.DataPropertyName = "curValorTotal";
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N0";
+            dataGridViewCellStyle19.NullValue = "0";
+            this.curValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            this.curValorTotalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.curValorTotalDataGridViewTextBoxColumn.Name = "curValorTotalDataGridViewTextBoxColumn";
+            // 
+            // strObservacionesDataGridViewTextBoxColumn
+            // 
+            this.strObservacionesDataGridViewTextBoxColumn.DataPropertyName = "strObservaciones";
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.strObservacionesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            this.strObservacionesDataGridViewTextBoxColumn.HeaderText = "Observación";
+            this.strObservacionesDataGridViewTextBoxColumn.Name = "strObservacionesDataGridViewTextBoxColumn";
+            this.strObservacionesDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // splitter4
+            // 
+            this.splitter4.BackColor = System.Drawing.Color.Cornsilk;
+            this.splitter4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitter4.Location = new System.Drawing.Point(3, 267);
+            this.splitter4.Name = "splitter4";
+            this.splitter4.Size = new System.Drawing.Size(964, 10);
+            this.splitter4.TabIndex = 2;
+            this.splitter4.TabStop = false;
+            // 
+            // panel6
+            // 
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(3, 277);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(964, 151);
+            this.panel6.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(964, 67);
+            this.panel5.Size = new System.Drawing.Size(964, 50);
             this.panel5.TabIndex = 0;
             // 
             // tabPage3
@@ -1673,83 +1749,6 @@
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.Size = new System.Drawing.Size(970, 431);
             this.reportViewer.TabIndex = 0;
-            // 
-            // intRowRegistro
-            // 
-            this.intRowRegistro.DataPropertyName = "intRowRegistro";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = "0";
-            this.intRowRegistro.DefaultCellStyle = dataGridViewCellStyle16;
-            this.intRowRegistro.HeaderText = "Fila";
-            this.intRowRegistro.Name = "intRowRegistro";
-            this.intRowRegistro.ReadOnly = true;
-            // 
-            // strCuenta
-            // 
-            this.strCuenta.DataPropertyName = "strCuenta";
-            this.strCuenta.HeaderText = "Cuenta";
-            this.strCuenta.Name = "strCuenta";
-            this.strCuenta.ReadOnly = true;
-            this.strCuenta.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "DetalleCuenta";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Detalle";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 220;
-            // 
-            // strDescripcionDataGridViewTextBoxColumn
-            // 
-            this.strDescripcionDataGridViewTextBoxColumn.DataPropertyName = "strDescripcion";
-            this.strDescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.strDescripcionDataGridViewTextBoxColumn.Name = "strDescripcionDataGridViewTextBoxColumn";
-            this.strDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.strDescripcionDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // curValorTramoDataGridViewTextBoxColumn
-            // 
-            this.curValorTramoDataGridViewTextBoxColumn.DataPropertyName = "curValorTramo";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "N0";
-            dataGridViewCellStyle17.NullValue = "0";
-            this.curValorTramoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
-            this.curValorTramoDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.curValorTramoDataGridViewTextBoxColumn.Name = "curValorTramoDataGridViewTextBoxColumn";
-            this.curValorTramoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.curValorTramoDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // curValorAdicionalDataGridViewTextBoxColumn
-            // 
-            this.curValorAdicionalDataGridViewTextBoxColumn.DataPropertyName = "curValorAdicional";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            dataGridViewCellStyle18.NullValue = "0";
-            this.curValorAdicionalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
-            this.curValorAdicionalDataGridViewTextBoxColumn.HeaderText = "Adicional";
-            this.curValorAdicionalDataGridViewTextBoxColumn.Name = "curValorAdicionalDataGridViewTextBoxColumn";
-            this.curValorAdicionalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curValorTotalDataGridViewTextBoxColumn
-            // 
-            this.curValorTotalDataGridViewTextBoxColumn.DataPropertyName = "curValorTotal";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N0";
-            dataGridViewCellStyle19.NullValue = "0";
-            this.curValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
-            this.curValorTotalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.curValorTotalDataGridViewTextBoxColumn.Name = "curValorTotalDataGridViewTextBoxColumn";
-            this.curValorTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // strObservacionesDataGridViewTextBoxColumn
-            // 
-            this.strObservacionesDataGridViewTextBoxColumn.DataPropertyName = "strObservaciones";
-            this.strObservacionesDataGridViewTextBoxColumn.HeaderText = "Observación";
-            this.strObservacionesDataGridViewTextBoxColumn.Name = "strObservacionesDataGridViewTextBoxColumn";
-            this.strObservacionesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.strObservacionesDataGridViewTextBoxColumn.Width = 300;
             // 
             // fReportesViajes
             // 
@@ -1801,8 +1800,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.anticiposDmsListBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqGastos)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1968,9 +1965,9 @@
         private System.Windows.Forms.Button btnQuitarFintro;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataGridView dataGridViewLiqGastos;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Splitter splitter4;
         private System.Windows.Forms.DataGridViewTextBoxColumn intRowRegistro;
         private System.Windows.Forms.DataGridViewTextBoxColumn strCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
