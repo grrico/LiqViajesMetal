@@ -217,9 +217,10 @@
             this.strObservacionesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitter5 = new System.Windows.Forms.Splitter();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnAplicarCambio = new System.Windows.Forms.Button();
             this.comboBoxTerceros = new System.Windows.Forms.ComboBox();
             this.tercerosDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxObservacion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -227,6 +228,7 @@
             this.textBoxAdicional = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxValor = new System.Windows.Forms.TextBox();
+            this.labelTituloRegistroGasto = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.splitter4 = new System.Windows.Forms.Splitter();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -1617,7 +1619,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 53);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(690, 284);
+            this.panel8.Size = new System.Drawing.Size(569, 284);
             this.panel8.TabIndex = 5;
             // 
             // dataGridViewLiqGastos
@@ -1640,13 +1642,12 @@
             this.dataGridViewLiqGastos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewLiqGastos.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewLiqGastos.Name = "dataGridViewLiqGastos";
+            this.dataGridViewLiqGastos.ReadOnly = true;
             this.dataGridViewLiqGastos.RowHeadersWidth = 10;
-            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(690, 284);
+            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(569, 284);
             this.dataGridViewLiqGastos.TabIndex = 0;
-            this.dataGridViewLiqGastos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewLiqGastos_CellValidating);
             this.dataGridViewLiqGastos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewLiqGastos_DataBindingComplete);
             this.dataGridViewLiqGastos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_RowEnter);
-           
             // 
             // intRowRegistro
             // 
@@ -1657,6 +1658,7 @@
             this.intRowRegistro.DefaultCellStyle = dataGridViewCellStyle16;
             this.intRowRegistro.HeaderText = "Fila";
             this.intRowRegistro.Name = "intRowRegistro";
+            this.intRowRegistro.ReadOnly = true;
             this.intRowRegistro.Width = 60;
             // 
             // strCuenta
@@ -1664,6 +1666,7 @@
             this.strCuenta.DataPropertyName = "strCuenta";
             this.strCuenta.HeaderText = "Cuenta";
             this.strCuenta.Name = "strCuenta";
+            this.strCuenta.ReadOnly = true;
             this.strCuenta.Width = 90;
             // 
             // dataGridViewTextBoxColumn4
@@ -1671,6 +1674,7 @@
             this.dataGridViewTextBoxColumn4.DataPropertyName = "DetalleCuenta";
             this.dataGridViewTextBoxColumn4.HeaderText = "Detalle";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 220;
             // 
             // strDescripcionDataGridViewTextBoxColumn
@@ -1678,6 +1682,7 @@
             this.strDescripcionDataGridViewTextBoxColumn.DataPropertyName = "strDescripcion";
             this.strDescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
             this.strDescripcionDataGridViewTextBoxColumn.Name = "strDescripcionDataGridViewTextBoxColumn";
+            this.strDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
             this.strDescripcionDataGridViewTextBoxColumn.Width = 150;
             // 
             // curValorTramoDataGridViewTextBoxColumn
@@ -1689,6 +1694,7 @@
             this.curValorTramoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.curValorTramoDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.curValorTramoDataGridViewTextBoxColumn.Name = "curValorTramoDataGridViewTextBoxColumn";
+            this.curValorTramoDataGridViewTextBoxColumn.ReadOnly = true;
             this.curValorTramoDataGridViewTextBoxColumn.Width = 120;
             // 
             // curValorAdicionalDataGridViewTextBoxColumn
@@ -1700,6 +1706,7 @@
             this.curValorAdicionalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
             this.curValorAdicionalDataGridViewTextBoxColumn.HeaderText = "Adicional";
             this.curValorAdicionalDataGridViewTextBoxColumn.Name = "curValorAdicionalDataGridViewTextBoxColumn";
+            this.curValorAdicionalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // curValorTotalDataGridViewTextBoxColumn
             // 
@@ -1710,6 +1717,7 @@
             this.curValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
             this.curValorTotalDataGridViewTextBoxColumn.HeaderText = "Total";
             this.curValorTotalDataGridViewTextBoxColumn.Name = "curValorTotalDataGridViewTextBoxColumn";
+            this.curValorTotalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // NombreTercero
             // 
@@ -1726,13 +1734,14 @@
             this.strObservacionesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.strObservacionesDataGridViewTextBoxColumn.HeaderText = "Observación";
             this.strObservacionesDataGridViewTextBoxColumn.Name = "strObservacionesDataGridViewTextBoxColumn";
+            this.strObservacionesDataGridViewTextBoxColumn.ReadOnly = true;
             this.strObservacionesDataGridViewTextBoxColumn.Width = 300;
             // 
             // splitter5
             // 
             this.splitter5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitter5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter5.Location = new System.Drawing.Point(693, 53);
+            this.splitter5.Location = new System.Drawing.Point(572, 53);
             this.splitter5.Name = "splitter5";
             this.splitter5.Size = new System.Drawing.Size(10, 284);
             this.splitter5.TabIndex = 4;
@@ -1740,8 +1749,9 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btnAplicarCambio);
             this.panel7.Controls.Add(this.comboBoxTerceros);
-            this.panel7.Controls.Add(this.textBox3);
+            this.panel7.Controls.Add(this.textBoxObservacion);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.textBoxTotal);
             this.panel7.Controls.Add(this.label9);
@@ -1749,107 +1759,136 @@
             this.panel7.Controls.Add(this.textBoxAdicional);
             this.panel7.Controls.Add(this.label6);
             this.panel7.Controls.Add(this.textBoxValor);
+            this.panel7.Controls.Add(this.labelTituloRegistroGasto);
             this.panel7.Controls.Add(this.label5);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(703, 53);
+            this.panel7.Location = new System.Drawing.Point(582, 53);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(264, 284);
+            this.panel7.Size = new System.Drawing.Size(385, 284);
             this.panel7.TabIndex = 3;
+            // 
+            // btnAplicarCambio
+            // 
+            this.btnAplicarCambio.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
+            this.btnAplicarCambio.Location = new System.Drawing.Point(173, 146);
+            this.btnAplicarCambio.Name = "btnAplicarCambio";
+            this.btnAplicarCambio.Size = new System.Drawing.Size(124, 30);
+            this.btnAplicarCambio.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.btnAplicarCambio, "Haga clic aquí para Aplicar el cambio");
+            this.btnAplicarCambio.UseVisualStyleBackColor = true;
+            this.btnAplicarCambio.Click += new System.EventHandler(this.btnAplicarCambio_Click);
             // 
             // comboBoxTerceros
             // 
+            this.comboBoxTerceros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxTerceros.DataSource = this.tercerosDTOBindingSource;
             this.comboBoxTerceros.DisplayMember = "NombreTercero";
+            this.comboBoxTerceros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTerceros.FormattingEnabled = true;
-            this.comboBoxTerceros.Location = new System.Drawing.Point(6, 109);
+            this.comboBoxTerceros.Location = new System.Drawing.Point(6, 190);
             this.comboBoxTerceros.Name = "comboBoxTerceros";
-            this.comboBoxTerceros.Size = new System.Drawing.Size(253, 21);
+            this.comboBoxTerceros.Size = new System.Drawing.Size(374, 23);
             this.comboBoxTerceros.TabIndex = 2;
             this.comboBoxTerceros.ValueMember = "Nit";
             // 
-            // textBox3
+            // textBoxObservacion
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxObservacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(6, 155);
-            this.textBox3.MaxLength = 500;
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(255, 123);
-            this.textBox3.TabIndex = 1;
+            this.textBoxObservacion.Location = new System.Drawing.Point(6, 240);
+            this.textBoxObservacion.MaxLength = 500;
+            this.textBoxObservacion.Multiline = true;
+            this.textBoxObservacion.Name = "textBoxObservacion";
+            this.textBoxObservacion.Size = new System.Drawing.Size(376, 38);
+            this.textBoxObservacion.TabIndex = 1;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 139);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 219);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 13);
+            this.label8.Size = new System.Drawing.Size(92, 18);
             this.label8.TabIndex = 0;
             this.label8.Text = "Observación";
             // 
             // textBoxTotal
             // 
             this.textBoxTotal.Enabled = false;
-            this.textBoxTotal.Location = new System.Drawing.Point(114, 63);
+            this.textBoxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTotal.Location = new System.Drawing.Point(173, 116);
             this.textBoxTotal.Name = "textBoxTotal";
-            this.textBoxTotal.Size = new System.Drawing.Size(145, 20);
+            this.textBoxTotal.Size = new System.Drawing.Size(124, 24);
             this.textBoxTotal.TabIndex = 1;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(68, 66);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(112, 116);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.Size = new System.Drawing.Size(51, 18);
             this.label9.TabIndex = 0;
             this.label9.Text = "Total:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 93);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 169);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.Size = new System.Drawing.Size(64, 18);
             this.label7.TabIndex = 0;
             this.label7.Text = "Tercero:";
             // 
             // textBoxAdicional
             // 
-            this.textBoxAdicional.Location = new System.Drawing.Point(114, 32);
+            this.textBoxAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAdicional.Location = new System.Drawing.Point(173, 89);
             this.textBoxAdicional.Name = "textBoxAdicional";
-            this.textBoxAdicional.Size = new System.Drawing.Size(145, 20);
+            this.textBoxAdicional.Size = new System.Drawing.Size(124, 24);
             this.textBoxAdicional.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 35);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(38, 89);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.Size = new System.Drawing.Size(125, 18);
             this.label6.TabIndex = 0;
             this.label6.Text = "Valor Adicional:";
             // 
             // textBoxValor
             // 
             this.textBoxValor.Enabled = false;
-            this.textBoxValor.Location = new System.Drawing.Point(114, 6);
+            this.textBoxValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxValor.Location = new System.Drawing.Point(173, 59);
             this.textBoxValor.Name = "textBoxValor";
-            this.textBoxValor.Size = new System.Drawing.Size(145, 20);
+            this.textBoxValor.Size = new System.Drawing.Size(124, 24);
             this.textBoxValor.TabIndex = 1;
             this.textBoxValor.TextChanged += new System.EventHandler(this.textBoxValor_TextChanged);
+            // 
+            // labelTituloRegistroGasto
+            // 
+            this.labelTituloRegistroGasto.AutoSize = true;
+            this.labelTituloRegistroGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTituloRegistroGasto.Location = new System.Drawing.Point(93, 17);
+            this.labelTituloRegistroGasto.Name = "labelTituloRegistroGasto";
+            this.labelTituloRegistroGasto.Size = new System.Drawing.Size(132, 18);
+            this.labelTituloRegistroGasto.TabIndex = 0;
+            this.labelTituloRegistroGasto.Text = "Actualiza Gasto:";
+            this.labelTituloRegistroGasto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 9);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(106, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.Size = new System.Drawing.Size(57, 18);
             this.label5.TabIndex = 0;
             this.label5.Text = "Valor: ";
             // 
@@ -2139,7 +2178,7 @@
         private System.Windows.Forms.Splitter splitter5;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.ComboBox comboBoxTerceros;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxObservacion;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxTotal;
         private System.Windows.Forms.Label label7;
@@ -2159,5 +2198,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn curValorTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreTercero;
         private System.Windows.Forms.DataGridViewTextBoxColumn strObservacionesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnAplicarCambio;
+        private System.Windows.Forms.Label labelTituloRegistroGasto;
     }
 }

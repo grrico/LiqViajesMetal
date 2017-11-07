@@ -27,8 +27,12 @@ namespace MetalLiqViajes_Forms
         private List<TramosAsignadosRuta> tramosAsignadosList;
         private TramosAsignadosRuta tramosAsignados;
 
+        private List<LiqViajes_Bll_Data.TercerosDTO> tercerosDTOList;
+
         private List<LiquidacionRutas> liquidacionrutaslist;
         private LiquidacionRutas liquidacionrutas;
+
+        private LiquidacionGastos liquidacionGastos;
 
         private List<LiqViajes_Bll_Data.LiquidacionGastos> liquidacionGastosList { get; set; }
 
@@ -190,17 +194,66 @@ namespace MetalLiqViajes_Forms
             }
             catch (Exception ex)
             {
-                carlaExection(ex);
+                CargaExection(ex);
             }
         }
 
-        private static void carlaExection(Exception ex)
+        private void btnAplicarCambio_Click(object sender, EventArgs e)
         {
-            DialogResult result3 = MessageBox.Show(ex.Message,
-               "Error Cargando Datos",
-               MessageBoxButtons.OK,
-               MessageBoxIcon.Information,
-               MessageBoxDefaultButton.Button1);
+            #region Valor Adicional Gasto
+
+            if (liquidacionGastos.curValorAdicional != decimal.Parse(textBoxAdicional.Text.ToString()))
+            {
+
+                DataGridViewCell cellValue = dataGridViewLiqGastos.CurrentCell;
+                if (!LiqViajes_Bll_Data.Helps.IsNumeric(textBoxAdicional.Text.ToString()))
+                {
+                    DialogResult result3 = MessageBox.Show("En registro debe ser numerico",
+                        "Buscar un viaje en la base de datos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1);
+                    return;
+                }
+
+                // busca la fila que va a actualizar en la lista
+
+                int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == liquidacionGastos.intRowRegistro);
+                liquidacionGastos.GenerateUndo();
+
+                liquidacionGastos.curValorAdicional = decimal.Parse(textBoxAdicional.Text.ToString());
+                liquidacionGastosList[index].curValorAdicional = liquidacionGastos.curValorAdicional;
+
+                string error = "";
+                if (!LiquidacionGastosController.Instance.UpdateChanges(liquidacionGastos, out error))
+                {
+                    MessageBox.Show("Error Actualizado " + error, "Error actualizando la tabla  LiquidacionGastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
+                index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
+
+                liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
+                liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
+                liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
+
+            }
+            #endregion
+
+            #region observaciones
+            if (liquidacionGastos.strObservaciones != textBoxAdicional.Text)
+            {
+                int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == liquidacionGastos.intRowRegistro);
+
+                liquidacionGastos.GenerateUndo();
+                liquidacionGastos.strObservaciones = "";
+                liquidacionGastosList[index].strObservaciones = "";
+                string error = "";
+                if (!LiquidacionGastosController.Instance.UpdateChanges(liquidacionGastos, out error))
+                    MessageBox.Show("Error Actualizado " + error, "Error actualizando la tabla  LiquidacionGastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            #endregion
+
         }
 
         private void btnQuitarFintro_Click(object sender, EventArgs e)
@@ -210,6 +263,271 @@ namespace MetalLiqViajes_Forms
 
             btnQuitarFintro.Visible = false;
             dataGridViewConductor.Enabled = true;
+
+        }
+
+        private void comboBoxPlaca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ultilplaca = comboBoxPlaca.SelectedItem as UtilPlaca;
+            if (ultilplaca.Placa == "_Seleccionar")
+            {
+                dataGridViewViajes.DataSource = registroviajelist;
+                dataGridViewViajes.Refresh();
+            }
+            else
+            {
+                registroviajelistFiltro = registroviajelist.Where(p => p.Placa == ultilplaca.Placa).ToList();
+                dataGridViewViajes.DataSource = registroviajelistFiltro;
+                dataGridViewViajes.Refresh();
+            }
+        }
+
+        private void comboBoxRegViaje_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            utilidregistro = comboBoxRegViaje.SelectedItem as UtiliDRegistro;
+            if (utilidregistro.idRegistro == 0)
+            {
+
+                dataGridViewViajes.DataSource = registroviajelist;
+                dataGridViewViajes.Refresh();
+
+            }
+            else
+            {
+                registroviajelistFiltro = registroviajelist.Where(p => p.IdRegistro == utilidregistro.idRegistro).ToList();
+                dataGridViewViajes.DataSource = registroviajelistFiltro;
+                dataGridViewViajes.Refresh();
+
+            }
+        }
+
+        private void dataGridViewViajes_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            iRegistroViajeDTO = dataGridViewViajes.Rows[e.RowIndex].DataBoundItem as LiqViajes_Bll_Data.RegistroViajeDTO;
+            TituloRegistro();
+        }
+
+        private void dataGridViewLiqRutas_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            tramosAsignados = dataGridViewLiqRutas.Rows[e.RowIndex].DataBoundItem as TramosAsignadosRuta;
+
+            tramosGastosList = LiqViajes_Bll_Data.TramosGastosController.Instance.GetBy_RegistroViaje(tramosAsignados.Registro);
+
+            TramosGastos tramosgastos = new TramosGastos();
+
+            tramosgastos.Codigo = 0;
+            tramosgastos.DescripcionCuenta = "Gran total_Gran total";
+            tramosgastos.ValorTotal = tramosGastosList.Sum(t => t.ValorTotal);
+
+            tramosGastosList.Add(tramosgastos);
+
+            dataGridViewCuentasGastos.DataSource = tramosGastosList.ToList();
+            dataGridViewCuentasGastos.Refresh();
+
+            dataGridViewLavadas.DataSource = LiqViajes_Bll_Data.TramosLavadasController.Instance.GetBy_RegistroViaje(decimal.Parse(iRegistroViajeDTO.NitConductor));
+            dataGridViewLavadas.Refresh();
+        }
+
+        private void dataGridViewConductor_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            conductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as Conductor;
+
+            registroviajelistFiltro = registroviajelist.Where(p => p.NitConductor == conductor.Cedula.ToString()).ToList();
+            dataGridViewViajes.DataSource = registroviajelistFiltro;
+            dataGridViewViajes.Refresh();
+        }
+
+        private void dataGridViewLiqGastos_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            liquidacionGastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
+
+            decimal numero = decimal.Parse(liquidacionGastos.curValorTramo.ToString());
+            textBoxValor.Text = numero.ToString("N0");
+
+            numero = decimal.Parse(liquidacionGastos.curValorAdicional.ToString());
+            textBoxAdicional.Text = numero.ToString("N0");
+
+            numero = decimal.Parse(liquidacionGastos.curValorTotal.ToString());
+            textBoxTotal.Text = numero.ToString("N0");
+
+            textBoxObservacion.Text = liquidacionGastos.strObservaciones.ToUpper();
+
+            labelTituloRegistroGasto.Text = liquidacionGastos.strDescripcion.ToUpper();
+
+            long INit = long.Parse(liquidacionGastos.nitTercero);
+
+            LiqViajes_Bll_Data.TercerosDTO terceroDto = tercerosDTOList.Where(t => t.Nit == INit).FirstOrDefault();
+            if (terceroDto != null)
+            {
+                comboBoxTerceros.SelectedText = liquidacionGastos.NombreTercero;
+                comboBoxTerceros.SelectedValue = liquidacionGastos.nitTercero;
+            }
+            else
+            {
+                comboBoxTerceros.SelectedIndex = 0;
+            
+            }
+            switch (liquidacionGastos.intRowRegistro)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 13:
+                case 14:
+                case 16:
+                case 17:
+                case 23:
+                case 27:
+                case 28:
+                case 29:
+                case 990:
+                    btnAplicarCambio.Visible = false;
+                    break;
+                default:
+                    btnAplicarCambio.Visible = true;
+                    break;
+            }
+
+
+
+        }
+
+        private void fReportesViajes_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridViewLiqGastos.ColumnCount; i++)
+            {
+                string name = dataGridViewLiqGastos.Columns[i].DataPropertyName;
+                if (name == "curValorAdicional")
+                {
+                    dataGridViewLiqGastos.Columns[i].ReadOnly = false;
+                }
+                else
+                {
+                    dataGridViewLiqGastos.Columns[i].ReadOnly = true;
+                }
+            }
+
+            tercerosDTOList = LiqViajes_Bll_Data.TercerosController.Instance.GetByTercerosDms();
+            comboBoxTerceros.DataSource = tercerosDTOList;
+            comboBoxTerceros.SelectedIndex = 0;
+            comboBoxTerceros.Refresh();
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedIndex == 1)
+            {
+
+                // carga los tramos
+                try
+                {
+                    if (iRegistroViajeDTO == null)
+                    {
+                        tabControl.SelectedIndex = 0;
+                        return;
+                    }
+                    if (tramosAsignadosList == null)
+                    {
+                        CargarDatosDetalle();
+                    }
+                    else
+                    {
+                        if (tramosAsignadosList.FirstOrDefault().Registro != iRegistroViajeDTO.IdRegistro)
+                        {
+                            CargarDatosDetalle();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CargaExection(ex);
+                }
+            }
+            if (tabControl.SelectedIndex == 2)
+            {
+                try
+                {
+                    if (tramosAsignados == null)
+                    {
+                        tabControl.SelectedIndex = 1;
+                        return;
+                    }
+
+                    liquidacionGastosList = LiqViajes_Bll_Data.LiquidacionGastosController.Instance.GetBy_lngIdRegistrRuta(tramosAsignados.RegistroId);
+
+                    LiqViajes_Bll_Data.LiquidacionGastos liqgastos = new LiquidacionGastos();
+                    liqgastos.intRowRegistro = 990;
+                    liqgastos.strCuenta = "";
+                    liqgastos.strDescripcion = "";
+                    liqgastos.strDescripcionCuenta = "000_Total General";
+                    liqgastos.strObservaciones = "";
+                    liqgastos.curValorTramo = 0;// liquidacionGastosList.Sum(t => t.curValorTramo);
+                    liqgastos.curValorAdicional = 0;//liquidacionGastosList.Sum(t => t.curValorAdicional);
+                    liqgastos.curValorTotal = 0;//liquidacionGastosList.Sum(t => t.curValorTotal);
+
+                    foreach (var item in liquidacionGastosList)
+                    {
+
+                        switch (item.intRowRegistro)
+                        {
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 13:
+                            case 14:
+                            case 16:
+                            case 17:
+                            case 23:
+                            case 27:
+                            case 28:
+                            case 29:
+                                break;
+                            default:
+                                liqgastos.curValorTramo += item.curValorTramo.Value;
+                                liqgastos.curValorAdicional += item.curValorAdicional.Value;
+                                liqgastos.curValorTotal += item.curValorTotal.Value;
+                                break;
+                        }
+                    }
+
+                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
+
+                    liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
+                    liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
+                    liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
+
+
+                    liquidacionGastosList.Add(liqgastos);
+
+                    dataGridViewLiqGastos.DataSource = liquidacionGastosList.ToList();
+                }
+                catch (Exception ex)
+                {
+                    CargaExection(ex);
+                }
+
+            }
+
+            if (tabControl.SelectedIndex == 3)
+            {
+                try
+                {
+                    CargarReporte();
+                }
+                catch (Exception ex)
+                {
+                    CargaExection(ex);
+                }
+
+            }
+
 
         }
 
@@ -316,216 +634,9 @@ namespace MetalLiqViajes_Forms
 
         }
 
-        private void comboBoxPlaca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ultilplaca = comboBoxPlaca.SelectedItem as UtilPlaca;
-            if (ultilplaca.Placa == "_Seleccionar")
-            {
-                dataGridViewViajes.DataSource = registroviajelist;
-                dataGridViewViajes.Refresh();
-            }
-            else
-            {
-                registroviajelistFiltro = registroviajelist.Where(p => p.Placa == ultilplaca.Placa).ToList();
-                dataGridViewViajes.DataSource = registroviajelistFiltro;
-                dataGridViewViajes.Refresh();
-            }
-        }
-
-        private void comboBoxRegViaje_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            utilidregistro = comboBoxRegViaje.SelectedItem as UtiliDRegistro;
-            if (utilidregistro.idRegistro == 0)
-            {
-
-                dataGridViewViajes.DataSource = registroviajelist;
-                dataGridViewViajes.Refresh();
-
-            }
-            else
-            {
-                registroviajelistFiltro = registroviajelist.Where(p => p.IdRegistro == utilidregistro.idRegistro).ToList();
-                dataGridViewViajes.DataSource = registroviajelistFiltro;
-                dataGridViewViajes.Refresh();
-
-            }
-        }
-
-        private void dataGridViewViajes_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            iRegistroViajeDTO = dataGridViewViajes.Rows[e.RowIndex].DataBoundItem as LiqViajes_Bll_Data.RegistroViajeDTO;
-            TituloRegistro();
-        }
-
         private void TituloRegistro()
         {
             this.Text = "Viaje: " + iRegistroViajeDTO.IdRegistro + " - Conductor : " + iRegistroViajeDTO.NombreConductor;
-        }
-
-        private void dataGridViewLiqRutas_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            tramosAsignados = dataGridViewLiqRutas.Rows[e.RowIndex].DataBoundItem as TramosAsignadosRuta;
-
-            tramosGastosList = LiqViajes_Bll_Data.TramosGastosController.Instance.GetBy_RegistroViaje(tramosAsignados.Registro);
-
-            TramosGastos tramosgastos = new TramosGastos();
-
-            tramosgastos.Codigo = 0;
-            tramosgastos.DescripcionCuenta = "Gran total_Gran total";
-            tramosgastos.ValorTotal = tramosGastosList.Sum(t => t.ValorTotal);
-
-            tramosGastosList.Add(tramosgastos);
-
-            dataGridViewCuentasGastos.DataSource = tramosGastosList.ToList();
-            dataGridViewCuentasGastos.Refresh();
-
-            dataGridViewLavadas.DataSource = LiqViajes_Bll_Data.TramosLavadasController.Instance.GetBy_RegistroViaje(decimal.Parse(iRegistroViajeDTO.NitConductor));
-            dataGridViewLavadas.Refresh();
-        }
-
-        private void dataGridViewConductor_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-
-            conductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as Conductor;
-
-            registroviajelistFiltro = registroviajelist.Where(p => p.NitConductor == conductor.Cedula.ToString()).ToList();
-            dataGridViewViajes.DataSource = registroviajelistFiltro;
-            dataGridViewViajes.Refresh();
-        }
-
-        private void fReportesViajes_Load(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dataGridViewLiqGastos.ColumnCount; i++)
-            {
-                string name = dataGridViewLiqGastos.Columns[i].DataPropertyName;
-                if (name == "curValorAdicional")
-                {
-                    dataGridViewLiqGastos.Columns[i].ReadOnly = false;
-                }
-                else
-                {
-                    dataGridViewLiqGastos.Columns[i].ReadOnly = true;
-                }
-            }
-            List<LiqViajes_Bll_Data.TercerosDTO> tercerosDTOList = LiqViajes_Bll_Data.TercerosController.Instance.GetByTercerosDms();
-            comboBoxTerceros.DataSource = tercerosDTOList;
-            comboBoxTerceros.SelectedIndex = 0;
-            comboBoxTerceros.Refresh();
-        }
-
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControl.SelectedIndex == 1)
-            {
-
-                // carga los tramos
-                try
-                {
-                    if (iRegistroViajeDTO == null)
-                    {
-                        tabControl.SelectedIndex = 0;
-                        return;
-                    }
-                    if (tramosAsignadosList == null)
-                    {
-                        CargarDatosDetalle();
-                    }
-                    else
-                    {
-                        if (tramosAsignadosList.FirstOrDefault().Registro != iRegistroViajeDTO.IdRegistro)
-                        {
-                            CargarDatosDetalle();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    carlaExection(ex);
-                }
-            }
-            if (tabControl.SelectedIndex == 2)
-            {
-                try
-                {
-                    if (tramosAsignados == null)
-                    {
-                        tabControl.SelectedIndex = 1;
-                        return;
-                    }
-
-                    liquidacionGastosList = LiqViajes_Bll_Data.LiquidacionGastosController.Instance.GetBy_lngIdRegistrRuta(tramosAsignados.RegistroId);
-
-                    LiqViajes_Bll_Data.LiquidacionGastos liqgastos = new LiquidacionGastos();
-                    liqgastos.intRowRegistro = 990;
-                    liqgastos.strCuenta = "";
-                    liqgastos.strDescripcion = "";
-                    liqgastos.strDescripcionCuenta = "000_Total General";
-                    liqgastos.strObservaciones = "";
-                    liqgastos.curValorTramo = 0;// liquidacionGastosList.Sum(t => t.curValorTramo);
-                    liqgastos.curValorAdicional = 0;//liquidacionGastosList.Sum(t => t.curValorAdicional);
-                    liqgastos.curValorTotal = 0;//liquidacionGastosList.Sum(t => t.curValorTotal);
-
-                    foreach (var item in liquidacionGastosList)
-                    {
-
-                        switch (item.intRowRegistro)
-                        {
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 13:
-                            case 14:
-                            case 16:
-                            case 17:
-                            case 23:
-                            case 27:
-                            case 28:
-                            case 29:
-                                break;
-                            default:
-                                liqgastos.curValorTramo += item.curValorTramo.Value;
-                                liqgastos.curValorAdicional += item.curValorAdicional.Value;
-                                liqgastos.curValorTotal += item.curValorTotal.Value;
-                                break;
-                        }
-                    }
-
-                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
-
-                    liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
-                    liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
-                    liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
-
-
-                    liquidacionGastosList.Add(liqgastos);
-
-                    dataGridViewLiqGastos.DataSource = liquidacionGastosList.ToList();
-                }
-                catch (Exception ex)
-                {
-                    carlaExection(ex);
-                }
-
-            }
-
-            if (tabControl.SelectedIndex == 3)
-            {
-                try
-                {
-                    tabControl.SelectedIndex = 0;
-                    CargarReporte();
-                }
-                catch (Exception ex)
-                {
-                    carlaExection(ex);
-                }
-
-            }
-
-
         }
 
         private void CargarDatosDetalle()
@@ -591,90 +702,6 @@ namespace MetalLiqViajes_Forms
             reportViewer.RefreshReport();
         }
 
-        private void dataGridViewLiqGastos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            string name = dataGridViewLiqGastos.Columns[e.ColumnIndex].DataPropertyName;
-            if (name == "curValorAdicional")
-            {
-                #region Valor Adicional Gasto
-                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
-
-                if (liqgastos.intRowRegistro == 13)
-                {
-                    //e.Cancel = true;
-                    return;
-                }
-
-                DataGridViewCell cellValue = dataGridViewLiqGastos.CurrentCell;
-                if (!LiqViajes_Bll_Data.Helps.IsNumeric(e.FormattedValue.ToString()))
-                {
-                    DialogResult result3 = MessageBox.Show("En registro debe ser numerico",
-                        "Buscar un viaje en la base de datos",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information,
-                        MessageBoxDefaultButton.Button1);
-                    e.Cancel = true;
-                    return;
-                }
-
-                if (liqgastos.curValorAdicional != decimal.Parse(e.FormattedValue.ToString()))
-                {
-                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == liqgastos.intRowRegistro);
-                    liqgastos.GenerateUndo();
-
-                    liqgastos.curValorAdicional = decimal.Parse(e.FormattedValue.ToString());
-                    liquidacionGastosList[index].curValorAdicional = liqgastos.curValorAdicional;
-
-                    string error = "";
-                    if (!LiquidacionGastosController.Instance.UpdateChanges(liqgastos, out error))
-                        MessageBox.Show("Error Actualizado " + error, "Error actualizando la tabla  LiquidacionGastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                    index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
-
-                    liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
-                    liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
-                    liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
-                }
-                #endregion
-            }
-            if (name == "strObservaciones")
-            {
-                #region observaciones
-                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
-                DataGridViewCell cellValue = dataGridViewLiqGastos.CurrentCell;
-
-                if (liqgastos.strObservaciones != e.FormattedValue.ToString())
-                {
-                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == liqgastos.intRowRegistro);
-
-                    liqgastos.GenerateUndo();
-                    liqgastos.strObservaciones = e.FormattedValue.ToString().ToUpper();
-                    liquidacionGastosList[index].strObservaciones = e.FormattedValue.ToString().ToUpper();
-                    string error = "";
-                    if (!LiquidacionGastosController.Instance.UpdateChanges(liqgastos, out error))
-                        MessageBox.Show("Error Actualizado " + error, "Error actualizando la tabla  LiquidacionGastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                #endregion
-            }
-
-        }
-
-        private void dataGridViewLiqGastos_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
-
-
-            decimal numero = decimal.Parse(liqgastos.curValorTramo.ToString());
-            textBoxValor.Text = numero.ToString("N0");
-
-            numero = decimal.Parse(liqgastos.curValorAdicional.ToString());
-            textBoxAdicional.Text = numero.ToString("N0");
-
-            numero = decimal.Parse(liqgastos.curValorTotal.ToString());
-            textBoxTotal.Text = numero.ToString("N0");
-
-        }
 
         private void textBoxValor_TextChanged(object sender, EventArgs e)
         {
@@ -749,9 +776,15 @@ namespace MetalLiqViajes_Forms
                         break;
                 }
             }
+        }
 
-
-
+        private static void CargaExection(Exception ex)
+        {
+            DialogResult result3 = MessageBox.Show(ex.Message,
+               "Error Cargando Datos",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Information,
+               MessageBoxDefaultButton.Button1);
         }
     }
 }
