@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalLiqViajes_UtilDatos", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalLiqViajes_Forms", "MetalLiqViajes_Forms\MetalLiqViajes_Forms\MetalLiqViajes_Forms.csproj", "{C08C0618-7EBD-4EEB-9A6F-68FCF0FDEC44}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Referencias", "Referencias", "{054FFAED-F6A9-48D3-A0C5-71E5C67EFDC3}"
+	ProjectSection(SolutionItems) = preProject
+		Referencias\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll = Referencias\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Credinet|Any CPU = Credinet|Any CPU

@@ -649,6 +649,7 @@ namespace MetalLiqViajes_Forms
         private void CargarDatosDetalle()
         {
             tramosAsignadosList = TramosAsignadosRutaController.Instance.GetBy_lngIdRegistro(int.Parse(iRegistroViajeDTO.IdRegistro.ToString()));
+            tramosAsignadosList = tramosAsignadosList.Where(t => t.logAjuste.Value == false).OrderBy(o => o.RegistroId).ToList();
             dataGridViewLiqRutas.DataSource = tramosAsignadosList.ToList();
             dataGridViewLiqRutas.Refresh();
 
@@ -678,6 +679,7 @@ namespace MetalLiqViajes_Forms
             List<LiqViajes_Bll_Data.TramosReportesLiqVehiculos> tramosReporteLiqVehiculosList = LiqViajes_Bll_Data.TramosReportesLiqVehiculosController.Instance.GetBy_Registro(lngIdRegistro);
 
             List<LiqViajes_Bll_Data.TramosConsultaAnticipos> tramosconsultaanticipoList = LiqViajes_Bll_Data.TramosConsultaAnticiposController.Instance.GetBy_RegistroViaje(lngIdRegistro);
+            tramosconsultaanticipoList = tramosconsultaanticipoList.OrderBy(o => o.Fecha).ToList();
 
             List<LiqViajes_Bll_Data.LiquidacionPlanilla> liqplanillalist = LiqViajes_Bll_Data.LiquidacionPlanillaController.Instance.GetBy_RegistroViaje(lngIdRegistro);
 
