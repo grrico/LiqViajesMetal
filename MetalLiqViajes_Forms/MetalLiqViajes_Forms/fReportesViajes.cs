@@ -354,44 +354,51 @@ namespace MetalLiqViajes_Forms
             textBoxObservacion.Text = liquidacionGastos.strObservaciones.ToUpper();
 
             labelTituloRegistroGasto.Text = liquidacionGastos.strDescripcion.ToUpper();
-
-            long INit = long.Parse(liquidacionGastos.nitTercero);
-
-            LiqViajes_Bll_Data.TercerosDTO terceroDto = tercerosDTOList.Where(t => t.Nit == INit).FirstOrDefault();
-            if (terceroDto != null)
+            if (liquidacionGastos.nitTercero != null)
             {
-                comboBoxTerceros.SelectedText = liquidacionGastos.NombreTercero;
-                comboBoxTerceros.SelectedValue = liquidacionGastos.nitTercero;
+                #region comboBoxTerceros
+
+                long INit = long.Parse(liquidacionGastos.nitTercero);
+                LiqViajes_Bll_Data.TercerosDTO terceroDto = tercerosDTOList.Where(t => t.Nit == INit).FirstOrDefault();
+                if (terceroDto != null)
+                {
+                    comboBoxTerceros.SelectedItem = terceroDto;
+                }
+                else
+                {
+                    comboBoxTerceros.SelectedIndex = 0;
+
+                }
+                switch (liquidacionGastos.intRowRegistro)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 13:
+                    case 14:
+                    case 16:
+                    case 17:
+                    case 23:
+                    case 27:
+                    case 28:
+                    case 29:
+                    case 990:
+                        btnAplicarCambio.Visible = false;
+                        break;
+                    default:
+                        btnAplicarCambio.Visible = true;
+                        break;
+                }
+                #endregion
             }
             else
             {
-                comboBoxTerceros.SelectedIndex = 0;
-            
+                comboBoxTerceros.Visible = false;
+                btnAplicarCambio.Visible = false;
             }
-            switch (liquidacionGastos.intRowRegistro)
-            {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 13:
-                case 14:
-                case 16:
-                case 17:
-                case 23:
-                case 27:
-                case 28:
-                case 29:
-                case 990:
-                    btnAplicarCambio.Visible = false;
-                    break;
-                default:
-                    btnAplicarCambio.Visible = true;
-                    break;
-            }
-
 
 
         }

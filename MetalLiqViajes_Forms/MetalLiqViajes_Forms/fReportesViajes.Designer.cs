@@ -1784,11 +1784,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxTerceros.DataSource = this.tercerosDTOBindingSource;
             this.comboBoxTerceros.DisplayMember = "NombreTercero";
-            this.comboBoxTerceros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxTerceros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTerceros.FormattingEnabled = true;
             this.comboBoxTerceros.Location = new System.Drawing.Point(6, 190);
             this.comboBoxTerceros.Name = "comboBoxTerceros";
-            this.comboBoxTerceros.Size = new System.Drawing.Size(374, 23);
+            this.comboBoxTerceros.Size = new System.Drawing.Size(374, 21);
             this.comboBoxTerceros.TabIndex = 2;
             this.comboBoxTerceros.ValueMember = "Nit";
             // 
