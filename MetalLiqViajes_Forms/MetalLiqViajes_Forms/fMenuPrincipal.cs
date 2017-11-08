@@ -22,6 +22,14 @@ namespace MetalLiqViajes_Forms
         private void fMenuPrincipal_Load(object sender, EventArgs e)
         {
             MenuReportes();
+
+            if (!System.Diagnostics.EventLog.SourceExists("MetalOlapEvent"))
+                System.Diagnostics.EventLog.CreateEventSource("MetalOlapEvent", "MetalOlapLop");
+
+            MetalOlapEventLog.Source = "MetalOlapEvent";
+            MetalOlapEventLog.Log = "MetalOlapLop";
+
+
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)

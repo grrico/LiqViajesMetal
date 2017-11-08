@@ -1,6 +1,7 @@
 ﻿using LiqViajes_Bll_Data;
 using Microsoft.Reporting.WinForms;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,8 @@ namespace MetalLiqViajes_Forms
         private UtilYear utilyear;
         private UtilMonth ultilmonth;
         private UtilPlaca ultilplaca;
+        private ArrayList listplacas;
+        private bool swtWsEnProceso;
         private string Nit { get; set; }
         private bool iCargaCompleta { get; set; }
         private int RowDataGridGasto { get; set; }
@@ -534,6 +537,80 @@ namespace MetalLiqViajes_Forms
 
 
         }
+        private void textBoxValor_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string valorTexto = textBoxValor.Text.Replace(",", "");
+                if (valorTexto != "")
+                {
+                    decimal valor = decimal.Parse(valorTexto);
+                    string st = textBoxValor.Text.Replace(",", "");
+                    if (st != "")
+                    {
+                        try
+                        {
+                            bool final = false;
+                            int pos = textBoxValor.SelectionStart;
+                            final = (pos == textBoxValor.Text.Length);
+                            double numero = Convert.ToDouble(textBoxValor.Text);
+                            textBoxValor.Text = numero.ToString("N0");
+                            if (final) pos++;
+                            textBoxValor.SelectionStart = pos;
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Debe ingresar un valor numérico", "Jurídico", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxValor.Text = "";
+                textBoxValor.Refresh();
+            }
+        }
+
+        private void dataGridViewLiqGastos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < dataGridViewLiqGastos.RowCount; i++)
+            {
+                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[i].DataBoundItem as LiquidacionGastos;
+                switch (liqgastos.intRowRegistro)
+                {
+
+                    case 10:
+                    case 11:
+                    case 12:
+
+                        System.Windows.Forms.DataGridViewCellStyle norStyle = new System.Windows.Forms.DataGridViewCellStyle();
+                        norStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle = norStyle;
+
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.MintCream;
+                        break;
+                    case 13:
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
+                        break;
+                    case 14:
+                    case 16:
+                    case 17:
+                    case 23:
+                    case 27:
+                    case 28:
+                    case 29:
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.Moccasin;
+                        dataGridViewLiqGastos.Rows[i].Visible = false;
+                        break;
+                    case 990:
+                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.SlateBlue;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         private void CargaRegistroViaje(int Ano)
         {
@@ -708,79 +785,112 @@ namespace MetalLiqViajes_Forms
             reportViewer.RefreshReport();
         }
 
-
-        private void textBoxValor_TextChanged(object sender, EventArgs e)
+        private void CargarUltimaUbicacion()
         {
             try
             {
-                string valorTexto = textBoxValor.Text.Replace(",", "");
-                if (valorTexto != "")
+                if (swtWsEnProceso) return;
+                swtWsEnProceso = true;
+                listplacas = new ArrayList();
+                listplacas.Add("TDZ583");
+                listplacas.Add("TDZ584");
+                listplacas.Add("TRH902");
+                listplacas.Add("TRH903");
+                listplacas.Add("TRI126");
+                listplacas.Add("TRI264");
+                listplacas.Add("TRI266");
+                listplacas.Add("TRJ680");
+                listplacas.Add("TRJ681");
+                listplacas.Add("TRK451");
+                listplacas.Add("TRK452");
+                MetalOlap_Service.EventsSatrac.getEvents servicio = new MetalOlap_Service.EventsSatrac.getEvents();
+                DataTable dt;
+                string UserName = MetalOlap_Service.Properties.Settings.Default.UserName;
+                string Password = MetalOlap_Service.Properties.Settings.Default.Password;
+                string PhysicalID = "*";
+                decimal Latutud = 0;
+                decimal Longitud = 0;
+                string Placa = "";
+                string error = "";
+                System.Data.DataSet datosPlaca = null;
+
+                #region getLastEvent
+                RutaSatrackLastEvents m_RutaSatrackLastEvents;
+                RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
+                datosPlaca = servicio.getLastEvent(UserName, Password, PhysicalID);
+                if (datosPlaca.Tables.Count > 0)
                 {
-                    decimal valor = decimal.Parse(valorTexto);
-                    string st = textBoxValor.Text.Replace(",", "");
-                    if (st != "")
+                    dt = datosPlaca.Tables[0];
+                    if (dt != null)
                     {
-                        try
+                        foreach (DataRow dr in dt.Rows)
                         {
-                            bool final = false;
-                            int pos = textBoxValor.SelectionStart;
-                            final = (pos == textBoxValor.Text.Length);
-                            double numero = Convert.ToDouble(textBoxValor.Text);
-                            textBoxValor.Text = numero.ToString("N0");
-                            if (final) pos++;
-                            textBoxValor.SelectionStart = pos;
-                        }
-                        catch
-                        {
+                            if (listplacas.Contains((string)dr["Placa"]))
+                            {
+                                Placa = (string)dr["Placa"];
+                                Longitud = (decimal)dr["Longitud"];
+                                Latutud = (decimal)dr["Latitud"];
+                                m_RutaSatrackLastEvents = RutaSatrackLastEventsController.Instance.Get(Placa);
+                                if (m_RutaSatrackLastEvents != null)
+                                {
+                                    if ((m_RutaSatrackLastEvents.Latitud != Latutud) && (m_RutaSatrackLastEvents.Longitud != Longitud))
+                                    {
+                                        m_RutaSatrackHistoryEvents = new RutaSatrackHistoryEvents();
+                                        m_RutaSatrackHistoryEvents.Placa = m_RutaSatrackLastEvents.Placa;
+                                        m_RutaSatrackHistoryEvents.FechaSistema = m_RutaSatrackLastEvents.FechaSistema;
+                                        m_RutaSatrackHistoryEvents.FechaHora_GPS = m_RutaSatrackLastEvents.FechaHora_GPS;
+                                        m_RutaSatrackHistoryEvents.EventoPrioridad = m_RutaSatrackLastEvents.EventoPrioridad;
+                                        m_RutaSatrackHistoryEvents.VelocidadSentido = m_RutaSatrackLastEvents.VelocidadSentido;
+                                        m_RutaSatrackHistoryEvents.Edad_Posicion = m_RutaSatrackLastEvents.Edad_Posicion;
+                                        m_RutaSatrackHistoryEvents.Ubicacion = m_RutaSatrackLastEvents.Ubicacion;
+                                        m_RutaSatrackHistoryEvents.Longitud = m_RutaSatrackLastEvents.Longitud;
+                                        m_RutaSatrackHistoryEvents.Latitud = m_RutaSatrackLastEvents.Latitud;
+                                        RutaSatrackHistoryEventsController.Instance.Create(m_RutaSatrackHistoryEvents);
+
+                                        //------------------------------------
+                                        // actualiza una placa y genera el historico
+                                        m_RutaSatrackLastEvents.GenerateUndo();
+                                        m_RutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
+                                        m_RutaSatrackLastEvents.FechaHora_GPS = (DateTime)dr["Fecha GPS"];
+                                        m_RutaSatrackLastEvents.EventoPrioridad = (string)dr["Evento / Prioridad"];
+                                        m_RutaSatrackLastEvents.VelocidadSentido = (string)dr["Velocidad y sentido"];
+                                        m_RutaSatrackLastEvents.Edad_Posicion = (string)dr["Edad posición"];
+                                        m_RutaSatrackLastEvents.Ubicacion = (string)dr["Ubicación"];
+                                        m_RutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
+                                        m_RutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
+                                        error = "";
+                                        if (!MetalOlap_Bll_Data.RutaSatrackLastEventsController.Instance.UpdateChanges(m_RutaSatrackLastEvents, out error))
+                                        {
+                                            //
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // llegan las placas nuevas
+                                    iRutaSatrackLastEvents = new RutaSatrackLastEvents();
+                                    iRutaSatrackLastEvents.Placa = (string)dr["Placa"];
+                                    iRutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
+                                    iRutaSatrackLastEvents.FechaHora_GPS = (DateTime)dr["Fecha GPS"];
+                                    iRutaSatrackLastEvents.EventoPrioridad = (string)dr["Evento / Prioridad"];
+                                    iRutaSatrackLastEvents.VelocidadSentido = (string)dr["Velocidad y sentido"];
+                                    iRutaSatrackLastEvents.Edad_Posicion = (string)dr["Edad posición"];
+                                    iRutaSatrackLastEvents.Ubicacion = (string)dr["Ubicación"];
+                                    iRutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
+                                    iRutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
+                                    RutaSatrackLastEventsController.Instance.Create(iRutaSatrackLastEvents);
+                                }
+                            }
                         }
                     }
                 }
+                swtWsEnProceso = false;
+                return;
+                #endregion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: Debe ingresar un valor numérico", "Jurídico", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBoxValor.Text = "";
-                textBoxValor.Refresh();
-            }
-        }
-
-        private void dataGridViewLiqGastos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            for (int i = 0; i < dataGridViewLiqGastos.RowCount; i++)
-            {
-                LiquidacionGastos liqgastos = dataGridViewLiqGastos.Rows[i].DataBoundItem as LiquidacionGastos;
-                switch (liqgastos.intRowRegistro)
-                {
-
-                    case 10:
-                    case 11:
-                    case 12:
-
-                        System.Windows.Forms.DataGridViewCellStyle norStyle = new System.Windows.Forms.DataGridViewCellStyle();
-                        norStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle = norStyle;
-
-                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.MintCream;
-                        break;
-                    case 13:
-                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
-                        break;
-                    case 14:
-                    case 16:
-                    case 17:
-                    case 23:
-                    case 27:
-                    case 28:
-                    case 29:
-                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.Moccasin;
-                        dataGridViewLiqGastos.Rows[i].Visible = false;
-                        break;
-                    case 990:
-                        dataGridViewLiqGastos.Rows[i].DefaultCellStyle.BackColor = Color.SlateBlue;
-                        break;
-                    default:
-                        break;
-                }
+                swtWsEnProceso = false;
             }
         }
 
