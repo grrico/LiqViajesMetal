@@ -341,6 +341,7 @@
             this.dataGridViewTextBoxColumn3});
             this.dataGridViewConductor.DataSource = this.conductorBindingSource1;
             this.dataGridViewConductor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewConductor.EnableHeadersVisualStyles = false;
             this.dataGridViewConductor.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
@@ -663,6 +664,7 @@
             this.placaTrailerDataGridViewTextBoxColumn});
             this.dataGridViewLiqRutas.DataSource = this.tramosAsignadosRutaBindingSource;
             this.dataGridViewLiqRutas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewLiqRutas.EnableHeadersVisualStyles = false;
             this.dataGridViewLiqRutas.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewLiqRutas.Name = "dataGridViewLiqRutas";
             this.dataGridViewLiqRutas.ReadOnly = true;
@@ -1178,6 +1180,7 @@
             this.valorDataGridViewTextBoxColumn});
             this.dataGridViewLavadas.DataSource = this.tramosLavadasBindingSource;
             this.dataGridViewLavadas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewLavadas.EnableHeadersVisualStyles = false;
             this.dataGridViewLavadas.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewLavadas.Name = "dataGridViewLavadas";
             this.dataGridViewLavadas.ReadOnly = true;
@@ -1273,6 +1276,7 @@
             this.valorTotalDataGridViewTextBoxColumn1});
             this.dataGridViewCuentasGastos.DataSource = this.tramosGastosBindingSource;
             this.dataGridViewCuentasGastos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCuentasGastos.EnableHeadersVisualStyles = false;
             this.dataGridViewCuentasGastos.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewCuentasGastos.Name = "dataGridViewCuentasGastos";
             this.dataGridViewCuentasGastos.ReadOnly = true;
@@ -1382,6 +1386,7 @@
             this.valorSaldoDataGridViewTextBoxColumn});
             this.dataGridViewViajes.DataSource = this.registroViajeDTOBindingSource;
             this.dataGridViewViajes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewViajes.EnableHeadersVisualStyles = false;
             this.dataGridViewViajes.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewViajes.Name = "dataGridViewViajes";
             this.dataGridViewViajes.ReadOnly = true;
@@ -1470,6 +1475,7 @@
             this.dmsNotaDataGridViewTextBoxColumn});
             this.dataGridViewAnticipo.DataSource = this.anticiposDmsListBindingSource;
             this.dataGridViewAnticipo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewAnticipo.EnableHeadersVisualStyles = false;
             this.dataGridViewAnticipo.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewAnticipo.Name = "dataGridViewAnticipo";
             this.dataGridViewAnticipo.ReadOnly = true;

@@ -16,33 +16,25 @@ namespace MetalLiqViajes_Forms
     {
         private List<LiqViajes_Bll_Data.AnticiposDms> anticiposdmslist;
         private LiqViajes_Bll_Data.AnticiposDms anticiposdms;
-
         private List<LiqViajes_Bll_Data.RegistroViajeDTO> registroviajelist;
         private List<LiqViajes_Bll_Data.RegistroViajeDTO> registroviajelistFiltro;
         private LiqViajes_Bll_Data.RegistroViajeDTO iRegistroViajeDTO;
         private Conductor conductor;
-
         private List<LiqViajes_Bll_Data.TramosGastos> tramosGastosList;
-
         private List<TramosAsignadosRuta> tramosAsignadosList;
         private TramosAsignadosRuta tramosAsignados;
-
         private List<LiqViajes_Bll_Data.TercerosDTO> tercerosDTOList;
-
         private List<LiquidacionRutas> liquidacionrutaslist;
         private LiquidacionRutas liquidacionrutas;
-
         private LiquidacionGastos liquidacionGastos;
-
         private List<LiqViajes_Bll_Data.LiquidacionGastos> liquidacionGastosList { get; set; }
-
         private UtiliDRegistro utilidregistro;
         private UtilYear utilyear;
         private UtilMonth ultilmonth;
         private UtilPlaca ultilplaca;
         private string Nit { get; set; }
-
         private bool iCargaCompleta { get; set; }
+        private int RowDataGridGasto { get; set; }
 
         public fReportesViajes()
         {
@@ -237,6 +229,9 @@ namespace MetalLiqViajes_Forms
                 liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
                 liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
 
+                // gridview1.row(0).cell(0).text = textbox1.text;
+                dataGridViewLiqGastos.Refresh();// //. .rows[RowDataGridGasto].
+
             }
             #endregion
 
@@ -340,6 +335,8 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewLiqGastos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            RowDataGridGasto = e.RowIndex;
+
             liquidacionGastos = dataGridViewLiqGastos.Rows[e.RowIndex].DataBoundItem as LiquidacionGastos;
 
             decimal numero = decimal.Parse(liquidacionGastos.curValorTramo.ToString());
