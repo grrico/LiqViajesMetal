@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MetalLiqViajes_Services.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MetalLiqViajes_Services_EventsSatrac_getEvents" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://webcloud.satrack.com/WebServiceEventos/getEvents.asmx</Value>
+    </Setting>
+    <Setting Name="Interval" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">400000</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">jgmaya</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">2277</Value>
+    </Setting>
+    <Setting Name="IntervalMadrugada" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">1800000</Value>
+    </Setting>
+    <Setting Name="HoraInicioTopeMadrudada" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="IntervalNoche" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">1800000</Value>
+    </Setting>
+    <Setting Name="HoraInicioMaximoNoche" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">21</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
