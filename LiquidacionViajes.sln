@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Referencias", "Referencias"
 		Referencias\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll = Referencias\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalLiqViajes_Services", "MetalLiqViajes_Services\MetalLiqViajes_Services.csproj", "{859CF211-7662-45DF-86BA-9B747BBF5BD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Credinet|Any CPU = Credinet|Any CPU
@@ -102,6 +104,30 @@ Global
 		{C08C0618-7EBD-4EEB-9A6F-68FCF0FDEC44}.Release|x64.Build.0 = Release|Any CPU
 		{C08C0618-7EBD-4EEB-9A6F-68FCF0FDEC44}.Release|x86.ActiveCfg = Release|Any CPU
 		{C08C0618-7EBD-4EEB-9A6F-68FCF0FDEC44}.Release|x86.Build.0 = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Credinet|Any CPU.ActiveCfg = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Credinet|Any CPU.Build.0 = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Credinet|x64.ActiveCfg = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Credinet|x64.Build.0 = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Credinet|x86.ActiveCfg = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Credinet|x86.Build.0 = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.DEBUG 64|Any CPU.ActiveCfg = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.DEBUG 64|Any CPU.Build.0 = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.DEBUG 64|x64.ActiveCfg = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.DEBUG 64|x64.Build.0 = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.DEBUG 64|x86.ActiveCfg = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.DEBUG 64|x86.Build.0 = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Debug|x64.Build.0 = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Debug|x86.Build.0 = Debug|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Release|x64.ActiveCfg = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Release|x64.Build.0 = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Release|x86.ActiveCfg = Release|Any CPU
+		{859CF211-7662-45DF-86BA-9B747BBF5BD5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
