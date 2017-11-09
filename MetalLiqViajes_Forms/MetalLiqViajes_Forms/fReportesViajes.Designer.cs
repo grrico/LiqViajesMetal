@@ -74,6 +74,7 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBoxiRegistroViaje = new System.Windows.Forms.TextBox();
+            this.btnSatrac = new System.Windows.Forms.Button();
             this.btnQuitarFintro = new System.Windows.Forms.Button();
             this.btnBuscaViajes = new System.Windows.Forms.Button();
             this.btnRefrescar = new System.Windows.Forms.Button();
@@ -236,7 +237,11 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSatrac = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.webBrowserMaps = new System.Windows.Forms.WebBrowser();
+            this.btnGetMaps = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -281,6 +286,9 @@
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -315,7 +323,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(3, 3);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(964, 193);
+            this.panelTop.Size = new System.Drawing.Size(1022, 193);
             this.panelTop.TabIndex = 0;
             // 
             // panel3
@@ -324,7 +332,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(255, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(709, 193);
+            this.panel3.Size = new System.Drawing.Size(767, 193);
             this.panel3.TabIndex = 4;
             // 
             // dataGridViewConductor
@@ -347,7 +355,7 @@
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
             this.dataGridViewConductor.RowHeadersWidth = 10;
-            this.dataGridViewConductor.Size = new System.Drawing.Size(709, 193);
+            this.dataGridViewConductor.Size = new System.Drawing.Size(767, 193);
             this.dataGridViewConductor.TabIndex = 0;
             this.dataGridViewConductor.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConductor_RowEnter);
             // 
@@ -445,6 +453,16 @@
             this.textBoxiRegistroViaje.Name = "textBoxiRegistroViaje";
             this.textBoxiRegistroViaje.Size = new System.Drawing.Size(100, 20);
             this.textBoxiRegistroViaje.TabIndex = 3;
+            // 
+            // btnSatrac
+            // 
+            this.btnSatrac.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
+            this.btnSatrac.Location = new System.Drawing.Point(81, 150);
+            this.btnSatrac.Name = "btnSatrac";
+            this.btnSatrac.Size = new System.Drawing.Size(43, 37);
+            this.btnSatrac.TabIndex = 2;
+            this.btnSatrac.UseVisualStyleBackColor = true;
+            this.btnSatrac.Click += new System.EventHandler(this.btnSatrac_Click);
             // 
             // btnQuitarFintro
             // 
@@ -585,8 +603,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.panel4);
             this.splitContainer2.Panel2.Controls.Add(this.splitter3);
             this.splitContainer2.Panel2.Controls.Add(this.panel1);
-            this.splitContainer2.Size = new System.Drawing.Size(964, 425);
-            this.splitContainer2.SplitterDistance = 224;
+            this.splitContainer2.Size = new System.Drawing.Size(1022, 596);
+            this.splitContainer2.SplitterDistance = 314;
             this.splitContainer2.TabIndex = 0;
             // 
             // dataGridViewLiqRutas
@@ -671,7 +689,7 @@
             this.dataGridViewLiqRutas.Name = "dataGridViewLiqRutas";
             this.dataGridViewLiqRutas.ReadOnly = true;
             this.dataGridViewLiqRutas.RowHeadersWidth = 10;
-            this.dataGridViewLiqRutas.Size = new System.Drawing.Size(960, 220);
+            this.dataGridViewLiqRutas.Size = new System.Drawing.Size(1018, 310);
             this.dataGridViewLiqRutas.TabIndex = 0;
             this.dataGridViewLiqRutas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqRutas_RowEnter);
             // 
@@ -1164,7 +1182,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(612, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(348, 193);
+            this.panel4.Size = new System.Drawing.Size(406, 274);
             this.panel4.TabIndex = 2;
             // 
             // dataGridViewLavadas
@@ -1187,7 +1205,7 @@
             this.dataGridViewLavadas.Name = "dataGridViewLavadas";
             this.dataGridViewLavadas.ReadOnly = true;
             this.dataGridViewLavadas.RowHeadersWidth = 10;
-            this.dataGridViewLavadas.Size = new System.Drawing.Size(348, 193);
+            this.dataGridViewLavadas.Size = new System.Drawing.Size(406, 274);
             this.dataGridViewLavadas.TabIndex = 0;
             // 
             // lngIdRegistroViajeDataGridViewTextBoxColumn
@@ -1252,7 +1270,7 @@
             // 
             this.splitter3.Location = new System.Drawing.Point(602, 0);
             this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(10, 193);
+            this.splitter3.Size = new System.Drawing.Size(10, 274);
             this.splitter3.TabIndex = 1;
             this.splitter3.TabStop = false;
             // 
@@ -1262,7 +1280,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(602, 193);
+            this.panel1.Size = new System.Drawing.Size(602, 274);
             this.panel1.TabIndex = 0;
             // 
             // dataGridViewCuentasGastos
@@ -1283,7 +1301,7 @@
             this.dataGridViewCuentasGastos.Name = "dataGridViewCuentasGastos";
             this.dataGridViewCuentasGastos.ReadOnly = true;
             this.dataGridViewCuentasGastos.RowHeadersWidth = 10;
-            this.dataGridViewCuentasGastos.Size = new System.Drawing.Size(602, 193);
+            this.dataGridViewCuentasGastos.Size = new System.Drawing.Size(602, 274);
             this.dataGridViewCuentasGastos.TabIndex = 0;
             // 
             // descripcionTerceroDataGridViewTextBoxColumn
@@ -1333,11 +1351,12 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage4);
             this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage5);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(978, 457);
+            this.tabControl.Size = new System.Drawing.Size(1036, 628);
             this.tabControl.TabIndex = 1;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1349,7 +1368,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(970, 431);
+            this.tabPage1.Size = new System.Drawing.Size(1028, 602);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Resumen";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1369,8 +1388,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAnticipo);
-            this.splitContainer1.Size = new System.Drawing.Size(964, 219);
-            this.splitContainer1.SplitterDistance = 76;
+            this.splitContainer1.Size = new System.Drawing.Size(1022, 390);
+            this.splitContainer1.SplitterDistance = 135;
             this.splitContainer1.TabIndex = 3;
             // 
             // dataGridViewViajes
@@ -1393,7 +1412,7 @@
             this.dataGridViewViajes.Name = "dataGridViewViajes";
             this.dataGridViewViajes.ReadOnly = true;
             this.dataGridViewViajes.RowHeadersWidth = 15;
-            this.dataGridViewViajes.Size = new System.Drawing.Size(962, 74);
+            this.dataGridViewViajes.Size = new System.Drawing.Size(1020, 133);
             this.dataGridViewViajes.TabIndex = 0;
             this.dataGridViewViajes.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewViajes_RowEnter);
             // 
@@ -1482,7 +1501,7 @@
             this.dataGridViewAnticipo.Name = "dataGridViewAnticipo";
             this.dataGridViewAnticipo.ReadOnly = true;
             this.dataGridViewAnticipo.RowHeadersWidth = 15;
-            this.dataGridViewAnticipo.Size = new System.Drawing.Size(962, 137);
+            this.dataGridViewAnticipo.Size = new System.Drawing.Size(1020, 249);
             this.dataGridViewAnticipo.TabIndex = 0;
             // 
             // dmsTipoDataGridViewTextBoxColumn
@@ -1590,7 +1609,7 @@
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter2.Location = new System.Drawing.Point(3, 196);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(964, 13);
+            this.splitter2.Size = new System.Drawing.Size(1022, 13);
             this.splitter2.TabIndex = 2;
             this.splitter2.TabStop = false;
             // 
@@ -1600,7 +1619,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(970, 431);
+            this.tabPage2.Size = new System.Drawing.Size(1028, 602);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Detalle";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1616,7 +1635,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(970, 431);
+            this.tabPage4.Size = new System.Drawing.Size(1028, 602);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Liquidación";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1627,7 +1646,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 53);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(569, 284);
+            this.panel8.Size = new System.Drawing.Size(627, 455);
             this.panel8.TabIndex = 5;
             // 
             // dataGridViewLiqGastos
@@ -1652,7 +1671,7 @@
             this.dataGridViewLiqGastos.Name = "dataGridViewLiqGastos";
             this.dataGridViewLiqGastos.ReadOnly = true;
             this.dataGridViewLiqGastos.RowHeadersWidth = 10;
-            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(569, 284);
+            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(627, 455);
             this.dataGridViewLiqGastos.TabIndex = 0;
             this.dataGridViewLiqGastos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewLiqGastos_DataBindingComplete);
             this.dataGridViewLiqGastos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_RowEnter);
@@ -1749,9 +1768,9 @@
             // 
             this.splitter5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitter5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter5.Location = new System.Drawing.Point(572, 53);
+            this.splitter5.Location = new System.Drawing.Point(630, 53);
             this.splitter5.Name = "splitter5";
-            this.splitter5.Size = new System.Drawing.Size(10, 284);
+            this.splitter5.Size = new System.Drawing.Size(10, 455);
             this.splitter5.TabIndex = 4;
             this.splitter5.TabStop = false;
             // 
@@ -1770,9 +1789,9 @@
             this.panel7.Controls.Add(this.labelTituloRegistroGasto);
             this.panel7.Controls.Add(this.label5);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(582, 53);
+            this.panel7.Location = new System.Drawing.Point(640, 53);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(385, 284);
+            this.panel7.Size = new System.Drawing.Size(385, 455);
             this.panel7.TabIndex = 3;
             // 
             // btnAplicarCambio
@@ -1809,7 +1828,7 @@
             this.textBoxObservacion.MaxLength = 500;
             this.textBoxObservacion.Multiline = true;
             this.textBoxObservacion.Name = "textBoxObservacion";
-            this.textBoxObservacion.Size = new System.Drawing.Size(376, 38);
+            this.textBoxObservacion.Size = new System.Drawing.Size(376, 209);
             this.textBoxObservacion.TabIndex = 1;
             // 
             // label8
@@ -1905,18 +1924,18 @@
             this.splitter4.BackColor = System.Drawing.Color.Cornsilk;
             this.splitter4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitter4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter4.Location = new System.Drawing.Point(3, 337);
+            this.splitter4.Location = new System.Drawing.Point(3, 508);
             this.splitter4.Name = "splitter4";
-            this.splitter4.Size = new System.Drawing.Size(964, 10);
+            this.splitter4.Size = new System.Drawing.Size(1022, 10);
             this.splitter4.TabIndex = 2;
             this.splitter4.TabStop = false;
             // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(3, 347);
+            this.panel6.Location = new System.Drawing.Point(3, 518);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(964, 81);
+            this.panel6.Size = new System.Drawing.Size(1022, 81);
             this.panel6.TabIndex = 1;
             // 
             // panel5
@@ -1924,7 +1943,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(964, 50);
+            this.panel5.Size = new System.Drawing.Size(1022, 50);
             this.panel5.TabIndex = 0;
             // 
             // tabPage3
@@ -1932,7 +1951,7 @@
             this.tabPage3.Controls.Add(this.reportViewer);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(970, 431);
+            this.tabPage3.Size = new System.Drawing.Size(1028, 602);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reporte";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1958,24 +1977,62 @@
             this.reportViewer.LocalReport.ReportEmbeddedResource = "MetalLiqViajes_Forms.Reportes.ReportViajes.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(0, 0);
             this.reportViewer.Name = "reportViewer";
-            this.reportViewer.Size = new System.Drawing.Size(970, 431);
+            this.reportViewer.Size = new System.Drawing.Size(1028, 602);
             this.reportViewer.TabIndex = 0;
             // 
-            // btnSatrac
+            // tabPage5
             // 
-            this.btnSatrac.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
-            this.btnSatrac.Location = new System.Drawing.Point(81, 150);
-            this.btnSatrac.Name = "btnSatrac";
-            this.btnSatrac.Size = new System.Drawing.Size(43, 37);
-            this.btnSatrac.TabIndex = 2;
-            this.btnSatrac.UseVisualStyleBackColor = true;
-            this.btnSatrac.Click += new System.EventHandler(this.btnSatrac_Click);
+            this.tabPage5.Controls.Add(this.panel10);
+            this.tabPage5.Controls.Add(this.panel9);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1028, 602);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Mapa";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btnGetMaps);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1028, 60);
+            this.panel9.TabIndex = 0;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.webBrowserMaps);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 60);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1028, 542);
+            this.panel10.TabIndex = 1;
+            // 
+            // webBrowserMaps
+            // 
+            this.webBrowserMaps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserMaps.Location = new System.Drawing.Point(0, 0);
+            this.webBrowserMaps.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserMaps.Name = "webBrowserMaps";
+            this.webBrowserMaps.Size = new System.Drawing.Size(1028, 542);
+            this.webBrowserMaps.TabIndex = 0;
+            // 
+            // btnGetMaps
+            // 
+            this.btnGetMaps.Location = new System.Drawing.Point(893, 19);
+            this.btnGetMaps.Name = "btnGetMaps";
+            this.btnGetMaps.Size = new System.Drawing.Size(75, 23);
+            this.btnGetMaps.TabIndex = 0;
+            this.btnGetMaps.Text = "button1";
+            this.btnGetMaps.UseVisualStyleBackColor = true;
+            this.btnGetMaps.Click += new System.EventHandler(this.btnGetMaps_Click);
             // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 457);
+            this.ClientSize = new System.Drawing.Size(1036, 628);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fReportesViajes";
@@ -2027,6 +2084,9 @@
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2219,5 +2279,10 @@
         private System.Windows.Forms.Button btnAplicarCambio;
         private System.Windows.Forms.Label labelTituloRegistroGasto;
         private System.Windows.Forms.Button btnSatrac;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.WebBrowser webBrowserMaps;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btnGetMaps;
     }
 }

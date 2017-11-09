@@ -910,5 +910,14 @@ namespace MetalLiqViajes_Forms
                MessageBoxDefaultButton.Button1);
         }
 
+        private void btnGetMaps_Click(object sender, EventArgs e)
+        {
+            string latitude = "50.052282";
+            string longitude = "14.462447";
+            string url = "http://maps.google.com/maps?q=" + latitude + "," + longitude;
+            url = "https://maps.googleapis.com/maps/api/staticmap?size=400x400&path=weight:3%7Ccolor:orange%7Cenc:polyline_data&key=AIzaSyCfTKHJ3a2KDXXAKvYusZ8gzxkgbWhtnfw";
+            url = @"https://maps.googleapis.com/maps/api/staticmap?center=63.259591,-144.667969&zoom=6&size=400x400\&markers=color:blue%7Clabel:S%7C62.107733,-145.541936&markers=size:tiny%7Ccolor:green%7CDelta+Junction,AK\&markers=size:mid7Ccolor:0xFFFF00%7Clabel:C%7CTok,AK&key=AIzaSyCfTKHJ3a2KDXXAKvYusZ8gzxkgbWhtnfw";
+            webBrowserMaps.Navigate(url, null, null, "User-Agent: howtofix.pro rullz!");
+        }
     }
 }
