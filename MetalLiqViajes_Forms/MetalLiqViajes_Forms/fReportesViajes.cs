@@ -11,10 +11,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+
+
 namespace MetalLiqViajes_Forms
 {
     public partial class fReportesViajes : Form
     {
+
+        GMarkerGoogle marker;
+        GMapOverlay markerOverlay;
+
+        //Latitud	Longitud
+        //9.530720	-75.418800
+        double LatIncial = 9.530720;
+        double lngInicial = -75.418800;
+
         private List<LiqViajes_Bll_Data.AnticiposDms> anticiposdmslist;
         private LiqViajes_Bll_Data.AnticiposDms anticiposdms;
         private List<LiqViajes_Bll_Data.RegistroViajeDTO> registroviajelist;
@@ -912,12 +928,50 @@ namespace MetalLiqViajes_Forms
 
         private void btnGetMaps_Click(object sender, EventArgs e)
         {
-            string latitude = "50.052282";
-            string longitude = "14.462447";
-            string url = "http://maps.google.com/maps?q=" + latitude + "," + longitude;
-            url = "https://maps.googleapis.com/maps/api/staticmap?size=400x400&path=weight:3%7Ccolor:orange%7Cenc:polyline_data&key=AIzaSyCfTKHJ3a2KDXXAKvYusZ8gzxkgbWhtnfw";
-            url = @"https://maps.googleapis.com/maps/api/staticmap?center=63.259591,-144.667969&zoom=6&size=400x400\&markers=color:blue%7Clabel:S%7C62.107733,-145.541936&markers=size:tiny%7Ccolor:green%7CDelta+Junction,AK\&markers=size:mid7Ccolor:0xFFFF00%7Clabel:C%7CTok,AK&key=AIzaSyCfTKHJ3a2KDXXAKvYusZ8gzxkgbWhtnfw";
-            webBrowserMaps.Navigate(url, null, null, "User-Agent: howtofix.pro rullz!");
+            gMapControl.DragButton = MouseButtons.Left;
+            gMapControl.CanDragMap = true;
+            gMapControl.MapProvider = GMapProviders.GoogleMap;
+            gMapControl.Position = new PointLatLng(LatIncial, lngInicial);
+            gMapControl.MinZoom = 0;
+            gMapControl.MaxZoom = 24;
+            gMapControl.Zoom = 8;
+            gMapControl.AutoScroll = true;
+
+
+            // marcadores
+
+            markerOverlay = new GMapOverlay("Marcador");
+            marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), GMarkerGoogleType.green);
+            markerOverlay.Markers.Add(marker); // agregamos al mapa
+
+            // agregamos un tooltip de texto a los marcadores
+            marker.ToolTipMode = MarkerTooltipMode.Always; // para que se muestre todo el tiempo
+            marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", LatIncial, lngInicial);
+
+            // ahora agregamos el mapa y el marcador al map control.
+            gMapControl.Overlays.Add(markerOverlay);
+
+        }
+
+        private void gMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // se toman las coordenadas al dar duble clie al mapa
+
+            double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat; // recuperamos del mapa cuando damos doble clic
+            double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
+
+            // creamos el marcador para mover lo al lugar indicado
+            marker.Position = new PointLatLng(lat, lng);
+
+
+            // se agrega el mensaje al marcado (tooltip)
+            marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", lat, lng);
+
+        }
+
+        private void GeneraPoligono()
+        {
+
         }
     }
 }

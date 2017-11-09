@@ -236,12 +236,13 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.webBrowserMaps = new System.Windows.Forms.WebBrowser();
+            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnGetMaps = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -287,8 +288,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -1991,8 +1992,45 @@
             this.tabPage5.Text = "Mapa";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.gMapControl);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 60);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1028, 542);
+            this.panel10.TabIndex = 1;
+            // 
+            // gMapControl
+            // 
+            this.gMapControl.Bearing = 0F;
+            this.gMapControl.CanDragMap = true;
+            this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl.GrayScaleMode = false;
+            this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl.LevelsKeepInMemmory = 5;
+            this.gMapControl.Location = new System.Drawing.Point(8, 6);
+            this.gMapControl.MarkersEnabled = true;
+            this.gMapControl.MaxZoom = 2;
+            this.gMapControl.MinZoom = 2;
+            this.gMapControl.MouseWheelZoomEnabled = true;
+            this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl.Name = "gMapControl";
+            this.gMapControl.NegativeMode = false;
+            this.gMapControl.PolygonsEnabled = true;
+            this.gMapControl.RetryLoadTile = 0;
+            this.gMapControl.RoutesEnabled = true;
+            this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl.ShowTileGridLines = false;
+            this.gMapControl.Size = new System.Drawing.Size(1012, 540);
+            this.gMapControl.TabIndex = 0;
+            this.gMapControl.Zoom = 0D;
+            this.gMapControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl_MouseDoubleClick);
+            // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.button1);
             this.panel9.Controls.Add(this.btnGetMaps);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
@@ -2000,23 +2038,15 @@
             this.panel9.Size = new System.Drawing.Size(1028, 60);
             this.panel9.TabIndex = 0;
             // 
-            // panel10
+            // button1
             // 
-            this.panel10.Controls.Add(this.webBrowserMaps);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(0, 60);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1028, 542);
-            this.panel10.TabIndex = 1;
-            // 
-            // webBrowserMaps
-            // 
-            this.webBrowserMaps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserMaps.Location = new System.Drawing.Point(0, 0);
-            this.webBrowserMaps.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserMaps.Name = "webBrowserMaps";
-            this.webBrowserMaps.Size = new System.Drawing.Size(1028, 542);
-            this.webBrowserMaps.TabIndex = 0;
+            this.button1.Location = new System.Drawing.Point(787, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnGetMaps_Click);
             // 
             // btnGetMaps
             // 
@@ -2085,8 +2115,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2281,8 +2311,9 @@
         private System.Windows.Forms.Button btnSatrac;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.WebBrowser webBrowserMaps;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnGetMaps;
+        private System.Windows.Forms.Button button1;
+        private GMap.NET.WindowsForms.GMapControl gMapControl;
     }
 }
