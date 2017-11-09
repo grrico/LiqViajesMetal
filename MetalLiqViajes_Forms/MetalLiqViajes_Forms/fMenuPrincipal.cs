@@ -26,8 +26,8 @@ namespace MetalLiqViajes_Forms
             if (!System.Diagnostics.EventLog.SourceExists("MetalOlapEvent"))
                 System.Diagnostics.EventLog.CreateEventSource("MetalOlapEvent", "MetalOlapLop");
 
-            MetalOlapEventLog.Source = "MetalOlapEvent";
-            MetalOlapEventLog.Log = "MetalOlapLop";
+            //MetalOlapEventLog.Source = "MetalOlapEvent";
+            //MetalOlapEventLog.Log = "MetalOlapLop";
 
 
         }

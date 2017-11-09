@@ -100,7 +100,8 @@ namespace MetalLiqViajes_Forms.EventsSatrac {
         
         /// <remarks/>
         public getEvents() {
-            this.Url = global::MetalLiqViajes_Forms.Properties.Settings.Default.MetalLiqViajes_Forms_com_satrack_webcloud_getEvents;
+            //   .MetalLiqViajes_Forms_com_satrack_webcloud_getEvents
+            this.Url = global::MetalLiqViajes_Forms.Properties.Settings.Default.MetalLiqViajes_Forms_EventsSatrac_getEvents;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

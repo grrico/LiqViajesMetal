@@ -264,6 +264,11 @@ namespace MetalLiqViajes_Forms
 
         }
 
+        private void btnSatrac_Click(object sender, EventArgs e)
+        {
+            CargarUltimaUbicacion();
+        }
+
         private void comboBoxPlaca_SelectedIndexChanged(object sender, EventArgs e)
         {
             ultilplaca = comboBoxPlaca.SelectedItem as UtilPlaca;
@@ -537,6 +542,7 @@ namespace MetalLiqViajes_Forms
 
 
         }
+
         private void textBoxValor_TextChanged(object sender, EventArgs e)
         {
             try
@@ -803,10 +809,10 @@ namespace MetalLiqViajes_Forms
                 listplacas.Add("TRJ681");
                 listplacas.Add("TRK451");
                 listplacas.Add("TRK452");
-                MetalOlap_Service.EventsSatrac.getEvents servicio = new MetalOlap_Service.EventsSatrac.getEvents();
+                EventsSatrac.getEvents servicio = new EventsSatrac.getEvents();
                 DataTable dt;
-                string UserName = MetalOlap_Service.Properties.Settings.Default.UserName;
-                string Password = MetalOlap_Service.Properties.Settings.Default.Password;
+                string UserName = Properties.Settings.Default.UserName;
+                string Password = Properties.Settings.Default.Password;
                 string PhysicalID = "*";
                 decimal Latutud = 0;
                 decimal Longitud = 0;
@@ -817,6 +823,7 @@ namespace MetalLiqViajes_Forms
                 #region getLastEvent
                 RutaSatrackLastEvents m_RutaSatrackLastEvents;
                 RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
+                RutaSatrackLastEvents iRutaSatrackLastEvents;
                 datosPlaca = servicio.getLastEvent(UserName, Password, PhysicalID);
                 if (datosPlaca.Tables.Count > 0)
                 {
@@ -859,7 +866,7 @@ namespace MetalLiqViajes_Forms
                                         m_RutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
                                         m_RutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
                                         error = "";
-                                        if (!MetalOlap_Bll_Data.RutaSatrackLastEventsController.Instance.UpdateChanges(m_RutaSatrackLastEvents, out error))
+                                        if (!RutaSatrackLastEventsController.Instance.UpdateChanges(m_RutaSatrackLastEvents, out error))
                                         {
                                             //
                                         }
@@ -902,5 +909,6 @@ namespace MetalLiqViajes_Forms
                MessageBoxIcon.Information,
                MessageBoxDefaultButton.Button1);
         }
+
     }
 }

@@ -236,6 +236,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSatrac = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -420,6 +421,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.textBoxiRegistroViaje);
+            this.panel2.Controls.Add(this.btnSatrac);
             this.panel2.Controls.Add(this.btnQuitarFintro);
             this.panel2.Controls.Add(this.btnBuscaViajes);
             this.panel2.Controls.Add(this.btnRefrescar);
@@ -1959,6 +1961,16 @@
             this.reportViewer.Size = new System.Drawing.Size(970, 431);
             this.reportViewer.TabIndex = 0;
             // 
+            // btnSatrac
+            // 
+            this.btnSatrac.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
+            this.btnSatrac.Location = new System.Drawing.Point(81, 150);
+            this.btnSatrac.Name = "btnSatrac";
+            this.btnSatrac.Size = new System.Drawing.Size(43, 37);
+            this.btnSatrac.TabIndex = 2;
+            this.btnSatrac.UseVisualStyleBackColor = true;
+            this.btnSatrac.Click += new System.EventHandler(this.btnSatrac_Click);
+            // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2206,5 +2218,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn strObservacionesDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnAplicarCambio;
         private System.Windows.Forms.Label labelTituloRegistroGasto;
+        private System.Windows.Forms.Button btnSatrac;
     }
 }

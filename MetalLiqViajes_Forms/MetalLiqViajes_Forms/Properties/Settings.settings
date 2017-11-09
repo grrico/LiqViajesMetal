@@ -5,5 +5,11 @@
     <Setting Name="MetalLiqViajes_Forms_EventsSatrac_getEvents" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://webcloud.satrack.com/WebServiceEventos/getEvents.asmx</Value>
     </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">jgmaya</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2277</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
