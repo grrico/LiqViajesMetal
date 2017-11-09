@@ -14,12 +14,19 @@ namespace MetalLiqViajes_Services
         /// </summary>
         static void Main()
         {
+
+#if DEBUG
+            ServiceSatrac control = new ServiceSatrac();
+            control.onDebug();
+            System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
+#else
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
                 new ServiceSatrac()
             };
             ServiceBase.Run(ServicesToRun);
+#endif
         }
     }
 }

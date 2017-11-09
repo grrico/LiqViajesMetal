@@ -6,7 +6,7 @@
       <Value Profile="(Default)">https://webcloud.satrack.com/WebServiceEventos/getEvents.asmx</Value>
     </Setting>
     <Setting Name="Interval" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">400000</Value>
+      <Value Profile="(Default)">300000</Value>
     </Setting>
     <Setting Name="UserName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">jgmaya</Value>
@@ -15,16 +15,19 @@
       <Value Profile="(Default)">2277</Value>
     </Setting>
     <Setting Name="IntervalMadrugada" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">1800000</Value>
+      <Value Profile="(Default)">3600000</Value>
     </Setting>
     <Setting Name="HoraInicioTopeMadrudada" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">4</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="IntervalNoche" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">1800000</Value>
+      <Value Profile="(Default)">3600000</Value>
     </Setting>
     <Setting Name="HoraInicioMaximoNoche" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">21</Value>
+    </Setting>
+    <Setting Name="IntervalStart" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">30000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

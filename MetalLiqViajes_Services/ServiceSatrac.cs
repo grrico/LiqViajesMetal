@@ -44,11 +44,16 @@ namespace MetalLiqViajes_Services
             InitializeComponent();
         }
 
+        public void onDebug()
+        {
+            OnStart(null);
+        }
+
         protected override void OnStart(string[] args)
         {
             timer = new Timer();
             timer.Elapsed += PerformTimerOperation;
-            timer.Interval = Properties.Settings.Default.Interval;
+            timer.Interval = Properties.Settings.Default.IntervalStart;
             timer.Start();
 
         }
@@ -59,7 +64,9 @@ namespace MetalLiqViajes_Services
 
         private void PerformTimerOperation(object sender, ElapsedEventArgs e)
         {
+
             timer.Interval = Properties.Settings.Default.Interval;
+
             int hora = DateTime.Now.Hour;
             if (hora <= Properties.Settings.Default.HoraInicioTopeMadrudada)    // 4 am 
             {
@@ -71,7 +78,9 @@ namespace MetalLiqViajes_Services
                 timer.Interval = Properties.Settings.Default.IntervalNoche;//IntervalMadrugada 1800000
                 return;
             }
+            timer.Stop();
             CargarUltimaUbicacion();
+            timer.Start();
         }
 
         private void CargarUltimaUbicacion()
@@ -79,19 +88,16 @@ namespace MetalLiqViajes_Services
             try
             {
                 if (swtWsEnProceso) return;
+
                 swtWsEnProceso = true;
+                string Placa = "";                
                 listplacas = new ArrayList();
-                listplacas.Add("TDZ583");
-                listplacas.Add("TDZ584");
-                listplacas.Add("TRH902");
-                listplacas.Add("TRH903");
-                listplacas.Add("TRI126");
-                listplacas.Add("TRI264");
-                listplacas.Add("TRI266");
-                listplacas.Add("TRJ680");
-                listplacas.Add("TRJ681");
-                listplacas.Add("TRK451");
-                listplacas.Add("TRK452");
+                List<VehiculoCCosto> vehiculosCentroCostoList = VehiculoCCostoController.Instance.GetAll().Where(t => (t.TipoVehiculoCodigo.Value == 1 || t.TipoVehiculoCodigo.Value == 3) && (t.logActivo.Value == 1)).ToList();
+                foreach (var item in vehiculosCentroCostoList)
+                {
+                    Placa = item.strPlaca.Replace("-","");
+                    listplacas.Add(Placa);
+                }
                 EventsSatrac.getEvents servicio = new EventsSatrac.getEvents();
                 DataTable dt;
                 string UserName = Properties.Settings.Default.UserName;
@@ -99,7 +105,6 @@ namespace MetalLiqViajes_Services
                 string PhysicalID = "*";
                 decimal Latutud = 0;
                 decimal Longitud = 0;
-                string Placa = "";
                 string error = "";
                 System.Data.DataSet datosPlaca = null;
                 #region getLastEvent
@@ -113,9 +118,10 @@ namespace MetalLiqViajes_Services
                     {
                         foreach (DataRow dr in dt.Rows)
                         {
+                            Placa = (string)dr["Placa"];
+
                             if (listplacas.Contains((string)dr["Placa"]))
                             {
-                                Placa = (string)dr["Placa"];
                                 Longitud = (decimal)dr["Longitud"];
                                 Latutud = (decimal)dr["Latitud"];
                                 m_RutaSatrackLastEvents = RutaSatrackLastEventsController.Instance.Get(Placa);

@@ -35,7 +35,7 @@ namespace MetalLiqViajes_Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("300000")]
         public double Interval {
             get {
                 return ((double)(this["Interval"]));
@@ -62,7 +62,7 @@ namespace MetalLiqViajes_Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1800000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3600000")]
         public double IntervalMadrugada {
             get {
                 return ((double)(this["IntervalMadrugada"]));
@@ -71,7 +71,7 @@ namespace MetalLiqViajes_Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public double HoraInicioTopeMadrudada {
             get {
                 return ((double)(this["HoraInicioTopeMadrudada"]));
@@ -80,7 +80,7 @@ namespace MetalLiqViajes_Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1800000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3600000")]
         public double IntervalNoche {
             get {
                 return ((double)(this["IntervalNoche"]));
@@ -93,6 +93,18 @@ namespace MetalLiqViajes_Services.Properties {
         public double HoraInicioMaximoNoche {
             get {
                 return ((double)(this["HoraInicioMaximoNoche"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30000")]
+        public double IntervalStart {
+            get {
+                return ((double)(this["IntervalStart"]));
+            }
+            set {
+                this["IntervalStart"] = value;
             }
         }
     }
