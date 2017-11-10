@@ -1144,5 +1144,17 @@ namespace MetalLiqViajes_Forms
         {
             gMapControl.Zoom = trackBarZoom.Value;
         }
+
+        private void gMapControl_MouseClick(object sender, MouseEventArgs e)
+        {
+           
+            double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat;
+            double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
+            txtLatituda.Text = lat.ToString();
+            txtLongitud.Text = lng.ToString();
+            //marker.Position = new PointLatLng(lat, lng);
+            //marker.ToolTipText = string.Format("Koordinate: \n Latituda {0} \n Longituda {1}", lat, lng);
+
+        }
     }
 }

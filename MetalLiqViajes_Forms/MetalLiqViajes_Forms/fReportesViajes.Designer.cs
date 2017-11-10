@@ -248,6 +248,10 @@
             this.btnGetMaps = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtLongitud = new System.Windows.Forms.TextBox();
+            this.txtLatituda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -2002,9 +2006,9 @@
             // 
             this.panel10.Controls.Add(this.gMapControl);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(0, 60);
+            this.panel10.Location = new System.Drawing.Point(0, 96);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1028, 542);
+            this.panel10.Size = new System.Drawing.Size(1028, 506);
             this.panel10.TabIndex = 1;
             // 
             // gMapControl
@@ -2032,13 +2036,18 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(1028, 542);
+            this.gMapControl.Size = new System.Drawing.Size(1028, 506);
             this.gMapControl.TabIndex = 0;
             this.gMapControl.Zoom = 0D;
+            this.gMapControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl_MouseClick);
             this.gMapControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl_MouseDoubleClick);
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.txtLongitud);
+            this.panel9.Controls.Add(this.txtLatituda);
+            this.panel9.Controls.Add(this.label11);
+            this.panel9.Controls.Add(this.label10);
             this.panel9.Controls.Add(this.trackBarZoom);
             this.panel9.Controls.Add(this.btnRefrescarMapa);
             this.panel9.Controls.Add(this.btnRelieve);
@@ -2048,12 +2057,12 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1028, 60);
+            this.panel9.Size = new System.Drawing.Size(1028, 96);
             this.panel9.TabIndex = 0;
             // 
             // trackBarZoom
             // 
-            this.trackBarZoom.Location = new System.Drawing.Point(346, 9);
+            this.trackBarZoom.Location = new System.Drawing.Point(799, 32);
             this.trackBarZoom.Maximum = 25;
             this.trackBarZoom.Name = "trackBarZoom";
             this.trackBarZoom.Size = new System.Drawing.Size(221, 45);
@@ -2062,7 +2071,7 @@
             // 
             // btnRefrescarMapa
             // 
-            this.btnRefrescarMapa.Location = new System.Drawing.Point(7, 10);
+            this.btnRefrescarMapa.Location = new System.Drawing.Point(7, 4);
             this.btnRefrescarMapa.Name = "btnRefrescarMapa";
             this.btnRefrescarMapa.Size = new System.Drawing.Size(75, 23);
             this.btnRefrescarMapa.TabIndex = 0;
@@ -2072,7 +2081,7 @@
             // 
             // btnRelieve
             // 
-            this.btnRelieve.Location = new System.Drawing.Point(265, 10);
+            this.btnRelieve.Location = new System.Drawing.Point(265, 4);
             this.btnRelieve.Name = "btnRelieve";
             this.btnRelieve.Size = new System.Drawing.Size(75, 23);
             this.btnRelieve.TabIndex = 0;
@@ -2082,7 +2091,7 @@
             // 
             // btnoriginal
             // 
-            this.btnoriginal.Location = new System.Drawing.Point(179, 10);
+            this.btnoriginal.Location = new System.Drawing.Point(179, 4);
             this.btnoriginal.Name = "btnoriginal";
             this.btnoriginal.Size = new System.Drawing.Size(75, 23);
             this.btnoriginal.TabIndex = 0;
@@ -2092,7 +2101,7 @@
             // 
             // btnSatelite
             // 
-            this.btnSatelite.Location = new System.Drawing.Point(93, 10);
+            this.btnSatelite.Location = new System.Drawing.Point(93, 4);
             this.btnSatelite.Name = "btnSatelite";
             this.btnSatelite.Size = new System.Drawing.Size(75, 23);
             this.btnSatelite.TabIndex = 0;
@@ -2102,7 +2111,7 @@
             // 
             // btnGetMaps
             // 
-            this.btnGetMaps.Location = new System.Drawing.Point(8, 3);
+            this.btnGetMaps.Location = new System.Drawing.Point(945, 3);
             this.btnGetMaps.Name = "btnGetMaps";
             this.btnGetMaps.Size = new System.Drawing.Size(75, 23);
             this.btnGetMaps.TabIndex = 0;
@@ -2116,6 +2125,43 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(22, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(63, 18);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Latitud:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(8, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 18);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Longitud:";
+            // 
+            // txtLongitud
+            // 
+            this.txtLongitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLongitud.Location = new System.Drawing.Point(93, 66);
+            this.txtLongitud.Name = "txtLongitud";
+            this.txtLongitud.Size = new System.Drawing.Size(124, 24);
+            this.txtLongitud.TabIndex = 3;
+            // 
+            // txtLatituda
+            // 
+            this.txtLatituda.Enabled = false;
+            this.txtLatituda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLatituda.Location = new System.Drawing.Point(93, 36);
+            this.txtLatituda.Name = "txtLatituda";
+            this.txtLatituda.Size = new System.Drawing.Size(124, 24);
+            this.txtLatituda.TabIndex = 4;
             // 
             // fReportesViajes
             // 
@@ -2381,5 +2427,9 @@
         private System.Windows.Forms.Button btnoriginal;
         private System.Windows.Forms.Button btnSatelite;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox txtLongitud;
+        private System.Windows.Forms.TextBox txtLatituda;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }
