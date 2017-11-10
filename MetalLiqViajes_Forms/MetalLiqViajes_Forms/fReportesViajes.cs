@@ -945,14 +945,14 @@ namespace MetalLiqViajes_Forms
             markerOverlay.Markers.Add(marker); // agregamos al mapa
 
             // agregamos un tooltip de texto a los marcadores
-            marker.ToolTipMode = MarkerTooltipMode.Always; // para que se muestre todo el tiempo
+            marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // para que se muestre todo el tiempo {Always}
             marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", LatIncial, lngInicial);
 
             // ahora agregamos el mapa y el marcador al map control.
             gMapControl.Overlays.Add(markerOverlay);
 
 
-            GeneraRuta();
+            //GeneraRuta();
 
 
         }
@@ -987,7 +987,9 @@ namespace MetalLiqViajes_Forms
             double lat, lng;
             double latAnt = 0, lngAnt = 0;
 
-            List<RutaSatrackHistoryEvents> eventosList = RutaSatrackHistoryEventsController.Instance.GetAll().Where(t => t.Placa == "TRK451").ToList();
+            //List<RutaSatrackHistoryEvents> eventosList = RutaSatrackHistoryEventsController.Instance.GetAll().Where(t => t.Placa == "TRK451").ToList();
+
+            List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
 
             foreach (var item in eventosList)
             {
@@ -1018,6 +1020,33 @@ namespace MetalLiqViajes_Forms
 
         }
 
+        private void btnGetMaps_Click_1(object sender, EventArgs e)
+        {
 
+            gMapControl.MapProvider = GMapProviders.GoogleMap;
+
+            //GMapOverlay Ruta = new GMapOverlay("Capa Ruta");
+            List<PointLatLng> points = new List<PointLatLng>(); ;
+            List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+            foreach (var item in eventosList)
+            {
+                points.Add(new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud)));
+            }
+            int kolon = eventosList.Count;
+            for (int i = 1; i <= kolon; i++)
+            {
+                //points.Add(new PointLatLng(Convert.ToDouble(listView1.Items[i - 1].SubItems[1].Text), Convert.ToDouble(listView1.Items[i - 1].SubItems[2].Text)));
+            }
+
+            GMapRoute r = new GMapRoute(points, "my route");
+            r.Stroke.Width = 3;
+            r.Stroke.Color = Color.Red;
+            //r.Tag = "1";
+            //r.Name = "name";
+            GMapOverlay routesOverlay = new GMapOverlay("routes");//new GMapOverlay("routes");
+            routesOverlay.Routes.Add(r);
+            gMapControl.Overlays.Add(routesOverlay);
+            gMapControl.ZoomAndCenterRoute(r);
+        }
     }
 }

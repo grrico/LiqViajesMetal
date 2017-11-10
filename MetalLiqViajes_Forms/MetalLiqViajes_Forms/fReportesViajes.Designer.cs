@@ -2040,7 +2040,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(787, 19);
+            this.button1.Location = new System.Drawing.Point(54, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -2050,13 +2050,13 @@
             // 
             // btnGetMaps
             // 
-            this.btnGetMaps.Location = new System.Drawing.Point(893, 19);
+            this.btnGetMaps.Location = new System.Drawing.Point(146, 19);
             this.btnGetMaps.Name = "btnGetMaps";
             this.btnGetMaps.Size = new System.Drawing.Size(75, 23);
             this.btnGetMaps.TabIndex = 0;
             this.btnGetMaps.Text = "button1";
             this.btnGetMaps.UseVisualStyleBackColor = true;
-            this.btnGetMaps.Click += new System.EventHandler(this.btnGetMaps_Click);
+            this.btnGetMaps.Click += new System.EventHandler(this.btnGetMaps_Click_1);
             // 
             // fReportesViajes
             // 
