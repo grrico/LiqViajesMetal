@@ -16,7 +16,9 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-
+using System.IO;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 namespace MetalLiqViajes_Forms
 {
@@ -942,7 +944,7 @@ namespace MetalLiqViajes_Forms
             // marcadores
 
             markerOverlay = new GMapOverlay("Marcador");
-         
+
             List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
             foreach (var item in eventosList)
             {
@@ -950,7 +952,13 @@ namespace MetalLiqViajes_Forms
                 LatIncial = Convert.ToDouble(item.Latitud);
                 lngInicial = Convert.ToDouble(item.Longitud);
 
-                marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(@"D:\Genaro\Metal\MetalMod\GoogleMapControl\icons\FireTruck.png"));//GMarkerGoogleType.green);
+                //Image placaImag = stringToImage(item.Placa);
+                Bitmap BitmapImage = CreateBitmapImage(item.Placa);
+
+                marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), BitmapImage);
+                //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(placaImag));                
+                //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial),GMarkerGoogleType.green);
+                //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(@"D:\Genaro\Metal\MetalMod\GoogleMapControl\icons\FireTruck.png"));//GMarkerGoogleType.green);
 
 
                 markerOverlay.Markers.Add(marker); // agregamos al mapa
@@ -963,6 +971,49 @@ namespace MetalLiqViajes_Forms
             }
 
 
+        }
+
+        public Image stringToImage(string inputString)
+        {
+            byte[] imageBytes = Encoding.Unicode.GetBytes(inputString);
+            MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            Image image = Image.FromStream(ms, true, true);
+
+            return image;
+        }
+        private Bitmap CreateBitmapImage(string sImageText)
+        {
+            Bitmap objBmpImage = new Bitmap(1, 1);
+
+            int intWidth = 0;
+            int intHeight = 0;
+
+            // Create the Font object for the image text drawing.
+            Font objFont = new Font("Arial", 10, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+
+            // Create a graphics object to measure the text's width and height.
+            Graphics objGraphics = Graphics.FromImage(objBmpImage);
+
+            // This is where the bitmap size is determined.
+            intWidth = (int)objGraphics.MeasureString(sImageText, objFont).Width;
+            intHeight = (int)objGraphics.MeasureString(sImageText, objFont).Height;
+
+            // Create the bmpImage again with the correct size for the text and font.
+            objBmpImage = new Bitmap(objBmpImage, new Size(intWidth, intHeight));
+
+            // Add the colors to the new bitmap.
+            objGraphics = Graphics.FromImage(objBmpImage);
+
+            // Set Background color
+            objGraphics.Clear(Color.White);
+            objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
+            objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+            objGraphics.DrawString(sImageText, objFont, new SolidBrush(Color.FromArgb(102, 102, 102)), 0, 0);
+            objGraphics.Flush();
+
+            return (objBmpImage);
         }
 
         private void gMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
