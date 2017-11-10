@@ -557,6 +557,10 @@ namespace MetalLiqViajes_Forms
                 }
 
             }
+            if (tabControl.SelectedIndex == 4)
+            {
+                CargarMapa();
+            }
 
 
         }
@@ -930,47 +934,56 @@ namespace MetalLiqViajes_Forms
 
         private void btnGetMaps_Click(object sender, EventArgs e)
         {
+            CargarMapa();
+        }
 
-            gMapControl.DragButton = MouseButtons.Left;
-            gMapControl.CanDragMap = true;
-            gMapControl.MapProvider = GMapProviders.GoogleMap;
-            gMapControl.Position = new PointLatLng(LatIncial, lngInicial);
-            gMapControl.MinZoom = 0;
-            gMapControl.MaxZoom = 24;
-            gMapControl.Zoom = 8;
-            gMapControl.AutoScroll = true;
-
-
-            // marcadores
-
-            markerOverlay = new GMapOverlay("Marcador");
-
-            List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
-            foreach (var item in eventosList)
+        private void CargarMapa()
+        {
+            try
             {
+                gMapControl.DragButton = MouseButtons.Left;
+                gMapControl.CanDragMap = true;
+                gMapControl.MapProvider = GMapProviders.GoogleMap;
+                gMapControl.Position = new PointLatLng(LatIncial, lngInicial);
+                gMapControl.MinZoom = 0;
+                gMapControl.MaxZoom = 24;
+                gMapControl.Zoom = 8;
+                gMapControl.AutoScroll = true;
 
-                LatIncial = Convert.ToDouble(item.Latitud);
-                lngInicial = Convert.ToDouble(item.Longitud);
+                // marcadores
 
-                //Image placaImag = stringToImage(item.Placa);
-                Bitmap BitmapImage = CreateBitmapImage(item.Placa);
+                markerOverlay = new GMapOverlay("Marcador");
 
-                marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), BitmapImage);
-                //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(placaImag));                
-                //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial),GMarkerGoogleType.green);
-                //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(@"D:\Genaro\Metal\MetalMod\GoogleMapControl\icons\FireTruck.png"));//GMarkerGoogleType.green);
+                List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+                foreach (var item in eventosList)
+                {
+
+                    LatIncial = Convert.ToDouble(item.Latitud);
+                    lngInicial = Convert.ToDouble(item.Longitud);
+
+                    //Image placaImag = stringToImage(item.Placa);
+                    Bitmap BitmapImage = CreateBitmapImage(item.Placa);
+
+                    marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), BitmapImage);
+                    //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(Properties.Resources._1));
+                    //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(placaImag));
+                    //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial),GMarkerGoogleType.green);
+                    //marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(@"D:\Genaro\Metal\MetalMod\GoogleMapControl\icons\FireTruck.png"));//GMarkerGoogleType.green);
 
 
-                markerOverlay.Markers.Add(marker); // agregamos al mapa
-                marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // para que se muestre todo el tiempo {Always}
-                marker.ToolTipText = string.Format("Placa: {0} \nUbicación: {1}, \nVelocidad: {2}", item.Placa, item.Ubicacion, item.VelocidadSentido);
+                    markerOverlay.Markers.Add(marker); // agregamos al mapa
+                    marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // para que se muestre todo el tiempo {Always}
+                    marker.ToolTipText = string.Format("Placa: {0} \nUbicación: {1}, \nVelocidad: {2}", item.Placa, item.Ubicacion, item.VelocidadSentido);
 
-                // ahora agregamos el mapa y el marcador al map control.
-                gMapControl.Overlays.Add(markerOverlay);
+                    // ahora agregamos el mapa y el marcador al map control.
+                    gMapControl.Overlays.Add(markerOverlay);
 
+                }
             }
-
-
+            catch (Exception ex)
+            {
+                CargaExection(ex);
+            }
         }
 
         public Image stringToImage(string inputString)
@@ -991,7 +1004,7 @@ namespace MetalLiqViajes_Forms
             int intHeight = 0;
 
             // Create the Font object for the image text drawing.
-            Font objFont = new Font("Arial", 10, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            Font objFont = new Font("Arial", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 
             // Create a graphics object to measure the text's width and height.
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
@@ -1002,12 +1015,13 @@ namespace MetalLiqViajes_Forms
 
             // Create the bmpImage again with the correct size for the text and font.
             objBmpImage = new Bitmap(objBmpImage, new Size(intWidth, intHeight));
+            
 
             // Add the colors to the new bitmap.
             objGraphics = Graphics.FromImage(objBmpImage);
 
             // Set Background color
-            objGraphics.Clear(Color.White);
+            objGraphics.Clear(Color.Yellow);
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
             objGraphics.DrawString(sImageText, objFont, new SolidBrush(Color.FromArgb(102, 102, 102)), 0, 0);

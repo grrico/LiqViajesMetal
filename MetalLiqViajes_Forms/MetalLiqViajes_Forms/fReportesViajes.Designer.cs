@@ -241,7 +241,7 @@
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
             this.panel9 = new System.Windows.Forms.Panel();
             this.trackBarZoom = new System.Windows.Forms.TrackBar();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRefrescarMapa = new System.Windows.Forms.Button();
             this.btnRelieve = new System.Windows.Forms.Button();
             this.btnoriginal = new System.Windows.Forms.Button();
             this.btnSatelite = new System.Windows.Forms.Button();
@@ -2009,13 +2009,16 @@
             // 
             // gMapControl
             // 
+            this.gMapControl.AutoScroll = true;
             this.gMapControl.Bearing = 0F;
+            this.gMapControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gMapControl.CanDragMap = true;
+            this.gMapControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
             this.gMapControl.GrayScaleMode = false;
             this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemmory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(8, 6);
+            this.gMapControl.Location = new System.Drawing.Point(0, 0);
             this.gMapControl.MarkersEnabled = true;
             this.gMapControl.MaxZoom = 2;
             this.gMapControl.MinZoom = 2;
@@ -2029,7 +2032,7 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(1012, 540);
+            this.gMapControl.Size = new System.Drawing.Size(1028, 542);
             this.gMapControl.TabIndex = 0;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl_MouseDoubleClick);
@@ -2037,7 +2040,7 @@
             // panel9
             // 
             this.panel9.Controls.Add(this.trackBarZoom);
-            this.panel9.Controls.Add(this.button1);
+            this.panel9.Controls.Add(this.btnRefrescarMapa);
             this.panel9.Controls.Add(this.btnRelieve);
             this.panel9.Controls.Add(this.btnoriginal);
             this.panel9.Controls.Add(this.btnSatelite);
@@ -2050,26 +2053,26 @@
             // 
             // trackBarZoom
             // 
-            this.trackBarZoom.Location = new System.Drawing.Point(769, 9);
+            this.trackBarZoom.Location = new System.Drawing.Point(346, 9);
             this.trackBarZoom.Maximum = 25;
             this.trackBarZoom.Name = "trackBarZoom";
-            this.trackBarZoom.Size = new System.Drawing.Size(251, 45);
+            this.trackBarZoom.Size = new System.Drawing.Size(221, 45);
             this.trackBarZoom.TabIndex = 1;
             this.trackBarZoom.ValueChanged += new System.EventHandler(this.trackBarZoom_ValueChanged);
             // 
-            // button1
+            // btnRefrescarMapa
             // 
-            this.button1.Location = new System.Drawing.Point(54, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnGetMaps_Click);
+            this.btnRefrescarMapa.Location = new System.Drawing.Point(7, 10);
+            this.btnRefrescarMapa.Name = "btnRefrescarMapa";
+            this.btnRefrescarMapa.Size = new System.Drawing.Size(75, 23);
+            this.btnRefrescarMapa.TabIndex = 0;
+            this.btnRefrescarMapa.Text = "Refrescar Mapa";
+            this.btnRefrescarMapa.UseVisualStyleBackColor = true;
+            this.btnRefrescarMapa.Click += new System.EventHandler(this.btnGetMaps_Click);
             // 
             // btnRelieve
             // 
-            this.btnRelieve.Location = new System.Drawing.Point(674, 19);
+            this.btnRelieve.Location = new System.Drawing.Point(265, 10);
             this.btnRelieve.Name = "btnRelieve";
             this.btnRelieve.Size = new System.Drawing.Size(75, 23);
             this.btnRelieve.TabIndex = 0;
@@ -2079,7 +2082,7 @@
             // 
             // btnoriginal
             // 
-            this.btnoriginal.Location = new System.Drawing.Point(584, 19);
+            this.btnoriginal.Location = new System.Drawing.Point(179, 10);
             this.btnoriginal.Name = "btnoriginal";
             this.btnoriginal.Size = new System.Drawing.Size(75, 23);
             this.btnoriginal.TabIndex = 0;
@@ -2089,7 +2092,7 @@
             // 
             // btnSatelite
             // 
-            this.btnSatelite.Location = new System.Drawing.Point(503, 19);
+            this.btnSatelite.Location = new System.Drawing.Point(93, 10);
             this.btnSatelite.Name = "btnSatelite";
             this.btnSatelite.Size = new System.Drawing.Size(75, 23);
             this.btnSatelite.TabIndex = 0;
@@ -2099,12 +2102,13 @@
             // 
             // btnGetMaps
             // 
-            this.btnGetMaps.Location = new System.Drawing.Point(146, 19);
+            this.btnGetMaps.Location = new System.Drawing.Point(8, 3);
             this.btnGetMaps.Name = "btnGetMaps";
             this.btnGetMaps.Size = new System.Drawing.Size(75, 23);
             this.btnGetMaps.TabIndex = 0;
             this.btnGetMaps.Text = "button1";
             this.btnGetMaps.UseVisualStyleBackColor = true;
+            this.btnGetMaps.Visible = false;
             this.btnGetMaps.Click += new System.EventHandler(this.btnGetMaps_Click_1);
             // 
             // timer1
@@ -2370,7 +2374,7 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnGetMaps;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRefrescarMapa;
         private GMap.NET.WindowsForms.GMapControl gMapControl;
         private System.Windows.Forms.TrackBar trackBarZoom;
         private System.Windows.Forms.Button btnRelieve;
