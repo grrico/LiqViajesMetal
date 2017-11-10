@@ -928,6 +928,7 @@ namespace MetalLiqViajes_Forms
 
         private void btnGetMaps_Click(object sender, EventArgs e)
         {
+
             gMapControl.DragButton = MouseButtons.Left;
             gMapControl.CanDragMap = true;
             gMapControl.MapProvider = GMapProviders.GoogleMap;
@@ -951,10 +952,6 @@ namespace MetalLiqViajes_Forms
             // ahora agregamos el mapa y el marcador al map control.
             gMapControl.Overlays.Add(markerOverlay);
 
-
-            //GeneraRuta();
-
-
         }
 
         private void gMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -967,14 +964,8 @@ namespace MetalLiqViajes_Forms
             // creamos el marcador para mover lo al lugar indicado
             marker.Position = new PointLatLng(lat, lng);
 
-
             // se agrega el mensaje al marcado (tooltip)
             marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", lat, lng);
-
-        }
-
-        private void GeneraPoligono()
-        {
 
         }
 
