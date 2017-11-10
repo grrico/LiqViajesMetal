@@ -107,6 +107,7 @@ namespace MetalLiqViajes_Services
                 decimal Longitud = 0;
                 string error = "";
                 System.Data.DataSet datosPlaca = null;
+
                 #region getLastEvent
                 RutaSatrackLastEvents m_RutaSatrackLastEvents;
                 RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
@@ -124,10 +125,11 @@ namespace MetalLiqViajes_Services
                             {
                                 Longitud = (decimal)dr["Longitud"];
                                 Latutud = (decimal)dr["Latitud"];
+
                                 m_RutaSatrackLastEvents = RutaSatrackLastEventsController.Instance.Get(Placa);
                                 if (m_RutaSatrackLastEvents != null)
                                 {
-                                    if ((m_RutaSatrackLastEvents.Latitud != Latutud) && (m_RutaSatrackLastEvents.Longitud != Longitud))
+                                    if ((m_RutaSatrackLastEvents.Latitud.Value  != Latutud) && (m_RutaSatrackLastEvents.Longitud.Value  != Longitud))
                                     {
                                         m_RutaSatrackHistoryEvents = new RutaSatrackHistoryEvents();
                                         m_RutaSatrackHistoryEvents.Placa = m_RutaSatrackLastEvents.Placa;
@@ -158,6 +160,10 @@ namespace MetalLiqViajes_Services
                                             //
                                         }
                                     }
+                                    else
+                                    {
+
+                                    }
                                 }
                                 else
                                 {
@@ -181,6 +187,7 @@ namespace MetalLiqViajes_Services
                 swtWsEnProceso = false;
                 return;
                 #endregion
+
             }
             catch (Exception ex)
             {
