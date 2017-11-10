@@ -219,19 +219,29 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ClearFilter2HS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Filter2HS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FindHS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Truck.ico" />
+    <None Include="images\1.png" />
+    <None Include="images\2.png" />
+    <None Include="images\3.png" />
+    <None Include="images\check.png" />
+    <None Include="images\ClearFilter2HS.png" />
+    <None Include="images\Filter2HS.png" />
+    <None Include="images\FindHS.png" />
+    <None Include="images\FireTruck.png" />
+    <None Include="images\golf.png" />
+    <None Include="images\horse.png" />
+    <None Include="images\pushpin-blue.png" />
+    <None Include="images\pushpin-yellow.png" />
+    <None Include="images\rain.png" />
+    <None Include="images\recycle.png" />
+    <None Include="images\RedCar.png" />
+    <None Include="images\SchoolBus.png" />
+    <None Include="images\snow.png" />
+    <None Include="images\storm.png" />
+    <None Include="images\sun.png" />
+    <Content Include="images\Truck.ico" />
+    <None Include="images\Truck.png" />
+    <None Include="images\YellowCar.png" />
+    <None Include="Resources\Image1.bmp" />
     <Content Include="Truck.ico" />
   </ItemGroup>
   <ItemGroup>

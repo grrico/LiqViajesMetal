@@ -942,15 +942,26 @@ namespace MetalLiqViajes_Forms
             // marcadores
 
             markerOverlay = new GMapOverlay("Marcador");
-            marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), GMarkerGoogleType.green);
-            markerOverlay.Markers.Add(marker); // agregamos al mapa
+         
+            List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+            foreach (var item in eventosList)
+            {
 
-            // agregamos un tooltip de texto a los marcadores
-            marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // para que se muestre todo el tiempo {Always}
-            marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", LatIncial, lngInicial);
+                LatIncial = Convert.ToDouble(item.Latitud);
+                lngInicial = Convert.ToDouble(item.Longitud);
 
-            // ahora agregamos el mapa y el marcador al map control.
-            gMapControl.Overlays.Add(markerOverlay);
+                marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap("images/2.png"));//GMarkerGoogleType.green);
+
+
+                markerOverlay.Markers.Add(marker); // agregamos al mapa
+                marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // para que se muestre todo el tiempo {Always}
+                marker.ToolTipText = string.Format("Placa: {0} \nUbicación: {1}, \nVelocidad: {2}", item.Placa, item.Ubicacion, item.VelocidadSentido);
+
+                // ahora agregamos el mapa y el marcador al map control.
+                gMapControl.Overlays.Add(markerOverlay);
+
+            }
+
 
         }
 
@@ -1014,30 +1025,34 @@ namespace MetalLiqViajes_Forms
         private void btnGetMaps_Click_1(object sender, EventArgs e)
         {
 
-            gMapControl.MapProvider = GMapProviders.GoogleMap;
+            //////gMapControl.MapProvider = GMapProviders.GoogleMap;
 
-            //GMapOverlay Ruta = new GMapOverlay("Capa Ruta");
-            List<PointLatLng> points = new List<PointLatLng>(); ;
-            List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
-            foreach (var item in eventosList)
-            {
-                points.Add(new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud)));
-            }
-            int kolon = eventosList.Count;
-            for (int i = 1; i <= kolon; i++)
-            {
-                //points.Add(new PointLatLng(Convert.ToDouble(listView1.Items[i - 1].SubItems[1].Text), Convert.ToDouble(listView1.Items[i - 1].SubItems[2].Text)));
-            }
+            ////////GMapOverlay Ruta = new GMapOverlay("Capa Ruta");
+            //////List<PointLatLng> points = new List<PointLatLng>(); ;
+            //////List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+            //////foreach (var item in eventosList)
+            //////{
+            //////    points.Add(new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud)));
+            //////}
+            //////int kolon = eventosList.Count;
+            //////for (int i = 1; i <= kolon; i++)
+            //////{
+            //////    //points.Add(new PointLatLng(Convert.ToDouble(listView1.Items[i - 1].SubItems[1].Text), Convert.ToDouble(listView1.Items[i - 1].SubItems[2].Text)));
+            //////}
 
-            GMapRoute r = new GMapRoute(points, "my route");
-            r.Stroke.Width = 3;
-            r.Stroke.Color = Color.Red;
-            //r.Tag = "1";
-            //r.Name = "name";
-            GMapOverlay routesOverlay = new GMapOverlay("routes");//new GMapOverlay("routes");
-            routesOverlay.Routes.Add(r);
-            gMapControl.Overlays.Add(routesOverlay);
-            gMapControl.ZoomAndCenterRoute(r);
+            //////GMapRoute r = new GMapRoute(points, "my route");
+            //////r.Stroke.Width = 3;
+            //////r.Stroke.Color = Color.Red;
+            ////////r.Tag = "1";
+            ////////r.Name = "name";
+            //////GMapOverlay routesOverlay = new GMapOverlay("routes");//new GMapOverlay("routes");
+            //////routesOverlay.Routes.Add(r);
+            //////gMapControl.Overlays.Add(routesOverlay);
+            //////gMapControl.ZoomAndCenterRoute(r);
+
+
+
+
         }
 
         private void btnSatelite_Click(object sender, EventArgs e)
