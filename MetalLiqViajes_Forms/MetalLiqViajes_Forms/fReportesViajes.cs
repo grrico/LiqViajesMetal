@@ -1048,5 +1048,30 @@ namespace MetalLiqViajes_Forms
             gMapControl.Overlays.Add(routesOverlay);
             gMapControl.ZoomAndCenterRoute(r);
         }
+
+        private void btnSatelite_Click(object sender, EventArgs e)
+        {
+            gMapControl.MapProvider = GMapProviders.GoogleChinaSatelliteMap;
+        }
+
+        private void btnoriginal_Click(object sender, EventArgs e)
+        {
+            gMapControl.MapProvider = GMapProviders.GoogleMap;
+        }
+
+        private void btnRelieve_Click(object sender, EventArgs e)
+        {
+            gMapControl.MapProvider = GMapProviders.GoogleTerrainMap;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            trackBarZoom.Value = Convert.ToInt32(gMapControl.Zoom);
+        }
+
+        private void trackBarZoom_ValueChanged(object sender, EventArgs e)
+        {
+            gMapControl.Zoom = trackBarZoom.Value;
+        }
     }
 }

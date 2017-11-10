@@ -240,9 +240,14 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.trackBarZoom = new System.Windows.Forms.TrackBar();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnRelieve = new System.Windows.Forms.Button();
+            this.btnoriginal = new System.Windows.Forms.Button();
+            this.btnSatelite = new System.Windows.Forms.Button();
             this.btnGetMaps = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -290,6 +295,7 @@
             this.tabPage5.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -2030,13 +2036,26 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.trackBarZoom);
             this.panel9.Controls.Add(this.button1);
+            this.panel9.Controls.Add(this.btnRelieve);
+            this.panel9.Controls.Add(this.btnoriginal);
+            this.panel9.Controls.Add(this.btnSatelite);
             this.panel9.Controls.Add(this.btnGetMaps);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1028, 60);
             this.panel9.TabIndex = 0;
+            // 
+            // trackBarZoom
+            // 
+            this.trackBarZoom.Location = new System.Drawing.Point(769, 9);
+            this.trackBarZoom.Maximum = 25;
+            this.trackBarZoom.Name = "trackBarZoom";
+            this.trackBarZoom.Size = new System.Drawing.Size(251, 45);
+            this.trackBarZoom.TabIndex = 1;
+            this.trackBarZoom.ValueChanged += new System.EventHandler(this.trackBarZoom_ValueChanged);
             // 
             // button1
             // 
@@ -2048,6 +2067,36 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnGetMaps_Click);
             // 
+            // btnRelieve
+            // 
+            this.btnRelieve.Location = new System.Drawing.Point(674, 19);
+            this.btnRelieve.Name = "btnRelieve";
+            this.btnRelieve.Size = new System.Drawing.Size(75, 23);
+            this.btnRelieve.TabIndex = 0;
+            this.btnRelieve.Text = "Relieve";
+            this.btnRelieve.UseVisualStyleBackColor = true;
+            this.btnRelieve.Click += new System.EventHandler(this.btnRelieve_Click);
+            // 
+            // btnoriginal
+            // 
+            this.btnoriginal.Location = new System.Drawing.Point(584, 19);
+            this.btnoriginal.Name = "btnoriginal";
+            this.btnoriginal.Size = new System.Drawing.Size(75, 23);
+            this.btnoriginal.TabIndex = 0;
+            this.btnoriginal.Text = "Original";
+            this.btnoriginal.UseVisualStyleBackColor = true;
+            this.btnoriginal.Click += new System.EventHandler(this.btnoriginal_Click);
+            // 
+            // btnSatelite
+            // 
+            this.btnSatelite.Location = new System.Drawing.Point(503, 19);
+            this.btnSatelite.Name = "btnSatelite";
+            this.btnSatelite.Size = new System.Drawing.Size(75, 23);
+            this.btnSatelite.TabIndex = 0;
+            this.btnSatelite.Text = "Satelital";
+            this.btnSatelite.UseVisualStyleBackColor = true;
+            this.btnSatelite.Click += new System.EventHandler(this.btnSatelite_Click);
+            // 
             // btnGetMaps
             // 
             this.btnGetMaps.Location = new System.Drawing.Point(146, 19);
@@ -2057,6 +2106,12 @@
             this.btnGetMaps.Text = "button1";
             this.btnGetMaps.UseVisualStyleBackColor = true;
             this.btnGetMaps.Click += new System.EventHandler(this.btnGetMaps_Click_1);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // fReportesViajes
             // 
@@ -2117,6 +2172,8 @@
             this.tabPage5.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2315,5 +2372,10 @@
         private System.Windows.Forms.Button btnGetMaps;
         private System.Windows.Forms.Button button1;
         private GMap.NET.WindowsForms.GMapControl gMapControl;
+        private System.Windows.Forms.TrackBar trackBarZoom;
+        private System.Windows.Forms.Button btnRelieve;
+        private System.Windows.Forms.Button btnoriginal;
+        private System.Windows.Forms.Button btnSatelite;
+        private System.Windows.Forms.Timer timer1;
     }
 }
