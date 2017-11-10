@@ -951,6 +951,10 @@ namespace MetalLiqViajes_Forms
             // ahora agregamos el mapa y el marcador al map control.
             gMapControl.Overlays.Add(markerOverlay);
 
+
+            GeneraRuta();
+
+
         }
 
         private void gMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -973,5 +977,47 @@ namespace MetalLiqViajes_Forms
         {
 
         }
+
+        private void GeneraRuta()
+        {
+            GMapOverlay Ruta = new GMapOverlay("Capa Ruta");
+
+            List<PointLatLng> Puntos = new List<PointLatLng>();
+
+            double lat, lng;
+            double latAnt = 0, lngAnt = 0;
+
+            List<RutaSatrackHistoryEvents> eventosList = RutaSatrackHistoryEventsController.Instance.GetAll().Where(t => t.Placa == "TRK451").ToList();
+
+            foreach (var item in eventosList)
+            {
+                lat = double.Parse(item.Latitud.ToString());
+                lng = double.Parse(item.Longitud.ToString());
+
+                if (latAnt == 0)
+                {
+                    latAnt = double.Parse(item.Latitud.ToString());
+                    lngAnt = double.Parse(item.Longitud.ToString());
+                }
+                if (lat != latAnt)
+                {
+                    Puntos.Add(new PointLatLng(double.Parse(item.Latitud.ToString()), double.Parse(item.Longitud.ToString())));
+                    latAnt = double.Parse(item.Latitud.ToString());
+                    lngAnt = double.Parse(item.Longitud.ToString());
+                }
+
+            }
+
+            GMapRoute PuntoRutas = new GMapRoute(Puntos, "Ruta");
+            Ruta.Routes.Add(PuntoRutas);
+            gMapControl.Overlays.Add(Ruta);
+
+            // actualiza el mapa
+            gMapControl.Zoom = gMapControl.Zoom + 1;
+            gMapControl.Zoom = gMapControl.Zoom - 1;
+
+        }
+
+
     }
 }
