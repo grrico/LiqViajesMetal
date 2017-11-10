@@ -950,7 +950,7 @@ namespace MetalLiqViajes_Forms
                 LatIncial = Convert.ToDouble(item.Latitud);
                 lngInicial = Convert.ToDouble(item.Longitud);
 
-                marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap("images/2.png"));//GMarkerGoogleType.green);
+                marker = new GMarkerGoogle(new PointLatLng(LatIncial, lngInicial), new Bitmap(@"D:\Genaro\Metal\MetalMod\GoogleMapControl\icons\FireTruck.png"));//GMarkerGoogleType.green);
 
 
                 markerOverlay.Markers.Add(marker); // agregamos al mapa
