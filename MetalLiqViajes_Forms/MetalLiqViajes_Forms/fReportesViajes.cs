@@ -33,6 +33,7 @@ namespace MetalLiqViajes_Forms
         double LatIncial = 9.530720;
         double lngInicial = -75.418800;
 
+        private List<RutaSatrackLastEvents> eventosList;
         private List<LiqViajes_Bll_Data.AnticiposDms> anticiposdmslist;
         private LiqViajes_Bll_Data.AnticiposDms anticiposdms;
         private List<LiqViajes_Bll_Data.RegistroViajeDTO> registroviajelist;
@@ -95,7 +96,7 @@ namespace MetalLiqViajes_Forms
             MesesAño[11] = "Diciembre";
 
             List<UtilMonth> ultilmonthlist = new List<UtilMonth>();
-
+            tablagLocal tablalocal = tablagLocalController.Instance.Get(1);
             int imes = 0;
             foreach (var item in MesesAño)
             {
@@ -106,17 +107,20 @@ namespace MetalLiqViajes_Forms
                 ultilmonthlist.Add(ultilmonth);
             }
 
-            comboBoxMonth.DataSource = ultilmonthlist.ToList();
             comboBoxYear.DataSource = utilyearlist.OrderByDescending(o => o.YearId).ToList();
-
-
+            comboBoxYear.SelectedValue = tablalocal.ano;
+            comboBoxMonth.DataSource = ultilmonthlist.ToList();
             comboBoxMonth.SelectedIndex = (DateTime.Now.Month) - 1;
+            comboBoxMonth.SelectedValue = tablalocal.periodo.Value;
 
             this.Cursor = Cursors.Default;
 
             btnQuitarFintro.Visible = false;
 
             iCargaCompleta = true;
+
+            ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
+            CargaRegistroViaje(utilyear.YearId);
         }
 
         private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,6 +136,7 @@ namespace MetalLiqViajes_Forms
 
             ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
             CargaRegistroViaje(utilyear.YearId);
+
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
@@ -325,6 +330,20 @@ namespace MetalLiqViajes_Forms
         private void dataGridViewViajes_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             iRegistroViajeDTO = dataGridViewViajes.Rows[e.RowIndex].DataBoundItem as LiqViajes_Bll_Data.RegistroViajeDTO;
+
+            Nit = iRegistroViajeDTO.NitConductor;
+            anticiposdmslist = LiqViajes_Bll_Data.AnticiposDmsController.Instance.GetBy_DocumentoNit(long.Parse(iRegistroViajeDTO.NitConductor), iRegistroViajeDTO.IdRegistro).ToList();
+
+            anticiposdms = new AnticiposDms();
+            anticiposdms.Dms_Chk = 0;
+            anticiposdms.Dms_ValorAnticipo = anticiposdmslist.Sum(s => s.Dms_ValorAnticipo.Value);
+            anticiposdms.Dms_ValorAplicado = anticiposdmslist.Sum(s => s.Dms_ValorAplicado.Value);
+            anticiposdms.Dms_ValorTotal = anticiposdmslist.Sum(s => s.Dms_ValorTotal.Value);
+            anticiposdmslist.Add(anticiposdms);
+
+            dataGridViewAnticipo.DataSource = anticiposdmslist.ToList();
+            dataGridViewAnticipo.Refresh();
+
             TituloRegistro();
         }
 
@@ -428,23 +447,30 @@ namespace MetalLiqViajes_Forms
 
         private void fReportesViajes_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridViewLiqGastos.ColumnCount; i++)
+            try
             {
-                string name = dataGridViewLiqGastos.Columns[i].DataPropertyName;
-                if (name == "curValorAdicional")
+                for (int i = 0; i < dataGridViewLiqGastos.ColumnCount; i++)
                 {
-                    dataGridViewLiqGastos.Columns[i].ReadOnly = false;
+                    string name = dataGridViewLiqGastos.Columns[i].DataPropertyName;
+                    if (name == "curValorAdicional")
+                    {
+                        dataGridViewLiqGastos.Columns[i].ReadOnly = false;
+                    }
+                    else
+                    {
+                        dataGridViewLiqGastos.Columns[i].ReadOnly = true;
+                    }
                 }
-                else
-                {
-                    dataGridViewLiqGastos.Columns[i].ReadOnly = true;
-                }
-            }
 
-            tercerosDTOList = LiqViajes_Bll_Data.TercerosController.Instance.GetByTercerosDms();
-            comboBoxTerceros.DataSource = tercerosDTOList;
-            comboBoxTerceros.SelectedIndex = 0;
-            comboBoxTerceros.Refresh();
+                tercerosDTOList = LiqViajes_Bll_Data.TercerosController.Instance.GetByTercerosDms();
+                comboBoxTerceros.DataSource = tercerosDTOList;
+                comboBoxTerceros.SelectedIndex = 0;
+                comboBoxTerceros.Refresh();
+            }
+            catch (Exception ex)
+            {
+                CargaExection(ex);
+            }
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -560,6 +586,7 @@ namespace MetalLiqViajes_Forms
             if (tabControl.SelectedIndex == 4)
             {
                 CargarMapa();
+                timer1.Enabled = true;
             }
 
 
@@ -755,18 +782,18 @@ namespace MetalLiqViajes_Forms
             dataGridViewLiqRutas.DataSource = tramosAsignadosList.ToList();
             dataGridViewLiqRutas.Refresh();
 
-            Nit = iRegistroViajeDTO.NitConductor;
-            anticiposdmslist = LiqViajes_Bll_Data.AnticiposDmsController.Instance.GetBy_DocumentoNit(long.Parse(iRegistroViajeDTO.NitConductor), iRegistroViajeDTO.IdRegistro).ToList();
+            //Nit = iRegistroViajeDTO.NitConductor;
+            //anticiposdmslist = LiqViajes_Bll_Data.AnticiposDmsController.Instance.GetBy_DocumentoNit(long.Parse(iRegistroViajeDTO.NitConductor), iRegistroViajeDTO.IdRegistro).ToList();
 
-            anticiposdms = new AnticiposDms();
-            anticiposdms.Dms_Chk = 0;
-            anticiposdms.Dms_ValorAnticipo = anticiposdmslist.Sum(s => s.Dms_ValorAnticipo.Value);
-            anticiposdms.Dms_ValorAplicado = anticiposdmslist.Sum(s => s.Dms_ValorAplicado.Value);
-            anticiposdms.Dms_ValorTotal = anticiposdmslist.Sum(s => s.Dms_ValorTotal.Value);
-            anticiposdmslist.Add(anticiposdms);
+            //anticiposdms = new AnticiposDms();
+            //anticiposdms.Dms_Chk = 0;
+            //anticiposdms.Dms_ValorAnticipo = anticiposdmslist.Sum(s => s.Dms_ValorAnticipo.Value);
+            //anticiposdms.Dms_ValorAplicado = anticiposdmslist.Sum(s => s.Dms_ValorAplicado.Value);
+            //anticiposdms.Dms_ValorTotal = anticiposdmslist.Sum(s => s.Dms_ValorTotal.Value);
+            //anticiposdmslist.Add(anticiposdms);
 
-            dataGridViewAnticipo.DataSource = anticiposdmslist.ToList();
-            dataGridViewAnticipo.Refresh();
+            //dataGridViewAnticipo.DataSource = anticiposdmslist.ToList();
+            //dataGridViewAnticipo.Refresh();
         }
 
         private void CargarReporte()
@@ -813,117 +840,8 @@ namespace MetalLiqViajes_Forms
             reportViewer.RefreshReport();
         }
 
-        private void CargarUltimaUbicacion()
-        {
-            try
-            {
-                if (swtWsEnProceso) return;
-                swtWsEnProceso = true;
-                listplacas = new ArrayList();
-                listplacas.Add("TDZ583");
-                listplacas.Add("TDZ584");
-                listplacas.Add("TRH902");
-                listplacas.Add("TRH903");
-                listplacas.Add("TRI126");
-                listplacas.Add("TRI264");
-                listplacas.Add("TRI266");
-                listplacas.Add("TRJ680");
-                listplacas.Add("TRJ681");
-                listplacas.Add("TRK451");
-                listplacas.Add("TRK452");
-                EventsSatrac.getEvents servicio = new EventsSatrac.getEvents();
-                DataTable dt;
-                string UserName = Properties.Settings.Default.UserName;
-                string Password = Properties.Settings.Default.Password;
-                string PhysicalID = "*";
-                decimal Latutud = 0;
-                decimal Longitud = 0;
-                string Placa = "";
-                string error = "";
-                System.Data.DataSet datosPlaca = null;
 
-                #region getLastEvent
-                RutaSatrackLastEvents m_RutaSatrackLastEvents;
-                RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
-                RutaSatrackLastEvents iRutaSatrackLastEvents;
-                datosPlaca = servicio.getLastEvent(UserName, Password, PhysicalID);
-                if (datosPlaca.Tables.Count > 0)
-                {
-                    dt = datosPlaca.Tables[0];
-                    if (dt != null)
-                    {
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (listplacas.Contains((string)dr["Placa"]))
-                            {
-                                Placa = (string)dr["Placa"];
-                                Longitud = (decimal)dr["Longitud"];
-                                Latutud = (decimal)dr["Latitud"];
-                                m_RutaSatrackLastEvents = RutaSatrackLastEventsController.Instance.Get(Placa);
-                                if (m_RutaSatrackLastEvents != null)
-                                {
-                                    if ((m_RutaSatrackLastEvents.Latitud != Latutud) && (m_RutaSatrackLastEvents.Longitud != Longitud))
-                                    {
-                                        m_RutaSatrackHistoryEvents = new RutaSatrackHistoryEvents();
-                                        m_RutaSatrackHistoryEvents.Placa = m_RutaSatrackLastEvents.Placa;
-                                        m_RutaSatrackHistoryEvents.FechaSistema = m_RutaSatrackLastEvents.FechaSistema;
-                                        m_RutaSatrackHistoryEvents.FechaHora_GPS = m_RutaSatrackLastEvents.FechaHora_GPS;
-                                        m_RutaSatrackHistoryEvents.EventoPrioridad = m_RutaSatrackLastEvents.EventoPrioridad;
-                                        m_RutaSatrackHistoryEvents.VelocidadSentido = m_RutaSatrackLastEvents.VelocidadSentido;
-                                        m_RutaSatrackHistoryEvents.Edad_Posicion = m_RutaSatrackLastEvents.Edad_Posicion;
-                                        m_RutaSatrackHistoryEvents.Ubicacion = m_RutaSatrackLastEvents.Ubicacion;
-                                        m_RutaSatrackHistoryEvents.Longitud = m_RutaSatrackLastEvents.Longitud;
-                                        m_RutaSatrackHistoryEvents.Latitud = m_RutaSatrackLastEvents.Latitud;
-                                        RutaSatrackHistoryEventsController.Instance.Create(m_RutaSatrackHistoryEvents);
-
-                                        //------------------------------------
-                                        // actualiza una placa y genera el historico
-                                        m_RutaSatrackLastEvents.GenerateUndo();
-                                        m_RutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
-                                        m_RutaSatrackLastEvents.FechaHora_GPS = (DateTime)dr["Fecha GPS"];
-                                        m_RutaSatrackLastEvents.EventoPrioridad = (string)dr["Evento / Prioridad"];
-                                        m_RutaSatrackLastEvents.VelocidadSentido = (string)dr["Velocidad y sentido"];
-                                        m_RutaSatrackLastEvents.Edad_Posicion = (string)dr["Edad posición"];
-                                        m_RutaSatrackLastEvents.Ubicacion = (string)dr["Ubicación"];
-                                        m_RutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
-                                        m_RutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
-                                        error = "";
-                                        if (!RutaSatrackLastEventsController.Instance.UpdateChanges(m_RutaSatrackLastEvents, out error))
-                                        {
-                                            //
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    // llegan las placas nuevas
-                                    iRutaSatrackLastEvents = new RutaSatrackLastEvents();
-                                    iRutaSatrackLastEvents.Placa = (string)dr["Placa"];
-                                    iRutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
-                                    iRutaSatrackLastEvents.FechaHora_GPS = (DateTime)dr["Fecha GPS"];
-                                    iRutaSatrackLastEvents.EventoPrioridad = (string)dr["Evento / Prioridad"];
-                                    iRutaSatrackLastEvents.VelocidadSentido = (string)dr["Velocidad y sentido"];
-                                    iRutaSatrackLastEvents.Edad_Posicion = (string)dr["Edad posición"];
-                                    iRutaSatrackLastEvents.Ubicacion = (string)dr["Ubicación"];
-                                    iRutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
-                                    iRutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
-                                    RutaSatrackLastEventsController.Instance.Create(iRutaSatrackLastEvents);
-                                }
-                            }
-                        }
-                    }
-                }
-                swtWsEnProceso = false;
-                return;
-                #endregion
-            }
-            catch (Exception ex)
-            {
-                swtWsEnProceso = false;
-            }
-        }
-
-        private static void CargaExection(Exception ex)
+        public static void CargaExection(Exception ex)
         {
             DialogResult result3 = MessageBox.Show(ex.Message,
                "Error Cargando Datos",
@@ -954,7 +872,14 @@ namespace MetalLiqViajes_Forms
 
                 markerOverlay = new GMapOverlay("Marcador");
 
-                List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+                eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+
+                // llena el grid con los datos de cada mula
+
+                dataGridViewEvents.DataSource = eventosList;
+                dataGridViewEvents.Refresh();
+
+
                 foreach (var item in eventosList)
                 {
 
@@ -996,6 +921,7 @@ namespace MetalLiqViajes_Forms
 
             return image;
         }
+
         private Bitmap CreateBitmapImage(string sImageText)
         {
             Bitmap objBmpImage = new Bitmap(1, 1);
@@ -1015,7 +941,7 @@ namespace MetalLiqViajes_Forms
 
             // Create the bmpImage again with the correct size for the text and font.
             objBmpImage = new Bitmap(objBmpImage, new Size(intWidth, intHeight));
-            
+
 
             // Add the colors to the new bitmap.
             objGraphics = Graphics.FromImage(objBmpImage);
@@ -1147,7 +1073,7 @@ namespace MetalLiqViajes_Forms
 
         private void gMapControl_MouseClick(object sender, MouseEventArgs e)
         {
-           
+
             double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat;
             double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
             txtLatituda.Text = lat.ToString();
@@ -1156,5 +1082,136 @@ namespace MetalLiqViajes_Forms
             //marker.ToolTipText = string.Format("Koordinate: \n Latituda {0} \n Longituda {1}", lat, lng);
 
         }
+
+        private void btnInterrogar_Click(object sender, EventArgs e)
+        {
+            CargarUltimaUbicacion();
+            CargarMapa();
+        }
+
+        private void CargarUltimaUbicacion()
+        {
+            try
+            {
+                if (swtWsEnProceso) return;
+
+                swtWsEnProceso = true;
+                string Placa = "";
+                listplacas = new ArrayList();
+                List<VehiculoCCosto> vehiculosCentroCostoList = VehiculoCCostoController.Instance.GetAll().Where(t => (t.TipoVehiculoCodigo.Value == 1 || t.TipoVehiculoCodigo.Value == 3) && (t.logActivo.Value == 1)).ToList();
+                foreach (var item in vehiculosCentroCostoList)
+                {
+                    Placa = item.strPlaca.Replace("-", "");
+                    listplacas.Add(Placa);
+                }
+                EventsSatrac.getEvents servicio = new EventsSatrac.getEvents();
+                DataTable dt;
+                string UserName = Properties.Settings.Default.UserName;
+                string Password = Properties.Settings.Default.Password;
+                string PhysicalID = "*";
+                decimal Latutud = 0;
+                decimal Longitud = 0;
+                string error = "";
+
+                #region getLastEvent
+                RutaSatrackLastEvents m_RutaSatrackLastEvents;
+                RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
+                System.Data.DataSet datosPlaca = servicio.getLastEvent(UserName, Password, PhysicalID);
+                if (datosPlaca.Tables.Count > 0)
+                {
+                    dt = datosPlaca.Tables[0];
+                    if (dt != null)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            Placa = (string)dr["Placa"];
+
+                            if (listplacas.Contains((string)dr["Placa"]))
+                            {
+                                Longitud = (decimal)dr["Longitud"];
+                                Latutud = (decimal)dr["Latitud"];
+
+                                m_RutaSatrackLastEvents = RutaSatrackLastEventsController.Instance.Get(Placa);
+                                if (m_RutaSatrackLastEvents != null)
+                                {
+                                    if ((m_RutaSatrackLastEvents.Latitud.Value != Latutud) && (m_RutaSatrackLastEvents.Longitud.Value != Longitud))
+                                    {
+                                        m_RutaSatrackHistoryEvents = new RutaSatrackHistoryEvents();
+                                        m_RutaSatrackHistoryEvents.Placa = m_RutaSatrackLastEvents.Placa;
+                                        m_RutaSatrackHistoryEvents.FechaSistema = m_RutaSatrackLastEvents.FechaSistema;
+                                        m_RutaSatrackHistoryEvents.FechaHora_GPS = m_RutaSatrackLastEvents.FechaHora_GPS;
+                                        m_RutaSatrackHistoryEvents.EventoPrioridad = m_RutaSatrackLastEvents.EventoPrioridad;
+                                        m_RutaSatrackHistoryEvents.VelocidadSentido = m_RutaSatrackLastEvents.VelocidadSentido;
+                                        m_RutaSatrackHistoryEvents.Edad_Posicion = m_RutaSatrackLastEvents.Edad_Posicion;
+                                        m_RutaSatrackHistoryEvents.Ubicacion = m_RutaSatrackLastEvents.Ubicacion;
+                                        m_RutaSatrackHistoryEvents.Longitud = m_RutaSatrackLastEvents.Longitud;
+                                        m_RutaSatrackHistoryEvents.Latitud = m_RutaSatrackLastEvents.Latitud;
+                                        RutaSatrackHistoryEventsController.Instance.Create(m_RutaSatrackHistoryEvents);
+
+                                        //------------------------------------
+                                        // actualiza una placa y genera el historico
+                                        m_RutaSatrackLastEvents.GenerateUndo();
+                                        m_RutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
+                                        m_RutaSatrackLastEvents.FechaHora_GPS = (DateTime)dr["Fecha GPS"];
+                                        m_RutaSatrackLastEvents.EventoPrioridad = (string)dr["Evento / Prioridad"];
+                                        m_RutaSatrackLastEvents.VelocidadSentido = (string)dr["Velocidad y sentido"];
+                                        m_RutaSatrackLastEvents.Edad_Posicion = (string)dr["Edad posición"];
+                                        m_RutaSatrackLastEvents.Ubicacion = (string)dr["Ubicación"];
+                                        m_RutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
+                                        m_RutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
+                                        error = "";
+                                        if (!RutaSatrackLastEventsController.Instance.UpdateChanges(m_RutaSatrackLastEvents, out error))
+                                        {
+                                            //
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+                                else
+                                {
+                                    // llegan las placas nuevas
+                                    RutaSatrackLastEvents iRutaSatrackLastEvents = new RutaSatrackLastEvents();
+                                    iRutaSatrackLastEvents.Placa = (string)dr["Placa"];
+                                    iRutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
+                                    iRutaSatrackLastEvents.FechaHora_GPS = (DateTime)dr["Fecha GPS"];
+                                    iRutaSatrackLastEvents.EventoPrioridad = (string)dr["Evento / Prioridad"];
+                                    iRutaSatrackLastEvents.VelocidadSentido = (string)dr["Velocidad y sentido"];
+                                    iRutaSatrackLastEvents.Edad_Posicion = (string)dr["Edad posición"];
+                                    iRutaSatrackLastEvents.Ubicacion = (string)dr["Ubicación"];
+                                    iRutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
+                                    iRutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
+                                    RutaSatrackLastEventsController.Instance.Create(iRutaSatrackLastEvents);
+                                }
+                            }
+                        }
+                    }
+                }
+                swtWsEnProceso = false;
+                return;
+                #endregion
+
+            }
+            catch (Exception ex)
+            {
+                swtWsEnProceso = false;
+            }
+        }
+
+        private void dataGridViewEvents_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            //conductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as Conductor;
+            RutaSatrackEvents SatracEvent = dataGridViewEvents.Rows[e.RowIndex].DataBoundItem as RutaSatrackEvents;
+
+            List<RutaSatrackHistoryEvents> historicoEventsoList = RutaSatrackHistoryEventsController.Instance.GetAll().ToList();
+            dataGridViewHistoryEvents.DataSource = historicoEventsoList;
+
+
+
+
+    }
     }
 }

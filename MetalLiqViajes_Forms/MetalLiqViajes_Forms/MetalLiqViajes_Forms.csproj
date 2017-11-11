@@ -27,15 +27,15 @@
     <ProductName>Liquidación Viajes</ProductName>
     <PublisherName>Liquidación Viajes</PublisherName>
     <SuiteName>Liquidación Viajes LTDA</SuiteName>
-    <MinimumRequiredVersion>2017.11.10.0</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2017.11.10.2</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>default.htm</WebPage>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2017.11.10.0</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2017.11.10.2</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>false</BootstrapperEnabled>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -154,6 +154,8 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.LiquidacionGastosList.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackHistoryEvents.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackLastEvents.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosDTO.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosList.datasource" />
     <None Include="Properties\Settings.settings">

@@ -23,8 +23,8 @@ namespace MetalLiqViajes_Forms
         {
             MenuReportes();
 
-            if (!System.Diagnostics.EventLog.SourceExists("MetalOlapEvent"))
-                System.Diagnostics.EventLog.CreateEventSource("MetalOlapEvent", "MetalOlapLop");
+            //if (!System.Diagnostics.EventLog.SourceExists("MetalOlapEvent"))
+            //System.Diagnostics.EventLog.CreateEventSource("MetalOlapEvent", "MetalOlapLop");
 
             //MetalOlapEventLog.Source = "MetalOlapEvent";
             //MetalOlapEventLog.Log = "MetalOlapLop";
@@ -44,10 +44,18 @@ namespace MetalLiqViajes_Forms
 
         private void MenuReportes()
         {
-            fReportesViajes childForm = new fReportesViajes();
-            childForm.MdiParent = this;
-            childForm.WindowState = FormWindowState.Maximized;
-            childForm.Show();
+            try
+            {
+                fReportesViajes childForm = new fReportesViajes();
+                childForm.MdiParent = this;
+                childForm.WindowState = FormWindowState.Maximized;
+                childForm.Show();
+
+            }
+            catch (Exception ex)
+            {
+                CargaExection(ex);
+            }
         }
 
         private void OpenReporte(object sender, EventArgs e)
@@ -99,5 +107,13 @@ namespace MetalLiqViajes_Forms
             this.Close();
         }
 
+        public static void CargaExection(Exception ex)
+        {
+            DialogResult result3 = MessageBox.Show(ex.Message,
+               "Error Cargando Datos",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Information,
+               MessageBoxDefaultButton.Button1);
+        }
     }
 }

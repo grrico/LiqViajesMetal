@@ -106,12 +106,11 @@ namespace MetalLiqViajes_Services
                 decimal Latutud = 0;
                 decimal Longitud = 0;
                 string error = "";
-                System.Data.DataSet datosPlaca = null;
 
                 #region getLastEvent
                 RutaSatrackLastEvents m_RutaSatrackLastEvents;
                 RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
-                datosPlaca = servicio.getLastEvent(UserName, Password, PhysicalID);
+                System.Data.DataSet datosPlaca = servicio.getLastEvent(UserName, Password, PhysicalID);
                 if (datosPlaca.Tables.Count > 0)
                 {
                     dt = datosPlaca.Tables[0];
