@@ -243,6 +243,18 @@
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
             this.splitter6 = new System.Windows.Forms.Splitter();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.splitter7 = new System.Windows.Forms.Splitter();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.dataGridViewHistoryEvents = new System.Windows.Forms.DataGridView();
+            this.fechaHoraGPSDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventoPrioridadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.velocidadSentidoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edadPosicionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ubicacionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.latitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.longitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rutaSatrackHistoryEventsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel13 = new System.Windows.Forms.Panel();
             this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
             this.placaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaHoraGPSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -266,18 +278,8 @@
             this.btnGetMaps = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.splitter7 = new System.Windows.Forms.Splitter();
-            this.dataGridViewHistoryEvents = new System.Windows.Forms.DataGridView();
-            this.rutaSatrackHistoryEventsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fechaHoraGPSDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eventoPrioridadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.velocidadSentidoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edadPosicionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ubicacionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.latitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.longitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numericUpDownDias = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -326,14 +328,15 @@
             this.panel10.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistoryEvents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackHistoryEventsBindingSource)).BeginInit();
+            this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackLastEventsBindingSource)).BeginInit();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistoryEvents)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackHistoryEventsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).BeginInit();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -2108,6 +2111,110 @@
             this.panel11.Size = new System.Drawing.Size(450, 529);
             this.panel11.TabIndex = 1;
             // 
+            // splitter7
+            // 
+            this.splitter7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter7.Location = new System.Drawing.Point(0, 223);
+            this.splitter7.Name = "splitter7";
+            this.splitter7.Size = new System.Drawing.Size(450, 3);
+            this.splitter7.TabIndex = 4;
+            this.splitter7.TabStop = false;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.dataGridViewHistoryEvents);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(0, 223);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(450, 306);
+            this.panel14.TabIndex = 3;
+            // 
+            // dataGridViewHistoryEvents
+            // 
+            this.dataGridViewHistoryEvents.AllowUserToAddRows = false;
+            this.dataGridViewHistoryEvents.AllowUserToDeleteRows = false;
+            this.dataGridViewHistoryEvents.AutoGenerateColumns = false;
+            this.dataGridViewHistoryEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHistoryEvents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fechaHoraGPSDataGridViewTextBoxColumn1,
+            this.eventoPrioridadDataGridViewTextBoxColumn,
+            this.velocidadSentidoDataGridViewTextBoxColumn1,
+            this.edadPosicionDataGridViewTextBoxColumn,
+            this.ubicacionDataGridViewTextBoxColumn1,
+            this.latitudDataGridViewTextBoxColumn1,
+            this.longitudDataGridViewTextBoxColumn1});
+            this.dataGridViewHistoryEvents.DataSource = this.rutaSatrackHistoryEventsBindingSource;
+            this.dataGridViewHistoryEvents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewHistoryEvents.EnableHeadersVisualStyles = false;
+            this.dataGridViewHistoryEvents.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewHistoryEvents.Name = "dataGridViewHistoryEvents";
+            this.dataGridViewHistoryEvents.ReadOnly = true;
+            this.dataGridViewHistoryEvents.RowHeadersWidth = 10;
+            this.dataGridViewHistoryEvents.Size = new System.Drawing.Size(450, 306);
+            this.dataGridViewHistoryEvents.TabIndex = 2;
+            // 
+            // fechaHoraGPSDataGridViewTextBoxColumn1
+            // 
+            this.fechaHoraGPSDataGridViewTextBoxColumn1.DataPropertyName = "FechaHora_GPS";
+            this.fechaHoraGPSDataGridViewTextBoxColumn1.HeaderText = "FechaHora_GPS";
+            this.fechaHoraGPSDataGridViewTextBoxColumn1.Name = "fechaHoraGPSDataGridViewTextBoxColumn1";
+            this.fechaHoraGPSDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // eventoPrioridadDataGridViewTextBoxColumn
+            // 
+            this.eventoPrioridadDataGridViewTextBoxColumn.DataPropertyName = "EventoPrioridad";
+            this.eventoPrioridadDataGridViewTextBoxColumn.HeaderText = "EventoPrioridad";
+            this.eventoPrioridadDataGridViewTextBoxColumn.Name = "eventoPrioridadDataGridViewTextBoxColumn";
+            this.eventoPrioridadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // velocidadSentidoDataGridViewTextBoxColumn1
+            // 
+            this.velocidadSentidoDataGridViewTextBoxColumn1.DataPropertyName = "VelocidadSentido";
+            this.velocidadSentidoDataGridViewTextBoxColumn1.HeaderText = "VelocidadSentido";
+            this.velocidadSentidoDataGridViewTextBoxColumn1.Name = "velocidadSentidoDataGridViewTextBoxColumn1";
+            this.velocidadSentidoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // edadPosicionDataGridViewTextBoxColumn
+            // 
+            this.edadPosicionDataGridViewTextBoxColumn.DataPropertyName = "Edad_Posicion";
+            this.edadPosicionDataGridViewTextBoxColumn.HeaderText = "Edad_Posicion";
+            this.edadPosicionDataGridViewTextBoxColumn.Name = "edadPosicionDataGridViewTextBoxColumn";
+            this.edadPosicionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ubicacionDataGridViewTextBoxColumn1
+            // 
+            this.ubicacionDataGridViewTextBoxColumn1.DataPropertyName = "Ubicacion";
+            this.ubicacionDataGridViewTextBoxColumn1.HeaderText = "Ubicacion";
+            this.ubicacionDataGridViewTextBoxColumn1.Name = "ubicacionDataGridViewTextBoxColumn1";
+            this.ubicacionDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // latitudDataGridViewTextBoxColumn1
+            // 
+            this.latitudDataGridViewTextBoxColumn1.DataPropertyName = "Latitud";
+            this.latitudDataGridViewTextBoxColumn1.HeaderText = "Latitud";
+            this.latitudDataGridViewTextBoxColumn1.Name = "latitudDataGridViewTextBoxColumn1";
+            this.latitudDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // longitudDataGridViewTextBoxColumn1
+            // 
+            this.longitudDataGridViewTextBoxColumn1.DataPropertyName = "Longitud";
+            this.longitudDataGridViewTextBoxColumn1.HeaderText = "Longitud";
+            this.longitudDataGridViewTextBoxColumn1.Name = "longitudDataGridViewTextBoxColumn1";
+            this.longitudDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // rutaSatrackHistoryEventsBindingSource
+            // 
+            this.rutaSatrackHistoryEventsBindingSource.DataSource = typeof(LiqViajes_Bll_Data.RutaSatrackHistoryEvents);
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.dataGridViewEvents);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel13.Location = new System.Drawing.Point(0, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(450, 223);
+            this.panel13.TabIndex = 2;
+            // 
             // dataGridViewEvents
             // 
             this.dataGridViewEvents.AllowUserToAddRows = false;
@@ -2193,9 +2300,11 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.numericUpDownDias);
             this.panel9.Controls.Add(this.txtLongitud);
             this.panel9.Controls.Add(this.txtLatituda);
             this.panel9.Controls.Add(this.label11);
+            this.panel9.Controls.Add(this.label12);
             this.panel9.Controls.Add(this.label10);
             this.panel9.Controls.Add(this.trackBarZoom);
             this.panel9.Controls.Add(this.btnRefrescarMapa);
@@ -2213,7 +2322,7 @@
             // txtLongitud
             // 
             this.txtLongitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLongitud.Location = new System.Drawing.Point(791, 43);
+            this.txtLongitud.Location = new System.Drawing.Point(659, 37);
             this.txtLongitud.Name = "txtLongitud";
             this.txtLongitud.Size = new System.Drawing.Size(124, 24);
             this.txtLongitud.TabIndex = 3;
@@ -2222,7 +2331,7 @@
             // 
             this.txtLatituda.Enabled = false;
             this.txtLatituda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLatituda.Location = new System.Drawing.Point(791, 13);
+            this.txtLatituda.Location = new System.Drawing.Point(659, 7);
             this.txtLatituda.Name = "txtLatituda";
             this.txtLatituda.Size = new System.Drawing.Size(124, 24);
             this.txtLatituda.TabIndex = 4;
@@ -2231,7 +2340,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(706, 43);
+            this.label11.Location = new System.Drawing.Point(574, 37);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 18);
             this.label11.TabIndex = 2;
@@ -2241,7 +2350,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(720, 13);
+            this.label10.Location = new System.Drawing.Point(588, 7);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 18);
             this.label10.TabIndex = 2;
@@ -2323,109 +2432,38 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panel13
+            // numericUpDownDias
             // 
-            this.panel13.Controls.Add(this.dataGridViewEvents);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(0, 0);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(450, 223);
-            this.panel13.TabIndex = 2;
+            this.numericUpDownDias.Location = new System.Drawing.Point(496, 7);
+            this.numericUpDownDias.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownDias.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownDias.Name = "numericUpDownDias";
+            this.numericUpDownDias.Size = new System.Drawing.Size(38, 20);
+            this.numericUpDownDias.TabIndex = 5;
+            this.numericUpDownDias.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownDias.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // panel14
+            // label12
             // 
-            this.panel14.Controls.Add(this.dataGridViewHistoryEvents);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(0, 223);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(450, 306);
-            this.panel14.TabIndex = 3;
-            // 
-            // splitter7
-            // 
-            this.splitter7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter7.Location = new System.Drawing.Point(0, 223);
-            this.splitter7.Name = "splitter7";
-            this.splitter7.Size = new System.Drawing.Size(450, 3);
-            this.splitter7.TabIndex = 4;
-            this.splitter7.TabStop = false;
-            // 
-            // dataGridViewHistoryEvents
-            // 
-            this.dataGridViewHistoryEvents.AllowUserToAddRows = false;
-            this.dataGridViewHistoryEvents.AllowUserToDeleteRows = false;
-            this.dataGridViewHistoryEvents.AutoGenerateColumns = false;
-            this.dataGridViewHistoryEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewHistoryEvents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fechaHoraGPSDataGridViewTextBoxColumn1,
-            this.eventoPrioridadDataGridViewTextBoxColumn,
-            this.velocidadSentidoDataGridViewTextBoxColumn1,
-            this.edadPosicionDataGridViewTextBoxColumn,
-            this.ubicacionDataGridViewTextBoxColumn1,
-            this.latitudDataGridViewTextBoxColumn1,
-            this.longitudDataGridViewTextBoxColumn1});
-            this.dataGridViewHistoryEvents.DataSource = this.rutaSatrackHistoryEventsBindingSource;
-            this.dataGridViewHistoryEvents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewHistoryEvents.EnableHeadersVisualStyles = false;
-            this.dataGridViewHistoryEvents.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewHistoryEvents.Name = "dataGridViewHistoryEvents";
-            this.dataGridViewHistoryEvents.ReadOnly = true;
-            this.dataGridViewHistoryEvents.RowHeadersWidth = 10;
-            this.dataGridViewHistoryEvents.Size = new System.Drawing.Size(450, 306);
-            this.dataGridViewHistoryEvents.TabIndex = 2;
-            // 
-            // rutaSatrackHistoryEventsBindingSource
-            // 
-            this.rutaSatrackHistoryEventsBindingSource.DataSource = typeof(LiqViajes_Bll_Data.RutaSatrackHistoryEvents);
-            // 
-            // fechaHoraGPSDataGridViewTextBoxColumn1
-            // 
-            this.fechaHoraGPSDataGridViewTextBoxColumn1.DataPropertyName = "FechaHora_GPS";
-            this.fechaHoraGPSDataGridViewTextBoxColumn1.HeaderText = "FechaHora_GPS";
-            this.fechaHoraGPSDataGridViewTextBoxColumn1.Name = "fechaHoraGPSDataGridViewTextBoxColumn1";
-            this.fechaHoraGPSDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // eventoPrioridadDataGridViewTextBoxColumn
-            // 
-            this.eventoPrioridadDataGridViewTextBoxColumn.DataPropertyName = "EventoPrioridad";
-            this.eventoPrioridadDataGridViewTextBoxColumn.HeaderText = "EventoPrioridad";
-            this.eventoPrioridadDataGridViewTextBoxColumn.Name = "eventoPrioridadDataGridViewTextBoxColumn";
-            this.eventoPrioridadDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // velocidadSentidoDataGridViewTextBoxColumn1
-            // 
-            this.velocidadSentidoDataGridViewTextBoxColumn1.DataPropertyName = "VelocidadSentido";
-            this.velocidadSentidoDataGridViewTextBoxColumn1.HeaderText = "VelocidadSentido";
-            this.velocidadSentidoDataGridViewTextBoxColumn1.Name = "velocidadSentidoDataGridViewTextBoxColumn1";
-            this.velocidadSentidoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // edadPosicionDataGridViewTextBoxColumn
-            // 
-            this.edadPosicionDataGridViewTextBoxColumn.DataPropertyName = "Edad_Posicion";
-            this.edadPosicionDataGridViewTextBoxColumn.HeaderText = "Edad_Posicion";
-            this.edadPosicionDataGridViewTextBoxColumn.Name = "edadPosicionDataGridViewTextBoxColumn";
-            this.edadPosicionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ubicacionDataGridViewTextBoxColumn1
-            // 
-            this.ubicacionDataGridViewTextBoxColumn1.DataPropertyName = "Ubicacion";
-            this.ubicacionDataGridViewTextBoxColumn1.HeaderText = "Ubicacion";
-            this.ubicacionDataGridViewTextBoxColumn1.Name = "ubicacionDataGridViewTextBoxColumn1";
-            this.ubicacionDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // latitudDataGridViewTextBoxColumn1
-            // 
-            this.latitudDataGridViewTextBoxColumn1.DataPropertyName = "Latitud";
-            this.latitudDataGridViewTextBoxColumn1.HeaderText = "Latitud";
-            this.latitudDataGridViewTextBoxColumn1.Name = "latitudDataGridViewTextBoxColumn1";
-            this.latitudDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // longitudDataGridViewTextBoxColumn1
-            // 
-            this.longitudDataGridViewTextBoxColumn1.DataPropertyName = "Longitud";
-            this.longitudDataGridViewTextBoxColumn1.HeaderText = "Longitud";
-            this.longitudDataGridViewTextBoxColumn1.Name = "longitudDataGridViewTextBoxColumn1";
-            this.longitudDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(443, 7);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 18);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Días:";
             // 
             // fReportesViajes
             // 
@@ -2487,15 +2525,16 @@
             this.panel10.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistoryEvents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackHistoryEventsBindingSource)).EndInit();
+            this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackLastEventsBindingSource)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
-            this.panel13.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistoryEvents)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackHistoryEventsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2728,5 +2767,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn longitudDataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource rutaSatrackHistoryEventsBindingSource;
         private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.NumericUpDown numericUpDownDias;
+        private System.Windows.Forms.Label label12;
     }
 }

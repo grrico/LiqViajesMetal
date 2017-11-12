@@ -1202,16 +1202,41 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewEvents_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            DateTime fechainicial = DateTime.Now.AddDays(-Convert.ToDouble(numericUpDownDias.Value));
+            RutaSatrackLastEvents SatracEvent = dataGridViewEvents.Rows[e.RowIndex].DataBoundItem as RutaSatrackLastEvents;
+            List<RutaSatrackHistoryEvents> historicoEventsoList = RutaSatrackHistoryEventsController.Instance.GetByPlacaFecha(SatracEvent.Placa, fechainicial, DateTime.Now).ToList();
+            List<RutaSatrackHistoryEvents> historicoList = new List<RutaSatrackHistoryEvents>();
+            bool cargainicial = false;
+            DateTime fecha = DateTime.Now;
+            decimal latitud = 0, longitud = 0;
+            foreach (var item in historicoEventsoList)
+            {
+                if (!cargainicial)
+                {
+                    fecha = item.FechaHora_GPS.Value;
+                    latitud = item.Latitud.Value;
+                    longitud = item.Longitud.Value;
+                    cargainicial = true;
+                    historicoList.Add(item);
+                    continue;
+                }
 
-            //conductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as Conductor;
-            RutaSatrackEvents SatracEvent = dataGridViewEvents.Rows[e.RowIndex].DataBoundItem as RutaSatrackEvents;
+                bool x = (item.Placa == SatracEvent.Placa
+                            && item.FechaHora_GPS.Value == fecha
+                            && item.Latitud.Value == latitud
+                            && item.Longitud.Value == longitud);
+                if (!x)
+                {
+                    fecha = item.FechaHora_GPS.Value;
+                    latitud = item.Latitud.Value;
+                    longitud = item.Longitud.Value;
+                    cargainicial = true;
+                    historicoList.Add(item);
+                }
 
-            List<RutaSatrackHistoryEvents> historicoEventsoList = RutaSatrackHistoryEventsController.Instance.GetAll().ToList();
-            dataGridViewHistoryEvents.DataSource = historicoEventsoList;
-
-
-
-
-    }
+            }
+            dataGridViewHistoryEvents.DataSource = historicoList;
+            dataGridViewHistoryEvents.Refresh();
+        }
     }
 }
