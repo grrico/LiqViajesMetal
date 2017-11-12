@@ -466,6 +466,7 @@ namespace MetalLiqViajes_Forms
                 comboBoxTerceros.DataSource = tercerosDTOList;
                 comboBoxTerceros.SelectedIndex = 0;
                 comboBoxTerceros.Refresh();
+
             }
             catch (Exception ex)
             {
@@ -563,6 +564,15 @@ namespace MetalLiqViajes_Forms
                     liquidacionGastosList.Add(liqgastos);
 
                     dataGridViewLiqGastos.DataSource = liquidacionGastosList.ToList();
+
+                    // Resize the master DataGridView columns to fit the newly loaded data.
+                    dataGridViewLiqGastos.AutoResizeColumns();
+
+                    // Configure the details DataGridView so that its columns automatically
+                    // adjust their widths when the data changes.
+                    dataGridViewLiqGastos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+
                 }
                 catch (Exception ex)
                 {
@@ -860,12 +870,14 @@ namespace MetalLiqViajes_Forms
             try
             {
                 gMapControl.DragButton = MouseButtons.Left;
+                gMapControl.Overlays.Clear();
                 gMapControl.CanDragMap = true;
                 gMapControl.MapProvider = GMapProviders.GoogleMap;
                 gMapControl.Position = new PointLatLng(LatIncial, lngInicial);
                 gMapControl.MinZoom = 0;
                 gMapControl.MaxZoom = 24;
-                gMapControl.Zoom = 8;
+                gMapControl.Zoom = 12;
+
                 gMapControl.AutoScroll = true;
 
                 // marcadores
@@ -879,6 +891,12 @@ namespace MetalLiqViajes_Forms
                 dataGridViewEvents.DataSource = eventosList;
                 dataGridViewEvents.Refresh();
 
+                // Resize the master DataGridView columns to fit the newly loaded data.
+                dataGridViewEvents.AutoResizeColumns();
+
+                // Configure the details DataGridView so that its columns automatically
+                // adjust their widths when the data changes.
+                dataGridViewEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
                 foreach (var item in eventosList)
                 {
@@ -930,7 +948,7 @@ namespace MetalLiqViajes_Forms
             int intHeight = 0;
 
             // Create the Font object for the image text drawing.
-            Font objFont = new Font("Arial", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            Font objFont = new Font("Arial", 11, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 
             // Create a graphics object to measure the text's width and height.
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
@@ -946,11 +964,28 @@ namespace MetalLiqViajes_Forms
             // Add the colors to the new bitmap.
             objGraphics = Graphics.FromImage(objBmpImage);
 
+            /////////////////////
+
+            // Create image.
+            //Image imageFile = Image.FromFile("SampImag.jpg");
+            Image imageFile = Image.FromFile(@"C:\Metal\images\1.png");
+
+            // Create graphics object for alteration.
+            Graphics newGraphics = Graphics.FromImage(imageFile);
+
+            // Alter image.
+            newGraphics.FillRectangle(new SolidBrush(Color.Black), 100, 50, 100, 100);
+
+
+            ////////////////////
+
             // Set Background color
             objGraphics.Clear(Color.Yellow);
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
             objGraphics.DrawString(sImageText, objFont, new SolidBrush(Color.FromArgb(102, 102, 102)), 0, 0);
+            // Draw image to screen.
+            objGraphics.DrawImage(imageFile, new PointF(0.0F, 0.0F));
             objGraphics.Flush();
 
             return (objBmpImage);
@@ -960,27 +995,25 @@ namespace MetalLiqViajes_Forms
         {
             // se toman las coordenadas al dar duble clie al mapa
 
-            double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat; // recuperamos del mapa cuando damos doble clic
-            double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
+            //double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat; // recuperamos del mapa cuando damos doble clic
+            //double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
 
-            // creamos el marcador para mover lo al lugar indicado
-            marker.Position = new PointLatLng(lat, lng);
+            //// creamos el marcador para mover lo al lugar indicado
+            //marker.Position = new PointLatLng(lat, lng);
 
-            // se agrega el mensaje al marcado (tooltip)
-            marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", lat, lng);
+            //// se agrega el mensaje al marcado (tooltip)
+            //marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", lat, lng);
 
         }
 
         private void GeneraRuta()
         {
-            GMapOverlay Ruta = new GMapOverlay("Capa Ruta");
+            GMapOverlay Ruta = new GMapOverlay("Ruta");
 
             List<PointLatLng> Puntos = new List<PointLatLng>();
 
             double lat, lng;
             double latAnt = 0, lngAnt = 0;
-
-            //List<RutaSatrackHistoryEvents> eventosList = RutaSatrackHistoryEventsController.Instance.GetAll().Where(t => t.Placa == "TRK451").ToList();
 
             List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
 
@@ -1013,39 +1046,6 @@ namespace MetalLiqViajes_Forms
 
         }
 
-        private void btnGetMaps_Click_1(object sender, EventArgs e)
-        {
-
-            //////gMapControl.MapProvider = GMapProviders.GoogleMap;
-
-            ////////GMapOverlay Ruta = new GMapOverlay("Capa Ruta");
-            //////List<PointLatLng> points = new List<PointLatLng>(); ;
-            //////List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
-            //////foreach (var item in eventosList)
-            //////{
-            //////    points.Add(new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud)));
-            //////}
-            //////int kolon = eventosList.Count;
-            //////for (int i = 1; i <= kolon; i++)
-            //////{
-            //////    //points.Add(new PointLatLng(Convert.ToDouble(listView1.Items[i - 1].SubItems[1].Text), Convert.ToDouble(listView1.Items[i - 1].SubItems[2].Text)));
-            //////}
-
-            //////GMapRoute r = new GMapRoute(points, "my route");
-            //////r.Stroke.Width = 3;
-            //////r.Stroke.Color = Color.Red;
-            ////////r.Tag = "1";
-            ////////r.Name = "name";
-            //////GMapOverlay routesOverlay = new GMapOverlay("routes");//new GMapOverlay("routes");
-            //////routesOverlay.Routes.Add(r);
-            //////gMapControl.Overlays.Add(routesOverlay);
-            //////gMapControl.ZoomAndCenterRoute(r);
-
-
-
-
-        }
-
         private void btnSatelite_Click(object sender, EventArgs e)
         {
             gMapControl.MapProvider = GMapProviders.GoogleChinaSatelliteMap;
@@ -1074,10 +1074,10 @@ namespace MetalLiqViajes_Forms
         private void gMapControl_MouseClick(object sender, MouseEventArgs e)
         {
 
-            double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat;
-            double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
-            txtLatituda.Text = lat.ToString();
-            txtLongitud.Text = lng.ToString();
+            //double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat;
+            //double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
+            //txtLatituda.Text = lat.ToString();
+            //txtLongitud.Text = lng.ToString();
             //marker.Position = new PointLatLng(lat, lng);
             //marker.ToolTipText = string.Format("Koordinate: \n Latituda {0} \n Longituda {1}", lat, lng);
 
@@ -1235,8 +1235,55 @@ namespace MetalLiqViajes_Forms
                 }
 
             }
+
             dataGridViewHistoryEvents.DataSource = historicoList;
             dataGridViewHistoryEvents.Refresh();
+
+
+            // Resize the master DataGridView columns to fit the newly loaded data.
+            dataGridViewHistoryEvents.AutoResizeColumns();
+
+            // Configure the details DataGridView so that its columns automatically
+            // adjust their widths when the data changes.
+            dataGridViewHistoryEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+
+            //MarcarRuta(SatracEvent, historicoList);
+
+        }
+
+        private void MarcarRuta(RutaSatrackLastEvents SatracEvent, List<RutaSatrackHistoryEvents> historicoList)
+        {
+            GMapOverlay Ruta = new GMapOverlay("Ruta");
+
+            gMapControl.Zoom = 8;
+            gMapControl.Overlays.Clear();
+
+            markerOverlay = new GMapOverlay("Marcador");
+
+            List<PointLatLng> Puntos = new List<PointLatLng>();
+
+            Puntos.Add(new PointLatLng(double.Parse(SatracEvent.Latitud.ToString()), double.Parse(SatracEvent.Longitud.ToString())));
+            GMapRoute PuntoRutas = new GMapRoute(Puntos, "Ruta");
+            Ruta.Routes.Add(PuntoRutas);
+            gMapControl.Overlays.Add(Ruta);
+
+            //-----------------------------------------------
+
+            GMapOverlay polygons = new GMapOverlay("polygons");
+            List<PointLatLng> points = new List<PointLatLng>();
+            foreach (var item in historicoList)
+            {
+                points.Add(new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud)));
+            }
+
+            GMapPolygon polygon = new GMapPolygon(points, "Jardin des Tuileries");
+            polygons.Polygons.Add(polygon);
+            gMapControl.Overlays.Add(markerOverlay);
+            gMapControl.Overlays.Add(polygons);
+
+            gMapControl.Zoom = gMapControl.Zoom + 1;
+            gMapControl.Zoom = gMapControl.Zoom - 1;
         }
     }
 }
