@@ -35,7 +35,7 @@ namespace MetalLiqViajes_Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("300000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100000")]
         public double Interval {
             get {
                 return ((double)(this["Interval"]));
@@ -98,7 +98,7 @@ namespace MetalLiqViajes_Services.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
         public double IntervalStart {
             get {
                 return ((double)(this["IntervalStart"]));

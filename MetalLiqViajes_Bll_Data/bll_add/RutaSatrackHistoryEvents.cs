@@ -40,7 +40,27 @@ namespace LiqViajes_Bll_Data
 				throw ex;
 			}
 		}
-        
-	}
+
+        public RutaSatrackHistoryEventsList GetByPlacaFechaGPS(string Placa, DateTime FechaGps, decimal Latitud, decimal Longitud, bool generateUndo = false)
+        {
+            try
+            {
+                RutaSatrackHistoryEventsList rutasatrackhistoryeventslist = new RutaSatrackHistoryEventsList();
+                DataTable dt = RutaSatrackHistoryEventsDataProvider.Instance.GetByPlacaFechaGPS(Placa, FechaGps, Latitud ,Longitud);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    RutaSatrackHistoryEvents rutasatrackhistoryevents = new RutaSatrackHistoryEvents();
+                    ReadData(rutasatrackhistoryevents, dr, generateUndo);
+                    rutasatrackhistoryeventslist.Add(rutasatrackhistoryevents);
+                }
+                return rutasatrackhistoryeventslist;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+    }
    
 }

@@ -109,6 +109,8 @@ namespace MetalLiqViajes_Services
                 string error = "";
 
                 #region getLastEvent
+
+                List<RutaSatrackHistoryEvents> historicoEventsoList;
                 RutaSatrackLastEvents m_RutaSatrackLastEvents;
                 RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
                 System.Data.DataSet datosPlaca = servicio.getLastEvent(UserName, Password, PhysicalID);
@@ -123,32 +125,40 @@ namespace MetalLiqViajes_Services
 
                             if (listplacas.Contains((string)dr["Placa"]))
                             {
+                                bool x = false;
                                 Latutud = (decimal)dr["Latitud"];
                                 Longitud = (decimal)dr["Longitud"];
                                 FechaGPS = (DateTime)dr["Fecha GPS"];
                                 m_RutaSatrackLastEvents = RutaSatrackLastEventsController.Instance.Get(Placa);
                                 if (m_RutaSatrackLastEvents != null)
                                 {
-                                    // verifica si el evento ya existe 
-
-                                    bool x = (m_RutaSatrackLastEvents.Placa == Placa
-                                        && m_RutaSatrackLastEvents.FechaHora_GPS.Value == FechaGPS
-                                        && m_RutaSatrackLastEvents.Latitud.Value == Latutud
-                                        && m_RutaSatrackLastEvents.Longitud.Value == Longitud);
-
-                                    if (!x)
+                                    historicoEventsoList = RutaSatrackHistoryEventsController.Instance.GetByPlacaFecha(Placa, FechaGPS, FechaGPS).ToList();
+                                    if (historicoEventsoList.Count == 0)
                                     {
-                                        m_RutaSatrackHistoryEvents = CreaHistorico(m_RutaSatrackLastEvents);
-                                        error = ACtualizarEvento(m_RutaSatrackLastEvents, dr);
+                                        // Verifica si ya existe el registro
+
+                                        ActualizacionDatos(out error, m_RutaSatrackLastEvents, out m_RutaSatrackHistoryEvents, dr);
+                                    }
+                                    else
+                                    {
+                                        
+                                        // Verifica si ya existe el registro
+
+                                        int cantidad = historicoEventsoList.Where(t => t.Placa == Placa && t.FechaHora_GPS.Value == FechaGPS && t.Latitud.Value == Latutud && t.Longitud.Value == Longitud).Count();
+                                        if (cantidad == 0)
+                                        {
+                                            
+                                            // si existe lo actualiza
+
+                                            ActualizacionDatos(out error, m_RutaSatrackLastEvents, out m_RutaSatrackHistoryEvents, dr);
+                                        }                                       
                                     }
                                 }
                                 else
                                 {
-                                    // existe el evento y lo crea
+                                    // crea el registro
 
-                                    CreaEvento(dr);
-                                    m_RutaSatrackLastEvents = RutaSatrackLastEventsController.Instance.Get(Placa);
-                                    m_RutaSatrackHistoryEvents = CreaHistorico(m_RutaSatrackLastEvents);
+                                    m_RutaSatrackHistoryEvents = CrearRegistro(dr);
                                 }
                             }
                         }
@@ -165,8 +175,9 @@ namespace MetalLiqViajes_Services
             }
         }
 
-        private void CreaEvento(DataRow dr)
+        private RutaSatrackHistoryEvents CrearRegistro(DataRow dr)
         {
+            RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents;
             iRutaSatrackLastEvents = new RutaSatrackLastEvents();
             iRutaSatrackLastEvents.Placa = (string)dr["Placa"];
             iRutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
@@ -178,11 +189,23 @@ namespace MetalLiqViajes_Services
             iRutaSatrackLastEvents.Longitud = (decimal)dr["Longitud"];
             iRutaSatrackLastEvents.Latitud = (decimal)dr["Latitud"];
             RutaSatrackLastEventsController.Instance.Create(iRutaSatrackLastEvents);
+
+            m_RutaSatrackHistoryEvents = new RutaSatrackHistoryEvents();
+            m_RutaSatrackHistoryEvents.Placa = iRutaSatrackLastEvents.Placa;
+            m_RutaSatrackHistoryEvents.FechaSistema = iRutaSatrackLastEvents.FechaSistema;
+            m_RutaSatrackHistoryEvents.FechaHora_GPS = iRutaSatrackLastEvents.FechaHora_GPS;
+            m_RutaSatrackHistoryEvents.EventoPrioridad = iRutaSatrackLastEvents.EventoPrioridad;
+            m_RutaSatrackHistoryEvents.VelocidadSentido = iRutaSatrackLastEvents.VelocidadSentido;
+            m_RutaSatrackHistoryEvents.Edad_Posicion = iRutaSatrackLastEvents.Edad_Posicion;
+            m_RutaSatrackHistoryEvents.Ubicacion = iRutaSatrackLastEvents.Ubicacion;
+            m_RutaSatrackHistoryEvents.Longitud = iRutaSatrackLastEvents.Longitud;
+            m_RutaSatrackHistoryEvents.Latitud = iRutaSatrackLastEvents.Latitud;
+            RutaSatrackHistoryEventsController.Instance.Create(m_RutaSatrackHistoryEvents);
+            return m_RutaSatrackHistoryEvents;
         }
 
-        private static string ACtualizarEvento(RutaSatrackLastEvents m_RutaSatrackLastEvents, DataRow dr)
+        private void ActualizacionDatos(out string error, RutaSatrackLastEvents m_RutaSatrackLastEvents, out RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents, DataRow dr)
         {
-            string error;
             m_RutaSatrackLastEvents.GenerateUndo();
             m_RutaSatrackLastEvents.FechaSistema = (DateTime)dr["Fecha Sistema"];
             m_RutaSatrackLastEvents.FechaHora_GPS = (DateTime)dr["Fecha GPS"];
@@ -195,15 +218,11 @@ namespace MetalLiqViajes_Services
             error = "";
             if (!RutaSatrackLastEventsController.Instance.UpdateChanges(m_RutaSatrackLastEvents, out error))
             {
-                //
             }
 
-            return error;
-        }
+            //
 
-        private static RutaSatrackHistoryEvents CreaHistorico(RutaSatrackLastEvents m_RutaSatrackLastEvents)
-        {
-            RutaSatrackHistoryEvents m_RutaSatrackHistoryEvents = new RutaSatrackHistoryEvents();
+            m_RutaSatrackHistoryEvents = new RutaSatrackHistoryEvents();
             m_RutaSatrackHistoryEvents.Placa = m_RutaSatrackLastEvents.Placa;
             m_RutaSatrackHistoryEvents.FechaSistema = m_RutaSatrackLastEvents.FechaSistema;
             m_RutaSatrackHistoryEvents.FechaHora_GPS = m_RutaSatrackLastEvents.FechaHora_GPS;
@@ -214,7 +233,6 @@ namespace MetalLiqViajes_Services
             m_RutaSatrackHistoryEvents.Longitud = m_RutaSatrackLastEvents.Longitud;
             m_RutaSatrackHistoryEvents.Latitud = m_RutaSatrackLastEvents.Latitud;
             RutaSatrackHistoryEventsController.Instance.Create(m_RutaSatrackHistoryEvents);
-            return m_RutaSatrackHistoryEvents;
         }
     }
 }
