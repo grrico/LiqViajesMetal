@@ -58,4 +58,8 @@ namespace MetalLiqViajes_Forms
         public Decimal ValorTotal { get; set; }
     }
 
+    public class Providedor
+    {
+        public string Nombre { get; set; }        
+    }
 }

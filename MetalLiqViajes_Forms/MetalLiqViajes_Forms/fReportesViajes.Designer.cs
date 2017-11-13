@@ -241,7 +241,10 @@
             this.tabControlMapa = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.trackBarZoom = new System.Windows.Forms.TrackBar();
             this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
             this.placaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaHoraGPSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -261,20 +264,18 @@
             this.latitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.longitudDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rutaSatrackHistoryEventsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel9 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBoxProveedor = new System.Windows.Forms.ComboBox();
+            this.numericUpDownMarcadores = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownDias = new System.Windows.Forms.NumericUpDown();
-            this.txtLongitud = new System.Windows.Forms.TextBox();
-            this.txtLatituda = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.trackBarZoom = new System.Windows.Forms.TrackBar();
             this.btnRefrescarMapa = new System.Windows.Forms.Button();
+            this.btnRuta = new System.Windows.Forms.Button();
             this.btnInterrogar = new System.Windows.Forms.Button();
-            this.btnRelieve = new System.Windows.Forms.Button();
-            this.btnoriginal = new System.Windows.Forms.Button();
-            this.btnSatelite = new System.Windows.Forms.Button();
-            this.btnGetMaps = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
@@ -328,14 +329,17 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackLastEventsBindingSource)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistoryEvents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackHistoryEventsBindingSource)).BeginInit();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -2043,10 +2047,11 @@
             this.tabControlMapa.Controls.Add(this.tabPage6);
             this.tabControlMapa.Controls.Add(this.tabPage7);
             this.tabControlMapa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlMapa.Location = new System.Drawing.Point(0, 73);
+            this.tabControlMapa.ImageList = this.imageList1;
+            this.tabControlMapa.Location = new System.Drawing.Point(0, 72);
             this.tabControlMapa.Name = "tabControlMapa";
             this.tabControlMapa.SelectedIndex = 0;
-            this.tabControlMapa.Size = new System.Drawing.Size(1028, 529);
+            this.tabControlMapa.Size = new System.Drawing.Size(1028, 530);
             this.tabControlMapa.TabIndex = 3;
             // 
             // tabPage6
@@ -2054,7 +2059,8 @@
             this.tabPage6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage6.Controls.Add(this.splitContainer3);
             this.tabPage6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.ImageIndex = 18;
+            this.tabPage6.Location = new System.Drawing.Point(4, 23);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(1020, 503);
@@ -2072,14 +2078,24 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.gMapControl);
+            this.splitContainer3.Panel1.Controls.Add(this.panel11);
+            this.splitContainer3.Panel1.Controls.Add(this.panel10);
             // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dataGridViewEvents);
             this.splitContainer3.Size = new System.Drawing.Size(1012, 495);
-            this.splitContainer3.SplitterDistance = 331;
+            this.splitContainer3.SplitterDistance = 330;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.gMapControl);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(981, 328);
+            this.panel11.TabIndex = 6;
             // 
             // gMapControl
             // 
@@ -2094,7 +2110,7 @@
             this.gMapControl.LevelsKeepInMemmory = 5;
             this.gMapControl.Location = new System.Drawing.Point(0, 0);
             this.gMapControl.MarkersEnabled = true;
-            this.gMapControl.MaxZoom = 2;
+            this.gMapControl.MaxZoom = 24;
             this.gMapControl.MinZoom = 2;
             this.gMapControl.MouseWheelZoomEnabled = true;
             this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
@@ -2106,11 +2122,32 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(1010, 329);
+            this.gMapControl.Size = new System.Drawing.Size(981, 328);
             this.gMapControl.TabIndex = 0;
             this.gMapControl.Zoom = 0D;
+            this.gMapControl.DoubleClick += new System.EventHandler(this.gMapControl_DoubleClick);
             this.gMapControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl_MouseClick);
-            this.gMapControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl_MouseDoubleClick);
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.trackBarZoom);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(981, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(29, 328);
+            this.panel10.TabIndex = 5;
+            // 
+            // trackBarZoom
+            // 
+            this.trackBarZoom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarZoom.Location = new System.Drawing.Point(0, 0);
+            this.trackBarZoom.Maximum = 24;
+            this.trackBarZoom.Name = "trackBarZoom";
+            this.trackBarZoom.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarZoom.Size = new System.Drawing.Size(29, 328);
+            this.trackBarZoom.TabIndex = 4;
+            this.trackBarZoom.TickFrequency = 2;
+            this.trackBarZoom.ValueChanged += new System.EventHandler(this.trackBarZoom_ValueChanged);
             // 
             // dataGridViewEvents
             // 
@@ -2133,7 +2170,7 @@
             this.dataGridViewEvents.Name = "dataGridViewEvents";
             this.dataGridViewEvents.ReadOnly = true;
             this.dataGridViewEvents.RowHeadersWidth = 10;
-            this.dataGridViewEvents.Size = new System.Drawing.Size(1010, 158);
+            this.dataGridViewEvents.Size = new System.Drawing.Size(1010, 159);
             this.dataGridViewEvents.TabIndex = 1;
             this.dataGridViewEvents.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEvents_RowEnter);
             // 
@@ -2200,7 +2237,8 @@
             this.tabPage7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage7.Controls.Add(this.dataGridViewHistoryEvents);
             this.tabPage7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.ImageIndex = 8;
+            this.tabPage7.Location = new System.Drawing.Point(4, 23);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(1020, 503);
@@ -2285,30 +2323,96 @@
             // 
             this.rutaSatrackHistoryEventsBindingSource.DataSource = typeof(LiqViajes_Bll_Data.RutaSatrackHistoryEvents);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1.png");
+            this.imageList1.Images.SetKeyName(1, "2.png");
+            this.imageList1.Images.SetKeyName(2, "3.png");
+            this.imageList1.Images.SetKeyName(3, "check.png");
+            this.imageList1.Images.SetKeyName(4, "ClearFilter2HS.png");
+            this.imageList1.Images.SetKeyName(5, "Filter2HS.png");
+            this.imageList1.Images.SetKeyName(6, "FindHS.png");
+            this.imageList1.Images.SetKeyName(7, "FireTruck.png");
+            this.imageList1.Images.SetKeyName(8, "GoogleRutas.png");
+            this.imageList1.Images.SetKeyName(9, "pushpin-blue.png");
+            this.imageList1.Images.SetKeyName(10, "pushpin-yellow.png");
+            this.imageList1.Images.SetKeyName(11, "rain.png");
+            this.imageList1.Images.SetKeyName(12, "recycle.png");
+            this.imageList1.Images.SetKeyName(13, "RedCar.png");
+            this.imageList1.Images.SetKeyName(14, "SchoolBus.png");
+            this.imageList1.Images.SetKeyName(15, "snow.png");
+            this.imageList1.Images.SetKeyName(16, "storm.png");
+            this.imageList1.Images.SetKeyName(17, "sun.png");
+            this.imageList1.Images.SetKeyName(18, "Truck.ico");
+            this.imageList1.Images.SetKeyName(19, "Truck.png");
+            this.imageList1.Images.SetKeyName(20, "YellowCar.png");
+            // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.button1);
+            this.panel9.Controls.Add(this.comboBoxProveedor);
+            this.panel9.Controls.Add(this.numericUpDownMarcadores);
             this.panel9.Controls.Add(this.numericUpDownDias);
-            this.panel9.Controls.Add(this.txtLongitud);
-            this.panel9.Controls.Add(this.txtLatituda);
             this.panel9.Controls.Add(this.label11);
             this.panel9.Controls.Add(this.label12);
             this.panel9.Controls.Add(this.label10);
-            this.panel9.Controls.Add(this.trackBarZoom);
             this.panel9.Controls.Add(this.btnRefrescarMapa);
+            this.panel9.Controls.Add(this.btnRuta);
             this.panel9.Controls.Add(this.btnInterrogar);
-            this.panel9.Controls.Add(this.btnRelieve);
-            this.panel9.Controls.Add(this.btnoriginal);
-            this.panel9.Controls.Add(this.btnSatelite);
-            this.panel9.Controls.Add(this.btnGetMaps);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1028, 73);
+            this.panel9.Size = new System.Drawing.Size(1028, 72);
             this.panel9.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(4, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBoxProveedor
+            // 
+            this.comboBoxProveedor.FormattingEnabled = true;
+            this.comboBoxProveedor.Location = new System.Drawing.Point(108, 8);
+            this.comboBoxProveedor.Name = "comboBoxProveedor";
+            this.comboBoxProveedor.Size = new System.Drawing.Size(152, 21);
+            this.comboBoxProveedor.TabIndex = 2;
+            this.comboBoxProveedor.SelectedIndexChanged += new System.EventHandler(this.comboBoxProveedor_SelectedIndexChanged);
+            // 
+            // numericUpDownMarcadores
+            // 
+            this.numericUpDownMarcadores.Location = new System.Drawing.Point(741, 11);
+            this.numericUpDownMarcadores.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownMarcadores.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownMarcadores.Name = "numericUpDownMarcadores";
+            this.numericUpDownMarcadores.Size = new System.Drawing.Size(38, 20);
+            this.numericUpDownMarcadores.TabIndex = 5;
+            this.numericUpDownMarcadores.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownMarcadores.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // numericUpDownDias
             // 
-            this.numericUpDownDias.Location = new System.Drawing.Point(496, 7);
+            this.numericUpDownDias.Location = new System.Drawing.Point(741, 36);
             this.numericUpDownDias.Maximum = new decimal(new int[] {
             10,
             0,
@@ -2323,128 +2427,77 @@
             this.numericUpDownDias.Size = new System.Drawing.Size(38, 20);
             this.numericUpDownDias.TabIndex = 5;
             this.numericUpDownDias.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.numericUpDownDias, "Número de días para consultar historico de trazabilidad");
             this.numericUpDownDias.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // txtLongitud
-            // 
-            this.txtLongitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLongitud.Location = new System.Drawing.Point(297, 40);
-            this.txtLongitud.Name = "txtLongitud";
-            this.txtLongitud.Size = new System.Drawing.Size(124, 24);
-            this.txtLongitud.TabIndex = 3;
-            // 
-            // txtLatituda
-            // 
-            this.txtLatituda.Enabled = false;
-            this.txtLatituda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLatituda.Location = new System.Drawing.Point(81, 43);
-            this.txtLatituda.Name = "txtLatituda";
-            this.txtLatituda.Size = new System.Drawing.Size(124, 24);
-            this.txtLatituda.TabIndex = 4;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(212, 40);
+            this.label11.Location = new System.Drawing.Point(592, 11);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 18);
+            this.label11.Size = new System.Drawing.Size(143, 18);
             this.label11.TabIndex = 2;
-            this.label11.Text = "Longitud:";
+            this.label11.Text = "Cant. Marcadores";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(443, 7);
+            this.label12.Location = new System.Drawing.Point(614, 37);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 18);
+            this.label12.Size = new System.Drawing.Size(121, 18);
             this.label12.TabIndex = 2;
-            this.label12.Text = "Días:";
+            this.label12.Text = "Días Historico:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(10, 43);
+            this.label10.Location = new System.Drawing.Point(10, 8);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 18);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Latitud:";
-            // 
-            // trackBarZoom
-            // 
-            this.trackBarZoom.Location = new System.Drawing.Point(540, 3);
-            this.trackBarZoom.Maximum = 25;
-            this.trackBarZoom.Name = "trackBarZoom";
-            this.trackBarZoom.Size = new System.Drawing.Size(221, 45);
-            this.trackBarZoom.TabIndex = 1;
-            this.trackBarZoom.ValueChanged += new System.EventHandler(this.trackBarZoom_ValueChanged);
+            this.label10.Size = new System.Drawing.Size(92, 18);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Tipo Mapa:";
             // 
             // btnRefrescarMapa
             // 
-            this.btnRefrescarMapa.Location = new System.Drawing.Point(7, 4);
+            this.btnRefrescarMapa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefrescarMapa.Image = global::MetalLiqViajes_Forms.Properties.Resources.Truck;
+            this.btnRefrescarMapa.Location = new System.Drawing.Point(265, 8);
             this.btnRefrescarMapa.Name = "btnRefrescarMapa";
-            this.btnRefrescarMapa.Size = new System.Drawing.Size(75, 23);
+            this.btnRefrescarMapa.Size = new System.Drawing.Size(75, 47);
             this.btnRefrescarMapa.TabIndex = 0;
-            this.btnRefrescarMapa.Text = "Refrescar Mapa";
+            this.btnRefrescarMapa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTip1.SetToolTip(this.btnRefrescarMapa, "Refrescar Mapa");
             this.btnRefrescarMapa.UseVisualStyleBackColor = true;
             this.btnRefrescarMapa.Click += new System.EventHandler(this.btnGetMaps_Click);
             // 
+            // btnRuta
+            // 
+            this.btnRuta.Image = global::MetalLiqViajes_Forms.Properties.Resources.GoogleRutas;
+            this.btnRuta.Location = new System.Drawing.Point(427, 8);
+            this.btnRuta.Name = "btnRuta";
+            this.btnRuta.Size = new System.Drawing.Size(75, 47);
+            this.btnRuta.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.btnRuta, "Mostrar Ruta");
+            this.btnRuta.UseVisualStyleBackColor = true;
+            this.btnRuta.Click += new System.EventHandler(this.btnRuta_Click);
+            // 
             // btnInterrogar
             // 
-            this.btnInterrogar.Location = new System.Drawing.Point(346, 4);
+            this.btnInterrogar.Image = global::MetalLiqViajes_Forms.Properties.Resources.pushpin_yellow;
+            this.btnInterrogar.Location = new System.Drawing.Point(346, 8);
             this.btnInterrogar.Name = "btnInterrogar";
-            this.btnInterrogar.Size = new System.Drawing.Size(75, 23);
-            this.btnInterrogar.TabIndex = 0;
-            this.btnInterrogar.Text = "Interrogar";
-            this.toolTip1.SetToolTip(this.btnInterrogar, "Consulta en Satrac la última ubicación");
+            this.btnInterrogar.Size = new System.Drawing.Size(75, 47);
+            this.btnInterrogar.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.btnInterrogar, "Consultar Satrac");
             this.btnInterrogar.UseVisualStyleBackColor = true;
             this.btnInterrogar.Click += new System.EventHandler(this.btnInterrogar_Click);
-            // 
-            // btnRelieve
-            // 
-            this.btnRelieve.Location = new System.Drawing.Point(265, 4);
-            this.btnRelieve.Name = "btnRelieve";
-            this.btnRelieve.Size = new System.Drawing.Size(75, 23);
-            this.btnRelieve.TabIndex = 0;
-            this.btnRelieve.Text = "Relieve";
-            this.btnRelieve.UseVisualStyleBackColor = true;
-            this.btnRelieve.Click += new System.EventHandler(this.btnRelieve_Click);
-            // 
-            // btnoriginal
-            // 
-            this.btnoriginal.Location = new System.Drawing.Point(179, 4);
-            this.btnoriginal.Name = "btnoriginal";
-            this.btnoriginal.Size = new System.Drawing.Size(75, 23);
-            this.btnoriginal.TabIndex = 0;
-            this.btnoriginal.Text = "Original";
-            this.btnoriginal.UseVisualStyleBackColor = true;
-            this.btnoriginal.Click += new System.EventHandler(this.btnoriginal_Click);
-            // 
-            // btnSatelite
-            // 
-            this.btnSatelite.Location = new System.Drawing.Point(93, 4);
-            this.btnSatelite.Name = "btnSatelite";
-            this.btnSatelite.Size = new System.Drawing.Size(75, 23);
-            this.btnSatelite.TabIndex = 0;
-            this.btnSatelite.Text = "Satelital";
-            this.btnSatelite.UseVisualStyleBackColor = true;
-            this.btnSatelite.Click += new System.EventHandler(this.btnSatelite_Click);
-            // 
-            // btnGetMaps
-            // 
-            this.btnGetMaps.Location = new System.Drawing.Point(945, 3);
-            this.btnGetMaps.Name = "btnGetMaps";
-            this.btnGetMaps.Size = new System.Drawing.Size(75, 23);
-            this.btnGetMaps.TabIndex = 0;
-            this.btnGetMaps.Text = "button1";
-            this.btnGetMaps.UseVisualStyleBackColor = true;
-            this.btnGetMaps.Visible = false;
             // 
             // timer1
             // 
@@ -2514,6 +2567,10 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackLastEventsBindingSource)).EndInit();
             this.tabPage7.ResumeLayout(false);
@@ -2521,8 +2578,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.rutaSatrackHistoryEventsBindingSource)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2717,17 +2774,10 @@
         private System.Windows.Forms.Button btnSatrac;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button btnGetMaps;
         private System.Windows.Forms.Button btnRefrescarMapa;
         private GMap.NET.WindowsForms.GMapControl gMapControl;
         private System.Windows.Forms.TrackBar trackBarZoom;
-        private System.Windows.Forms.Button btnRelieve;
-        private System.Windows.Forms.Button btnoriginal;
-        private System.Windows.Forms.Button btnSatelite;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox txtLongitud;
-        private System.Windows.Forms.TextBox txtLatituda;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnInterrogar;
         private System.Windows.Forms.DataGridView dataGridViewEvents;
@@ -2754,5 +2804,13 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Button btnRuta;
+        private System.Windows.Forms.ComboBox comboBoxProveedor;
+        private System.Windows.Forms.NumericUpDown numericUpDownMarcadores;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button button1;
     }
 }

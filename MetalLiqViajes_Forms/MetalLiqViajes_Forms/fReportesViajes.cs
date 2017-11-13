@@ -32,7 +32,9 @@ namespace MetalLiqViajes_Forms
         //9.530720	-75.418800
         double LatIncial = 9.530720;
         double lngInicial = -75.418800;
-
+        private Providedor proveedor;
+        private List<RutaSatrackHistoryEvents> historicoList;
+        private RutaSatrackLastEvents SatracEvent;
         private List<RutaSatrackLastEvents> eventosList;
         private List<LiqViajes_Bll_Data.AnticiposDms> anticiposdmslist;
         private LiqViajes_Bll_Data.AnticiposDms anticiposdms;
@@ -292,6 +294,17 @@ namespace MetalLiqViajes_Forms
             CargarUltimaUbicacion();
         }
 
+
+
+        private void gMapControl_DoubleClick(object sender, EventArgs e)
+        {
+            gMapControl.Zoom++;
+            PointLatLng point;
+            point = new PointLatLng(Convert.ToDouble(SatracEvent.Latitud), Convert.ToDouble(SatracEvent.Longitud));
+            gMapControl.Position = new PointLatLng(Convert.ToDouble(SatracEvent.Latitud), Convert.ToDouble(SatracEvent.Longitud));
+
+        }
+
         private void comboBoxPlaca_SelectedIndexChanged(object sender, EventArgs e)
         {
             ultilplaca = comboBoxPlaca.SelectedItem as UtilPlaca;
@@ -467,6 +480,33 @@ namespace MetalLiqViajes_Forms
                 comboBoxTerceros.SelectedIndex = 0;
                 comboBoxTerceros.Refresh();
 
+                comboBoxProveedor.Items.Clear();
+                List<Providedor> ProvedorList = new List<Providedor>();
+                proveedor = new Providedor();
+                proveedor.Nombre = "Normal";
+                ProvedorList.Add(proveedor);
+
+                proveedor = new Providedor();
+                proveedor.Nombre = "Satelitar";
+                ProvedorList.Add(proveedor);
+
+                proveedor = new Providedor();
+                proveedor.Nombre = "Releve";
+                ProvedorList.Add(proveedor);
+
+                proveedor = new Providedor();
+                proveedor.Nombre = "Calle";
+                ProvedorList.Add(proveedor);
+
+                
+
+                comboBoxProveedor.DataSource = ProvedorList;
+                comboBoxProveedor.DisplayMember = "Nombre";
+                comboBoxProveedor.ValueMember = "Nombre";
+                comboBoxProveedor.Refresh();
+
+                numericUpDownMarcadores.Value = Properties.Settings.Default.CantidadMarcadores;
+                numericUpDownDias.Value = Properties.Settings.Default.DiasHistorico;
             }
             catch (Exception ex)
             {
@@ -865,14 +905,18 @@ namespace MetalLiqViajes_Forms
             CargarMapa();
         }
 
-        private void CargarMapa()
+        private void CargarMapa(string placa = "")
         {
             try
             {
+
+                if (tabControl.SelectedIndex != 4) return;
+
                 gMapControl.DragButton = MouseButtons.Left;
                 gMapControl.Overlays.Clear();
                 gMapControl.CanDragMap = true;
-                gMapControl.MapProvider = GMapProviders.GoogleMap;
+                DefinaProveedor();
+                //gMapControl.MapProvider = GMapProviders.GoogleMap;
                 gMapControl.Position = new PointLatLng(LatIncial, lngInicial);
                 gMapControl.MinZoom = 0;
                 gMapControl.MaxZoom = 24;
@@ -883,8 +927,16 @@ namespace MetalLiqViajes_Forms
                 // marcadores
 
                 markerOverlay = new GMapOverlay("Marcador");
-
-                eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+                if (placa == "")
+                {
+                    eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+                }
+                else
+                {
+                    RutaSatrackLastEvents evento = RutaSatrackLastEventsController.Instance.Get(placa);
+                    eventosList = new List<RutaSatrackLastEvents>();
+                    eventosList.Add(evento);
+                }
 
                 // llena el grid con los datos de cada mula
 
@@ -942,6 +994,9 @@ namespace MetalLiqViajes_Forms
 
         private Bitmap CreateBitmapImage(string sImageText)
         {
+
+            sImageText = "   " + sImageText;
+
             Bitmap objBmpImage = new Bitmap(1, 1);
 
             int intWidth = 0;
@@ -974,7 +1029,7 @@ namespace MetalLiqViajes_Forms
             Graphics newGraphics = Graphics.FromImage(imageFile);
 
             // Alter image.
-            newGraphics.FillRectangle(new SolidBrush(Color.Black), 100, 50, 100, 100);
+            newGraphics.FillRectangle(new SolidBrush(Color.Black), 100, 50, 0, 0);
 
 
             ////////////////////
@@ -991,31 +1046,25 @@ namespace MetalLiqViajes_Forms
             return (objBmpImage);
         }
 
-        private void gMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            // se toman las coordenadas al dar duble clie al mapa
 
-            //double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat; // recuperamos del mapa cuando damos doble clic
-            //double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
-
-            //// creamos el marcador para mover lo al lugar indicado
-            //marker.Position = new PointLatLng(lat, lng);
-
-            //// se agrega el mensaje al marcado (tooltip)
-            //marker.ToolTipText = string.Format("Ubicación; \n latitud {0} 'n longitud: {1}", lat, lng);
-
-        }
-
-        private void GeneraRuta()
+        private void GeneraRuta(string placa = "")
         {
             GMapOverlay Ruta = new GMapOverlay("Ruta");
 
             List<PointLatLng> Puntos = new List<PointLatLng>();
-
+            List<RutaSatrackLastEvents> eventosList;
             double lat, lng;
             double latAnt = 0, lngAnt = 0;
-
-            List<RutaSatrackLastEvents> eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+            if (placa == "")
+            {
+                eventosList = RutaSatrackLastEventsController.Instance.GetAll().ToList();
+            }
+            else
+            {
+                RutaSatrackLastEvents evento = RutaSatrackLastEventsController.Instance.Get(placa);
+                eventosList = new List<RutaSatrackLastEvents>();
+                eventosList.Add(evento);
+            }
 
             foreach (var item in eventosList)
             {
@@ -1046,24 +1095,99 @@ namespace MetalLiqViajes_Forms
 
         }
 
-        private void btnSatelite_Click(object sender, EventArgs e)
+        private void comboBoxProveedor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gMapControl.MapProvider = GMapProviders.GoogleChinaSatelliteMap;
+            proveedor = comboBoxProveedor.SelectedItem as Providedor;
+            DefinaProveedor();
+
         }
 
-        private void btnoriginal_Click(object sender, EventArgs e)
+        private void DefinaProveedor()
         {
-            gMapControl.MapProvider = GMapProviders.GoogleMap;
-        }
-
-        private void btnRelieve_Click(object sender, EventArgs e)
-        {
-            gMapControl.MapProvider = GMapProviders.GoogleTerrainMap;
+            if (proveedor.Nombre == "Normal")
+            {
+                gMapControl.MapProvider = GMapProviders.GoogleMap;
+            }
+            if (proveedor.Nombre == "Satelitar")
+            {
+                gMapControl.MapProvider = GMapProviders.GoogleChinaSatelliteMap;
+            }
+            if (proveedor.Nombre == "Releve")
+            {
+                gMapControl.MapProvider = GMapProviders.GoogleTerrainMap;
+            }
+            if (proveedor.Nombre == "Calle")
+            {
+                gMapControl.MapProvider = GMapProviders.OpenStreetMap;
+            }
+            
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             trackBarZoom.Value = Convert.ToInt32(gMapControl.Zoom);
+        }
+
+        private void btnInterrogar_Click(object sender, EventArgs e)
+        {
+            CargarUltimaUbicacion();
+            CargarMapa();
+        }
+
+        private void btnRuta_Click(object sender, EventArgs e)
+        {
+
+            CargarMapa(SatracEvent.Placa);
+            PointLatLng point;
+            point = new PointLatLng(Convert.ToDouble(SatracEvent.Latitud), Convert.ToDouble(SatracEvent.Longitud));
+            gMapControl.Position = new PointLatLng(Convert.ToDouble(SatracEvent.Latitud), Convert.ToDouble(SatracEvent.Longitud));
+
+            int Tope = 0;
+            GMapOverlay routes = new GMapOverlay("routes");
+            List<PointLatLng> points = new List<PointLatLng>();
+            foreach (var item in historicoList)
+            {
+                if (Tope > 12) break;
+                if (points.Count == 0)
+                {
+                    point = new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud));
+                    points.Add(point);
+                    marker = new GMarkerGoogle(new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud)), GMarkerGoogleType.blue);
+                    markerOverlay.Markers.Add(marker); // agregamos al mapa
+                    marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // para que se muestre todo el tiempo {Always}
+                    marker.ToolTipText = string.Format("Placa: {0} \nUbicación: {1}, \nVelocidad: {2}", item.Placa, item.Ubicacion, item.VelocidadSentido);
+                    Tope++;
+                    continue;
+                }
+
+                point = new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud));
+                if (!points.Contains(point))
+                {
+                    points.Add(point);
+                    marker = new GMarkerGoogle(new PointLatLng(Convert.ToDouble(item.Latitud), Convert.ToDouble(item.Longitud)), GMarkerGoogleType.blue);
+                    markerOverlay.Markers.Add(marker); // agregamos al mapa
+                    marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // para que se muestre todo el tiempo {Always}
+                    marker.ToolTipText = string.Format("Placa: {0} \nUbicación: {1}, \nVelocidad: {2}", item.Placa, item.Ubicacion, item.VelocidadSentido);
+                    Tope++;
+                }
+                else
+                {
+
+                }
+            }
+
+            // ahora agregamos el mapa y el marcador al map control.
+            gMapControl.Overlays.Add(markerOverlay);
+
+
+            GMapRoute route = new GMapRoute(points, SatracEvent.Placa);
+            route.Stroke = new Pen(Color.Red, 3);
+            routes.Routes.Add(route);
+            gMapControl.Overlays.Add(routes);
+            gMapControl.Zoom = gMapControl.Zoom + 1;
+            gMapControl.Zoom = gMapControl.Zoom - 1;
+
         }
 
         private void trackBarZoom_ValueChanged(object sender, EventArgs e)
@@ -1083,11 +1207,6 @@ namespace MetalLiqViajes_Forms
 
         }
 
-        private void btnInterrogar_Click(object sender, EventArgs e)
-        {
-            CargarUltimaUbicacion();
-            CargarMapa();
-        }
 
         private void CargarUltimaUbicacion()
         {
@@ -1203,9 +1322,9 @@ namespace MetalLiqViajes_Forms
         private void dataGridViewEvents_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DateTime fechainicial = DateTime.Now.AddDays(-Convert.ToDouble(numericUpDownDias.Value));
-            RutaSatrackLastEvents SatracEvent = dataGridViewEvents.Rows[e.RowIndex].DataBoundItem as RutaSatrackLastEvents;
+            SatracEvent = dataGridViewEvents.Rows[e.RowIndex].DataBoundItem as RutaSatrackLastEvents;
             List<RutaSatrackHistoryEvents> historicoEventsoList = RutaSatrackHistoryEventsController.Instance.GetByPlacaFecha(SatracEvent.Placa, fechainicial, DateTime.Now).ToList();
-            List<RutaSatrackHistoryEvents> historicoList = new List<RutaSatrackHistoryEvents>();
+            historicoList = new List<RutaSatrackHistoryEvents>();
             bool cargainicial = false;
             DateTime fecha = DateTime.Now;
             decimal latitud = 0, longitud = 0;
@@ -1250,6 +1369,10 @@ namespace MetalLiqViajes_Forms
 
             //MarcarRuta(SatracEvent, historicoList);
 
+            PointLatLng point;
+            point = new PointLatLng(Convert.ToDouble(SatracEvent.Latitud), Convert.ToDouble(SatracEvent.Longitud));
+            gMapControl.Position = new PointLatLng(Convert.ToDouble(SatracEvent.Latitud), Convert.ToDouble(SatracEvent.Longitud));
+
         }
 
         private void MarcarRuta(RutaSatrackLastEvents SatracEvent, List<RutaSatrackHistoryEvents> historicoList)
@@ -1270,7 +1393,7 @@ namespace MetalLiqViajes_Forms
 
             //-----------------------------------------------
 
-            GMapOverlay polygons = new GMapOverlay("polygons");
+            GMapOverlay routes = new GMapOverlay("routes");
             List<PointLatLng> points = new List<PointLatLng>();
             foreach (var item in historicoList)
             {
@@ -1278,12 +1401,46 @@ namespace MetalLiqViajes_Forms
             }
 
             GMapPolygon polygon = new GMapPolygon(points, "Jardin des Tuileries");
-            polygons.Polygons.Add(polygon);
+            routes.Polygons.Add(polygon);
             gMapControl.Overlays.Add(markerOverlay);
-            gMapControl.Overlays.Add(polygons);
+            gMapControl.Overlays.Add(routes);
 
             gMapControl.Zoom = gMapControl.Zoom + 1;
             gMapControl.Zoom = gMapControl.Zoom - 1;
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string from = "573017696263";
+            string to = "";
+            string msg = "";
+            string txtPassword = "926-086";
+            string txtName = "Genaro Rico Romero";
+
+            string txtPhoneNumber = "573136023499";
+            string txtMessage = "Prueba mensajeria WhatApps";
+            WhatsAppApi.WhatsApp wa = new WhatsAppApi.WhatsApp(from, txtPassword, txtName, false, false);
+
+            wa.OnConnectSuccess += () =>
+            {
+                //textBox1.Text += "\nConnected...!\n";
+                wa.OnLoginSuccess += (phoneNumber, data) =>
+                {
+                    wa.SendMessage(txtPhoneNumber, txtMessage);
+                    //textBox1.Text += "\nMessage Sent...!\n";
+                };
+
+                wa.OnLoginFailed += (data) =>
+                {
+                    //textBox1.Text += "\nLogin failed..." + data + " \n";
+                };
+                wa.Login();
+            };
+            wa.OnConnectFailed += (ex) => {
+                //textBox1.Text += "\nConnection failed...!\n";
+            };
+            wa.Connect();
         }
     }
 }

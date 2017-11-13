@@ -56,5 +56,29 @@ namespace MetalLiqViajes_Forms.Properties {
                 this["Password"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int CantidadMarcadores {
+            get {
+                return ((int)(this["CantidadMarcadores"]));
+            }
+            set {
+                this["CantidadMarcadores"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int DiasHistorico {
+            get {
+                return ((int)(this["DiasHistorico"]));
+            }
+            set {
+                this["DiasHistorico"] = value;
+            }
+        }
     }
 }

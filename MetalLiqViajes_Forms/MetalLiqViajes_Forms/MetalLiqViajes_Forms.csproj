@@ -27,11 +27,11 @@
     <ProductName>Liquidación Viajes</ProductName>
     <PublisherName>Liquidación Viajes</PublisherName>
     <SuiteName>Liquidación Viajes LTDA</SuiteName>
-    <MinimumRequiredVersion>2017.11.10.2</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2017.11.10.3</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>default.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>2017.11.10.2</ApplicationVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>2017.11.10.3</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -102,6 +102,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WhatsAppApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WhatsAppAPI.15.4.29\lib\net40\WhatsAppApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="fMenuPrincipal.cs">
@@ -240,6 +244,7 @@
     <None Include="images\snow.png" />
     <None Include="images\storm.png" />
     <None Include="images\sun.png" />
+    <None Include="images\GoogleRutas.png" />
     <Content Include="images\Truck.ico" />
     <None Include="images\Truck.png" />
     <None Include="images\YellowCar.png" />
