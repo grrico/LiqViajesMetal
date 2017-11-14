@@ -29,8 +29,8 @@ namespace LiqViajes_Bll_Data
                 System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
                 System.Collections.Hashtable nullExit = null;
                 paramlist.AddWithValue("@Placa", Placa);
-                paramlist.AddWithValue("@FechaInicial", FechaInicial.ToShortDateString());
-                paramlist.AddWithValue("@FechaFInal", FechaFinal.ToShortDateString());
+                paramlist.AddWithValue("@FechaInicial", FechaInicial);
+                paramlist.AddWithValue("@FechaFInal", FechaFinal);
                 return LocalDataProvider.EjecutarProcedimiento("dbo.Add_RutaSatrackHistoryEventsGetPlacaFecha", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
             }
             catch (Exception ex)

@@ -294,8 +294,6 @@ namespace MetalLiqViajes_Forms
             CargarUltimaUbicacion();
         }
 
-
-
         private void gMapControl_DoubleClick(object sender, EventArgs e)
         {
             gMapControl.Zoom++;
@@ -890,7 +888,6 @@ namespace MetalLiqViajes_Forms
             reportViewer.RefreshReport();
         }
 
-
         public static void CargaExection(Exception ex)
         {
             DialogResult result3 = MessageBox.Show(ex.Message,
@@ -916,7 +913,6 @@ namespace MetalLiqViajes_Forms
                 gMapControl.Overlays.Clear();
                 gMapControl.CanDragMap = true;
                 DefinaProveedor();
-                //gMapControl.MapProvider = GMapProviders.GoogleMap;
                 gMapControl.Position = new PointLatLng(LatIncial, lngInicial);
                 gMapControl.MinZoom = 0;
                 gMapControl.MaxZoom = 24;
@@ -1045,7 +1041,6 @@ namespace MetalLiqViajes_Forms
 
             return (objBmpImage);
         }
-
 
         private void GeneraRuta(string placa = "")
         {
@@ -1323,7 +1318,11 @@ namespace MetalLiqViajes_Forms
         {
             DateTime fechainicial = DateTime.Now.AddDays(-Convert.ToDouble(numericUpDownDias.Value));
             SatracEvent = dataGridViewEvents.Rows[e.RowIndex].DataBoundItem as RutaSatrackLastEvents;
-            List<RutaSatrackHistoryEvents> historicoEventsoList = RutaSatrackHistoryEventsController.Instance.GetByPlacaFecha(SatracEvent.Placa, fechainicial, DateTime.Now).ToList();
+
+            DateTime fecha1 = DateTime.Parse(fechainicial.ToLongDateString() + " 00:00:00");
+            DateTime fecha2 = DateTime.Parse(DateTime.Now.ToLongDateString() + " 23:59:00");
+
+            List<RutaSatrackHistoryEvents> historicoEventsoList = RutaSatrackHistoryEventsController.Instance.GetByPlacaFecha(SatracEvent.Placa, fecha1, fecha2).ToList();
             historicoList = new List<RutaSatrackHistoryEvents>();
             bool cargainicial = false;
             DateTime fecha = DateTime.Now;
@@ -1441,6 +1440,12 @@ namespace MetalLiqViajes_Forms
                 //textBox1.Text += "\nConnection failed...!\n";
             };
             wa.Connect();
+        }
+
+        private void btnCreaViaje_Click(object sender, EventArgs e)
+        {
+            CrearViaje creaviaje = new CrearViaje();
+            creaviaje.ShowDialog();
         }
     }
 }

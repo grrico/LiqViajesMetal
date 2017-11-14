@@ -27,11 +27,11 @@
     <ProductName>Liquidación Viajes</ProductName>
     <PublisherName>Liquidación Viajes</PublisherName>
     <SuiteName>Liquidación Viajes LTDA</SuiteName>
-    <MinimumRequiredVersion>2017.11.10.3</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2017.11.10.4</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>default.htm</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>2017.11.10.3</ApplicationVersion>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>2017.11.10.4</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -108,6 +108,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrearViaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearViaje.Designer.cs">
+      <DependentUpon>CrearViaje.cs</DependentUpon>
+    </Compile>
     <Compile Include="fMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CrearViaje.resx">
+      <DependentUpon>CrearViaje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fMenuPrincipal.resx">
       <DependentUpon>fMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,8 +169,11 @@
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.LiquidacionGastosList.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackHistoryEvents.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackLastEvents.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosConductores.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosDTO.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosList.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.TipoVehiculo.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.VehiculoCCosto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -245,6 +257,7 @@
     <None Include="images\storm.png" />
     <None Include="images\sun.png" />
     <None Include="images\GoogleRutas.png" />
+    <None Include="images\NewDocumentHS.png" />
     <Content Include="images\Truck.ico" />
     <None Include="images\Truck.png" />
     <None Include="images\YellowCar.png" />
