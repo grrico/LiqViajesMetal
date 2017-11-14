@@ -258,6 +258,7 @@
     <None Include="images\sun.png" />
     <None Include="images\GoogleRutas.png" />
     <None Include="images\NewDocumentHS.png" />
+    <None Include="images\11.png" />
     <Content Include="images\Truck.ico" />
     <None Include="images\Truck.png" />
     <None Include="images\YellowCar.png" />

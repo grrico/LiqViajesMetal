@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReportesViajes));
             this.LiquidacionVehiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LiquidacionPlanillaBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -279,6 +279,7 @@
             this.btnInterrogar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnPruebaWhasaaps = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -436,9 +437,9 @@
             // valorAnticipoDataGridViewTextBoxColumn2
             // 
             this.valorAnticipoDataGridViewTextBoxColumn2.DataPropertyName = "ValorAnticipo";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.Format = "N0";
-            this.valorAnticipoDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            this.valorAnticipoDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle1;
             this.valorAnticipoDataGridViewTextBoxColumn2.HeaderText = "Anticipo";
             this.valorAnticipoDataGridViewTextBoxColumn2.Name = "valorAnticipoDataGridViewTextBoxColumn2";
             this.valorAnticipoDataGridViewTextBoxColumn2.ReadOnly = true;
@@ -446,9 +447,9 @@
             // valorGastosDataGridViewTextBoxColumn2
             // 
             this.valorGastosDataGridViewTextBoxColumn2.DataPropertyName = "ValorGastos";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "N0";
-            this.valorGastosDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.valorGastosDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
             this.valorGastosDataGridViewTextBoxColumn2.HeaderText = "Gastos";
             this.valorGastosDataGridViewTextBoxColumn2.Name = "valorGastosDataGridViewTextBoxColumn2";
             this.valorGastosDataGridViewTextBoxColumn2.ReadOnly = true;
@@ -456,10 +457,10 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "ValorTotal";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle24.Format = "N0";
-            dataGridViewCellStyle24.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn3.HeaderText = "Total";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -481,6 +482,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.textBoxiRegistroViaje);
+            this.panel2.Controls.Add(this.btnPruebaWhasaaps);
             this.panel2.Controls.Add(this.btnCreaViaje);
             this.panel2.Controls.Add(this.btnSatrac);
             this.panel2.Controls.Add(this.btnQuitarFintro);
@@ -510,7 +512,7 @@
             // btnCreaViaje
             // 
             this.btnCreaViaje.Image = global::MetalLiqViajes_Forms.Properties.Resources.NewDocumentHS;
-            this.btnCreaViaje.Location = new System.Drawing.Point(106, 148);
+            this.btnCreaViaje.Location = new System.Drawing.Point(81, 150);
             this.btnCreaViaje.Name = "btnCreaViaje";
             this.btnCreaViaje.Size = new System.Drawing.Size(43, 37);
             this.btnCreaViaje.TabIndex = 2;
@@ -521,7 +523,7 @@
             // btnSatrac
             // 
             this.btnSatrac.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
-            this.btnSatrac.Location = new System.Drawing.Point(155, 148);
+            this.btnSatrac.Location = new System.Drawing.Point(138, 150);
             this.btnSatrac.Name = "btnSatrac";
             this.btnSatrac.Size = new System.Drawing.Size(43, 37);
             this.btnSatrac.TabIndex = 2;
@@ -530,12 +532,14 @@
             // 
             // btnQuitarFintro
             // 
+            this.btnQuitarFintro.Enabled = false;
             this.btnQuitarFintro.Image = global::MetalLiqViajes_Forms.Properties.Resources.ClearFilter2HS;
-            this.btnQuitarFintro.Location = new System.Drawing.Point(204, 148);
+            this.btnQuitarFintro.Location = new System.Drawing.Point(187, 150);
             this.btnQuitarFintro.Name = "btnQuitarFintro";
             this.btnQuitarFintro.Size = new System.Drawing.Size(43, 37);
             this.btnQuitarFintro.TabIndex = 2;
             this.btnQuitarFintro.UseVisualStyleBackColor = true;
+            this.btnQuitarFintro.Visible = false;
             this.btnQuitarFintro.Click += new System.EventHandler(this.btnQuitarFintro_Click);
             // 
             // btnBuscaViajes
@@ -795,9 +799,9 @@
             // fechaDataGridViewTextBoxColumn
             // 
             this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            dataGridViewCellStyle25.Format = "dd/MMM/yyyy";
-            dataGridViewCellStyle25.NullValue = null;
-            this.fechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Format = "dd/MMM/yyyy";
+            dataGridViewCellStyle4.NullValue = null;
+            this.fechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
             this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
             this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1309,9 +1313,9 @@
             // fechaDataGridViewTextBoxColumn1
             // 
             this.fechaDataGridViewTextBoxColumn1.DataPropertyName = "Fecha";
-            dataGridViewCellStyle26.Format = "d";
-            dataGridViewCellStyle26.NullValue = null;
-            this.fechaDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            this.fechaDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
             this.fechaDataGridViewTextBoxColumn1.HeaderText = "Fecha";
             this.fechaDataGridViewTextBoxColumn1.Name = "fechaDataGridViewTextBoxColumn1";
             this.fechaDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1319,9 +1323,9 @@
             // valorDataGridViewTextBoxColumn
             // 
             this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N0";
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
             this.valorDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1394,9 +1398,9 @@
             // valorTotalDataGridViewTextBoxColumn1
             // 
             this.valorTotalDataGridViewTextBoxColumn1.DataPropertyName = "ValorTotal";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "n0";
-            this.valorTotalDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "n0";
+            this.valorTotalDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle7;
             this.valorTotalDataGridViewTextBoxColumn1.HeaderText = "Valor";
             this.valorTotalDataGridViewTextBoxColumn1.Name = "valorTotalDataGridViewTextBoxColumn1";
             this.valorTotalDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1490,9 +1494,9 @@
             // fechaMovimientoDataGridViewTextBoxColumn
             // 
             this.fechaMovimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaMovimiento";
-            dataGridViewCellStyle29.Format = "d";
-            dataGridViewCellStyle29.NullValue = null;
-            this.fechaMovimientoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle8.Format = "d";
+            dataGridViewCellStyle8.NullValue = null;
+            this.fechaMovimientoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.fechaMovimientoDataGridViewTextBoxColumn.HeaderText = "Fecha";
             this.fechaMovimientoDataGridViewTextBoxColumn.Name = "fechaMovimientoDataGridViewTextBoxColumn";
             this.fechaMovimientoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1507,10 +1511,10 @@
             // valorGastosDataGridViewTextBoxColumn
             // 
             this.valorGastosDataGridViewTextBoxColumn.DataPropertyName = "ValorGastos";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle30.Format = "N0";
-            dataGridViewCellStyle30.NullValue = "0";
-            this.valorGastosDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = "0";
+            this.valorGastosDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.valorGastosDataGridViewTextBoxColumn.HeaderText = "Total Gastos";
             this.valorGastosDataGridViewTextBoxColumn.Name = "valorGastosDataGridViewTextBoxColumn";
             this.valorGastosDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1519,10 +1523,10 @@
             // valorAnticiposDataGridViewTextBoxColumn
             // 
             this.valorAnticiposDataGridViewTextBoxColumn.DataPropertyName = "ValorAnticipos";
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle31.Format = "N0";
-            dataGridViewCellStyle31.NullValue = "0";
-            this.valorAnticiposDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.valorAnticiposDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.valorAnticiposDataGridViewTextBoxColumn.HeaderText = "Total Anticipos";
             this.valorAnticiposDataGridViewTextBoxColumn.Name = "valorAnticiposDataGridViewTextBoxColumn";
             this.valorAnticiposDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1531,10 +1535,10 @@
             // valorSaldoDataGridViewTextBoxColumn
             // 
             this.valorSaldoDataGridViewTextBoxColumn.DataPropertyName = "ValorSaldo";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle32.Format = "N0";
-            dataGridViewCellStyle32.NullValue = "0";
-            this.valorSaldoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.valorSaldoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.valorSaldoDataGridViewTextBoxColumn.HeaderText = "Totales";
             this.valorSaldoDataGridViewTextBoxColumn.Name = "valorSaldoDataGridViewTextBoxColumn";
             this.valorSaldoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1586,9 +1590,9 @@
             // dmsFechaDataGridViewTextBoxColumn
             // 
             this.dmsFechaDataGridViewTextBoxColumn.DataPropertyName = "Dms_Fecha";
-            dataGridViewCellStyle33.Format = "d";
-            dataGridViewCellStyle33.NullValue = null;
-            this.dmsFechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle12.Format = "d";
+            dataGridViewCellStyle12.NullValue = null;
+            this.dmsFechaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.dmsFechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
             this.dmsFechaDataGridViewTextBoxColumn.Name = "dmsFechaDataGridViewTextBoxColumn";
             this.dmsFechaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1614,9 +1618,9 @@
             // dmsValorTotalDataGridViewTextBoxColumn
             // 
             this.dmsValorTotalDataGridViewTextBoxColumn.DataPropertyName = "Dms_ValorTotal";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle34.Format = "n0";
-            this.dmsValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "n0";
+            this.dmsValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.dmsValorTotalDataGridViewTextBoxColumn.HeaderText = "Vlr Total";
             this.dmsValorTotalDataGridViewTextBoxColumn.Name = "dmsValorTotalDataGridViewTextBoxColumn";
             this.dmsValorTotalDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1624,9 +1628,9 @@
             // Dms_ValorAnticipo
             // 
             this.Dms_ValorAnticipo.DataPropertyName = "Dms_ValorAnticipo";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "n0";
-            this.Dms_ValorAnticipo.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "n0";
+            this.Dms_ValorAnticipo.DefaultCellStyle = dataGridViewCellStyle14;
             this.Dms_ValorAnticipo.HeaderText = "Vlr Anticipo";
             this.Dms_ValorAnticipo.Name = "Dms_ValorAnticipo";
             this.Dms_ValorAnticipo.ReadOnly = true;
@@ -1634,9 +1638,9 @@
             // dmsValorAplicadoDataGridViewTextBoxColumn
             // 
             this.dmsValorAplicadoDataGridViewTextBoxColumn.DataPropertyName = "Dms_ValorAplicado";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "n0";
-            this.dmsValorAplicadoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "n0";
+            this.dmsValorAplicadoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
             this.dmsValorAplicadoDataGridViewTextBoxColumn.HeaderText = "Vlr Aplicado";
             this.dmsValorAplicadoDataGridViewTextBoxColumn.Name = "dmsValorAplicadoDataGridViewTextBoxColumn";
             this.dmsValorAplicadoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1743,10 +1747,10 @@
             // intRowRegistro
             // 
             this.intRowRegistro.DataPropertyName = "intRowRegistro";
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle37.Format = "N0";
-            dataGridViewCellStyle37.NullValue = "0";
-            this.intRowRegistro.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = "0";
+            this.intRowRegistro.DefaultCellStyle = dataGridViewCellStyle16;
             this.intRowRegistro.HeaderText = "Fila";
             this.intRowRegistro.Name = "intRowRegistro";
             this.intRowRegistro.ReadOnly = true;
@@ -1779,10 +1783,10 @@
             // curValorTramoDataGridViewTextBoxColumn
             // 
             this.curValorTramoDataGridViewTextBoxColumn.DataPropertyName = "curValorTramo";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle38.Format = "N0";
-            dataGridViewCellStyle38.NullValue = "0";
-            this.curValorTramoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            dataGridViewCellStyle17.NullValue = "0";
+            this.curValorTramoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.curValorTramoDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.curValorTramoDataGridViewTextBoxColumn.Name = "curValorTramoDataGridViewTextBoxColumn";
             this.curValorTramoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1791,10 +1795,10 @@
             // curValorAdicionalDataGridViewTextBoxColumn
             // 
             this.curValorAdicionalDataGridViewTextBoxColumn.DataPropertyName = "curValorAdicional";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle39.Format = "N0";
-            dataGridViewCellStyle39.NullValue = "0";
-            this.curValorAdicionalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            dataGridViewCellStyle18.NullValue = "0";
+            this.curValorAdicionalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
             this.curValorAdicionalDataGridViewTextBoxColumn.HeaderText = "Adicional";
             this.curValorAdicionalDataGridViewTextBoxColumn.Name = "curValorAdicionalDataGridViewTextBoxColumn";
             this.curValorAdicionalDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1802,10 +1806,10 @@
             // curValorTotalDataGridViewTextBoxColumn
             // 
             this.curValorTotalDataGridViewTextBoxColumn.DataPropertyName = "curValorTotal";
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle40.Format = "N0";
-            dataGridViewCellStyle40.NullValue = "0";
-            this.curValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N0";
+            dataGridViewCellStyle19.NullValue = "0";
+            this.curValorTotalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
             this.curValorTotalDataGridViewTextBoxColumn.HeaderText = "Total";
             this.curValorTotalDataGridViewTextBoxColumn.Name = "curValorTotalDataGridViewTextBoxColumn";
             this.curValorTotalDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1821,8 +1825,8 @@
             // strObservacionesDataGridViewTextBoxColumn
             // 
             this.strObservacionesDataGridViewTextBoxColumn.DataPropertyName = "strObservaciones";
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.strObservacionesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.strObservacionesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.strObservacionesDataGridViewTextBoxColumn.HeaderText = "Observación";
             this.strObservacionesDataGridViewTextBoxColumn.Name = "strObservacionesDataGridViewTextBoxColumn";
             this.strObservacionesDataGridViewTextBoxColumn.ReadOnly = true;
@@ -2023,21 +2027,21 @@
             // reportViewer
             // 
             this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource6.Name = "DataSetLiqVehiculo";
-            reportDataSource6.Value = this.LiquidacionVehiculoBindingSource;
-            reportDataSource7.Name = "DataSetLiquidacionPlanilla";
-            reportDataSource7.Value = this.LiquidacionPlanillaBindingSource;
-            reportDataSource8.Name = "DataSetTramosReportesLiqVehiculos";
-            reportDataSource8.Value = this.TramosReportesLiqVehiculosBindingSource;
-            reportDataSource9.Name = "DataSetTramosConsultaAnticipos";
-            reportDataSource9.Value = this.TramosConsultaAnticiposBindingSource;
-            reportDataSource10.Name = "DataSetTramosMovViajes";
-            reportDataSource10.Value = this.TramosMovViajesBindingSource;
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource7);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource10);
+            reportDataSource1.Name = "DataSetLiqVehiculo";
+            reportDataSource1.Value = this.LiquidacionVehiculoBindingSource;
+            reportDataSource2.Name = "DataSetLiquidacionPlanilla";
+            reportDataSource2.Value = this.LiquidacionPlanillaBindingSource;
+            reportDataSource3.Name = "DataSetTramosReportesLiqVehiculos";
+            reportDataSource3.Value = this.TramosReportesLiqVehiculosBindingSource;
+            reportDataSource4.Name = "DataSetTramosConsultaAnticipos";
+            reportDataSource4.Value = this.TramosConsultaAnticiposBindingSource;
+            reportDataSource5.Name = "DataSetTramosMovViajes";
+            reportDataSource5.Value = this.TramosMovViajesBindingSource;
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer.LocalReport.ReportEmbeddedResource = "MetalLiqViajes_Forms.Reportes.ReportViajes.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(0, 0);
             this.reportViewer.Name = "reportViewer";
@@ -2197,10 +2201,10 @@
             // fechaHoraGPSDataGridViewTextBoxColumn
             // 
             this.fechaHoraGPSDataGridViewTextBoxColumn.DataPropertyName = "FechaHora_GPS";
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.Format = "g";
-            dataGridViewCellStyle42.NullValue = null;
-            this.fechaHoraGPSDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.Format = "g";
+            dataGridViewCellStyle21.NullValue = null;
+            this.fechaHoraGPSDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle21;
             this.fechaHoraGPSDataGridViewTextBoxColumn.HeaderText = "Fecha GPS";
             this.fechaHoraGPSDataGridViewTextBoxColumn.Name = "fechaHoraGPSDataGridViewTextBoxColumn";
             this.fechaHoraGPSDataGridViewTextBoxColumn.ReadOnly = true;
@@ -2517,6 +2521,16 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnPruebaWhasaaps
+            // 
+            this.btnPruebaWhasaaps.Image = global::MetalLiqViajes_Forms.Properties.Resources.NewDocumentHS;
+            this.btnPruebaWhasaaps.Location = new System.Drawing.Point(22, 150);
+            this.btnPruebaWhasaaps.Name = "btnPruebaWhasaaps";
+            this.btnPruebaWhasaaps.Size = new System.Drawing.Size(43, 37);
+            this.btnPruebaWhasaaps.TabIndex = 2;
+            this.btnPruebaWhasaaps.UseVisualStyleBackColor = true;
+            this.btnPruebaWhasaaps.Click += new System.EventHandler(this.btnPruebaWhasaaps_Click);
+            // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2826,5 +2840,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCreaViaje;
+        private System.Windows.Forms.Button btnPruebaWhasaaps;
     }
 }

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using WhatsAppApi;
 
 using GMap.NET;
 using GMap.NET.MapProviders;
@@ -1015,11 +1016,12 @@ namespace MetalLiqViajes_Forms
             // Add the colors to the new bitmap.
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            /////////////////////
 
             // Create image.
             //Image imageFile = Image.FromFile("SampImag.jpg");
-            Image imageFile = Image.FromFile(@"C:\Metal\images\1.png");
+            //Image imageFile = Image.FromFile(@"C:\Metal\images\1.png");
+
+            Image imageFile = (Image)(Properties.Resources._11);
 
             // Create graphics object for alteration.
             Graphics newGraphics = Graphics.FromImage(imageFile);
@@ -1027,8 +1029,6 @@ namespace MetalLiqViajes_Forms
             // Alter image.
             newGraphics.FillRectangle(new SolidBrush(Color.Black), 100, 50, 0, 0);
 
-
-            ////////////////////
 
             // Set Background color
             objGraphics.Clear(Color.Yellow);
@@ -1440,12 +1440,48 @@ namespace MetalLiqViajes_Forms
                 //textBox1.Text += "\nConnection failed...!\n";
             };
             wa.Connect();
+
         }
 
         private void btnCreaViaje_Click(object sender, EventArgs e)
         {
             CrearViaje creaviaje = new CrearViaje();
             creaviaje.ShowDialog();
+        }
+
+        private void btnPruebaWhasaaps_Click(object sender, EventArgs e)
+        {
+
+            //SendMessage
+
+        }
+
+
+        public void SendMessage(string sendTo, string message)
+        {
+            var response = false;
+            string from = "573136023499"; //(Enter Your Mobile Number)
+            String password;
+            var res = WhatsAppApi.Register.WhatsRegisterV2.RequestCode(from, out password);
+            WhatsApp wa = new WhatsApp(from, password, "abc.com", false, false);
+            wa.OnConnectSuccess += () =>
+            {
+                wa.OnLoginSuccess += (phonenumber, data) =>
+                {
+                    wa.SendMessage(sendTo, message);
+                    response = true;
+                };
+                wa.OnLoginFailed += (data) =>
+                {
+                    response = false;
+                };
+
+                wa.Login();
+            };
+            wa.OnConnectFailed += (Exception) =>
+            {
+                response = false;
+            };            
         }
     }
 }
