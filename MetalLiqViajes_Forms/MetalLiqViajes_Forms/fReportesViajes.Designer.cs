@@ -74,7 +74,10 @@
             this.conductorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBoxiRegistroViaje = new System.Windows.Forms.TextBox();
+            this.btnPruebaWhasaaps = new System.Windows.Forms.Button();
             this.btnCreaViaje = new System.Windows.Forms.Button();
             this.btnSatrac = new System.Windows.Forms.Button();
             this.btnQuitarFintro = new System.Windows.Forms.Button();
@@ -279,7 +282,6 @@
             this.btnInterrogar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnPruebaWhasaaps = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -383,9 +385,9 @@
             // 
             this.panel3.Controls.Add(this.dataGridViewConductor);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(255, 0);
+            this.panel3.Location = new System.Drawing.Point(340, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(767, 193);
+            this.panel3.Size = new System.Drawing.Size(682, 193);
             this.panel3.TabIndex = 4;
             // 
             // dataGridViewConductor
@@ -408,7 +410,7 @@
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
             this.dataGridViewConductor.RowHeadersWidth = 10;
-            this.dataGridViewConductor.Size = new System.Drawing.Size(767, 193);
+            this.dataGridViewConductor.Size = new System.Drawing.Size(682, 193);
             this.dataGridViewConductor.TabIndex = 0;
             this.dataGridViewConductor.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConductor_RowEnter);
             // 
@@ -473,7 +475,7 @@
             // 
             this.splitter1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitter1.Location = new System.Drawing.Point(245, 0);
+            this.splitter1.Location = new System.Drawing.Point(330, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(10, 193);
             this.splitter1.TabIndex = 3;
@@ -481,6 +483,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.textBoxiRegistroViaje);
             this.panel2.Controls.Add(this.btnPruebaWhasaaps);
             this.panel2.Controls.Add(this.btnCreaViaje);
@@ -499,23 +503,55 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(245, 193);
+            this.panel2.Size = new System.Drawing.Size(330, 193);
             this.panel2.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(244, 35);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(43, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(244, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(43, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Visible = false;
             // 
             // textBoxiRegistroViaje
             // 
-            this.textBoxiRegistroViaje.Location = new System.Drawing.Point(81, 95);
+            this.textBoxiRegistroViaje.Location = new System.Drawing.Point(71, 93);
             this.textBoxiRegistroViaje.Name = "textBoxiRegistroViaje";
             this.textBoxiRegistroViaje.Size = new System.Drawing.Size(100, 20);
             this.textBoxiRegistroViaje.TabIndex = 3;
             // 
+            // btnPruebaWhasaaps
+            // 
+            this.btnPruebaWhasaaps.Image = global::MetalLiqViajes_Forms.Properties.Resources.NewDocumentHS;
+            this.btnPruebaWhasaaps.Location = new System.Drawing.Point(244, 120);
+            this.btnPruebaWhasaaps.Name = "btnPruebaWhasaaps";
+            this.btnPruebaWhasaaps.Size = new System.Drawing.Size(43, 37);
+            this.btnPruebaWhasaaps.TabIndex = 2;
+            this.btnPruebaWhasaaps.UseVisualStyleBackColor = true;
+            this.btnPruebaWhasaaps.Visible = false;
+            this.btnPruebaWhasaaps.Click += new System.EventHandler(this.btnPruebaWhasaaps_Click);
+            // 
             // btnCreaViaje
             // 
             this.btnCreaViaje.Image = global::MetalLiqViajes_Forms.Properties.Resources.NewDocumentHS;
-            this.btnCreaViaje.Location = new System.Drawing.Point(81, 150);
+            this.btnCreaViaje.Location = new System.Drawing.Point(71, 146);
             this.btnCreaViaje.Name = "btnCreaViaje";
-            this.btnCreaViaje.Size = new System.Drawing.Size(43, 37);
+            this.btnCreaViaje.Size = new System.Drawing.Size(100, 37);
             this.btnCreaViaje.TabIndex = 2;
+            this.btnCreaViaje.Text = "Crear Viaje";
+            this.btnCreaViaje.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.btnCreaViaje, "Crear Viaje");
             this.btnCreaViaje.UseVisualStyleBackColor = true;
             this.btnCreaViaje.Click += new System.EventHandler(this.btnCreaViaje_Click);
@@ -523,20 +559,21 @@
             // btnSatrac
             // 
             this.btnSatrac.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
-            this.btnSatrac.Location = new System.Drawing.Point(138, 150);
+            this.btnSatrac.Location = new System.Drawing.Point(244, 79);
             this.btnSatrac.Name = "btnSatrac";
             this.btnSatrac.Size = new System.Drawing.Size(43, 37);
             this.btnSatrac.TabIndex = 2;
             this.btnSatrac.UseVisualStyleBackColor = true;
+            this.btnSatrac.Visible = false;
             this.btnSatrac.Click += new System.EventHandler(this.btnSatrac_Click);
             // 
             // btnQuitarFintro
             // 
             this.btnQuitarFintro.Enabled = false;
             this.btnQuitarFintro.Image = global::MetalLiqViajes_Forms.Properties.Resources.ClearFilter2HS;
-            this.btnQuitarFintro.Location = new System.Drawing.Point(187, 150);
+            this.btnQuitarFintro.Location = new System.Drawing.Point(177, 120);
             this.btnQuitarFintro.Name = "btnQuitarFintro";
-            this.btnQuitarFintro.Size = new System.Drawing.Size(43, 37);
+            this.btnQuitarFintro.Size = new System.Drawing.Size(49, 22);
             this.btnQuitarFintro.TabIndex = 2;
             this.btnQuitarFintro.UseVisualStyleBackColor = true;
             this.btnQuitarFintro.Visible = false;
@@ -545,7 +582,7 @@
             // btnBuscaViajes
             // 
             this.btnBuscaViajes.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
-            this.btnBuscaViajes.Location = new System.Drawing.Point(187, 95);
+            this.btnBuscaViajes.Location = new System.Drawing.Point(177, 93);
             this.btnBuscaViajes.Name = "btnBuscaViajes";
             this.btnBuscaViajes.Size = new System.Drawing.Size(49, 21);
             this.btnBuscaViajes.TabIndex = 2;
@@ -556,7 +593,7 @@
             // btnRefrescar
             // 
             this.btnRefrescar.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
-            this.btnRefrescar.Location = new System.Drawing.Point(187, 39);
+            this.btnRefrescar.Location = new System.Drawing.Point(177, 37);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(49, 21);
             this.btnRefrescar.TabIndex = 2;
@@ -567,7 +604,7 @@
             // comboBoxYear
             // 
             this.comboBoxYear.FormattingEnabled = true;
-            this.comboBoxYear.Location = new System.Drawing.Point(81, 12);
+            this.comboBoxYear.Location = new System.Drawing.Point(71, 10);
             this.comboBoxYear.Name = "comboBoxYear";
             this.comboBoxYear.Size = new System.Drawing.Size(100, 21);
             this.comboBoxYear.TabIndex = 1;
@@ -578,7 +615,7 @@
             this.comboBoxRegViaje.DataSource = this.utiliDRegistroBindingSource;
             this.comboBoxRegViaje.DisplayMember = "idRegistro";
             this.comboBoxRegViaje.FormattingEnabled = true;
-            this.comboBoxRegViaje.Location = new System.Drawing.Point(81, 121);
+            this.comboBoxRegViaje.Location = new System.Drawing.Point(71, 119);
             this.comboBoxRegViaje.Name = "comboBoxRegViaje";
             this.comboBoxRegViaje.Size = new System.Drawing.Size(100, 21);
             this.comboBoxRegViaje.TabIndex = 1;
@@ -592,7 +629,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 12);
+            this.label1.Location = new System.Drawing.Point(36, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 0;
@@ -603,7 +640,7 @@
             this.comboBoxPlaca.DataSource = this.utilPlacaBindingSource;
             this.comboBoxPlaca.DisplayMember = "Placa";
             this.comboBoxPlaca.FormattingEnabled = true;
-            this.comboBoxPlaca.Location = new System.Drawing.Point(81, 62);
+            this.comboBoxPlaca.Location = new System.Drawing.Point(71, 60);
             this.comboBoxPlaca.Name = "comboBoxPlaca";
             this.comboBoxPlaca.Size = new System.Drawing.Size(100, 21);
             this.comboBoxPlaca.TabIndex = 1;
@@ -617,7 +654,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 37);
+            this.label2.Location = new System.Drawing.Point(35, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 0;
@@ -626,7 +663,7 @@
             // comboBoxMonth
             // 
             this.comboBoxMonth.FormattingEnabled = true;
-            this.comboBoxMonth.Location = new System.Drawing.Point(81, 39);
+            this.comboBoxMonth.Location = new System.Drawing.Point(71, 37);
             this.comboBoxMonth.Name = "comboBoxMonth";
             this.comboBoxMonth.Size = new System.Drawing.Size(100, 21);
             this.comboBoxMonth.TabIndex = 1;
@@ -635,7 +672,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 62);
+            this.label3.Location = new System.Drawing.Point(28, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 0;
@@ -644,7 +681,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 95);
+            this.label4.Location = new System.Drawing.Point(9, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 0;
@@ -2521,16 +2558,6 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnPruebaWhasaaps
-            // 
-            this.btnPruebaWhasaaps.Image = global::MetalLiqViajes_Forms.Properties.Resources.NewDocumentHS;
-            this.btnPruebaWhasaaps.Location = new System.Drawing.Point(22, 150);
-            this.btnPruebaWhasaaps.Name = "btnPruebaWhasaaps";
-            this.btnPruebaWhasaaps.Size = new System.Drawing.Size(43, 37);
-            this.btnPruebaWhasaaps.TabIndex = 2;
-            this.btnPruebaWhasaaps.UseVisualStyleBackColor = true;
-            this.btnPruebaWhasaaps.Click += new System.EventHandler(this.btnPruebaWhasaaps_Click);
-            // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2841,5 +2868,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCreaViaje;
         private System.Windows.Forms.Button btnPruebaWhasaaps;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

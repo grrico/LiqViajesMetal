@@ -13,11 +13,15 @@ namespace MetalLiqViajes_Forms
 {
     public partial class CrearViaje : Form
     {
+
+        public VehiculoCCosto vehiculo;
+        public TipoVehiculo tipovehiculo;
+        public TercerosConductores conductor;
         public CrearViaje()
         {
             InitializeComponent();
 
-            List<TipoVehiculo> tipovehiculoList = TipoVehiculoController.Instance.GetAll().Where(t => t.Activo.Value==true).ToList();
+            List<TipoVehiculo> tipovehiculoList = TipoVehiculoController.Instance.GetAll().Where(t => t.Activo.Value == true).ToList();
             dataGridViewTipoVehiculo.DataSource = tipovehiculoList;
             dataGridViewTipoVehiculo.Refresh();
 
@@ -28,7 +32,7 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewTipoVehiculo_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            TipoVehiculo tipovehiculo = dataGridViewTipoVehiculo.Rows[e.RowIndex].DataBoundItem as TipoVehiculo;
+            tipovehiculo = dataGridViewTipoVehiculo.Rows[e.RowIndex].DataBoundItem as TipoVehiculo;
             List<VehiculoCCosto> vehiculosList = VehiculoCCostoController.Instance.GetAll().Where(t => t.TipoVehiculoCodigo == tipovehiculo.Codigo).ToList();
 
             dataGridViewPlaca.DataSource = vehiculosList;
@@ -38,13 +42,19 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewConductor_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            VehiculoCCosto tipovehiculo = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as VehiculoCCosto;
-            
+            conductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as TercerosConductores;
+
         }
 
         private void dataGridViewPlaca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            TipoVehiculo tipovehiculo = dataGridViewTipoVehiculo.Rows[e.RowIndex].DataBoundItem as TipoVehiculo;
+            try
+            {
+                vehiculo = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as VehiculoCCosto;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -54,8 +64,7 @@ namespace MetalLiqViajes_Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            LiquidacionVehiculo liqVehiculo = new LiquidacionVehiculo();
-            
+            this.Close();
         }
     }
 }

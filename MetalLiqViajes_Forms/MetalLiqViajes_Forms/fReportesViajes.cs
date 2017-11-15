@@ -34,6 +34,7 @@ namespace MetalLiqViajes_Forms
         double LatIncial = 9.530720;
         double lngInicial = -75.418800;
         private Providedor proveedor;
+        private List<Conductor> ConductorList;
         private List<RutaSatrackHistoryEvents> historicoList;
         private RutaSatrackLastEvents SatracEvent;
         private List<RutaSatrackLastEvents> eventosList;
@@ -60,6 +61,8 @@ namespace MetalLiqViajes_Forms
         private string Nit { get; set; }
         private bool iCargaCompleta { get; set; }
         private int RowDataGridGasto { get; set; }
+        private int RowGridConductor { get; set; }
+        private int RowGridLiqViaje { get; set; }
 
         public fReportesViajes()
         {
@@ -144,7 +147,6 @@ namespace MetalLiqViajes_Forms
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-
             ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
             CargaRegistroViaje(utilyear.YearId);
         }
@@ -341,6 +343,7 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewViajes_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            RowGridLiqViaje = e.RowIndex;
             iRegistroViajeDTO = dataGridViewViajes.Rows[e.RowIndex].DataBoundItem as LiqViajes_Bll_Data.RegistroViajeDTO;
 
             Nit = iRegistroViajeDTO.NitConductor;
@@ -382,9 +385,8 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewConductor_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
+            RowGridConductor = e.RowIndex;
             conductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as Conductor;
-
             registroviajelistFiltro = registroviajelist.Where(p => p.NitConductor == conductor.Cedula.ToString()).ToList();
             dataGridViewViajes.DataSource = registroviajelistFiltro;
             dataGridViewViajes.Refresh();
@@ -497,7 +499,7 @@ namespace MetalLiqViajes_Forms
                 proveedor.Nombre = "Calle";
                 ProvedorList.Add(proveedor);
 
-                
+
 
                 comboBoxProveedor.DataSource = ProvedorList;
                 comboBoxProveedor.DisplayMember = "Nombre";
@@ -716,7 +718,7 @@ namespace MetalLiqViajes_Forms
             }
         }
 
-        private void CargaRegistroViaje(int Ano)
+        private void CargaRegistroViaje(int Ano, bool iRefrescar=true)
         {
 
             registroviajelist = LiqViajes_Bll_Data.LiquidacionVehiculoController.Instance.GetBy_RegistroViajesAnoDTO(Ano, ultilmonth.MonthId);
@@ -746,7 +748,7 @@ namespace MetalLiqViajes_Forms
             .Distinct();
 
             decimal anticipo = 0;
-            List<Conductor> ConductorList = new List<Conductor>();
+            ConductorList = new List<Conductor>();
 
             foreach (var item in distinctconductor.ToList())
             {
@@ -770,9 +772,11 @@ namespace MetalLiqViajes_Forms
 
                 ConductorList.Add(conductor);
             }
-
             dataGridViewConductor.DataSource = ConductorList.OrderBy(o => o.NombreConductor).ToList();
-            dataGridViewConductor.Refresh();
+            if (!iRefrescar)
+            {
+                dataGridViewConductor.Refresh();
+            }
 
             var distinctregistro = registroviajelist.AsEnumerable()
             .Select(row => new
@@ -1115,8 +1119,8 @@ namespace MetalLiqViajes_Forms
             {
                 gMapControl.MapProvider = GMapProviders.OpenStreetMap;
             }
-            
-            
+
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1408,7 +1412,6 @@ namespace MetalLiqViajes_Forms
             gMapControl.Zoom = gMapControl.Zoom - 1;
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             string from = "573017696263";
@@ -1436,7 +1439,8 @@ namespace MetalLiqViajes_Forms
                 };
                 wa.Login();
             };
-            wa.OnConnectFailed += (ex) => {
+            wa.OnConnectFailed += (ex) =>
+            {
                 //textBox1.Text += "\nConnection failed...!\n";
             };
             wa.Connect();
@@ -1446,7 +1450,50 @@ namespace MetalLiqViajes_Forms
         private void btnCreaViaje_Click(object sender, EventArgs e)
         {
             CrearViaje creaviaje = new CrearViaje();
-            creaviaje.ShowDialog();
+            if (creaviaje.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    DialogResult resultado = MessageBox.Show("Confirma crear el registro ahora?", "Validar Crear Registro", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        LiquidacionVehiculo liqVehiculo = new LiquidacionVehiculo();
+                        liqVehiculo.strPlaca = creaviaje.vehiculo.strPlaca;
+                        liqVehiculo.intNitConductor = Convert.ToDecimal(creaviaje.conductor.IntNit);
+                        liqVehiculo.curGastos = 0;
+                        liqVehiculo.curAnticipos = 0;
+                        liqVehiculo.curTotal = 0;
+                        liqVehiculo.dtmFechaModif = DateTime.Now;
+                        liqVehiculo.logLiquidado = false;
+                        LiquidacionVehiculoController.Instance.Create(liqVehiculo);
+
+                        //RowGridConductor
+                        int m_index = RowGridConductor;
+                        string cedula = conductor.Cedula.ToString();
+                        // obtiene el año
+                        ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
+
+                        // carga de nuevo la lista de viajes toda
+                        CargaRegistroViaje(utilyear.YearId, false);
+
+                        //  ubica el conductor en el grid
+                        dataGridViewConductor.ClearSelection();
+                        dataGridViewConductor.Rows[m_index].Selected = true;
+                        dataGridViewConductor.FirstDisplayedScrollingRowIndex = m_index;
+                        dataGridViewConductor.Focus();
+
+                        RowGridConductor = m_index;
+                        conductor = dataGridViewConductor.Rows[m_index].DataBoundItem as Conductor;
+                        registroviajelistFiltro = registroviajelist.Where(p => p.NitConductor == conductor.Cedula.ToString()).ToList();
+                        dataGridViewViajes.DataSource = registroviajelistFiltro;
+                        dataGridViewViajes.Refresh();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CargaExection(ex);
+                }
+            }
         }
 
         private void btnPruebaWhasaaps_Click(object sender, EventArgs e)
@@ -1455,7 +1502,6 @@ namespace MetalLiqViajes_Forms
             //SendMessage
 
         }
-
 
         public void SendMessage(string sendTo, string message)
         {
@@ -1481,7 +1527,38 @@ namespace MetalLiqViajes_Forms
             wa.OnConnectFailed += (Exception) =>
             {
                 response = false;
-            };            
+            };
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //RowGridConductor
+            int m_index = Convert.ToInt32(textBox1.Text);
+
+            //ConductorList.r .Select(t => t.Placa== conductor.Placa)
+
+
+            string cedula = conductor.Cedula.ToString();
+
+
+            // obtiene el año
+            ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
+
+            // carga de nuevo la lista de viajes toda
+            CargaRegistroViaje(utilyear.YearId,false);
+
+            //  ubica el conductor en el grid
+            dataGridViewConductor.ClearSelection();
+            dataGridViewConductor.Rows[m_index].Selected = true;
+            dataGridViewConductor.FirstDisplayedScrollingRowIndex = m_index;
+            dataGridViewConductor.Focus();
+
+            RowGridConductor = m_index;
+            conductor = dataGridViewConductor.Rows[m_index].DataBoundItem as Conductor;
+            registroviajelistFiltro = registroviajelist.Where(p => p.NitConductor == conductor.Cedula.ToString()).ToList();
+            dataGridViewViajes.DataSource = registroviajelistFiltro;
+            dataGridViewViajes.Refresh();
+
         }
     }
 }
