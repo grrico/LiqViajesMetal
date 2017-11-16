@@ -93,7 +93,7 @@
             this.dataGridViewPlaca.Name = "dataGridViewPlaca";
             this.dataGridViewPlaca.ReadOnly = true;
             this.dataGridViewPlaca.RowHeadersWidth = 10;
-            this.dataGridViewPlaca.Size = new System.Drawing.Size(130, 298);
+            this.dataGridViewPlaca.Size = new System.Drawing.Size(152, 298);
             this.dataGridViewPlaca.TabIndex = 0;
             this.dataGridViewPlaca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlaca_RowEnter);
             // 
@@ -111,7 +111,7 @@
             this.strNombresDataGridViewTextBoxColumn});
             this.dataGridViewConductor.DataSource = this.tercerosConductoresBindingSource;
             this.dataGridViewConductor.EnableHeadersVisualStyles = false;
-            this.dataGridViewConductor.Location = new System.Drawing.Point(336, 12);
+            this.dataGridViewConductor.Location = new System.Drawing.Point(358, 12);
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
             this.dataGridViewConductor.RowHeadersWidth = 10;
@@ -134,7 +134,7 @@
             // btnCrear
             // 
             this.btnCrear.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnCrear.Location = new System.Drawing.Point(600, 12);
+            this.btnCrear.Location = new System.Drawing.Point(665, 12);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(75, 23);
             this.btnCrear.TabIndex = 1;
@@ -145,7 +145,7 @@
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(600, 41);
+            this.btnCancelar.Location = new System.Drawing.Point(665, 41);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 1;
@@ -166,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(692, 329);
+            this.ClientSize = new System.Drawing.Size(752, 329);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.dataGridViewConductor);
@@ -176,6 +176,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearViaje";
             this.Text = "CrearViaje";
+            this.Load += new System.EventHandler(this.CrearViaje_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoVehiculoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaca)).EndInit();

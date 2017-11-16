@@ -718,7 +718,7 @@ namespace MetalLiqViajes_Forms
             }
         }
 
-        private void CargaRegistroViaje(int Ano, bool iRefrescar=true)
+        private void CargaRegistroViaje(int Ano, bool iRefrescar = true)
         {
 
             registroviajelist = LiqViajes_Bll_Data.LiquidacionVehiculoController.Instance.GetBy_RegistroViajesAnoDTO(Ano, ultilmonth.MonthId);
@@ -1450,6 +1450,7 @@ namespace MetalLiqViajes_Forms
         private void btnCreaViaje_Click(object sender, EventArgs e)
         {
             CrearViaje creaviaje = new CrearViaje();
+            creaviaje.conductor = conductor;
             if (creaviaje.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -1459,7 +1460,7 @@ namespace MetalLiqViajes_Forms
                     {
                         LiquidacionVehiculo liqVehiculo = new LiquidacionVehiculo();
                         liqVehiculo.strPlaca = creaviaje.vehiculo.strPlaca;
-                        liqVehiculo.intNitConductor = Convert.ToDecimal(creaviaje.conductor.IntNit);
+                        liqVehiculo.intNitConductor = Convert.ToDecimal(creaviaje.terceroconductor.IntNit);
                         liqVehiculo.curGastos = 0;
                         liqVehiculo.curAnticipos = 0;
                         liqVehiculo.curTotal = 0;
@@ -1545,7 +1546,7 @@ namespace MetalLiqViajes_Forms
             ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
 
             // carga de nuevo la lista de viajes toda
-            CargaRegistroViaje(utilyear.YearId,false);
+            CargaRegistroViaje(utilyear.YearId, false);
 
             //  ubica el conductor en el grid
             dataGridViewConductor.ClearSelection();

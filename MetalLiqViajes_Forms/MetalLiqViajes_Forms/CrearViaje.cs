@@ -14,20 +14,43 @@ namespace MetalLiqViajes_Forms
     public partial class CrearViaje : Form
     {
 
+        public Conductor conductor;
         public VehiculoCCosto vehiculo;
         public TipoVehiculo tipovehiculo;
-        public TercerosConductores conductor;
+        public TercerosConductores terceroconductor;
+        private List<TipoVehiculo> tipovehiculoList;
+        private List<TercerosConductores> conductoresList;
         public CrearViaje()
         {
             InitializeComponent();
 
-            List<TipoVehiculo> tipovehiculoList = TipoVehiculoController.Instance.GetAll().Where(t => t.Activo.Value == true).ToList();
+            tipovehiculoList = TipoVehiculoController.Instance.GetAll().Where(t => t.Activo.Value == true && t.Codigo >= 1).ToList();
             dataGridViewTipoVehiculo.DataSource = tipovehiculoList;
             dataGridViewTipoVehiculo.Refresh();
 
-            List<TercerosConductores> conductoresList = TercerosConductoresController.Instance.GetAll().Where(t => t.logEstado.Value == true).ToList();
+            conductoresList = TercerosConductoresController.Instance.GetAll().Where(t => t.logEstado.Value == true).ToList();
             dataGridViewPlaca.DataSource = conductoresList;
             dataGridViewPlaca.Refresh();
+        }
+
+        private void CrearViaje_Load(object sender, EventArgs e)
+        {
+            //conductor
+
+            VehiculoCCosto vehiculo = VehiculoCCostoController.Instance.GetByPlaca(conductor.Placa);
+
+            int index = tipovehiculoList.FindIndex(t => t.Codigo == vehiculo.TipoVehiculoCodigo.Value);
+            dataGridViewTipoVehiculo.ClearSelection();
+            dataGridViewTipoVehiculo.Rows[index].Selected = true;
+            dataGridViewTipoVehiculo.FirstDisplayedScrollingRowIndex = index;
+            dataGridViewTipoVehiculo.Focus();
+
+            int index2 = conductoresList.FindIndex(t => t.placa == vehiculo.strPlaca);
+            dataGridViewPlaca.ClearSelection();
+            dataGridViewPlaca.Rows[index2].Selected = true;
+            dataGridViewPlaca.FirstDisplayedScrollingRowIndex = index2;
+            dataGridViewPlaca.Focus();
+
         }
 
         private void dataGridViewTipoVehiculo_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -42,7 +65,7 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewConductor_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            conductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as TercerosConductores;
+            terceroconductor = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as TercerosConductores;
 
         }
 
@@ -66,5 +89,6 @@ namespace MetalLiqViajes_Forms
         {
             this.Close();
         }
+
     }
 }
