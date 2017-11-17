@@ -169,6 +169,7 @@
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.LiquidacionGastosList.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackHistoryEvents.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackLastEvents.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutasOrigenDestino.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosConductores.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosDTO.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TercerosList.datasource" />

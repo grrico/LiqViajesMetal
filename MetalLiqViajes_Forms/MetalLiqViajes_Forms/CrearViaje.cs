@@ -32,6 +32,12 @@ namespace MetalLiqViajes_Forms
 
             dataGridViewConductor.DataSource = conductoresList;
             dataGridViewConductor.Refresh();
+
+            List<RutasOrigenDestino> rutasorigenDestinoList = RutasOrigenDestinoController.Instance.GetAll();
+
+            comboBoxOrigen.DataSource = rutasorigenDestinoList;
+            comboBoxOrigen.Refresh();
+
         }
 
         private void CrearViaje_Load(object sender, EventArgs e)
