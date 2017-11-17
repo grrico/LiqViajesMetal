@@ -20,15 +20,15 @@ namespace LiqViajes_Bll_Data
 	public partial class TercerosConductores : IDTOObject
 	{
 
-		private string Placa;
+		//private string Placa;
 
-        public string placa
-        {
-            get
-            {
-                return Placa = strPlaca.Replace("-", "");
-            }
-        }
+  //      public string placa
+  //      {
+  //          get
+  //          {
+  //              return Placa = strPlaca.Replace("-", "");
+  //          }
+  //      }
     }
 
 

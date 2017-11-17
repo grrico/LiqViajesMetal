@@ -72,7 +72,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="logActualizado"></param>
 		/// <param name="lngIdUsuario"></param>
-		public void Create(string strTipoIdentificacion, double IntNit, int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Placa"></param>
+		/// <param name="TipoVehiculoCodigo"></param>
+		public void Create(string strTipoIdentificacion, double IntNit, int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario, string Placa, int? TipoVehiculoCodigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -198,6 +200,14 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@lngIdUsuario",lngIdUsuario);
 				}
+				if (Placa !=null)
+				{
+					paramlist.AddWithValue("@Placa",Placa);
+				}
+				if (TipoVehiculoCodigo !=null)
+				{
+					paramlist.AddWithValue("@TipoVehiculoCodigo",TipoVehiculoCodigo);
+				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.TercerosConductoresCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
@@ -210,6 +220,8 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblTercerosConductores by passing all fields
 		/// </summary>
+		/// <param name="strTipoIdentificacion"></param>
+		/// <param name="IntNit"></param>
 		/// <param name="intDigito"></param>
 		/// <param name="strNombres"></param>
 		/// <param name="strDireccion"></param>
@@ -235,9 +247,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="logActualizado"></param>
 		/// <param name="lngIdUsuario"></param>
-		/// <param name="strTipoIdentificacion"></param>
-		/// <param name="IntNit"></param>
-		public void Update(int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario, string strTipoIdentificacion, double IntNit,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Placa"></param>
+		/// <param name="TipoVehiculoCodigo"></param>
+		public void Update(string strTipoIdentificacion, double IntNit, int? intDigito, string strNombres, string strDireccion, bool? logEstado, bool? logConductor, string strPlaca, string lngIdCiudad, string strTelefono, string strTelefonoAux, string strTelCelular, string strTelCelularAux, string strFax, string IntAAereo, string StrPais, double? nitProvedor, double? intNoLicenciaConduc, int? intCategoria, string strTarjetaTripulante, DateTime? dtmFechaVenceLicencia, DateTime? dtmVenceTarjetaTripulante, string strCarnetEmpresa, string strCarnetComunicaciones, DateTime? dtmFechaModif, bool? logActualizado, int? lngIdUsuario, string Placa, int? TipoVehiculoCodigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -361,6 +373,14 @@ namespace LiqViajes_Bll_Data
 				if (lngIdUsuario !=null)
 				{
 					paramlist.AddWithValue("@lngIdUsuario",lngIdUsuario);
+				}
+				if (Placa !=null)
+				{
+					paramlist.AddWithValue("@Placa",Placa);
+				}
+				if (TipoVehiculoCodigo !=null)
+				{
+					paramlist.AddWithValue("@TipoVehiculoCodigo",TipoVehiculoCodigo);
 				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.TercerosConductoresUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
@@ -471,6 +491,41 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				return LocalDataProvider.EjecutarProcedimiento("dbo.TercerosConductoresGetAll", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Gets all records from tblTercerosConductores that are related to TipoVehiculo
+		/// </summary>
+		/// <param name="TipoVehiculoCodigo"></param>
+		/// <returns>A DataTable object containing all records data</returns>
+		public DataTable GetBy_TipoVehiculoCodigo(int TipoVehiculoCodigo)
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (DataProvider.Concurrente)
+				{
+					LocalDataProvider = new Sinapsys.Datos.SQL();
+					LocalDataProvider.Conectar(DataProvider.Alias, false);
+				}
+				else
+				{
+					LocalDataProvider = DataProvider.Datos;
+				}
+				disconnect = DataProvider.ValidateConnection();
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+
+				paramlist.AddWithValue("@TipoVehiculoCodigo",TipoVehiculoCodigo);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.TercerosConductoresGetBy_TipoVehiculoCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{

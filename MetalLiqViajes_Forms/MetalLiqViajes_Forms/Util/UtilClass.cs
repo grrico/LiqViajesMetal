@@ -56,6 +56,7 @@ namespace MetalLiqViajes_Forms
         public Decimal ValorAnticipo { get; set; }
         public Decimal ValorGastos { get; set; }
         public Decimal ValorTotal { get; set; }
+        public int TipoVehiculoCodigo { get; set; }
     }
 
     public class Providedor

@@ -53,6 +53,8 @@ namespace LiqViajes_Bll_Data
 			m_dtmFechaModif = null;
 			m_logActualizado = false;
 			m_lngIdUsuario = null;
+			m_Placa = null;
+			m_TipoVehiculoCodigo = null;
 			m_changed=false;
 		}
 		        //Return the table name of object
@@ -93,6 +95,8 @@ namespace LiqViajes_Bll_Data
 			m_oldTercerosConductores.dtmFechaModif = m_dtmFechaModif;
 			m_oldTercerosConductores.logActualizado = m_logActualizado;
 			m_oldTercerosConductores.lngIdUsuario = m_lngIdUsuario;
+			m_oldTercerosConductores.Placa = m_Placa;
+			m_oldTercerosConductores.TipoVehiculoCodigo = m_TipoVehiculoCodigo;
 		}
 
 		public TercerosConductores OldTercerosConductores
@@ -128,6 +132,8 @@ namespace LiqViajes_Bll_Data
 			if (m_oldTercerosConductores.dtmFechaModif != m_dtmFechaModif) fields.Add("dtmFechaModif");
 			if (m_oldTercerosConductores.logActualizado != m_logActualizado) fields.Add("logActualizado");
 			if (m_oldTercerosConductores.lngIdUsuario != m_lngIdUsuario) fields.Add("lngIdUsuario");
+			if (m_oldTercerosConductores.Placa != m_Placa) fields.Add("Placa");
+			if (m_oldTercerosConductores.TipoVehiculoCodigo != m_TipoVehiculoCodigo) fields.Add("TipoVehiculoCodigo");
 			string[] fieldst = new string[fields.Count];
 			int i = 0;
 			foreach(string st in fields)
@@ -140,6 +146,12 @@ namespace LiqViajes_Bll_Data
 		#endregion
 		#region Fields
 
+
+		// Field for storing the TercerosConductores's strTipoIdentificacion value
+		private string m_strTipoIdentificacion;
+
+		// Field for storing the TercerosConductores's IntNit value
+		private double m_IntNit;
 
 		// Field for storing the TercerosConductores's intDigito value
 		private int? m_intDigito;
@@ -216,14 +228,17 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the TercerosConductores's lngIdUsuario value
 		private int? m_lngIdUsuario;
 
-		// Field for storing the TercerosConductores's strTipoIdentificacion value
-		private string m_strTipoIdentificacion;
+		// Field for storing the TercerosConductores's Placa value
+		private string m_Placa;
 
-		// Field for storing the TercerosConductores's IntNit value
-		private double m_IntNit;
+		// Field for storing the TercerosConductores's TipoVehiculoCodigo value
+		private int? m_TipoVehiculoCodigo;
 
 		// Evaluate changed state
 		private bool m_changed=false;
+		// Field for storing the reference to TipoVehiculo accessed by TipoVehiculoCodigo
+		private TipoVehiculo m_TipoVehiculo;
+
 
 		#endregion
 
@@ -235,6 +250,34 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the TercerosConductores's strTipoIdentificacion value (string)
+		/// </summary>
+		[DataMember]
+		public string strTipoIdentificacion
+		{
+			get { return m_strTipoIdentificacion; }
+			set 
+			{
+				m_changed=true;
+				m_strTipoIdentificacion = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the TercerosConductores's IntNit value (double)
+		/// </summary>
+		[DataMember]
+		public double IntNit
+		{
+			get { return m_IntNit; }
+			set 
+			{
+				m_changed=true;
+				m_IntNit = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the TercerosConductores's intDigito value (int)
 		/// </summary>
@@ -586,30 +629,36 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the TercerosConductores's strTipoIdentificacion value (string)
+		/// Attribute for access the TercerosConductores's Placa value (string)
 		/// </summary>
 		[DataMember]
-		public string strTipoIdentificacion
+		public string Placa
 		{
-			get { return m_strTipoIdentificacion; }
+			get { return m_Placa; }
 			set 
 			{
 				m_changed=true;
-				m_strTipoIdentificacion = value;
+				m_Placa = value;
 			}
 		}
 
 		/// <summary>
-		/// Attribute for access the TercerosConductores's IntNit value (double)
+		/// Attribute for access the TercerosConductores's TipoVehiculoCodigo value (int)
 		/// </summary>
 		[DataMember]
-		public double IntNit
+		public int? TipoVehiculoCodigo
 		{
-			get { return m_IntNit; }
-			set 
+			get { return m_TipoVehiculoCodigo; }
+			set
 			{
 				m_changed=true;
-				m_IntNit = value;
+				m_TipoVehiculoCodigo = value;
+
+				if ((m_TipoVehiculo != null) && (m_TipoVehiculo.Codigo != m_TipoVehiculoCodigo))
+				{
+					// we need to reset the reference because it is now invalid
+					m_TipoVehiculo = null;
+				}
 			}
 		}
 
@@ -617,6 +666,8 @@ namespace LiqViajes_Bll_Data
 		{
 			switch (pattribute)
 			{
+				case "strTipoIdentificacion": return strTipoIdentificacion;
+				case "IntNit": return IntNit;
 				case "intDigito": return intDigito;
 				case "strNombres": return strNombres;
 				case "strDireccion": return strDireccion;
@@ -642,8 +693,8 @@ namespace LiqViajes_Bll_Data
 				case "dtmFechaModif": return dtmFechaModif;
 				case "logActualizado": return logActualizado;
 				case "lngIdUsuario": return lngIdUsuario;
-				case "strTipoIdentificacion": return strTipoIdentificacion;
-				case "IntNit": return IntNit;
+				case "Placa": return Placa;
+				case "TipoVehiculoCodigo": return TipoVehiculoCodigo;
 				default: return null;
 			}
 		}
@@ -657,6 +708,39 @@ namespace LiqViajes_Bll_Data
 		{
 			return "[strTipoIdentificacion] = '" + strTipoIdentificacion.ToString()+ "'" + " AND [IntNit] = " + IntNit.ToString();
 		}
+		/// <summary>
+		/// Gets or sets the reference to TipoVehiculo accessed by TipoVehiculoCodigo
+		/// </summary>
+		/// <remarks>
+		/// Also updates related field values
+		/// </remarks>
+		public TipoVehiculo TipoVehiculo
+		{
+			get
+			{
+				if (m_TipoVehiculo == null)
+				{
+					m_TipoVehiculo = MasterTables.TipoVehiculo.Where(tmp=>tmp.Codigo==m_TipoVehiculoCodigo ).FirstOrDefault();
+					if (m_TipoVehiculo == null)
+					{
+						m_TipoVehiculo = new TipoVehiculo();
+					}
+				}
+
+				return m_TipoVehiculo;
+			}
+
+			set
+			{
+				m_TipoVehiculo = value;
+
+				if (m_TipoVehiculo != null)
+				{
+					this.m_TipoVehiculoCodigo = m_TipoVehiculo.Codigo;
+				}
+			}
+		}
+
 		#endregion
 
 	}

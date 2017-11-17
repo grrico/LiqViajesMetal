@@ -29,35 +29,37 @@ namespace MetalLiqViajes_Forms
             dataGridViewTipoVehiculo.Refresh();
 
             conductoresList = TercerosConductoresController.Instance.GetAll().Where(t => t.logEstado.Value == true).ToList();
-            dataGridViewPlaca.DataSource = conductoresList;
-            dataGridViewPlaca.Refresh();
+
+            dataGridViewConductor.DataSource = conductoresList;
+            dataGridViewConductor.Refresh();
         }
 
         private void CrearViaje_Load(object sender, EventArgs e)
         {
-            //conductor
 
-            VehiculoCCosto vehiculo = VehiculoCCostoController.Instance.GetByPlaca(conductor.Placa);
+            conductor.TipoVehiculoCodigo = VehiculoCCostoController.Instance.GetByPlaca(conductor.Placa).TipoVehiculoCodigo.Value;
 
-            int index = tipovehiculoList.FindIndex(t => t.Codigo == vehiculo.TipoVehiculoCodigo.Value);
+            int index = tipovehiculoList.FindIndex(t => t.Codigo == conductor.TipoVehiculoCodigo);
             dataGridViewTipoVehiculo.ClearSelection();
             dataGridViewTipoVehiculo.Rows[index].Selected = true;
             dataGridViewTipoVehiculo.FirstDisplayedScrollingRowIndex = index;
             dataGridViewTipoVehiculo.Focus();
 
-            int index2 = conductoresList.FindIndex(t => t.placa == vehiculo.strPlaca);
-            dataGridViewPlaca.ClearSelection();
-            dataGridViewPlaca.Rows[index2].Selected = true;
-            dataGridViewPlaca.FirstDisplayedScrollingRowIndex = index2;
-            dataGridViewPlaca.Focus();
+            //int index2 = conductoresList.FindIndex(t => t.Placa == vehiculo.strPlaca);
+            //dataGridViewPlaca.ClearSelection();
+            //dataGridViewPlaca.Rows[index2].Selected = true;
+            //dataGridViewPlaca.FirstDisplayedScrollingRowIndex = index2;
+            //dataGridViewPlaca.Focus();
 
         }
 
         private void dataGridViewTipoVehiculo_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             tipovehiculo = dataGridViewTipoVehiculo.Rows[e.RowIndex].DataBoundItem as TipoVehiculo;
-            List<VehiculoCCosto> vehiculosList = VehiculoCCostoController.Instance.GetAll().Where(t => t.TipoVehiculoCodigo == tipovehiculo.Codigo).ToList();
+            //List<VehiculoCCosto> vehiculosList = VehiculoCCostoController.Instance.GetAll().Where(t => t.TipoVehiculoCodigo == tipovehiculo.Codigo).ToList();
 
+            List<VehiculoCCosto>  vehiculosList = tipovehiculo.VehiculoCCosto.ToList();
+             
             dataGridViewPlaca.DataSource = vehiculosList;
             dataGridViewPlaca.Refresh();
 

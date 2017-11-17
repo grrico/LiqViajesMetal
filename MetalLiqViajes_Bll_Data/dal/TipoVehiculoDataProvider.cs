@@ -94,10 +94,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into TipoVehiculo by passing all fields
 		/// </summary>
+		/// <param name="Codigo"></param>
 		/// <param name="Descripcion"></param>
 		/// <param name="Activo"></param>
-		/// <param name="Codigo"></param>
-		public void Update(string Descripcion, bool? Activo, int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int Codigo, string Descripcion, bool? Activo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

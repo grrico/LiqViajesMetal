@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				tipovehiculo.Codigo = (int) dr["Codigo"];
 				tipovehiculo.Descripcion = dr.IsNull("Descripcion") ? null :(string) dr["Descripcion"];
 				tipovehiculo.Activo = dr.IsNull("Activo") ? null :(bool?) dr["Activo"];
-				tipovehiculo.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -100,17 +100,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an TipoVehiculo object by passing all object's fields
 		/// </summary>
+		/// <param name="Codigo">int that contents the Codigo value for the TipoVehiculo object</param>
 		/// <param name="Descripcion">string that contents the Descripcion value for the TipoVehiculo object</param>
 		/// <param name="Activo">bool that contents the Activo value for the TipoVehiculo object</param>
-		/// <param name="Codigo">int that contents the Codigo value for the TipoVehiculo object</param>
-		public void Update(string Descripcion, bool? Activo, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int Codigo, string Descripcion, bool? Activo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				TipoVehiculo new_values = new TipoVehiculo();
 				new_values.Descripcion = Descripcion;
 				new_values.Activo = Activo;
-				TipoVehiculoDataProvider.Instance.Update(Descripcion, Activo, Codigo,"TipoVehiculo",datosTransaccion);
+				TipoVehiculoDataProvider.Instance.Update(Codigo, Descripcion, Activo,"TipoVehiculo",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +124,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="tipovehiculo">An instance of TipoVehiculo for reference</param>
 		public void Update(TipoVehiculo tipovehiculo,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(tipovehiculo.Descripcion, tipovehiculo.Activo, tipovehiculo.Codigo);
+			Update(tipovehiculo.Codigo, tipovehiculo.Descripcion, tipovehiculo.Activo);
 		}
 
 		/// <summary>
@@ -275,14 +275,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "Codigo":
+					return tipovehiculo.Codigo.GetType();
+
 				case "Descripcion":
 					return tipovehiculo.Descripcion.GetType();
 
 				case "Activo":
 					return tipovehiculo.Activo.GetType();
-
-				case "Codigo":
-					return tipovehiculo.Codigo.GetType();
 
 			}
 

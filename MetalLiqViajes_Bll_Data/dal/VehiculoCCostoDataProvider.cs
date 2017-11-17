@@ -92,8 +92,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaInicioTarjetaOper"></param>
 		/// <param name="dtmFechaVenceTarjetaOper"></param>
 		/// <param name="logVencimientoFecha"></param>
+		/// <param name="Placa"></param>
 		/// <returns>int that contents the lngIdRegistro value</returns>
-		public int Create(int lngIdRegistro, double? lngIdUsuario, string strPlaca, double? centro, int? TipoTrailerCodigo, int? TipoVehiculoCodigo, string Descripcion, DateTime? dtmFechaIngreso, DateTime? dtmFechaEgreso, double? nitPropietario, string strMarca, double? lngModelo, double? lngMovil, double? strCelular, double? strTipoMotor, string strColor, string strMotor, string strChasis, bool? logCamarote, decimal? CapacidadGalores, decimal? floGalonesReserva, decimal? floCantGalonesReserva, decimal? floTolerancia, double? cutPeso, double? cutCapacidad, double? lngEjes, double? logActivo, double? lngLlantas, string strPolizaObligatorio, double? nitProvedorOblig, DateTime? dtmFechaInicioOblig, DateTime? dtmFechaVenceOblig, string strPolizaTodoRiesgo, double? nitProvedorTodo, DateTime? dtmFechaInicioTodo, DateTime? dtmFechaVenceTodo, string strCertifMovilizacion, DateTime? dtmFechaInicioMoviliz, DateTime? dtmFechaVenceMoviliz, string strGases, DateTime? dtmFechaInicioGases, DateTime? dtmFechaVenceGases, string strTarjetaOper, DateTime? dtmFechaInicioTarjetaOper, DateTime? dtmFechaVenceTarjetaOper, bool? logVencimientoFecha,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public int Create(int lngIdRegistro, double? lngIdUsuario, string strPlaca, double? centro, int? TipoTrailerCodigo, int? TipoVehiculoCodigo, string Descripcion, DateTime? dtmFechaIngreso, DateTime? dtmFechaEgreso, double? nitPropietario, string strMarca, double? lngModelo, double? lngMovil, double? strCelular, double? strTipoMotor, string strColor, string strMotor, string strChasis, bool? logCamarote, decimal? CapacidadGalores, decimal? floGalonesReserva, decimal? floCantGalonesReserva, decimal? floTolerancia, double? cutPeso, double? cutCapacidad, double? lngEjes, double? logActivo, double? lngLlantas, string strPolizaObligatorio, double? nitProvedorOblig, DateTime? dtmFechaInicioOblig, DateTime? dtmFechaVenceOblig, string strPolizaTodoRiesgo, double? nitProvedorTodo, DateTime? dtmFechaInicioTodo, DateTime? dtmFechaVenceTodo, string strCertifMovilizacion, DateTime? dtmFechaInicioMoviliz, DateTime? dtmFechaVenceMoviliz, string strGases, DateTime? dtmFechaInicioGases, DateTime? dtmFechaVenceGases, string strTarjetaOper, DateTime? dtmFechaInicioTarjetaOper, DateTime? dtmFechaVenceTarjetaOper, bool? logVencimientoFecha, string Placa,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -298,6 +299,10 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@logVencimientoFecha",logVencimientoFecha);
 				}
+				if (Placa !=null)
+				{
+					paramlist.AddWithValue("@Placa",Placa);
+				}
 				// Execute the query and return the new identity value
 				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.VehiculoCCostoCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
 
@@ -313,6 +318,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblVehiculoCCosto by passing all fields
 		/// </summary>
+		/// <param name="lngIdRegistro"></param>
 		/// <param name="lngIdUsuario"></param>
 		/// <param name="strPlaca"></param>
 		/// <param name="centro"></param>
@@ -358,8 +364,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaInicioTarjetaOper"></param>
 		/// <param name="dtmFechaVenceTarjetaOper"></param>
 		/// <param name="logVencimientoFecha"></param>
-		/// <param name="lngIdRegistro"></param>
-		public void Update(double? lngIdUsuario, string strPlaca, double? centro, int? TipoTrailerCodigo, int? TipoVehiculoCodigo, string Descripcion, DateTime? dtmFechaIngreso, DateTime? dtmFechaEgreso, double? nitPropietario, string strMarca, double? lngModelo, double? lngMovil, double? strCelular, double? strTipoMotor, string strColor, string strMotor, string strChasis, bool? logCamarote, decimal? CapacidadGalores, decimal? floGalonesReserva, decimal? floCantGalonesReserva, decimal? floTolerancia, double? cutPeso, double? cutCapacidad, double? lngEjes, double? logActivo, double? lngLlantas, string strPolizaObligatorio, double? nitProvedorOblig, DateTime? dtmFechaInicioOblig, DateTime? dtmFechaVenceOblig, string strPolizaTodoRiesgo, double? nitProvedorTodo, DateTime? dtmFechaInicioTodo, DateTime? dtmFechaVenceTodo, string strCertifMovilizacion, DateTime? dtmFechaInicioMoviliz, DateTime? dtmFechaVenceMoviliz, string strGases, DateTime? dtmFechaInicioGases, DateTime? dtmFechaVenceGases, string strTarjetaOper, DateTime? dtmFechaInicioTarjetaOper, DateTime? dtmFechaVenceTarjetaOper, bool? logVencimientoFecha, int lngIdRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Placa"></param>
+		public void Update(int lngIdRegistro, double? lngIdUsuario, string strPlaca, double? centro, int? TipoTrailerCodigo, int? TipoVehiculoCodigo, string Descripcion, DateTime? dtmFechaIngreso, DateTime? dtmFechaEgreso, double? nitPropietario, string strMarca, double? lngModelo, double? lngMovil, double? strCelular, double? strTipoMotor, string strColor, string strMotor, string strChasis, bool? logCamarote, decimal? CapacidadGalores, decimal? floGalonesReserva, decimal? floCantGalonesReserva, decimal? floTolerancia, double? cutPeso, double? cutCapacidad, double? lngEjes, double? logActivo, double? lngLlantas, string strPolizaObligatorio, double? nitProvedorOblig, DateTime? dtmFechaInicioOblig, DateTime? dtmFechaVenceOblig, string strPolizaTodoRiesgo, double? nitProvedorTodo, DateTime? dtmFechaInicioTodo, DateTime? dtmFechaVenceTodo, string strCertifMovilizacion, DateTime? dtmFechaInicioMoviliz, DateTime? dtmFechaVenceMoviliz, string strGases, DateTime? dtmFechaInicioGases, DateTime? dtmFechaVenceGases, string strTarjetaOper, DateTime? dtmFechaInicioTarjetaOper, DateTime? dtmFechaVenceTarjetaOper, bool? logVencimientoFecha, string Placa,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -562,6 +568,10 @@ namespace LiqViajes_Bll_Data
 				if (logVencimientoFecha !=null)
 				{
 					paramlist.AddWithValue("@logVencimientoFecha",logVencimientoFecha);
+				}
+				if (Placa !=null)
+				{
+					paramlist.AddWithValue("@Placa",Placa);
 				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.VehiculoCCostoUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
@@ -668,6 +678,41 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				return LocalDataProvider.EjecutarProcedimiento("dbo.VehiculoCCostoGetAll", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+			}
+			catch (Exception ex)
+			{
+				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Gets all records from tblVehiculoCCosto that are related to TipoVehiculo
+		/// </summary>
+		/// <param name="TipoVehiculoCodigo"></param>
+		/// <returns>A DataTable object containing all records data</returns>
+		public DataTable GetBy_TipoVehiculoCodigo(int TipoVehiculoCodigo)
+		{
+			try 
+			{
+				Sinapsys.Datos.SQL LocalDataProvider;
+				bool disconnect = false;
+				if (DataProvider.Concurrente)
+				{
+					LocalDataProvider = new Sinapsys.Datos.SQL();
+					LocalDataProvider.Conectar(DataProvider.Alias, false);
+				}
+				else
+				{
+					LocalDataProvider = DataProvider.Datos;
+				}
+				disconnect = DataProvider.ValidateConnection();
+				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+				System.Collections.Hashtable nullExit = null;
+
+				paramlist.AddWithValue("@TipoVehiculoCodigo",TipoVehiculoCodigo);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.VehiculoCCostoGetBy_TipoVehiculoCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{

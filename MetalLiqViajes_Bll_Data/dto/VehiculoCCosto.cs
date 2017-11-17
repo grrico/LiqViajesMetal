@@ -72,6 +72,7 @@ namespace LiqViajes_Bll_Data
 			m_dtmFechaInicioTarjetaOper = null;
 			m_dtmFechaVenceTarjetaOper = null;
 			m_logVencimientoFecha = false;
+			m_Placa = null;
 			m_changed=false;
 		}
 		        //Return the table name of object
@@ -131,6 +132,7 @@ namespace LiqViajes_Bll_Data
 			m_oldVehiculoCCosto.dtmFechaInicioTarjetaOper = m_dtmFechaInicioTarjetaOper;
 			m_oldVehiculoCCosto.dtmFechaVenceTarjetaOper = m_dtmFechaVenceTarjetaOper;
 			m_oldVehiculoCCosto.logVencimientoFecha = m_logVencimientoFecha;
+			m_oldVehiculoCCosto.Placa = m_Placa;
 		}
 
 		public VehiculoCCosto OldVehiculoCCosto
@@ -186,6 +188,7 @@ namespace LiqViajes_Bll_Data
 			if (m_oldVehiculoCCosto.dtmFechaInicioTarjetaOper != m_dtmFechaInicioTarjetaOper) fields.Add("dtmFechaInicioTarjetaOper");
 			if (m_oldVehiculoCCosto.dtmFechaVenceTarjetaOper != m_dtmFechaVenceTarjetaOper) fields.Add("dtmFechaVenceTarjetaOper");
 			if (m_oldVehiculoCCosto.logVencimientoFecha != m_logVencimientoFecha) fields.Add("logVencimientoFecha");
+			if (m_oldVehiculoCCosto.Placa != m_Placa) fields.Add("Placa");
 			string[] fieldst = new string[fields.Count];
 			int i = 0;
 			foreach(string st in fields)
@@ -198,6 +201,9 @@ namespace LiqViajes_Bll_Data
 		#endregion
 		#region Fields
 
+
+		// Field for storing the VehiculoCCosto's lngIdRegistro value
+		private int m_lngIdRegistro;
 
 		// Field for storing the VehiculoCCosto's lngIdUsuario value
 		private double? m_lngIdUsuario;
@@ -334,11 +340,14 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the VehiculoCCosto's logVencimientoFecha value
 		private bool? m_logVencimientoFecha;
 
-		// Field for storing the VehiculoCCosto's lngIdRegistro value
-		private int m_lngIdRegistro;
+		// Field for storing the VehiculoCCosto's Placa value
+		private string m_Placa;
 
 		// Evaluate changed state
 		private bool m_changed=false;
+		// Field for storing the reference to TipoVehiculo accessed by TipoVehiculoCodigo
+		private TipoVehiculo m_TipoVehiculo;
+
 
 		#endregion
 
@@ -350,6 +359,20 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the VehiculoCCosto's lngIdRegistro value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the VehiculoCCosto's lngIdUsuario value (double)
 		/// </summary>
@@ -413,10 +436,16 @@ namespace LiqViajes_Bll_Data
 		public int? TipoVehiculoCodigo
 		{
 			get { return m_TipoVehiculoCodigo; }
-			set 
+			set
 			{
 				m_changed=true;
 				m_TipoVehiculoCodigo = value;
+
+				if ((m_TipoVehiculo != null) && (m_TipoVehiculo.Codigo != m_TipoVehiculoCodigo))
+				{
+					// we need to reset the reference because it is now invalid
+					m_TipoVehiculo = null;
+				}
 			}
 		}
 
@@ -981,16 +1010,16 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the VehiculoCCosto's lngIdRegistro value (int)
+		/// Attribute for access the VehiculoCCosto's Placa value (string)
 		/// </summary>
 		[DataMember]
-		public int lngIdRegistro
+		public string Placa
 		{
-			get { return m_lngIdRegistro; }
+			get { return m_Placa; }
 			set 
 			{
 				m_changed=true;
-				m_lngIdRegistro = value;
+				m_Placa = value;
 			}
 		}
 
@@ -998,6 +1027,7 @@ namespace LiqViajes_Bll_Data
 		{
 			switch (pattribute)
 			{
+				case "lngIdRegistro": return lngIdRegistro;
 				case "lngIdUsuario": return lngIdUsuario;
 				case "strPlaca": return strPlaca;
 				case "centro": return centro;
@@ -1043,7 +1073,7 @@ namespace LiqViajes_Bll_Data
 				case "dtmFechaInicioTarjetaOper": return dtmFechaInicioTarjetaOper;
 				case "dtmFechaVenceTarjetaOper": return dtmFechaVenceTarjetaOper;
 				case "logVencimientoFecha": return logVencimientoFecha;
-				case "lngIdRegistro": return lngIdRegistro;
+				case "Placa": return Placa;
 				default: return null;
 			}
 		}
@@ -1057,6 +1087,39 @@ namespace LiqViajes_Bll_Data
 		{
 			return "[lngIdRegistro] = " + lngIdRegistro.ToString();
 		}
+		/// <summary>
+		/// Gets or sets the reference to TipoVehiculo accessed by TipoVehiculoCodigo
+		/// </summary>
+		/// <remarks>
+		/// Also updates related field values
+		/// </remarks>
+		public TipoVehiculo TipoVehiculo
+		{
+			get
+			{
+				if (m_TipoVehiculo == null)
+				{
+					m_TipoVehiculo = MasterTables.TipoVehiculo.Where(tmp=>tmp.Codigo==m_TipoVehiculoCodigo ).FirstOrDefault();
+					if (m_TipoVehiculo == null)
+					{
+						m_TipoVehiculo = new TipoVehiculo();
+					}
+				}
+
+				return m_TipoVehiculo;
+			}
+
+			set
+			{
+				m_TipoVehiculo = value;
+
+				if (m_TipoVehiculo != null)
+				{
+					this.m_TipoVehiculoCodigo = m_TipoVehiculo.Codigo;
+				}
+			}
+		}
+
 		#endregion
 
 	}
