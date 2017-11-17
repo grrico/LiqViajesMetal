@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearViaje));
             this.dataGridViewTipoVehiculo = new System.Windows.Forms.DataGridView();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoVehiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewPlaca = new System.Windows.Forms.DataGridView();
             this.vehiculoCCostoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -41,6 +40,7 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.strPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaca)).BeginInit();
@@ -63,17 +63,9 @@
             this.dataGridViewTipoVehiculo.Name = "dataGridViewTipoVehiculo";
             this.dataGridViewTipoVehiculo.ReadOnly = true;
             this.dataGridViewTipoVehiculo.RowHeadersWidth = 10;
-            this.dataGridViewTipoVehiculo.Size = new System.Drawing.Size(182, 298);
+            this.dataGridViewTipoVehiculo.Size = new System.Drawing.Size(257, 298);
             this.dataGridViewTipoVehiculo.TabIndex = 0;
             this.dataGridViewTipoVehiculo.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTipoVehiculo_RowEnter);
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcionDataGridViewTextBoxColumn.Width = 160;
             // 
             // tipoVehiculoBindingSource
             // 
@@ -89,7 +81,7 @@
             this.strPlaca});
             this.dataGridViewPlaca.DataSource = this.vehiculoCCostoBindingSource;
             this.dataGridViewPlaca.EnableHeadersVisualStyles = false;
-            this.dataGridViewPlaca.Location = new System.Drawing.Point(200, 12);
+            this.dataGridViewPlaca.Location = new System.Drawing.Point(275, 12);
             this.dataGridViewPlaca.Name = "dataGridViewPlaca";
             this.dataGridViewPlaca.ReadOnly = true;
             this.dataGridViewPlaca.RowHeadersWidth = 10;
@@ -111,7 +103,7 @@
             this.strNombresDataGridViewTextBoxColumn});
             this.dataGridViewConductor.DataSource = this.tercerosConductoresBindingSource;
             this.dataGridViewConductor.EnableHeadersVisualStyles = false;
-            this.dataGridViewConductor.Location = new System.Drawing.Point(358, 12);
+            this.dataGridViewConductor.Location = new System.Drawing.Point(433, 12);
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
             this.dataGridViewConductor.RowHeadersWidth = 10;
@@ -134,20 +126,20 @@
             // btnCrear
             // 
             this.btnCrear.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnCrear.Location = new System.Drawing.Point(665, 12);
+            this.btnCrear.Location = new System.Drawing.Point(681, 12);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(75, 23);
+            this.btnCrear.Size = new System.Drawing.Size(75, 51);
             this.btnCrear.TabIndex = 1;
-            this.btnCrear.Text = "Crear";
+            this.btnCrear.Text = "Crear Viaje";
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(665, 41);
+            this.btnCancelar.Location = new System.Drawing.Point(681, 69);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(75, 51);
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -160,19 +152,27 @@
             this.strPlaca.Name = "strPlaca";
             this.strPlaca.ReadOnly = true;
             // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcionDataGridViewTextBoxColumn.Width = 230;
+            // 
             // CrearViaje
             // 
             this.AcceptButton = this.btnCrear;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(752, 329);
+            this.ClientSize = new System.Drawing.Size(760, 320);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.dataGridViewConductor);
             this.Controls.Add(this.dataGridViewPlaca);
             this.Controls.Add(this.dataGridViewTipoVehiculo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearViaje";
             this.Text = "CrearViaje";
@@ -190,7 +190,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewTipoVehiculo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource tipoVehiculoBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewPlaca;
         private System.Windows.Forms.BindingSource vehiculoCCostoBindingSource;
@@ -200,5 +199,6 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn strPlaca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
     }
 }

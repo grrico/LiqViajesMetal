@@ -36,30 +36,58 @@ namespace MetalLiqViajes_Forms
 
         private void CrearViaje_Load(object sender, EventArgs e)
         {
+            // lee el vehículo
+            vehiculo = VehiculoCCostoController.Instance.GetByPlaca(conductor.Placa);
 
-            conductor.TipoVehiculoCodigo = VehiculoCCostoController.Instance.GetByPlaca(conductor.Placa).TipoVehiculoCodigo.Value;
+            // busca el tipo de vehículo
+            conductor.TipoVehiculoCodigo = vehiculo.TipoVehiculoCodigo.Value;
 
+            // ubica el tipo de vehículo en la lista y mueve el foco al registro
             int index = tipovehiculoList.FindIndex(t => t.Codigo == conductor.TipoVehiculoCodigo);
             dataGridViewTipoVehiculo.ClearSelection();
             dataGridViewTipoVehiculo.Rows[index].Selected = true;
             dataGridViewTipoVehiculo.FirstDisplayedScrollingRowIndex = index;
             dataGridViewTipoVehiculo.Focus();
 
-            //int index2 = conductoresList.FindIndex(t => t.Placa == vehiculo.strPlaca);
-            //dataGridViewPlaca.ClearSelection();
-            //dataGridViewPlaca.Rows[index2].Selected = true;
-            //dataGridViewPlaca.FirstDisplayedScrollingRowIndex = index2;
-            //dataGridViewPlaca.Focus();
+            // casa la lista de vehículos segun el tipo de vehiculos
+            tipovehiculo = dataGridViewTipoVehiculo.Rows[index].DataBoundItem as TipoVehiculo;
+            List<VehiculoCCosto> vehiculosList = tipovehiculo.VehiculoCCosto.ToList();
+
+            // asigna la lista de vehículos al grid de placas
+            dataGridViewPlaca.DataSource = vehiculosList;
+            dataGridViewPlaca.Refresh();
+
+            int index2 = vehiculosList.FindIndex(t => t.strPlaca == conductor.Placa);
+            if (index2 >= 0)
+            {
+                dataGridViewPlaca.ClearSelection();
+                dataGridViewPlaca.Rows[index2].Selected = true;
+                dataGridViewPlaca.FirstDisplayedScrollingRowIndex = index2;
+                dataGridViewPlaca.Focus();
+
+                vehiculo = dataGridViewPlaca.Rows[index2].DataBoundItem as VehiculoCCosto;
+
+            }
+
+            int index3 = conductoresList.FindIndex(t => t.IntNit == Convert.ToDouble(conductor.Cedula));
+            if (index3 >= 0)
+            {
+                dataGridViewConductor.ClearSelection();
+                dataGridViewConductor.Rows[index3].Selected = true;
+                dataGridViewConductor.FirstDisplayedScrollingRowIndex = index3;
+                dataGridViewConductor.Focus();
+
+                terceroconductor = dataGridViewConductor.Rows[index3].DataBoundItem as TercerosConductores;
+            }
+
 
         }
 
         private void dataGridViewTipoVehiculo_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             tipovehiculo = dataGridViewTipoVehiculo.Rows[e.RowIndex].DataBoundItem as TipoVehiculo;
-            //List<VehiculoCCosto> vehiculosList = VehiculoCCostoController.Instance.GetAll().Where(t => t.TipoVehiculoCodigo == tipovehiculo.Codigo).ToList();
+            List<VehiculoCCosto> vehiculosList = tipovehiculo.VehiculoCCosto.ToList();
 
-            List<VehiculoCCosto>  vehiculosList = tipovehiculo.VehiculoCCosto.ToList();
-             
             dataGridViewPlaca.DataSource = vehiculosList;
             dataGridViewPlaca.Refresh();
 
@@ -75,7 +103,7 @@ namespace MetalLiqViajes_Forms
         {
             try
             {
-                vehiculo = dataGridViewConductor.Rows[e.RowIndex].DataBoundItem as VehiculoCCosto;
+                vehiculo = dataGridViewPlaca.Rows[e.RowIndex].DataBoundItem as VehiculoCCosto;
             }
             catch (Exception)
             {
