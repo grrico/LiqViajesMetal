@@ -31,22 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearViaje));
             this.dataGridViewTipoVehiculo = new System.Windows.Forms.DataGridView();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoVehiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewPlaca = new System.Windows.Forms.DataGridView();
-            this.vehiculoCCostoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewConductor = new System.Windows.Forms.DataGridView();
             this.strNombresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tercerosConductoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.strPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehiculoCCostoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tipoVehiculoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaca)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiculoCCostoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConductor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tercerosConductoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiculoCCostoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTipoVehiculo
@@ -67,6 +67,14 @@
             this.dataGridViewTipoVehiculo.TabIndex = 0;
             this.dataGridViewTipoVehiculo.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTipoVehiculo_RowEnter);
             // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcionDataGridViewTextBoxColumn.Width = 230;
+            // 
             // tipoVehiculoBindingSource
             // 
             this.tipoVehiculoBindingSource.DataSource = typeof(LiqViajes_Bll_Data.TipoVehiculo);
@@ -78,7 +86,7 @@
             this.dataGridViewPlaca.AutoGenerateColumns = false;
             this.dataGridViewPlaca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPlaca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.strPlaca});
+            this.tipoVehiculoDataGridViewTextBoxColumn});
             this.dataGridViewPlaca.DataSource = this.vehiculoCCostoBindingSource;
             this.dataGridViewPlaca.EnableHeadersVisualStyles = false;
             this.dataGridViewPlaca.Location = new System.Drawing.Point(275, 12);
@@ -88,10 +96,6 @@
             this.dataGridViewPlaca.Size = new System.Drawing.Size(152, 298);
             this.dataGridViewPlaca.TabIndex = 0;
             this.dataGridViewPlaca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlaca_RowEnter);
-            // 
-            // vehiculoCCostoBindingSource
-            // 
-            this.vehiculoCCostoBindingSource.DataSource = typeof(LiqViajes_Bll_Data.VehiculoCCosto);
             // 
             // dataGridViewConductor
             // 
@@ -145,20 +149,16 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // strPlaca
+            // vehiculoCCostoBindingSource
             // 
-            this.strPlaca.DataPropertyName = "strPlaca";
-            this.strPlaca.HeaderText = "Placa";
-            this.strPlaca.Name = "strPlaca";
-            this.strPlaca.ReadOnly = true;
+            this.vehiculoCCostoBindingSource.DataSource = typeof(LiqViajes_Bll_Data.VehiculoCCosto);
             // 
-            // descripcionDataGridViewTextBoxColumn
+            // tipoVehiculoDataGridViewTextBoxColumn
             // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcionDataGridViewTextBoxColumn.Width = 230;
+            this.tipoVehiculoDataGridViewTextBoxColumn.DataPropertyName = "Placa";
+            this.tipoVehiculoDataGridViewTextBoxColumn.HeaderText = "Placa";
+            this.tipoVehiculoDataGridViewTextBoxColumn.Name = "tipoVehiculoDataGridViewTextBoxColumn";
+            this.tipoVehiculoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // CrearViaje
             // 
@@ -180,9 +180,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoVehiculoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaca)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiculoCCostoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConductor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tercerosConductoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiculoCCostoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,13 +192,13 @@
         private System.Windows.Forms.DataGridView dataGridViewTipoVehiculo;
         private System.Windows.Forms.BindingSource tipoVehiculoBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewPlaca;
-        private System.Windows.Forms.BindingSource vehiculoCCostoBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewConductor;
         private System.Windows.Forms.DataGridViewTextBoxColumn strNombresDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource tercerosConductoresBindingSource;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn strPlaca;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoVehiculoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource vehiculoCCostoBindingSource;
     }
 }
