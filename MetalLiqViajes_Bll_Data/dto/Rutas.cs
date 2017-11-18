@@ -27,6 +27,7 @@ namespace LiqViajes_Bll_Data
 		public Rutas()
 		{
 			m_lngIdRegistrRuta = 0;
+			m_RutasOrigenCodigo = null;
 			m_strRutaAnticipoGrupoOrigen = null;
 			m_strRutaAnticipoGrupoDestino = null;
 			m_strRutaAnticipoGrupo = null;
@@ -114,6 +115,7 @@ namespace LiqViajes_Bll_Data
 		{
 			m_oldRutas=new Rutas();
 			m_oldRutas.m_lngIdRegistrRuta = m_lngIdRegistrRuta;
+			m_oldRutas.RutasOrigenCodigo = m_RutasOrigenCodigo;
 			m_oldRutas.strRutaAnticipoGrupoOrigen = m_strRutaAnticipoGrupoOrigen;
 			m_oldRutas.strRutaAnticipoGrupoDestino = m_strRutaAnticipoGrupoDestino;
 			m_oldRutas.strRutaAnticipoGrupo = m_strRutaAnticipoGrupo;
@@ -197,6 +199,7 @@ namespace LiqViajes_Bll_Data
 		public string[] FieldChanged()
 		{
 			List<string> fields=new List<string>();
+			if (m_oldRutas.RutasOrigenCodigo != m_RutasOrigenCodigo) fields.Add("RutasOrigenCodigo");
 			if (m_oldRutas.strRutaAnticipoGrupoOrigen != m_strRutaAnticipoGrupoOrigen) fields.Add("strRutaAnticipoGrupoOrigen");
 			if (m_oldRutas.strRutaAnticipoGrupoDestino != m_strRutaAnticipoGrupoDestino) fields.Add("strRutaAnticipoGrupoDestino");
 			if (m_oldRutas.strRutaAnticipoGrupo != m_strRutaAnticipoGrupo) fields.Add("strRutaAnticipoGrupo");
@@ -282,6 +285,12 @@ namespace LiqViajes_Bll_Data
 		#endregion
 		#region Fields
 
+
+		// Field for storing the Rutas's lngIdRegistrRuta value
+		private int m_lngIdRegistrRuta;
+
+		// Field for storing the Rutas's RutasOrigenCodigo value
+		private int? m_RutasOrigenCodigo;
 
 		// Field for storing the Rutas's strRutaAnticipoGrupoOrigen value
 		private string m_strRutaAnticipoGrupoOrigen;
@@ -502,11 +511,11 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Rutas's LogAnticipoACPM value
 		private bool? m_LogAnticipoACPM;
 
-		// Field for storing the Rutas's lngIdRegistrRuta value
-		private int m_lngIdRegistrRuta;
-
 		// Evaluate changed state
 		private bool m_changed=false;
+		// Field for storing the reference to RutasOrigen accessed by RutasOrigenCodigo
+		private RutasOrigen m_RutasOrigen;
+
 		// Field for storing the reference to TipoTrailer accessed by TipoTrailerCodigo
 		private TipoTrailer m_TiposTrailers;
 
@@ -524,6 +533,40 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the Rutas's lngIdRegistrRuta value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdRegistrRuta
+		{
+			get { return m_lngIdRegistrRuta; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistrRuta = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the Rutas's RutasOrigenCodigo value (int)
+		/// </summary>
+		[DataMember]
+		public int? RutasOrigenCodigo
+		{
+			get { return m_RutasOrigenCodigo; }
+			set
+			{
+				m_changed=true;
+				m_RutasOrigenCodigo = value;
+
+				if ((m_RutasOrigen != null) && (m_RutasOrigen.Codigo != m_RutasOrigenCodigo))
+				{
+					// we need to reset the reference because it is now invalid
+					m_RutasOrigen = null;
+				}
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the Rutas's strRutaAnticipoGrupoOrigen value (string)
 		/// </summary>
@@ -1558,24 +1601,12 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Attribute for access the Rutas's lngIdRegistrRuta value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistrRuta
-		{
-			get { return m_lngIdRegistrRuta; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistrRuta = value;
-			}
-		}
-
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
+				case "lngIdRegistrRuta": return lngIdRegistrRuta;
+				case "RutasOrigenCodigo": return RutasOrigenCodigo;
 				case "strRutaAnticipoGrupoOrigen": return strRutaAnticipoGrupoOrigen;
 				case "strRutaAnticipoGrupoDestino": return strRutaAnticipoGrupoDestino;
 				case "strRutaAnticipoGrupo": return strRutaAnticipoGrupo;
@@ -1649,7 +1680,6 @@ namespace LiqViajes_Bll_Data
 				case "CurCargue": return CurCargue;
 				case "CurDescargue": return CurDescargue;
 				case "LogAnticipoACPM": return LogAnticipoACPM;
-				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				default: return null;
 			}
 		}
@@ -1663,6 +1693,38 @@ namespace LiqViajes_Bll_Data
 		{
 			return "[lngIdRegistrRuta] = " + lngIdRegistrRuta.ToString();
 		}
+		/// <summary>
+		/// Gets or sets the reference to RutasOrigen accessed by RutasOrigenCodigo
+		/// </summary>
+		/// <remarks>
+		/// Also updates related field values
+		/// </remarks>
+		public RutasOrigen RutasOrigen
+		{
+			get
+			{
+				if (m_RutasOrigen == null)
+				{
+					if (m_RutasOrigenCodigo != null)
+					{
+						m_RutasOrigen = RutasOrigenController.Instance.Get((int)m_RutasOrigenCodigo);
+					}
+				}
+
+				return m_RutasOrigen;
+			}
+
+			set
+			{
+				m_RutasOrigen = value;
+
+				if (m_RutasOrigen != null)
+				{
+					this.m_RutasOrigenCodigo = m_RutasOrigen.Codigo;
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets the reference to TipoTrailer accessed by TipoTrailerCodigo
 		/// </summary>

@@ -16,22 +16,19 @@ using System.Runtime.Serialization;
 
 namespace LiqViajes_Bll_Data
 {
-	#region RutasOrigenDestino object
+	#region RutasOrigenTipoTrailer object
 
 	[DataContract]
-	public partial class RutasOrigenDestino : IDTOObject
+	public partial class RutasOrigenTipoTrailer : IDTOObject
 	{
 		/// <summary>
 		/// Default constructor
 		/// </summary>
-		public RutasOrigenDestino()
+		public RutasOrigenTipoTrailer()
 		{
 			m_Codigo = 0;
 			m_RutasOrigenCodigo = null;
 			m_Origen = null;
-			m_Destino = null;
-			m_GrupoOrigen = null;
-			m_GrupoDestino = null;
 			m_TipoTrailerCodigo = null;
 			m_DescripcionTrailer = null;
 			m_changed=false;
@@ -39,39 +36,33 @@ namespace LiqViajes_Bll_Data
 		        //Return the table name of object
 		        public string TableName()
 		        {
-		            return "RutasOrigenDestino";
+		            return "RutasOrigenTipoTrailer";
 		        }
 		#region Undo 
 		// Internal class for storing changes
-		private RutasOrigenDestino m_oldRutasOrigenDestino;
+		private RutasOrigenTipoTrailer m_oldRutasOrigenTipoTrailer;
 		public void GenerateUndo()
 		{
-			m_oldRutasOrigenDestino=new RutasOrigenDestino();
-			m_oldRutasOrigenDestino.m_Codigo = m_Codigo;
-			m_oldRutasOrigenDestino.RutasOrigenCodigo = m_RutasOrigenCodigo;
-			m_oldRutasOrigenDestino.Origen = m_Origen;
-			m_oldRutasOrigenDestino.Destino = m_Destino;
-			m_oldRutasOrigenDestino.GrupoOrigen = m_GrupoOrigen;
-			m_oldRutasOrigenDestino.GrupoDestino = m_GrupoDestino;
-			m_oldRutasOrigenDestino.TipoTrailerCodigo = m_TipoTrailerCodigo;
-			m_oldRutasOrigenDestino.DescripcionTrailer = m_DescripcionTrailer;
+			m_oldRutasOrigenTipoTrailer=new RutasOrigenTipoTrailer();
+			m_oldRutasOrigenTipoTrailer.m_Codigo = m_Codigo;
+			m_oldRutasOrigenTipoTrailer.RutasOrigenCodigo = m_RutasOrigenCodigo;
+			m_oldRutasOrigenTipoTrailer.Origen = m_Origen;
+			m_oldRutasOrigenTipoTrailer.TipoTrailerCodigo = m_TipoTrailerCodigo;
+			m_oldRutasOrigenTipoTrailer.DescripcionTrailer = m_DescripcionTrailer;
 		}
 
-		public RutasOrigenDestino OldRutasOrigenDestino
+		public RutasOrigenTipoTrailer OldRutasOrigenTipoTrailer
 		{
-			get { return m_oldRutasOrigenDestino;}
+			get { return m_oldRutasOrigenTipoTrailer;}
 		}
 		// Return the changed fields
 		public string[] FieldChanged()
 		{
 			List<string> fields=new List<string>();
-			if (m_oldRutasOrigenDestino.RutasOrigenCodigo != m_RutasOrigenCodigo) fields.Add("RutasOrigenCodigo");
-			if (m_oldRutasOrigenDestino.Origen != m_Origen) fields.Add("Origen");
-			if (m_oldRutasOrigenDestino.Destino != m_Destino) fields.Add("Destino");
-			if (m_oldRutasOrigenDestino.GrupoOrigen != m_GrupoOrigen) fields.Add("GrupoOrigen");
-			if (m_oldRutasOrigenDestino.GrupoDestino != m_GrupoDestino) fields.Add("GrupoDestino");
-			if (m_oldRutasOrigenDestino.TipoTrailerCodigo != m_TipoTrailerCodigo) fields.Add("TipoTrailerCodigo");
-			if (m_oldRutasOrigenDestino.DescripcionTrailer != m_DescripcionTrailer) fields.Add("DescripcionTrailer");
+			if (m_oldRutasOrigenTipoTrailer.RutasOrigenCodigo != m_RutasOrigenCodigo) fields.Add("RutasOrigenCodigo");
+			if (m_oldRutasOrigenTipoTrailer.Origen != m_Origen) fields.Add("Origen");
+			if (m_oldRutasOrigenTipoTrailer.TipoTrailerCodigo != m_TipoTrailerCodigo) fields.Add("TipoTrailerCodigo");
+			if (m_oldRutasOrigenTipoTrailer.DescripcionTrailer != m_DescripcionTrailer) fields.Add("DescripcionTrailer");
 			string[] fieldst = new string[fields.Count];
 			int i = 0;
 			foreach(string st in fields)
@@ -85,28 +76,19 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the RutasOrigenDestino's Codigo value
+		// Field for storing the RutasOrigenTipoTrailer's Codigo value
 		private int m_Codigo;
 
-		// Field for storing the RutasOrigenDestino's RutasOrigenCodigo value
+		// Field for storing the RutasOrigenTipoTrailer's RutasOrigenCodigo value
 		private int? m_RutasOrigenCodigo;
 
-		// Field for storing the RutasOrigenDestino's Origen value
+		// Field for storing the RutasOrigenTipoTrailer's Origen value
 		private string m_Origen;
 
-		// Field for storing the RutasOrigenDestino's Destino value
-		private string m_Destino;
-
-		// Field for storing the RutasOrigenDestino's GrupoOrigen value
-		private string m_GrupoOrigen;
-
-		// Field for storing the RutasOrigenDestino's GrupoDestino value
-		private string m_GrupoDestino;
-
-		// Field for storing the RutasOrigenDestino's TipoTrailerCodigo value
+		// Field for storing the RutasOrigenTipoTrailer's TipoTrailerCodigo value
 		private int? m_TipoTrailerCodigo;
 
-		// Field for storing the RutasOrigenDestino's DescripcionTrailer value
+		// Field for storing the RutasOrigenTipoTrailer's DescripcionTrailer value
 		private string m_DescripcionTrailer;
 
 		// Evaluate changed state
@@ -126,7 +108,7 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's Codigo value (int)
+		/// Attribute for access the RutasOrigenTipoTrailer's Codigo value (int)
 		/// </summary>
 		[DataMember]
 		public int Codigo
@@ -140,7 +122,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's RutasOrigenCodigo value (int)
+		/// Attribute for access the RutasOrigenTipoTrailer's RutasOrigenCodigo value (int)
 		/// </summary>
 		[DataMember]
 		public int? RutasOrigenCodigo
@@ -160,7 +142,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's Origen value (string)
+		/// Attribute for access the RutasOrigenTipoTrailer's Origen value (string)
 		/// </summary>
 		[DataMember]
 		public string Origen
@@ -174,49 +156,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's Destino value (string)
-		/// </summary>
-		[DataMember]
-		public string Destino
-		{
-			get { return m_Destino; }
-			set 
-			{
-				m_changed=true;
-				m_Destino = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's GrupoOrigen value (string)
-		/// </summary>
-		[DataMember]
-		public string GrupoOrigen
-		{
-			get { return m_GrupoOrigen; }
-			set 
-			{
-				m_changed=true;
-				m_GrupoOrigen = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's GrupoDestino value (string)
-		/// </summary>
-		[DataMember]
-		public string GrupoDestino
-		{
-			get { return m_GrupoDestino; }
-			set 
-			{
-				m_changed=true;
-				m_GrupoDestino = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's TipoTrailerCodigo value (int)
+		/// Attribute for access the RutasOrigenTipoTrailer's TipoTrailerCodigo value (int)
 		/// </summary>
 		[DataMember]
 		public int? TipoTrailerCodigo
@@ -230,7 +170,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's DescripcionTrailer value (string)
+		/// Attribute for access the RutasOrigenTipoTrailer's DescripcionTrailer value (string)
 		/// </summary>
 		[DataMember]
 		public string DescripcionTrailer
@@ -250,9 +190,6 @@ namespace LiqViajes_Bll_Data
 				case "Codigo": return Codigo;
 				case "RutasOrigenCodigo": return RutasOrigenCodigo;
 				case "Origen": return Origen;
-				case "Destino": return Destino;
-				case "GrupoOrigen": return GrupoOrigen;
-				case "GrupoDestino": return GrupoDestino;
 				case "TipoTrailerCodigo": return TipoTrailerCodigo;
 				case "DescripcionTrailer": return DescripcionTrailer;
 				default: return null;
@@ -261,7 +198,7 @@ namespace LiqViajes_Bll_Data
 
 		public Type GetAttributeType(string pattribute)
 		{
-			return RutasOrigenDestinoController.Instance.GetMethodType(pattribute, this);
+			return RutasOrigenTipoTrailerController.Instance.GetMethodType(pattribute, this);
 		}
 
 		public string GetSqlKey()
@@ -306,19 +243,19 @@ namespace LiqViajes_Bll_Data
 
 	#endregion
 
-	#region RutasOrigenDestinoList object
+	#region RutasOrigenTipoTrailerList object
 
 	/// <summary>
-	/// Class for reading and access a list of RutasOrigenDestino object
+	/// Class for reading and access a list of RutasOrigenTipoTrailer object
 	/// </summary>
 	[CollectionDataContract]
-	public partial class RutasOrigenDestinoList : List<RutasOrigenDestino>
+	public partial class RutasOrigenTipoTrailerList : List<RutasOrigenTipoTrailer>
 	{
 
 		/// <summary>
 		/// Default constructor
 		/// </summary>
-		public RutasOrigenDestinoList()
+		public RutasOrigenTipoTrailerList()
 		{
 		}
 	}

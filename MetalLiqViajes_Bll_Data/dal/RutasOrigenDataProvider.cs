@@ -8,22 +8,22 @@ using System.Runtime.Serialization;
 namespace LiqViajes_Bll_Data
 {
 	/// <summary>
-	/// Data Access Layer class for RutasOrigenDestino object
+	/// Data Access Layer class for RutasOrigen object
 	/// </summary>
 	/// <remarks>
 	/// This class is a Singleton
 	/// </remarks>
-	public partial class RutasOrigenDestinoDataProvider
+	public partial class RutasOrigenDataProvider
 	{
 		/// <summary>
 		/// Internal member for create this singleton
 		/// </summary>
-		private static RutasOrigenDestinoDataProvider MySingleObj = null;
+		private static RutasOrigenDataProvider MySingleObj = null;
 
 		/// <summary>
 		/// Protected constructor to avoid access this singleton other way than calling the Instance method
 		/// </summary>
-		public RutasOrigenDestinoDataProvider()
+		public RutasOrigenDataProvider()
 		{
 
 		}
@@ -31,13 +31,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Instance accessor for this singleton
 		/// </summary>
-		public static RutasOrigenDestinoDataProvider Instance
+		public static RutasOrigenDataProvider Instance
 		{
 			get
 			{
 				if (MySingleObj == null)
 				{
-					MySingleObj = new RutasOrigenDestinoDataProvider();
+					MySingleObj = new RutasOrigenDataProvider();
 				}
 
 				return MySingleObj;
@@ -45,17 +45,11 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Creates a new record into RutasOrigenDestino by passing all fields
+		/// Creates a new record into RutasOrigen by passing all fields
 		/// </summary>
-		/// <param name="RutasOrigenCodigo"></param>
 		/// <param name="Origen"></param>
-		/// <param name="Destino"></param>
-		/// <param name="GrupoOrigen"></param>
-		/// <param name="GrupoDestino"></param>
-		/// <param name="TipoTrailerCodigo"></param>
-		/// <param name="DescripcionTrailer"></param>
 		/// <returns>int that contents the Codigo value</returns>
-		public int Create(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public int Create(int Codigo, string Origen,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -80,36 +74,12 @@ namespace LiqViajes_Bll_Data
 				System.Collections.Hashtable nullExit = null;
 
 				paramlist.AddWithValue("@Codigo",Codigo);
-				if (RutasOrigenCodigo !=null)
-				{
-					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
-				}
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
 				}
-				if (Destino !=null)
-				{
-					paramlist.AddWithValue("@Destino",Destino);
-				}
-				if (GrupoOrigen !=null)
-				{
-					paramlist.AddWithValue("@GrupoOrigen",GrupoOrigen);
-				}
-				if (GrupoDestino !=null)
-				{
-					paramlist.AddWithValue("@GrupoDestino",GrupoDestino);
-				}
-				if (TipoTrailerCodigo !=null)
-				{
-					paramlist.AddWithValue("@TipoTrailerCodigo",TipoTrailerCodigo);
-				}
-				if (DescripcionTrailer !=null)
-				{
-					paramlist.AddWithValue("@DescripcionTrailer",DescripcionTrailer);
-				}
 				// Execute the query and return the new identity value
-				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
+				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
 
 				return returnValue;
 			}
@@ -121,17 +91,11 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Updates one record into RutasOrigenDestino by passing all fields
+		/// Updates one record into RutasOrigen by passing all fields
 		/// </summary>
 		/// <param name="Codigo"></param>
-		/// <param name="RutasOrigenCodigo"></param>
 		/// <param name="Origen"></param>
-		/// <param name="Destino"></param>
-		/// <param name="GrupoOrigen"></param>
-		/// <param name="GrupoDestino"></param>
-		/// <param name="TipoTrailerCodigo"></param>
-		/// <param name="DescripcionTrailer"></param>
-		public void Update(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int Codigo, string Origen,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -155,35 +119,11 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				paramlist.AddWithValue("@Codigo",Codigo);
-				if (RutasOrigenCodigo !=null)
-				{
-					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
-				}
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
 				}
-				if (Destino !=null)
-				{
-					paramlist.AddWithValue("@Destino",Destino);
-				}
-				if (GrupoOrigen !=null)
-				{
-					paramlist.AddWithValue("@GrupoOrigen",GrupoOrigen);
-				}
-				if (GrupoDestino !=null)
-				{
-					paramlist.AddWithValue("@GrupoDestino",GrupoDestino);
-				}
-				if (TipoTrailerCodigo !=null)
-				{
-					paramlist.AddWithValue("@TipoTrailerCodigo",TipoTrailerCodigo);
-				}
-				if (DescripcionTrailer !=null)
-				{
-					paramlist.AddWithValue("@DescripcionTrailer",DescripcionTrailer);
-				}
-				LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -193,7 +133,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Deletes one record from RutasOrigenDestino by passing all key fields
+		/// Deletes one record from RutasOrigen by passing all key fields
 		/// </summary>
 		/// <param name="Codigo"></param>
 		public void Delete(int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
@@ -220,7 +160,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				paramlist.AddWithValue("@Codigo",Codigo);
-				LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoDelete", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDelete", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -230,7 +170,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets one record from RutasOrigenDestino passing all key fields
+		/// Gets one record from RutasOrigen passing all key fields
 		/// </summary>
 		/// <param name="Codigo"></param>
 		/// <returns>A DataTable object containing the data</returns>
@@ -254,7 +194,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				paramlist.AddWithValue("@Codigo",Codigo);
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoGet", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenGet", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 
 			}
 			catch (Exception ex)
@@ -265,7 +205,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets all records from RutasOrigenDestino
+		/// Gets all records from RutasOrigen
 		/// </summary>
 		/// <returns>A DataTable object containing all records data</returns>
 		public DataTable GetAll()
@@ -287,7 +227,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoGetAll", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenGetAll", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -297,42 +237,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets all records from RutasOrigenDestino that are related to RutasOrigen
-		/// </summary>
-		/// <param name="RutasOrigenCodigo"></param>
-		/// <returns>A DataTable object containing all records data</returns>
-		public DataTable GetBy_RutasOrigenCodigo(int RutasOrigenCodigo)
-		{
-			try 
-			{
-				Sinapsys.Datos.SQL LocalDataProvider;
-				bool disconnect = false;
-				if (DataProvider.Concurrente)
-				{
-					LocalDataProvider = new Sinapsys.Datos.SQL();
-					LocalDataProvider.Conectar(DataProvider.Alias, false);
-				}
-				else
-				{
-					LocalDataProvider = DataProvider.Datos;
-				}
-				disconnect = DataProvider.ValidateConnection();
-				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
-				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
-				System.Collections.Hashtable nullExit = null;
-
-				paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoGetBy_RutasOrigenCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
-			}
-			catch (Exception ex)
-			{
-				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
-				throw ex;
-			}
-		}
-
-		/// <summary>
-		/// Gets all records from RutasOrigenDestino applying filter and sort criteria
+		/// Gets all records from RutasOrigen applying filter and sort criteria
 		/// </summary>
 		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>
 		/// <param name="pagesize">Contents the number of records per page (0 for returns all records).</param>
@@ -377,7 +282,7 @@ namespace LiqViajes_Bll_Data
 				paramlist.AddWithValue("@strExtraTablesFieldsSort", extablesfieldssort);
 				paramlist.AddWithValue("@strExtraTablesRelationsSort",extablesrelationssort);
 
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -397,7 +302,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets the numbers of records from RutasOrigenDestino applying filter and sort criteria
+		/// Gets the numbers of records from RutasOrigen applying filter and sort criteria
 		/// </summary>
 		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>
 		/// <param name="pagesize">Contents the number of records per page (0 for returns all records).</param>
@@ -441,7 +346,7 @@ namespace LiqViajes_Bll_Data
 				paramlist.AddWithValue("@strExtraTablesFieldsSort", extablesfieldssort);
 				paramlist.AddWithValue("@strExtraTablesRelationsSort",extablesrelationssort);
 
-				return (int) LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0];
+				return (int) LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0];
 			}
 			catch (Exception ex)
 			{

@@ -126,6 +126,7 @@ namespace MetalLiqViajes_Forms
             iCargaCompleta = true;
 
             ultilmonth = comboBoxMonth.SelectedItem as UtilMonth;
+
             CargaRegistroViaje(utilyear.YearId);
         }
 

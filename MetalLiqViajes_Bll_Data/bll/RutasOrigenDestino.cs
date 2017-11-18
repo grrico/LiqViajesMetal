@@ -53,6 +53,7 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				rutasorigendestino.Codigo = (int) dr["Codigo"];
+				rutasorigendestino.RutasOrigenCodigo = dr.IsNull("RutasOrigenCodigo") ? null :(int?) dr["RutasOrigenCodigo"];
 				rutasorigendestino.Origen = dr.IsNull("Origen") ? null :(string) dr["Origen"];
 				rutasorigendestino.Destino = dr.IsNull("Destino") ? null :(string) dr["Destino"];
 				rutasorigendestino.GrupoOrigen = dr.IsNull("GrupoOrigen") ? null :(string) dr["GrupoOrigen"];
@@ -73,12 +74,13 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public RutasOrigenDestino Create(RutasOrigenDestino rutasorigendestino, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			return Create(rutasorigendestino.Codigo,rutasorigendestino.Origen,rutasorigendestino.Destino,rutasorigendestino.GrupoOrigen,rutasorigendestino.GrupoDestino,rutasorigendestino.TipoTrailerCodigo,rutasorigendestino.DescripcionTrailer,datosTransaccion);
+			return Create(rutasorigendestino.Codigo,rutasorigendestino.RutasOrigenCodigo,rutasorigendestino.Origen,rutasorigendestino.Destino,rutasorigendestino.GrupoOrigen,rutasorigendestino.GrupoDestino,rutasorigendestino.TipoTrailerCodigo,rutasorigendestino.DescripcionTrailer,datosTransaccion);
 		}
 
 		/// <summary>
 		/// Creates a new RutasOrigenDestino object by passing all object's fields
 		/// </summary>
+		/// <param name="RutasOrigenCodigo">int that contents the RutasOrigenCodigo value for the RutasOrigenDestino object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigenDestino object</param>
 		/// <param name="Destino">string that contents the Destino value for the RutasOrigenDestino object</param>
 		/// <param name="GrupoOrigen">string that contents the GrupoOrigen value for the RutasOrigenDestino object</param>
@@ -86,20 +88,26 @@ namespace LiqViajes_Bll_Data
 		/// <param name="TipoTrailerCodigo">int that contents the TipoTrailerCodigo value for the RutasOrigenDestino object</param>
 		/// <param name="DescripcionTrailer">string that contents the DescripcionTrailer value for the RutasOrigenDestino object</param>
 		/// <returns>One RutasOrigenDestino object</returns>
-		public RutasOrigenDestino Create(int Codigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer, Sinapsys.Datos.SQL datosTransaccion=null)
+		public RutasOrigenDestino Create(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasOrigenDestino rutasorigendestino = new RutasOrigenDestino();
 
 				rutasorigendestino.Codigo = Codigo;
+				rutasorigendestino.Codigo = Codigo;
+				rutasorigendestino.RutasOrigenCodigo = RutasOrigenCodigo;
 				rutasorigendestino.Origen = Origen;
 				rutasorigendestino.Destino = Destino;
 				rutasorigendestino.GrupoOrigen = GrupoOrigen;
 				rutasorigendestino.GrupoDestino = GrupoDestino;
 				rutasorigendestino.TipoTrailerCodigo = TipoTrailerCodigo;
 				rutasorigendestino.DescripcionTrailer = DescripcionTrailer;
-				RutasOrigenDestinoDataProvider.Instance.Create(Codigo, Origen, Destino, GrupoOrigen, GrupoDestino, TipoTrailerCodigo, DescripcionTrailer,"RutasOrigenDestino");
+				Codigo = RutasOrigenDestinoDataProvider.Instance.Create(Codigo, RutasOrigenCodigo, Origen, Destino, GrupoOrigen, GrupoDestino, TipoTrailerCodigo, DescripcionTrailer,"RutasOrigenDestino",datosTransaccion);
+				if (Codigo == 0)
+					return null;
+
+				rutasorigendestino.Codigo = Codigo;
 
 				return rutasorigendestino;
 			}
@@ -113,24 +121,26 @@ namespace LiqViajes_Bll_Data
 		/// Updates an RutasOrigenDestino object by passing all object's fields
 		/// </summary>
 		/// <param name="Codigo">int that contents the Codigo value for the RutasOrigenDestino object</param>
+		/// <param name="RutasOrigenCodigo">int that contents the RutasOrigenCodigo value for the RutasOrigenDestino object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigenDestino object</param>
 		/// <param name="Destino">string that contents the Destino value for the RutasOrigenDestino object</param>
 		/// <param name="GrupoOrigen">string that contents the GrupoOrigen value for the RutasOrigenDestino object</param>
 		/// <param name="GrupoDestino">string that contents the GrupoDestino value for the RutasOrigenDestino object</param>
 		/// <param name="TipoTrailerCodigo">int that contents the TipoTrailerCodigo value for the RutasOrigenDestino object</param>
 		/// <param name="DescripcionTrailer">string that contents the DescripcionTrailer value for the RutasOrigenDestino object</param>
-		public void Update(int Codigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasOrigenDestino new_values = new RutasOrigenDestino();
+				new_values.RutasOrigenCodigo = RutasOrigenCodigo;
 				new_values.Origen = Origen;
 				new_values.Destino = Destino;
 				new_values.GrupoOrigen = GrupoOrigen;
 				new_values.GrupoDestino = GrupoDestino;
 				new_values.TipoTrailerCodigo = TipoTrailerCodigo;
 				new_values.DescripcionTrailer = DescripcionTrailer;
-				RutasOrigenDestinoDataProvider.Instance.Update(Codigo, Origen, Destino, GrupoOrigen, GrupoDestino, TipoTrailerCodigo, DescripcionTrailer,"RutasOrigenDestino",datosTransaccion);
+				RutasOrigenDestinoDataProvider.Instance.Update(Codigo, RutasOrigenCodigo, Origen, Destino, GrupoOrigen, GrupoDestino, TipoTrailerCodigo, DescripcionTrailer,"RutasOrigenDestino",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +154,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasorigendestino">An instance of RutasOrigenDestino for reference</param>
 		public void Update(RutasOrigenDestino rutasorigendestino,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasorigendestino.Codigo, rutasorigendestino.Origen, rutasorigendestino.Destino, rutasorigendestino.GrupoOrigen, rutasorigendestino.GrupoDestino, rutasorigendestino.TipoTrailerCodigo, rutasorigendestino.DescripcionTrailer);
+			Update(rutasorigendestino.Codigo, rutasorigendestino.RutasOrigenCodigo, rutasorigendestino.Origen, rutasorigendestino.Destino, rutasorigendestino.GrupoOrigen, rutasorigendestino.GrupoDestino, rutasorigendestino.TipoTrailerCodigo, rutasorigendestino.DescripcionTrailer);
 		}
 
 		/// <summary>
@@ -163,6 +173,10 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				//RutasOrigenDestino old_values = RutasOrigenDestinoController.Instance.Get(Codigo);
+				//if(!Validate.security.CanDeleteSecurityField(RutasOrigenDestinoController.Instance, (ILatinodeObject)old_values))
+				//    throw new Exception("Access denied by security field, you can't delete object");
+
 				RutasOrigenDestinoDataProvider.Instance.Delete(Codigo,"RutasOrigenDestino");
 			}
 			catch (Exception ex)
@@ -241,6 +255,32 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
+		/// Selects all RutasOrigenDestino objects by reference (Foreign Keys)
+		/// </summary>
+		/// <param name="RutasOrigenCodigo">int that contents the RutasOrigenCodigo value for the RutasOrigenDestino object</param>
+		/// <returns>One RutasOrigenDestinoList object</returns>
+		public RutasOrigenDestinoList GetBy_RutasOrigenCodigo(int RutasOrigenCodigo,bool generateUndo=false)
+		{
+			try 
+			{
+				RutasOrigenDestinoList rutasorigendestinolist = new RutasOrigenDestinoList();
+
+				DataTable dt = RutasOrigenDestinoDataProvider.Instance.GetBy_RutasOrigenCodigo(RutasOrigenCodigo);
+				foreach (DataRow dr in dt.Rows)
+				{
+					RutasOrigenDestino rutasorigendestino = new RutasOrigenDestino();
+					ReadData(rutasorigendestino, dr, generateUndo);
+					rutasorigendestinolist.Add(rutasorigendestino);
+				}
+				return rutasorigendestinolist;
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+
+		/// <summary>
 		/// Gets all objects of RutasOrigenDestino applying filter and sort criteria
 		/// </summary>
 		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>
@@ -298,6 +338,9 @@ namespace LiqViajes_Bll_Data
 			{
 				case "Codigo":
 					return rutasorigendestino.Codigo.GetType();
+
+				case "RutasOrigenCodigo":
+					return rutasorigendestino.RutasOrigenCodigo.GetType();
 
 				case "Origen":
 					return rutasorigendestino.Origen.GetType();

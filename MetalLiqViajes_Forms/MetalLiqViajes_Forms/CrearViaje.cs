@@ -20,6 +20,9 @@ namespace MetalLiqViajes_Forms
         public TercerosConductores terceroconductor;
         private List<TipoVehiculo> tipovehiculoList;
         private List<TercerosConductores> conductoresList;
+        private List<RutasOrigen> rutasorigenList;
+        private List<RutasOrigenDestino> rutasDestinoList;
+        private List<Rutas> rutasList;
         public CrearViaje()
         {
             InitializeComponent();
@@ -33,10 +36,48 @@ namespace MetalLiqViajes_Forms
             dataGridViewConductor.DataSource = conductoresList;
             dataGridViewConductor.Refresh();
 
-            List<RutasOrigenDestino> rutasorigenDestinoList = RutasOrigenDestinoController.Instance.GetAll();
 
-            comboBoxOrigen.DataSource = rutasorigenDestinoList;
+
+            //var distinctDestino = rutasorigenDestinoList.AsEnumerable()
+            //.Select(row => new
+            //{
+            //    Destino = row.Destino
+            //})
+            //.Distinct();
+
+            //var distinctTrailer = rutasorigenDestinoList.AsEnumerable()
+            //.Select(row => new
+            //{
+            //    TipoTrailerCodigo=row.TipoTrailerCodigo,
+            //    DescripcionTrailer = row.DescripcionTrailer
+            //})
+            //.Distinct();
+
+            rutasorigenList = RutasOrigenController.Instance.GetAll().ToList();
+            comboBoxOrigen.DisplayMember = "Origen";
+            comboBoxOrigen.ValueMember = "Codigo";
+
+            comboBoxOrigen.DataSource = rutasorigenList;
             comboBoxOrigen.Refresh();
+            comboBoxOrigen.SelectedValue = 24;
+
+
+            //comboBoxDestino.DisplayMember = "Destino";
+            //comboBoxDestino.ValueMember = "Destino";
+
+            ////comboBoxDestino.DataSource = distinctDestino.ToList();
+            ////comboBoxDestino.Refresh();
+            ////comboBoxDestino.SelectedIndex = 0;
+            ////comboBoxDestino.SelectedValue = "CARTAGENA";
+
+            //comboBoxTipoTrailer.DataSource = distinctTrailer.ToList();
+            //comboBoxTipoTrailer.Refresh();
+            //comboBoxTipoTrailer.DisplayMember = "DescripcionTrailer";
+            //comboBoxTipoTrailer.ValueMember = "TipoTrailerCodigo";
+            //comboBoxTipoTrailer.SelectedIndex = 0;
+
+            //comboBoxTipoTrailer.SelectedValue = "CARTAGENA";
+
 
         }
 
@@ -126,5 +167,35 @@ namespace MetalLiqViajes_Forms
             this.Close();
         }
 
+        private void comboBoxOrigen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var origen = comboBoxOrigen.SelectedItem;
+            if (comboBoxOrigen.SelectedItem != null)
+            {
+                RutasOrigen rutasorigen = comboBoxOrigen.SelectedItem as RutasOrigen;
+                comboBoxDestino.DisplayMember = "Destino";
+                comboBoxDestino.ValueMember = "Codigo";
+
+                comboBoxDestino.DataSource = rutasorigen.RutasDestino.ToList();
+                comboBoxDestino.Refresh();
+                comboBoxDestino.SelectedIndex = 0;
+
+                comboBoxTipoTrailer.DataSource = rutasorigen.RutasOrigenTipoTrailer;
+                comboBoxTipoTrailer.Refresh();
+                comboBoxTipoTrailer.DisplayMember = "DescripcionTrailer";
+                comboBoxTipoTrailer.ValueMember = "TipoTrailerCodigo";
+                comboBoxTipoTrailer.SelectedIndex = 0;
+
+                dataGridViewRuta.DataSource = rutasorigen.Rutas;
+                dataGridViewRuta.Refresh();
+
+
+            }
+        }
+
+        private void comboBoxDestino_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var destino = comboBoxDestino.SelectedItem;
+        }
     }
 }
