@@ -678,7 +678,7 @@ namespace MetalLiqViajes_Forms
                 Cedula = row.NitConductor,
                 NombreConductor = row.NombreConductor,
                 Placa = row.Placa,
-                TipoVehiculoCodigo= row.TipoVehiculoCodigo,
+                TipoVehiculoCodigo = row.TipoVehiculoCodigo,
                 Anticipo = decimal.Parse("0"),
                 Gastos = decimal.Parse("0"),
                 Total = decimal.Parse("0"),
@@ -1612,7 +1612,7 @@ namespace MetalLiqViajes_Forms
                 comboBoxDestino.SelectedIndex = 0;
                 if (rutasorigen.Codigo == 24)
                 {
-                    int index = destinoList.FindIndex(t => t.Codigo==126);
+                    int index = destinoList.FindIndex(t => t.Codigo == 126);
                     comboBoxDestino.SelectedIndex = index;
                 }
 
@@ -1628,7 +1628,7 @@ namespace MetalLiqViajes_Forms
         }
 
         private void comboBoxTipoTrailer_SelectedIndexChanged(object sender, EventArgs e)
-        {            
+        {
             if (swtCargaCompleta) CargarRuta();
         }
 
@@ -1639,17 +1639,88 @@ namespace MetalLiqViajes_Forms
                 rutasDestino = comboBoxDestino.SelectedItem as RutasDestino;
                 tipotrailer = comboBoxTipoTrailer.SelectedItem as TipoTrailer;
 
-                rutasList = rutasorigen.Rutas.Where(t =>t.strRutaAnticipoGrupoDestino == rutasDestino.Destino && 
-                t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo && 
-                t.logViajeVacio == false && 
-                t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo).ToList();
-                dataGridViewRuta.DataSource = rutasList;
-                dataGridViewRuta.Refresh();
+                //rutasList = rutasorigen.Rutas.Where(t => t.strRutaAnticipoGrupoDestino == rutasDestino.Destino &&
+                //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo &&
+                //t.logViajeVacio == false &&
+                //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo).ToList();
+                //dataGridViewRuta.DataSource = rutasList;
+                //dataGridViewRuta.Refresh();
+
+
+                CrearNodosDelPadre(0, null);
+
             }
             catch (Exception ex)
             {
                 CargaExection(ex);
             }
+
+        }
+
+        private void CrearNodosDelPadre(int indicePadre, TreeNode nodePadre)
+        {
+            // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
+            foreach (var item in rutasorigenList)
+            {
+                TreeNode NodoHijo = new TreeNode();
+                NodoHijo.Text = item.Origen;
+                NodoHijo.Name = item.Codigo.ToString();
+
+
+                // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
+                // del primer nivel que no dependen de otro nodo.
+                if (nodePadre == null)
+                {
+                    treeViewRutas.Nodes.Add(NodoHijo);
+                }
+                // se añade el nuevo nodo al nodo padre.
+                else
+                {
+                    nodePadre.Nodes.Add(NodoHijo);
+                }
+
+                // Llamada recurrente al mismo método para agregar los Hijos del Nodo recién agregado.
+
+                CrearNodosDestino(item, NodoHijo);
+            }
+        }
+
+        private void CrearNodosDestino(RutasOrigen rutaorigen, TreeNode nodePadre)
+        {
+            List<RutasDestino> rutasdestinoList = rutaorigen.RutasDestino;
+            // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
+            foreach (var item in rutasdestinoList)
+            {
+                TreeNode nuevoNodo = new TreeNode();
+                nuevoNodo.Text = item.Destino;
+                nuevoNodo.Name = item.Codigo.ToString();
+
+
+                // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
+                // del primer nivel que no dependen de otro nodo.
+                if (nodePadre == null)
+                {
+                    treeViewRutas.Nodes.Add(nuevoNodo);
+                }
+                // se añade el nuevo nodo al nodo padre.
+                else
+                {
+                    nodePadre.Nodes.Add(nuevoNodo);
+                }
+
+                // Llamada recurrente al mismo método para agregar los Hijos del Nodo recién agregado.
+
+                //CrearNodosDelPadre(Int32.Parse(dataRowCurrent["IdentificadorNodo"].ToString()), nuevoNodo);
+            }
+        }
+
+
+        private void dataGridViewRuta_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Rutas ruta = dataGridViewRuta.Rows[e.RowIndex].DataBoundItem as Rutas;
+
+            string Tramo = ruta.DescripcionTramo;
+            string DesTrailer = ruta.TipoTrailerDescripcion;
 
         }
     }

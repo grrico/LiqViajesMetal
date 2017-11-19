@@ -323,6 +323,7 @@
     <Compile Include="dto\y_novedades_Liq.cs" />
     <Compile Include="dto_add\LiquidacionGastos.cs" />
     <Compile Include="dto_add\LiquidacionPlanilla.cs" />
+    <Compile Include="dto_add\Rutas.cs" />
     <Compile Include="dto_add\TercerosConductores.cs" />
     <Compile Include="dto_add\TercerosDTO.cs" />
     <Compile Include="dto_add\TramosAsignadosRuta.cs" />

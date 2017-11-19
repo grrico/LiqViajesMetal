@@ -213,84 +213,13 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewRuta = new System.Windows.Forms.DataGridView();
-            this.lngIdRegistrRutaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rutasOrigenCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.strRutaAnticipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoTrailerDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescripcionTramo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoVehiculoCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoVehiculoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoTrailerCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.programaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logViajeVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.floGalonesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curValorGalonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutCombustibleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.combustibleCarreteraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lngIdNroPeajesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutPeajeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strNombrePeajesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosLlantasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosCeladaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosPropinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.llamadasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxiDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aseoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosLlantasVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosCeladaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosPropinaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutVariosVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viaticosDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutParticipacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutParticipacionVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curHotelCarreteraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curHotelCiudadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curHotelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curHotelCarreteraVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curHotelCiudadVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curHotelVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTiempoCargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTiempoDescargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTiempoAduanaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTotalTrayectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTotalTiempoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curComidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTiempoCargueVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTiempoDescargueVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTiempoAduanaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTotalTrayectoVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intTotalTiempoVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curComidaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curDesvareManoRepuestosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curDesvareManoObraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutSaldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutSaldoVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutKmtsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logActualizaPeajesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intFactorKmPorGalonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logEstadoRutaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.parqueaderoCarreteraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.parqueaderoCiudadDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montadaLLantaCarreteraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montadaLLantaCiudadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ajusteCarreteraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lavadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amarresDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.engradasaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calibradaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.liquidadoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.papeleriaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logFavoritoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curCargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curDescargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logAnticipoACPMDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rutasOrigenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiposTrailersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiposVehiculosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rutasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
@@ -368,6 +297,7 @@
             this.btnInterrogar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.treeViewRutas = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -1867,6 +1797,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.treeViewRutas);
             this.panel4.Controls.Add(this.dataGridViewRuta);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 102);
@@ -1881,128 +1812,22 @@
             this.dataGridViewRuta.AutoGenerateColumns = false;
             this.dataGridViewRuta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRuta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.lngIdRegistrRutaDataGridViewTextBoxColumn,
-            this.rutasOrigenCodigoDataGridViewTextBoxColumn,
-            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn,
-            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn,
-            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn,
             this.strRutaAnticipoDataGridViewTextBoxColumn,
+            this.TipoTrailerDescripcion,
+            this.DescripcionTramo,
             this.tipoVehiculoCodigoDataGridViewTextBoxColumn,
             this.tipoVehiculoDataGridViewTextBoxColumn,
             this.tipoTrailerCodigoDataGridViewTextBoxColumn,
-            this.pesoDataGridViewTextBoxColumn1,
-            this.programaDataGridViewTextBoxColumn,
-            this.logViajeVacioDataGridViewTextBoxColumn,
-            this.floGalonesDataGridViewTextBoxColumn,
-            this.curValorGalonDataGridViewTextBoxColumn,
-            this.cutCombustibleDataGridViewTextBoxColumn,
-            this.combustibleCarreteraDataGridViewTextBoxColumn1,
-            this.lngIdNroPeajesDataGridViewTextBoxColumn,
-            this.cutPeajeDataGridViewTextBoxColumn,
-            this.strNombrePeajesDataGridViewTextBoxColumn,
-            this.cutVariosLlantasDataGridViewTextBoxColumn,
-            this.cutVariosCeladaDataGridViewTextBoxColumn,
-            this.cutVariosPropinaDataGridViewTextBoxColumn,
-            this.cutVariosDataGridViewTextBoxColumn,
-            this.llamadasDataGridViewTextBoxColumn,
-            this.taxiDataGridViewTextBoxColumn1,
-            this.aseoDataGridViewTextBoxColumn1,
-            this.cutVariosLlantasVacioDataGridViewTextBoxColumn,
-            this.cutVariosCeladaVacioDataGridViewTextBoxColumn,
-            this.cutVariosPropinaVacioDataGridViewTextBoxColumn,
-            this.cutVariosVacioDataGridViewTextBoxColumn,
-            this.viaticosDataGridViewTextBoxColumn1,
-            this.cutParticipacionDataGridViewTextBoxColumn,
-            this.cutParticipacionVacioDataGridViewTextBoxColumn,
-            this.curHotelCarreteraDataGridViewTextBoxColumn,
-            this.curHotelCiudadDataGridViewTextBoxColumn,
-            this.curHotelDataGridViewTextBoxColumn,
-            this.curHotelCarreteraVacioDataGridViewTextBoxColumn,
-            this.curHotelCiudadVacioDataGridViewTextBoxColumn,
-            this.curHotelVacioDataGridViewTextBoxColumn,
-            this.intTiempoCargueDataGridViewTextBoxColumn,
-            this.intTiempoDescargueDataGridViewTextBoxColumn,
-            this.intTiempoAduanaDataGridViewTextBoxColumn,
-            this.intTotalTrayectoDataGridViewTextBoxColumn,
-            this.intTotalTiempoDataGridViewTextBoxColumn,
-            this.curComidaDataGridViewTextBoxColumn,
-            this.intTiempoCargueVacioDataGridViewTextBoxColumn,
-            this.intTiempoDescargueVacioDataGridViewTextBoxColumn,
-            this.intTiempoAduanaVacioDataGridViewTextBoxColumn,
-            this.intTotalTrayectoVacioDataGridViewTextBoxColumn,
-            this.intTotalTiempoVacioDataGridViewTextBoxColumn,
-            this.curComidaVacioDataGridViewTextBoxColumn,
-            this.curDesvareManoRepuestosDataGridViewTextBoxColumn,
-            this.curDesvareManoObraDataGridViewTextBoxColumn,
-            this.cutSaldoDataGridViewTextBoxColumn,
-            this.cutSaldoVacioDataGridViewTextBoxColumn,
-            this.cutKmtsDataGridViewTextBoxColumn,
-            this.logActualizaPeajesDataGridViewTextBoxColumn,
-            this.intFactorKmPorGalonDataGridViewTextBoxColumn,
-            this.logEstadoRutaDataGridViewTextBoxColumn,
-            this.parqueaderoCarreteraDataGridViewTextBoxColumn1,
-            this.parqueaderoCiudadDataGridViewTextBoxColumn1,
-            this.montadaLLantaCarreteraDataGridViewTextBoxColumn,
-            this.montadaLLantaCiudadDataGridViewTextBoxColumn,
-            this.ajusteCarreteraDataGridViewTextBoxColumn1,
-            this.lavadaDataGridViewTextBoxColumn,
-            this.amarresDataGridViewTextBoxColumn1,
-            this.engradasaDataGridViewTextBoxColumn,
-            this.calibradaDataGridViewTextBoxColumn1,
-            this.liquidadoDataGridViewTextBoxColumn1,
-            this.logVacioDataGridViewTextBoxColumn,
-            this.papeleriaDataGridViewTextBoxColumn1,
-            this.logFavoritoDataGridViewTextBoxColumn,
-            this.curCargueDataGridViewTextBoxColumn,
-            this.curDescargueDataGridViewTextBoxColumn,
-            this.logAnticipoACPMDataGridViewTextBoxColumn1,
-            this.rutasOrigenDataGridViewTextBoxColumn,
-            this.tiposTrailersDataGridViewTextBoxColumn,
-            this.tiposVehiculosDataGridViewTextBoxColumn});
+            this.pesoDataGridViewTextBoxColumn1});
             this.dataGridViewRuta.DataSource = this.rutasBindingSource;
-            this.dataGridViewRuta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRuta.EnableHeadersVisualStyles = false;
-            this.dataGridViewRuta.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewRuta.Location = new System.Drawing.Point(393, 0);
             this.dataGridViewRuta.Name = "dataGridViewRuta";
             this.dataGridViewRuta.ReadOnly = true;
             this.dataGridViewRuta.RowHeadersWidth = 10;
-            this.dataGridViewRuta.Size = new System.Drawing.Size(1014, 466);
+            this.dataGridViewRuta.Size = new System.Drawing.Size(621, 466);
             this.dataGridViewRuta.TabIndex = 1;
-            // 
-            // lngIdRegistrRutaDataGridViewTextBoxColumn
-            // 
-            this.lngIdRegistrRutaDataGridViewTextBoxColumn.DataPropertyName = "lngIdRegistrRuta";
-            this.lngIdRegistrRutaDataGridViewTextBoxColumn.HeaderText = "lngIdRegistrRuta";
-            this.lngIdRegistrRutaDataGridViewTextBoxColumn.Name = "lngIdRegistrRutaDataGridViewTextBoxColumn";
-            this.lngIdRegistrRutaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rutasOrigenCodigoDataGridViewTextBoxColumn
-            // 
-            this.rutasOrigenCodigoDataGridViewTextBoxColumn.DataPropertyName = "RutasOrigenCodigo";
-            this.rutasOrigenCodigoDataGridViewTextBoxColumn.HeaderText = "RutasOrigenCodigo";
-            this.rutasOrigenCodigoDataGridViewTextBoxColumn.Name = "rutasOrigenCodigoDataGridViewTextBoxColumn";
-            this.rutasOrigenCodigoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn
-            // 
-            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.DataPropertyName = "strRutaAnticipoGrupoOrigen";
-            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipoGrupoOrigen";
-            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.Name = "strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn";
-            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn
-            // 
-            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.DataPropertyName = "strRutaAnticipoGrupoDestino";
-            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipoGrupoDestino";
-            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.Name = "strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn";
-            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // strRutaAnticipoGrupoDataGridViewTextBoxColumn
-            // 
-            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.DataPropertyName = "strRutaAnticipoGrupo";
-            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipoGrupo";
-            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.Name = "strRutaAnticipoGrupoDataGridViewTextBoxColumn";
-            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewRuta.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRuta_RowEnter);
             // 
             // strRutaAnticipoDataGridViewTextBoxColumn
             // 
@@ -2010,6 +1835,20 @@
             this.strRutaAnticipoDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipo";
             this.strRutaAnticipoDataGridViewTextBoxColumn.Name = "strRutaAnticipoDataGridViewTextBoxColumn";
             this.strRutaAnticipoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // TipoTrailerDescripcion
+            // 
+            this.TipoTrailerDescripcion.DataPropertyName = "TipoTrailerDescripcion";
+            this.TipoTrailerDescripcion.HeaderText = "TipoTrailerDescripcion";
+            this.TipoTrailerDescripcion.Name = "TipoTrailerDescripcion";
+            this.TipoTrailerDescripcion.ReadOnly = true;
+            // 
+            // DescripcionTramo
+            // 
+            this.DescripcionTramo.DataPropertyName = "DescripcionTramo";
+            this.DescripcionTramo.HeaderText = "DescripcionTramo";
+            this.DescripcionTramo.Name = "DescripcionTramo";
+            this.DescripcionTramo.ReadOnly = true;
             // 
             // tipoVehiculoCodigoDataGridViewTextBoxColumn
             // 
@@ -2038,482 +1877,6 @@
             this.pesoDataGridViewTextBoxColumn1.HeaderText = "Peso";
             this.pesoDataGridViewTextBoxColumn1.Name = "pesoDataGridViewTextBoxColumn1";
             this.pesoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // programaDataGridViewTextBoxColumn
-            // 
-            this.programaDataGridViewTextBoxColumn.DataPropertyName = "Programa";
-            this.programaDataGridViewTextBoxColumn.HeaderText = "Programa";
-            this.programaDataGridViewTextBoxColumn.Name = "programaDataGridViewTextBoxColumn";
-            this.programaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // logViajeVacioDataGridViewTextBoxColumn
-            // 
-            this.logViajeVacioDataGridViewTextBoxColumn.DataPropertyName = "logViajeVacio";
-            this.logViajeVacioDataGridViewTextBoxColumn.HeaderText = "logViajeVacio";
-            this.logViajeVacioDataGridViewTextBoxColumn.Name = "logViajeVacioDataGridViewTextBoxColumn";
-            this.logViajeVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // floGalonesDataGridViewTextBoxColumn
-            // 
-            this.floGalonesDataGridViewTextBoxColumn.DataPropertyName = "floGalones";
-            this.floGalonesDataGridViewTextBoxColumn.HeaderText = "floGalones";
-            this.floGalonesDataGridViewTextBoxColumn.Name = "floGalonesDataGridViewTextBoxColumn";
-            this.floGalonesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curValorGalonDataGridViewTextBoxColumn
-            // 
-            this.curValorGalonDataGridViewTextBoxColumn.DataPropertyName = "curValorGalon";
-            this.curValorGalonDataGridViewTextBoxColumn.HeaderText = "curValorGalon";
-            this.curValorGalonDataGridViewTextBoxColumn.Name = "curValorGalonDataGridViewTextBoxColumn";
-            this.curValorGalonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutCombustibleDataGridViewTextBoxColumn
-            // 
-            this.cutCombustibleDataGridViewTextBoxColumn.DataPropertyName = "cutCombustible";
-            this.cutCombustibleDataGridViewTextBoxColumn.HeaderText = "cutCombustible";
-            this.cutCombustibleDataGridViewTextBoxColumn.Name = "cutCombustibleDataGridViewTextBoxColumn";
-            this.cutCombustibleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // combustibleCarreteraDataGridViewTextBoxColumn1
-            // 
-            this.combustibleCarreteraDataGridViewTextBoxColumn1.DataPropertyName = "CombustibleCarretera";
-            this.combustibleCarreteraDataGridViewTextBoxColumn1.HeaderText = "CombustibleCarretera";
-            this.combustibleCarreteraDataGridViewTextBoxColumn1.Name = "combustibleCarreteraDataGridViewTextBoxColumn1";
-            this.combustibleCarreteraDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // lngIdNroPeajesDataGridViewTextBoxColumn
-            // 
-            this.lngIdNroPeajesDataGridViewTextBoxColumn.DataPropertyName = "lngIdNroPeajes";
-            this.lngIdNroPeajesDataGridViewTextBoxColumn.HeaderText = "lngIdNroPeajes";
-            this.lngIdNroPeajesDataGridViewTextBoxColumn.Name = "lngIdNroPeajesDataGridViewTextBoxColumn";
-            this.lngIdNroPeajesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutPeajeDataGridViewTextBoxColumn
-            // 
-            this.cutPeajeDataGridViewTextBoxColumn.DataPropertyName = "cutPeaje";
-            this.cutPeajeDataGridViewTextBoxColumn.HeaderText = "cutPeaje";
-            this.cutPeajeDataGridViewTextBoxColumn.Name = "cutPeajeDataGridViewTextBoxColumn";
-            this.cutPeajeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // strNombrePeajesDataGridViewTextBoxColumn
-            // 
-            this.strNombrePeajesDataGridViewTextBoxColumn.DataPropertyName = "strNombrePeajes";
-            this.strNombrePeajesDataGridViewTextBoxColumn.HeaderText = "strNombrePeajes";
-            this.strNombrePeajesDataGridViewTextBoxColumn.Name = "strNombrePeajesDataGridViewTextBoxColumn";
-            this.strNombrePeajesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutVariosLlantasDataGridViewTextBoxColumn
-            // 
-            this.cutVariosLlantasDataGridViewTextBoxColumn.DataPropertyName = "cutVariosLlantas";
-            this.cutVariosLlantasDataGridViewTextBoxColumn.HeaderText = "cutVariosLlantas";
-            this.cutVariosLlantasDataGridViewTextBoxColumn.Name = "cutVariosLlantasDataGridViewTextBoxColumn";
-            this.cutVariosLlantasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutVariosCeladaDataGridViewTextBoxColumn
-            // 
-            this.cutVariosCeladaDataGridViewTextBoxColumn.DataPropertyName = "cutVariosCelada";
-            this.cutVariosCeladaDataGridViewTextBoxColumn.HeaderText = "cutVariosCelada";
-            this.cutVariosCeladaDataGridViewTextBoxColumn.Name = "cutVariosCeladaDataGridViewTextBoxColumn";
-            this.cutVariosCeladaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutVariosPropinaDataGridViewTextBoxColumn
-            // 
-            this.cutVariosPropinaDataGridViewTextBoxColumn.DataPropertyName = "cutVariosPropina";
-            this.cutVariosPropinaDataGridViewTextBoxColumn.HeaderText = "cutVariosPropina";
-            this.cutVariosPropinaDataGridViewTextBoxColumn.Name = "cutVariosPropinaDataGridViewTextBoxColumn";
-            this.cutVariosPropinaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutVariosDataGridViewTextBoxColumn
-            // 
-            this.cutVariosDataGridViewTextBoxColumn.DataPropertyName = "cutVarios";
-            this.cutVariosDataGridViewTextBoxColumn.HeaderText = "cutVarios";
-            this.cutVariosDataGridViewTextBoxColumn.Name = "cutVariosDataGridViewTextBoxColumn";
-            this.cutVariosDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // llamadasDataGridViewTextBoxColumn
-            // 
-            this.llamadasDataGridViewTextBoxColumn.DataPropertyName = "Llamadas";
-            this.llamadasDataGridViewTextBoxColumn.HeaderText = "Llamadas";
-            this.llamadasDataGridViewTextBoxColumn.Name = "llamadasDataGridViewTextBoxColumn";
-            this.llamadasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // taxiDataGridViewTextBoxColumn1
-            // 
-            this.taxiDataGridViewTextBoxColumn1.DataPropertyName = "Taxi";
-            this.taxiDataGridViewTextBoxColumn1.HeaderText = "Taxi";
-            this.taxiDataGridViewTextBoxColumn1.Name = "taxiDataGridViewTextBoxColumn1";
-            this.taxiDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // aseoDataGridViewTextBoxColumn1
-            // 
-            this.aseoDataGridViewTextBoxColumn1.DataPropertyName = "Aseo";
-            this.aseoDataGridViewTextBoxColumn1.HeaderText = "Aseo";
-            this.aseoDataGridViewTextBoxColumn1.Name = "aseoDataGridViewTextBoxColumn1";
-            this.aseoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // cutVariosLlantasVacioDataGridViewTextBoxColumn
-            // 
-            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosLlantasVacio";
-            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosLlantasVacio";
-            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.Name = "cutVariosLlantasVacioDataGridViewTextBoxColumn";
-            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutVariosCeladaVacioDataGridViewTextBoxColumn
-            // 
-            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosCeladaVacio";
-            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosCeladaVacio";
-            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.Name = "cutVariosCeladaVacioDataGridViewTextBoxColumn";
-            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutVariosPropinaVacioDataGridViewTextBoxColumn
-            // 
-            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosPropinaVacio";
-            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosPropinaVacio";
-            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.Name = "cutVariosPropinaVacioDataGridViewTextBoxColumn";
-            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutVariosVacioDataGridViewTextBoxColumn
-            // 
-            this.cutVariosVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosVacio";
-            this.cutVariosVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosVacio";
-            this.cutVariosVacioDataGridViewTextBoxColumn.Name = "cutVariosVacioDataGridViewTextBoxColumn";
-            this.cutVariosVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // viaticosDataGridViewTextBoxColumn1
-            // 
-            this.viaticosDataGridViewTextBoxColumn1.DataPropertyName = "Viaticos";
-            this.viaticosDataGridViewTextBoxColumn1.HeaderText = "Viaticos";
-            this.viaticosDataGridViewTextBoxColumn1.Name = "viaticosDataGridViewTextBoxColumn1";
-            this.viaticosDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // cutParticipacionDataGridViewTextBoxColumn
-            // 
-            this.cutParticipacionDataGridViewTextBoxColumn.DataPropertyName = "cutParticipacion";
-            this.cutParticipacionDataGridViewTextBoxColumn.HeaderText = "cutParticipacion";
-            this.cutParticipacionDataGridViewTextBoxColumn.Name = "cutParticipacionDataGridViewTextBoxColumn";
-            this.cutParticipacionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutParticipacionVacioDataGridViewTextBoxColumn
-            // 
-            this.cutParticipacionVacioDataGridViewTextBoxColumn.DataPropertyName = "cutParticipacionVacio";
-            this.cutParticipacionVacioDataGridViewTextBoxColumn.HeaderText = "cutParticipacionVacio";
-            this.cutParticipacionVacioDataGridViewTextBoxColumn.Name = "cutParticipacionVacioDataGridViewTextBoxColumn";
-            this.cutParticipacionVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curHotelCarreteraDataGridViewTextBoxColumn
-            // 
-            this.curHotelCarreteraDataGridViewTextBoxColumn.DataPropertyName = "curHotelCarretera";
-            this.curHotelCarreteraDataGridViewTextBoxColumn.HeaderText = "curHotelCarretera";
-            this.curHotelCarreteraDataGridViewTextBoxColumn.Name = "curHotelCarreteraDataGridViewTextBoxColumn";
-            this.curHotelCarreteraDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curHotelCiudadDataGridViewTextBoxColumn
-            // 
-            this.curHotelCiudadDataGridViewTextBoxColumn.DataPropertyName = "curHotelCiudad";
-            this.curHotelCiudadDataGridViewTextBoxColumn.HeaderText = "curHotelCiudad";
-            this.curHotelCiudadDataGridViewTextBoxColumn.Name = "curHotelCiudadDataGridViewTextBoxColumn";
-            this.curHotelCiudadDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curHotelDataGridViewTextBoxColumn
-            // 
-            this.curHotelDataGridViewTextBoxColumn.DataPropertyName = "curHotel";
-            this.curHotelDataGridViewTextBoxColumn.HeaderText = "curHotel";
-            this.curHotelDataGridViewTextBoxColumn.Name = "curHotelDataGridViewTextBoxColumn";
-            this.curHotelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curHotelCarreteraVacioDataGridViewTextBoxColumn
-            // 
-            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.DataPropertyName = "curHotelCarreteraVacio";
-            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.HeaderText = "curHotelCarreteraVacio";
-            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.Name = "curHotelCarreteraVacioDataGridViewTextBoxColumn";
-            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curHotelCiudadVacioDataGridViewTextBoxColumn
-            // 
-            this.curHotelCiudadVacioDataGridViewTextBoxColumn.DataPropertyName = "curHotelCiudadVacio";
-            this.curHotelCiudadVacioDataGridViewTextBoxColumn.HeaderText = "curHotelCiudadVacio";
-            this.curHotelCiudadVacioDataGridViewTextBoxColumn.Name = "curHotelCiudadVacioDataGridViewTextBoxColumn";
-            this.curHotelCiudadVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curHotelVacioDataGridViewTextBoxColumn
-            // 
-            this.curHotelVacioDataGridViewTextBoxColumn.DataPropertyName = "curHotelVacio";
-            this.curHotelVacioDataGridViewTextBoxColumn.HeaderText = "curHotelVacio";
-            this.curHotelVacioDataGridViewTextBoxColumn.Name = "curHotelVacioDataGridViewTextBoxColumn";
-            this.curHotelVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTiempoCargueDataGridViewTextBoxColumn
-            // 
-            this.intTiempoCargueDataGridViewTextBoxColumn.DataPropertyName = "intTiempoCargue";
-            this.intTiempoCargueDataGridViewTextBoxColumn.HeaderText = "intTiempoCargue";
-            this.intTiempoCargueDataGridViewTextBoxColumn.Name = "intTiempoCargueDataGridViewTextBoxColumn";
-            this.intTiempoCargueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTiempoDescargueDataGridViewTextBoxColumn
-            // 
-            this.intTiempoDescargueDataGridViewTextBoxColumn.DataPropertyName = "intTiempoDescargue";
-            this.intTiempoDescargueDataGridViewTextBoxColumn.HeaderText = "intTiempoDescargue";
-            this.intTiempoDescargueDataGridViewTextBoxColumn.Name = "intTiempoDescargueDataGridViewTextBoxColumn";
-            this.intTiempoDescargueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTiempoAduanaDataGridViewTextBoxColumn
-            // 
-            this.intTiempoAduanaDataGridViewTextBoxColumn.DataPropertyName = "intTiempoAduana";
-            this.intTiempoAduanaDataGridViewTextBoxColumn.HeaderText = "intTiempoAduana";
-            this.intTiempoAduanaDataGridViewTextBoxColumn.Name = "intTiempoAduanaDataGridViewTextBoxColumn";
-            this.intTiempoAduanaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTotalTrayectoDataGridViewTextBoxColumn
-            // 
-            this.intTotalTrayectoDataGridViewTextBoxColumn.DataPropertyName = "intTotalTrayecto";
-            this.intTotalTrayectoDataGridViewTextBoxColumn.HeaderText = "intTotalTrayecto";
-            this.intTotalTrayectoDataGridViewTextBoxColumn.Name = "intTotalTrayectoDataGridViewTextBoxColumn";
-            this.intTotalTrayectoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTotalTiempoDataGridViewTextBoxColumn
-            // 
-            this.intTotalTiempoDataGridViewTextBoxColumn.DataPropertyName = "intTotalTiempo";
-            this.intTotalTiempoDataGridViewTextBoxColumn.HeaderText = "intTotalTiempo";
-            this.intTotalTiempoDataGridViewTextBoxColumn.Name = "intTotalTiempoDataGridViewTextBoxColumn";
-            this.intTotalTiempoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curComidaDataGridViewTextBoxColumn
-            // 
-            this.curComidaDataGridViewTextBoxColumn.DataPropertyName = "curComida";
-            this.curComidaDataGridViewTextBoxColumn.HeaderText = "curComida";
-            this.curComidaDataGridViewTextBoxColumn.Name = "curComidaDataGridViewTextBoxColumn";
-            this.curComidaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTiempoCargueVacioDataGridViewTextBoxColumn
-            // 
-            this.intTiempoCargueVacioDataGridViewTextBoxColumn.DataPropertyName = "intTiempoCargueVacio";
-            this.intTiempoCargueVacioDataGridViewTextBoxColumn.HeaderText = "intTiempoCargueVacio";
-            this.intTiempoCargueVacioDataGridViewTextBoxColumn.Name = "intTiempoCargueVacioDataGridViewTextBoxColumn";
-            this.intTiempoCargueVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTiempoDescargueVacioDataGridViewTextBoxColumn
-            // 
-            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.DataPropertyName = "intTiempoDescargueVacio";
-            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.HeaderText = "intTiempoDescargueVacio";
-            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.Name = "intTiempoDescargueVacioDataGridViewTextBoxColumn";
-            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTiempoAduanaVacioDataGridViewTextBoxColumn
-            // 
-            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.DataPropertyName = "intTiempoAduanaVacio";
-            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.HeaderText = "intTiempoAduanaVacio";
-            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.Name = "intTiempoAduanaVacioDataGridViewTextBoxColumn";
-            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTotalTrayectoVacioDataGridViewTextBoxColumn
-            // 
-            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.DataPropertyName = "intTotalTrayectoVacio";
-            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.HeaderText = "intTotalTrayectoVacio";
-            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.Name = "intTotalTrayectoVacioDataGridViewTextBoxColumn";
-            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intTotalTiempoVacioDataGridViewTextBoxColumn
-            // 
-            this.intTotalTiempoVacioDataGridViewTextBoxColumn.DataPropertyName = "intTotalTiempoVacio";
-            this.intTotalTiempoVacioDataGridViewTextBoxColumn.HeaderText = "intTotalTiempoVacio";
-            this.intTotalTiempoVacioDataGridViewTextBoxColumn.Name = "intTotalTiempoVacioDataGridViewTextBoxColumn";
-            this.intTotalTiempoVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curComidaVacioDataGridViewTextBoxColumn
-            // 
-            this.curComidaVacioDataGridViewTextBoxColumn.DataPropertyName = "curComidaVacio";
-            this.curComidaVacioDataGridViewTextBoxColumn.HeaderText = "curComidaVacio";
-            this.curComidaVacioDataGridViewTextBoxColumn.Name = "curComidaVacioDataGridViewTextBoxColumn";
-            this.curComidaVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curDesvareManoRepuestosDataGridViewTextBoxColumn
-            // 
-            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.DataPropertyName = "curDesvareManoRepuestos";
-            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.HeaderText = "curDesvareManoRepuestos";
-            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.Name = "curDesvareManoRepuestosDataGridViewTextBoxColumn";
-            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curDesvareManoObraDataGridViewTextBoxColumn
-            // 
-            this.curDesvareManoObraDataGridViewTextBoxColumn.DataPropertyName = "curDesvareManoObra";
-            this.curDesvareManoObraDataGridViewTextBoxColumn.HeaderText = "curDesvareManoObra";
-            this.curDesvareManoObraDataGridViewTextBoxColumn.Name = "curDesvareManoObraDataGridViewTextBoxColumn";
-            this.curDesvareManoObraDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutSaldoDataGridViewTextBoxColumn
-            // 
-            this.cutSaldoDataGridViewTextBoxColumn.DataPropertyName = "cutSaldo";
-            this.cutSaldoDataGridViewTextBoxColumn.HeaderText = "cutSaldo";
-            this.cutSaldoDataGridViewTextBoxColumn.Name = "cutSaldoDataGridViewTextBoxColumn";
-            this.cutSaldoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutSaldoVacioDataGridViewTextBoxColumn
-            // 
-            this.cutSaldoVacioDataGridViewTextBoxColumn.DataPropertyName = "cutSaldoVacio";
-            this.cutSaldoVacioDataGridViewTextBoxColumn.HeaderText = "cutSaldoVacio";
-            this.cutSaldoVacioDataGridViewTextBoxColumn.Name = "cutSaldoVacioDataGridViewTextBoxColumn";
-            this.cutSaldoVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cutKmtsDataGridViewTextBoxColumn
-            // 
-            this.cutKmtsDataGridViewTextBoxColumn.DataPropertyName = "cutKmts";
-            this.cutKmtsDataGridViewTextBoxColumn.HeaderText = "cutKmts";
-            this.cutKmtsDataGridViewTextBoxColumn.Name = "cutKmtsDataGridViewTextBoxColumn";
-            this.cutKmtsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // logActualizaPeajesDataGridViewTextBoxColumn
-            // 
-            this.logActualizaPeajesDataGridViewTextBoxColumn.DataPropertyName = "logActualizaPeajes";
-            this.logActualizaPeajesDataGridViewTextBoxColumn.HeaderText = "logActualizaPeajes";
-            this.logActualizaPeajesDataGridViewTextBoxColumn.Name = "logActualizaPeajesDataGridViewTextBoxColumn";
-            this.logActualizaPeajesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intFactorKmPorGalonDataGridViewTextBoxColumn
-            // 
-            this.intFactorKmPorGalonDataGridViewTextBoxColumn.DataPropertyName = "intFactorKmPorGalon";
-            this.intFactorKmPorGalonDataGridViewTextBoxColumn.HeaderText = "intFactorKmPorGalon";
-            this.intFactorKmPorGalonDataGridViewTextBoxColumn.Name = "intFactorKmPorGalonDataGridViewTextBoxColumn";
-            this.intFactorKmPorGalonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // logEstadoRutaDataGridViewTextBoxColumn
-            // 
-            this.logEstadoRutaDataGridViewTextBoxColumn.DataPropertyName = "logEstadoRuta";
-            this.logEstadoRutaDataGridViewTextBoxColumn.HeaderText = "logEstadoRuta";
-            this.logEstadoRutaDataGridViewTextBoxColumn.Name = "logEstadoRutaDataGridViewTextBoxColumn";
-            this.logEstadoRutaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // parqueaderoCarreteraDataGridViewTextBoxColumn1
-            // 
-            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.DataPropertyName = "ParqueaderoCarretera";
-            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.HeaderText = "ParqueaderoCarretera";
-            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.Name = "parqueaderoCarreteraDataGridViewTextBoxColumn1";
-            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // parqueaderoCiudadDataGridViewTextBoxColumn1
-            // 
-            this.parqueaderoCiudadDataGridViewTextBoxColumn1.DataPropertyName = "ParqueaderoCiudad";
-            this.parqueaderoCiudadDataGridViewTextBoxColumn1.HeaderText = "ParqueaderoCiudad";
-            this.parqueaderoCiudadDataGridViewTextBoxColumn1.Name = "parqueaderoCiudadDataGridViewTextBoxColumn1";
-            this.parqueaderoCiudadDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // montadaLLantaCarreteraDataGridViewTextBoxColumn
-            // 
-            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.DataPropertyName = "MontadaLLantaCarretera";
-            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.HeaderText = "MontadaLLantaCarretera";
-            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.Name = "montadaLLantaCarreteraDataGridViewTextBoxColumn";
-            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // montadaLLantaCiudadDataGridViewTextBoxColumn
-            // 
-            this.montadaLLantaCiudadDataGridViewTextBoxColumn.DataPropertyName = "MontadaLLantaCiudad";
-            this.montadaLLantaCiudadDataGridViewTextBoxColumn.HeaderText = "MontadaLLantaCiudad";
-            this.montadaLLantaCiudadDataGridViewTextBoxColumn.Name = "montadaLLantaCiudadDataGridViewTextBoxColumn";
-            this.montadaLLantaCiudadDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ajusteCarreteraDataGridViewTextBoxColumn1
-            // 
-            this.ajusteCarreteraDataGridViewTextBoxColumn1.DataPropertyName = "AjusteCarretera";
-            this.ajusteCarreteraDataGridViewTextBoxColumn1.HeaderText = "AjusteCarretera";
-            this.ajusteCarreteraDataGridViewTextBoxColumn1.Name = "ajusteCarreteraDataGridViewTextBoxColumn1";
-            this.ajusteCarreteraDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // lavadaDataGridViewTextBoxColumn
-            // 
-            this.lavadaDataGridViewTextBoxColumn.DataPropertyName = "Lavada";
-            this.lavadaDataGridViewTextBoxColumn.HeaderText = "Lavada";
-            this.lavadaDataGridViewTextBoxColumn.Name = "lavadaDataGridViewTextBoxColumn";
-            this.lavadaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amarresDataGridViewTextBoxColumn1
-            // 
-            this.amarresDataGridViewTextBoxColumn1.DataPropertyName = "Amarres";
-            this.amarresDataGridViewTextBoxColumn1.HeaderText = "Amarres";
-            this.amarresDataGridViewTextBoxColumn1.Name = "amarresDataGridViewTextBoxColumn1";
-            this.amarresDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // engradasaDataGridViewTextBoxColumn
-            // 
-            this.engradasaDataGridViewTextBoxColumn.DataPropertyName = "Engradasa";
-            this.engradasaDataGridViewTextBoxColumn.HeaderText = "Engradasa";
-            this.engradasaDataGridViewTextBoxColumn.Name = "engradasaDataGridViewTextBoxColumn";
-            this.engradasaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // calibradaDataGridViewTextBoxColumn1
-            // 
-            this.calibradaDataGridViewTextBoxColumn1.DataPropertyName = "Calibrada";
-            this.calibradaDataGridViewTextBoxColumn1.HeaderText = "Calibrada";
-            this.calibradaDataGridViewTextBoxColumn1.Name = "calibradaDataGridViewTextBoxColumn1";
-            this.calibradaDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // liquidadoDataGridViewTextBoxColumn1
-            // 
-            this.liquidadoDataGridViewTextBoxColumn1.DataPropertyName = "Liquidado";
-            this.liquidadoDataGridViewTextBoxColumn1.HeaderText = "Liquidado";
-            this.liquidadoDataGridViewTextBoxColumn1.Name = "liquidadoDataGridViewTextBoxColumn1";
-            this.liquidadoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // logVacioDataGridViewTextBoxColumn
-            // 
-            this.logVacioDataGridViewTextBoxColumn.DataPropertyName = "logVacio";
-            this.logVacioDataGridViewTextBoxColumn.HeaderText = "logVacio";
-            this.logVacioDataGridViewTextBoxColumn.Name = "logVacioDataGridViewTextBoxColumn";
-            this.logVacioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // papeleriaDataGridViewTextBoxColumn1
-            // 
-            this.papeleriaDataGridViewTextBoxColumn1.DataPropertyName = "Papeleria";
-            this.papeleriaDataGridViewTextBoxColumn1.HeaderText = "Papeleria";
-            this.papeleriaDataGridViewTextBoxColumn1.Name = "papeleriaDataGridViewTextBoxColumn1";
-            this.papeleriaDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // logFavoritoDataGridViewTextBoxColumn
-            // 
-            this.logFavoritoDataGridViewTextBoxColumn.DataPropertyName = "logFavorito";
-            this.logFavoritoDataGridViewTextBoxColumn.HeaderText = "logFavorito";
-            this.logFavoritoDataGridViewTextBoxColumn.Name = "logFavoritoDataGridViewTextBoxColumn";
-            this.logFavoritoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curCargueDataGridViewTextBoxColumn
-            // 
-            this.curCargueDataGridViewTextBoxColumn.DataPropertyName = "CurCargue";
-            this.curCargueDataGridViewTextBoxColumn.HeaderText = "CurCargue";
-            this.curCargueDataGridViewTextBoxColumn.Name = "curCargueDataGridViewTextBoxColumn";
-            this.curCargueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // curDescargueDataGridViewTextBoxColumn
-            // 
-            this.curDescargueDataGridViewTextBoxColumn.DataPropertyName = "CurDescargue";
-            this.curDescargueDataGridViewTextBoxColumn.HeaderText = "CurDescargue";
-            this.curDescargueDataGridViewTextBoxColumn.Name = "curDescargueDataGridViewTextBoxColumn";
-            this.curDescargueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // logAnticipoACPMDataGridViewTextBoxColumn1
-            // 
-            this.logAnticipoACPMDataGridViewTextBoxColumn1.DataPropertyName = "LogAnticipoACPM";
-            this.logAnticipoACPMDataGridViewTextBoxColumn1.HeaderText = "LogAnticipoACPM";
-            this.logAnticipoACPMDataGridViewTextBoxColumn1.Name = "logAnticipoACPMDataGridViewTextBoxColumn1";
-            this.logAnticipoACPMDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // rutasOrigenDataGridViewTextBoxColumn
-            // 
-            this.rutasOrigenDataGridViewTextBoxColumn.DataPropertyName = "RutasOrigen";
-            this.rutasOrigenDataGridViewTextBoxColumn.HeaderText = "RutasOrigen";
-            this.rutasOrigenDataGridViewTextBoxColumn.Name = "rutasOrigenDataGridViewTextBoxColumn";
-            this.rutasOrigenDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tiposTrailersDataGridViewTextBoxColumn
-            // 
-            this.tiposTrailersDataGridViewTextBoxColumn.DataPropertyName = "TiposTrailers";
-            this.tiposTrailersDataGridViewTextBoxColumn.HeaderText = "TiposTrailers";
-            this.tiposTrailersDataGridViewTextBoxColumn.Name = "tiposTrailersDataGridViewTextBoxColumn";
-            this.tiposTrailersDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tiposVehiculosDataGridViewTextBoxColumn
-            // 
-            this.tiposVehiculosDataGridViewTextBoxColumn.DataPropertyName = "TiposVehiculos";
-            this.tiposVehiculosDataGridViewTextBoxColumn.HeaderText = "TiposVehiculos";
-            this.tiposVehiculosDataGridViewTextBoxColumn.Name = "tiposVehiculosDataGridViewTextBoxColumn";
-            this.tiposVehiculosDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // rutasBindingSource
             // 
@@ -3403,6 +2766,14 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // treeViewRutas
+            // 
+            this.treeViewRutas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeViewRutas.Location = new System.Drawing.Point(0, 0);
+            this.treeViewRutas.Name = "treeViewRutas";
+            this.treeViewRutas.Size = new System.Drawing.Size(387, 466);
+            this.treeViewRutas.TabIndex = 2;
+            // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3735,84 +3106,14 @@
         private System.Windows.Forms.ComboBox comboBoxDestino;
         private System.Windows.Forms.ComboBox comboBoxOrigen;
         private System.Windows.Forms.DataGridView dataGridViewRuta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lngIdRegistrRutaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rutasOrigenCodigoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoGrupoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource rutasBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoTrailerDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescripcionTramo;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoVehiculoCodigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoVehiculoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoTrailerCodigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pesoDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn logViajeVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn floGalonesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curValorGalonDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutCombustibleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn combustibleCarreteraDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lngIdNroPeajesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutPeajeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn strNombrePeajesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosLlantasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosCeladaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosPropinaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn llamadasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxiDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aseoDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosLlantasVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosCeladaVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosPropinaVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn viaticosDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutParticipacionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutParticipacionVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCarreteraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCiudadDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCarreteraVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCiudadVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoCargueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoDescargueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoAduanaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTrayectoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTiempoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curComidaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoCargueVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoDescargueVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoAduanaVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTrayectoVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTiempoVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curComidaVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curDesvareManoRepuestosDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curDesvareManoObraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutSaldoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutSaldoVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutKmtsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn logActualizaPeajesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intFactorKmPorGalonDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn logEstadoRutaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parqueaderoCarreteraDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parqueaderoCiudadDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn montadaLLantaCarreteraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn montadaLLantaCiudadDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ajusteCarreteraDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lavadaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amarresDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn engradasaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn calibradaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn liquidadoDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn logVacioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn papeleriaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn logFavoritoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curCargueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curDescargueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn logAnticipoACPMDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rutasOrigenDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiposTrailersDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiposVehiculosDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource rutasBindingSource;
+        private System.Windows.Forms.TreeView treeViewRutas;
     }
 }
