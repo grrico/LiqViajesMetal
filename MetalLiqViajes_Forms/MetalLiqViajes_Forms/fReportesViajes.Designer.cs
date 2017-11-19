@@ -33,15 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReportesViajes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -97,6 +97,7 @@
             this.liquidacionRutasListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControlTramos = new System.Windows.Forms.TabControl();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewLiqRutas = new System.Windows.Forms.DataGridView();
             this.registroIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.liquidadoDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -167,6 +168,21 @@
             this.logAnticipoACPMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placaTrailerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tramosAsignadosRutaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewCuentasGastos = new System.Windows.Forms.DataGridView();
+            this.descripcionTerceroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetalleCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorTotalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tramosGastosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewLavadas = new System.Windows.Forms.DataGridView();
+            this.lngIdRegistroViajeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.origenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.destinoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.liquidadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.fechaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tramosLavadasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewLiqGastos = new System.Windows.Forms.DataGridView();
@@ -194,21 +210,97 @@
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.labelTituloRegistroGasto = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.dataGridViewLavadas = new System.Windows.Forms.DataGridView();
-            this.lngIdRegistroViajeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.origenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.destinoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.liquidadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.fechaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tramosLavadasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewCuentasGastos = new System.Windows.Forms.DataGridView();
-            this.descripcionTerceroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DetalleCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorTotalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tramosGastosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewRuta = new System.Windows.Forms.DataGridView();
+            this.lngIdRegistrRutaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rutasOrigenCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strRutaAnticipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoVehiculoCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoVehiculoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoTrailerCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.programaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logViajeVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.floGalonesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curValorGalonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutCombustibleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.combustibleCarreteraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lngIdNroPeajesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutPeajeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strNombrePeajesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosLlantasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosCeladaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosPropinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.llamadasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxiDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aseoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosLlantasVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosCeladaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosPropinaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutVariosVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.viaticosDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutParticipacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutParticipacionVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curHotelCarreteraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curHotelCiudadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curHotelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curHotelCarreteraVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curHotelCiudadVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curHotelVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTiempoCargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTiempoDescargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTiempoAduanaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTotalTrayectoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTotalTiempoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curComidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTiempoCargueVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTiempoDescargueVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTiempoAduanaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTotalTrayectoVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intTotalTiempoVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curComidaVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curDesvareManoRepuestosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curDesvareManoObraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutSaldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutSaldoVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutKmtsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logActualizaPeajesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intFactorKmPorGalonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logEstadoRutaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parqueaderoCarreteraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parqueaderoCiudadDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montadaLLantaCarreteraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montadaLLantaCiudadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ajusteCarreteraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lavadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amarresDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.engradasaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calibradaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.liquidadoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logVacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.papeleriaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logFavoritoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curCargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curDescargueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logAnticipoACPMDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rutasOrigenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiposTrailersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiposVehiculosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rutasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBoxTipoTrailer = new System.Windows.Forms.ComboBox();
+            this.comboBoxDestino = new System.Windows.Forms.ComboBox();
+            this.comboBoxOrigen = new System.Windows.Forms.ComboBox();
+            this.imageListBase2 = new System.Windows.Forms.ImageList(this.components);
+            this.imageListBase = new System.Windows.Forms.ImageList(this.components);
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -276,8 +368,6 @@
             this.btnInterrogar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -295,8 +385,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.liquidacionRutasListBindingSource)).BeginInit();
             this.tabControlTramos.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqRutas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tramosAsignadosRutaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+            this.splitContainer6.Panel1.SuspendLayout();
+            this.splitContainer6.Panel2.SuspendLayout();
+            this.splitContainer6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCuentasGastos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tramosGastosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLavadas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tramosLavadasBindingSource)).BeginInit();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -306,10 +408,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.liquidacionGastosListBindingSource)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLavadas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tramosLavadasBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCuentasGastos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tramosGastosBindingSource)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRuta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -339,14 +442,6 @@
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
-            this.splitContainer5.Panel1.SuspendLayout();
-            this.splitContainer5.Panel2.SuspendLayout();
-            this.splitContainer5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
-            this.splitContainer6.Panel1.SuspendLayout();
-            this.splitContainer6.Panel2.SuspendLayout();
-            this.splitContainer6.SuspendLayout();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -698,26 +793,46 @@
             // 
             this.tabControlTramos.Controls.Add(this.tabPage8);
             this.tabControlTramos.Controls.Add(this.tabPage9);
+            this.tabControlTramos.Controls.Add(this.tabPage4);
             this.tabControlTramos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlTramos.ImageList = this.imageList1;
+            this.tabControlTramos.ImageList = this.imageListBase2;
             this.tabControlTramos.Location = new System.Drawing.Point(3, 3);
             this.tabControlTramos.Name = "tabControlTramos";
             this.tabControlTramos.SelectedIndex = 0;
-            this.tabControlTramos.Size = new System.Drawing.Size(1022, 596);
+            this.tabControlTramos.Size = new System.Drawing.Size(1022, 595);
             this.tabControlTramos.TabIndex = 1;
             this.tabControlTramos.SelectedIndexChanged += new System.EventHandler(this.tabControlTramos_SelectedIndexChanged);
             // 
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.splitContainer5);
-            this.tabPage8.ImageIndex = 8;
+            this.tabPage8.ImageIndex = 2;
             this.tabPage8.Location = new System.Drawing.Point(4, 23);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1014, 569);
+            this.tabPage8.Size = new System.Drawing.Size(1014, 568);
             this.tabPage8.TabIndex = 0;
             this.tabPage8.Text = "Liquidación Rutas";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer5.Name = "splitContainer5";
+            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.dataGridViewLiqRutas);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
+            this.splitContainer5.Size = new System.Drawing.Size(1008, 562);
+            this.splitContainer5.SplitterDistance = 280;
+            this.splitContainer5.TabIndex = 1;
             // 
             // dataGridViewLiqRutas
             // 
@@ -801,7 +916,7 @@
             this.dataGridViewLiqRutas.Name = "dataGridViewLiqRutas";
             this.dataGridViewLiqRutas.ReadOnly = true;
             this.dataGridViewLiqRutas.RowHeadersWidth = 10;
-            this.dataGridViewLiqRutas.Size = new System.Drawing.Size(1006, 279);
+            this.dataGridViewLiqRutas.Size = new System.Drawing.Size(1006, 278);
             this.dataGridViewLiqRutas.TabIndex = 0;
             this.dataGridViewLiqRutas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqRutas_RowEnter);
             // 
@@ -1288,14 +1403,171 @@
             // 
             this.tramosAsignadosRutaBindingSource.DataSource = typeof(LiqViajes_Bll_Data.TramosAsignadosRuta);
             // 
+            // splitContainer6
+            // 
+            this.splitContainer6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            // 
+            // splitContainer6.Panel1
+            // 
+            this.splitContainer6.Panel1.Controls.Add(this.dataGridViewCuentasGastos);
+            // 
+            // splitContainer6.Panel2
+            // 
+            this.splitContainer6.Panel2.Controls.Add(this.dataGridViewLavadas);
+            this.splitContainer6.Size = new System.Drawing.Size(1008, 278);
+            this.splitContainer6.SplitterDistance = 649;
+            this.splitContainer6.TabIndex = 0;
+            // 
+            // dataGridViewCuentasGastos
+            // 
+            this.dataGridViewCuentasGastos.AllowUserToAddRows = false;
+            this.dataGridViewCuentasGastos.AllowUserToDeleteRows = false;
+            this.dataGridViewCuentasGastos.AutoGenerateColumns = false;
+            this.dataGridViewCuentasGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCuentasGastos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.descripcionTerceroDataGridViewTextBoxColumn,
+            this.cuentaDataGridViewTextBoxColumn,
+            this.DetalleCuenta,
+            this.valorTotalDataGridViewTextBoxColumn1});
+            this.dataGridViewCuentasGastos.DataSource = this.tramosGastosBindingSource;
+            this.dataGridViewCuentasGastos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCuentasGastos.EnableHeadersVisualStyles = false;
+            this.dataGridViewCuentasGastos.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCuentasGastos.Name = "dataGridViewCuentasGastos";
+            this.dataGridViewCuentasGastos.ReadOnly = true;
+            this.dataGridViewCuentasGastos.RowHeadersWidth = 10;
+            this.dataGridViewCuentasGastos.Size = new System.Drawing.Size(647, 276);
+            this.dataGridViewCuentasGastos.TabIndex = 0;
+            // 
+            // descripcionTerceroDataGridViewTextBoxColumn
+            // 
+            this.descripcionTerceroDataGridViewTextBoxColumn.DataPropertyName = "DescripcionTercero";
+            this.descripcionTerceroDataGridViewTextBoxColumn.HeaderText = "Razón Social Tercero";
+            this.descripcionTerceroDataGridViewTextBoxColumn.Name = "descripcionTerceroDataGridViewTextBoxColumn";
+            this.descripcionTerceroDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcionTerceroDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // cuentaDataGridViewTextBoxColumn
+            // 
+            this.cuentaDataGridViewTextBoxColumn.DataPropertyName = "Cuenta";
+            this.cuentaDataGridViewTextBoxColumn.HeaderText = "Cuenta";
+            this.cuentaDataGridViewTextBoxColumn.Name = "cuentaDataGridViewTextBoxColumn";
+            this.cuentaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cuentaDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // DetalleCuenta
+            // 
+            this.DetalleCuenta.DataPropertyName = "DetalleCuenta";
+            this.DetalleCuenta.HeaderText = "Detalle";
+            this.DetalleCuenta.Name = "DetalleCuenta";
+            this.DetalleCuenta.ReadOnly = true;
+            // 
+            // valorTotalDataGridViewTextBoxColumn1
+            // 
+            this.valorTotalDataGridViewTextBoxColumn1.DataPropertyName = "ValorTotal";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n0";
+            this.valorTotalDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.valorTotalDataGridViewTextBoxColumn1.HeaderText = "Valor";
+            this.valorTotalDataGridViewTextBoxColumn1.Name = "valorTotalDataGridViewTextBoxColumn1";
+            this.valorTotalDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // tramosGastosBindingSource
+            // 
+            this.tramosGastosBindingSource.DataSource = typeof(LiqViajes_Bll_Data.TramosGastos);
+            // 
+            // dataGridViewLavadas
+            // 
+            this.dataGridViewLavadas.AllowUserToAddRows = false;
+            this.dataGridViewLavadas.AllowUserToDeleteRows = false;
+            this.dataGridViewLavadas.AutoGenerateColumns = false;
+            this.dataGridViewLavadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLavadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lngIdRegistroViajeDataGridViewTextBoxColumn,
+            this.origenDataGridViewTextBoxColumn1,
+            this.destinoDataGridViewTextBoxColumn1,
+            this.liquidadoDataGridViewTextBoxColumn,
+            this.fechaDataGridViewTextBoxColumn1,
+            this.valorDataGridViewTextBoxColumn});
+            this.dataGridViewLavadas.DataSource = this.tramosLavadasBindingSource;
+            this.dataGridViewLavadas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewLavadas.EnableHeadersVisualStyles = false;
+            this.dataGridViewLavadas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewLavadas.Name = "dataGridViewLavadas";
+            this.dataGridViewLavadas.ReadOnly = true;
+            this.dataGridViewLavadas.RowHeadersWidth = 10;
+            this.dataGridViewLavadas.Size = new System.Drawing.Size(353, 276);
+            this.dataGridViewLavadas.TabIndex = 0;
+            // 
+            // lngIdRegistroViajeDataGridViewTextBoxColumn
+            // 
+            this.lngIdRegistroViajeDataGridViewTextBoxColumn.DataPropertyName = "lngIdRegistroViaje";
+            this.lngIdRegistroViajeDataGridViewTextBoxColumn.HeaderText = "Viaje";
+            this.lngIdRegistroViajeDataGridViewTextBoxColumn.Name = "lngIdRegistroViajeDataGridViewTextBoxColumn";
+            this.lngIdRegistroViajeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lngIdRegistroViajeDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // origenDataGridViewTextBoxColumn1
+            // 
+            this.origenDataGridViewTextBoxColumn1.DataPropertyName = "Origen";
+            this.origenDataGridViewTextBoxColumn1.HeaderText = "Origen";
+            this.origenDataGridViewTextBoxColumn1.Name = "origenDataGridViewTextBoxColumn1";
+            this.origenDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.origenDataGridViewTextBoxColumn1.Width = 110;
+            // 
+            // destinoDataGridViewTextBoxColumn1
+            // 
+            this.destinoDataGridViewTextBoxColumn1.DataPropertyName = "Destino";
+            this.destinoDataGridViewTextBoxColumn1.HeaderText = "Destino";
+            this.destinoDataGridViewTextBoxColumn1.Name = "destinoDataGridViewTextBoxColumn1";
+            this.destinoDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.destinoDataGridViewTextBoxColumn1.Width = 110;
+            // 
+            // liquidadoDataGridViewTextBoxColumn
+            // 
+            this.liquidadoDataGridViewTextBoxColumn.DataPropertyName = "Liquidado";
+            this.liquidadoDataGridViewTextBoxColumn.HeaderText = "Liquidado";
+            this.liquidadoDataGridViewTextBoxColumn.Name = "liquidadoDataGridViewTextBoxColumn";
+            this.liquidadoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.liquidadoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.liquidadoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.liquidadoDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // fechaDataGridViewTextBoxColumn1
+            // 
+            this.fechaDataGridViewTextBoxColumn1.DataPropertyName = "Fecha";
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.fechaDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
+            this.fechaDataGridViewTextBoxColumn1.HeaderText = "Fecha";
+            this.fechaDataGridViewTextBoxColumn1.Name = "fechaDataGridViewTextBoxColumn1";
+            this.fechaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn
+            // 
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tramosLavadasBindingSource
+            // 
+            this.tramosLavadasBindingSource.DataSource = typeof(LiqViajes_Bll_Data.TramosLavadas);
+            // 
             // tabPage9
             // 
             this.tabPage9.Controls.Add(this.splitContainer4);
-            this.tabPage9.ImageIndex = 3;
+            this.tabPage9.ImageIndex = 6;
             this.tabPage9.Location = new System.Drawing.Point(4, 23);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(1014, 569);
+            this.tabPage9.Size = new System.Drawing.Size(1014, 568);
             this.tabPage9.TabIndex = 1;
             this.tabPage9.Text = "Detalle Liquidación";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -1314,7 +1586,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.panel7);
-            this.splitContainer4.Size = new System.Drawing.Size(1008, 563);
+            this.splitContainer4.Size = new System.Drawing.Size(1008, 562);
             this.splitContainer4.SplitterDistance = 591;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -1340,7 +1612,7 @@
             this.dataGridViewLiqGastos.Name = "dataGridViewLiqGastos";
             this.dataGridViewLiqGastos.ReadOnly = true;
             this.dataGridViewLiqGastos.RowHeadersWidth = 10;
-            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(589, 561);
+            this.dataGridViewLiqGastos.Size = new System.Drawing.Size(589, 560);
             this.dataGridViewLiqGastos.TabIndex = 1;
             this.dataGridViewLiqGastos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewLiqGastos_DataBindingComplete);
             this.dataGridViewLiqGastos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLiqGastos_RowEnter);
@@ -1454,7 +1726,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(411, 561);
+            this.panel7.Size = new System.Drawing.Size(411, 560);
             this.panel7.TabIndex = 4;
             // 
             // comboBoxTerceros
@@ -1491,7 +1763,7 @@
             this.textBoxObservacion.MaxLength = 500;
             this.textBoxObservacion.Multiline = true;
             this.textBoxObservacion.Name = "textBoxObservacion";
-            this.textBoxObservacion.Size = new System.Drawing.Size(402, 315);
+            this.textBoxObservacion.Size = new System.Drawing.Size(402, 314);
             this.textBoxObservacion.TabIndex = 1;
             // 
             // label8
@@ -1581,170 +1853,791 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Valor: ";
             // 
-            // imageList1
+            // tabPage4
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "1.png");
-            this.imageList1.Images.SetKeyName(1, "2.png");
-            this.imageList1.Images.SetKeyName(2, "3.png");
-            this.imageList1.Images.SetKeyName(3, "check.png");
-            this.imageList1.Images.SetKeyName(4, "ClearFilter2HS.png");
-            this.imageList1.Images.SetKeyName(5, "Filter2HS.png");
-            this.imageList1.Images.SetKeyName(6, "FindHS.png");
-            this.imageList1.Images.SetKeyName(7, "FireTruck.png");
-            this.imageList1.Images.SetKeyName(8, "GoogleRutas.png");
-            this.imageList1.Images.SetKeyName(9, "pushpin-blue.png");
-            this.imageList1.Images.SetKeyName(10, "pushpin-yellow.png");
-            this.imageList1.Images.SetKeyName(11, "rain.png");
-            this.imageList1.Images.SetKeyName(12, "recycle.png");
-            this.imageList1.Images.SetKeyName(13, "RedCar.png");
-            this.imageList1.Images.SetKeyName(14, "SchoolBus.png");
-            this.imageList1.Images.SetKeyName(15, "snow.png");
-            this.imageList1.Images.SetKeyName(16, "storm.png");
-            this.imageList1.Images.SetKeyName(17, "sun.png");
-            this.imageList1.Images.SetKeyName(18, "Truck.ico");
-            this.imageList1.Images.SetKeyName(19, "Truck.png");
-            this.imageList1.Images.SetKeyName(20, "YellowCar.png");
+            this.tabPage4.Controls.Add(this.panel4);
+            this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.ImageIndex = 3;
+            this.tabPage4.Location = new System.Drawing.Point(4, 23);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1014, 568);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "Agregar Tramo";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewLavadas
+            // panel4
             // 
-            this.dataGridViewLavadas.AllowUserToAddRows = false;
-            this.dataGridViewLavadas.AllowUserToDeleteRows = false;
-            this.dataGridViewLavadas.AutoGenerateColumns = false;
-            this.dataGridViewLavadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewLavadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.lngIdRegistroViajeDataGridViewTextBoxColumn,
-            this.origenDataGridViewTextBoxColumn1,
-            this.destinoDataGridViewTextBoxColumn1,
-            this.liquidadoDataGridViewTextBoxColumn,
-            this.fechaDataGridViewTextBoxColumn1,
-            this.valorDataGridViewTextBoxColumn});
-            this.dataGridViewLavadas.DataSource = this.tramosLavadasBindingSource;
-            this.dataGridViewLavadas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewLavadas.EnableHeadersVisualStyles = false;
-            this.dataGridViewLavadas.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewLavadas.Name = "dataGridViewLavadas";
-            this.dataGridViewLavadas.ReadOnly = true;
-            this.dataGridViewLavadas.RowHeadersWidth = 10;
-            this.dataGridViewLavadas.Size = new System.Drawing.Size(353, 276);
-            this.dataGridViewLavadas.TabIndex = 0;
+            this.panel4.Controls.Add(this.dataGridViewRuta);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 102);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1014, 466);
+            this.panel4.TabIndex = 1;
             // 
-            // lngIdRegistroViajeDataGridViewTextBoxColumn
+            // dataGridViewRuta
             // 
-            this.lngIdRegistroViajeDataGridViewTextBoxColumn.DataPropertyName = "lngIdRegistroViaje";
-            this.lngIdRegistroViajeDataGridViewTextBoxColumn.HeaderText = "Viaje";
-            this.lngIdRegistroViajeDataGridViewTextBoxColumn.Name = "lngIdRegistroViajeDataGridViewTextBoxColumn";
-            this.lngIdRegistroViajeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lngIdRegistroViajeDataGridViewTextBoxColumn.Width = 60;
+            this.dataGridViewRuta.AllowUserToAddRows = false;
+            this.dataGridViewRuta.AllowUserToDeleteRows = false;
+            this.dataGridViewRuta.AutoGenerateColumns = false;
+            this.dataGridViewRuta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRuta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lngIdRegistrRutaDataGridViewTextBoxColumn,
+            this.rutasOrigenCodigoDataGridViewTextBoxColumn,
+            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn,
+            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn,
+            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn,
+            this.strRutaAnticipoDataGridViewTextBoxColumn,
+            this.tipoVehiculoCodigoDataGridViewTextBoxColumn,
+            this.tipoVehiculoDataGridViewTextBoxColumn,
+            this.tipoTrailerCodigoDataGridViewTextBoxColumn,
+            this.pesoDataGridViewTextBoxColumn1,
+            this.programaDataGridViewTextBoxColumn,
+            this.logViajeVacioDataGridViewTextBoxColumn,
+            this.floGalonesDataGridViewTextBoxColumn,
+            this.curValorGalonDataGridViewTextBoxColumn,
+            this.cutCombustibleDataGridViewTextBoxColumn,
+            this.combustibleCarreteraDataGridViewTextBoxColumn1,
+            this.lngIdNroPeajesDataGridViewTextBoxColumn,
+            this.cutPeajeDataGridViewTextBoxColumn,
+            this.strNombrePeajesDataGridViewTextBoxColumn,
+            this.cutVariosLlantasDataGridViewTextBoxColumn,
+            this.cutVariosCeladaDataGridViewTextBoxColumn,
+            this.cutVariosPropinaDataGridViewTextBoxColumn,
+            this.cutVariosDataGridViewTextBoxColumn,
+            this.llamadasDataGridViewTextBoxColumn,
+            this.taxiDataGridViewTextBoxColumn1,
+            this.aseoDataGridViewTextBoxColumn1,
+            this.cutVariosLlantasVacioDataGridViewTextBoxColumn,
+            this.cutVariosCeladaVacioDataGridViewTextBoxColumn,
+            this.cutVariosPropinaVacioDataGridViewTextBoxColumn,
+            this.cutVariosVacioDataGridViewTextBoxColumn,
+            this.viaticosDataGridViewTextBoxColumn1,
+            this.cutParticipacionDataGridViewTextBoxColumn,
+            this.cutParticipacionVacioDataGridViewTextBoxColumn,
+            this.curHotelCarreteraDataGridViewTextBoxColumn,
+            this.curHotelCiudadDataGridViewTextBoxColumn,
+            this.curHotelDataGridViewTextBoxColumn,
+            this.curHotelCarreteraVacioDataGridViewTextBoxColumn,
+            this.curHotelCiudadVacioDataGridViewTextBoxColumn,
+            this.curHotelVacioDataGridViewTextBoxColumn,
+            this.intTiempoCargueDataGridViewTextBoxColumn,
+            this.intTiempoDescargueDataGridViewTextBoxColumn,
+            this.intTiempoAduanaDataGridViewTextBoxColumn,
+            this.intTotalTrayectoDataGridViewTextBoxColumn,
+            this.intTotalTiempoDataGridViewTextBoxColumn,
+            this.curComidaDataGridViewTextBoxColumn,
+            this.intTiempoCargueVacioDataGridViewTextBoxColumn,
+            this.intTiempoDescargueVacioDataGridViewTextBoxColumn,
+            this.intTiempoAduanaVacioDataGridViewTextBoxColumn,
+            this.intTotalTrayectoVacioDataGridViewTextBoxColumn,
+            this.intTotalTiempoVacioDataGridViewTextBoxColumn,
+            this.curComidaVacioDataGridViewTextBoxColumn,
+            this.curDesvareManoRepuestosDataGridViewTextBoxColumn,
+            this.curDesvareManoObraDataGridViewTextBoxColumn,
+            this.cutSaldoDataGridViewTextBoxColumn,
+            this.cutSaldoVacioDataGridViewTextBoxColumn,
+            this.cutKmtsDataGridViewTextBoxColumn,
+            this.logActualizaPeajesDataGridViewTextBoxColumn,
+            this.intFactorKmPorGalonDataGridViewTextBoxColumn,
+            this.logEstadoRutaDataGridViewTextBoxColumn,
+            this.parqueaderoCarreteraDataGridViewTextBoxColumn1,
+            this.parqueaderoCiudadDataGridViewTextBoxColumn1,
+            this.montadaLLantaCarreteraDataGridViewTextBoxColumn,
+            this.montadaLLantaCiudadDataGridViewTextBoxColumn,
+            this.ajusteCarreteraDataGridViewTextBoxColumn1,
+            this.lavadaDataGridViewTextBoxColumn,
+            this.amarresDataGridViewTextBoxColumn1,
+            this.engradasaDataGridViewTextBoxColumn,
+            this.calibradaDataGridViewTextBoxColumn1,
+            this.liquidadoDataGridViewTextBoxColumn1,
+            this.logVacioDataGridViewTextBoxColumn,
+            this.papeleriaDataGridViewTextBoxColumn1,
+            this.logFavoritoDataGridViewTextBoxColumn,
+            this.curCargueDataGridViewTextBoxColumn,
+            this.curDescargueDataGridViewTextBoxColumn,
+            this.logAnticipoACPMDataGridViewTextBoxColumn1,
+            this.rutasOrigenDataGridViewTextBoxColumn,
+            this.tiposTrailersDataGridViewTextBoxColumn,
+            this.tiposVehiculosDataGridViewTextBoxColumn});
+            this.dataGridViewRuta.DataSource = this.rutasBindingSource;
+            this.dataGridViewRuta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewRuta.EnableHeadersVisualStyles = false;
+            this.dataGridViewRuta.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewRuta.Name = "dataGridViewRuta";
+            this.dataGridViewRuta.ReadOnly = true;
+            this.dataGridViewRuta.RowHeadersWidth = 10;
+            this.dataGridViewRuta.Size = new System.Drawing.Size(1014, 466);
+            this.dataGridViewRuta.TabIndex = 1;
             // 
-            // origenDataGridViewTextBoxColumn1
+            // lngIdRegistrRutaDataGridViewTextBoxColumn
             // 
-            this.origenDataGridViewTextBoxColumn1.DataPropertyName = "Origen";
-            this.origenDataGridViewTextBoxColumn1.HeaderText = "Origen";
-            this.origenDataGridViewTextBoxColumn1.Name = "origenDataGridViewTextBoxColumn1";
-            this.origenDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.origenDataGridViewTextBoxColumn1.Width = 110;
+            this.lngIdRegistrRutaDataGridViewTextBoxColumn.DataPropertyName = "lngIdRegistrRuta";
+            this.lngIdRegistrRutaDataGridViewTextBoxColumn.HeaderText = "lngIdRegistrRuta";
+            this.lngIdRegistrRutaDataGridViewTextBoxColumn.Name = "lngIdRegistrRutaDataGridViewTextBoxColumn";
+            this.lngIdRegistrRutaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // destinoDataGridViewTextBoxColumn1
+            // rutasOrigenCodigoDataGridViewTextBoxColumn
             // 
-            this.destinoDataGridViewTextBoxColumn1.DataPropertyName = "Destino";
-            this.destinoDataGridViewTextBoxColumn1.HeaderText = "Destino";
-            this.destinoDataGridViewTextBoxColumn1.Name = "destinoDataGridViewTextBoxColumn1";
-            this.destinoDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.destinoDataGridViewTextBoxColumn1.Width = 110;
+            this.rutasOrigenCodigoDataGridViewTextBoxColumn.DataPropertyName = "RutasOrigenCodigo";
+            this.rutasOrigenCodigoDataGridViewTextBoxColumn.HeaderText = "RutasOrigenCodigo";
+            this.rutasOrigenCodigoDataGridViewTextBoxColumn.Name = "rutasOrigenCodigoDataGridViewTextBoxColumn";
+            this.rutasOrigenCodigoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // liquidadoDataGridViewTextBoxColumn
+            // strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn
             // 
-            this.liquidadoDataGridViewTextBoxColumn.DataPropertyName = "Liquidado";
-            this.liquidadoDataGridViewTextBoxColumn.HeaderText = "Liquidado";
-            this.liquidadoDataGridViewTextBoxColumn.Name = "liquidadoDataGridViewTextBoxColumn";
-            this.liquidadoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.liquidadoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.liquidadoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.liquidadoDataGridViewTextBoxColumn.Width = 80;
+            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.DataPropertyName = "strRutaAnticipoGrupoOrigen";
+            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipoGrupoOrigen";
+            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.Name = "strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn";
+            this.strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // fechaDataGridViewTextBoxColumn1
+            // strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn
             // 
-            this.fechaDataGridViewTextBoxColumn1.DataPropertyName = "Fecha";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.fechaDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.fechaDataGridViewTextBoxColumn1.HeaderText = "Fecha";
-            this.fechaDataGridViewTextBoxColumn1.Name = "fechaDataGridViewTextBoxColumn1";
-            this.fechaDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.DataPropertyName = "strRutaAnticipoGrupoDestino";
+            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipoGrupoDestino";
+            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.Name = "strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn";
+            this.strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // valorDataGridViewTextBoxColumn
+            // strRutaAnticipoGrupoDataGridViewTextBoxColumn
             // 
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.DataPropertyName = "strRutaAnticipoGrupo";
+            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipoGrupo";
+            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.Name = "strRutaAnticipoGrupoDataGridViewTextBoxColumn";
+            this.strRutaAnticipoGrupoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // tramosLavadasBindingSource
+            // strRutaAnticipoDataGridViewTextBoxColumn
             // 
-            this.tramosLavadasBindingSource.DataSource = typeof(LiqViajes_Bll_Data.TramosLavadas);
+            this.strRutaAnticipoDataGridViewTextBoxColumn.DataPropertyName = "strRutaAnticipo";
+            this.strRutaAnticipoDataGridViewTextBoxColumn.HeaderText = "strRutaAnticipo";
+            this.strRutaAnticipoDataGridViewTextBoxColumn.Name = "strRutaAnticipoDataGridViewTextBoxColumn";
+            this.strRutaAnticipoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewCuentasGastos
+            // tipoVehiculoCodigoDataGridViewTextBoxColumn
             // 
-            this.dataGridViewCuentasGastos.AllowUserToAddRows = false;
-            this.dataGridViewCuentasGastos.AllowUserToDeleteRows = false;
-            this.dataGridViewCuentasGastos.AutoGenerateColumns = false;
-            this.dataGridViewCuentasGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCuentasGastos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.descripcionTerceroDataGridViewTextBoxColumn,
-            this.cuentaDataGridViewTextBoxColumn,
-            this.DetalleCuenta,
-            this.valorTotalDataGridViewTextBoxColumn1});
-            this.dataGridViewCuentasGastos.DataSource = this.tramosGastosBindingSource;
-            this.dataGridViewCuentasGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCuentasGastos.EnableHeadersVisualStyles = false;
-            this.dataGridViewCuentasGastos.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewCuentasGastos.Name = "dataGridViewCuentasGastos";
-            this.dataGridViewCuentasGastos.ReadOnly = true;
-            this.dataGridViewCuentasGastos.RowHeadersWidth = 10;
-            this.dataGridViewCuentasGastos.Size = new System.Drawing.Size(647, 276);
-            this.dataGridViewCuentasGastos.TabIndex = 0;
+            this.tipoVehiculoCodigoDataGridViewTextBoxColumn.DataPropertyName = "TipoVehiculoCodigo";
+            this.tipoVehiculoCodigoDataGridViewTextBoxColumn.HeaderText = "TipoVehiculoCodigo";
+            this.tipoVehiculoCodigoDataGridViewTextBoxColumn.Name = "tipoVehiculoCodigoDataGridViewTextBoxColumn";
+            this.tipoVehiculoCodigoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // descripcionTerceroDataGridViewTextBoxColumn
+            // tipoVehiculoDataGridViewTextBoxColumn
             // 
-            this.descripcionTerceroDataGridViewTextBoxColumn.DataPropertyName = "DescripcionTercero";
-            this.descripcionTerceroDataGridViewTextBoxColumn.HeaderText = "Razón Social Tercero";
-            this.descripcionTerceroDataGridViewTextBoxColumn.Name = "descripcionTerceroDataGridViewTextBoxColumn";
-            this.descripcionTerceroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcionTerceroDataGridViewTextBoxColumn.Width = 200;
+            this.tipoVehiculoDataGridViewTextBoxColumn.DataPropertyName = "TipoVehiculo";
+            this.tipoVehiculoDataGridViewTextBoxColumn.HeaderText = "TipoVehiculo";
+            this.tipoVehiculoDataGridViewTextBoxColumn.Name = "tipoVehiculoDataGridViewTextBoxColumn";
+            this.tipoVehiculoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // cuentaDataGridViewTextBoxColumn
+            // tipoTrailerCodigoDataGridViewTextBoxColumn
             // 
-            this.cuentaDataGridViewTextBoxColumn.DataPropertyName = "Cuenta";
-            this.cuentaDataGridViewTextBoxColumn.HeaderText = "Cuenta";
-            this.cuentaDataGridViewTextBoxColumn.Name = "cuentaDataGridViewTextBoxColumn";
-            this.cuentaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cuentaDataGridViewTextBoxColumn.Width = 80;
+            this.tipoTrailerCodigoDataGridViewTextBoxColumn.DataPropertyName = "TipoTrailerCodigo";
+            this.tipoTrailerCodigoDataGridViewTextBoxColumn.HeaderText = "TipoTrailerCodigo";
+            this.tipoTrailerCodigoDataGridViewTextBoxColumn.Name = "tipoTrailerCodigoDataGridViewTextBoxColumn";
+            this.tipoTrailerCodigoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // DetalleCuenta
+            // pesoDataGridViewTextBoxColumn1
             // 
-            this.DetalleCuenta.DataPropertyName = "DetalleCuenta";
-            this.DetalleCuenta.HeaderText = "Detalle";
-            this.DetalleCuenta.Name = "DetalleCuenta";
-            this.DetalleCuenta.ReadOnly = true;
+            this.pesoDataGridViewTextBoxColumn1.DataPropertyName = "Peso";
+            this.pesoDataGridViewTextBoxColumn1.HeaderText = "Peso";
+            this.pesoDataGridViewTextBoxColumn1.Name = "pesoDataGridViewTextBoxColumn1";
+            this.pesoDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // valorTotalDataGridViewTextBoxColumn1
+            // programaDataGridViewTextBoxColumn
             // 
-            this.valorTotalDataGridViewTextBoxColumn1.DataPropertyName = "ValorTotal";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n0";
-            this.valorTotalDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.valorTotalDataGridViewTextBoxColumn1.HeaderText = "Valor";
-            this.valorTotalDataGridViewTextBoxColumn1.Name = "valorTotalDataGridViewTextBoxColumn1";
-            this.valorTotalDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.programaDataGridViewTextBoxColumn.DataPropertyName = "Programa";
+            this.programaDataGridViewTextBoxColumn.HeaderText = "Programa";
+            this.programaDataGridViewTextBoxColumn.Name = "programaDataGridViewTextBoxColumn";
+            this.programaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // tramosGastosBindingSource
+            // logViajeVacioDataGridViewTextBoxColumn
             // 
-            this.tramosGastosBindingSource.DataSource = typeof(LiqViajes_Bll_Data.TramosGastos);
+            this.logViajeVacioDataGridViewTextBoxColumn.DataPropertyName = "logViajeVacio";
+            this.logViajeVacioDataGridViewTextBoxColumn.HeaderText = "logViajeVacio";
+            this.logViajeVacioDataGridViewTextBoxColumn.Name = "logViajeVacioDataGridViewTextBoxColumn";
+            this.logViajeVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // floGalonesDataGridViewTextBoxColumn
+            // 
+            this.floGalonesDataGridViewTextBoxColumn.DataPropertyName = "floGalones";
+            this.floGalonesDataGridViewTextBoxColumn.HeaderText = "floGalones";
+            this.floGalonesDataGridViewTextBoxColumn.Name = "floGalonesDataGridViewTextBoxColumn";
+            this.floGalonesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curValorGalonDataGridViewTextBoxColumn
+            // 
+            this.curValorGalonDataGridViewTextBoxColumn.DataPropertyName = "curValorGalon";
+            this.curValorGalonDataGridViewTextBoxColumn.HeaderText = "curValorGalon";
+            this.curValorGalonDataGridViewTextBoxColumn.Name = "curValorGalonDataGridViewTextBoxColumn";
+            this.curValorGalonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutCombustibleDataGridViewTextBoxColumn
+            // 
+            this.cutCombustibleDataGridViewTextBoxColumn.DataPropertyName = "cutCombustible";
+            this.cutCombustibleDataGridViewTextBoxColumn.HeaderText = "cutCombustible";
+            this.cutCombustibleDataGridViewTextBoxColumn.Name = "cutCombustibleDataGridViewTextBoxColumn";
+            this.cutCombustibleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // combustibleCarreteraDataGridViewTextBoxColumn1
+            // 
+            this.combustibleCarreteraDataGridViewTextBoxColumn1.DataPropertyName = "CombustibleCarretera";
+            this.combustibleCarreteraDataGridViewTextBoxColumn1.HeaderText = "CombustibleCarretera";
+            this.combustibleCarreteraDataGridViewTextBoxColumn1.Name = "combustibleCarreteraDataGridViewTextBoxColumn1";
+            this.combustibleCarreteraDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // lngIdNroPeajesDataGridViewTextBoxColumn
+            // 
+            this.lngIdNroPeajesDataGridViewTextBoxColumn.DataPropertyName = "lngIdNroPeajes";
+            this.lngIdNroPeajesDataGridViewTextBoxColumn.HeaderText = "lngIdNroPeajes";
+            this.lngIdNroPeajesDataGridViewTextBoxColumn.Name = "lngIdNroPeajesDataGridViewTextBoxColumn";
+            this.lngIdNroPeajesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutPeajeDataGridViewTextBoxColumn
+            // 
+            this.cutPeajeDataGridViewTextBoxColumn.DataPropertyName = "cutPeaje";
+            this.cutPeajeDataGridViewTextBoxColumn.HeaderText = "cutPeaje";
+            this.cutPeajeDataGridViewTextBoxColumn.Name = "cutPeajeDataGridViewTextBoxColumn";
+            this.cutPeajeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // strNombrePeajesDataGridViewTextBoxColumn
+            // 
+            this.strNombrePeajesDataGridViewTextBoxColumn.DataPropertyName = "strNombrePeajes";
+            this.strNombrePeajesDataGridViewTextBoxColumn.HeaderText = "strNombrePeajes";
+            this.strNombrePeajesDataGridViewTextBoxColumn.Name = "strNombrePeajesDataGridViewTextBoxColumn";
+            this.strNombrePeajesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutVariosLlantasDataGridViewTextBoxColumn
+            // 
+            this.cutVariosLlantasDataGridViewTextBoxColumn.DataPropertyName = "cutVariosLlantas";
+            this.cutVariosLlantasDataGridViewTextBoxColumn.HeaderText = "cutVariosLlantas";
+            this.cutVariosLlantasDataGridViewTextBoxColumn.Name = "cutVariosLlantasDataGridViewTextBoxColumn";
+            this.cutVariosLlantasDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutVariosCeladaDataGridViewTextBoxColumn
+            // 
+            this.cutVariosCeladaDataGridViewTextBoxColumn.DataPropertyName = "cutVariosCelada";
+            this.cutVariosCeladaDataGridViewTextBoxColumn.HeaderText = "cutVariosCelada";
+            this.cutVariosCeladaDataGridViewTextBoxColumn.Name = "cutVariosCeladaDataGridViewTextBoxColumn";
+            this.cutVariosCeladaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutVariosPropinaDataGridViewTextBoxColumn
+            // 
+            this.cutVariosPropinaDataGridViewTextBoxColumn.DataPropertyName = "cutVariosPropina";
+            this.cutVariosPropinaDataGridViewTextBoxColumn.HeaderText = "cutVariosPropina";
+            this.cutVariosPropinaDataGridViewTextBoxColumn.Name = "cutVariosPropinaDataGridViewTextBoxColumn";
+            this.cutVariosPropinaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutVariosDataGridViewTextBoxColumn
+            // 
+            this.cutVariosDataGridViewTextBoxColumn.DataPropertyName = "cutVarios";
+            this.cutVariosDataGridViewTextBoxColumn.HeaderText = "cutVarios";
+            this.cutVariosDataGridViewTextBoxColumn.Name = "cutVariosDataGridViewTextBoxColumn";
+            this.cutVariosDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // llamadasDataGridViewTextBoxColumn
+            // 
+            this.llamadasDataGridViewTextBoxColumn.DataPropertyName = "Llamadas";
+            this.llamadasDataGridViewTextBoxColumn.HeaderText = "Llamadas";
+            this.llamadasDataGridViewTextBoxColumn.Name = "llamadasDataGridViewTextBoxColumn";
+            this.llamadasDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxiDataGridViewTextBoxColumn1
+            // 
+            this.taxiDataGridViewTextBoxColumn1.DataPropertyName = "Taxi";
+            this.taxiDataGridViewTextBoxColumn1.HeaderText = "Taxi";
+            this.taxiDataGridViewTextBoxColumn1.Name = "taxiDataGridViewTextBoxColumn1";
+            this.taxiDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // aseoDataGridViewTextBoxColumn1
+            // 
+            this.aseoDataGridViewTextBoxColumn1.DataPropertyName = "Aseo";
+            this.aseoDataGridViewTextBoxColumn1.HeaderText = "Aseo";
+            this.aseoDataGridViewTextBoxColumn1.Name = "aseoDataGridViewTextBoxColumn1";
+            this.aseoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // cutVariosLlantasVacioDataGridViewTextBoxColumn
+            // 
+            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosLlantasVacio";
+            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosLlantasVacio";
+            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.Name = "cutVariosLlantasVacioDataGridViewTextBoxColumn";
+            this.cutVariosLlantasVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutVariosCeladaVacioDataGridViewTextBoxColumn
+            // 
+            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosCeladaVacio";
+            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosCeladaVacio";
+            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.Name = "cutVariosCeladaVacioDataGridViewTextBoxColumn";
+            this.cutVariosCeladaVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutVariosPropinaVacioDataGridViewTextBoxColumn
+            // 
+            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosPropinaVacio";
+            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosPropinaVacio";
+            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.Name = "cutVariosPropinaVacioDataGridViewTextBoxColumn";
+            this.cutVariosPropinaVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutVariosVacioDataGridViewTextBoxColumn
+            // 
+            this.cutVariosVacioDataGridViewTextBoxColumn.DataPropertyName = "cutVariosVacio";
+            this.cutVariosVacioDataGridViewTextBoxColumn.HeaderText = "cutVariosVacio";
+            this.cutVariosVacioDataGridViewTextBoxColumn.Name = "cutVariosVacioDataGridViewTextBoxColumn";
+            this.cutVariosVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // viaticosDataGridViewTextBoxColumn1
+            // 
+            this.viaticosDataGridViewTextBoxColumn1.DataPropertyName = "Viaticos";
+            this.viaticosDataGridViewTextBoxColumn1.HeaderText = "Viaticos";
+            this.viaticosDataGridViewTextBoxColumn1.Name = "viaticosDataGridViewTextBoxColumn1";
+            this.viaticosDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // cutParticipacionDataGridViewTextBoxColumn
+            // 
+            this.cutParticipacionDataGridViewTextBoxColumn.DataPropertyName = "cutParticipacion";
+            this.cutParticipacionDataGridViewTextBoxColumn.HeaderText = "cutParticipacion";
+            this.cutParticipacionDataGridViewTextBoxColumn.Name = "cutParticipacionDataGridViewTextBoxColumn";
+            this.cutParticipacionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutParticipacionVacioDataGridViewTextBoxColumn
+            // 
+            this.cutParticipacionVacioDataGridViewTextBoxColumn.DataPropertyName = "cutParticipacionVacio";
+            this.cutParticipacionVacioDataGridViewTextBoxColumn.HeaderText = "cutParticipacionVacio";
+            this.cutParticipacionVacioDataGridViewTextBoxColumn.Name = "cutParticipacionVacioDataGridViewTextBoxColumn";
+            this.cutParticipacionVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curHotelCarreteraDataGridViewTextBoxColumn
+            // 
+            this.curHotelCarreteraDataGridViewTextBoxColumn.DataPropertyName = "curHotelCarretera";
+            this.curHotelCarreteraDataGridViewTextBoxColumn.HeaderText = "curHotelCarretera";
+            this.curHotelCarreteraDataGridViewTextBoxColumn.Name = "curHotelCarreteraDataGridViewTextBoxColumn";
+            this.curHotelCarreteraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curHotelCiudadDataGridViewTextBoxColumn
+            // 
+            this.curHotelCiudadDataGridViewTextBoxColumn.DataPropertyName = "curHotelCiudad";
+            this.curHotelCiudadDataGridViewTextBoxColumn.HeaderText = "curHotelCiudad";
+            this.curHotelCiudadDataGridViewTextBoxColumn.Name = "curHotelCiudadDataGridViewTextBoxColumn";
+            this.curHotelCiudadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curHotelDataGridViewTextBoxColumn
+            // 
+            this.curHotelDataGridViewTextBoxColumn.DataPropertyName = "curHotel";
+            this.curHotelDataGridViewTextBoxColumn.HeaderText = "curHotel";
+            this.curHotelDataGridViewTextBoxColumn.Name = "curHotelDataGridViewTextBoxColumn";
+            this.curHotelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curHotelCarreteraVacioDataGridViewTextBoxColumn
+            // 
+            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.DataPropertyName = "curHotelCarreteraVacio";
+            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.HeaderText = "curHotelCarreteraVacio";
+            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.Name = "curHotelCarreteraVacioDataGridViewTextBoxColumn";
+            this.curHotelCarreteraVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curHotelCiudadVacioDataGridViewTextBoxColumn
+            // 
+            this.curHotelCiudadVacioDataGridViewTextBoxColumn.DataPropertyName = "curHotelCiudadVacio";
+            this.curHotelCiudadVacioDataGridViewTextBoxColumn.HeaderText = "curHotelCiudadVacio";
+            this.curHotelCiudadVacioDataGridViewTextBoxColumn.Name = "curHotelCiudadVacioDataGridViewTextBoxColumn";
+            this.curHotelCiudadVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curHotelVacioDataGridViewTextBoxColumn
+            // 
+            this.curHotelVacioDataGridViewTextBoxColumn.DataPropertyName = "curHotelVacio";
+            this.curHotelVacioDataGridViewTextBoxColumn.HeaderText = "curHotelVacio";
+            this.curHotelVacioDataGridViewTextBoxColumn.Name = "curHotelVacioDataGridViewTextBoxColumn";
+            this.curHotelVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTiempoCargueDataGridViewTextBoxColumn
+            // 
+            this.intTiempoCargueDataGridViewTextBoxColumn.DataPropertyName = "intTiempoCargue";
+            this.intTiempoCargueDataGridViewTextBoxColumn.HeaderText = "intTiempoCargue";
+            this.intTiempoCargueDataGridViewTextBoxColumn.Name = "intTiempoCargueDataGridViewTextBoxColumn";
+            this.intTiempoCargueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTiempoDescargueDataGridViewTextBoxColumn
+            // 
+            this.intTiempoDescargueDataGridViewTextBoxColumn.DataPropertyName = "intTiempoDescargue";
+            this.intTiempoDescargueDataGridViewTextBoxColumn.HeaderText = "intTiempoDescargue";
+            this.intTiempoDescargueDataGridViewTextBoxColumn.Name = "intTiempoDescargueDataGridViewTextBoxColumn";
+            this.intTiempoDescargueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTiempoAduanaDataGridViewTextBoxColumn
+            // 
+            this.intTiempoAduanaDataGridViewTextBoxColumn.DataPropertyName = "intTiempoAduana";
+            this.intTiempoAduanaDataGridViewTextBoxColumn.HeaderText = "intTiempoAduana";
+            this.intTiempoAduanaDataGridViewTextBoxColumn.Name = "intTiempoAduanaDataGridViewTextBoxColumn";
+            this.intTiempoAduanaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTotalTrayectoDataGridViewTextBoxColumn
+            // 
+            this.intTotalTrayectoDataGridViewTextBoxColumn.DataPropertyName = "intTotalTrayecto";
+            this.intTotalTrayectoDataGridViewTextBoxColumn.HeaderText = "intTotalTrayecto";
+            this.intTotalTrayectoDataGridViewTextBoxColumn.Name = "intTotalTrayectoDataGridViewTextBoxColumn";
+            this.intTotalTrayectoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTotalTiempoDataGridViewTextBoxColumn
+            // 
+            this.intTotalTiempoDataGridViewTextBoxColumn.DataPropertyName = "intTotalTiempo";
+            this.intTotalTiempoDataGridViewTextBoxColumn.HeaderText = "intTotalTiempo";
+            this.intTotalTiempoDataGridViewTextBoxColumn.Name = "intTotalTiempoDataGridViewTextBoxColumn";
+            this.intTotalTiempoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curComidaDataGridViewTextBoxColumn
+            // 
+            this.curComidaDataGridViewTextBoxColumn.DataPropertyName = "curComida";
+            this.curComidaDataGridViewTextBoxColumn.HeaderText = "curComida";
+            this.curComidaDataGridViewTextBoxColumn.Name = "curComidaDataGridViewTextBoxColumn";
+            this.curComidaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTiempoCargueVacioDataGridViewTextBoxColumn
+            // 
+            this.intTiempoCargueVacioDataGridViewTextBoxColumn.DataPropertyName = "intTiempoCargueVacio";
+            this.intTiempoCargueVacioDataGridViewTextBoxColumn.HeaderText = "intTiempoCargueVacio";
+            this.intTiempoCargueVacioDataGridViewTextBoxColumn.Name = "intTiempoCargueVacioDataGridViewTextBoxColumn";
+            this.intTiempoCargueVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTiempoDescargueVacioDataGridViewTextBoxColumn
+            // 
+            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.DataPropertyName = "intTiempoDescargueVacio";
+            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.HeaderText = "intTiempoDescargueVacio";
+            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.Name = "intTiempoDescargueVacioDataGridViewTextBoxColumn";
+            this.intTiempoDescargueVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTiempoAduanaVacioDataGridViewTextBoxColumn
+            // 
+            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.DataPropertyName = "intTiempoAduanaVacio";
+            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.HeaderText = "intTiempoAduanaVacio";
+            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.Name = "intTiempoAduanaVacioDataGridViewTextBoxColumn";
+            this.intTiempoAduanaVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTotalTrayectoVacioDataGridViewTextBoxColumn
+            // 
+            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.DataPropertyName = "intTotalTrayectoVacio";
+            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.HeaderText = "intTotalTrayectoVacio";
+            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.Name = "intTotalTrayectoVacioDataGridViewTextBoxColumn";
+            this.intTotalTrayectoVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intTotalTiempoVacioDataGridViewTextBoxColumn
+            // 
+            this.intTotalTiempoVacioDataGridViewTextBoxColumn.DataPropertyName = "intTotalTiempoVacio";
+            this.intTotalTiempoVacioDataGridViewTextBoxColumn.HeaderText = "intTotalTiempoVacio";
+            this.intTotalTiempoVacioDataGridViewTextBoxColumn.Name = "intTotalTiempoVacioDataGridViewTextBoxColumn";
+            this.intTotalTiempoVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curComidaVacioDataGridViewTextBoxColumn
+            // 
+            this.curComidaVacioDataGridViewTextBoxColumn.DataPropertyName = "curComidaVacio";
+            this.curComidaVacioDataGridViewTextBoxColumn.HeaderText = "curComidaVacio";
+            this.curComidaVacioDataGridViewTextBoxColumn.Name = "curComidaVacioDataGridViewTextBoxColumn";
+            this.curComidaVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curDesvareManoRepuestosDataGridViewTextBoxColumn
+            // 
+            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.DataPropertyName = "curDesvareManoRepuestos";
+            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.HeaderText = "curDesvareManoRepuestos";
+            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.Name = "curDesvareManoRepuestosDataGridViewTextBoxColumn";
+            this.curDesvareManoRepuestosDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curDesvareManoObraDataGridViewTextBoxColumn
+            // 
+            this.curDesvareManoObraDataGridViewTextBoxColumn.DataPropertyName = "curDesvareManoObra";
+            this.curDesvareManoObraDataGridViewTextBoxColumn.HeaderText = "curDesvareManoObra";
+            this.curDesvareManoObraDataGridViewTextBoxColumn.Name = "curDesvareManoObraDataGridViewTextBoxColumn";
+            this.curDesvareManoObraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutSaldoDataGridViewTextBoxColumn
+            // 
+            this.cutSaldoDataGridViewTextBoxColumn.DataPropertyName = "cutSaldo";
+            this.cutSaldoDataGridViewTextBoxColumn.HeaderText = "cutSaldo";
+            this.cutSaldoDataGridViewTextBoxColumn.Name = "cutSaldoDataGridViewTextBoxColumn";
+            this.cutSaldoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutSaldoVacioDataGridViewTextBoxColumn
+            // 
+            this.cutSaldoVacioDataGridViewTextBoxColumn.DataPropertyName = "cutSaldoVacio";
+            this.cutSaldoVacioDataGridViewTextBoxColumn.HeaderText = "cutSaldoVacio";
+            this.cutSaldoVacioDataGridViewTextBoxColumn.Name = "cutSaldoVacioDataGridViewTextBoxColumn";
+            this.cutSaldoVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cutKmtsDataGridViewTextBoxColumn
+            // 
+            this.cutKmtsDataGridViewTextBoxColumn.DataPropertyName = "cutKmts";
+            this.cutKmtsDataGridViewTextBoxColumn.HeaderText = "cutKmts";
+            this.cutKmtsDataGridViewTextBoxColumn.Name = "cutKmtsDataGridViewTextBoxColumn";
+            this.cutKmtsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // logActualizaPeajesDataGridViewTextBoxColumn
+            // 
+            this.logActualizaPeajesDataGridViewTextBoxColumn.DataPropertyName = "logActualizaPeajes";
+            this.logActualizaPeajesDataGridViewTextBoxColumn.HeaderText = "logActualizaPeajes";
+            this.logActualizaPeajesDataGridViewTextBoxColumn.Name = "logActualizaPeajesDataGridViewTextBoxColumn";
+            this.logActualizaPeajesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intFactorKmPorGalonDataGridViewTextBoxColumn
+            // 
+            this.intFactorKmPorGalonDataGridViewTextBoxColumn.DataPropertyName = "intFactorKmPorGalon";
+            this.intFactorKmPorGalonDataGridViewTextBoxColumn.HeaderText = "intFactorKmPorGalon";
+            this.intFactorKmPorGalonDataGridViewTextBoxColumn.Name = "intFactorKmPorGalonDataGridViewTextBoxColumn";
+            this.intFactorKmPorGalonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // logEstadoRutaDataGridViewTextBoxColumn
+            // 
+            this.logEstadoRutaDataGridViewTextBoxColumn.DataPropertyName = "logEstadoRuta";
+            this.logEstadoRutaDataGridViewTextBoxColumn.HeaderText = "logEstadoRuta";
+            this.logEstadoRutaDataGridViewTextBoxColumn.Name = "logEstadoRutaDataGridViewTextBoxColumn";
+            this.logEstadoRutaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // parqueaderoCarreteraDataGridViewTextBoxColumn1
+            // 
+            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.DataPropertyName = "ParqueaderoCarretera";
+            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.HeaderText = "ParqueaderoCarretera";
+            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.Name = "parqueaderoCarreteraDataGridViewTextBoxColumn1";
+            this.parqueaderoCarreteraDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // parqueaderoCiudadDataGridViewTextBoxColumn1
+            // 
+            this.parqueaderoCiudadDataGridViewTextBoxColumn1.DataPropertyName = "ParqueaderoCiudad";
+            this.parqueaderoCiudadDataGridViewTextBoxColumn1.HeaderText = "ParqueaderoCiudad";
+            this.parqueaderoCiudadDataGridViewTextBoxColumn1.Name = "parqueaderoCiudadDataGridViewTextBoxColumn1";
+            this.parqueaderoCiudadDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // montadaLLantaCarreteraDataGridViewTextBoxColumn
+            // 
+            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.DataPropertyName = "MontadaLLantaCarretera";
+            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.HeaderText = "MontadaLLantaCarretera";
+            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.Name = "montadaLLantaCarreteraDataGridViewTextBoxColumn";
+            this.montadaLLantaCarreteraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // montadaLLantaCiudadDataGridViewTextBoxColumn
+            // 
+            this.montadaLLantaCiudadDataGridViewTextBoxColumn.DataPropertyName = "MontadaLLantaCiudad";
+            this.montadaLLantaCiudadDataGridViewTextBoxColumn.HeaderText = "MontadaLLantaCiudad";
+            this.montadaLLantaCiudadDataGridViewTextBoxColumn.Name = "montadaLLantaCiudadDataGridViewTextBoxColumn";
+            this.montadaLLantaCiudadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ajusteCarreteraDataGridViewTextBoxColumn1
+            // 
+            this.ajusteCarreteraDataGridViewTextBoxColumn1.DataPropertyName = "AjusteCarretera";
+            this.ajusteCarreteraDataGridViewTextBoxColumn1.HeaderText = "AjusteCarretera";
+            this.ajusteCarreteraDataGridViewTextBoxColumn1.Name = "ajusteCarreteraDataGridViewTextBoxColumn1";
+            this.ajusteCarreteraDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // lavadaDataGridViewTextBoxColumn
+            // 
+            this.lavadaDataGridViewTextBoxColumn.DataPropertyName = "Lavada";
+            this.lavadaDataGridViewTextBoxColumn.HeaderText = "Lavada";
+            this.lavadaDataGridViewTextBoxColumn.Name = "lavadaDataGridViewTextBoxColumn";
+            this.lavadaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // amarresDataGridViewTextBoxColumn1
+            // 
+            this.amarresDataGridViewTextBoxColumn1.DataPropertyName = "Amarres";
+            this.amarresDataGridViewTextBoxColumn1.HeaderText = "Amarres";
+            this.amarresDataGridViewTextBoxColumn1.Name = "amarresDataGridViewTextBoxColumn1";
+            this.amarresDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // engradasaDataGridViewTextBoxColumn
+            // 
+            this.engradasaDataGridViewTextBoxColumn.DataPropertyName = "Engradasa";
+            this.engradasaDataGridViewTextBoxColumn.HeaderText = "Engradasa";
+            this.engradasaDataGridViewTextBoxColumn.Name = "engradasaDataGridViewTextBoxColumn";
+            this.engradasaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // calibradaDataGridViewTextBoxColumn1
+            // 
+            this.calibradaDataGridViewTextBoxColumn1.DataPropertyName = "Calibrada";
+            this.calibradaDataGridViewTextBoxColumn1.HeaderText = "Calibrada";
+            this.calibradaDataGridViewTextBoxColumn1.Name = "calibradaDataGridViewTextBoxColumn1";
+            this.calibradaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // liquidadoDataGridViewTextBoxColumn1
+            // 
+            this.liquidadoDataGridViewTextBoxColumn1.DataPropertyName = "Liquidado";
+            this.liquidadoDataGridViewTextBoxColumn1.HeaderText = "Liquidado";
+            this.liquidadoDataGridViewTextBoxColumn1.Name = "liquidadoDataGridViewTextBoxColumn1";
+            this.liquidadoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // logVacioDataGridViewTextBoxColumn
+            // 
+            this.logVacioDataGridViewTextBoxColumn.DataPropertyName = "logVacio";
+            this.logVacioDataGridViewTextBoxColumn.HeaderText = "logVacio";
+            this.logVacioDataGridViewTextBoxColumn.Name = "logVacioDataGridViewTextBoxColumn";
+            this.logVacioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // papeleriaDataGridViewTextBoxColumn1
+            // 
+            this.papeleriaDataGridViewTextBoxColumn1.DataPropertyName = "Papeleria";
+            this.papeleriaDataGridViewTextBoxColumn1.HeaderText = "Papeleria";
+            this.papeleriaDataGridViewTextBoxColumn1.Name = "papeleriaDataGridViewTextBoxColumn1";
+            this.papeleriaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // logFavoritoDataGridViewTextBoxColumn
+            // 
+            this.logFavoritoDataGridViewTextBoxColumn.DataPropertyName = "logFavorito";
+            this.logFavoritoDataGridViewTextBoxColumn.HeaderText = "logFavorito";
+            this.logFavoritoDataGridViewTextBoxColumn.Name = "logFavoritoDataGridViewTextBoxColumn";
+            this.logFavoritoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curCargueDataGridViewTextBoxColumn
+            // 
+            this.curCargueDataGridViewTextBoxColumn.DataPropertyName = "CurCargue";
+            this.curCargueDataGridViewTextBoxColumn.HeaderText = "CurCargue";
+            this.curCargueDataGridViewTextBoxColumn.Name = "curCargueDataGridViewTextBoxColumn";
+            this.curCargueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // curDescargueDataGridViewTextBoxColumn
+            // 
+            this.curDescargueDataGridViewTextBoxColumn.DataPropertyName = "CurDescargue";
+            this.curDescargueDataGridViewTextBoxColumn.HeaderText = "CurDescargue";
+            this.curDescargueDataGridViewTextBoxColumn.Name = "curDescargueDataGridViewTextBoxColumn";
+            this.curDescargueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // logAnticipoACPMDataGridViewTextBoxColumn1
+            // 
+            this.logAnticipoACPMDataGridViewTextBoxColumn1.DataPropertyName = "LogAnticipoACPM";
+            this.logAnticipoACPMDataGridViewTextBoxColumn1.HeaderText = "LogAnticipoACPM";
+            this.logAnticipoACPMDataGridViewTextBoxColumn1.Name = "logAnticipoACPMDataGridViewTextBoxColumn1";
+            this.logAnticipoACPMDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // rutasOrigenDataGridViewTextBoxColumn
+            // 
+            this.rutasOrigenDataGridViewTextBoxColumn.DataPropertyName = "RutasOrigen";
+            this.rutasOrigenDataGridViewTextBoxColumn.HeaderText = "RutasOrigen";
+            this.rutasOrigenDataGridViewTextBoxColumn.Name = "rutasOrigenDataGridViewTextBoxColumn";
+            this.rutasOrigenDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tiposTrailersDataGridViewTextBoxColumn
+            // 
+            this.tiposTrailersDataGridViewTextBoxColumn.DataPropertyName = "TiposTrailers";
+            this.tiposTrailersDataGridViewTextBoxColumn.HeaderText = "TiposTrailers";
+            this.tiposTrailersDataGridViewTextBoxColumn.Name = "tiposTrailersDataGridViewTextBoxColumn";
+            this.tiposTrailersDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tiposVehiculosDataGridViewTextBoxColumn
+            // 
+            this.tiposVehiculosDataGridViewTextBoxColumn.DataPropertyName = "TiposVehiculos";
+            this.tiposVehiculosDataGridViewTextBoxColumn.HeaderText = "TiposVehiculos";
+            this.tiposVehiculosDataGridViewTextBoxColumn.Name = "tiposVehiculosDataGridViewTextBoxColumn";
+            this.tiposVehiculosDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rutasBindingSource
+            // 
+            this.rutasBindingSource.DataSource = typeof(LiqViajes_Bll_Data.Rutas);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.comboBoxTipoTrailer);
+            this.panel1.Controls.Add(this.comboBoxDestino);
+            this.panel1.Controls.Add(this.comboBoxOrigen);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1014, 102);
+            this.panel1.TabIndex = 0;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(285, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Tipo Trailer:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(32, 42);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 13);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Destino:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(37, 15);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 13);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Origen:";
+            // 
+            // comboBoxTipoTrailer
+            // 
+            this.comboBoxTipoTrailer.DisplayMember = "Origen";
+            this.comboBoxTipoTrailer.FormattingEnabled = true;
+            this.comboBoxTipoTrailer.Location = new System.Drawing.Point(354, 15);
+            this.comboBoxTipoTrailer.Name = "comboBoxTipoTrailer";
+            this.comboBoxTipoTrailer.Size = new System.Drawing.Size(122, 21);
+            this.comboBoxTipoTrailer.TabIndex = 4;
+            this.comboBoxTipoTrailer.ValueMember = "Codigo";
+            this.comboBoxTipoTrailer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoTrailer_SelectedIndexChanged);
+            // 
+            // comboBoxDestino
+            // 
+            this.comboBoxDestino.DisplayMember = "Origen";
+            this.comboBoxDestino.FormattingEnabled = true;
+            this.comboBoxDestino.Location = new System.Drawing.Point(84, 42);
+            this.comboBoxDestino.Name = "comboBoxDestino";
+            this.comboBoxDestino.Size = new System.Drawing.Size(188, 21);
+            this.comboBoxDestino.TabIndex = 5;
+            this.comboBoxDestino.ValueMember = "Codigo";
+            this.comboBoxDestino.SelectedIndexChanged += new System.EventHandler(this.comboBoxDestino_SelectedIndexChanged);
+            // 
+            // comboBoxOrigen
+            // 
+            this.comboBoxOrigen.DisplayMember = "Origen";
+            this.comboBoxOrigen.FormattingEnabled = true;
+            this.comboBoxOrigen.Location = new System.Drawing.Point(84, 15);
+            this.comboBoxOrigen.Name = "comboBoxOrigen";
+            this.comboBoxOrigen.Size = new System.Drawing.Size(188, 21);
+            this.comboBoxOrigen.TabIndex = 6;
+            this.comboBoxOrigen.ValueMember = "Codigo";
+            this.comboBoxOrigen.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrigen_SelectedIndexChanged);
+            // 
+            // imageListBase2
+            // 
+            this.imageListBase2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListBase2.ImageStream")));
+            this.imageListBase2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListBase2.Images.SetKeyName(0, "CloudControl.png");
+            this.imageListBase2.Images.SetKeyName(1, "edit.png");
+            this.imageListBase2.Images.SetKeyName(2, "GridView.png");
+            this.imageListBase2.Images.SetKeyName(3, "Menu.png");
+            this.imageListBase2.Images.SetKeyName(4, "NavBar.png");
+            this.imageListBase2.Images.SetKeyName(5, "NewsControl.png");
+            this.imageListBase2.Images.SetKeyName(6, "Pager.png");
+            this.imageListBase2.Images.SetKeyName(7, "PivotGrid.png");
+            this.imageListBase2.Images.SetKeyName(8, "PopupControl.png");
+            this.imageListBase2.Images.SetKeyName(9, "Scheduler.png");
+            this.imageListBase2.Images.SetKeyName(10, "SiteMap.png");
+            this.imageListBase2.Images.SetKeyName(11, "TabControl.png");
+            this.imageListBase2.Images.SetKeyName(12, "TitleIndex.png");
+            this.imageListBase2.Images.SetKeyName(13, "UploadControl.png");
+            this.imageListBase2.Images.SetKeyName(14, "Utilities.png");
+            // 
+            // imageListBase
+            // 
+            this.imageListBase.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListBase.ImageStream")));
+            this.imageListBase.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListBase.Images.SetKeyName(0, "1.png");
+            this.imageListBase.Images.SetKeyName(1, "2.png");
+            this.imageListBase.Images.SetKeyName(2, "3.png");
+            this.imageListBase.Images.SetKeyName(3, "check.png");
+            this.imageListBase.Images.SetKeyName(4, "ClearFilter2HS.png");
+            this.imageListBase.Images.SetKeyName(5, "Filter2HS.png");
+            this.imageListBase.Images.SetKeyName(6, "FindHS.png");
+            this.imageListBase.Images.SetKeyName(7, "FireTruck.png");
+            this.imageListBase.Images.SetKeyName(8, "GoogleRutas.png");
+            this.imageListBase.Images.SetKeyName(9, "pushpin-blue.png");
+            this.imageListBase.Images.SetKeyName(10, "pushpin-yellow.png");
+            this.imageListBase.Images.SetKeyName(11, "rain.png");
+            this.imageListBase.Images.SetKeyName(12, "recycle.png");
+            this.imageListBase.Images.SetKeyName(13, "RedCar.png");
+            this.imageListBase.Images.SetKeyName(14, "SchoolBus.png");
+            this.imageListBase.Images.SetKeyName(15, "snow.png");
+            this.imageListBase.Images.SetKeyName(16, "storm.png");
+            this.imageListBase.Images.SetKeyName(17, "sun.png");
+            this.imageListBase.Images.SetKeyName(18, "Truck.ico");
+            this.imageListBase.Images.SetKeyName(19, "Truck.png");
+            this.imageListBase.Images.SetKeyName(20, "YellowCar.png");
             // 
             // tabControl
             // 
@@ -1753,6 +2646,7 @@
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage5);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.ImageList = this.imageListBase2;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -1765,10 +2659,11 @@
             this.tabPage1.Controls.Add(this.splitContainer1);
             this.tabPage1.Controls.Add(this.splitter2);
             this.tabPage1.Controls.Add(this.panelTop);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.ImageIndex = 4;
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1028, 602);
+            this.tabPage1.Size = new System.Drawing.Size(1028, 601);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Resumen";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1788,8 +2683,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAnticipo);
-            this.splitContainer1.Size = new System.Drawing.Size(1022, 390);
-            this.splitContainer1.SplitterDistance = 135;
+            this.splitContainer1.Size = new System.Drawing.Size(1022, 389);
+            this.splitContainer1.SplitterDistance = 134;
             this.splitContainer1.TabIndex = 3;
             // 
             // dataGridViewViajes
@@ -1812,7 +2707,7 @@
             this.dataGridViewViajes.Name = "dataGridViewViajes";
             this.dataGridViewViajes.ReadOnly = true;
             this.dataGridViewViajes.RowHeadersWidth = 15;
-            this.dataGridViewViajes.Size = new System.Drawing.Size(1020, 133);
+            this.dataGridViewViajes.Size = new System.Drawing.Size(1020, 132);
             this.dataGridViewViajes.TabIndex = 0;
             this.dataGridViewViajes.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewViajes_RowEnter);
             // 
@@ -2016,10 +2911,11 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tabControlTramos);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.ImageIndex = 14;
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1028, 602);
+            this.tabPage2.Size = new System.Drawing.Size(1028, 601);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tramos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2027,9 +2923,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.reportViewer);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.ImageIndex = 13;
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1028, 602);
+            this.tabPage3.Size = new System.Drawing.Size(1028, 601);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reporte";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2055,16 +2952,17 @@
             this.reportViewer.LocalReport.ReportEmbeddedResource = "MetalLiqViajes_Forms.Reportes.ReportViajes.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(0, 0);
             this.reportViewer.Name = "reportViewer";
-            this.reportViewer.Size = new System.Drawing.Size(1028, 602);
+            this.reportViewer.Size = new System.Drawing.Size(1028, 601);
             this.reportViewer.TabIndex = 0;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.tabControlMapa);
             this.tabPage5.Controls.Add(this.panel9);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.ImageIndex = 8;
+            this.tabPage5.Location = new System.Drawing.Point(4, 23);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1028, 602);
+            this.tabPage5.Size = new System.Drawing.Size(1028, 601);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Mapa";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2074,11 +2972,11 @@
             this.tabControlMapa.Controls.Add(this.tabPage6);
             this.tabControlMapa.Controls.Add(this.tabPage7);
             this.tabControlMapa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlMapa.ImageList = this.imageList1;
+            this.tabControlMapa.ImageList = this.imageListBase;
             this.tabControlMapa.Location = new System.Drawing.Point(0, 72);
             this.tabControlMapa.Name = "tabControlMapa";
             this.tabControlMapa.SelectedIndex = 0;
-            this.tabControlMapa.Size = new System.Drawing.Size(1028, 530);
+            this.tabControlMapa.Size = new System.Drawing.Size(1028, 529);
             this.tabControlMapa.TabIndex = 3;
             // 
             // tabPage6
@@ -2090,7 +2988,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 23);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1020, 503);
+            this.tabPage6.Size = new System.Drawing.Size(1020, 502);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "Mapa";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2111,8 +3009,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dataGridViewEvents);
-            this.splitContainer3.Size = new System.Drawing.Size(1012, 495);
-            this.splitContainer3.SplitterDistance = 330;
+            this.splitContainer3.Size = new System.Drawing.Size(1012, 494);
+            this.splitContainer3.SplitterDistance = 329;
             this.splitContainer3.TabIndex = 0;
             // 
             // panel11
@@ -2121,7 +3019,7 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(981, 328);
+            this.panel11.Size = new System.Drawing.Size(981, 327);
             this.panel11.TabIndex = 6;
             // 
             // gMapControl
@@ -2149,7 +3047,7 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(981, 328);
+            this.gMapControl.Size = new System.Drawing.Size(981, 327);
             this.gMapControl.TabIndex = 0;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.DoubleClick += new System.EventHandler(this.gMapControl_DoubleClick);
@@ -2161,7 +3059,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel10.Location = new System.Drawing.Point(981, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(29, 328);
+            this.panel10.Size = new System.Drawing.Size(29, 327);
             this.panel10.TabIndex = 5;
             // 
             // trackBarZoom
@@ -2171,7 +3069,7 @@
             this.trackBarZoom.Maximum = 24;
             this.trackBarZoom.Name = "trackBarZoom";
             this.trackBarZoom.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarZoom.Size = new System.Drawing.Size(29, 328);
+            this.trackBarZoom.Size = new System.Drawing.Size(29, 327);
             this.trackBarZoom.TabIndex = 4;
             this.trackBarZoom.TickFrequency = 2;
             this.trackBarZoom.ValueChanged += new System.EventHandler(this.trackBarZoom_ValueChanged);
@@ -2268,7 +3166,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 23);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1020, 503);
+            this.tabPage7.Size = new System.Drawing.Size(1020, 502);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "Traza";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -2294,7 +3192,7 @@
             this.dataGridViewHistoryEvents.Name = "dataGridViewHistoryEvents";
             this.dataGridViewHistoryEvents.ReadOnly = true;
             this.dataGridViewHistoryEvents.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridViewHistoryEvents.Size = new System.Drawing.Size(1012, 495);
+            this.dataGridViewHistoryEvents.Size = new System.Drawing.Size(1012, 494);
             this.dataGridViewHistoryEvents.TabIndex = 2;
             // 
             // fechaHoraGPSDataGridViewTextBoxColumn1
@@ -2505,43 +3403,6 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // splitContainer5
-            // 
-            this.splitContainer5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer5.Name = "splitContainer5";
-            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.dataGridViewLiqRutas);
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(1008, 563);
-            this.splitContainer5.SplitterDistance = 281;
-            this.splitContainer5.TabIndex = 1;
-            // 
-            // splitContainer6
-            // 
-            this.splitContainer6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer6.Name = "splitContainer6";
-            // 
-            // splitContainer6.Panel1
-            // 
-            this.splitContainer6.Panel1.Controls.Add(this.dataGridViewCuentasGastos);
-            // 
-            // splitContainer6.Panel2
-            // 
-            this.splitContainer6.Panel2.Controls.Add(this.dataGridViewLavadas);
-            this.splitContainer6.Size = new System.Drawing.Size(1008, 278);
-            this.splitContainer6.SplitterDistance = 649;
-            this.splitContainer6.TabIndex = 0;
-            // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2570,8 +3431,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.liquidacionRutasListBindingSource)).EndInit();
             this.tabControlTramos.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiqRutas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tramosAsignadosRutaBindingSource)).EndInit();
+            this.splitContainer6.Panel1.ResumeLayout(false);
+            this.splitContainer6.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
+            this.splitContainer6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCuentasGastos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tramosGastosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLavadas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tramosLavadasBindingSource)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
@@ -2582,10 +3455,12 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLavadas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tramosLavadasBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCuentasGastos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tramosGastosBindingSource)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRuta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -2617,14 +3492,6 @@
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).EndInit();
-            this.splitContainer5.Panel1.ResumeLayout(false);
-            this.splitContainer5.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
-            this.splitContainer5.ResumeLayout(false);
-            this.splitContainer6.Panel1.ResumeLayout(false);
-            this.splitContainer6.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
-            this.splitContainer6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2820,7 +3687,7 @@
         private System.Windows.Forms.ComboBox comboBoxProveedor;
         private System.Windows.Forms.NumericUpDown numericUpDownMarcadores;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList imageListBase;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button button1;
@@ -2857,5 +3724,95 @@
         private System.Windows.Forms.ComboBox comboBoxTerceros;
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.SplitContainer splitContainer6;
+        private System.Windows.Forms.ImageList imageListBase2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboBoxTipoTrailer;
+        private System.Windows.Forms.ComboBox comboBoxDestino;
+        private System.Windows.Forms.ComboBox comboBoxOrigen;
+        private System.Windows.Forms.DataGridView dataGridViewRuta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lngIdRegistrRutaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rutasOrigenCodigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoGrupoOrigenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoGrupoDestinoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoGrupoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoVehiculoCodigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoVehiculoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoTrailerCodigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pesoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn logViajeVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn floGalonesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curValorGalonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutCombustibleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn combustibleCarreteraDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lngIdNroPeajesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutPeajeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn strNombrePeajesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosLlantasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosCeladaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosPropinaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn llamadasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxiDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aseoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosLlantasVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosCeladaVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosPropinaVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutVariosVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn viaticosDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutParticipacionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutParticipacionVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCarreteraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCiudadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCarreteraVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelCiudadVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curHotelVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoCargueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoDescargueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoAduanaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTrayectoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTiempoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curComidaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoCargueVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoDescargueVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTiempoAduanaVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTrayectoVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intTotalTiempoVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curComidaVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curDesvareManoRepuestosDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curDesvareManoObraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutSaldoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutSaldoVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutKmtsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn logActualizaPeajesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intFactorKmPorGalonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn logEstadoRutaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parqueaderoCarreteraDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parqueaderoCiudadDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montadaLLantaCarreteraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montadaLLantaCiudadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ajusteCarreteraDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lavadaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amarresDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn engradasaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn calibradaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn liquidadoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn logVacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn papeleriaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn logFavoritoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curCargueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curDescargueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn logAnticipoACPMDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rutasOrigenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiposTrailersDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiposVehiculosDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource rutasBindingSource;
     }
 }

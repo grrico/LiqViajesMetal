@@ -57,6 +57,15 @@ namespace MetalLiqViajes_Forms
         private UtilMonth ultilmonth;
         private UtilPlaca ultilplaca;
         private ArrayList listplacas;
+
+        private List<RutasOrigen> rutasorigenList;
+        private List<Rutas> rutasList;
+        private RutasOrigen rutasorigen;
+        private RutasDestino rutasDestino;
+        private RutasOrigenDestino rutasorigenDestino;
+        private TipoTrailer tipotrailer;
+        private bool swtCargaCompleta;
+
         private bool swtWsEnProceso;
         private string Nit { get; set; }
         private bool iCargaCompleta { get; set; }
@@ -543,7 +552,7 @@ namespace MetalLiqViajes_Forms
                 catch (Exception ex)
                 {
                     CargaExection(ex);
-                } 
+                }
                 #endregion
             }
             if (tabControl.SelectedIndex == 2)
@@ -556,7 +565,7 @@ namespace MetalLiqViajes_Forms
                 catch (Exception ex)
                 {
                     CargaExection(ex);
-                } 
+                }
                 #endregion
 
             }
@@ -669,6 +678,7 @@ namespace MetalLiqViajes_Forms
                 Cedula = row.NitConductor,
                 NombreConductor = row.NombreConductor,
                 Placa = row.Placa,
+                TipoVehiculoCodigo= row.TipoVehiculoCodigo,
                 Anticipo = decimal.Parse("0"),
                 Gastos = decimal.Parse("0"),
                 Total = decimal.Parse("0"),
@@ -688,6 +698,7 @@ namespace MetalLiqViajes_Forms
                 conductor.Cedula = decimal.Parse(item.Cedula);
                 conductor.NombreConductor = item.NombreConductor;
                 conductor.Placa = item.Placa;
+                conductor.TipoVehiculoCodigo = item.TipoVehiculoCodigo;
                 conductor.ValorAnticipo = registroviajelist
                                           .Where(t => t.NitConductor == item.Cedula)
                                           .Sum(t => t.ValorAnticipos);
@@ -1129,6 +1140,7 @@ namespace MetalLiqViajes_Forms
 
             if (tabControlTramos.SelectedIndex == 1)
             {
+                #region gasto
                 liquidacionGastosList = LiqViajes_Bll_Data.LiquidacionGastosController.Instance.GetBy_lngIdRegistrRuta(tramosAsignados.RegistroId);
 
                 LiqViajes_Bll_Data.LiquidacionGastos liqgastos = new LiquidacionGastos();
@@ -1186,9 +1198,27 @@ namespace MetalLiqViajes_Forms
                 // Configure the details DataGridView so that its columns automatically
                 // adjust their widths when the data changes.
                 dataGridViewLiqGastos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                #endregion
             }
 
+            if (tabControlTramos.SelectedIndex == 2)
+            {
+                swtCargaCompleta = false;
 
+                rutasorigenList = RutasOrigenController.Instance.GetAll().ToList();
+
+                comboBoxOrigen.DisplayMember = "Origen";
+                comboBoxOrigen.ValueMember = "Codigo";
+
+                comboBoxOrigen.DataSource = rutasorigenList;
+                comboBoxOrigen.SelectedValue = 24;
+                comboBoxOrigen.Refresh();
+
+                CargarRuta();
+
+                swtCargaCompleta = true;
+
+            }
         }
 
         private void gMapControl_MouseClick(object sender, MouseEventArgs e)
@@ -1564,5 +1594,63 @@ namespace MetalLiqViajes_Forms
 
         }
 
+        private void comboBoxOrigen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxOrigen.SelectedItem != null)
+            {
+                rutasorigen = comboBoxOrigen.SelectedItem as RutasOrigen;
+
+                comboBoxDestino.DisplayMember = "Destino";
+                comboBoxDestino.ValueMember = "Codigo";
+
+                comboBoxTipoTrailer.DisplayMember = "DescripcionTrailer";
+                comboBoxTipoTrailer.ValueMember = "TipoTrailerCodigo";
+
+                List<RutasDestino> destinoList = rutasorigen.RutasDestino.ToList();
+                comboBoxDestino.DataSource = destinoList;
+                comboBoxDestino.Refresh();
+                comboBoxDestino.SelectedIndex = 0;
+                if (rutasorigen.Codigo == 24)
+                {
+                    int index = destinoList.FindIndex(t => t.Codigo==126);
+                    comboBoxDestino.SelectedIndex = index;
+                }
+
+                comboBoxTipoTrailer.DataSource = rutasorigen.RutasOrigenTipoTrailer;
+                comboBoxTipoTrailer.Refresh();
+                comboBoxTipoTrailer.SelectedIndex = 0;
+            }
+        }
+
+        private void comboBoxDestino_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (swtCargaCompleta) CargarRuta();
+        }
+
+        private void comboBoxTipoTrailer_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            if (swtCargaCompleta) CargarRuta();
+        }
+
+        private void CargarRuta()
+        {
+            try
+            {
+                rutasDestino = comboBoxDestino.SelectedItem as RutasDestino;
+                tipotrailer = comboBoxTipoTrailer.SelectedItem as TipoTrailer;
+
+                rutasList = rutasorigen.Rutas.Where(t =>t.strRutaAnticipoGrupoDestino == rutasDestino.Destino && 
+                t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo && 
+                t.logViajeVacio == false && 
+                t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo).ToList();
+                dataGridViewRuta.DataSource = rutasList;
+                dataGridViewRuta.Refresh();
+            }
+            catch (Exception ex)
+            {
+                CargaExection(ex);
+            }
+
+        }
     }
 }

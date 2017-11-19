@@ -73,6 +73,7 @@ namespace LiqViajes_Bll_Data
                 iRegistroViajeDTO.FechaMovimiento = (DateTime)dr["FechaMovimiento"];
                 iRegistroViajeDTO.Liquidado = dr.IsNull("Liquidado") ? false : (bool)dr["Liquidado"]; 
                 iRegistroViajeDTO.Placa = dr.IsNull("Placa") ? null : (string)dr["Placa"];
+                iRegistroViajeDTO.TipoVehiculoCodigo = dr.IsNull("TipoVehiculoCodigo") ?0 : (int)dr["TipoVehiculoCodigo"]; 
                 iRegistroViajeDTO.NitConductor = dr.IsNull("NitConductor") ? "" : (string)dr["NitConductor"].ToString();
                 iRegistroViajeDTO.NombreConductor = dr.IsNull("NombreConductor") ? "" : (string)dr["NombreConductor"].ToString();
                 iRegistroViajeDTO.ValorGastos = dr.IsNull("ValorGastos") ? 0: (decimal)dr["ValorGastos"]; 

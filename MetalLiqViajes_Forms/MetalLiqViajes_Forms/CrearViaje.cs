@@ -20,13 +20,11 @@ namespace MetalLiqViajes_Forms
         public TercerosConductores terceroconductor;
         private List<TipoVehiculo> tipovehiculoList;
         private List<TercerosConductores> conductoresList;
-        private List<RutasOrigen> rutasorigenList;
+
         private List<RutasOrigenDestino> rutasDestinoList;
-        private List<Rutas> rutasList;
-        private RutasOrigen rutasorigen;
-        private RutasOrigenDestino rutasorigenDesdtino;
-        private TipoTrailer tipotrailer;
-        private bool swtCargaCompleta;
+
+        //private List<Rutas> rutasList;
+
         public CrearViaje()
         {
             InitializeComponent();
@@ -57,20 +55,10 @@ namespace MetalLiqViajes_Forms
             //.Distinct();
             #endregion
 
-            rutasorigenList = RutasOrigenController.Instance.GetAll().ToList();
-            comboBoxOrigen.DisplayMember = "Origen";
-            comboBoxOrigen.ValueMember = "Codigo";
-
-            comboBoxOrigen.DataSource = rutasorigenList;
-            comboBoxOrigen.Refresh();
-            comboBoxOrigen.SelectedValue = 24;
-
         }
 
         private void CrearViaje_Load(object sender, EventArgs e)
         {
-            swtCargaCompleta = false;
-
             // lee el vehículo
             vehiculo = VehiculoCCostoController.Instance.GetByPlaca(conductor.Placa);
 
@@ -114,7 +102,6 @@ namespace MetalLiqViajes_Forms
 
                 terceroconductor = dataGridViewConductor.Rows[index3].DataBoundItem as TercerosConductores;
             }
-            swtCargaCompleta = true;
 
         }
 
@@ -136,8 +123,7 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewPlaca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
-                vehiculo = dataGridViewPlaca.Rows[e.RowIndex].DataBoundItem as VehiculoCCosto;
+            vehiculo = dataGridViewPlaca.Rows[e.RowIndex].DataBoundItem as VehiculoCCosto;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -162,7 +148,7 @@ namespace MetalLiqViajes_Forms
             //        //liqVehiculo.logLiquidado = false;
             //        //LiquidacionVehiculoController.Instance.Create(liqVehiculo);
 
-                  
+
             //    }
             //}
             //catch (Exception ex)
@@ -170,46 +156,6 @@ namespace MetalLiqViajes_Forms
             //    CargaExection(ex);
             //}
             this.Close();
-        }
-
-        private void comboBoxOrigen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var origen = comboBoxOrigen.SelectedItem;
-            if (comboBoxOrigen.SelectedItem != null)
-            {
-                rutasorigen = comboBoxOrigen.SelectedItem as RutasOrigen;
-                comboBoxDestino.DisplayMember = "Destino";
-                comboBoxDestino.ValueMember = "Codigo";
-
-                comboBoxDestino.DataSource = rutasorigen.RutasDestino.ToList();
-                comboBoxDestino.Refresh();
-                comboBoxDestino.SelectedIndex = 0;
-
-                comboBoxTipoTrailer.DataSource = rutasorigen.RutasOrigenTipoTrailer;
-                comboBoxTipoTrailer.Refresh();
-                comboBoxTipoTrailer.DisplayMember = "DescripcionTrailer";
-                comboBoxTipoTrailer.ValueMember = "TipoTrailerCodigo";
-                comboBoxTipoTrailer.SelectedIndex = 0;
-                CargarRuta();
-            }
-        }
-
-        private void comboBoxDestino_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            rutasorigenDesdtino = comboBoxDestino.SelectedItem as RutasOrigenDestino;
-            if (swtCargaCompleta) CargarRuta();
-        }
-
-        private void comboBoxTipoTrailer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            tipotrailer = comboBoxTipoTrailer.SelectedItem as TipoTrailer;
-            if (swtCargaCompleta) CargarRuta();
-        }
-
-        private void CargarRuta()
-        {
-            dataGridViewRuta.DataSource = rutasorigen.Rutas.Where(t => t.strRutaAnticipoGrupoDestino == rutasorigenDesdtino.Destino && t.TipoTrailerCodigo.Value == tipotrailer.Codigo);
-            dataGridViewRuta.Refresh();
         }
 
         public static void CargaExection(Exception ex)

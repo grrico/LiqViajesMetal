@@ -12,6 +12,7 @@ namespace LiqViajes_Bll_Data
         public DateTime FechaMovimiento { get; set; }
         public bool Liquidado { get; set; }
         public string Placa { get; set; }
+        public int TipoVehiculoCodigo { get; set; }
         public string NitConductor { get; set; }
         public string NombreConductor { get; set; }
         public decimal ValorGastos { get; set; }
