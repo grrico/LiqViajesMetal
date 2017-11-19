@@ -1450,7 +1450,11 @@ namespace MetalLiqViajes_Forms
 
         private void btnCreaViaje_Click(object sender, EventArgs e)
         {
+
+            this.Cursor = Cursors.WaitCursor;
+            MetalLiqViajes_Forms.fMenuPrincipal c = (MetalLiqViajes_Forms.fMenuPrincipal)this.ParentForm;
             CrearViaje creaviaje = new CrearViaje();
+            //creaviaje.MdiParent = this;
             creaviaje.conductor = conductor;
             if (creaviaje.ShowDialog() == DialogResult.OK)
             {
@@ -1459,15 +1463,15 @@ namespace MetalLiqViajes_Forms
                     DialogResult resultado = MessageBox.Show("Confirma crear el registro ahora?", "Validar Crear Registro", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                     if (resultado == DialogResult.Yes)
                     {
-                        LiquidacionVehiculo liqVehiculo = new LiquidacionVehiculo();
-                        liqVehiculo.strPlaca = creaviaje.vehiculo.strPlaca;
-                        liqVehiculo.intNitConductor = Convert.ToDecimal(creaviaje.terceroconductor.IntNit);
-                        liqVehiculo.curGastos = 0;
-                        liqVehiculo.curAnticipos = 0;
-                        liqVehiculo.curTotal = 0;
-                        liqVehiculo.dtmFechaModif = DateTime.Now;
-                        liqVehiculo.logLiquidado = false;
-                        LiquidacionVehiculoController.Instance.Create(liqVehiculo);
+                        //LiquidacionVehiculo liqVehiculo = new LiquidacionVehiculo();
+                        //liqVehiculo.strPlaca = creaviaje.vehiculo.strPlaca;
+                        //liqVehiculo.intNitConductor = Convert.ToDecimal(creaviaje.terceroconductor.IntNit);
+                        //liqVehiculo.curGastos = 0;
+                        //liqVehiculo.curAnticipos = 0;
+                        //liqVehiculo.curTotal = 0;
+                        //liqVehiculo.dtmFechaModif = DateTime.Now;
+                        //liqVehiculo.logLiquidado = false;
+                        //LiquidacionVehiculoController.Instance.Create(liqVehiculo);
 
                         //RowGridConductor
                         int m_index = RowGridConductor;
@@ -1489,12 +1493,14 @@ namespace MetalLiqViajes_Forms
                         registroviajelistFiltro = registroviajelist.Where(p => p.NitConductor == conductor.Cedula.ToString()).ToList();
                         dataGridViewViajes.DataSource = registroviajelistFiltro;
                         dataGridViewViajes.Refresh();
+
                     }
                 }
                 catch (Exception ex)
                 {
                     CargaExection(ex);
                 }
+                this.Cursor = Cursors.Default;
             }
         }
 

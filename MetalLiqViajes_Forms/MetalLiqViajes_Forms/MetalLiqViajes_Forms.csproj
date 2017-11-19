@@ -167,6 +167,7 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.LiquidacionGastosList.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.Rutas.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackHistoryEvents.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackLastEvents.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutasOrigenDestino.datasource" />
