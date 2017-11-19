@@ -520,8 +520,7 @@ namespace MetalLiqViajes_Forms
         {
             if (tabControl.SelectedIndex == 1)
             {
-
-                // carga los tramos
+                #region carga los tramos
                 try
                 {
                     if (iRegistroViajeDTO == null)
@@ -544,87 +543,12 @@ namespace MetalLiqViajes_Forms
                 catch (Exception ex)
                 {
                     CargaExection(ex);
-                }
+                } 
+                #endregion
             }
             if (tabControl.SelectedIndex == 2)
             {
-                try
-                {
-                    if (tramosAsignados == null)
-                    {
-                        tabControl.SelectedIndex = 1;
-                        return;
-                    }
-
-                    liquidacionGastosList = LiqViajes_Bll_Data.LiquidacionGastosController.Instance.GetBy_lngIdRegistrRuta(tramosAsignados.RegistroId);
-
-                    LiqViajes_Bll_Data.LiquidacionGastos liqgastos = new LiquidacionGastos();
-                    liqgastos.intRowRegistro = 990;
-                    liqgastos.strCuenta = "";
-                    liqgastos.strDescripcion = "";
-                    liqgastos.strDescripcionCuenta = "000_Total General";
-                    liqgastos.strObservaciones = "";
-                    liqgastos.curValorTramo = 0;// liquidacionGastosList.Sum(t => t.curValorTramo);
-                    liqgastos.curValorAdicional = 0;//liquidacionGastosList.Sum(t => t.curValorAdicional);
-                    liqgastos.curValorTotal = 0;//liquidacionGastosList.Sum(t => t.curValorTotal);
-
-                    foreach (var item in liquidacionGastosList)
-                    {
-
-                        switch (item.intRowRegistro)
-                        {
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 13:
-                            case 14:
-                            case 16:
-                            case 17:
-                            case 23:
-                            case 27:
-                            case 28:
-                            case 29:
-                                break;
-                            default:
-                                liqgastos.curValorTramo += item.curValorTramo.Value;
-                                liqgastos.curValorAdicional += item.curValorAdicional.Value;
-                                liqgastos.curValorTotal += item.curValorTotal.Value;
-                                break;
-                        }
-                    }
-
-                    int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
-
-                    liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
-                    liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
-                    liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
-
-
-                    liquidacionGastosList.Add(liqgastos);
-
-                    dataGridViewLiqGastos.DataSource = liquidacionGastosList.ToList();
-
-                    // Resize the master DataGridView columns to fit the newly loaded data.
-                    dataGridViewLiqGastos.AutoResizeColumns();
-
-                    // Configure the details DataGridView so that its columns automatically
-                    // adjust their widths when the data changes.
-                    dataGridViewLiqGastos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-
-                }
-                catch (Exception ex)
-                {
-                    CargaExection(ex);
-                }
-
-            }
-
-            if (tabControl.SelectedIndex == 3)
-            {
+                #region Carga Reporte
                 try
                 {
                     CargarReporte();
@@ -632,13 +556,16 @@ namespace MetalLiqViajes_Forms
                 catch (Exception ex)
                 {
                     CargaExection(ex);
-                }
+                } 
+                #endregion
 
             }
-            if (tabControl.SelectedIndex == 4)
+            if (tabControl.SelectedIndex == 3)
             {
+                #region Carga Mapa
                 CargarMapa();
                 timer1.Enabled = true;
+                #endregion
             }
 
 
@@ -831,6 +758,8 @@ namespace MetalLiqViajes_Forms
 
         private void CargarDatosDetalle()
         {
+            tabControlTramos.TabIndex = 0;
+
             tramosAsignadosList = TramosAsignadosRutaController.Instance.GetBy_lngIdRegistro(int.Parse(iRegistroViajeDTO.IdRegistro.ToString()));
             tramosAsignadosList = tramosAsignadosList.Where(t => t.logAjuste.Value == false).OrderBy(o => o.RegistroId).ToList();
             dataGridViewLiqRutas.DataSource = tramosAsignadosList.ToList();
@@ -913,7 +842,7 @@ namespace MetalLiqViajes_Forms
             try
             {
 
-                if (tabControl.SelectedIndex != 4) return;
+                //if (tabControl.SelectedIndex != 4) return;
 
                 gMapControl.DragButton = MouseButtons.Left;
                 gMapControl.Overlays.Clear();
@@ -1195,6 +1124,73 @@ namespace MetalLiqViajes_Forms
             gMapControl.Zoom = trackBarZoom.Value;
         }
 
+        private void tabControlTramos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (tabControlTramos.SelectedIndex == 1)
+            {
+                liquidacionGastosList = LiqViajes_Bll_Data.LiquidacionGastosController.Instance.GetBy_lngIdRegistrRuta(tramosAsignados.RegistroId);
+
+                LiqViajes_Bll_Data.LiquidacionGastos liqgastos = new LiquidacionGastos();
+                liqgastos.intRowRegistro = 990;
+                liqgastos.strCuenta = "";
+                liqgastos.strDescripcion = "";
+                liqgastos.strDescripcionCuenta = "000_Total General";
+                liqgastos.strObservaciones = "";
+                liqgastos.curValorTramo = 0;// liquidacionGastosList.Sum(t => t.curValorTramo);
+                liqgastos.curValorAdicional = 0;//liquidacionGastosList.Sum(t => t.curValorAdicional);
+                liqgastos.curValorTotal = 0;//liquidacionGastosList.Sum(t => t.curValorTotal);
+
+                foreach (var item in liquidacionGastosList)
+                {
+
+                    switch (item.intRowRegistro)
+                    {
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 13:
+                        case 14:
+                        case 16:
+                        case 17:
+                        case 23:
+                        case 27:
+                        case 28:
+                        case 29:
+                            break;
+                        default:
+                            liqgastos.curValorTramo += item.curValorTramo.Value;
+                            liqgastos.curValorAdicional += item.curValorAdicional.Value;
+                            liqgastos.curValorTotal += item.curValorTotal.Value;
+                            break;
+                    }
+                }
+
+                int index = liquidacionGastosList.FindIndex(t => t.intRowRegistro == 13);
+
+                liquidacionGastosList[index].curValorTramo = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTramo.Value);
+                liquidacionGastosList[index].curValorAdicional = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorAdicional.Value);
+                liquidacionGastosList[index].curValorTotal = liquidacionGastosList.Where(t => t.intRowRegistro == 10 || t.intRowRegistro == 11 || t.intRowRegistro == 12).Sum(s => s.curValorTotal.Value);
+
+
+                liquidacionGastosList.Add(liqgastos);
+
+                dataGridViewLiqGastos.DataSource = liquidacionGastosList.ToList();
+
+                // Resize the master DataGridView columns to fit the newly loaded data.
+                dataGridViewLiqGastos.AutoResizeColumns();
+
+                // Configure the details DataGridView so that its columns automatically
+                // adjust their widths when the data changes.
+                dataGridViewLiqGastos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+
+
+        }
+
         private void gMapControl_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -1206,7 +1202,6 @@ namespace MetalLiqViajes_Forms
             //marker.ToolTipText = string.Format("Koordinate: \n Latituda {0} \n Longituda {1}", lat, lng);
 
         }
-
 
         private void CargarUltimaUbicacion()
         {
@@ -1568,5 +1563,6 @@ namespace MetalLiqViajes_Forms
             dataGridViewViajes.Refresh();
 
         }
+
     }
 }
