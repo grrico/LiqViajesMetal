@@ -212,6 +212,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.treeViewRutas = new System.Windows.Forms.TreeView();
             this.dataGridViewRuta = new System.Windows.Forms.DataGridView();
             this.strRutaAnticipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoTrailerDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -297,7 +298,6 @@
             this.btnInterrogar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.treeViewRutas = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -1805,6 +1805,16 @@
             this.panel4.Size = new System.Drawing.Size(1014, 466);
             this.panel4.TabIndex = 1;
             // 
+            // treeViewRutas
+            // 
+            this.treeViewRutas.CheckBoxes = true;
+            this.treeViewRutas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeViewRutas.Location = new System.Drawing.Point(0, 0);
+            this.treeViewRutas.Name = "treeViewRutas";
+            this.treeViewRutas.Size = new System.Drawing.Size(387, 466);
+            this.treeViewRutas.TabIndex = 2;
+            this.treeViewRutas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRutas_AfterSelect);
+            // 
             // dataGridViewRuta
             // 
             this.dataGridViewRuta.AllowUserToAddRows = false;
@@ -2765,14 +2775,6 @@
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // treeViewRutas
-            // 
-            this.treeViewRutas.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeViewRutas.Location = new System.Drawing.Point(0, 0);
-            this.treeViewRutas.Name = "treeViewRutas";
-            this.treeViewRutas.Size = new System.Drawing.Size(387, 466);
-            this.treeViewRutas.TabIndex = 2;
             // 
             // fReportesViajes
             // 

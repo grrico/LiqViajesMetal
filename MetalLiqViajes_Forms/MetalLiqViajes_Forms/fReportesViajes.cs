@@ -1695,7 +1695,6 @@ namespace MetalLiqViajes_Forms
                 nuevoNodo.Text = item.Destino;
                 nuevoNodo.Name = item.Codigo.ToString();
 
-
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
                 // del primer nivel que no dependen de otro nodo.
                 if (nodePadre == null)
@@ -1714,6 +1713,24 @@ namespace MetalLiqViajes_Forms
             }
         }
 
+        
+
+        #region apunte
+        //var distinctDestino = rutasorigenDestinoList.AsEnumerable()
+        //.Select(row => new
+        //{
+        //    Destino = row.Destino
+        //})
+        //.Distinct();
+
+        //var distinctTrailer = rutasorigenDestinoList.AsEnumerable()
+        //.Select(row => new
+        //{
+        //    TipoTrailerCodigo=row.TipoTrailerCodigo,
+        //    DescripcionTrailer = row.DescripcionTrailer
+        //})
+        //.Distinct();
+        #endregion
 
         private void dataGridViewRuta_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -1722,6 +1739,26 @@ namespace MetalLiqViajes_Forms
             string Tramo = ruta.DescripcionTramo;
             string DesTrailer = ruta.TipoTrailerDescripcion;
 
+        }
+
+        private void treeViewRutas_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode tn = e.Node;
+            TreeNode tnp = tn.Parent;
+
+            if (tn != null && tnp != null)
+            {
+
+                RutasOrigen origen = rutasorigenList.Where(t => t.Codigo == Convert.ToInt32(tnp.Name)).FirstOrDefault();
+                RutasDestino destino = origen.RutasDestino.Where(t => t.Codigo == Convert.ToInt32(tn.Name)).FirstOrDefault();
+            }
+
+            //rutasList = rutasorigen.Rutas.Where(t => t.strRutaAnticipoGrupoDestino == rutasDestino.Destino &&
+            //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo &&
+            //t.logViajeVacio == false &&
+            //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo).ToList();
+            //dataGridViewRuta.DataSource = rutasList;
+            //dataGridViewRuta.Refresh();
         }
     }
 }
