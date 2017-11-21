@@ -1604,7 +1604,7 @@ namespace MetalLiqViajes_Forms
             foreach (var item in rutasorigenList)
             {
                 TreeNode NodoHijo = new TreeNode();
-                NodoHijo.Text = item.Origen;
+                NodoHijo.Text = item.Origen + " " + item.Codigo.ToString();
                 NodoHijo.Name = item.Codigo.ToString();
 
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
@@ -1621,18 +1621,22 @@ namespace MetalLiqViajes_Forms
 
                 // Llamada recurrente al mismo método para agregar los Hijos del Nodo recién agregado.
 
-                CrearNodosDestino(item, NodoHijo);
+                //CrearNodosDestino(item, NodoHijo);
             }
         }
 
-        private void CrearNodosDestino(RutasOrigen rutaorigen, TreeNode nodePadre)
+        private void CrearNodosDestino(RutasOrigen rutaorigen, TreeNode nodePadre, bool todosDestino=true)
         {
-            List<RutasDestino> rutasdestinoList = rutaorigen.RutasDestino.Where(t => t.Favorita==true).ToList();
+            List<RutasDestino> rutasdestinoList = rutaorigen.RutasDestino.ToList();
+            if (todosDestino)
+            {
+                rutasdestinoList = rutasdestinoList.Where(t => t.Favorita == true).ToList();
+            }
             // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
             foreach (var item in rutasdestinoList)
             {
                 TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Text = item.Destino;
+                nuevoNodo.Text = item.Destino + " " + item.Codigo.ToString();
                 nuevoNodo.Name = item.Codigo.ToString();
 
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
@@ -1649,18 +1653,22 @@ namespace MetalLiqViajes_Forms
 
                 // Llamada recurrente al mismo método para agregar los Hijos del Nodo recién agregado.
 
-                CrearNodosOrigenDestino(item, nuevoNodo);
+                //CrearNodosOrigenDestino(item, nuevoNodo);
             }
         }
 
-        private void CrearNodosOrigenDestino(RutasDestino rutaorigendestino, TreeNode nodePadre)
+        private void CrearNodosOrigenDestino(RutasDestino rutaorigendestino, TreeNode nodePadre, bool todosDestino = true)
         {
-            List<RutasOrigenDestino> rutasorigendestinoList = rutaorigendestino.RutasOrigenDestino.Where(t => t.Favorita==true).ToList();
+            List<RutasOrigenDestino> rutasorigendestinoList = rutaorigendestino.RutasOrigenDestino.ToList();
+            if (todosDestino)
+            {
+                rutasorigendestinoList = rutasorigendestinoList.Where(t => t.Favorita == true).ToList();
+            }
             // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
             foreach (var item in rutasorigendestinoList)
             {
                 TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Text = item.Destino;
+                nuevoNodo.Text = item.GrupoDestino + " " + item.Codigo.ToString();
                 nuevoNodo.Name = item.Codigo.ToString();
 
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
@@ -1681,6 +1689,38 @@ namespace MetalLiqViajes_Forms
             }
         }
 
+        private void CrearNodosOrigenDestinoDet(RutasOrigenDestino rutaorigendestino, TreeNode nodePadre, bool todosDestino = true)
+        {
+            //RutasOrigenDestinoVehTrailer
+            List<RutasOrigenDestinoVehTrailer> rutasorigendestinoList = rutaorigendestino.RutasOrigenDestinoVehTrailer.ToList();
+            if (todosDestino)
+            {
+                rutasorigendestinoList = rutasorigendestinoList.Where(t => t.Favorita == true).ToList();
+            }
+            // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
+            foreach (var item in rutasorigendestinoList)
+            {
+                TreeNode nuevoNodo = new TreeNode();
+                nuevoNodo.Text = item.GrupoDestino + " " + item.Codigo.ToString();
+                nuevoNodo.Name = item.Codigo.ToString();
+
+                // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
+                // del primer nivel que no dependen de otro nodo.
+                if (nodePadre == null)
+                {
+                    treeViewRutas.Nodes.Add(nuevoNodo);
+                }
+                // se añade el nuevo nodo al nodo padre.
+                else
+                {
+                    nodePadre.Nodes.Add(nuevoNodo);
+                }
+
+                // Llamada recurrente al mismo método para agregar los Hijos del Nodo recién agregado.
+
+                //CrearNodosDelPadre(Int32.Parse(dataRowCurrent["IdentificadorNodo"].ToString()), nuevoNodo);
+            }
+        }
 
         #region apunte
         //var distinctDestino = rutasorigenDestinoList.AsEnumerable()
@@ -1712,12 +1752,25 @@ namespace MetalLiqViajes_Forms
         {
             TreeNode tn = e.Node;
             TreeNode tnp = tn.Parent;
-
-            if (tn != null && tnp != null)
+            if (tn.Nodes.Count == 0 && tn.Level == 0)
             {
-
-                RutasOrigen origen = rutasorigenList.Where(t => t.Codigo == Convert.ToInt32(tnp.Name)).FirstOrDefault();
-                RutasDestino destino = origen.RutasDestino.Where(t => t.Codigo == Convert.ToInt32(tn.Name)).FirstOrDefault();
+                RutasOrigen rutaorigen = RutasOrigenController.Instance.Get(Convert.ToInt32(tn.Name));
+                CrearNodosDestino(rutaorigen, tn, false);
+            }
+            if (tn.Nodes.Count == 0 && tn.Level == 1)
+            {
+                RutasDestino rutadestino = RutasDestinoController.Instance.Get(Convert.ToInt32(tn.Name), Convert.ToInt32(tnp.Name));
+                CrearNodosOrigenDestino(rutadestino, tn, false);
+            }
+            if (tn.Nodes.Count == 0 && tn.Level == 2)
+            {
+                RutasOrigenDestino rutaorigendestino = RutasOrigenDestinoController.Instance.Get(Convert.ToInt32(tn.Name));
+                CrearNodosOrigenDestinoDet(rutaorigendestino, tn, false);
+            }
+            if (tn.Nodes.Count > 0 && tn.Level == 3)
+            {
+                //RutasOrigen origen = rutasorigenList.Where(t => t.Codigo == Convert.ToInt32(tnp.Name)).FirstOrDefault();
+                //RutasDestino destino = origen.RutasDestino.Where(t => t.Codigo == Convert.ToInt32(tn.Name)).FirstOrDefault();
             }
 
             //rutasList = rutasorigen.Rutas.Where(t => t.strRutaAnticipoGrupoDestino == rutasDestino.Destino &&
