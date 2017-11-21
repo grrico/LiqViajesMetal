@@ -222,13 +222,6 @@
             this.tipoTrailerCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rutasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBoxTipoTrailer = new System.Windows.Forms.ComboBox();
-            this.comboBoxDestino = new System.Windows.Forms.ComboBox();
-            this.comboBoxOrigen = new System.Windows.Forms.ComboBox();
             this.imageListBase2 = new System.Windows.Forms.ImageList(this.components);
             this.imageListBase = new System.Windows.Forms.ImageList(this.components);
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -298,6 +291,7 @@
             this.btnInterrogar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -342,7 +336,6 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRuta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).BeginInit();
-            this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -372,6 +365,10 @@
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -1786,7 +1783,6 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panel4);
-            this.tabPage4.Controls.Add(this.panel1);
             this.tabPage4.ImageIndex = 3;
             this.tabPage4.Location = new System.Drawing.Point(4, 23);
             this.tabPage4.Name = "tabPage4";
@@ -1797,21 +1793,20 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.treeViewRutas);
-            this.panel4.Controls.Add(this.dataGridViewRuta);
+            this.panel4.Controls.Add(this.splitContainer2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 102);
+            this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1014, 466);
+            this.panel4.Size = new System.Drawing.Size(1014, 568);
             this.panel4.TabIndex = 1;
             // 
             // treeViewRutas
             // 
             this.treeViewRutas.CheckBoxes = true;
-            this.treeViewRutas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeViewRutas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewRutas.Location = new System.Drawing.Point(0, 0);
             this.treeViewRutas.Name = "treeViewRutas";
-            this.treeViewRutas.Size = new System.Drawing.Size(387, 466);
+            this.treeViewRutas.Size = new System.Drawing.Size(276, 566);
             this.treeViewRutas.TabIndex = 2;
             this.treeViewRutas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRutas_AfterSelect);
             // 
@@ -1830,12 +1825,13 @@
             this.tipoTrailerCodigoDataGridViewTextBoxColumn,
             this.pesoDataGridViewTextBoxColumn1});
             this.dataGridViewRuta.DataSource = this.rutasBindingSource;
+            this.dataGridViewRuta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRuta.EnableHeadersVisualStyles = false;
-            this.dataGridViewRuta.Location = new System.Drawing.Point(393, 0);
+            this.dataGridViewRuta.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRuta.Name = "dataGridViewRuta";
             this.dataGridViewRuta.ReadOnly = true;
             this.dataGridViewRuta.RowHeadersWidth = 10;
-            this.dataGridViewRuta.Size = new System.Drawing.Size(621, 466);
+            this.dataGridViewRuta.Size = new System.Drawing.Size(730, 566);
             this.dataGridViewRuta.TabIndex = 1;
             this.dataGridViewRuta.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRuta_RowEnter);
             // 
@@ -1891,80 +1887,6 @@
             // rutasBindingSource
             // 
             this.rutasBindingSource.DataSource = typeof(LiqViajes_Bll_Data.Rutas);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.comboBoxTipoTrailer);
-            this.panel1.Controls.Add(this.comboBoxDestino);
-            this.panel1.Controls.Add(this.comboBoxOrigen);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1014, 102);
-            this.panel1.TabIndex = 0;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(285, 15);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Tipo Trailer:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(32, 42);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Destino:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(37, 15);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Origen:";
-            // 
-            // comboBoxTipoTrailer
-            // 
-            this.comboBoxTipoTrailer.DisplayMember = "Origen";
-            this.comboBoxTipoTrailer.FormattingEnabled = true;
-            this.comboBoxTipoTrailer.Location = new System.Drawing.Point(354, 15);
-            this.comboBoxTipoTrailer.Name = "comboBoxTipoTrailer";
-            this.comboBoxTipoTrailer.Size = new System.Drawing.Size(122, 21);
-            this.comboBoxTipoTrailer.TabIndex = 4;
-            this.comboBoxTipoTrailer.ValueMember = "Codigo";
-            this.comboBoxTipoTrailer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoTrailer_SelectedIndexChanged);
-            // 
-            // comboBoxDestino
-            // 
-            this.comboBoxDestino.DisplayMember = "Origen";
-            this.comboBoxDestino.FormattingEnabled = true;
-            this.comboBoxDestino.Location = new System.Drawing.Point(84, 42);
-            this.comboBoxDestino.Name = "comboBoxDestino";
-            this.comboBoxDestino.Size = new System.Drawing.Size(188, 21);
-            this.comboBoxDestino.TabIndex = 5;
-            this.comboBoxDestino.ValueMember = "Codigo";
-            this.comboBoxDestino.SelectedIndexChanged += new System.EventHandler(this.comboBoxDestino_SelectedIndexChanged);
-            // 
-            // comboBoxOrigen
-            // 
-            this.comboBoxOrigen.DisplayMember = "Origen";
-            this.comboBoxOrigen.FormattingEnabled = true;
-            this.comboBoxOrigen.Location = new System.Drawing.Point(84, 15);
-            this.comboBoxOrigen.Name = "comboBoxOrigen";
-            this.comboBoxOrigen.Size = new System.Drawing.Size(188, 21);
-            this.comboBoxOrigen.TabIndex = 6;
-            this.comboBoxOrigen.ValueMember = "Codigo";
-            this.comboBoxOrigen.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrigen_SelectedIndexChanged);
             // 
             // imageListBase2
             // 
@@ -2776,6 +2698,24 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.treeViewRutas);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.dataGridViewRuta);
+            this.splitContainer2.Size = new System.Drawing.Size(1014, 568);
+            this.splitContainer2.SplitterDistance = 278;
+            this.splitContainer2.TabIndex = 3;
+            // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2832,8 +2772,6 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRuta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -2865,6 +2803,10 @@
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3099,14 +3041,7 @@
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.ImageList imageListBase2;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBoxTipoTrailer;
-        private System.Windows.Forms.ComboBox comboBoxDestino;
-        private System.Windows.Forms.ComboBox comboBoxOrigen;
         private System.Windows.Forms.DataGridView dataGridViewRuta;
         private System.Windows.Forms.BindingSource rutasBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn strRutaAnticipoDataGridViewTextBoxColumn;
@@ -3117,5 +3052,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoTrailerCodigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pesoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.TreeView treeViewRutas;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }

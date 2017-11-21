@@ -47,7 +47,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Creates a new record into tblRutas by passing all fields
 		/// </summary>
-		/// <param name="RutasOrigenCodigo"></param>
+		/// <param name="RutasOrigenDestinoVehTrailerCodigo"></param>
 		/// <param name="strRutaAnticipoGrupoOrigen"></param>
 		/// <param name="strRutaAnticipoGrupoDestino"></param>
 		/// <param name="strRutaAnticipoGrupo"></param>
@@ -55,6 +55,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="TipoVehiculoCodigo"></param>
 		/// <param name="TipoVehiculo"></param>
 		/// <param name="TipoTrailerCodigo"></param>
+		/// <param name="DescripcionTipoTrailer"></param>
 		/// <param name="Peso"></param>
 		/// <param name="Programa"></param>
 		/// <param name="logViajeVacio"></param>
@@ -122,7 +123,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CurDescargue"></param>
 		/// <param name="LogAnticipoACPM"></param>
 		/// <returns>int that contents the lngIdRegistrRuta value</returns>
-		public int Create(int lngIdRegistrRuta, int? RutasOrigenCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public int Create(int lngIdRegistrRuta, int? RutasOrigenDestinoVehTrailerCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -147,9 +148,9 @@ namespace LiqViajes_Bll_Data
 				System.Collections.Hashtable nullExit = null;
 
 				paramlist.AddWithValue("@lngIdRegistrRuta",lngIdRegistrRuta);
-				if (RutasOrigenCodigo !=null)
+				if (RutasOrigenDestinoVehTrailerCodigo !=null)
 				{
-					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
+					paramlist.AddWithValue("@RutasOrigenDestinoVehTrailerCodigo",RutasOrigenDestinoVehTrailerCodigo);
 				}
 				if (strRutaAnticipoGrupoOrigen !=null)
 				{
@@ -178,6 +179,10 @@ namespace LiqViajes_Bll_Data
 				if (TipoTrailerCodigo !=null)
 				{
 					paramlist.AddWithValue("@TipoTrailerCodigo",TipoTrailerCodigo);
+				}
+				if (DescripcionTipoTrailer !=null)
+				{
+					paramlist.AddWithValue("@DescripcionTipoTrailer",DescripcionTipoTrailer);
 				}
 				if (Peso !=null)
 				{
@@ -459,7 +464,7 @@ namespace LiqViajes_Bll_Data
 		/// Updates one record into tblRutas by passing all fields
 		/// </summary>
 		/// <param name="lngIdRegistrRuta"></param>
-		/// <param name="RutasOrigenCodigo"></param>
+		/// <param name="RutasOrigenDestinoVehTrailerCodigo"></param>
 		/// <param name="strRutaAnticipoGrupoOrigen"></param>
 		/// <param name="strRutaAnticipoGrupoDestino"></param>
 		/// <param name="strRutaAnticipoGrupo"></param>
@@ -467,6 +472,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="TipoVehiculoCodigo"></param>
 		/// <param name="TipoVehiculo"></param>
 		/// <param name="TipoTrailerCodigo"></param>
+		/// <param name="DescripcionTipoTrailer"></param>
 		/// <param name="Peso"></param>
 		/// <param name="Programa"></param>
 		/// <param name="logViajeVacio"></param>
@@ -533,7 +539,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CurCargue"></param>
 		/// <param name="CurDescargue"></param>
 		/// <param name="LogAnticipoACPM"></param>
-		public void Update(int lngIdRegistrRuta, int? RutasOrigenCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int lngIdRegistrRuta, int? RutasOrigenDestinoVehTrailerCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -557,9 +563,9 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				paramlist.AddWithValue("@lngIdRegistrRuta",lngIdRegistrRuta);
-				if (RutasOrigenCodigo !=null)
+				if (RutasOrigenDestinoVehTrailerCodigo !=null)
 				{
-					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
+					paramlist.AddWithValue("@RutasOrigenDestinoVehTrailerCodigo",RutasOrigenDestinoVehTrailerCodigo);
 				}
 				if (strRutaAnticipoGrupoOrigen !=null)
 				{
@@ -588,6 +594,10 @@ namespace LiqViajes_Bll_Data
 				if (TipoTrailerCodigo !=null)
 				{
 					paramlist.AddWithValue("@TipoTrailerCodigo",TipoTrailerCodigo);
+				}
+				if (DescripcionTipoTrailer !=null)
+				{
+					paramlist.AddWithValue("@DescripcionTipoTrailer",DescripcionTipoTrailer);
 				}
 				if (Peso !=null)
 				{
@@ -967,11 +977,11 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets all records from tblRutas that are related to RutasOrigen
+		/// Gets all records from tblRutas that are related to RutasOrigenDestinoVehTrailer
 		/// </summary>
-		/// <param name="RutasOrigenCodigo"></param>
+		/// <param name="RutasOrigenDestinoVehTrailerCodigo"></param>
 		/// <returns>A DataTable object containing all records data</returns>
-		public DataTable GetBy_RutasOrigenCodigo(int RutasOrigenCodigo)
+		public DataTable GetBy_RutasOrigenDestinoVehTrailerCodigo(int RutasOrigenDestinoVehTrailerCodigo)
 		{
 			try 
 			{
@@ -991,78 +1001,8 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 
-				paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasGetBy_RutasOrigenCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
-			}
-			catch (Exception ex)
-			{
-				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
-				throw ex;
-			}
-		}
-
-		/// <summary>
-		/// Gets all records from tblRutas that are related to TipoTrailer
-		/// </summary>
-		/// <param name="TipoTrailerCodigo"></param>
-		/// <returns>A DataTable object containing all records data</returns>
-		public DataTable GetBy_TipoTrailerCodigo(int TipoTrailerCodigo)
-		{
-			try 
-			{
-				Sinapsys.Datos.SQL LocalDataProvider;
-				bool disconnect = false;
-				if (DataProvider.Concurrente)
-				{
-					LocalDataProvider = new Sinapsys.Datos.SQL();
-					LocalDataProvider.Conectar(DataProvider.Alias, false);
-				}
-				else
-				{
-					LocalDataProvider = DataProvider.Datos;
-				}
-				disconnect = DataProvider.ValidateConnection();
-				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
-				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
-				System.Collections.Hashtable nullExit = null;
-
-				paramlist.AddWithValue("@TipoTrailerCodigo",TipoTrailerCodigo);
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasGetBy_TipoTrailerCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
-			}
-			catch (Exception ex)
-			{
-				Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
-				throw ex;
-			}
-		}
-
-		/// <summary>
-		/// Gets all records from tblRutas that are related to TipoVehiculo
-		/// </summary>
-		/// <param name="TipoVehiculoCodigo"></param>
-		/// <returns>A DataTable object containing all records data</returns>
-		public DataTable GetBy_TipoVehiculoCodigo(int TipoVehiculoCodigo)
-		{
-			try 
-			{
-				Sinapsys.Datos.SQL LocalDataProvider;
-				bool disconnect = false;
-				if (DataProvider.Concurrente)
-				{
-					LocalDataProvider = new Sinapsys.Datos.SQL();
-					LocalDataProvider.Conectar(DataProvider.Alias, false);
-				}
-				else
-				{
-					LocalDataProvider = DataProvider.Datos;
-				}
-				disconnect = DataProvider.ValidateConnection();
-				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
-				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
-				System.Collections.Hashtable nullExit = null;
-
-				paramlist.AddWithValue("@TipoVehiculoCodigo",TipoVehiculoCodigo);
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasGetBy_TipoVehiculoCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				paramlist.AddWithValue("@RutasOrigenDestinoVehTrailerCodigo",RutasOrigenDestinoVehTrailerCodigo);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasGetBy_RutasOrigenDestinoVehTrailerCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{

@@ -53,9 +53,10 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				rutasdestino.Codigo = (int) dr["Codigo"];
-				rutasdestino.RutasOrigenCodigo = dr.IsNull("RutasOrigenCodigo") ? null :(int?) dr["RutasOrigenCodigo"];
+				rutasdestino.RutasOrigenCodigo = (int) dr["RutasOrigenCodigo"];
 				rutasdestino.Origen = dr.IsNull("Origen") ? null :(string) dr["Origen"];
 				rutasdestino.Destino = dr.IsNull("Destino") ? null :(string) dr["Destino"];
+				rutasdestino.Favorita = dr.IsNull("Favorita") ? null :(bool?) dr["Favorita"];
 			}
 			catch (Exception ex)
 			{
@@ -70,17 +71,17 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public RutasDestino Create(RutasDestino rutasdestino, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			return Create(rutasdestino.Codigo,rutasdestino.RutasOrigenCodigo,rutasdestino.Origen,rutasdestino.Destino,datosTransaccion);
+			return Create(rutasdestino.Codigo,rutasdestino.RutasOrigenCodigo,rutasdestino.Origen,rutasdestino.Destino,rutasdestino.Favorita,datosTransaccion);
 		}
 
 		/// <summary>
 		/// Creates a new RutasDestino object by passing all object's fields
 		/// </summary>
-		/// <param name="RutasOrigenCodigo">int that contents the RutasOrigenCodigo value for the RutasDestino object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasDestino object</param>
 		/// <param name="Destino">string that contents the Destino value for the RutasDestino object</param>
+		/// <param name="Favorita">bool that contents the Favorita value for the RutasDestino object</param>
 		/// <returns>One RutasDestino object</returns>
-		public RutasDestino Create(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, Sinapsys.Datos.SQL datosTransaccion=null)
+		public RutasDestino Create(int Codigo, int RutasOrigenCodigo, string Origen, string Destino, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -91,7 +92,8 @@ namespace LiqViajes_Bll_Data
 				rutasdestino.RutasOrigenCodigo = RutasOrigenCodigo;
 				rutasdestino.Origen = Origen;
 				rutasdestino.Destino = Destino;
-				Codigo = RutasDestinoDataProvider.Instance.Create(Codigo, RutasOrigenCodigo, Origen, Destino,"RutasDestino",datosTransaccion);
+				rutasdestino.Favorita = Favorita;
+				Codigo = RutasDestinoDataProvider.Instance.Create(Codigo, RutasOrigenCodigo, Origen, Destino, Favorita,"RutasDestino",datosTransaccion);
 				if (Codigo == 0)
 					return null;
 
@@ -112,15 +114,16 @@ namespace LiqViajes_Bll_Data
 		/// <param name="RutasOrigenCodigo">int that contents the RutasOrigenCodigo value for the RutasDestino object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasDestino object</param>
 		/// <param name="Destino">string that contents the Destino value for the RutasDestino object</param>
-		public void Update(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Favorita">bool that contents the Favorita value for the RutasDestino object</param>
+		public void Update(int Codigo, int RutasOrigenCodigo, string Origen, string Destino, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasDestino new_values = new RutasDestino();
-				new_values.RutasOrigenCodigo = RutasOrigenCodigo;
 				new_values.Origen = Origen;
 				new_values.Destino = Destino;
-				RutasDestinoDataProvider.Instance.Update(Codigo, RutasOrigenCodigo, Origen, Destino,"RutasDestino",datosTransaccion);
+				new_values.Favorita = Favorita;
+				RutasDestinoDataProvider.Instance.Update(Codigo, RutasOrigenCodigo, Origen, Destino, Favorita,"RutasDestino",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -134,7 +137,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasdestino">An instance of RutasDestino for reference</param>
 		public void Update(RutasDestino rutasdestino,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasdestino.Codigo, rutasdestino.RutasOrigenCodigo, rutasdestino.Origen, rutasdestino.Destino);
+			Update(rutasdestino.Codigo, rutasdestino.RutasOrigenCodigo, rutasdestino.Origen, rutasdestino.Destino, rutasdestino.Favorita);
 		}
 
 		/// <summary>
@@ -142,14 +145,14 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public void  Delete(RutasDestino rutasdestino, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Delete(rutasdestino.Codigo,datosTransaccion);
+			Delete(rutasdestino.Codigo, rutasdestino.RutasOrigenCodigo,datosTransaccion);
 		}
 
 		/// <summary>
 		/// Deletes the RutasDestino object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="rutasdestino">An instance of RutasDestino for reference</param>
-		public void Delete(int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(int Codigo, int RutasOrigenCodigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -157,7 +160,7 @@ namespace LiqViajes_Bll_Data
 				//if(!Validate.security.CanDeleteSecurityField(RutasDestinoController.Instance, (ILatinodeObject)old_values))
 				//    throw new Exception("Access denied by security field, you can't delete object");
 
-				RutasDestinoDataProvider.Instance.Delete(Codigo,"RutasDestino");
+				RutasDestinoDataProvider.Instance.Delete(Codigo, RutasOrigenCodigo,"RutasDestino");
 			}
 			catch (Exception ex)
 			{
@@ -175,7 +178,8 @@ namespace LiqViajes_Bll_Data
 			try 
 			{
 				int Codigo=int.Parse(StrCommand[0]);
-				RutasDestinoDataProvider.Instance.Delete(Codigo,"RutasDestino");
+				int RutasOrigenCodigo=int.Parse(StrCommand[1]);
+				RutasDestinoDataProvider.Instance.Delete(Codigo, RutasOrigenCodigo,"RutasDestino");
 			}
 			catch (Exception ex)
 			{
@@ -187,13 +191,14 @@ namespace LiqViajes_Bll_Data
 		/// Gets the RutasDestino object by passing the object's key fields
 		/// </summary>
 		/// <param name="Codigo">int that contents the Codigo value for the RutasDestino object</param>
+		/// <param name="RutasOrigenCodigo">int that contents the RutasOrigenCodigo value for the RutasDestino object</param>
 		/// <returns>One RutasDestino object</returns>
-		public RutasDestino Get(int Codigo, bool generateUndo=false)
+		public RutasDestino Get(int Codigo, int RutasOrigenCodigo, bool generateUndo=false)
 		{
 			try 
 			{
 				RutasDestino rutasdestino = null;
-				DataTable dt = RutasDestinoDataProvider.Instance.Get(Codigo);
+				DataTable dt = RutasDestinoDataProvider.Instance.Get(Codigo, RutasOrigenCodigo);
 				if ((dt.Rows.Count > 0))
 				{
 					rutasdestino = new RutasDestino();
@@ -327,6 +332,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Destino":
 					return rutasdestino.Destino.GetType();
+
+				case "Favorita":
+					return rutasdestino.Favorita.GetType();
 
 			}
 

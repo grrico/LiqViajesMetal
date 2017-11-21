@@ -48,14 +48,14 @@ namespace LiqViajes_Bll_Data
 		/// Creates a new record into RutasOrigenDestino by passing all fields
 		/// </summary>
 		/// <param name="RutasOrigenCodigo"></param>
+		/// <param name="RutasDestinoCodigo"></param>
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
 		/// <param name="GrupoOrigen"></param>
 		/// <param name="GrupoDestino"></param>
-		/// <param name="TipoTrailerCodigo"></param>
-		/// <param name="DescripcionTrailer"></param>
+		/// <param name="Favorita"></param>
 		/// <returns>int that contents the Codigo value</returns>
-		public int Create(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public int Create(int Codigo, int? RutasOrigenCodigo, int? RutasDestinoCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -84,6 +84,10 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
 				}
+				if (RutasDestinoCodigo !=null)
+				{
+					paramlist.AddWithValue("@RutasDestinoCodigo",RutasDestinoCodigo);
+				}
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
@@ -100,13 +104,9 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@GrupoDestino",GrupoDestino);
 				}
-				if (TipoTrailerCodigo !=null)
+				if (Favorita !=null)
 				{
-					paramlist.AddWithValue("@TipoTrailerCodigo",TipoTrailerCodigo);
-				}
-				if (DescripcionTrailer !=null)
-				{
-					paramlist.AddWithValue("@DescripcionTrailer",DescripcionTrailer);
+					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				// Execute the query and return the new identity value
 				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
@@ -125,13 +125,13 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="Codigo"></param>
 		/// <param name="RutasOrigenCodigo"></param>
+		/// <param name="RutasDestinoCodigo"></param>
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
 		/// <param name="GrupoOrigen"></param>
 		/// <param name="GrupoDestino"></param>
-		/// <param name="TipoTrailerCodigo"></param>
-		/// <param name="DescripcionTrailer"></param>
-		public void Update(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoTrailerCodigo, string DescripcionTrailer,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Favorita"></param>
+		public void Update(int Codigo, int? RutasOrigenCodigo, int? RutasDestinoCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -159,6 +159,10 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
 				}
+				if (RutasDestinoCodigo !=null)
+				{
+					paramlist.AddWithValue("@RutasDestinoCodigo",RutasDestinoCodigo);
+				}
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
@@ -175,13 +179,9 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@GrupoDestino",GrupoDestino);
 				}
-				if (TipoTrailerCodigo !=null)
+				if (Favorita !=null)
 				{
-					paramlist.AddWithValue("@TipoTrailerCodigo",TipoTrailerCodigo);
-				}
-				if (DescripcionTrailer !=null)
-				{
-					paramlist.AddWithValue("@DescripcionTrailer",DescripcionTrailer);
+					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
@@ -297,11 +297,12 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets all records from RutasOrigenDestino that are related to RutasOrigen
+		/// Gets all records from RutasOrigenDestino that are related to RutasDestino
 		/// </summary>
+		/// <param name="RutasDestinoCodigo"></param>
 		/// <param name="RutasOrigenCodigo"></param>
 		/// <returns>A DataTable object containing all records data</returns>
-		public DataTable GetBy_RutasOrigenCodigo(int RutasOrigenCodigo)
+		public DataTable GetBy_RutasDestinoCodigo_RutasOrigenCodigo(int RutasDestinoCodigo, int RutasOrigenCodigo)
 		{
 			try 
 			{
@@ -321,8 +322,9 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 
+				paramlist.AddWithValue("@RutasDestinoCodigo",RutasDestinoCodigo);
 				paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
-				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoGetBy_RutasOrigenCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenDestinoGetBy_RutasDestinoCodigo_RutasOrigenCodigo", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{

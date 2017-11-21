@@ -87,9 +87,6 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the reference to foreign TercerosConductoresList object accessed by Codigo
 		private TercerosConductoresList m_TercerosConductores;
 
-		// Field for storing the reference to foreign RutasList object accessed by Codigo
-		private RutasList m_Rutas;
-
 
 		#endregion
 
@@ -195,23 +192,6 @@ namespace LiqViajes_Bll_Data
 		return m_TercerosConductores;
 	}
 	set { m_TercerosConductores = value; }
-}
-
-/// <summary>
-/// Gets or sets the reference to foreign RutasList object accessed by Codigo
-/// </summary>
-public RutasList Rutas
-{
-	get
-	{
-		if (m_Rutas == null)
-		{
-			m_Rutas = RutasController.Instance.GetBy_TipoVehiculoCodigo(Codigo);
-	}
-
-	return m_Rutas;
-}
-set { m_Rutas = value; }
 }
 
 #endregion

@@ -93,9 +93,6 @@ namespace LiqViajes_Bll_Data
 
 		// Evaluate changed state
 		private bool m_changed=false;
-		// Field for storing the reference to RutasOrigen accessed by RutasOrigenCodigo
-		private RutasOrigen m_RutasOrigen;
-
 
 		#endregion
 
@@ -128,16 +125,10 @@ namespace LiqViajes_Bll_Data
 		public int? RutasOrigenCodigo
 		{
 			get { return m_RutasOrigenCodigo; }
-			set
+			set 
 			{
 				m_changed=true;
 				m_RutasOrigenCodigo = value;
-
-				if ((m_RutasOrigen != null) && (m_RutasOrigen.Codigo != m_RutasOrigenCodigo))
-				{
-					// we need to reset the reference because it is now invalid
-					m_RutasOrigen = null;
-				}
 			}
 		}
 
@@ -205,38 +196,6 @@ namespace LiqViajes_Bll_Data
 		{
 			return "[Codigo] = " + Codigo.ToString();
 		}
-		/// <summary>
-		/// Gets or sets the reference to RutasOrigen accessed by RutasOrigenCodigo
-		/// </summary>
-		/// <remarks>
-		/// Also updates related field values
-		/// </remarks>
-		public RutasOrigen RutasOrigen
-		{
-			get
-			{
-				if (m_RutasOrigen == null)
-				{
-					if (m_RutasOrigenCodigo != null)
-					{
-						m_RutasOrigen = RutasOrigenController.Instance.Get((int)m_RutasOrigenCodigo);
-					}
-				}
-
-				return m_RutasOrigen;
-			}
-
-			set
-			{
-				m_RutasOrigen = value;
-
-				if (m_RutasOrigen != null)
-				{
-					this.m_RutasOrigenCodigo = m_RutasOrigen.Codigo;
-				}
-			}
-		}
-
 		#endregion
 
 	}

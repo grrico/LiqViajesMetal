@@ -1203,21 +1203,7 @@ namespace MetalLiqViajes_Forms
 
             if (tabControlTramos.SelectedIndex == 2)
             {
-                swtCargaCompleta = false;
-
-                rutasorigenList = RutasOrigenController.Instance.GetAll().ToList();
-
-                comboBoxOrigen.DisplayMember = "Origen";
-                comboBoxOrigen.ValueMember = "Codigo";
-
-                comboBoxOrigen.DataSource = rutasorigenList;
-                comboBoxOrigen.SelectedValue = 24;
-                comboBoxOrigen.Refresh();
-
                 CargarRuta();
-
-                swtCargaCompleta = true;
-
             }
         }
 
@@ -1594,61 +1580,14 @@ namespace MetalLiqViajes_Forms
 
         }
 
-        private void comboBoxOrigen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxOrigen.SelectedItem != null)
-            {
-                rutasorigen = comboBoxOrigen.SelectedItem as RutasOrigen;
-
-                comboBoxDestino.DisplayMember = "Destino";
-                comboBoxDestino.ValueMember = "Codigo";
-
-                comboBoxTipoTrailer.DisplayMember = "DescripcionTrailer";
-                comboBoxTipoTrailer.ValueMember = "TipoTrailerCodigo";
-
-                List<RutasDestino> destinoList = rutasorigen.RutasDestino.ToList();
-                comboBoxDestino.DataSource = destinoList;
-                comboBoxDestino.Refresh();
-                comboBoxDestino.SelectedIndex = 0;
-                if (rutasorigen.Codigo == 24)
-                {
-                    int index = destinoList.FindIndex(t => t.Codigo == 126);
-                    comboBoxDestino.SelectedIndex = index;
-                }
-
-                comboBoxTipoTrailer.DataSource = rutasorigen.RutasOrigenTipoTrailer;
-                comboBoxTipoTrailer.Refresh();
-                comboBoxTipoTrailer.SelectedIndex = 0;
-            }
-        }
-
-        private void comboBoxDestino_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (swtCargaCompleta) CargarRuta();
-        }
-
-        private void comboBoxTipoTrailer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (swtCargaCompleta) CargarRuta();
-        }
-
         private void CargarRuta()
         {
             try
             {
-                rutasDestino = comboBoxDestino.SelectedItem as RutasDestino;
-                tipotrailer = comboBoxTipoTrailer.SelectedItem as TipoTrailer;
 
-                //rutasList = rutasorigen.Rutas.Where(t => t.strRutaAnticipoGrupoDestino == rutasDestino.Destino &&
-                //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo &&
-                //t.logViajeVacio == false &&
-                //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo).ToList();
-                //dataGridViewRuta.DataSource = rutasList;
-                //dataGridViewRuta.Refresh();
-
+                this.Refresh();
 
                 CrearNodosDelPadre(0, null);
-
             }
             catch (Exception ex)
             {
@@ -1659,13 +1598,14 @@ namespace MetalLiqViajes_Forms
 
         private void CrearNodosDelPadre(int indicePadre, TreeNode nodePadre)
         {
+            rutasorigenList = RutasOrigenController.Instance.GetAll().Where(t => t.Favorita == true).ToList();
+
             // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
             foreach (var item in rutasorigenList)
             {
                 TreeNode NodoHijo = new TreeNode();
                 NodoHijo.Text = item.Origen;
                 NodoHijo.Name = item.Codigo.ToString();
-
 
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
                 // del primer nivel que no dependen de otro nodo.
@@ -1687,9 +1627,37 @@ namespace MetalLiqViajes_Forms
 
         private void CrearNodosDestino(RutasOrigen rutaorigen, TreeNode nodePadre)
         {
-            List<RutasDestino> rutasdestinoList = rutaorigen.RutasDestino;
+            List<RutasDestino> rutasdestinoList = rutaorigen.RutasDestino.Where(t => t.Favorita==true).ToList();
             // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
             foreach (var item in rutasdestinoList)
+            {
+                TreeNode nuevoNodo = new TreeNode();
+                nuevoNodo.Text = item.Destino;
+                nuevoNodo.Name = item.Codigo.ToString();
+
+                // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
+                // del primer nivel que no dependen de otro nodo.
+                if (nodePadre == null)
+                {
+                    treeViewRutas.Nodes.Add(nuevoNodo);
+                }
+                // se añade el nuevo nodo al nodo padre.
+                else
+                {
+                    nodePadre.Nodes.Add(nuevoNodo);
+                }
+
+                // Llamada recurrente al mismo método para agregar los Hijos del Nodo recién agregado.
+
+                CrearNodosOrigenDestino(item, nuevoNodo);
+            }
+        }
+
+        private void CrearNodosOrigenDestino(RutasDestino rutaorigendestino, TreeNode nodePadre)
+        {
+            List<RutasOrigenDestino> rutasorigendestinoList = rutaorigendestino.RutasOrigenDestino.Where(t => t.Favorita==true).ToList();
+            // Agregar al TreeView los nodos Hijos que se han obtenido en el DataView.
+            foreach (var item in rutasorigendestinoList)
             {
                 TreeNode nuevoNodo = new TreeNode();
                 nuevoNodo.Text = item.Destino;
@@ -1713,7 +1681,6 @@ namespace MetalLiqViajes_Forms
             }
         }
 
-        
 
         #region apunte
         //var distinctDestino = rutasorigenDestinoList.AsEnumerable()

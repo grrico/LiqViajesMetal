@@ -48,8 +48,9 @@ namespace LiqViajes_Bll_Data
 		/// Creates a new record into RutasOrigen by passing all fields
 		/// </summary>
 		/// <param name="Origen"></param>
+		/// <param name="Favorita"></param>
 		/// <returns>int that contents the Codigo value</returns>
-		public int Create(int Codigo, string Origen,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public int Create(int Codigo, string Origen, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -77,6 +78,10 @@ namespace LiqViajes_Bll_Data
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
+				}
+				if (Favorita !=null)
+				{
+					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				// Execute the query and return the new identity value
 				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
@@ -95,7 +100,8 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="Codigo"></param>
 		/// <param name="Origen"></param>
-		public void Update(int Codigo, string Origen,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Favorita"></param>
+		public void Update(int Codigo, string Origen, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -122,6 +128,10 @@ namespace LiqViajes_Bll_Data
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
+				}
+				if (Favorita !=null)
+				{
+					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}

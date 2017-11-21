@@ -54,6 +54,7 @@ namespace LiqViajes_Bll_Data
 			{
 				rutasorigen.Codigo = (int) dr["Codigo"];
 				rutasorigen.Origen = dr.IsNull("Origen") ? null :(string) dr["Origen"];
+				rutasorigen.Favorita = dr.IsNull("Favorita") ? null :(bool?) dr["Favorita"];
 			}
 			catch (Exception ex)
 			{
@@ -68,15 +69,16 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public RutasOrigen Create(RutasOrigen rutasorigen, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			return Create(rutasorigen.Codigo,rutasorigen.Origen,datosTransaccion);
+			return Create(rutasorigen.Codigo,rutasorigen.Origen,rutasorigen.Favorita,datosTransaccion);
 		}
 
 		/// <summary>
 		/// Creates a new RutasOrigen object by passing all object's fields
 		/// </summary>
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigen object</param>
+		/// <param name="Favorita">bool that contents the Favorita value for the RutasOrigen object</param>
 		/// <returns>One RutasOrigen object</returns>
-		public RutasOrigen Create(int Codigo, string Origen, Sinapsys.Datos.SQL datosTransaccion=null)
+		public RutasOrigen Create(int Codigo, string Origen, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -85,7 +87,8 @@ namespace LiqViajes_Bll_Data
 				rutasorigen.Codigo = Codigo;
 				rutasorigen.Codigo = Codigo;
 				rutasorigen.Origen = Origen;
-				Codigo = RutasOrigenDataProvider.Instance.Create(Codigo, Origen,"RutasOrigen",datosTransaccion);
+				rutasorigen.Favorita = Favorita;
+				Codigo = RutasOrigenDataProvider.Instance.Create(Codigo, Origen, Favorita,"RutasOrigen",datosTransaccion);
 				if (Codigo == 0)
 					return null;
 
@@ -104,13 +107,15 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="Codigo">int that contents the Codigo value for the RutasOrigen object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigen object</param>
-		public void Update(int Codigo, string Origen, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Favorita">bool that contents the Favorita value for the RutasOrigen object</param>
+		public void Update(int Codigo, string Origen, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasOrigen new_values = new RutasOrigen();
 				new_values.Origen = Origen;
-				RutasOrigenDataProvider.Instance.Update(Codigo, Origen,"RutasOrigen",datosTransaccion);
+				new_values.Favorita = Favorita;
+				RutasOrigenDataProvider.Instance.Update(Codigo, Origen, Favorita,"RutasOrigen",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -124,7 +129,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasorigen">An instance of RutasOrigen for reference</param>
 		public void Update(RutasOrigen rutasorigen,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasorigen.Codigo, rutasorigen.Origen);
+			Update(rutasorigen.Codigo, rutasorigen.Origen, rutasorigen.Favorita);
 		}
 
 		/// <summary>
@@ -285,6 +290,9 @@ namespace LiqViajes_Bll_Data
 
 				case "Origen":
 					return rutasorigen.Origen.GetType();
+
+				case "Favorita":
+					return rutasorigen.Favorita.GetType();
 
 			}
 

@@ -240,32 +240,6 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Selects all RutasOrigenTipoTrailer objects by reference (Foreign Keys)
-		/// </summary>
-		/// <param name="RutasOrigenCodigo">int that contents the RutasOrigenCodigo value for the RutasOrigenTipoTrailer object</param>
-		/// <returns>One RutasOrigenTipoTrailerList object</returns>
-		public RutasOrigenTipoTrailerList GetBy_RutasOrigenCodigo(int RutasOrigenCodigo,bool generateUndo=false)
-		{
-			try 
-			{
-				RutasOrigenTipoTrailerList rutasorigentipotrailerlist = new RutasOrigenTipoTrailerList();
-
-				DataTable dt = RutasOrigenTipoTrailerDataProvider.Instance.GetBy_RutasOrigenCodigo(RutasOrigenCodigo);
-				foreach (DataRow dr in dt.Rows)
-				{
-					RutasOrigenTipoTrailer rutasorigentipotrailer = new RutasOrigenTipoTrailer();
-					ReadData(rutasorigentipotrailer, dr, generateUndo);
-					rutasorigentipotrailerlist.Add(rutasorigentipotrailer);
-				}
-				return rutasorigentipotrailerlist;
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-			}
-		}
-
-		/// <summary>
 		/// Gets all objects of RutasOrigenTipoTrailer applying filter and sort criteria
 		/// </summary>
 		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>

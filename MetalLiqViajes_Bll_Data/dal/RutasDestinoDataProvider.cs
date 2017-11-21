@@ -47,11 +47,11 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Creates a new record into RutasDestino by passing all fields
 		/// </summary>
-		/// <param name="RutasOrigenCodigo"></param>
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
+		/// <param name="Favorita"></param>
 		/// <returns>int that contents the Codigo value</returns>
-		public int Create(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public int Create(int Codigo, int RutasOrigenCodigo, string Origen, string Destino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -76,10 +76,7 @@ namespace LiqViajes_Bll_Data
 				System.Collections.Hashtable nullExit = null;
 
 				paramlist.AddWithValue("@Codigo",Codigo);
-				if (RutasOrigenCodigo !=null)
-				{
-					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
-				}
+				paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
@@ -87,6 +84,10 @@ namespace LiqViajes_Bll_Data
 				if (Destino !=null)
 				{
 					paramlist.AddWithValue("@Destino",Destino);
+				}
+				if (Favorita !=null)
+				{
+					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				// Execute the query and return the new identity value
 				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasDestinoCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
@@ -107,7 +108,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="RutasOrigenCodigo"></param>
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
-		public void Update(int Codigo, int? RutasOrigenCodigo, string Origen, string Destino,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Favorita"></param>
+		public void Update(int Codigo, int RutasOrigenCodigo, string Origen, string Destino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -131,10 +133,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				paramlist.AddWithValue("@Codigo",Codigo);
-				if (RutasOrigenCodigo !=null)
-				{
-					paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
-				}
+				paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
 				if (Origen !=null)
 				{
 					paramlist.AddWithValue("@Origen",Origen);
@@ -142,6 +141,10 @@ namespace LiqViajes_Bll_Data
 				if (Destino !=null)
 				{
 					paramlist.AddWithValue("@Destino",Destino);
+				}
+				if (Favorita !=null)
+				{
+					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.RutasDestinoUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
@@ -156,7 +159,8 @@ namespace LiqViajes_Bll_Data
 		/// Deletes one record from RutasDestino by passing all key fields
 		/// </summary>
 		/// <param name="Codigo"></param>
-		public void Delete(int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="RutasOrigenCodigo"></param>
+		public void Delete(int Codigo, int RutasOrigenCodigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -180,6 +184,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				paramlist.AddWithValue("@Codigo",Codigo);
+				paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
 				LocalDataProvider.EjecutarProcedimiento("dbo.RutasDestinoDelete", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
@@ -193,8 +198,9 @@ namespace LiqViajes_Bll_Data
 		/// Gets one record from RutasDestino passing all key fields
 		/// </summary>
 		/// <param name="Codigo"></param>
+		/// <param name="RutasOrigenCodigo"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int Codigo)
+		public DataTable Get(int Codigo, int RutasOrigenCodigo)
 		{
 			try 
 			{
@@ -214,6 +220,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 				paramlist.AddWithValue("@Codigo",Codigo);
+				paramlist.AddWithValue("@RutasOrigenCodigo",RutasOrigenCodigo);
 				return LocalDataProvider.EjecutarProcedimiento("dbo.RutasDestinoGet", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 
 			}

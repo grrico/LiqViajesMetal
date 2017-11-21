@@ -28,12 +28,12 @@ namespace LiqViajes_Bll_Data
 		{
 			m_Codigo = 0;
 			m_RutasOrigenCodigo = null;
+			m_RutasDestinoCodigo = null;
 			m_Origen = null;
 			m_Destino = null;
 			m_GrupoOrigen = null;
 			m_GrupoDestino = null;
-			m_TipoTrailerCodigo = null;
-			m_DescripcionTrailer = null;
+			m_Favorita = false;
 			m_changed=false;
 		}
 		        //Return the table name of object
@@ -49,12 +49,12 @@ namespace LiqViajes_Bll_Data
 			m_oldRutasOrigenDestino=new RutasOrigenDestino();
 			m_oldRutasOrigenDestino.m_Codigo = m_Codigo;
 			m_oldRutasOrigenDestino.RutasOrigenCodigo = m_RutasOrigenCodigo;
+			m_oldRutasOrigenDestino.RutasDestinoCodigo = m_RutasDestinoCodigo;
 			m_oldRutasOrigenDestino.Origen = m_Origen;
 			m_oldRutasOrigenDestino.Destino = m_Destino;
 			m_oldRutasOrigenDestino.GrupoOrigen = m_GrupoOrigen;
 			m_oldRutasOrigenDestino.GrupoDestino = m_GrupoDestino;
-			m_oldRutasOrigenDestino.TipoTrailerCodigo = m_TipoTrailerCodigo;
-			m_oldRutasOrigenDestino.DescripcionTrailer = m_DescripcionTrailer;
+			m_oldRutasOrigenDestino.Favorita = m_Favorita;
 		}
 
 		public RutasOrigenDestino OldRutasOrigenDestino
@@ -66,12 +66,12 @@ namespace LiqViajes_Bll_Data
 		{
 			List<string> fields=new List<string>();
 			if (m_oldRutasOrigenDestino.RutasOrigenCodigo != m_RutasOrigenCodigo) fields.Add("RutasOrigenCodigo");
+			if (m_oldRutasOrigenDestino.RutasDestinoCodigo != m_RutasDestinoCodigo) fields.Add("RutasDestinoCodigo");
 			if (m_oldRutasOrigenDestino.Origen != m_Origen) fields.Add("Origen");
 			if (m_oldRutasOrigenDestino.Destino != m_Destino) fields.Add("Destino");
 			if (m_oldRutasOrigenDestino.GrupoOrigen != m_GrupoOrigen) fields.Add("GrupoOrigen");
 			if (m_oldRutasOrigenDestino.GrupoDestino != m_GrupoDestino) fields.Add("GrupoDestino");
-			if (m_oldRutasOrigenDestino.TipoTrailerCodigo != m_TipoTrailerCodigo) fields.Add("TipoTrailerCodigo");
-			if (m_oldRutasOrigenDestino.DescripcionTrailer != m_DescripcionTrailer) fields.Add("DescripcionTrailer");
+			if (m_oldRutasOrigenDestino.Favorita != m_Favorita) fields.Add("Favorita");
 			string[] fieldst = new string[fields.Count];
 			int i = 0;
 			foreach(string st in fields)
@@ -91,6 +91,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the RutasOrigenDestino's RutasOrigenCodigo value
 		private int? m_RutasOrigenCodigo;
 
+		// Field for storing the RutasOrigenDestino's RutasDestinoCodigo value
+		private int? m_RutasDestinoCodigo;
+
 		// Field for storing the RutasOrigenDestino's Origen value
 		private string m_Origen;
 
@@ -103,16 +106,16 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the RutasOrigenDestino's GrupoDestino value
 		private string m_GrupoDestino;
 
-		// Field for storing the RutasOrigenDestino's TipoTrailerCodigo value
-		private int? m_TipoTrailerCodigo;
-
-		// Field for storing the RutasOrigenDestino's DescripcionTrailer value
-		private string m_DescripcionTrailer;
+		// Field for storing the RutasOrigenDestino's Favorita value
+		private bool? m_Favorita;
 
 		// Evaluate changed state
 		private bool m_changed=false;
-		// Field for storing the reference to RutasOrigen accessed by RutasOrigenCodigo
-		private RutasOrigen m_RutasOrigen;
+		// Field for storing the reference to RutasDestino accessed by RutasDestinoCodigo, RutasOrigenCodigo
+		private RutasDestino m_RutasDestino;
+
+		// Field for storing the reference to foreign RutasOrigenDestinoVehTrailerList object accessed by Codigo
+		private RutasOrigenDestinoVehTrailerList m_RutasOrigenDestinoVehTrailer;
 
 
 		#endregion
@@ -151,10 +154,30 @@ namespace LiqViajes_Bll_Data
 				m_changed=true;
 				m_RutasOrigenCodigo = value;
 
-				if ((m_RutasOrigen != null) && (m_RutasOrigen.Codigo != m_RutasOrigenCodigo))
+				if ((m_RutasDestino != null) && (m_RutasDestino.RutasOrigenCodigo != m_RutasOrigenCodigo))
 				{
 					// we need to reset the reference because it is now invalid
-					m_RutasOrigen = null;
+					m_RutasDestino = null;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the RutasOrigenDestino's RutasDestinoCodigo value (int)
+		/// </summary>
+		[DataMember]
+		public int? RutasDestinoCodigo
+		{
+			get { return m_RutasDestinoCodigo; }
+			set
+			{
+				m_changed=true;
+				m_RutasDestinoCodigo = value;
+
+				if ((m_RutasDestino != null) && (m_RutasDestino.Codigo != m_RutasDestinoCodigo))
+				{
+					// we need to reset the reference because it is now invalid
+					m_RutasDestino = null;
 				}
 			}
 		}
@@ -216,30 +239,16 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's TipoTrailerCodigo value (int)
+		/// Attribute for access the RutasOrigenDestino's Favorita value (bool)
 		/// </summary>
 		[DataMember]
-		public int? TipoTrailerCodigo
+		public bool? Favorita
 		{
-			get { return m_TipoTrailerCodigo; }
+			get { return m_Favorita; }
 			set 
 			{
 				m_changed=true;
-				m_TipoTrailerCodigo = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's DescripcionTrailer value (string)
-		/// </summary>
-		[DataMember]
-		public string DescripcionTrailer
-		{
-			get { return m_DescripcionTrailer; }
-			set 
-			{
-				m_changed=true;
-				m_DescripcionTrailer = value;
+				m_Favorita = value;
 			}
 		}
 
@@ -249,12 +258,12 @@ namespace LiqViajes_Bll_Data
 			{
 				case "Codigo": return Codigo;
 				case "RutasOrigenCodigo": return RutasOrigenCodigo;
+				case "RutasDestinoCodigo": return RutasDestinoCodigo;
 				case "Origen": return Origen;
 				case "Destino": return Destino;
 				case "GrupoOrigen": return GrupoOrigen;
 				case "GrupoDestino": return GrupoDestino;
-				case "TipoTrailerCodigo": return TipoTrailerCodigo;
-				case "DescripcionTrailer": return DescripcionTrailer;
+				case "Favorita": return Favorita;
 				default: return null;
 			}
 		}
@@ -269,60 +278,81 @@ namespace LiqViajes_Bll_Data
 			return "[Codigo] = " + Codigo.ToString();
 		}
 		/// <summary>
-		/// Gets or sets the reference to RutasOrigen accessed by RutasOrigenCodigo
+		/// Gets or sets the reference to RutasDestino accessed by RutasDestinoCodigo, RutasOrigenCodigo
 		/// </summary>
 		/// <remarks>
 		/// Also updates related field values
 		/// </remarks>
-		public RutasOrigen RutasOrigen
+		public RutasDestino RutasDestino
 		{
 			get
 			{
-				if (m_RutasOrigen == null)
+				if (m_RutasDestino == null)
 				{
-					if (m_RutasOrigenCodigo != null)
+					if (m_RutasDestinoCodigo != null)
 					{
-						m_RutasOrigen = RutasOrigenController.Instance.Get((int)m_RutasOrigenCodigo);
+						if (m_RutasOrigenCodigo != null)
+						{
+							m_RutasDestino = RutasDestinoController.Instance.Get((int)m_RutasDestinoCodigo,(int)m_RutasOrigenCodigo);
+						}
 					}
 				}
 
-				return m_RutasOrigen;
+				return m_RutasDestino;
 			}
 
 			set
 			{
-				m_RutasOrigen = value;
+				m_RutasDestino = value;
 
-				if (m_RutasOrigen != null)
+				if (m_RutasDestino != null)
 				{
-					this.m_RutasOrigenCodigo = m_RutasOrigen.Codigo;
+					this.m_RutasDestinoCodigo = m_RutasDestino.Codigo;
+					this.m_RutasOrigenCodigo = m_RutasDestino.RutasOrigenCodigo;
 				}
 			}
 		}
 
-		#endregion
+		/// <summary>
+		/// Gets or sets the reference to foreign RutasOrigenDestinoVehTrailerList object accessed by Codigo
+		/// </summary>
+		public RutasOrigenDestinoVehTrailerList RutasOrigenDestinoVehTrailer
+		{
+			get
+			{
+				if (m_RutasOrigenDestinoVehTrailer == null)
+				{
+					m_RutasOrigenDestinoVehTrailer = RutasOrigenDestinoVehTrailerController.Instance.GetBy_RutasOrigenDestinoCodigo(Codigo);
+			}
 
+			return m_RutasOrigenDestinoVehTrailer;
+		}
+		set { m_RutasOrigenDestinoVehTrailer = value; }
 	}
 
 	#endregion
 
-	#region RutasOrigenDestinoList object
+}
+
+#endregion
+
+#region RutasOrigenDestinoList object
+
+/// <summary>
+/// Class for reading and access a list of RutasOrigenDestino object
+/// </summary>
+[CollectionDataContract]
+public partial class RutasOrigenDestinoList : List<RutasOrigenDestino>
+{
 
 	/// <summary>
-	/// Class for reading and access a list of RutasOrigenDestino object
+	/// Default constructor
 	/// </summary>
-	[CollectionDataContract]
-	public partial class RutasOrigenDestinoList : List<RutasOrigenDestino>
+	public RutasOrigenDestinoList()
 	{
-
-		/// <summary>
-		/// Default constructor
-		/// </summary>
-		public RutasOrigenDestinoList()
-		{
-		}
 	}
+}
 
-	#endregion
+#endregion
 
 }

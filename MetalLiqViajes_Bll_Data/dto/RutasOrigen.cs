@@ -28,6 +28,7 @@ namespace LiqViajes_Bll_Data
 		{
 			m_Codigo = 0;
 			m_Origen = null;
+			m_Favorita = false;
 			m_changed=false;
 		}
 		        //Return the table name of object
@@ -43,6 +44,7 @@ namespace LiqViajes_Bll_Data
 			m_oldRutasOrigen=new RutasOrigen();
 			m_oldRutasOrigen.m_Codigo = m_Codigo;
 			m_oldRutasOrigen.Origen = m_Origen;
+			m_oldRutasOrigen.Favorita = m_Favorita;
 		}
 
 		public RutasOrigen OldRutasOrigen
@@ -54,6 +56,7 @@ namespace LiqViajes_Bll_Data
 		{
 			List<string> fields=new List<string>();
 			if (m_oldRutasOrigen.Origen != m_Origen) fields.Add("Origen");
+			if (m_oldRutasOrigen.Favorita != m_Favorita) fields.Add("Favorita");
 			string[] fieldst = new string[fields.Count];
 			int i = 0;
 			foreach(string st in fields)
@@ -73,19 +76,13 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the RutasOrigen's Origen value
 		private string m_Origen;
 
+		// Field for storing the RutasOrigen's Favorita value
+		private bool? m_Favorita;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 		// Field for storing the reference to foreign RutasDestinoList object accessed by Codigo
 		private RutasDestinoList m_RutasDestino;
-
-		// Field for storing the reference to foreign RutasOrigenTipoTrailerList object accessed by Codigo
-		private RutasOrigenTipoTrailerList m_RutasOrigenTipoTrailer;
-
-		// Field for storing the reference to foreign RutasList object accessed by Codigo
-		private RutasList m_Rutas;
-
-		// Field for storing the reference to foreign RutasOrigenDestinoList object accessed by Codigo
-		private RutasOrigenDestinoList m_RutasOrigenDestino;
 
 
 		#endregion
@@ -126,12 +123,27 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the RutasOrigen's Favorita value (bool)
+		/// </summary>
+		[DataMember]
+		public bool? Favorita
+		{
+			get { return m_Favorita; }
+			set 
+			{
+				m_changed=true;
+				m_Favorita = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
 				case "Codigo": return Codigo;
 				case "Origen": return Origen;
+				case "Favorita": return Favorita;
 				default: return null;
 			}
 		}
@@ -162,58 +174,7 @@ namespace LiqViajes_Bll_Data
 		set { m_RutasDestino = value; }
 	}
 
-	/// <summary>
-	/// Gets or sets the reference to foreign RutasOrigenTipoTrailerList object accessed by Codigo
-	/// </summary>
-	public RutasOrigenTipoTrailerList RutasOrigenTipoTrailer
-	{
-		get
-		{
-			if (m_RutasOrigenTipoTrailer == null)
-			{
-				m_RutasOrigenTipoTrailer = RutasOrigenTipoTrailerController.Instance.GetBy_RutasOrigenCodigo(Codigo);
-		}
-
-		return m_RutasOrigenTipoTrailer;
-	}
-	set { m_RutasOrigenTipoTrailer = value; }
-}
-
-/// <summary>
-/// Gets or sets the reference to foreign RutasList object accessed by Codigo
-/// </summary>
-public RutasList Rutas
-{
-	get
-	{
-		if (m_Rutas == null)
-		{
-			m_Rutas = RutasController.Instance.GetBy_RutasOrigenCodigo(Codigo);
-	}
-
-	return m_Rutas;
-}
-set { m_Rutas = value; }
-}
-
-/// <summary>
-/// Gets or sets the reference to foreign RutasOrigenDestinoList object accessed by Codigo
-/// </summary>
-public RutasOrigenDestinoList RutasOrigenDestino
-{
-	get
-	{
-		if (m_RutasOrigenDestino == null)
-		{
-			m_RutasOrigenDestino = RutasOrigenDestinoController.Instance.GetBy_RutasOrigenCodigo(Codigo);
-	}
-
-	return m_RutasOrigenDestino;
-}
-set { m_RutasOrigenDestino = value; }
-}
-
-#endregion
+	#endregion
 
 }
 

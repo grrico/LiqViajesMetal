@@ -27,7 +27,7 @@ namespace LiqViajes_Bll_Data
 		public Rutas()
 		{
 			m_lngIdRegistrRuta = 0;
-			m_RutasOrigenCodigo = null;
+			m_RutasOrigenDestinoVehTrailerCodigo = null;
 			m_strRutaAnticipoGrupoOrigen = null;
 			m_strRutaAnticipoGrupoDestino = null;
 			m_strRutaAnticipoGrupo = null;
@@ -35,6 +35,7 @@ namespace LiqViajes_Bll_Data
 			m_TipoVehiculoCodigo = null;
 			m_TipoVehiculo = null;
 			m_TipoTrailerCodigo = null;
+			m_DescripcionTipoTrailer = null;
 			m_Peso = null;
 			m_Programa = null;
 			m_logViajeVacio = false;
@@ -115,7 +116,7 @@ namespace LiqViajes_Bll_Data
 		{
 			m_oldRutas=new Rutas();
 			m_oldRutas.m_lngIdRegistrRuta = m_lngIdRegistrRuta;
-			m_oldRutas.RutasOrigenCodigo = m_RutasOrigenCodigo;
+			m_oldRutas.RutasOrigenDestinoVehTrailerCodigo = m_RutasOrigenDestinoVehTrailerCodigo;
 			m_oldRutas.strRutaAnticipoGrupoOrigen = m_strRutaAnticipoGrupoOrigen;
 			m_oldRutas.strRutaAnticipoGrupoDestino = m_strRutaAnticipoGrupoDestino;
 			m_oldRutas.strRutaAnticipoGrupo = m_strRutaAnticipoGrupo;
@@ -123,6 +124,7 @@ namespace LiqViajes_Bll_Data
 			m_oldRutas.TipoVehiculoCodigo = m_TipoVehiculoCodigo;
 			m_oldRutas.TipoVehiculo = m_TipoVehiculo;
 			m_oldRutas.TipoTrailerCodigo = m_TipoTrailerCodigo;
+			m_oldRutas.DescripcionTipoTrailer = m_DescripcionTipoTrailer;
 			m_oldRutas.Peso = m_Peso;
 			m_oldRutas.Programa = m_Programa;
 			m_oldRutas.logViajeVacio = m_logViajeVacio;
@@ -199,7 +201,7 @@ namespace LiqViajes_Bll_Data
 		public string[] FieldChanged()
 		{
 			List<string> fields=new List<string>();
-			if (m_oldRutas.RutasOrigenCodigo != m_RutasOrigenCodigo) fields.Add("RutasOrigenCodigo");
+			if (m_oldRutas.RutasOrigenDestinoVehTrailerCodigo != m_RutasOrigenDestinoVehTrailerCodigo) fields.Add("RutasOrigenDestinoVehTrailerCodigo");
 			if (m_oldRutas.strRutaAnticipoGrupoOrigen != m_strRutaAnticipoGrupoOrigen) fields.Add("strRutaAnticipoGrupoOrigen");
 			if (m_oldRutas.strRutaAnticipoGrupoDestino != m_strRutaAnticipoGrupoDestino) fields.Add("strRutaAnticipoGrupoDestino");
 			if (m_oldRutas.strRutaAnticipoGrupo != m_strRutaAnticipoGrupo) fields.Add("strRutaAnticipoGrupo");
@@ -207,6 +209,7 @@ namespace LiqViajes_Bll_Data
 			if (m_oldRutas.TipoVehiculoCodigo != m_TipoVehiculoCodigo) fields.Add("TipoVehiculoCodigo");
 			if (m_oldRutas.TipoVehiculo != m_TipoVehiculo) fields.Add("TipoVehiculo");
 			if (m_oldRutas.TipoTrailerCodigo != m_TipoTrailerCodigo) fields.Add("TipoTrailerCodigo");
+			if (m_oldRutas.DescripcionTipoTrailer != m_DescripcionTipoTrailer) fields.Add("DescripcionTipoTrailer");
 			if (m_oldRutas.Peso != m_Peso) fields.Add("Peso");
 			if (m_oldRutas.Programa != m_Programa) fields.Add("Programa");
 			if (m_oldRutas.logViajeVacio != m_logViajeVacio) fields.Add("logViajeVacio");
@@ -289,8 +292,8 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the Rutas's lngIdRegistrRuta value
 		private int m_lngIdRegistrRuta;
 
-		// Field for storing the Rutas's RutasOrigenCodigo value
-		private int? m_RutasOrigenCodigo;
+		// Field for storing the Rutas's RutasOrigenDestinoVehTrailerCodigo value
+		private int? m_RutasOrigenDestinoVehTrailerCodigo;
 
 		// Field for storing the Rutas's strRutaAnticipoGrupoOrigen value
 		private string m_strRutaAnticipoGrupoOrigen;
@@ -312,6 +315,9 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the Rutas's TipoTrailerCodigo value
 		private int? m_TipoTrailerCodigo;
+
+		// Field for storing the Rutas's DescripcionTipoTrailer value
+		private string m_DescripcionTipoTrailer;
 
 		// Field for storing the Rutas's Peso value
 		private int? m_Peso;
@@ -513,14 +519,8 @@ namespace LiqViajes_Bll_Data
 
 		// Evaluate changed state
 		private bool m_changed=false;
-		// Field for storing the reference to RutasOrigen accessed by RutasOrigenCodigo
-		private RutasOrigen m_RutasOrigen;
-
-		// Field for storing the reference to TipoTrailer accessed by TipoTrailerCodigo
-		private TipoTrailer m_TiposTrailers;
-
-		// Field for storing the reference to TipoVehiculo accessed by TipoVehiculoCodigo
-		private TipoVehiculo m_TiposVehiculos;
+		// Field for storing the reference to RutasOrigenDestinoVehTrailer accessed by RutasOrigenDestinoVehTrailerCodigo
+		private RutasOrigenDestinoVehTrailer m_RutasOrigenDestinoVehTrailer;
 
 
 		#endregion
@@ -548,21 +548,21 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the Rutas's RutasOrigenCodigo value (int)
+		/// Attribute for access the Rutas's RutasOrigenDestinoVehTrailerCodigo value (int)
 		/// </summary>
 		[DataMember]
-		public int? RutasOrigenCodigo
+		public int? RutasOrigenDestinoVehTrailerCodigo
 		{
-			get { return m_RutasOrigenCodigo; }
+			get { return m_RutasOrigenDestinoVehTrailerCodigo; }
 			set
 			{
 				m_changed=true;
-				m_RutasOrigenCodigo = value;
+				m_RutasOrigenDestinoVehTrailerCodigo = value;
 
-				if ((m_RutasOrigen != null) && (m_RutasOrigen.Codigo != m_RutasOrigenCodigo))
+				if ((m_RutasOrigenDestinoVehTrailer != null) && (m_RutasOrigenDestinoVehTrailer.Codigo != m_RutasOrigenDestinoVehTrailerCodigo))
 				{
 					// we need to reset the reference because it is now invalid
-					m_RutasOrigen = null;
+					m_RutasOrigenDestinoVehTrailer = null;
 				}
 			}
 		}
@@ -630,16 +630,10 @@ namespace LiqViajes_Bll_Data
 		public int? TipoVehiculoCodigo
 		{
 			get { return m_TipoVehiculoCodigo; }
-			set
+			set 
 			{
 				m_changed=true;
 				m_TipoVehiculoCodigo = value;
-
-				if ((m_TiposVehiculos != null) && (m_TiposVehiculos.Codigo != m_TipoVehiculoCodigo))
-				{
-					// we need to reset the reference because it is now invalid
-					m_TiposVehiculos = null;
-				}
 			}
 		}
 
@@ -664,16 +658,24 @@ namespace LiqViajes_Bll_Data
 		public int? TipoTrailerCodigo
 		{
 			get { return m_TipoTrailerCodigo; }
-			set
+			set 
 			{
 				m_changed=true;
 				m_TipoTrailerCodigo = value;
+			}
+		}
 
-				if ((m_TiposTrailers != null) && (m_TiposTrailers.Codigo != m_TipoTrailerCodigo))
-				{
-					// we need to reset the reference because it is now invalid
-					m_TiposTrailers = null;
-				}
+		/// <summary>
+		/// Attribute for access the Rutas's DescripcionTipoTrailer value (string)
+		/// </summary>
+		[DataMember]
+		public string DescripcionTipoTrailer
+		{
+			get { return m_DescripcionTipoTrailer; }
+			set 
+			{
+				m_changed=true;
+				m_DescripcionTipoTrailer = value;
 			}
 		}
 
@@ -1606,7 +1608,7 @@ namespace LiqViajes_Bll_Data
 			switch (pattribute)
 			{
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
-				case "RutasOrigenCodigo": return RutasOrigenCodigo;
+				case "RutasOrigenDestinoVehTrailerCodigo": return RutasOrigenDestinoVehTrailerCodigo;
 				case "strRutaAnticipoGrupoOrigen": return strRutaAnticipoGrupoOrigen;
 				case "strRutaAnticipoGrupoDestino": return strRutaAnticipoGrupoDestino;
 				case "strRutaAnticipoGrupo": return strRutaAnticipoGrupo;
@@ -1614,6 +1616,7 @@ namespace LiqViajes_Bll_Data
 				case "TipoVehiculoCodigo": return TipoVehiculoCodigo;
 				case "TipoVehiculo": return TipoVehiculo;
 				case "TipoTrailerCodigo": return TipoTrailerCodigo;
+				case "DescripcionTipoTrailer": return DescripcionTipoTrailer;
 				case "Peso": return Peso;
 				case "Programa": return Programa;
 				case "logViajeVacio": return logViajeVacio;
@@ -1694,99 +1697,33 @@ namespace LiqViajes_Bll_Data
 			return "[lngIdRegistrRuta] = " + lngIdRegistrRuta.ToString();
 		}
 		/// <summary>
-		/// Gets or sets the reference to RutasOrigen accessed by RutasOrigenCodigo
+		/// Gets or sets the reference to RutasOrigenDestinoVehTrailer accessed by RutasOrigenDestinoVehTrailerCodigo
 		/// </summary>
 		/// <remarks>
 		/// Also updates related field values
 		/// </remarks>
-		public RutasOrigen RutasOrigen
+		public RutasOrigenDestinoVehTrailer RutasOrigenDestinoVehTrailer
 		{
 			get
 			{
-				if (m_RutasOrigen == null)
+				if (m_RutasOrigenDestinoVehTrailer == null)
 				{
-					if (m_RutasOrigenCodigo != null)
+					if (m_RutasOrigenDestinoVehTrailerCodigo != null)
 					{
-						m_RutasOrigen = RutasOrigenController.Instance.Get((int)m_RutasOrigenCodigo);
+						m_RutasOrigenDestinoVehTrailer = RutasOrigenDestinoVehTrailerController.Instance.Get((int)m_RutasOrigenDestinoVehTrailerCodigo);
 					}
 				}
 
-				return m_RutasOrigen;
+				return m_RutasOrigenDestinoVehTrailer;
 			}
 
 			set
 			{
-				m_RutasOrigen = value;
+				m_RutasOrigenDestinoVehTrailer = value;
 
-				if (m_RutasOrigen != null)
+				if (m_RutasOrigenDestinoVehTrailer != null)
 				{
-					this.m_RutasOrigenCodigo = m_RutasOrigen.Codigo;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the reference to TipoTrailer accessed by TipoTrailerCodigo
-		/// </summary>
-		/// <remarks>
-		/// Also updates related field values
-		/// </remarks>
-		public TipoTrailer TiposTrailers
-		{
-			get
-			{
-				if (m_TiposTrailers == null)
-				{
-					m_TiposTrailers = MasterTables.TipoTrailer.Where(tmp=>tmp.Codigo==m_TipoTrailerCodigo ).FirstOrDefault();
-					if (m_TiposTrailers == null)
-					{
-						m_TiposTrailers = new TipoTrailer();
-					}
-				}
-
-				return m_TiposTrailers;
-			}
-
-			set
-			{
-				m_TiposTrailers = value;
-
-				if (m_TiposTrailers != null)
-				{
-					this.m_TipoTrailerCodigo = m_TiposTrailers.Codigo;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the reference to TipoVehiculo accessed by TipoVehiculoCodigo
-		/// </summary>
-		/// <remarks>
-		/// Also updates related field values
-		/// </remarks>
-		public TipoVehiculo TiposVehiculos
-		{
-			get
-			{
-				if (m_TiposVehiculos == null)
-				{
-					m_TiposVehiculos = MasterTables.TipoVehiculo.Where(tmp=>tmp.Codigo==m_TipoVehiculoCodigo ).FirstOrDefault();
-					if (m_TiposVehiculos == null)
-					{
-						m_TiposVehiculos = new TipoVehiculo();
-					}
-				}
-
-				return m_TiposVehiculos;
-			}
-
-			set
-			{
-				m_TiposVehiculos = value;
-
-				if (m_TiposVehiculos != null)
-				{
-					this.m_TipoVehiculoCodigo = m_TiposVehiculos.Codigo;
+					this.m_RutasOrigenDestinoVehTrailerCodigo = m_RutasOrigenDestinoVehTrailer.Codigo;
 				}
 			}
 		}
