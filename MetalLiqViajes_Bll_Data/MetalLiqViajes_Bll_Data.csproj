@@ -135,6 +135,7 @@
     <Compile Include="bll_add\LiquidacionGastos.cs" />
     <Compile Include="bll_add\LiquidacionPlanilla.cs" />
     <Compile Include="bll_add\LiquidacionVehiculo.cs" />
+    <Compile Include="bll_add\Rutas.cs" />
     <Compile Include="bll_add\RutaSatrackHistoryEvents.cs" />
     <Compile Include="bll_add\Terceros.cs" />
     <Compile Include="bll_add\TramosAsignadosRuta.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="dal_add\LiquidacionPlanillaDataProvider.cs" />
     <Compile Include="dal_add\LiquidacionVehiculoDataProvider.cs" />
     <Compile Include="dal_add\RutaSatrackHistoryEventsDataProvider.cs" />
+    <Compile Include="dal_add\RutasDataProvider.cs" />
     <Compile Include="dal_add\TercerosDataProvider.cs" />
     <Compile Include="dal_add\TramosAsignadosRutaDataProvider.cs" />
     <Compile Include="dal_add\TramosConsultaAnticiposDataProvider.cs" />

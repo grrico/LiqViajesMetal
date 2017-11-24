@@ -1604,7 +1604,7 @@ namespace MetalLiqViajes_Forms
             foreach (var item in rutasorigenList)
             {
                 TreeNode NodoHijo = new TreeNode();
-                NodoHijo.Text = item.Origen + " " + item.Codigo.ToString();
+                NodoHijo.Text = item.Origen;
                 NodoHijo.Name = item.Codigo.ToString();
 
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
@@ -1625,7 +1625,7 @@ namespace MetalLiqViajes_Forms
             }
         }
 
-        private void CrearNodosDestino(RutasOrigen rutaorigen, TreeNode nodePadre, bool todosDestino=true)
+        private void CrearNodosDestino(RutasOrigen rutaorigen, TreeNode nodePadre, bool todosDestino = true)
         {
             List<RutasDestino> rutasdestinoList = rutaorigen.RutasDestino.ToList();
             if (todosDestino)
@@ -1636,7 +1636,7 @@ namespace MetalLiqViajes_Forms
             foreach (var item in rutasdestinoList)
             {
                 TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Text = item.Destino + " " + item.Codigo.ToString();
+                nuevoNodo.Text = item.Destino;
                 nuevoNodo.Name = item.Codigo.ToString();
 
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
@@ -1668,7 +1668,7 @@ namespace MetalLiqViajes_Forms
             foreach (var item in rutasorigendestinoList)
             {
                 TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Text = item.GrupoDestino + " " + item.Codigo.ToString();
+                nuevoNodo.Text = item.GrupoDestino;
                 nuevoNodo.Name = item.Codigo.ToString();
 
                 // si el parámetro nodoPadre es nulo es porque es la primera llamada, son los Nodos
@@ -1748,37 +1748,35 @@ namespace MetalLiqViajes_Forms
 
         }
 
+        private RutasOrigen rutaorigen;
+        private RutasDestino rutadestino;
+        private RutasOrigenDestino rutaorigendestino;
+
         private void treeViewRutas_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode tn = e.Node;
             TreeNode tnp = tn.Parent;
             if (tn.Nodes.Count == 0 && tn.Level == 0)
             {
-                RutasOrigen rutaorigen = RutasOrigenController.Instance.Get(Convert.ToInt32(tn.Name));
+                rutaorigen = RutasOrigenController.Instance.Get(Convert.ToInt32(tn.Name));
                 CrearNodosDestino(rutaorigen, tn, false);
             }
             if (tn.Nodes.Count == 0 && tn.Level == 1)
             {
-                RutasDestino rutadestino = RutasDestinoController.Instance.Get(Convert.ToInt32(tn.Name), Convert.ToInt32(tnp.Name));
+                rutadestino = RutasDestinoController.Instance.Get(Convert.ToInt32(tn.Name), Convert.ToInt32(tnp.Name));
                 CrearNodosOrigenDestino(rutadestino, tn, false);
             }
-            if (tn.Nodes.Count == 0 && tn.Level == 2)
+            if (tn.Level == 2)
             {
-                RutasOrigenDestino rutaorigendestino = RutasOrigenDestinoController.Instance.Get(Convert.ToInt32(tn.Name));
-                CrearNodosOrigenDestinoDet(rutaorigendestino, tn, false);
-            }
-            if (tn.Nodes.Count > 0 && tn.Level == 3)
-            {
-                //RutasOrigen origen = rutasorigenList.Where(t => t.Codigo == Convert.ToInt32(tnp.Name)).FirstOrDefault();
-                //RutasDestino destino = origen.RutasDestino.Where(t => t.Codigo == Convert.ToInt32(tn.Name)).FirstOrDefault();
-            }
+                string RutaAnticipo = tn.Text;
+                string rutaorigen = "Cartagena";
+                string rutadestino = "Medellin";
+                string rutaanticipo = "CG-SOFR-SNC-MDE";
 
-            //rutasList = rutasorigen.Rutas.Where(t => t.strRutaAnticipoGrupoDestino == rutasDestino.Destino &&
-            //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo &&
-            //t.logViajeVacio == false &&
-            //t.TipoVehiculoCodigo == conductor.TipoVehiculoCodigo).ToList();
-            //dataGridViewRuta.DataSource = rutasList;
-            //dataGridViewRuta.Refresh();
+                List<Rutas> rutalist = RutasController.Instance.GetBy_RutasOrigenDestino(rutaorigen, rutadestino, rutaanticipo);
+                dataGridViewRuta.DataSource = rutalist;
+                dataGridViewRuta.Refresh();
+            }
         }
     }
 }

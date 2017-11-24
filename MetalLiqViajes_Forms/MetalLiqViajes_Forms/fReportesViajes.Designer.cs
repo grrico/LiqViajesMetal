@@ -212,6 +212,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.treeViewRutas = new System.Windows.Forms.TreeView();
             this.dataGridViewRuta = new System.Windows.Forms.DataGridView();
             this.strRutaAnticipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -291,7 +292,6 @@
             this.btnInterrogar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -334,6 +334,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRuta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -365,10 +369,6 @@
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -1800,12 +1800,32 @@
             this.panel4.Size = new System.Drawing.Size(1014, 568);
             this.panel4.TabIndex = 1;
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.treeViewRutas);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.dataGridViewRuta);
+            this.splitContainer2.Size = new System.Drawing.Size(1014, 568);
+            this.splitContainer2.SplitterDistance = 278;
+            this.splitContainer2.TabIndex = 3;
+            // 
             // treeViewRutas
             // 
-            this.treeViewRutas.CheckBoxes = true;
             this.treeViewRutas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewRutas.ImageIndex = 1;
+            this.treeViewRutas.ImageList = this.imageListBase;
             this.treeViewRutas.Location = new System.Drawing.Point(0, 0);
             this.treeViewRutas.Name = "treeViewRutas";
+            this.treeViewRutas.SelectedImageIndex = 2;
             this.treeViewRutas.Size = new System.Drawing.Size(276, 566);
             this.treeViewRutas.TabIndex = 2;
             this.treeViewRutas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRutas_AfterSelect);
@@ -2698,24 +2718,6 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.treeViewRutas);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.dataGridViewRuta);
-            this.splitContainer2.Size = new System.Drawing.Size(1014, 568);
-            this.splitContainer2.SplitterDistance = 278;
-            this.splitContainer2.TabIndex = 3;
-            // 
             // fReportesViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2770,6 +2772,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tercerosDTOBindingSource)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRuta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).EndInit();
             this.tabControl.ResumeLayout(false);
@@ -2803,10 +2809,6 @@
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
