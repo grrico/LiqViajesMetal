@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidaciongastos.lngIdRegistrRutaItemId = (int) dr["lngIdRegistrRutaItemId"];
-				liquidaciongastos.lngIdRegistroViaje = (decimal) dr["lngIdRegistroViaje"];
-				liquidaciongastos.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
+				liquidaciongastos.lngIdRegistrRutaItemId = (long) dr["lngIdRegistrRutaItemId"];
+				liquidaciongastos.lngIdRegistroViaje = (long) dr["lngIdRegistroViaje"];
+				liquidaciongastos.lngIdRegistrRuta = (long) dr["lngIdRegistrRuta"];
 				liquidaciongastos.strCuenta = (string) dr["strCuenta"];
 				liquidaciongastos.intRowRegistro = (int) dr["intRowRegistro"];
 				liquidaciongastos.strDescripcionCuenta = dr.IsNull("strDescripcionCuenta") ? null :(string) dr["strDescripcionCuenta"];
@@ -126,7 +126,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="AntipoConductor">bool that contents the AntipoConductor value for the LiquidacionGastos object</param>
 		/// <param name="NombreTercero">string that contents the NombreTercero value for the LiquidacionGastos object</param>
 		/// <returns>One LiquidacionGastos object</returns>
-		public LiquidacionGastos Create(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, Sinapsys.Datos.SQL datosTransaccion=null)
+		public LiquidacionGastos Create(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -174,9 +174,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionGastos object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
-		/// <param name="lngIdRegistroViaje">decimal that contents the lngIdRegistroViaje value for the LiquidacionGastos object</param>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionGastos object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
+		/// <param name="lngIdRegistroViaje">long that contents the lngIdRegistroViaje value for the LiquidacionGastos object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionGastos object</param>
 		/// <param name="strCuenta">string that contents the strCuenta value for the LiquidacionGastos object</param>
 		/// <param name="intRowRegistro">int that contents the intRowRegistro value for the LiquidacionGastos object</param>
 		/// <param name="strDescripcionCuenta">string that contents the strDescripcionCuenta value for the LiquidacionGastos object</param>
@@ -203,7 +203,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="LogAnticipoACPM">bool that contents the LogAnticipoACPM value for the LiquidacionGastos object</param>
 		/// <param name="AntipoConductor">bool that contents the AntipoConductor value for the LiquidacionGastos object</param>
 		/// <param name="NombreTercero">string that contents the NombreTercero value for the LiquidacionGastos object</param>
-		public void Update(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -261,7 +261,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the LiquidacionGastos object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="liquidaciongastos">An instance of LiquidacionGastos for reference</param>
-		public void Delete(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -282,9 +282,9 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int lngIdRegistrRutaItemId=int.Parse(StrCommand[0]);
-				decimal lngIdRegistroViaje=decimal.Parse(StrCommand[1]);
-				int lngIdRegistrRuta=int.Parse(StrCommand[2]);
+				long lngIdRegistrRutaItemId=long.Parse(StrCommand[0]);
+				long lngIdRegistroViaje=long.Parse(StrCommand[1]);
+				long lngIdRegistrRuta=long.Parse(StrCommand[2]);
 				string strCuenta=StrCommand[3];
 				int intRowRegistro=int.Parse(StrCommand[4]);
 				LiquidacionGastosDataProvider.Instance.Delete(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro,"LiquidacionGastos");
@@ -298,13 +298,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the LiquidacionGastos object by passing the object's key fields
 		/// </summary>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
-		/// <param name="lngIdRegistroViaje">decimal that contents the lngIdRegistroViaje value for the LiquidacionGastos object</param>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionGastos object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
+		/// <param name="lngIdRegistroViaje">long that contents the lngIdRegistroViaje value for the LiquidacionGastos object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionGastos object</param>
 		/// <param name="strCuenta">string that contents the strCuenta value for the LiquidacionGastos object</param>
 		/// <param name="intRowRegistro">int that contents the intRowRegistro value for the LiquidacionGastos object</param>
 		/// <returns>One LiquidacionGastos object</returns>
-		public LiquidacionGastos Get(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, bool generateUndo=false)
+		public LiquidacionGastos Get(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, bool generateUndo=false)
 		{
 			try 
 			{
@@ -353,9 +353,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Selects all LiquidacionGastos objects by reference (Foreign Keys)
 		/// </summary>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
 		/// <returns>One LiquidacionGastosList object</returns>
-		public LiquidacionGastosList GetBy_lngIdRegistrRutaItemId(int lngIdRegistrRutaItemId,bool generateUndo=false)
+		public LiquidacionGastosList GetBy_lngIdRegistrRutaItemId(long lngIdRegistrRutaItemId,bool generateUndo=false)
 		{
 			try 
 			{

@@ -52,6 +52,7 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				rutascuentas.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
 				rutascuentas.cutCombustible = dr.IsNull("cutCombustible") ? null :(string) dr["cutCombustible"];
 				rutascuentas.cutPeaje = dr.IsNull("cutPeaje") ? null :(string) dr["cutPeaje"];
 				rutascuentas.cutVariosLlantas = dr.IsNull("cutVariosLlantas") ? null :(string) dr["cutVariosLlantas"];
@@ -86,7 +87,6 @@ namespace LiqViajes_Bll_Data
 				rutascuentas.CombustibleCarretera = dr.IsNull("CombustibleCarretera") ? null :(string) dr["CombustibleCarretera"];
 				rutascuentas.CurCargue = dr.IsNull("CurCargue") ? null :(string) dr["CurCargue"];
 				rutascuentas.CurDescargue = dr.IsNull("CurDescargue") ? null :(string) dr["CurDescargue"];
-				rutascuentas.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
 			}
 			catch (Exception ex)
 			{
@@ -196,6 +196,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasCuentas object by passing all object's fields
 		/// </summary>
+		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the RutasCuentas object</param>
 		/// <param name="cutCombustible">string that contents the cutCombustible value for the RutasCuentas object</param>
 		/// <param name="cutPeaje">string that contents the cutPeaje value for the RutasCuentas object</param>
 		/// <param name="cutVariosLlantas">string that contents the cutVariosLlantas value for the RutasCuentas object</param>
@@ -230,8 +231,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CombustibleCarretera">string that contents the CombustibleCarretera value for the RutasCuentas object</param>
 		/// <param name="CurCargue">string that contents the CurCargue value for the RutasCuentas object</param>
 		/// <param name="CurDescargue">string that contents the CurDescargue value for the RutasCuentas object</param>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the RutasCuentas object</param>
-		public void Update(string cutCombustible, string cutPeaje, string cutVariosLlantas, string cutVariosCelada, string cutVariosPropina, string cutVarios, string cutVariosLlantasVacio, string cutVariosCeladaVacio, string cutVariosPropinaVacio, string cutVariosVacio, string cutParticipacion, string cutParticipacionVacio, string curHotel, string curHotelVacio, string curComida, string curComidaVacio, string curDesvareManoRepuestos, string curDesvareManoObra, string cutSaldo, string cutKmts, string ParqueaderoCarretera, string ParqueaderoCiudad, string MontadaLLantaCarretera, string Papeleria, string AjusteCarretera, string Aseo, string Amarres, string Engradasa, string Calibrada, string Taxi, string Lavada, string CombustibleCarretera, string CurCargue, string CurDescargue, int lngIdRegistrRuta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int lngIdRegistrRuta, string cutCombustible, string cutPeaje, string cutVariosLlantas, string cutVariosCelada, string cutVariosPropina, string cutVarios, string cutVariosLlantasVacio, string cutVariosCeladaVacio, string cutVariosPropinaVacio, string cutVariosVacio, string cutParticipacion, string cutParticipacionVacio, string curHotel, string curHotelVacio, string curComida, string curComidaVacio, string curDesvareManoRepuestos, string curDesvareManoObra, string cutSaldo, string cutKmts, string ParqueaderoCarretera, string ParqueaderoCiudad, string MontadaLLantaCarretera, string Papeleria, string AjusteCarretera, string Aseo, string Amarres, string Engradasa, string Calibrada, string Taxi, string Lavada, string CombustibleCarretera, string CurCargue, string CurDescargue, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -270,7 +270,7 @@ namespace LiqViajes_Bll_Data
 				new_values.CombustibleCarretera = CombustibleCarretera;
 				new_values.CurCargue = CurCargue;
 				new_values.CurDescargue = CurDescargue;
-				RutasCuentasDataProvider.Instance.Update(cutCombustible, cutPeaje, cutVariosLlantas, cutVariosCelada, cutVariosPropina, cutVarios, cutVariosLlantasVacio, cutVariosCeladaVacio, cutVariosPropinaVacio, cutVariosVacio, cutParticipacion, cutParticipacionVacio, curHotel, curHotelVacio, curComida, curComidaVacio, curDesvareManoRepuestos, curDesvareManoObra, cutSaldo, cutKmts, ParqueaderoCarretera, ParqueaderoCiudad, MontadaLLantaCarretera, Papeleria, AjusteCarretera, Aseo, Amarres, Engradasa, Calibrada, Taxi, Lavada, CombustibleCarretera, CurCargue, CurDescargue, lngIdRegistrRuta,"RutasCuentas",datosTransaccion);
+				RutasCuentasDataProvider.Instance.Update(lngIdRegistrRuta, cutCombustible, cutPeaje, cutVariosLlantas, cutVariosCelada, cutVariosPropina, cutVarios, cutVariosLlantasVacio, cutVariosCeladaVacio, cutVariosPropinaVacio, cutVariosVacio, cutParticipacion, cutParticipacionVacio, curHotel, curHotelVacio, curComida, curComidaVacio, curDesvareManoRepuestos, curDesvareManoObra, cutSaldo, cutKmts, ParqueaderoCarretera, ParqueaderoCiudad, MontadaLLantaCarretera, Papeleria, AjusteCarretera, Aseo, Amarres, Engradasa, Calibrada, Taxi, Lavada, CombustibleCarretera, CurCargue, CurDescargue,"RutasCuentas",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -284,7 +284,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutascuentas">An instance of RutasCuentas for reference</param>
 		public void Update(RutasCuentas rutascuentas,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutascuentas.cutCombustible, rutascuentas.cutPeaje, rutascuentas.cutVariosLlantas, rutascuentas.cutVariosCelada, rutascuentas.cutVariosPropina, rutascuentas.cutVarios, rutascuentas.cutVariosLlantasVacio, rutascuentas.cutVariosCeladaVacio, rutascuentas.cutVariosPropinaVacio, rutascuentas.cutVariosVacio, rutascuentas.cutParticipacion, rutascuentas.cutParticipacionVacio, rutascuentas.curHotel, rutascuentas.curHotelVacio, rutascuentas.curComida, rutascuentas.curComidaVacio, rutascuentas.curDesvareManoRepuestos, rutascuentas.curDesvareManoObra, rutascuentas.cutSaldo, rutascuentas.cutKmts, rutascuentas.ParqueaderoCarretera, rutascuentas.ParqueaderoCiudad, rutascuentas.MontadaLLantaCarretera, rutascuentas.Papeleria, rutascuentas.AjusteCarretera, rutascuentas.Aseo, rutascuentas.Amarres, rutascuentas.Engradasa, rutascuentas.Calibrada, rutascuentas.Taxi, rutascuentas.Lavada, rutascuentas.CombustibleCarretera, rutascuentas.CurCargue, rutascuentas.CurDescargue, rutascuentas.lngIdRegistrRuta);
+			Update(rutascuentas.lngIdRegistrRuta, rutascuentas.cutCombustible, rutascuentas.cutPeaje, rutascuentas.cutVariosLlantas, rutascuentas.cutVariosCelada, rutascuentas.cutVariosPropina, rutascuentas.cutVarios, rutascuentas.cutVariosLlantasVacio, rutascuentas.cutVariosCeladaVacio, rutascuentas.cutVariosPropinaVacio, rutascuentas.cutVariosVacio, rutascuentas.cutParticipacion, rutascuentas.cutParticipacionVacio, rutascuentas.curHotel, rutascuentas.curHotelVacio, rutascuentas.curComida, rutascuentas.curComidaVacio, rutascuentas.curDesvareManoRepuestos, rutascuentas.curDesvareManoObra, rutascuentas.cutSaldo, rutascuentas.cutKmts, rutascuentas.ParqueaderoCarretera, rutascuentas.ParqueaderoCiudad, rutascuentas.MontadaLLantaCarretera, rutascuentas.Papeleria, rutascuentas.AjusteCarretera, rutascuentas.Aseo, rutascuentas.Amarres, rutascuentas.Engradasa, rutascuentas.Calibrada, rutascuentas.Taxi, rutascuentas.Lavada, rutascuentas.CombustibleCarretera, rutascuentas.CurCargue, rutascuentas.CurDescargue);
 		}
 
 		/// <summary>
@@ -435,6 +435,9 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "lngIdRegistrRuta":
+					return rutascuentas.lngIdRegistrRuta.GetType();
+
 				case "cutCombustible":
 					return rutascuentas.cutCombustible.GetType();
 
@@ -536,9 +539,6 @@ namespace LiqViajes_Bll_Data
 
 				case "CurDescargue":
 					return rutascuentas.CurDescargue.GetType();
-
-				case "lngIdRegistrRuta":
-					return rutascuentas.lngIdRegistrRuta.GetType();
 
 			}
 

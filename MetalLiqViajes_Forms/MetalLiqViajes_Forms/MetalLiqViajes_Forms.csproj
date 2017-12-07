@@ -27,11 +27,11 @@
     <ProductName>Liquidación Viajes</ProductName>
     <PublisherName>Liquidación Viajes</PublisherName>
     <SuiteName>Liquidación Viajes LTDA</SuiteName>
-    <MinimumRequiredVersion>2017.11.10.5</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2017.11.10.6</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>default.htm</WebPage>
-    <ApplicationRevision>5</ApplicationRevision>
-    <ApplicationVersion>2017.11.10.5</ApplicationVersion>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>2017.11.10.6</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

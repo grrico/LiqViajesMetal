@@ -98,10 +98,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutasAbreviaturas by passing all fields
 		/// </summary>
+		/// <param name="lngIdAbreviatura"></param>
 		/// <param name="strAbreviatura"></param>
 		/// <param name="strNombreAbreviatura"></param>
-		/// <param name="lngIdAbreviatura"></param>
-		public void Update(string strAbreviatura, string strNombreAbreviatura, int lngIdAbreviatura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int lngIdAbreviatura, string strAbreviatura, string strNombreAbreviatura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

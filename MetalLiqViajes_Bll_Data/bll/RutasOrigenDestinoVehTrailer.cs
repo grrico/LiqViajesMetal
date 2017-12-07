@@ -52,8 +52,8 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutasorigendestinovehtrailer.Codigo = (int) dr["Codigo"];
-				rutasorigendestinovehtrailer.RutasOrigenDestinoCodigo = dr.IsNull("RutasOrigenDestinoCodigo") ? null :(int?) dr["RutasOrigenDestinoCodigo"];
+				rutasorigendestinovehtrailer.Codigo = (long) dr["Codigo"];
+				rutasorigendestinovehtrailer.RutasOrigenDestinoCodigo = dr.IsNull("RutasOrigenDestinoCodigo") ? null :(long?) dr["RutasOrigenDestinoCodigo"];
 				rutasorigendestinovehtrailer.Origen = dr.IsNull("Origen") ? null :(string) dr["Origen"];
 				rutasorigendestinovehtrailer.Destino = dr.IsNull("Destino") ? null :(string) dr["Destino"];
 				rutasorigendestinovehtrailer.GrupoOrigen = dr.IsNull("GrupoOrigen") ? null :(string) dr["GrupoOrigen"];
@@ -83,7 +83,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Creates a new RutasOrigenDestinoVehTrailer object by passing all object's fields
 		/// </summary>
-		/// <param name="RutasOrigenDestinoCodigo">int that contents the RutasOrigenDestinoCodigo value for the RutasOrigenDestinoVehTrailer object</param>
+		/// <param name="RutasOrigenDestinoCodigo">long that contents the RutasOrigenDestinoCodigo value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="Destino">string that contents the Destino value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="GrupoOrigen">string that contents the GrupoOrigen value for the RutasOrigenDestinoVehTrailer object</param>
@@ -94,7 +94,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="DescripcionTipoTrailer">string that contents the DescripcionTipoTrailer value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="Favorita">bool that contents the Favorita value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <returns>One RutasOrigenDestinoVehTrailer object</returns>
-		public RutasOrigenDestinoVehTrailer Create(int Codigo, int? RutasOrigenDestinoCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
+		public RutasOrigenDestinoVehTrailer Create(long Codigo, long? RutasOrigenDestinoCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -129,8 +129,8 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasOrigenDestinoVehTrailer object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the RutasOrigenDestinoVehTrailer object</param>
-		/// <param name="RutasOrigenDestinoCodigo">int that contents the RutasOrigenDestinoCodigo value for the RutasOrigenDestinoVehTrailer object</param>
+		/// <param name="Codigo">long that contents the Codigo value for the RutasOrigenDestinoVehTrailer object</param>
+		/// <param name="RutasOrigenDestinoCodigo">long that contents the RutasOrigenDestinoCodigo value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="Destino">string that contents the Destino value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="GrupoOrigen">string that contents the GrupoOrigen value for the RutasOrigenDestinoVehTrailer object</param>
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="TipoTrailerCodigo">int that contents the TipoTrailerCodigo value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="DescripcionTipoTrailer">string that contents the DescripcionTipoTrailer value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <param name="Favorita">bool that contents the Favorita value for the RutasOrigenDestinoVehTrailer object</param>
-		public void Update(int Codigo, int? RutasOrigenDestinoCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Codigo, long? RutasOrigenDestinoCodigo, string Origen, string Destino, string GrupoOrigen, string GrupoDestino, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -184,7 +184,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the RutasOrigenDestinoVehTrailer object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="rutasorigendestinovehtrailer">An instance of RutasOrigenDestinoVehTrailer for reference</param>
-		public void Delete(int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -209,7 +209,7 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int Codigo=int.Parse(StrCommand[0]);
+				long Codigo=long.Parse(StrCommand[0]);
 				RutasOrigenDestinoVehTrailerDataProvider.Instance.Delete(Codigo,"RutasOrigenDestinoVehTrailer");
 			}
 			catch (Exception ex)
@@ -221,9 +221,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the RutasOrigenDestinoVehTrailer object by passing the object's key fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the RutasOrigenDestinoVehTrailer object</param>
+		/// <param name="Codigo">long that contents the Codigo value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <returns>One RutasOrigenDestinoVehTrailer object</returns>
-		public RutasOrigenDestinoVehTrailer Get(int Codigo, bool generateUndo=false)
+		public RutasOrigenDestinoVehTrailer Get(long Codigo, bool generateUndo=false)
 		{
 			try 
 			{
@@ -272,9 +272,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Selects all RutasOrigenDestinoVehTrailer objects by reference (Foreign Keys)
 		/// </summary>
-		/// <param name="RutasOrigenDestinoCodigo">int that contents the RutasOrigenDestinoCodigo value for the RutasOrigenDestinoVehTrailer object</param>
+		/// <param name="RutasOrigenDestinoCodigo">long that contents the RutasOrigenDestinoCodigo value for the RutasOrigenDestinoVehTrailer object</param>
 		/// <returns>One RutasOrigenDestinoVehTrailerList object</returns>
-		public RutasOrigenDestinoVehTrailerList GetBy_RutasOrigenDestinoCodigo(int RutasOrigenDestinoCodigo,bool generateUndo=false)
+		public RutasOrigenDestinoVehTrailerList GetBy_RutasOrigenDestinoCodigo(long RutasOrigenDestinoCodigo,bool generateUndo=false)
 		{
 			try 
 			{

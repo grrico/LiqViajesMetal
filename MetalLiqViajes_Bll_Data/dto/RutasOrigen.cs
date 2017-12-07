@@ -71,7 +71,7 @@ namespace LiqViajes_Bll_Data
 
 
 		// Field for storing the RutasOrigen's Codigo value
-		private int m_Codigo;
+		private long m_Codigo;
 
 		// Field for storing the RutasOrigen's Origen value
 		private string m_Origen;
@@ -96,10 +96,10 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the RutasOrigen's Codigo value (int)
+		/// Attribute for access the RutasOrigen's Codigo value (long)
 		/// </summary>
 		[DataMember]
-		public int Codigo
+		public long Codigo
 		{
 			get { return m_Codigo; }
 			set 

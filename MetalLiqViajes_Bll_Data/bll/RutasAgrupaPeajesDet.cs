@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutasagrupapeajesdet.intSecuencia = dr.IsNull("intSecuencia") ? null :(int?) dr["intSecuencia"];
 				rutasagrupapeajesdet.lngIdGrupo = (int) dr["lngIdGrupo"];
 				rutasagrupapeajesdet.lngIdPeaje = (int) dr["lngIdPeaje"];
+				rutasagrupapeajesdet.intSecuencia = dr.IsNull("intSecuencia") ? null :(int?) dr["intSecuencia"];
 			}
 			catch (Exception ex)
 			{
@@ -99,16 +99,16 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasAgrupaPeajesDet object by passing all object's fields
 		/// </summary>
-		/// <param name="intSecuencia">int that contents the intSecuencia value for the RutasAgrupaPeajesDet object</param>
 		/// <param name="lngIdGrupo">int that contents the lngIdGrupo value for the RutasAgrupaPeajesDet object</param>
 		/// <param name="lngIdPeaje">int that contents the lngIdPeaje value for the RutasAgrupaPeajesDet object</param>
-		public void Update(int? intSecuencia, int lngIdGrupo, int lngIdPeaje, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="intSecuencia">int that contents the intSecuencia value for the RutasAgrupaPeajesDet object</param>
+		public void Update(int lngIdGrupo, int lngIdPeaje, int? intSecuencia, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasAgrupaPeajesDet new_values = new RutasAgrupaPeajesDet();
 				new_values.intSecuencia = intSecuencia;
-				RutasAgrupaPeajesDetDataProvider.Instance.Update(intSecuencia, lngIdGrupo, lngIdPeaje,"RutasAgrupaPeajesDet",datosTransaccion);
+				RutasAgrupaPeajesDetDataProvider.Instance.Update(lngIdGrupo, lngIdPeaje, intSecuencia,"RutasAgrupaPeajesDet",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -122,7 +122,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasagrupapeajesdet">An instance of RutasAgrupaPeajesDet for reference</param>
 		public void Update(RutasAgrupaPeajesDet rutasagrupapeajesdet,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasagrupapeajesdet.intSecuencia, rutasagrupapeajesdet.lngIdGrupo, rutasagrupapeajesdet.lngIdPeaje);
+			Update(rutasagrupapeajesdet.lngIdGrupo, rutasagrupapeajesdet.lngIdPeaje, rutasagrupapeajesdet.intSecuencia);
 		}
 
 		/// <summary>
@@ -276,14 +276,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "intSecuencia":
-					return rutasagrupapeajesdet.intSecuencia.GetType();
-
 				case "lngIdGrupo":
 					return rutasagrupapeajesdet.lngIdGrupo.GetType();
 
 				case "lngIdPeaje":
 					return rutasagrupapeajesdet.lngIdPeaje.GetType();
+
+				case "intSecuencia":
+					return rutasagrupapeajesdet.intSecuencia.GetType();
 
 			}
 

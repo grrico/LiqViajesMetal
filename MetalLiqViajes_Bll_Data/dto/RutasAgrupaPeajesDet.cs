@@ -69,14 +69,14 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the RutasAgrupaPeajesDet's intSecuencia value
-		private int? m_intSecuencia;
-
 		// Field for storing the RutasAgrupaPeajesDet's lngIdGrupo value
 		private int m_lngIdGrupo;
 
 		// Field for storing the RutasAgrupaPeajesDet's lngIdPeaje value
 		private int m_lngIdPeaje;
+
+		// Field for storing the RutasAgrupaPeajesDet's intSecuencia value
+		private int? m_intSecuencia;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -91,20 +91,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the RutasAgrupaPeajesDet's intSecuencia value (int)
-		/// </summary>
-		[DataMember]
-		public int? intSecuencia
-		{
-			get { return m_intSecuencia; }
-			set 
-			{
-				m_changed=true;
-				m_intSecuencia = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the RutasAgrupaPeajesDet's lngIdGrupo value (int)
 		/// </summary>
@@ -133,13 +119,27 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the RutasAgrupaPeajesDet's intSecuencia value (int)
+		/// </summary>
+		[DataMember]
+		public int? intSecuencia
+		{
+			get { return m_intSecuencia; }
+			set 
+			{
+				m_changed=true;
+				m_intSecuencia = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "intSecuencia": return intSecuencia;
 				case "lngIdGrupo": return lngIdGrupo;
 				case "lngIdPeaje": return lngIdPeaje;
+				case "intSecuencia": return intSecuencia;
 				default: return null;
 			}
 		}

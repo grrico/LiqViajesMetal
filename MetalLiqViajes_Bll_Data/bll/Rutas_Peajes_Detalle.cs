@@ -52,12 +52,12 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutas_peajes_detalle.Secuencia = dr.IsNull("Secuencia") ? null :(int?) dr["Secuencia"];
-				rutas_peajes_detalle.Excluido = dr.IsNull("Excluido") ? null :(bool?) dr["Excluido"];
-				rutas_peajes_detalle.fechaModificacion = dr.IsNull("fechaModificacion") ? null :(DateTime?) dr["fechaModificacion"];
 				rutas_peajes_detalle.codigo = (long) dr["codigo"];
 				rutas_peajes_detalle.Rutas_PeajesCodigo = (long) dr["Rutas_PeajesCodigo"];
 				rutas_peajes_detalle.lngIdPeaje = (int) dr["lngIdPeaje"];
+				rutas_peajes_detalle.Secuencia = dr.IsNull("Secuencia") ? null :(int?) dr["Secuencia"];
+				rutas_peajes_detalle.Excluido = dr.IsNull("Excluido") ? null :(bool?) dr["Excluido"];
+				rutas_peajes_detalle.fechaModificacion = dr.IsNull("fechaModificacion") ? null :(DateTime?) dr["fechaModificacion"];
 			}
 			catch (Exception ex)
 			{
@@ -112,13 +112,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Rutas_Peajes_Detalle object by passing all object's fields
 		/// </summary>
-		/// <param name="Secuencia">int that contents the Secuencia value for the Rutas_Peajes_Detalle object</param>
-		/// <param name="Excluido">bool that contents the Excluido value for the Rutas_Peajes_Detalle object</param>
-		/// <param name="fechaModificacion">DateTime that contents the fechaModificacion value for the Rutas_Peajes_Detalle object</param>
 		/// <param name="codigo">long that contents the codigo value for the Rutas_Peajes_Detalle object</param>
 		/// <param name="Rutas_PeajesCodigo">long that contents the Rutas_PeajesCodigo value for the Rutas_Peajes_Detalle object</param>
 		/// <param name="lngIdPeaje">int that contents the lngIdPeaje value for the Rutas_Peajes_Detalle object</param>
-		public void Update(int? Secuencia, bool? Excluido, DateTime? fechaModificacion, long codigo, long Rutas_PeajesCodigo, int lngIdPeaje, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Secuencia">int that contents the Secuencia value for the Rutas_Peajes_Detalle object</param>
+		/// <param name="Excluido">bool that contents the Excluido value for the Rutas_Peajes_Detalle object</param>
+		/// <param name="fechaModificacion">DateTime that contents the fechaModificacion value for the Rutas_Peajes_Detalle object</param>
+		public void Update(long codigo, long Rutas_PeajesCodigo, int lngIdPeaje, int? Secuencia, bool? Excluido, DateTime? fechaModificacion, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -126,7 +126,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Secuencia = Secuencia;
 				new_values.Excluido = Excluido;
 				new_values.fechaModificacion = fechaModificacion;
-				Rutas_Peajes_DetalleDataProvider.Instance.Update(Secuencia, Excluido, fechaModificacion, codigo, Rutas_PeajesCodigo, lngIdPeaje,"Rutas_Peajes_Detalle",datosTransaccion);
+				Rutas_Peajes_DetalleDataProvider.Instance.Update(codigo, Rutas_PeajesCodigo, lngIdPeaje, Secuencia, Excluido, fechaModificacion,"Rutas_Peajes_Detalle",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutas_peajes_detalle">An instance of Rutas_Peajes_Detalle for reference</param>
 		public void Update(Rutas_Peajes_Detalle rutas_peajes_detalle,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutas_peajes_detalle.Secuencia, rutas_peajes_detalle.Excluido, rutas_peajes_detalle.fechaModificacion, rutas_peajes_detalle.codigo, rutas_peajes_detalle.Rutas_PeajesCodigo, rutas_peajes_detalle.lngIdPeaje);
+			Update(rutas_peajes_detalle.codigo, rutas_peajes_detalle.Rutas_PeajesCodigo, rutas_peajes_detalle.lngIdPeaje, rutas_peajes_detalle.Secuencia, rutas_peajes_detalle.Excluido, rutas_peajes_detalle.fechaModificacion);
 		}
 
 		/// <summary>
@@ -300,15 +300,6 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
-				case "Secuencia":
-					return rutas_peajes_detalle.Secuencia.GetType();
-
-				case "Excluido":
-					return rutas_peajes_detalle.Excluido.GetType();
-
-				case "fechaModificacion":
-					return rutas_peajes_detalle.fechaModificacion.GetType();
-
 				case "codigo":
 					return rutas_peajes_detalle.codigo.GetType();
 
@@ -317,6 +308,15 @@ namespace LiqViajes_Bll_Data
 
 				case "lngIdPeaje":
 					return rutas_peajes_detalle.lngIdPeaje.GetType();
+
+				case "Secuencia":
+					return rutas_peajes_detalle.Secuencia.GetType();
+
+				case "Excluido":
+					return rutas_peajes_detalle.Excluido.GetType();
+
+				case "fechaModificacion":
+					return rutas_peajes_detalle.fechaModificacion.GetType();
 
 			}
 

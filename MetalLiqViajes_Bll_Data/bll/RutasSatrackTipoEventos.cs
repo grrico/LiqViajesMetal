@@ -52,7 +52,7 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutassatracktipoeventos.Codigo = (int) dr["Codigo"];
+				rutassatracktipoeventos.Codigo = (long) dr["Codigo"];
 				rutassatracktipoeventos.TipoEvento = dr.IsNull("TipoEvento") ? null :(string) dr["TipoEvento"];
 			}
 			catch (Exception ex)
@@ -76,7 +76,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="TipoEvento">string that contents the TipoEvento value for the RutasSatrackTipoEventos object</param>
 		/// <returns>One RutasSatrackTipoEventos object</returns>
-		public RutasSatrackTipoEventos Create(int Codigo, string TipoEvento, Sinapsys.Datos.SQL datosTransaccion=null)
+		public RutasSatrackTipoEventos Create(long Codigo, string TipoEvento, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -97,9 +97,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasSatrackTipoEventos object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the RutasSatrackTipoEventos object</param>
+		/// <param name="Codigo">long that contents the Codigo value for the RutasSatrackTipoEventos object</param>
 		/// <param name="TipoEvento">string that contents the TipoEvento value for the RutasSatrackTipoEventos object</param>
-		public void Update(int Codigo, string TipoEvento, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Codigo, string TipoEvento, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -134,7 +134,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the RutasSatrackTipoEventos object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="rutassatracktipoeventos">An instance of RutasSatrackTipoEventos for reference</param>
-		public void Delete(int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -155,7 +155,7 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int Codigo=int.Parse(StrCommand[0]);
+				long Codigo=long.Parse(StrCommand[0]);
 				RutasSatrackTipoEventosDataProvider.Instance.Delete(Codigo,"RutasSatrackTipoEventos");
 			}
 			catch (Exception ex)
@@ -167,9 +167,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the RutasSatrackTipoEventos object by passing the object's key fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the RutasSatrackTipoEventos object</param>
+		/// <param name="Codigo">long that contents the Codigo value for the RutasSatrackTipoEventos object</param>
 		/// <returns>One RutasSatrackTipoEventos object</returns>
-		public RutasSatrackTipoEventos Get(int Codigo, bool generateUndo=false)
+		public RutasSatrackTipoEventos Get(long Codigo, bool generateUndo=false)
 		{
 			try 
 			{

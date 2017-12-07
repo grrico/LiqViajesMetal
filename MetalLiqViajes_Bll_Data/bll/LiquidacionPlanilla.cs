@@ -52,14 +52,14 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				liquidacionplanilla.lngIdRegistro = (long) dr["lngIdRegistro"];
+				liquidacionplanilla.lngIdRegistrRutaItemId = (long) dr["lngIdRegistrRutaItemId"];
+				liquidacionplanilla.lngIdRegistrRuta = (long) dr["lngIdRegistrRuta"];
 				liquidacionplanilla.strNoPlanilla = dr.IsNull("strNoPlanilla") ? null :(string) dr["strNoPlanilla"];
 				liquidacionplanilla.curValorFlete = dr.IsNull("curValorFlete") ? null :(decimal?) dr["curValorFlete"];
 				liquidacionplanilla.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
 				liquidacionplanilla.logDesplazaVacio = dr.IsNull("logDesplazaVacio") ? null :(bool?) dr["logDesplazaVacio"];
 				liquidacionplanilla.logSePuedeLiquidar = dr.IsNull("logSePuedeLiquidar") ? null :(bool?) dr["logSePuedeLiquidar"];
-				liquidacionplanilla.lngIdRegistro = (int) dr["lngIdRegistro"];
-				liquidacionplanilla.lngIdRegistrRutaItemId = (int) dr["lngIdRegistrRutaItemId"];
-				liquidacionplanilla.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
 			}
 			catch (Exception ex)
 			{
@@ -86,7 +86,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="logDesplazaVacio">bool that contents the logDesplazaVacio value for the LiquidacionPlanilla object</param>
 		/// <param name="logSePuedeLiquidar">bool that contents the logSePuedeLiquidar value for the LiquidacionPlanilla object</param>
 		/// <returns>One LiquidacionPlanilla object</returns>
-		public LiquidacionPlanilla Create(int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta, string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar, Sinapsys.Datos.SQL datosTransaccion=null)
+		public LiquidacionPlanilla Create(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta, string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -113,15 +113,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionPlanilla object by passing all object's fields
 		/// </summary>
+		/// <param name="lngIdRegistro">long that contents the lngIdRegistro value for the LiquidacionPlanilla object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionPlanilla object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionPlanilla object</param>
 		/// <param name="strNoPlanilla">string that contents the strNoPlanilla value for the LiquidacionPlanilla object</param>
 		/// <param name="curValorFlete">decimal that contents the curValorFlete value for the LiquidacionPlanilla object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the LiquidacionPlanilla object</param>
 		/// <param name="logDesplazaVacio">bool that contents the logDesplazaVacio value for the LiquidacionPlanilla object</param>
 		/// <param name="logSePuedeLiquidar">bool that contents the logSePuedeLiquidar value for the LiquidacionPlanilla object</param>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionPlanilla object</param>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionPlanilla object</param>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionPlanilla object</param>
-		public void Update(string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar, int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta, string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -131,7 +131,7 @@ namespace LiqViajes_Bll_Data
 				new_values.dtmFechaModif = dtmFechaModif;
 				new_values.logDesplazaVacio = logDesplazaVacio;
 				new_values.logSePuedeLiquidar = logSePuedeLiquidar;
-				LiquidacionPlanillaDataProvider.Instance.Update(strNoPlanilla, curValorFlete, dtmFechaModif, logDesplazaVacio, logSePuedeLiquidar, lngIdRegistro, lngIdRegistrRutaItemId, lngIdRegistrRuta,"LiquidacionPlanilla",datosTransaccion);
+				LiquidacionPlanillaDataProvider.Instance.Update(lngIdRegistro, lngIdRegistrRutaItemId, lngIdRegistrRuta, strNoPlanilla, curValorFlete, dtmFechaModif, logDesplazaVacio, logSePuedeLiquidar,"LiquidacionPlanilla",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -145,7 +145,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionplanilla">An instance of LiquidacionPlanilla for reference</param>
 		public void Update(LiquidacionPlanilla liquidacionplanilla,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionplanilla.strNoPlanilla, liquidacionplanilla.curValorFlete, liquidacionplanilla.dtmFechaModif, liquidacionplanilla.logDesplazaVacio, liquidacionplanilla.logSePuedeLiquidar, liquidacionplanilla.lngIdRegistro, liquidacionplanilla.lngIdRegistrRutaItemId, liquidacionplanilla.lngIdRegistrRuta);
+			Update(liquidacionplanilla.lngIdRegistro, liquidacionplanilla.lngIdRegistrRutaItemId, liquidacionplanilla.lngIdRegistrRuta, liquidacionplanilla.strNoPlanilla, liquidacionplanilla.curValorFlete, liquidacionplanilla.dtmFechaModif, liquidacionplanilla.logDesplazaVacio, liquidacionplanilla.logSePuedeLiquidar);
 		}
 
 		/// <summary>
@@ -160,7 +160,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the LiquidacionPlanilla object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="liquidacionplanilla">An instance of LiquidacionPlanilla for reference</param>
-		public void Delete(int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -181,9 +181,9 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int lngIdRegistro=int.Parse(StrCommand[0]);
-				int lngIdRegistrRutaItemId=int.Parse(StrCommand[1]);
-				int lngIdRegistrRuta=int.Parse(StrCommand[2]);
+				long lngIdRegistro=long.Parse(StrCommand[0]);
+				long lngIdRegistrRutaItemId=long.Parse(StrCommand[1]);
+				long lngIdRegistrRuta=long.Parse(StrCommand[2]);
 				LiquidacionPlanillaDataProvider.Instance.Delete(lngIdRegistro, lngIdRegistrRutaItemId, lngIdRegistrRuta,"LiquidacionPlanilla");
 			}
 			catch (Exception ex)
@@ -195,11 +195,11 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the LiquidacionPlanilla object by passing the object's key fields
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionPlanilla object</param>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionPlanilla object</param>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionPlanilla object</param>
+		/// <param name="lngIdRegistro">long that contents the lngIdRegistro value for the LiquidacionPlanilla object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionPlanilla object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionPlanilla object</param>
 		/// <returns>One LiquidacionPlanilla object</returns>
-		public LiquidacionPlanilla Get(int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta, bool generateUndo=false)
+		public LiquidacionPlanilla Get(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta, bool generateUndo=false)
 		{
 			try 
 			{
@@ -301,6 +301,15 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "lngIdRegistro":
+					return liquidacionplanilla.lngIdRegistro.GetType();
+
+				case "lngIdRegistrRutaItemId":
+					return liquidacionplanilla.lngIdRegistrRutaItemId.GetType();
+
+				case "lngIdRegistrRuta":
+					return liquidacionplanilla.lngIdRegistrRuta.GetType();
+
 				case "strNoPlanilla":
 					return liquidacionplanilla.strNoPlanilla.GetType();
 
@@ -315,15 +324,6 @@ namespace LiqViajes_Bll_Data
 
 				case "logSePuedeLiquidar":
 					return liquidacionplanilla.logSePuedeLiquidar.GetType();
-
-				case "lngIdRegistro":
-					return liquidacionplanilla.lngIdRegistro.GetType();
-
-				case "lngIdRegistrRutaItemId":
-					return liquidacionplanilla.lngIdRegistrRutaItemId.GetType();
-
-				case "lngIdRegistrRuta":
-					return liquidacionplanilla.lngIdRegistrRuta.GetType();
 
 			}
 

@@ -50,8 +50,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
 		/// <param name="Favorita"></param>
-		/// <returns>int that contents the Codigo value</returns>
-		public int Create(int Codigo, int RutasOrigenCodigo, string Origen, string Destino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <returns>long that contents the Codigo value</returns>
+		public long Create(long Codigo, long RutasOrigenCodigo, string Origen, string Destino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -90,7 +90,7 @@ namespace LiqViajes_Bll_Data
 					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				// Execute the query and return the new identity value
-				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasDestinoCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
+				long returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasDestinoCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
 
 				return returnValue;
 			}
@@ -109,7 +109,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Origen"></param>
 		/// <param name="Destino"></param>
 		/// <param name="Favorita"></param>
-		public void Update(int Codigo, int RutasOrigenCodigo, string Origen, string Destino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Codigo, long RutasOrigenCodigo, string Origen, string Destino, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -160,7 +160,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="Codigo"></param>
 		/// <param name="RutasOrigenCodigo"></param>
-		public void Delete(int Codigo, int RutasOrigenCodigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo, long RutasOrigenCodigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -200,7 +200,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Codigo"></param>
 		/// <param name="RutasOrigenCodigo"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int Codigo, int RutasOrigenCodigo)
+		public DataTable Get(long Codigo, long RutasOrigenCodigo)
 		{
 			try 
 			{
@@ -268,7 +268,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="RutasOrigenCodigo"></param>
 		/// <returns>A DataTable object containing all records data</returns>
-		public DataTable GetBy_RutasOrigenCodigo(int RutasOrigenCodigo)
+		public DataTable GetBy_RutasOrigenCodigo(long RutasOrigenCodigo)
 		{
 			try 
 			{

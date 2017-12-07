@@ -53,7 +53,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strTipo"></param>
 		/// <param name="numero"></param>
 		/// <param name="lngIdRegistroLiq"></param>
-		public void Create(int lngIdRegistro, decimal intNitConductor, decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Create(long lngIdRegistro, decimal intNitConductor, decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -115,15 +115,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionSaldoConductor by passing all fields
 		/// </summary>
+		/// <param name="lngIdRegistro"></param>
+		/// <param name="intNitConductor"></param>
 		/// <param name="curValorSaldo"></param>
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="sw"></param>
 		/// <param name="strTipo"></param>
 		/// <param name="numero"></param>
 		/// <param name="lngIdRegistroLiq"></param>
-		/// <param name="lngIdRegistro"></param>
-		/// <param name="intNitConductor"></param>
-		public void Update(decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq, int lngIdRegistro, decimal intNitConductor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdRegistro, decimal intNitConductor, decimal? curValorSaldo, DateTime? dtmFechaModif, byte? sw, string strTipo, int? numero, int? lngIdRegistroLiq,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -186,7 +186,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="intNitConductor"></param>
-		public void Delete(int lngIdRegistro, decimal intNitConductor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdRegistro, decimal intNitConductor,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -226,7 +226,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="intNitConductor"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int lngIdRegistro, decimal intNitConductor)
+		public DataTable Get(long lngIdRegistro, decimal intNitConductor)
 		{
 			try 
 			{

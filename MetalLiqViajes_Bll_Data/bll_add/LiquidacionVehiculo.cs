@@ -69,7 +69,7 @@ namespace LiqViajes_Bll_Data
         {
             try
             {
-                iRegistroViajeDTO.IdRegistro = (Int32)dr["IdRegistro"];// (long)dr["IdRegistro"];
+                iRegistroViajeDTO.IdRegistro = (long)dr["IdRegistro"];// (long)dr["IdRegistro"];
                 iRegistroViajeDTO.FechaMovimiento = (DateTime)dr["FechaMovimiento"];
                 iRegistroViajeDTO.Liquidado = dr.IsNull("Liquidado") ? false : (bool)dr["Liquidado"]; 
                 iRegistroViajeDTO.Placa = dr.IsNull("Placa") ? null : (string)dr["Placa"];

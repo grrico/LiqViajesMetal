@@ -91,6 +91,9 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
+		// Field for storing the RutasMaestroPeajes's lngIdPeaje value
+		private int m_lngIdPeaje;
+
 		// Field for storing the RutasMaestroPeajes's strNombrePeaje value
 		private string m_strNombrePeaje;
 
@@ -118,9 +121,6 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the RutasMaestroPeajes's curValorTipo7 value
 		private decimal? m_curValorTipo7;
 
-		// Field for storing the RutasMaestroPeajes's lngIdPeaje value
-		private int m_lngIdPeaje;
-
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -134,6 +134,20 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the RutasMaestroPeajes's lngIdPeaje value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdPeaje
+		{
+			get { return m_lngIdPeaje; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdPeaje = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the RutasMaestroPeajes's strNombrePeaje value (string)
 		/// </summary>
@@ -260,24 +274,11 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Attribute for access the RutasMaestroPeajes's lngIdPeaje value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdPeaje
-		{
-			get { return m_lngIdPeaje; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdPeaje = value;
-			}
-		}
-
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
+				case "lngIdPeaje": return lngIdPeaje;
 				case "strNombrePeaje": return strNombrePeaje;
 				case "Activo": return Activo;
 				case "curValorTipo1": return curValorTipo1;
@@ -287,7 +288,6 @@ namespace LiqViajes_Bll_Data
 				case "curValorTipo5": return curValorTipo5;
 				case "curValorTipo6": return curValorTipo6;
 				case "curValorTipo7": return curValorTipo7;
-				case "lngIdPeaje": return lngIdPeaje;
 				default: return null;
 			}
 		}

@@ -52,9 +52,9 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				rutasabreviaturas.lngIdAbreviatura = (int) dr["lngIdAbreviatura"];
 				rutasabreviaturas.strAbreviatura = dr.IsNull("strAbreviatura") ? null :(string) dr["strAbreviatura"];
 				rutasabreviaturas.strNombreAbreviatura = dr.IsNull("strNombreAbreviatura") ? null :(string) dr["strNombreAbreviatura"];
-				rutasabreviaturas.lngIdAbreviatura = (int) dr["lngIdAbreviatura"];
 			}
 			catch (Exception ex)
 			{
@@ -105,17 +105,17 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasAbreviaturas object by passing all object's fields
 		/// </summary>
+		/// <param name="lngIdAbreviatura">int that contents the lngIdAbreviatura value for the RutasAbreviaturas object</param>
 		/// <param name="strAbreviatura">string that contents the strAbreviatura value for the RutasAbreviaturas object</param>
 		/// <param name="strNombreAbreviatura">string that contents the strNombreAbreviatura value for the RutasAbreviaturas object</param>
-		/// <param name="lngIdAbreviatura">int that contents the lngIdAbreviatura value for the RutasAbreviaturas object</param>
-		public void Update(string strAbreviatura, string strNombreAbreviatura, int lngIdAbreviatura, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int lngIdAbreviatura, string strAbreviatura, string strNombreAbreviatura, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				RutasAbreviaturas new_values = new RutasAbreviaturas();
 				new_values.strAbreviatura = strAbreviatura;
 				new_values.strNombreAbreviatura = strNombreAbreviatura;
-				RutasAbreviaturasDataProvider.Instance.Update(strAbreviatura, strNombreAbreviatura, lngIdAbreviatura,"RutasAbreviaturas",datosTransaccion);
+				RutasAbreviaturasDataProvider.Instance.Update(lngIdAbreviatura, strAbreviatura, strNombreAbreviatura,"RutasAbreviaturas",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -129,7 +129,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutasabreviaturas">An instance of RutasAbreviaturas for reference</param>
 		public void Update(RutasAbreviaturas rutasabreviaturas,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutasabreviaturas.strAbreviatura, rutasabreviaturas.strNombreAbreviatura, rutasabreviaturas.lngIdAbreviatura);
+			Update(rutasabreviaturas.lngIdAbreviatura, rutasabreviaturas.strAbreviatura, rutasabreviaturas.strNombreAbreviatura);
 		}
 
 		/// <summary>
@@ -284,14 +284,14 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "lngIdAbreviatura":
+					return rutasabreviaturas.lngIdAbreviatura.GetType();
+
 				case "strAbreviatura":
 					return rutasabreviaturas.strAbreviatura.GetType();
 
 				case "strNombreAbreviatura":
 					return rutasabreviaturas.strNombreAbreviatura.GetType();
-
-				case "lngIdAbreviatura":
-					return rutasabreviaturas.lngIdAbreviatura.GetType();
 
 			}
 

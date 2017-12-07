@@ -51,7 +51,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="ACtivoWS"></param>
 		/// <param name="ACtivoWinForm"></param>
 		/// <param name="TipoEvento"></param>
-		public void Create(int Codigo, string NombreEvento, bool? ACtivoWS, bool? ACtivoWinForm, int? TipoEvento,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Create(long Codigo, string NombreEvento, bool? ACtivoWS, bool? ACtivoWinForm, int? TipoEvento,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -109,7 +109,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="ACtivoWS"></param>
 		/// <param name="ACtivoWinForm"></param>
 		/// <param name="TipoEvento"></param>
-		public void Update(int Codigo, string NombreEvento, bool? ACtivoWS, bool? ACtivoWinForm, int? TipoEvento,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Codigo, string NombreEvento, bool? ACtivoWS, bool? ACtivoWinForm, int? TipoEvento,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -162,7 +162,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes one record from RutasSatrackParametros by passing all key fields
 		/// </summary>
 		/// <param name="Codigo"></param>
-		public void Delete(int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -200,7 +200,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="Codigo"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int Codigo)
+		public DataTable Get(long Codigo)
 		{
 			try 
 			{

@@ -130,6 +130,9 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
+		// Field for storing the LiquidacionVehiculo's lngIdRegistro value
+		private long m_lngIdRegistro;
+
 		// Field for storing the LiquidacionVehiculo's strPlaca value
 		private string m_strPlaca;
 
@@ -196,9 +199,6 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionVehiculo's Kilometros value
 		private int? m_Kilometros;
 
-		// Field for storing the LiquidacionVehiculo's lngIdRegistro value
-		private int m_lngIdRegistro;
-
 		// Evaluate changed state
 		private bool m_changed=false;
 		// Field for storing the reference to Terceros accessed by intNitConductor
@@ -218,6 +218,20 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the LiquidacionVehiculo's lngIdRegistro value (long)
+		/// </summary>
+		[DataMember]
+		public long lngIdRegistro
+		{
+			get { return m_lngIdRegistro; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistro = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the LiquidacionVehiculo's strPlaca value (string)
 		/// </summary>
@@ -532,24 +546,11 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Attribute for access the LiquidacionVehiculo's lngIdRegistro value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistro
-		{
-			get { return m_lngIdRegistro; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistro = value;
-			}
-		}
-
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
+				case "lngIdRegistro": return lngIdRegistro;
 				case "strPlaca": return strPlaca;
 				case "intNitConductor": return intNitConductor;
 				case "curGastos": return curGastos;
@@ -572,7 +573,6 @@ namespace LiqViajes_Bll_Data
 				case "logLiquKilometros": return logLiquKilometros;
 				case "curValorKilometros": return curValorKilometros;
 				case "Kilometros": return Kilometros;
-				case "lngIdRegistro": return lngIdRegistro;
 				default: return null;
 			}
 		}

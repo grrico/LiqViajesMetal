@@ -52,14 +52,14 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionrutasobs.lngIdRegistrRutaItemId = dr.IsNull("lngIdRegistrRutaItemId") ? null :(int?) dr["lngIdRegistrRutaItemId"];
-				liquidacionrutasobs.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(int?) dr["lngIdRegistrRuta"];
-				liquidacionrutasobs.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
+				liquidacionrutasobs.lngItemsId = (long) dr["lngItemsId"];
+				liquidacionrutasobs.lngIdRegistrRutaItemId = dr.IsNull("lngIdRegistrRutaItemId") ? null :(long?) dr["lngIdRegistrRutaItemId"];
+				liquidacionrutasobs.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(long?) dr["lngIdRegistrRuta"];
+				liquidacionrutasobs.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(long?) dr["lngIdRegistro"];
 				liquidacionrutasobs.strCampo = dr.IsNull("strCampo") ? null :(string) dr["strCampo"];
 				liquidacionrutasobs.strObservacion = dr.IsNull("strObservacion") ? null :(string) dr["strObservacion"];
 				liquidacionrutasobs.nitTercero = dr.IsNull("nitTercero") ? null :(string) dr["nitTercero"];
 				liquidacionrutasobs.dtmFechaModif = dr.IsNull("dtmFechaModif") ? null :(DateTime?) dr["dtmFechaModif"];
-				liquidacionrutasobs.lngItemsId = (int) dr["lngItemsId"];
 			}
 			catch (Exception ex)
 			{
@@ -80,15 +80,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Creates a new LiquidacionRutasObs object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionRutasObs object</param>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionRutasObs object</param>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionRutasObs object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionRutasObs object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionRutasObs object</param>
+		/// <param name="lngIdRegistro">long that contents the lngIdRegistro value for the LiquidacionRutasObs object</param>
 		/// <param name="strCampo">string that contents the strCampo value for the LiquidacionRutasObs object</param>
 		/// <param name="strObservacion">string that contents the strObservacion value for the LiquidacionRutasObs object</param>
 		/// <param name="nitTercero">string that contents the nitTercero value for the LiquidacionRutasObs object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the LiquidacionRutasObs object</param>
 		/// <returns>One LiquidacionRutasObs object</returns>
-		public LiquidacionRutasObs Create(int lngItemsId, int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, int? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif, Sinapsys.Datos.SQL datosTransaccion=null)
+		public LiquidacionRutasObs Create(long lngItemsId, long? lngIdRegistrRutaItemId, long? lngIdRegistrRuta, long? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -120,15 +120,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionRutasObs object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionRutasObs object</param>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionRutasObs object</param>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionRutasObs object</param>
+		/// <param name="lngItemsId">long that contents the lngItemsId value for the LiquidacionRutasObs object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionRutasObs object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionRutasObs object</param>
+		/// <param name="lngIdRegistro">long that contents the lngIdRegistro value for the LiquidacionRutasObs object</param>
 		/// <param name="strCampo">string that contents the strCampo value for the LiquidacionRutasObs object</param>
 		/// <param name="strObservacion">string that contents the strObservacion value for the LiquidacionRutasObs object</param>
 		/// <param name="nitTercero">string that contents the nitTercero value for the LiquidacionRutasObs object</param>
 		/// <param name="dtmFechaModif">DateTime that contents the dtmFechaModif value for the LiquidacionRutasObs object</param>
-		/// <param name="lngItemsId">int that contents the lngItemsId value for the LiquidacionRutasObs object</param>
-		public void Update(int? lngIdRegistrRutaItemId, int? lngIdRegistrRuta, int? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif, int lngItemsId, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngItemsId, long? lngIdRegistrRutaItemId, long? lngIdRegistrRuta, long? lngIdRegistro, string strCampo, string strObservacion, string nitTercero, DateTime? dtmFechaModif, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -140,7 +140,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strObservacion = strObservacion;
 				new_values.nitTercero = nitTercero;
 				new_values.dtmFechaModif = dtmFechaModif;
-				LiquidacionRutasObsDataProvider.Instance.Update(lngIdRegistrRutaItemId, lngIdRegistrRuta, lngIdRegistro, strCampo, strObservacion, nitTercero, dtmFechaModif, lngItemsId,"LiquidacionRutasObs",datosTransaccion);
+				LiquidacionRutasObsDataProvider.Instance.Update(lngItemsId, lngIdRegistrRutaItemId, lngIdRegistrRuta, lngIdRegistro, strCampo, strObservacion, nitTercero, dtmFechaModif,"LiquidacionRutasObs",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -154,7 +154,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionrutasobs">An instance of LiquidacionRutasObs for reference</param>
 		public void Update(LiquidacionRutasObs liquidacionrutasobs,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionrutasobs.lngIdRegistrRutaItemId, liquidacionrutasobs.lngIdRegistrRuta, liquidacionrutasobs.lngIdRegistro, liquidacionrutasobs.strCampo, liquidacionrutasobs.strObservacion, liquidacionrutasobs.nitTercero, liquidacionrutasobs.dtmFechaModif, liquidacionrutasobs.lngItemsId);
+			Update(liquidacionrutasobs.lngItemsId, liquidacionrutasobs.lngIdRegistrRutaItemId, liquidacionrutasobs.lngIdRegistrRuta, liquidacionrutasobs.lngIdRegistro, liquidacionrutasobs.strCampo, liquidacionrutasobs.strObservacion, liquidacionrutasobs.nitTercero, liquidacionrutasobs.dtmFechaModif);
 		}
 
 		/// <summary>
@@ -169,7 +169,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the LiquidacionRutasObs object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="liquidacionrutasobs">An instance of LiquidacionRutasObs for reference</param>
-		public void Delete(int lngItemsId, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngItemsId, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -194,7 +194,7 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int lngItemsId=int.Parse(StrCommand[0]);
+				long lngItemsId=long.Parse(StrCommand[0]);
 				LiquidacionRutasObsDataProvider.Instance.Delete(lngItemsId,"LiquidacionRutasObs");
 			}
 			catch (Exception ex)
@@ -206,9 +206,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the LiquidacionRutasObs object by passing the object's key fields
 		/// </summary>
-		/// <param name="lngItemsId">int that contents the lngItemsId value for the LiquidacionRutasObs object</param>
+		/// <param name="lngItemsId">long that contents the lngItemsId value for the LiquidacionRutasObs object</param>
 		/// <returns>One LiquidacionRutasObs object</returns>
-		public LiquidacionRutasObs Get(int lngItemsId, bool generateUndo=false)
+		public LiquidacionRutasObs Get(long lngItemsId, bool generateUndo=false)
 		{
 			try 
 			{
@@ -310,6 +310,9 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "lngItemsId":
+					return liquidacionrutasobs.lngItemsId.GetType();
+
 				case "lngIdRegistrRutaItemId":
 					return liquidacionrutasobs.lngIdRegistrRutaItemId.GetType();
 
@@ -330,9 +333,6 @@ namespace LiqViajes_Bll_Data
 
 				case "dtmFechaModif":
 					return liquidacionrutasobs.dtmFechaModif.GetType();
-
-				case "lngItemsId":
-					return liquidacionrutasobs.lngItemsId.GetType();
 
 			}
 
