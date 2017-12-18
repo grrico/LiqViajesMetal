@@ -96,6 +96,7 @@
     <Compile Include="bll\RutasCuentas.cs" />
     <Compile Include="bll\RutasDestino.cs" />
     <Compile Include="bll\RutasDet.cs" />
+    <Compile Include="bll\RutasDetTramos.cs" />
     <Compile Include="bll\RutasMaestroPeajes.cs" />
     <Compile Include="bll\RutasOrigen.cs" />
     <Compile Include="bll\RutasOrigenDestino.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="dal\RutasDataProvider.cs" />
     <Compile Include="dal\RutasDestinoDataProvider.cs" />
     <Compile Include="dal\RutasDetDataProvider.cs" />
+    <Compile Include="dal\RutasDetTramosDataProvider.cs" />
     <Compile Include="dal\RutasMaestroPeajesDataProvider.cs" />
     <Compile Include="dal\RutasOrigenDataProvider.cs" />
     <Compile Include="dal\RutasOrigenDestinoDataProvider.cs" />
@@ -293,6 +295,7 @@
     <Compile Include="dto\RutasCuentas.cs" />
     <Compile Include="dto\RutasDestino.cs" />
     <Compile Include="dto\RutasDet.cs" />
+    <Compile Include="dto\RutasDetTramos.cs" />
     <Compile Include="dto\RutasMaestroPeajes.cs" />
     <Compile Include="dto\RutasOrigen.cs" />
     <Compile Include="dto\RutasOrigenDestino.cs" />
