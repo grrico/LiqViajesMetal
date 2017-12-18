@@ -77,15 +77,6 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the Rutas_Peajes_Detalle's Secuencia value
-		private int? m_Secuencia;
-
-		// Field for storing the Rutas_Peajes_Detalle's Excluido value
-		private bool? m_Excluido;
-
-		// Field for storing the Rutas_Peajes_Detalle's fechaModificacion value
-		private DateTime? m_fechaModificacion;
-
 		// Field for storing the Rutas_Peajes_Detalle's codigo value
 		private long m_codigo;
 
@@ -94,6 +85,15 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the Rutas_Peajes_Detalle's lngIdPeaje value
 		private int m_lngIdPeaje;
+
+		// Field for storing the Rutas_Peajes_Detalle's Secuencia value
+		private int? m_Secuencia;
+
+		// Field for storing the Rutas_Peajes_Detalle's Excluido value
+		private bool? m_Excluido;
+
+		// Field for storing the Rutas_Peajes_Detalle's fechaModificacion value
+		private DateTime? m_fechaModificacion;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -108,48 +108,6 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
-		/// <summary>
-		/// Attribute for access the Rutas_Peajes_Detalle's Secuencia value (int)
-		/// </summary>
-		[DataMember]
-		public int? Secuencia
-		{
-			get { return m_Secuencia; }
-			set 
-			{
-				m_changed=true;
-				m_Secuencia = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the Rutas_Peajes_Detalle's Excluido value (bool)
-		/// </summary>
-		[DataMember]
-		public bool? Excluido
-		{
-			get { return m_Excluido; }
-			set 
-			{
-				m_changed=true;
-				m_Excluido = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the Rutas_Peajes_Detalle's fechaModificacion value (DateTime)
-		/// </summary>
-		[DataMember]
-		public DateTime? fechaModificacion
-		{
-			get { return m_fechaModificacion; }
-			set 
-			{
-				m_changed=true;
-				m_fechaModificacion = value;
-			}
-		}
-
 		/// <summary>
 		/// Attribute for access the Rutas_Peajes_Detalle's codigo value (long)
 		/// </summary>
@@ -192,16 +150,58 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the Rutas_Peajes_Detalle's Secuencia value (int)
+		/// </summary>
+		[DataMember]
+		public int? Secuencia
+		{
+			get { return m_Secuencia; }
+			set 
+			{
+				m_changed=true;
+				m_Secuencia = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the Rutas_Peajes_Detalle's Excluido value (bool)
+		/// </summary>
+		[DataMember]
+		public bool? Excluido
+		{
+			get { return m_Excluido; }
+			set 
+			{
+				m_changed=true;
+				m_Excluido = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the Rutas_Peajes_Detalle's fechaModificacion value (DateTime)
+		/// </summary>
+		[DataMember]
+		public DateTime? fechaModificacion
+		{
+			get { return m_fechaModificacion; }
+			set 
+			{
+				m_changed=true;
+				m_fechaModificacion = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Secuencia": return Secuencia;
-				case "Excluido": return Excluido;
-				case "fechaModificacion": return fechaModificacion;
 				case "codigo": return codigo;
 				case "Rutas_PeajesCodigo": return Rutas_PeajesCodigo;
 				case "lngIdPeaje": return lngIdPeaje;
+				case "Secuencia": return Secuencia;
+				case "Excluido": return Excluido;
+				case "fechaModificacion": return fechaModificacion;
 				default: return null;
 			}
 		}

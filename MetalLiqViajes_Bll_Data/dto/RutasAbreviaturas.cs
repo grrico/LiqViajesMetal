@@ -70,14 +70,14 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
+		// Field for storing the RutasAbreviaturas's lngIdAbreviatura value
+		private int m_lngIdAbreviatura;
+
 		// Field for storing the RutasAbreviaturas's strAbreviatura value
 		private string m_strAbreviatura;
 
 		// Field for storing the RutasAbreviaturas's strNombreAbreviatura value
 		private string m_strNombreAbreviatura;
-
-		// Field for storing the RutasAbreviaturas's lngIdAbreviatura value
-		private int m_lngIdAbreviatura;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -92,6 +92,20 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the RutasAbreviaturas's lngIdAbreviatura value (int)
+		/// </summary>
+		[DataMember]
+		public int lngIdAbreviatura
+		{
+			get { return m_lngIdAbreviatura; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdAbreviatura = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the RutasAbreviaturas's strAbreviatura value (string)
 		/// </summary>
@@ -120,27 +134,13 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Attribute for access the RutasAbreviaturas's lngIdAbreviatura value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdAbreviatura
-		{
-			get { return m_lngIdAbreviatura; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdAbreviatura = value;
-			}
-		}
-
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
+				case "lngIdAbreviatura": return lngIdAbreviatura;
 				case "strAbreviatura": return strAbreviatura;
 				case "strNombreAbreviatura": return strNombreAbreviatura;
-				case "lngIdAbreviatura": return lngIdAbreviatura;
 				default: return null;
 			}
 		}

@@ -71,7 +71,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="LogAnticipoACPM"></param>
 		/// <param name="AntipoConductor"></param>
 		/// <param name="NombreTercero"></param>
-		public void Create(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Create(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -237,7 +237,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="LogAnticipoACPM"></param>
 		/// <param name="AntipoConductor"></param>
 		/// <param name="NombreTercero"></param>
-		public void Update(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -378,7 +378,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="strCuenta"></param>
 		/// <param name="intRowRegistro"></param>
-		public void Delete(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -424,7 +424,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="strCuenta"></param>
 		/// <param name="intRowRegistro"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int lngIdRegistrRutaItemId, decimal lngIdRegistroViaje, int lngIdRegistrRuta, string strCuenta, int intRowRegistro)
+		public DataTable Get(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro)
 		{
 			try 
 			{
@@ -495,7 +495,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <returns>A DataTable object containing all records data</returns>
-		public DataTable GetBy_lngIdRegistrRutaItemId(int lngIdRegistrRutaItemId)
+		public DataTable GetBy_lngIdRegistrRutaItemId(long lngIdRegistrRutaItemId)
 		{
 			try 
 			{

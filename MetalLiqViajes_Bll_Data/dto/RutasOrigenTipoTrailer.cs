@@ -77,10 +77,10 @@ namespace LiqViajes_Bll_Data
 
 
 		// Field for storing the RutasOrigenTipoTrailer's Codigo value
-		private int m_Codigo;
+		private long m_Codigo;
 
 		// Field for storing the RutasOrigenTipoTrailer's RutasOrigenCodigo value
-		private int? m_RutasOrigenCodigo;
+		private long? m_RutasOrigenCodigo;
 
 		// Field for storing the RutasOrigenTipoTrailer's Origen value
 		private string m_Origen;
@@ -105,10 +105,10 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the RutasOrigenTipoTrailer's Codigo value (int)
+		/// Attribute for access the RutasOrigenTipoTrailer's Codigo value (long)
 		/// </summary>
 		[DataMember]
-		public int Codigo
+		public long Codigo
 		{
 			get { return m_Codigo; }
 			set 
@@ -119,10 +119,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenTipoTrailer's RutasOrigenCodigo value (int)
+		/// Attribute for access the RutasOrigenTipoTrailer's RutasOrigenCodigo value (long)
 		/// </summary>
 		[DataMember]
-		public int? RutasOrigenCodigo
+		public long? RutasOrigenCodigo
 		{
 			get { return m_RutasOrigenCodigo; }
 			set 

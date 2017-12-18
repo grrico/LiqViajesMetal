@@ -52,8 +52,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="strNoPlanilla"></param>
 		/// <param name="dtmFechaModif"></param>
-		/// <returns>int that contents the lngIdItemd value</returns>
-		public int Create(int lngIdItemd, int? lngIdRegistro, int? lngIdRegistrRuta, int? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <returns>long that contents the lngIdItemd value</returns>
+		public long Create(long lngIdItemd, long? lngIdRegistro, long? lngIdRegistrRuta, long? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -99,7 +99,7 @@ namespace LiqViajes_Bll_Data
 					paramlist.AddWithValue("@dtmFechaModif",dtmFechaModif);
 				}
 				// Execute the query and return the new identity value
-				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.LiquidacionPlanillaDetCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
+				long returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.LiquidacionPlanillaDetCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
 
 				return returnValue;
 			}
@@ -113,13 +113,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionPlanillaDet by passing all fields
 		/// </summary>
+		/// <param name="lngIdItemd"></param>
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="strNoPlanilla"></param>
 		/// <param name="dtmFechaModif"></param>
-		/// <param name="lngIdItemd"></param>
-		public void Update(int? lngIdRegistro, int? lngIdRegistrRuta, int? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif, int lngIdItemd,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdItemd, long? lngIdRegistro, long? lngIdRegistrRuta, long? lngIdRegistrRutaItemId, string strNoPlanilla, DateTime? dtmFechaModif,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -176,7 +176,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes one record from tblLiquidacionPlanillaDet by passing all key fields
 		/// </summary>
 		/// <param name="lngIdItemd"></param>
-		public void Delete(int lngIdItemd,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdItemd,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -214,7 +214,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="lngIdItemd"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int lngIdItemd)
+		public DataTable Get(long lngIdItemd)
 		{
 			try 
 			{

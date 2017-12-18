@@ -290,10 +290,10 @@ namespace LiqViajes_Bll_Data
 
 
 		// Field for storing the Rutas's lngIdRegistrRuta value
-		private int m_lngIdRegistrRuta;
+		private long m_lngIdRegistrRuta;
 
 		// Field for storing the Rutas's RutasOrigenDestinoVehTrailerCodigo value
-		private int? m_RutasOrigenDestinoVehTrailerCodigo;
+		private long? m_RutasOrigenDestinoVehTrailerCodigo;
 
 		// Field for storing the Rutas's strRutaAnticipoGrupoOrigen value
 		private string m_strRutaAnticipoGrupoOrigen;
@@ -534,10 +534,10 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the Rutas's lngIdRegistrRuta value (int)
+		/// Attribute for access the Rutas's lngIdRegistrRuta value (long)
 		/// </summary>
 		[DataMember]
-		public int lngIdRegistrRuta
+		public long lngIdRegistrRuta
 		{
 			get { return m_lngIdRegistrRuta; }
 			set 
@@ -548,10 +548,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the Rutas's RutasOrigenDestinoVehTrailerCodigo value (int)
+		/// Attribute for access the Rutas's RutasOrigenDestinoVehTrailerCodigo value (long)
 		/// </summary>
 		[DataMember]
-		public int? RutasOrigenDestinoVehTrailerCodigo
+		public long? RutasOrigenDestinoVehTrailerCodigo
 		{
 			get { return m_RutasOrigenDestinoVehTrailerCodigo; }
 			set
@@ -1710,7 +1710,7 @@ namespace LiqViajes_Bll_Data
 				{
 					if (m_RutasOrigenDestinoVehTrailerCodigo != null)
 					{
-						m_RutasOrigenDestinoVehTrailer = RutasOrigenDestinoVehTrailerController.Instance.Get((int)m_RutasOrigenDestinoVehTrailerCodigo);
+						m_RutasOrigenDestinoVehTrailer = RutasOrigenDestinoVehTrailerController.Instance.Get((long)m_RutasOrigenDestinoVehTrailerCodigo);
 					}
 				}
 

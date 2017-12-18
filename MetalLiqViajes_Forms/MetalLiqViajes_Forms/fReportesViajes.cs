@@ -881,7 +881,7 @@ namespace MetalLiqViajes_Forms
                 }
 
                 // llena el grid con los datos de cada mula
-
+                dataGridViewEvents.DataSource = null;
                 dataGridViewEvents.DataSource = eventosList;
                 dataGridViewEvents.Refresh();
 

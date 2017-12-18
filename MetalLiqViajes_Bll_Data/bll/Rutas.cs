@@ -52,8 +52,8 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutas.lngIdRegistrRuta = (int) dr["lngIdRegistrRuta"];
-				rutas.RutasOrigenDestinoVehTrailerCodigo = dr.IsNull("RutasOrigenDestinoVehTrailerCodigo") ? null :(int?) dr["RutasOrigenDestinoVehTrailerCodigo"];
+				rutas.lngIdRegistrRuta = (long) dr["lngIdRegistrRuta"];
+				rutas.RutasOrigenDestinoVehTrailerCodigo = dr.IsNull("RutasOrigenDestinoVehTrailerCodigo") ? null :(long?) dr["RutasOrigenDestinoVehTrailerCodigo"];
 				rutas.strRutaAnticipoGrupoOrigen = dr.IsNull("strRutaAnticipoGrupoOrigen") ? null :(string) dr["strRutaAnticipoGrupoOrigen"];
 				rutas.strRutaAnticipoGrupoDestino = dr.IsNull("strRutaAnticipoGrupoDestino") ? null :(string) dr["strRutaAnticipoGrupoDestino"];
 				rutas.strRutaAnticipoGrupo = dr.IsNull("strRutaAnticipoGrupo") ? null :(string) dr["strRutaAnticipoGrupo"];
@@ -148,7 +148,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Creates a new Rutas object by passing all object's fields
 		/// </summary>
-		/// <param name="RutasOrigenDestinoVehTrailerCodigo">int that contents the RutasOrigenDestinoVehTrailerCodigo value for the Rutas object</param>
+		/// <param name="RutasOrigenDestinoVehTrailerCodigo">long that contents the RutasOrigenDestinoVehTrailerCodigo value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupoOrigen">string that contents the strRutaAnticipoGrupoOrigen value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupoDestino">string that contents the strRutaAnticipoGrupoDestino value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupo">string that contents the strRutaAnticipoGrupo value for the Rutas object</param>
@@ -224,7 +224,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CurDescargue">decimal that contents the CurDescargue value for the Rutas object</param>
 		/// <param name="LogAnticipoACPM">bool that contents the LogAnticipoACPM value for the Rutas object</param>
 		/// <returns>One Rutas object</returns>
-		public Rutas Create(int lngIdRegistrRuta, int? RutasOrigenDestinoVehTrailerCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM, Sinapsys.Datos.SQL datosTransaccion=null)
+		public Rutas Create(long lngIdRegistrRuta, long? RutasOrigenDestinoVehTrailerCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -324,8 +324,8 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Rutas object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the Rutas object</param>
-		/// <param name="RutasOrigenDestinoVehTrailerCodigo">int that contents the RutasOrigenDestinoVehTrailerCodigo value for the Rutas object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the Rutas object</param>
+		/// <param name="RutasOrigenDestinoVehTrailerCodigo">long that contents the RutasOrigenDestinoVehTrailerCodigo value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupoOrigen">string that contents the strRutaAnticipoGrupoOrigen value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupoDestino">string that contents the strRutaAnticipoGrupoDestino value for the Rutas object</param>
 		/// <param name="strRutaAnticipoGrupo">string that contents the strRutaAnticipoGrupo value for the Rutas object</param>
@@ -400,7 +400,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CurCargue">decimal that contents the CurCargue value for the Rutas object</param>
 		/// <param name="CurDescargue">decimal that contents the CurDescargue value for the Rutas object</param>
 		/// <param name="LogAnticipoACPM">bool that contents the LogAnticipoACPM value for the Rutas object</param>
-		public void Update(int lngIdRegistrRuta, int? RutasOrigenDestinoVehTrailerCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdRegistrRuta, long? RutasOrigenDestinoVehTrailerCodigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, string DescripcionTipoTrailer, int? Peso, string Programa, bool? logViajeVacio, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, decimal? CombustibleCarretera, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? Llamadas, decimal? Taxi, decimal? Aseo, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? Viaticos, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutSaldoVacio, decimal? cutKmts, decimal? logActualizaPeajes, decimal? intFactorKmPorGalon, bool? logEstadoRuta, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Lavada, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, bool? logVacio, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? LogAnticipoACPM, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -509,7 +509,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the Rutas object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="rutas">An instance of Rutas for reference</param>
-		public void Delete(int lngIdRegistrRuta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdRegistrRuta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -534,7 +534,7 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int lngIdRegistrRuta=int.Parse(StrCommand[0]);
+				long lngIdRegistrRuta=long.Parse(StrCommand[0]);
 				RutasDataProvider.Instance.Delete(lngIdRegistrRuta,"Rutas");
 			}
 			catch (Exception ex)
@@ -546,9 +546,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the Rutas object by passing the object's key fields
 		/// </summary>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the Rutas object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the Rutas object</param>
 		/// <returns>One Rutas object</returns>
-		public Rutas Get(int lngIdRegistrRuta, bool generateUndo=false)
+		public Rutas Get(long lngIdRegistrRuta, bool generateUndo=false)
 		{
 			try 
 			{
@@ -596,9 +596,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Selects all Rutas objects by reference (Foreign Keys)
 		/// </summary>
-		/// <param name="RutasOrigenDestinoVehTrailerCodigo">int that contents the RutasOrigenDestinoVehTrailerCodigo value for the Rutas object</param>
+		/// <param name="RutasOrigenDestinoVehTrailerCodigo">long that contents the RutasOrigenDestinoVehTrailerCodigo value for the Rutas object</param>
 		/// <returns>One RutasList object</returns>
-		public RutasList GetBy_RutasOrigenDestinoVehTrailerCodigo(int RutasOrigenDestinoVehTrailerCodigo,bool generateUndo=false)
+		public RutasList GetBy_RutasOrigenDestinoVehTrailerCodigo(long RutasOrigenDestinoVehTrailerCodigo,bool generateUndo=false)
 		{
 			try 
 			{

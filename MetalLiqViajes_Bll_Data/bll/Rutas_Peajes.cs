@@ -52,12 +52,12 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				rutas_peajes.Codigo = (int) dr["Codigo"];
 				rutas_peajes.strRutaAnticipoGrupoOrigen = dr.IsNull("strRutaAnticipoGrupoOrigen") ? null :(string) dr["strRutaAnticipoGrupoOrigen"];
 				rutas_peajes.strRutaAnticipoGrupoDestino = dr.IsNull("strRutaAnticipoGrupoDestino") ? null :(string) dr["strRutaAnticipoGrupoDestino"];
 				rutas_peajes.strRutaAnticipo = dr.IsNull("strRutaAnticipo") ? null :(string) dr["strRutaAnticipo"];
 				rutas_peajes.logActualizado = dr.IsNull("logActualizado") ? null :(bool?) dr["logActualizado"];
 				rutas_peajes.FechaActualizacion = dr.IsNull("FechaActualizacion") ? null :(DateTime?) dr["FechaActualizacion"];
-				rutas_peajes.Codigo = (int) dr["Codigo"];
 			}
 			catch (Exception ex)
 			{
@@ -114,13 +114,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an Rutas_Peajes object by passing all object's fields
 		/// </summary>
+		/// <param name="Codigo">int that contents the Codigo value for the Rutas_Peajes object</param>
 		/// <param name="strRutaAnticipoGrupoOrigen">string that contents the strRutaAnticipoGrupoOrigen value for the Rutas_Peajes object</param>
 		/// <param name="strRutaAnticipoGrupoDestino">string that contents the strRutaAnticipoGrupoDestino value for the Rutas_Peajes object</param>
 		/// <param name="strRutaAnticipo">string that contents the strRutaAnticipo value for the Rutas_Peajes object</param>
 		/// <param name="logActualizado">bool that contents the logActualizado value for the Rutas_Peajes object</param>
 		/// <param name="FechaActualizacion">DateTime that contents the FechaActualizacion value for the Rutas_Peajes object</param>
-		/// <param name="Codigo">int that contents the Codigo value for the Rutas_Peajes object</param>
-		public void Update(string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipo, bool? logActualizado, DateTime? FechaActualizacion, int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int Codigo, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipo, bool? logActualizado, DateTime? FechaActualizacion, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -130,7 +130,7 @@ namespace LiqViajes_Bll_Data
 				new_values.strRutaAnticipo = strRutaAnticipo;
 				new_values.logActualizado = logActualizado;
 				new_values.FechaActualizacion = FechaActualizacion;
-				Rutas_PeajesDataProvider.Instance.Update(strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, strRutaAnticipo, logActualizado, FechaActualizacion, Codigo,"Rutas_Peajes",datosTransaccion);
+				Rutas_PeajesDataProvider.Instance.Update(Codigo, strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, strRutaAnticipo, logActualizado, FechaActualizacion,"Rutas_Peajes",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="rutas_peajes">An instance of Rutas_Peajes for reference</param>
 		public void Update(Rutas_Peajes rutas_peajes,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(rutas_peajes.strRutaAnticipoGrupoOrigen, rutas_peajes.strRutaAnticipoGrupoDestino, rutas_peajes.strRutaAnticipo, rutas_peajes.logActualizado, rutas_peajes.FechaActualizacion, rutas_peajes.Codigo);
+			Update(rutas_peajes.Codigo, rutas_peajes.strRutaAnticipoGrupoOrigen, rutas_peajes.strRutaAnticipoGrupoDestino, rutas_peajes.strRutaAnticipo, rutas_peajes.logActualizado, rutas_peajes.FechaActualizacion);
 		}
 
 		/// <summary>
@@ -299,6 +299,9 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "Codigo":
+					return rutas_peajes.Codigo.GetType();
+
 				case "strRutaAnticipoGrupoOrigen":
 					return rutas_peajes.strRutaAnticipoGrupoOrigen.GetType();
 
@@ -313,9 +316,6 @@ namespace LiqViajes_Bll_Data
 
 				case "FechaActualizacion":
 					return rutas_peajes.FechaActualizacion.GetType();
-
-				case "Codigo":
-					return rutas_peajes.Codigo.GetType();
 
 			}
 

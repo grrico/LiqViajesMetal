@@ -115,17 +115,20 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
+		// Field for storing the LiquidacionRutasCombustible's Codigo value
+		private long m_Codigo;
+
 		// Field for storing the LiquidacionRutasCombustible's lngIdRegistrRutaItemId value
-		private int? m_lngIdRegistrRutaItemId;
+		private long? m_lngIdRegistrRutaItemId;
 
 		// Field for storing the LiquidacionRutasCombustible's lngIdRegistro value
-		private int? m_lngIdRegistro;
+		private long? m_lngIdRegistro;
 
 		// Field for storing the LiquidacionRutasCombustible's lngIdRegistrRuta value
-		private int? m_lngIdRegistrRuta;
+		private long? m_lngIdRegistrRuta;
 
 		// Field for storing the LiquidacionRutasCombustible's intRowRegistro value
-		private int? m_intRowRegistro;
+		private long? m_intRowRegistro;
 
 		// Field for storing the LiquidacionRutasCombustible's strRutaAnticipoGrupoOrigen value
 		private string m_strRutaAnticipoGrupoOrigen;
@@ -166,9 +169,6 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionRutasCombustible's strObservaciones value
 		private string m_strObservaciones;
 
-		// Field for storing the LiquidacionRutasCombustible's Codigo value
-		private long m_Codigo;
-
 		// Evaluate changed state
 		private bool m_changed=false;
 
@@ -183,10 +183,24 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the LiquidacionRutasCombustible's lngIdRegistrRutaItemId value (int)
+		/// Attribute for access the LiquidacionRutasCombustible's Codigo value (long)
 		/// </summary>
 		[DataMember]
-		public int? lngIdRegistrRutaItemId
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the LiquidacionRutasCombustible's lngIdRegistrRutaItemId value (long)
+		/// </summary>
+		[DataMember]
+		public long? lngIdRegistrRutaItemId
 		{
 			get { return m_lngIdRegistrRutaItemId; }
 			set 
@@ -197,10 +211,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the LiquidacionRutasCombustible's lngIdRegistro value (int)
+		/// Attribute for access the LiquidacionRutasCombustible's lngIdRegistro value (long)
 		/// </summary>
 		[DataMember]
-		public int? lngIdRegistro
+		public long? lngIdRegistro
 		{
 			get { return m_lngIdRegistro; }
 			set 
@@ -211,10 +225,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the LiquidacionRutasCombustible's lngIdRegistrRuta value (int)
+		/// Attribute for access the LiquidacionRutasCombustible's lngIdRegistrRuta value (long)
 		/// </summary>
 		[DataMember]
-		public int? lngIdRegistrRuta
+		public long? lngIdRegistrRuta
 		{
 			get { return m_lngIdRegistrRuta; }
 			set 
@@ -225,10 +239,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the LiquidacionRutasCombustible's intRowRegistro value (int)
+		/// Attribute for access the LiquidacionRutasCombustible's intRowRegistro value (long)
 		/// </summary>
 		[DataMember]
-		public int? intRowRegistro
+		public long? intRowRegistro
 		{
 			get { return m_intRowRegistro; }
 			set 
@@ -420,24 +434,11 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Attribute for access the LiquidacionRutasCombustible's Codigo value (long)
-		/// </summary>
-		[DataMember]
-		public long Codigo
-		{
-			get { return m_Codigo; }
-			set 
-			{
-				m_changed=true;
-				m_Codigo = value;
-			}
-		}
-
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
+				case "Codigo": return Codigo;
 				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
 				case "lngIdRegistro": return lngIdRegistro;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
@@ -455,7 +456,6 @@ namespace LiqViajes_Bll_Data
 				case "curValorGalonComplentario": return curValorGalonComplentario;
 				case "cutCombustibleComplementario": return cutCombustibleComplementario;
 				case "strObservaciones": return strObservaciones;
-				case "Codigo": return Codigo;
 				default: return null;
 			}
 		}

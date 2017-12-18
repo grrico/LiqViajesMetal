@@ -74,20 +74,20 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
+		// Field for storing the RutasDet's lngIdItemdReg value
+		private long m_lngIdItemdReg;
+
+		// Field for storing the RutasDet's lngIdRegistrRuta value
+		private long m_lngIdRegistrRuta;
+
+		// Field for storing the RutasDet's lngIdPeaje value
+		private long m_lngIdPeaje;
+
 		// Field for storing the RutasDet's strNombrePeaje value
 		private string m_strNombrePeaje;
 
 		// Field for storing the RutasDet's curValorPeaje value
 		private decimal? m_curValorPeaje;
-
-		// Field for storing the RutasDet's lngIdItemdReg value
-		private int m_lngIdItemdReg;
-
-		// Field for storing the RutasDet's lngIdRegistrRuta value
-		private int m_lngIdRegistrRuta;
-
-		// Field for storing the RutasDet's lngIdPeaje value
-		private int m_lngIdPeaje;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -102,6 +102,48 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the RutasDet's lngIdItemdReg value (long)
+		/// </summary>
+		[DataMember]
+		public long lngIdItemdReg
+		{
+			get { return m_lngIdItemdReg; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdItemdReg = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the RutasDet's lngIdRegistrRuta value (long)
+		/// </summary>
+		[DataMember]
+		public long lngIdRegistrRuta
+		{
+			get { return m_lngIdRegistrRuta; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdRegistrRuta = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the RutasDet's lngIdPeaje value (long)
+		/// </summary>
+		[DataMember]
+		public long lngIdPeaje
+		{
+			get { return m_lngIdPeaje; }
+			set 
+			{
+				m_changed=true;
+				m_lngIdPeaje = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the RutasDet's strNombrePeaje value (string)
 		/// </summary>
@@ -130,57 +172,15 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Attribute for access the RutasDet's lngIdItemdReg value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdItemdReg
-		{
-			get { return m_lngIdItemdReg; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdItemdReg = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the RutasDet's lngIdRegistrRuta value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdRegistrRuta
-		{
-			get { return m_lngIdRegistrRuta; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdRegistrRuta = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the RutasDet's lngIdPeaje value (int)
-		/// </summary>
-		[DataMember]
-		public int lngIdPeaje
-		{
-			get { return m_lngIdPeaje; }
-			set 
-			{
-				m_changed=true;
-				m_lngIdPeaje = value;
-			}
-		}
-
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "strNombrePeaje": return strNombrePeaje;
-				case "curValorPeaje": return curValorPeaje;
 				case "lngIdItemdReg": return lngIdItemdReg;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
 				case "lngIdPeaje": return lngIdPeaje;
+				case "strNombrePeaje": return strNombrePeaje;
+				case "curValorPeaje": return curValorPeaje;
 				default: return null;
 			}
 		}

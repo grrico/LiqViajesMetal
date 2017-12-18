@@ -52,7 +52,7 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				rutasorigen.Codigo = (int) dr["Codigo"];
+				rutasorigen.Codigo = (long) dr["Codigo"];
 				rutasorigen.Origen = dr.IsNull("Origen") ? null :(string) dr["Origen"];
 				rutasorigen.Favorita = dr.IsNull("Favorita") ? null :(bool?) dr["Favorita"];
 			}
@@ -78,7 +78,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigen object</param>
 		/// <param name="Favorita">bool that contents the Favorita value for the RutasOrigen object</param>
 		/// <returns>One RutasOrigen object</returns>
-		public RutasOrigen Create(int Codigo, string Origen, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
+		public RutasOrigen Create(long Codigo, string Origen, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -105,10 +105,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an RutasOrigen object by passing all object's fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the RutasOrigen object</param>
+		/// <param name="Codigo">long that contents the Codigo value for the RutasOrigen object</param>
 		/// <param name="Origen">string that contents the Origen value for the RutasOrigen object</param>
 		/// <param name="Favorita">bool that contents the Favorita value for the RutasOrigen object</param>
-		public void Update(int Codigo, string Origen, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Codigo, string Origen, bool? Favorita, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -144,7 +144,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the RutasOrigen object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="rutasorigen">An instance of RutasOrigen for reference</param>
-		public void Delete(int Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -169,7 +169,7 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int Codigo=int.Parse(StrCommand[0]);
+				long Codigo=long.Parse(StrCommand[0]);
 				RutasOrigenDataProvider.Instance.Delete(Codigo,"RutasOrigen");
 			}
 			catch (Exception ex)
@@ -181,9 +181,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the RutasOrigen object by passing the object's key fields
 		/// </summary>
-		/// <param name="Codigo">int that contents the Codigo value for the RutasOrigen object</param>
+		/// <param name="Codigo">long that contents the Codigo value for the RutasOrigen object</param>
 		/// <returns>One RutasOrigen object</returns>
-		public RutasOrigen Get(int Codigo, bool generateUndo=false)
+		public RutasOrigen Get(long Codigo, bool generateUndo=false)
 		{
 			try 
 			{

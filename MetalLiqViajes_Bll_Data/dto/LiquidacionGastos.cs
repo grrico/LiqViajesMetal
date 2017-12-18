@@ -145,13 +145,13 @@ namespace LiqViajes_Bll_Data
 
 
 		// Field for storing the LiquidacionGastos's lngIdRegistrRutaItemId value
-		private int m_lngIdRegistrRutaItemId;
+		private long m_lngIdRegistrRutaItemId;
 
 		// Field for storing the LiquidacionGastos's lngIdRegistroViaje value
-		private decimal m_lngIdRegistroViaje;
+		private long m_lngIdRegistroViaje;
 
 		// Field for storing the LiquidacionGastos's lngIdRegistrRuta value
-		private int m_lngIdRegistrRuta;
+		private long m_lngIdRegistrRuta;
 
 		// Field for storing the LiquidacionGastos's strCuenta value
 		private string m_strCuenta;
@@ -236,6 +236,9 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the reference to LiquidacionRutas accessed by lngIdRegistrRutaItemId
 		private LiquidacionRutas m_LiquidacionRutas;
 
+		// Field for storing the reference to foreign LiquidacionGastosDetalleList object accessed by lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro
+		private LiquidacionGastosDetalleList m_LiquidacionGastosDetalle;
+
 
 		#endregion
 
@@ -248,10 +251,10 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the LiquidacionGastos's lngIdRegistrRutaItemId value (int)
+		/// Attribute for access the LiquidacionGastos's lngIdRegistrRutaItemId value (long)
 		/// </summary>
 		[DataMember]
-		public int lngIdRegistrRutaItemId
+		public long lngIdRegistrRutaItemId
 		{
 			get { return m_lngIdRegistrRutaItemId; }
 			set
@@ -268,10 +271,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the LiquidacionGastos's lngIdRegistroViaje value (decimal)
+		/// Attribute for access the LiquidacionGastos's lngIdRegistroViaje value (long)
 		/// </summary>
 		[DataMember]
-		public decimal lngIdRegistroViaje
+		public long lngIdRegistroViaje
 		{
 			get { return m_lngIdRegistroViaje; }
 			set 
@@ -282,10 +285,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the LiquidacionGastos's lngIdRegistrRuta value (int)
+		/// Attribute for access the LiquidacionGastos's lngIdRegistrRuta value (long)
 		/// </summary>
 		[DataMember]
-		public int lngIdRegistrRuta
+		public long lngIdRegistrRuta
 		{
 			get { return m_lngIdRegistrRuta; }
 			set 
@@ -734,29 +737,46 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		#endregion
+		/// <summary>
+		/// Gets or sets the reference to foreign LiquidacionGastosDetalleList object accessed by lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro
+		/// </summary>
+		public LiquidacionGastosDetalleList LiquidacionGastosDetalle
+		{
+			get
+			{
+				if (m_LiquidacionGastosDetalle == null)
+				{
+					m_LiquidacionGastosDetalle = LiquidacionGastosDetalleController.Instance.GetBy_RegistrRutaItemId_RegistroViaje_RegistroRuta_Cuenta_RowRegistro(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro);
+			}
 
+			return m_LiquidacionGastosDetalle;
+		}
+		set { m_LiquidacionGastosDetalle = value; }
 	}
 
 	#endregion
 
-	#region LiquidacionGastosList object
+}
+
+#endregion
+
+#region LiquidacionGastosList object
+
+/// <summary>
+/// Class for reading and access a list of LiquidacionGastos object
+/// </summary>
+[CollectionDataContract]
+public partial class LiquidacionGastosList : List<LiquidacionGastos>
+{
 
 	/// <summary>
-	/// Class for reading and access a list of LiquidacionGastos object
+	/// Default constructor
 	/// </summary>
-	[CollectionDataContract]
-	public partial class LiquidacionGastosList : List<LiquidacionGastos>
+	public LiquidacionGastosList()
 	{
-
-		/// <summary>
-		/// Default constructor
-		/// </summary>
-		public LiquidacionGastosList()
-		{
-		}
 	}
+}
 
-	#endregion
+#endregion
 
 }

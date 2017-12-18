@@ -52,9 +52,10 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
-				liquidacionrutas.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(int?) dr["lngIdRegistrRuta"];
-				liquidacionrutas.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(int?) dr["lngIdRegistro"];
-				liquidacionrutas.lngIdRegistrRutaItemIdAjc = dr.IsNull("lngIdRegistrRutaItemIdAjc") ? null :(int?) dr["lngIdRegistrRutaItemIdAjc"];
+				liquidacionrutas.lngIdRegistrRutaItemId = (long) dr["lngIdRegistrRutaItemId"];
+				liquidacionrutas.lngIdRegistrRuta = dr.IsNull("lngIdRegistrRuta") ? null :(long?) dr["lngIdRegistrRuta"];
+				liquidacionrutas.lngIdRegistro = dr.IsNull("lngIdRegistro") ? null :(long?) dr["lngIdRegistro"];
+				liquidacionrutas.lngIdRegistrRutaItemIdAjc = dr.IsNull("lngIdRegistrRutaItemIdAjc") ? null :(long?) dr["lngIdRegistrRutaItemIdAjc"];
 				liquidacionrutas.strRutaAnticipoGrupoOrigen = dr.IsNull("strRutaAnticipoGrupoOrigen") ? null :(string) dr["strRutaAnticipoGrupoOrigen"];
 				liquidacionrutas.strRutaAnticipoGrupoDestino = dr.IsNull("strRutaAnticipoGrupoDestino") ? null :(string) dr["strRutaAnticipoGrupoDestino"];
 				liquidacionrutas.strRutaAnticipoGrupo = dr.IsNull("strRutaAnticipoGrupo") ? null :(string) dr["strRutaAnticipoGrupo"];
@@ -134,7 +135,6 @@ namespace LiqViajes_Bll_Data
 				liquidacionrutas.CurCargue = dr.IsNull("CurCargue") ? null :(decimal?) dr["CurCargue"];
 				liquidacionrutas.CurDescargue = dr.IsNull("CurDescargue") ? null :(decimal?) dr["CurDescargue"];
 				liquidacionrutas.logLiquParticipacion = dr.IsNull("logLiquParticipacion") ? null :(bool?) dr["logLiquParticipacion"];
-				liquidacionrutas.lngIdRegistrRutaItemId = (int) dr["lngIdRegistrRutaItemId"];
 			}
 			catch (Exception ex)
 			{
@@ -155,9 +155,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Creates a new LiquidacionRutas object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionRutas object</param>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionRutas object</param>
-		/// <param name="lngIdRegistrRutaItemIdAjc">int that contents the lngIdRegistrRutaItemIdAjc value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistro">long that contents the lngIdRegistro value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistrRutaItemIdAjc">long that contents the lngIdRegistrRutaItemIdAjc value for the LiquidacionRutas object</param>
 		/// <param name="strRutaAnticipoGrupoOrigen">string that contents the strRutaAnticipoGrupoOrigen value for the LiquidacionRutas object</param>
 		/// <param name="strRutaAnticipoGrupoDestino">string that contents the strRutaAnticipoGrupoDestino value for the LiquidacionRutas object</param>
 		/// <param name="strRutaAnticipoGrupo">string that contents the strRutaAnticipoGrupo value for the LiquidacionRutas object</param>
@@ -238,7 +238,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CurDescargue">decimal that contents the CurDescargue value for the LiquidacionRutas object</param>
 		/// <param name="logLiquParticipacion">bool that contents the logLiquParticipacion value for the LiquidacionRutas object</param>
 		/// <returns>One LiquidacionRutas object</returns>
-		public LiquidacionRutas Create(int lngIdRegistrRutaItemId, int? lngIdRegistrRuta, int? lngIdRegistro, int? lngIdRegistrRutaItemIdAjc, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, bool? logLiquidado, string PlacaTrayler, string Trailer, decimal? floGalones, decimal? floGalonesReales, decimal? floGalonesReserva, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, decimal? cutValorAnticipo, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutKmts, bool? logAjuste, DateTime? dtmFechaModif, bool? logVacio, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorCalculoFactor, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Taxi, decimal? Aseo, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, decimal? Lavada, bool? logEstadoRuta, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? logLiquParticipacion, Sinapsys.Datos.SQL datosTransaccion=null)
+		public LiquidacionRutas Create(long lngIdRegistrRutaItemId, long? lngIdRegistrRuta, long? lngIdRegistro, long? lngIdRegistrRutaItemIdAjc, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, bool? logLiquidado, string PlacaTrayler, string Trailer, decimal? floGalones, decimal? floGalonesReales, decimal? floGalonesReserva, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, decimal? cutValorAnticipo, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutKmts, bool? logAjuste, DateTime? dtmFechaModif, bool? logVacio, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorCalculoFactor, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Taxi, decimal? Aseo, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, decimal? Lavada, bool? logEstadoRuta, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? logLiquParticipacion, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -345,9 +345,10 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionRutas object by passing all object's fields
 		/// </summary>
-		/// <param name="lngIdRegistrRuta">int that contents the lngIdRegistrRuta value for the LiquidacionRutas object</param>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionRutas object</param>
-		/// <param name="lngIdRegistrRutaItemIdAjc">int that contents the lngIdRegistrRutaItemIdAjc value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistro">long that contents the lngIdRegistro value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistrRutaItemIdAjc">long that contents the lngIdRegistrRutaItemIdAjc value for the LiquidacionRutas object</param>
 		/// <param name="strRutaAnticipoGrupoOrigen">string that contents the strRutaAnticipoGrupoOrigen value for the LiquidacionRutas object</param>
 		/// <param name="strRutaAnticipoGrupoDestino">string that contents the strRutaAnticipoGrupoDestino value for the LiquidacionRutas object</param>
 		/// <param name="strRutaAnticipoGrupo">string that contents the strRutaAnticipoGrupo value for the LiquidacionRutas object</param>
@@ -427,8 +428,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="CurCargue">decimal that contents the CurCargue value for the LiquidacionRutas object</param>
 		/// <param name="CurDescargue">decimal that contents the CurDescargue value for the LiquidacionRutas object</param>
 		/// <param name="logLiquParticipacion">bool that contents the logLiquParticipacion value for the LiquidacionRutas object</param>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionRutas object</param>
-		public void Update(int? lngIdRegistrRuta, int? lngIdRegistro, int? lngIdRegistrRutaItemIdAjc, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, bool? logLiquidado, string PlacaTrayler, string Trailer, decimal? floGalones, decimal? floGalonesReales, decimal? floGalonesReserva, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, decimal? cutValorAnticipo, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutKmts, bool? logAjuste, DateTime? dtmFechaModif, bool? logVacio, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorCalculoFactor, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Taxi, decimal? Aseo, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, decimal? Lavada, bool? logEstadoRuta, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? logLiquParticipacion, int lngIdRegistrRutaItemId, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdRegistrRutaItemId, long? lngIdRegistrRuta, long? lngIdRegistro, long? lngIdRegistrRutaItemIdAjc, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string strRutaAnticipoGrupo, string strRutaAnticipo, bool? logLiquidado, string PlacaTrayler, string Trailer, decimal? floGalones, decimal? floGalonesReales, decimal? floGalonesReserva, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, decimal? cutValorAnticipo, int? lngIdNroPeajes, decimal? cutPeaje, string strNombrePeajes, decimal? cutVariosLlantas, decimal? cutVariosCelada, decimal? cutVariosPropina, decimal? cutVarios, decimal? cutVariosLlantasVacio, decimal? cutVariosCeladaVacio, decimal? cutVariosPropinaVacio, decimal? cutVariosVacio, decimal? cutParticipacion, decimal? cutParticipacionVacio, int? curHotelCarretera, int? curHotelCiudad, decimal? curHotel, int? curHotelCarreteraVacio, int? curHotelCiudadVacio, decimal? curHotelVacio, decimal? intTiempoCargue, decimal? intTiempoDescargue, decimal? intTiempoAduana, decimal? intTotalTrayecto, decimal? intTotalTiempo, decimal? curComida, decimal? intTiempoCargueVacio, decimal? intTiempoDescargueVacio, decimal? intTiempoAduanaVacio, decimal? intTotalTrayectoVacio, decimal? intTotalTiempoVacio, decimal? curComidaVacio, decimal? curDesvareManoRepuestos, decimal? curDesvareManoObra, decimal? cutSaldo, decimal? cutKmts, bool? logAjuste, DateTime? dtmFechaModif, bool? logVacio, int? TipoVehiculoCodigo, string TipoVehiculo, int? TipoTrailerCodigo, int? Peso, string Contenedor1, string Contenedor2, int? FactorCalculoDia, decimal? ValorCalculoFactor, decimal? ParqueaderoCarretera, decimal? ParqueaderoCiudad, decimal? MontadaLLantaCarretera, decimal? MontadaLLantaCiudad, decimal? AjusteCarretera, decimal? Taxi, decimal? Aseo, decimal? Amarres, decimal? Engradasa, decimal? Calibrada, bool? Liquidado, decimal? Lavada, bool? logEstadoRuta, decimal? Papeleria, bool? logFavorito, decimal? CurCargue, decimal? CurDescargue, bool? logLiquParticipacion, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -515,7 +515,7 @@ namespace LiqViajes_Bll_Data
 				new_values.CurCargue = CurCargue;
 				new_values.CurDescargue = CurDescargue;
 				new_values.logLiquParticipacion = logLiquParticipacion;
-				LiquidacionRutasDataProvider.Instance.Update(lngIdRegistrRuta, lngIdRegistro, lngIdRegistrRutaItemIdAjc, strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, strRutaAnticipoGrupo, strRutaAnticipo, logLiquidado, PlacaTrayler, Trailer, floGalones, floGalonesReales, floGalonesReserva, curValorGalon, CombustibleCarretera, cutCombustible, LogAnticipoACPM, cutValorAnticipo, lngIdNroPeajes, cutPeaje, strNombrePeajes, cutVariosLlantas, cutVariosCelada, cutVariosPropina, cutVarios, cutVariosLlantasVacio, cutVariosCeladaVacio, cutVariosPropinaVacio, cutVariosVacio, cutParticipacion, cutParticipacionVacio, curHotelCarretera, curHotelCiudad, curHotel, curHotelCarreteraVacio, curHotelCiudadVacio, curHotelVacio, intTiempoCargue, intTiempoDescargue, intTiempoAduana, intTotalTrayecto, intTotalTiempo, curComida, intTiempoCargueVacio, intTiempoDescargueVacio, intTiempoAduanaVacio, intTotalTrayectoVacio, intTotalTiempoVacio, curComidaVacio, curDesvareManoRepuestos, curDesvareManoObra, cutSaldo, cutKmts, logAjuste, dtmFechaModif, logVacio, TipoVehiculoCodigo, TipoVehiculo, TipoTrailerCodigo, Peso, Contenedor1, Contenedor2, FactorCalculoDia, ValorCalculoFactor, ParqueaderoCarretera, ParqueaderoCiudad, MontadaLLantaCarretera, MontadaLLantaCiudad, AjusteCarretera, Taxi, Aseo, Amarres, Engradasa, Calibrada, Liquidado, Lavada, logEstadoRuta, Papeleria, logFavorito, CurCargue, CurDescargue, logLiquParticipacion, lngIdRegistrRutaItemId,"LiquidacionRutas",datosTransaccion);
+				LiquidacionRutasDataProvider.Instance.Update(lngIdRegistrRutaItemId, lngIdRegistrRuta, lngIdRegistro, lngIdRegistrRutaItemIdAjc, strRutaAnticipoGrupoOrigen, strRutaAnticipoGrupoDestino, strRutaAnticipoGrupo, strRutaAnticipo, logLiquidado, PlacaTrayler, Trailer, floGalones, floGalonesReales, floGalonesReserva, curValorGalon, CombustibleCarretera, cutCombustible, LogAnticipoACPM, cutValorAnticipo, lngIdNroPeajes, cutPeaje, strNombrePeajes, cutVariosLlantas, cutVariosCelada, cutVariosPropina, cutVarios, cutVariosLlantasVacio, cutVariosCeladaVacio, cutVariosPropinaVacio, cutVariosVacio, cutParticipacion, cutParticipacionVacio, curHotelCarretera, curHotelCiudad, curHotel, curHotelCarreteraVacio, curHotelCiudadVacio, curHotelVacio, intTiempoCargue, intTiempoDescargue, intTiempoAduana, intTotalTrayecto, intTotalTiempo, curComida, intTiempoCargueVacio, intTiempoDescargueVacio, intTiempoAduanaVacio, intTotalTrayectoVacio, intTotalTiempoVacio, curComidaVacio, curDesvareManoRepuestos, curDesvareManoObra, cutSaldo, cutKmts, logAjuste, dtmFechaModif, logVacio, TipoVehiculoCodigo, TipoVehiculo, TipoTrailerCodigo, Peso, Contenedor1, Contenedor2, FactorCalculoDia, ValorCalculoFactor, ParqueaderoCarretera, ParqueaderoCiudad, MontadaLLantaCarretera, MontadaLLantaCiudad, AjusteCarretera, Taxi, Aseo, Amarres, Engradasa, Calibrada, Liquidado, Lavada, logEstadoRuta, Papeleria, logFavorito, CurCargue, CurDescargue, logLiquParticipacion,"LiquidacionRutas",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -529,7 +529,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidacionrutas">An instance of LiquidacionRutas for reference</param>
 		public void Update(LiquidacionRutas liquidacionrutas,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidacionrutas.lngIdRegistrRuta, liquidacionrutas.lngIdRegistro, liquidacionrutas.lngIdRegistrRutaItemIdAjc, liquidacionrutas.strRutaAnticipoGrupoOrigen, liquidacionrutas.strRutaAnticipoGrupoDestino, liquidacionrutas.strRutaAnticipoGrupo, liquidacionrutas.strRutaAnticipo, liquidacionrutas.logLiquidado, liquidacionrutas.PlacaTrayler, liquidacionrutas.Trailer, liquidacionrutas.floGalones, liquidacionrutas.floGalonesReales, liquidacionrutas.floGalonesReserva, liquidacionrutas.curValorGalon, liquidacionrutas.CombustibleCarretera, liquidacionrutas.cutCombustible, liquidacionrutas.LogAnticipoACPM, liquidacionrutas.cutValorAnticipo, liquidacionrutas.lngIdNroPeajes, liquidacionrutas.cutPeaje, liquidacionrutas.strNombrePeajes, liquidacionrutas.cutVariosLlantas, liquidacionrutas.cutVariosCelada, liquidacionrutas.cutVariosPropina, liquidacionrutas.cutVarios, liquidacionrutas.cutVariosLlantasVacio, liquidacionrutas.cutVariosCeladaVacio, liquidacionrutas.cutVariosPropinaVacio, liquidacionrutas.cutVariosVacio, liquidacionrutas.cutParticipacion, liquidacionrutas.cutParticipacionVacio, liquidacionrutas.curHotelCarretera, liquidacionrutas.curHotelCiudad, liquidacionrutas.curHotel, liquidacionrutas.curHotelCarreteraVacio, liquidacionrutas.curHotelCiudadVacio, liquidacionrutas.curHotelVacio, liquidacionrutas.intTiempoCargue, liquidacionrutas.intTiempoDescargue, liquidacionrutas.intTiempoAduana, liquidacionrutas.intTotalTrayecto, liquidacionrutas.intTotalTiempo, liquidacionrutas.curComida, liquidacionrutas.intTiempoCargueVacio, liquidacionrutas.intTiempoDescargueVacio, liquidacionrutas.intTiempoAduanaVacio, liquidacionrutas.intTotalTrayectoVacio, liquidacionrutas.intTotalTiempoVacio, liquidacionrutas.curComidaVacio, liquidacionrutas.curDesvareManoRepuestos, liquidacionrutas.curDesvareManoObra, liquidacionrutas.cutSaldo, liquidacionrutas.cutKmts, liquidacionrutas.logAjuste, liquidacionrutas.dtmFechaModif, liquidacionrutas.logVacio, liquidacionrutas.TipoVehiculoCodigo, liquidacionrutas.TipoVehiculo, liquidacionrutas.TipoTrailerCodigo, liquidacionrutas.Peso, liquidacionrutas.Contenedor1, liquidacionrutas.Contenedor2, liquidacionrutas.FactorCalculoDia, liquidacionrutas.ValorCalculoFactor, liquidacionrutas.ParqueaderoCarretera, liquidacionrutas.ParqueaderoCiudad, liquidacionrutas.MontadaLLantaCarretera, liquidacionrutas.MontadaLLantaCiudad, liquidacionrutas.AjusteCarretera, liquidacionrutas.Taxi, liquidacionrutas.Aseo, liquidacionrutas.Amarres, liquidacionrutas.Engradasa, liquidacionrutas.Calibrada, liquidacionrutas.Liquidado, liquidacionrutas.Lavada, liquidacionrutas.logEstadoRuta, liquidacionrutas.Papeleria, liquidacionrutas.logFavorito, liquidacionrutas.CurCargue, liquidacionrutas.CurDescargue, liquidacionrutas.logLiquParticipacion, liquidacionrutas.lngIdRegistrRutaItemId);
+			Update(liquidacionrutas.lngIdRegistrRutaItemId, liquidacionrutas.lngIdRegistrRuta, liquidacionrutas.lngIdRegistro, liquidacionrutas.lngIdRegistrRutaItemIdAjc, liquidacionrutas.strRutaAnticipoGrupoOrigen, liquidacionrutas.strRutaAnticipoGrupoDestino, liquidacionrutas.strRutaAnticipoGrupo, liquidacionrutas.strRutaAnticipo, liquidacionrutas.logLiquidado, liquidacionrutas.PlacaTrayler, liquidacionrutas.Trailer, liquidacionrutas.floGalones, liquidacionrutas.floGalonesReales, liquidacionrutas.floGalonesReserva, liquidacionrutas.curValorGalon, liquidacionrutas.CombustibleCarretera, liquidacionrutas.cutCombustible, liquidacionrutas.LogAnticipoACPM, liquidacionrutas.cutValorAnticipo, liquidacionrutas.lngIdNroPeajes, liquidacionrutas.cutPeaje, liquidacionrutas.strNombrePeajes, liquidacionrutas.cutVariosLlantas, liquidacionrutas.cutVariosCelada, liquidacionrutas.cutVariosPropina, liquidacionrutas.cutVarios, liquidacionrutas.cutVariosLlantasVacio, liquidacionrutas.cutVariosCeladaVacio, liquidacionrutas.cutVariosPropinaVacio, liquidacionrutas.cutVariosVacio, liquidacionrutas.cutParticipacion, liquidacionrutas.cutParticipacionVacio, liquidacionrutas.curHotelCarretera, liquidacionrutas.curHotelCiudad, liquidacionrutas.curHotel, liquidacionrutas.curHotelCarreteraVacio, liquidacionrutas.curHotelCiudadVacio, liquidacionrutas.curHotelVacio, liquidacionrutas.intTiempoCargue, liquidacionrutas.intTiempoDescargue, liquidacionrutas.intTiempoAduana, liquidacionrutas.intTotalTrayecto, liquidacionrutas.intTotalTiempo, liquidacionrutas.curComida, liquidacionrutas.intTiempoCargueVacio, liquidacionrutas.intTiempoDescargueVacio, liquidacionrutas.intTiempoAduanaVacio, liquidacionrutas.intTotalTrayectoVacio, liquidacionrutas.intTotalTiempoVacio, liquidacionrutas.curComidaVacio, liquidacionrutas.curDesvareManoRepuestos, liquidacionrutas.curDesvareManoObra, liquidacionrutas.cutSaldo, liquidacionrutas.cutKmts, liquidacionrutas.logAjuste, liquidacionrutas.dtmFechaModif, liquidacionrutas.logVacio, liquidacionrutas.TipoVehiculoCodigo, liquidacionrutas.TipoVehiculo, liquidacionrutas.TipoTrailerCodigo, liquidacionrutas.Peso, liquidacionrutas.Contenedor1, liquidacionrutas.Contenedor2, liquidacionrutas.FactorCalculoDia, liquidacionrutas.ValorCalculoFactor, liquidacionrutas.ParqueaderoCarretera, liquidacionrutas.ParqueaderoCiudad, liquidacionrutas.MontadaLLantaCarretera, liquidacionrutas.MontadaLLantaCiudad, liquidacionrutas.AjusteCarretera, liquidacionrutas.Taxi, liquidacionrutas.Aseo, liquidacionrutas.Amarres, liquidacionrutas.Engradasa, liquidacionrutas.Calibrada, liquidacionrutas.Liquidado, liquidacionrutas.Lavada, liquidacionrutas.logEstadoRuta, liquidacionrutas.Papeleria, liquidacionrutas.logFavorito, liquidacionrutas.CurCargue, liquidacionrutas.CurDescargue, liquidacionrutas.logLiquParticipacion);
 		}
 
 		/// <summary>
@@ -544,7 +544,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes the LiquidacionRutas object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="liquidacionrutas">An instance of LiquidacionRutas for reference</param>
-		public void Delete(int lngIdRegistrRutaItemId, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdRegistrRutaItemId, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -569,7 +569,7 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				int lngIdRegistrRutaItemId=int.Parse(StrCommand[0]);
+				long lngIdRegistrRutaItemId=long.Parse(StrCommand[0]);
 				LiquidacionRutasDataProvider.Instance.Delete(lngIdRegistrRutaItemId,"LiquidacionRutas");
 			}
 			catch (Exception ex)
@@ -581,9 +581,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the LiquidacionRutas object by passing the object's key fields
 		/// </summary>
-		/// <param name="lngIdRegistrRutaItemId">int that contents the lngIdRegistrRutaItemId value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionRutas object</param>
 		/// <returns>One LiquidacionRutas object</returns>
-		public LiquidacionRutas Get(int lngIdRegistrRutaItemId, bool generateUndo=false)
+		public LiquidacionRutas Get(long lngIdRegistrRutaItemId, bool generateUndo=false)
 		{
 			try 
 			{
@@ -632,9 +632,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Selects all LiquidacionRutas objects by reference (Foreign Keys)
 		/// </summary>
-		/// <param name="lngIdRegistro">int that contents the lngIdRegistro value for the LiquidacionRutas object</param>
+		/// <param name="lngIdRegistro">long that contents the lngIdRegistro value for the LiquidacionRutas object</param>
 		/// <returns>One LiquidacionRutasList object</returns>
-		public LiquidacionRutasList GetBy_lngIdRegistro(int lngIdRegistro,bool generateUndo=false)
+		public LiquidacionRutasList GetBy_lngIdRegistro(long lngIdRegistro,bool generateUndo=false)
 		{
 			try 
 			{
@@ -711,6 +711,9 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "lngIdRegistrRutaItemId":
+					return liquidacionrutas.lngIdRegistrRutaItemId.GetType();
+
 				case "lngIdRegistrRuta":
 					return liquidacionrutas.lngIdRegistrRuta.GetType();
 
@@ -956,9 +959,6 @@ namespace LiqViajes_Bll_Data
 
 				case "logLiquParticipacion":
 					return liquidacionrutas.logLiquParticipacion.GetType();
-
-				case "lngIdRegistrRutaItemId":
-					return liquidacionrutas.lngIdRegistrRutaItemId.GetType();
 
 			}
 

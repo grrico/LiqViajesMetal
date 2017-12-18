@@ -62,6 +62,7 @@
     <Compile Include="bll\legalizacionViajes.cs" />
     <Compile Include="bll\LiquidacionAnticipos.cs" />
     <Compile Include="bll\LiquidacionGastos.cs" />
+    <Compile Include="bll\LiquidacionGastosDetalle.cs" />
     <Compile Include="bll\LiquidacionPlanilla.cs" />
     <Compile Include="bll\LiquidacionPlanillaDet.cs" />
     <Compile Include="bll\LiquidacionRutas.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="dal\legalizacionViajesDataProvider.cs" />
     <Compile Include="dal\LiquidacionAnticiposDataProvider.cs" />
     <Compile Include="dal\LiquidacionGastosDataProvider.cs" />
+    <Compile Include="dal\LiquidacionGastosDetalleDataProvider.cs" />
     <Compile Include="dal\LiquidacionPlanillaDataProvider.cs" />
     <Compile Include="dal\LiquidacionPlanillaDetDataProvider.cs" />
     <Compile Include="dal\LiquidacionRutasCombustibleDataProvider.cs" />
@@ -257,6 +259,7 @@
     <Compile Include="dto\legalizacionViajes.cs" />
     <Compile Include="dto\LiquidacionAnticipos.cs" />
     <Compile Include="dto\LiquidacionGastos.cs" />
+    <Compile Include="dto\LiquidacionGastosDetalle.cs" />
     <Compile Include="dto\LiquidacionPlanilla.cs" />
     <Compile Include="dto\LiquidacionPlanillaDet.cs" />
     <Compile Include="dto\LiquidacionRutas.cs" />

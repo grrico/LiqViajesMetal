@@ -65,7 +65,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="cutCombustibleComplementario"></param>
 		/// <param name="strObservaciones"></param>
 		/// <returns>long that contents the Codigo value</returns>
-		public long Create(long Codigo, int? lngIdRegistrRutaItemId, int? lngIdRegistro, int? lngIdRegistrRuta, int? intRowRegistro, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string nitTercero, string NombreTercero, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, decimal? floGalonesComplementario, decimal? curValorGalonComplentario, decimal? cutCombustibleComplementario, string strObservaciones,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public long Create(long Codigo, long? lngIdRegistrRutaItemId, long? lngIdRegistro, long? lngIdRegistrRuta, long? intRowRegistro, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string nitTercero, string NombreTercero, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, decimal? floGalonesComplementario, decimal? curValorGalonComplentario, decimal? cutCombustibleComplementario, string strObservaciones,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -173,6 +173,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionRutasCombustible by passing all fields
 		/// </summary>
+		/// <param name="Codigo"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="lngIdRegistrRuta"></param>
@@ -190,8 +191,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="curValorGalonComplentario"></param>
 		/// <param name="cutCombustibleComplementario"></param>
 		/// <param name="strObservaciones"></param>
-		/// <param name="Codigo"></param>
-		public void Update(int? lngIdRegistrRutaItemId, int? lngIdRegistro, int? lngIdRegistrRuta, int? intRowRegistro, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string nitTercero, string NombreTercero, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, decimal? floGalonesComplementario, decimal? curValorGalonComplentario, decimal? cutCombustibleComplementario, string strObservaciones, long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Codigo, long? lngIdRegistrRutaItemId, long? lngIdRegistro, long? lngIdRegistrRuta, long? intRowRegistro, string strRutaAnticipoGrupoOrigen, string strRutaAnticipoGrupoDestino, string nitTercero, string NombreTercero, decimal? floGalones, decimal? curValorGalon, decimal? cutCombustible, string nitTerceroComplentario, string NombreTerceroComplementario, decimal? floGalonesComplementario, decimal? curValorGalonComplentario, decimal? cutCombustibleComplementario, string strObservaciones,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

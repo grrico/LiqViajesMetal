@@ -68,7 +68,7 @@ namespace LiqViajes_Bll_Data
 
 
 		// Field for storing the RutasSatrackTipoEventos's Codigo value
-		private int m_Codigo;
+		private long m_Codigo;
 
 		// Field for storing the RutasSatrackTipoEventos's TipoEvento value
 		private string m_TipoEvento;
@@ -87,10 +87,10 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the RutasSatrackTipoEventos's Codigo value (int)
+		/// Attribute for access the RutasSatrackTipoEventos's Codigo value (long)
 		/// </summary>
 		[DataMember]
-		public int Codigo
+		public long Codigo
 		{
 			get { return m_Codigo; }
 			set 

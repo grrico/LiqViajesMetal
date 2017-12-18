@@ -52,7 +52,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="logDesplazaVacio"></param>
 		/// <param name="logSePuedeLiquidar"></param>
-		public void Create(int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta, string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Create(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta, string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -111,15 +111,15 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionPlanilla by passing all fields
 		/// </summary>
+		/// <param name="lngIdRegistro"></param>
+		/// <param name="lngIdRegistrRutaItemId"></param>
+		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="strNoPlanilla"></param>
 		/// <param name="curValorFlete"></param>
 		/// <param name="dtmFechaModif"></param>
 		/// <param name="logDesplazaVacio"></param>
 		/// <param name="logSePuedeLiquidar"></param>
-		/// <param name="lngIdRegistro"></param>
-		/// <param name="lngIdRegistrRutaItemId"></param>
-		/// <param name="lngIdRegistrRuta"></param>
-		public void Update(string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar, int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta, string strNoPlanilla, decimal? curValorFlete, DateTime? dtmFechaModif, bool? logDesplazaVacio, bool? logSePuedeLiquidar,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -180,7 +180,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="lngIdRegistro"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="lngIdRegistrRuta"></param>
-		public void Delete(int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -222,7 +222,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int lngIdRegistro, int lngIdRegistrRutaItemId, int lngIdRegistrRuta)
+		public DataTable Get(long lngIdRegistro, long lngIdRegistrRutaItemId, long lngIdRegistrRuta)
 		{
 			try 
 			{

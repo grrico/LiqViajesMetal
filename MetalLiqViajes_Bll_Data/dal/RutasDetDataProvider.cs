@@ -49,8 +49,8 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="strNombrePeaje"></param>
 		/// <param name="curValorPeaje"></param>
-		/// <returns>int that contents the lngIdItemdReg value</returns>
-		public int Create(int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje, string strNombrePeaje, decimal? curValorPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <returns>long that contents the lngIdItemdReg value</returns>
+		public long Create(long lngIdItemdReg, long lngIdRegistrRuta, long lngIdPeaje, string strNombrePeaje, decimal? curValorPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -86,7 +86,7 @@ namespace LiqViajes_Bll_Data
 					paramlist.AddWithValue("@curValorPeaje",curValorPeaje);
 				}
 				// Execute the query and return the new identity value
-				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasDetCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
+				long returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasDetCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
 
 				return returnValue;
 			}
@@ -100,12 +100,12 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutasDet by passing all fields
 		/// </summary>
-		/// <param name="strNombrePeaje"></param>
-		/// <param name="curValorPeaje"></param>
 		/// <param name="lngIdItemdReg"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="lngIdPeaje"></param>
-		public void Update(string strNombrePeaje, decimal? curValorPeaje, int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="strNombrePeaje"></param>
+		/// <param name="curValorPeaje"></param>
+		public void Update(long lngIdItemdReg, long lngIdRegistrRuta, long lngIdPeaje, string strNombrePeaje, decimal? curValorPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -154,7 +154,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="lngIdItemdReg"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="lngIdPeaje"></param>
-		public void Delete(int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long lngIdItemdReg, long lngIdRegistrRuta, long lngIdPeaje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -196,7 +196,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="lngIdPeaje"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int lngIdItemdReg, int lngIdRegistrRuta, int lngIdPeaje)
+		public DataTable Get(long lngIdItemdReg, long lngIdRegistrRuta, long lngIdPeaje)
 		{
 			try 
 			{

@@ -49,8 +49,8 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="Origen"></param>
 		/// <param name="Favorita"></param>
-		/// <returns>int that contents the Codigo value</returns>
-		public int Create(int Codigo, string Origen, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <returns>long that contents the Codigo value</returns>
+		public long Create(long Codigo, string Origen, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -84,7 +84,7 @@ namespace LiqViajes_Bll_Data
 					paramlist.AddWithValue("@Favorita",Favorita);
 				}
 				// Execute the query and return the new identity value
-				int returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
+				long returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.RutasOrigenCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
 
 				return returnValue;
 			}
@@ -101,7 +101,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Codigo"></param>
 		/// <param name="Origen"></param>
 		/// <param name="Favorita"></param>
-		public void Update(int Codigo, string Origen, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Codigo, string Origen, bool? Favorita,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -146,7 +146,7 @@ namespace LiqViajes_Bll_Data
 		/// Deletes one record from RutasOrigen by passing all key fields
 		/// </summary>
 		/// <param name="Codigo"></param>
-		public void Delete(int Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -184,7 +184,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="Codigo"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(int Codigo)
+		public DataTable Get(long Codigo)
 		{
 			try 
 			{

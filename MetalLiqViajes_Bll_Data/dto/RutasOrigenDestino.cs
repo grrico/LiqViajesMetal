@@ -86,13 +86,13 @@ namespace LiqViajes_Bll_Data
 
 
 		// Field for storing the RutasOrigenDestino's Codigo value
-		private int m_Codigo;
+		private long m_Codigo;
 
 		// Field for storing the RutasOrigenDestino's RutasOrigenCodigo value
-		private int? m_RutasOrigenCodigo;
+		private long? m_RutasOrigenCodigo;
 
 		// Field for storing the RutasOrigenDestino's RutasDestinoCodigo value
-		private int? m_RutasDestinoCodigo;
+		private long? m_RutasDestinoCodigo;
 
 		// Field for storing the RutasOrigenDestino's Origen value
 		private string m_Origen;
@@ -129,10 +129,10 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's Codigo value (int)
+		/// Attribute for access the RutasOrigenDestino's Codigo value (long)
 		/// </summary>
 		[DataMember]
-		public int Codigo
+		public long Codigo
 		{
 			get { return m_Codigo; }
 			set 
@@ -143,10 +143,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's RutasOrigenCodigo value (int)
+		/// Attribute for access the RutasOrigenDestino's RutasOrigenCodigo value (long)
 		/// </summary>
 		[DataMember]
-		public int? RutasOrigenCodigo
+		public long? RutasOrigenCodigo
 		{
 			get { return m_RutasOrigenCodigo; }
 			set
@@ -163,10 +163,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the RutasOrigenDestino's RutasDestinoCodigo value (int)
+		/// Attribute for access the RutasOrigenDestino's RutasDestinoCodigo value (long)
 		/// </summary>
 		[DataMember]
-		public int? RutasDestinoCodigo
+		public long? RutasDestinoCodigo
 		{
 			get { return m_RutasDestinoCodigo; }
 			set
@@ -293,7 +293,7 @@ namespace LiqViajes_Bll_Data
 					{
 						if (m_RutasOrigenCodigo != null)
 						{
-							m_RutasDestino = RutasDestinoController.Instance.Get((int)m_RutasDestinoCodigo,(int)m_RutasOrigenCodigo);
+							m_RutasDestino = RutasDestinoController.Instance.Get((long)m_RutasDestinoCodigo,(long)m_RutasOrigenCodigo);
 						}
 					}
 				}

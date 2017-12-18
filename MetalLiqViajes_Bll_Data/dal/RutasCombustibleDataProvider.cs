@@ -108,12 +108,12 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblRutasCombustible by passing all fields
 		/// </summary>
+		/// <param name="lngIdRegistro"></param>
 		/// <param name="strNombreGrupo"></param>
 		/// <param name="cutCombustible"></param>
 		/// <param name="TipoVehiculo"></param>
 		/// <param name="DescripcionVehiculo"></param>
-		/// <param name="lngIdRegistro"></param>
-		public void Update(string strNombreGrupo, decimal? cutCombustible, string TipoVehiculo, string DescripcionVehiculo, int lngIdRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(int lngIdRegistro, string strNombreGrupo, decimal? cutCombustible, string TipoVehiculo, string DescripcionVehiculo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
