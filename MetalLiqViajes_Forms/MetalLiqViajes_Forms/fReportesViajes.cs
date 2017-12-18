@@ -663,7 +663,7 @@ namespace MetalLiqViajes_Forms
             {
                 if (iCargaCompleta)
                 {
-                    DialogResult result3 = MessageBox.Show("No hey Registro",
+                    DialogResult result3 = MessageBox.Show("No hay Registro",
                                "Carga de Datos",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Information,
