@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Flotas/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://Flotas/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Flotas/">
+      <s:element name="ConsultaVentas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consulta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaVentasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaVentasResult" type="tns:ArrayOfVentasFlotaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVentasFlotaResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VentasFlotaResponse" nillable="true" type="tns:VentasFlotaResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VentasFlotaResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Recibo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Placa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Producto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dinero" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volumen" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Kilometraje" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodEds" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaEDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaEDSResult" type="tns:ArrayOfCosultaEDSFlota" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCosultaEDSFlota">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CosultaEDSFlota" nillable="true" type="tns:CosultaEDSFlota" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CosultaEDSFlota">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodEDS" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Regional" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Actualizada" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="cargarRestricciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cargas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContextoTransaccionalTipo" type="tns:ContextoTransaccionalTipo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ContextoTransaccionalTipo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idTx" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idUsuarioAplicacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valNombreCanal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valClaveUsuarioAplicacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="cargarRestriccionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cargarRestriccionesResult" type="tns:RespuestaRestricciones" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RespuestaRestricciones">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="contextoRespuesta" type="tns:ContextoRespuestaTipo" />
+          <s:element minOccurs="0" maxOccurs="1" name="msjEnProceso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="errores" type="tns:FalloTipo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContextoRespuestaTipo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idTx" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codEstadoTx" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaTx" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FalloTipo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContextoRespuesta" type="tns:ContextoRespuestaTipo" />
+          <s:element minOccurs="0" maxOccurs="1" name="errores" type="tns:ArrayOfErrorTipo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfErrorTipo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ErrorTipo" nillable="true" type="tns:ErrorTipo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErrorTipo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codError" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valDescError" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valDescErrorTecnico" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="consultaTranRestriccion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idTx" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultaTranRestriccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultaTranRestriccionResult" type="tns:consultaTranRestriccionRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="consultaTranRestriccionRes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="contextoRespuesta" type="tns:ContextoRespuestaTipo" />
+          <s:element minOccurs="0" maxOccurs="1" name="consultaCarga" type="tns:ArrayOfConsultaCarga" />
+          <s:element minOccurs="0" maxOccurs="1" name="errores" type="tns:FalloTipo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConsultaCarga">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaCarga" nillable="true" type="tns:ConsultaCarga" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaCarga">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codError" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="consecutivo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="descError" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfVentasFlotaResponse" nillable="true" type="tns:ArrayOfVentasFlotaResponse" />
+      <s:element name="ArrayOfCosultaEDSFlota" nillable="true" type="tns:ArrayOfCosultaEDSFlota" />
+      <s:element name="consultaTranRestriccionRes" nillable="true" type="tns:consultaTranRestriccionRes" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaVentasSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaVentas" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaVentasSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaVentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEDSSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaEDS" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEDSSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaEDSResponse" />
+  </wsdl:message>
+  <wsdl:message name="cargarRestriccionesSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarRestricciones" />
+  </wsdl:message>
+  <wsdl:message name="cargarRestriccionesSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarRestriccionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaTranRestriccionSoapIn">
+    <wsdl:part name="parameters" element="tns:consultaTranRestriccion" />
+  </wsdl:message>
+  <wsdl:message name="consultaTranRestriccionSoapOut">
+    <wsdl:part name="parameters" element="tns:consultaTranRestriccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaVentasHttpGetIn">
+    <wsdl:part name="consulta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaVentasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVentasFlotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEDSHttpGetIn">
+    <wsdl:part name="codigo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEDSHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCosultaEDSFlota" />
+  </wsdl:message>
+  <wsdl:message name="consultaTranRestriccionHttpGetIn">
+    <wsdl:part name="idTx" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="consultaTranRestriccionHttpGetOut">
+    <wsdl:part name="Body" element="tns:consultaTranRestriccionRes" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaVentasHttpPostIn">
+    <wsdl:part name="consulta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaVentasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVentasFlotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEDSHttpPostIn">
+    <wsdl:part name="codigo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEDSHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCosultaEDSFlota" />
+  </wsdl:message>
+  <wsdl:message name="consultaTranRestriccionHttpPostIn">
+    <wsdl:part name="idTx" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="consultaTranRestriccionHttpPostOut">
+    <wsdl:part name="Body" element="tns:consultaTranRestriccionRes" />
+  </wsdl:message>
+  <wsdl:portType name="IntegratorSoap">
+    <wsdl:operation name="ConsultaVentas">
+      <wsdl:input message="tns:ConsultaVentasSoapIn" />
+      <wsdl:output message="tns:ConsultaVentasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEDS">
+      <wsdl:input message="tns:ConsultaEDSSoapIn" />
+      <wsdl:output message="tns:ConsultaEDSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarRestricciones">
+      <wsdl:input message="tns:cargarRestriccionesSoapIn" />
+      <wsdl:output message="tns:cargarRestriccionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaTranRestriccion">
+      <wsdl:input message="tns:consultaTranRestriccionSoapIn" />
+      <wsdl:output message="tns:consultaTranRestriccionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IntegratorHttpGet">
+    <wsdl:operation name="ConsultaVentas">
+      <wsdl:input message="tns:ConsultaVentasHttpGetIn" />
+      <wsdl:output message="tns:ConsultaVentasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEDS">
+      <wsdl:input message="tns:ConsultaEDSHttpGetIn" />
+      <wsdl:output message="tns:ConsultaEDSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaTranRestriccion">
+      <wsdl:input message="tns:consultaTranRestriccionHttpGetIn" />
+      <wsdl:output message="tns:consultaTranRestriccionHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IntegratorHttpPost">
+    <wsdl:operation name="ConsultaVentas">
+      <wsdl:input message="tns:ConsultaVentasHttpPostIn" />
+      <wsdl:output message="tns:ConsultaVentasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEDS">
+      <wsdl:input message="tns:ConsultaEDSHttpPostIn" />
+      <wsdl:output message="tns:ConsultaEDSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaTranRestriccion">
+      <wsdl:input message="tns:consultaTranRestriccionHttpPostIn" />
+      <wsdl:output message="tns:consultaTranRestriccionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IntegratorSoap" type="tns:IntegratorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaVentas">
+      <soap:operation soapAction="http://Flotas/ConsultaVentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEDS">
+      <soap:operation soapAction="http://Flotas/ConsultaEDS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarRestricciones">
+      <soap:operation soapAction="http://Flotas/cargarRestricciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaTranRestriccion">
+      <soap:operation soapAction="http://Flotas/consultaTranRestriccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IntegratorSoap12" type="tns:IntegratorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaVentas">
+      <soap12:operation soapAction="http://Flotas/ConsultaVentas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEDS">
+      <soap12:operation soapAction="http://Flotas/ConsultaEDS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarRestricciones">
+      <soap12:operation soapAction="http://Flotas/cargarRestricciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaTranRestriccion">
+      <soap12:operation soapAction="http://Flotas/consultaTranRestriccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IntegratorHttpGet" type="tns:IntegratorHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ConsultaVentas">
+      <http:operation location="/ConsultaVentas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEDS">
+      <http:operation location="/ConsultaEDS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaTranRestriccion">
+      <http:operation location="/consultaTranRestriccion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IntegratorHttpPost" type="tns:IntegratorHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ConsultaVentas">
+      <http:operation location="/ConsultaVentas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEDS">
+      <http:operation location="/ConsultaEDS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaTranRestriccion">
+      <http:operation location="/consultaTranRestriccion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Integrator">
+    <wsdl:port name="IntegratorSoap" binding="tns:IntegratorSoap">
+      <soap:address location="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IntegratorSoap12" binding="tns:IntegratorSoap12">
+      <soap12:address location="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IntegratorHttpGet" binding="tns:IntegratorHttpGet">
+      <http:address location="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IntegratorHttpPost" binding="tns:IntegratorHttpPost">
+      <http:address location="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

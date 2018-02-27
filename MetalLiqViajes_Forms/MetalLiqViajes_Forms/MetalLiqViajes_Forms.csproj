@@ -126,6 +126,12 @@
     <Compile Include="fReportesViajes.Designer.cs">
       <DependentUpon>fReportesViajes.cs</DependentUpon>
     </Compile>
+    <Compile Include="fTerpel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTerpel.Designer.cs">
+      <DependentUpon>fTerpel.cs</DependentUpon>
+    </Compile>
     <Compile Include="GastosCambios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\UtilClass.cs" />
+    <Compile Include="Web References\com.terpel.movilidad\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\EventsSatrac\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fReportesViajes.resx">
       <DependentUpon>fReportesViajes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTerpel.resx">
+      <DependentUpon>fTerpel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GastosCambios.resx">
       <DependentUpon>GastosCambios.cs</DependentUpon>
@@ -187,6 +201,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Web References\com.terpel.movilidad\consultaTranRestriccionRes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.terpel.movilidad\CosultaEDSFlota.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.terpel.movilidad\Integrator.wsdl" />
+    <None Include="Web References\com.terpel.movilidad\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\com.terpel.movilidad\RespuestaRestricciones.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.terpel.movilidad\VentasFlotaResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\EventsSatrac\getEvents.wsdl" />
     <None Include="Web References\EventsSatrac\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -241,6 +272,7 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Web References\com.terpel.movilidad\Integrator.disco" />
     <None Include="images\1.png" />
     <None Include="images\2.png" />
     <None Include="images\3.png" />
@@ -302,6 +334,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.terpel.movilidad\</RelPath>
+      <UpdateFromURL>https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>MetalLiqViajes_Forms_com_terpel_movilidad_Integrator</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="https://webcloud.satrack.com/WebServiceEventos/getEvents.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\EventsSatrac\</RelPath>

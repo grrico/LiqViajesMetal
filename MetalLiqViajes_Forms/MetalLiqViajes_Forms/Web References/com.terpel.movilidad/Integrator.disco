@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx?wsdl" docRef="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx" xmlns:q1="http://Flotas/" binding="q1:IntegratorSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx" xmlns:q2="http://Flotas/" binding="q2:IntegratorSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

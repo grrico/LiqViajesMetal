@@ -80,5 +80,15 @@ namespace MetalLiqViajes_Forms.Properties {
                 this["DiasHistorico"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx")]
+        public string MetalLiqViajes_Forms_com_terpel_movilidad_Integrator {
+            get {
+                return ((string)(this["MetalLiqViajes_Forms_com_terpel_movilidad_Integrator"]));
+            }
+        }
     }
 }
