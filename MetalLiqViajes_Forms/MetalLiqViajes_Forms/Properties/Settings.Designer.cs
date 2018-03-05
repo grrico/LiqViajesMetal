@@ -90,5 +90,41 @@ namespace MetalLiqViajes_Forms.Properties {
                 return ((string)(this["MetalLiqViajes_Forms_com_terpel_movilidad_Integrator"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0010240247")]
+        public string ClienteTerpel {
+            get {
+                return ((string)(this["ClienteTerpel"]));
+            }
+            set {
+                this["ClienteTerpel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Flotas")]
+        public string UsuarioTerpel {
+            get {
+                return ((string)(this["UsuarioTerpel"]));
+            }
+            set {
+                this["UsuarioTerpel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Flotas2013%")]
+        public string PasswordTerpel {
+            get {
+                return ((string)(this["PasswordTerpel"]));
+            }
+            set {
+                this["PasswordTerpel"] = value;
+            }
+        }
     }
 }

@@ -26,6 +26,8 @@ namespace MetalLiqViajes_Forms
     public partial class fReportesViajes : Form
     {
 
+        public List<UtilPlaca> ultilplacalist = new List<UtilPlaca>();
+
         GMarkerGoogle marker;
         GMapOverlay markerOverlay;
 
@@ -747,7 +749,7 @@ namespace MetalLiqViajes_Forms
                         .Distinct();
             comboBoxPlaca.Text = "";
 
-            List<UtilPlaca> ultilplacalist = new List<UtilPlaca>();
+            ultilplacalist = new List<UtilPlaca>();
             ultilplaca = new UtilPlaca();
             ultilplaca.Placa = "_Seleccionar";
             ultilplacalist.Add(ultilplaca);

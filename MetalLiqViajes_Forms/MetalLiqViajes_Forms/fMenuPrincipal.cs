@@ -12,6 +12,9 @@ namespace MetalLiqViajes_Forms
 {
     public partial class fMenuPrincipal : Form
     {
+
+        private fReportesViajes childForm;
+
         private int childFormNumber = 0;
 
         public fMenuPrincipal()
@@ -38,7 +41,7 @@ namespace MetalLiqViajes_Forms
         {
             try
             {
-                fReportesViajes childForm = new fReportesViajes();
+                childForm = new fReportesViajes();
                 childForm.MdiParent = this;
                 childForm.WindowState = FormWindowState.Maximized;
                 childForm.Show();
@@ -48,6 +51,16 @@ namespace MetalLiqViajes_Forms
             {
                 CargaExection(ex);
             }
+        }
+
+        private void terpelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            fTerpel terpel = new fTerpel();
+            terpel.ultilplacalist = childForm.ultilplacalist;
+            terpel.MdiParent = this;
+            terpel.WindowState = FormWindowState.Maximized;
+            terpel.Show();
         }
 
         private void OpenReporte(object sender, EventArgs e)
@@ -107,5 +120,6 @@ namespace MetalLiqViajes_Forms
                MessageBoxIcon.Information,
                MessageBoxDefaultButton.Button1);
         }
+
     }
 }

@@ -214,6 +214,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.treeViewRutas = new System.Windows.Forms.TreeView();
+            this.imageListBase = new System.Windows.Forms.ImageList(this.components);
             this.dataGridViewRuta = new System.Windows.Forms.DataGridView();
             this.strRutaAnticipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoTrailerDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -224,7 +225,6 @@
             this.pesoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rutasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.imageListBase2 = new System.Windows.Forms.ImageList(this.components);
-            this.imageListBase = new System.Windows.Forms.ImageList(this.components);
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -1830,6 +1830,32 @@
             this.treeViewRutas.TabIndex = 2;
             this.treeViewRutas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewRutas_AfterSelect);
             // 
+            // imageListBase
+            // 
+            this.imageListBase.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListBase.ImageStream")));
+            this.imageListBase.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListBase.Images.SetKeyName(0, "1.png");
+            this.imageListBase.Images.SetKeyName(1, "2.png");
+            this.imageListBase.Images.SetKeyName(2, "3.png");
+            this.imageListBase.Images.SetKeyName(3, "check.png");
+            this.imageListBase.Images.SetKeyName(4, "ClearFilter2HS.png");
+            this.imageListBase.Images.SetKeyName(5, "Filter2HS.png");
+            this.imageListBase.Images.SetKeyName(6, "FindHS.png");
+            this.imageListBase.Images.SetKeyName(7, "FireTruck.png");
+            this.imageListBase.Images.SetKeyName(8, "GoogleRutas.png");
+            this.imageListBase.Images.SetKeyName(9, "pushpin-blue.png");
+            this.imageListBase.Images.SetKeyName(10, "pushpin-yellow.png");
+            this.imageListBase.Images.SetKeyName(11, "rain.png");
+            this.imageListBase.Images.SetKeyName(12, "recycle.png");
+            this.imageListBase.Images.SetKeyName(13, "RedCar.png");
+            this.imageListBase.Images.SetKeyName(14, "SchoolBus.png");
+            this.imageListBase.Images.SetKeyName(15, "snow.png");
+            this.imageListBase.Images.SetKeyName(16, "storm.png");
+            this.imageListBase.Images.SetKeyName(17, "sun.png");
+            this.imageListBase.Images.SetKeyName(18, "Truck.ico");
+            this.imageListBase.Images.SetKeyName(19, "Truck.png");
+            this.imageListBase.Images.SetKeyName(20, "YellowCar.png");
+            // 
             // dataGridViewRuta
             // 
             this.dataGridViewRuta.AllowUserToAddRows = false;
@@ -1927,32 +1953,6 @@
             this.imageListBase2.Images.SetKeyName(12, "TitleIndex.png");
             this.imageListBase2.Images.SetKeyName(13, "UploadControl.png");
             this.imageListBase2.Images.SetKeyName(14, "Utilities.png");
-            // 
-            // imageListBase
-            // 
-            this.imageListBase.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListBase.ImageStream")));
-            this.imageListBase.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListBase.Images.SetKeyName(0, "1.png");
-            this.imageListBase.Images.SetKeyName(1, "2.png");
-            this.imageListBase.Images.SetKeyName(2, "3.png");
-            this.imageListBase.Images.SetKeyName(3, "check.png");
-            this.imageListBase.Images.SetKeyName(4, "ClearFilter2HS.png");
-            this.imageListBase.Images.SetKeyName(5, "Filter2HS.png");
-            this.imageListBase.Images.SetKeyName(6, "FindHS.png");
-            this.imageListBase.Images.SetKeyName(7, "FireTruck.png");
-            this.imageListBase.Images.SetKeyName(8, "GoogleRutas.png");
-            this.imageListBase.Images.SetKeyName(9, "pushpin-blue.png");
-            this.imageListBase.Images.SetKeyName(10, "pushpin-yellow.png");
-            this.imageListBase.Images.SetKeyName(11, "rain.png");
-            this.imageListBase.Images.SetKeyName(12, "recycle.png");
-            this.imageListBase.Images.SetKeyName(13, "RedCar.png");
-            this.imageListBase.Images.SetKeyName(14, "SchoolBus.png");
-            this.imageListBase.Images.SetKeyName(15, "snow.png");
-            this.imageListBase.Images.SetKeyName(16, "storm.png");
-            this.imageListBase.Images.SetKeyName(17, "sun.png");
-            this.imageListBase.Images.SetKeyName(18, "Truck.ico");
-            this.imageListBase.Images.SetKeyName(19, "Truck.png");
-            this.imageListBase.Images.SetKeyName(20, "YellowCar.png");
             // 
             // tabControl
             // 
