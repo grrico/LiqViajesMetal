@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Security.Cryptography;
 using System.Dynamic;
+using System.Net;
 
 namespace MetalLiqViajes_Forms
 {
@@ -84,40 +85,44 @@ namespace MetalLiqViajes_Forms
             terpel.FechaInicial = FechaInicial.Value.ToString("yyyyMMdd 12:00");
             terpel.FechaFinal = FechaFinal.Value.ToString("yyyyMMdd 23:59");
 
-            dynamic myObject = new ExpandoObject();
+            dynamic ObjTerpel = new ExpandoObject();
 
-            //{"Codigo":"0010101010","Placas":"FPOP1,LFV112","FechaInicio":"20080805 12:00", "FechaFin":"20120805 17:00"}
-            //{"Codigo":"0010240247","Placas":"TDZ583,TDZ584","FechaInicio":"20180303 12:00","FechaFin":"20180303 23:59"}
-            myObject.Codigo = terpel.Codigo;
-            myObject.Placas = terpel.Placas;
-            myObject.FechaInicio = terpel.FechaInicial;
-            myObject.FechaFin = terpel.FechaFinal;
 
-            //List<string> articles = new List<string>();
-            //articles.Add("How to manipulate JSON with C#");
-            //articles.Add("Top 5: Best jQuery schedulers");
-            //articles.Add("Another article title here ...");
+            ObjTerpel.Codigo = terpel.Codigo;
+            ObjTerpel.Placas = terpel.Placas;
+            ObjTerpel.FechaInicio = terpel.FechaInicial;
+            ObjTerpel.FechaFin = terpel.FechaFinal;
 
-            //myObject.articles = articles;
-
-            string json = JsonConvert.SerializeObject(myObject);
+            string json = JsonConvert.SerializeObject(ObjTerpel);
             var resultado = TripleDes(json);
 
-            com.terpel.movilidad.ConsultaCarga consultaCarga = new com.terpel.movilidad.ConsultaCarga();
-            com.terpel.movilidad.VentasFlotaResponse jj = new com.terpel.movilidad.VentasFlotaResponse();
-            
 
-            //VentasFlotaResponse[] ConsultaVentas(string consulta)
-        
+            com.terpel.movilidad.Integrator integr = new com.terpel.movilidad.Integrator();
+
+            var resultado2 = integr.ConsultaVentas(resultado);
+
+            //ICredentials credentials;
+
+            //integr.Credentials
+
+            //cons.in
+
+
+
+
+
+            //com.terpel.movilidad.ConsultaCarga consultaCarga = new com.terpel.movilidad.ConsultaCarga();
+            //com.terpel.movilidad.VentasFlotaResponse jj = new com.terpel.movilidad.VentasFlotaResponse();
+            //VentasFlotaResponse[] ConsultaVentas(string consulta)        
             //object[] results = this.Invoke("ConsultaVentas", new object[] {
             //            consulta});
             //return ((VentasFlotaResponse[])(results[0]));
-        
 
-        //VentasFlotaResponse
-        //consultaCarga.consecutivo
 
-    }
+            //VentasFlotaResponse
+            //consultaCarga.consecutivo
+
+        }
 
         public string TripleDes(string Data)
         {
