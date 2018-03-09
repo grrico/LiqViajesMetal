@@ -114,10 +114,10 @@ namespace LiqViajes_Bll_Data
 
 				return ventasflota;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
-				throw ex;
-			}
+                return new VentasFlota();
+            }
 		}
 
 		/// <summary>

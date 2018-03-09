@@ -112,7 +112,7 @@ namespace MetalLiqViajes_Forms
                 ventaMetal = new VentasFlota();
                 ventaMetal.CodEds = ventaTerpel.CodEds;
                 ventaMetal.Dinero = ventaTerpel.Dinero;
-                ventaMetal.Fecha = ventaMetal.Fecha;
+                ventaMetal.Fecha = ventaTerpel.Fecha;
                 ventaMetal.Kilometraje = ventaTerpel.Kilometraje;
                 ventaMetal.Placa = ventaTerpel.Placa;
                 ventaMetal.Producto = ventaTerpel.Producto;
@@ -120,7 +120,7 @@ namespace MetalLiqViajes_Forms
                 ventaMetal.Volumen = ventaTerpel.Volumen;
                 ventaMetal.Codigo= VentasFlotaController.Instance.Create(ventaMetal).Codigo;
             }
-            MessageBox.Show("proceso terminado", "Compras Terpen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("proceso terminado, Cantidad: " + resultado2.Count().ToString(), "Compras Terpen", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public string TripleDes(string Data)
