@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Dynamic;
 using System.Net;
 using MetalLiqViajes_Forms.com.terpel.movilidad;
+using LiqViajes_Bll_Data;
 
 namespace MetalLiqViajes_Forms
 {
@@ -103,39 +104,23 @@ namespace MetalLiqViajes_Forms
             integr.Credentials = new NetworkCredential("Flotas", "Flotas2013%");
             //CosultaEDSFlota[] consultaEDS = integr.ConsultaEDS(codigocliente);
             var resultado2 = integr.ConsultaVentas(resultado);
-            VentasFlotaResponse venta = null;
+            VentasFlotaResponse ventaTerpel = null;
+            VentasFlota ventaMetal = null;
             foreach (var item in resultado2)
             {
-                venta = item;
+                ventaTerpel = item;
+                ventaMetal = new VentasFlota();
+                ventaMetal.CodEds = ventaTerpel.CodEds;
+                ventaMetal.Dinero = ventaTerpel.Dinero;
+                ventaMetal.Fecha = ventaMetal.Fecha;
+                ventaMetal.Kilometraje = ventaTerpel.Kilometraje;
+                ventaMetal.Placa = ventaTerpel.Placa;
+                ventaMetal.Producto = ventaTerpel.Producto;
+                ventaMetal.Recibo = ventaTerpel.Recibo;
+                ventaMetal.Volumen = ventaTerpel.Volumen;
+                ventaMetal.Codigo= VentasFlotaController.Instance.Create(ventaMetal).Codigo;
             }
-
-            //List<VentasFlotaResponse> ventasFlotas = new List<VentasFlotaResponse>();
-
-            //ICredentials Credentials
-            //integr.
-
-
-            //ICredentials credentials;
-
-            //integr.Credentials
-
-            //cons.in
-
-
-
-
-
-            //com.terpel.movilidad.ConsultaCarga consultaCarga = new com.terpel.movilidad.ConsultaCarga();
-            //com.terpel.movilidad.VentasFlotaResponse jj = new com.terpel.movilidad.VentasFlotaResponse();
-            //VentasFlotaResponse[] ConsultaVentas(string consulta)        
-            //object[] results = this.Invoke("ConsultaVentas", new object[] {
-            //            consulta});
-            //return ((VentasFlotaResponse[])(results[0]));
-
-
-            //VentasFlotaResponse
-            //consultaCarga.consecutivo
-
+            MessageBox.Show("proceso terminado", "Compras Terpen", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public string TripleDes(string Data)

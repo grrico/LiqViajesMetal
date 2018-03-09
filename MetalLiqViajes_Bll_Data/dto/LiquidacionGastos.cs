@@ -26,6 +26,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public LiquidacionGastos()
 		{
+			m_Codigo = 0;
 			m_lngIdRegistrRutaItemId = 0;
 			m_lngIdRegistroViaje = 0;
 			m_lngIdRegistrRuta = 0;
@@ -55,6 +56,7 @@ namespace LiqViajes_Bll_Data
 			m_LogAnticipoACPM = false;
 			m_AntipoConductor = false;
 			m_NombreTercero = null;
+			m_Detalle = false;
 			m_changed=false;
 		}
 		        //Return the table name of object
@@ -68,6 +70,7 @@ namespace LiqViajes_Bll_Data
 		public void GenerateUndo()
 		{
 			m_oldLiquidacionGastos=new LiquidacionGastos();
+			m_oldLiquidacionGastos.m_Codigo = m_Codigo;
 			m_oldLiquidacionGastos.m_lngIdRegistrRutaItemId = m_lngIdRegistrRutaItemId;
 			m_oldLiquidacionGastos.m_lngIdRegistroViaje = m_lngIdRegistroViaje;
 			m_oldLiquidacionGastos.m_lngIdRegistrRuta = m_lngIdRegistrRuta;
@@ -97,6 +100,7 @@ namespace LiqViajes_Bll_Data
 			m_oldLiquidacionGastos.LogAnticipoACPM = m_LogAnticipoACPM;
 			m_oldLiquidacionGastos.AntipoConductor = m_AntipoConductor;
 			m_oldLiquidacionGastos.NombreTercero = m_NombreTercero;
+			m_oldLiquidacionGastos.Detalle = m_Detalle;
 		}
 
 		public LiquidacionGastos OldLiquidacionGastos
@@ -131,6 +135,7 @@ namespace LiqViajes_Bll_Data
 			if (m_oldLiquidacionGastos.LogAnticipoACPM != m_LogAnticipoACPM) fields.Add("LogAnticipoACPM");
 			if (m_oldLiquidacionGastos.AntipoConductor != m_AntipoConductor) fields.Add("AntipoConductor");
 			if (m_oldLiquidacionGastos.NombreTercero != m_NombreTercero) fields.Add("NombreTercero");
+			if (m_oldLiquidacionGastos.Detalle != m_Detalle) fields.Add("Detalle");
 			string[] fieldst = new string[fields.Count];
 			int i = 0;
 			foreach(string st in fields)
@@ -143,6 +148,9 @@ namespace LiqViajes_Bll_Data
 		#endregion
 		#region Fields
 
+
+		// Field for storing the LiquidacionGastos's Codigo value
+		private long m_Codigo;
 
 		// Field for storing the LiquidacionGastos's lngIdRegistrRutaItemId value
 		private long m_lngIdRegistrRutaItemId;
@@ -231,13 +239,13 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the LiquidacionGastos's NombreTercero value
 		private string m_NombreTercero;
 
+		// Field for storing the LiquidacionGastos's Detalle value
+		private bool? m_Detalle;
+
 		// Evaluate changed state
 		private bool m_changed=false;
 		// Field for storing the reference to LiquidacionRutas accessed by lngIdRegistrRutaItemId
 		private LiquidacionRutas m_LiquidacionRutas;
-
-		// Field for storing the reference to foreign LiquidacionGastosDetalleList object accessed by lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro
-		private LiquidacionGastosDetalleList m_LiquidacionGastosDetalle;
 
 
 		#endregion
@@ -250,6 +258,20 @@ namespace LiqViajes_Bll_Data
 			get { return m_changed;}
 			set { m_changed=value;}
 		}
+		/// <summary>
+		/// Attribute for access the LiquidacionGastos's Codigo value (long)
+		/// </summary>
+		[DataMember]
+		public long Codigo
+		{
+			get { return m_Codigo; }
+			set 
+			{
+				m_changed=true;
+				m_Codigo = value;
+			}
+		}
+
 		/// <summary>
 		/// Attribute for access the LiquidacionGastos's lngIdRegistrRutaItemId value (long)
 		/// </summary>
@@ -662,10 +684,25 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the LiquidacionGastos's Detalle value (bool)
+		/// </summary>
+		[DataMember]
+		public bool? Detalle
+		{
+			get { return m_Detalle; }
+			set 
+			{
+				m_changed=true;
+				m_Detalle = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
+				case "Codigo": return Codigo;
 				case "lngIdRegistrRutaItemId": return lngIdRegistrRutaItemId;
 				case "lngIdRegistroViaje": return lngIdRegistroViaje;
 				case "lngIdRegistrRuta": return lngIdRegistrRuta;
@@ -695,6 +732,7 @@ namespace LiqViajes_Bll_Data
 				case "LogAnticipoACPM": return LogAnticipoACPM;
 				case "AntipoConductor": return AntipoConductor;
 				case "NombreTercero": return NombreTercero;
+				case "Detalle": return Detalle;
 				default: return null;
 			}
 		}
@@ -706,7 +744,7 @@ namespace LiqViajes_Bll_Data
 
 		public string GetSqlKey()
 		{
-			return "[lngIdRegistrRutaItemId] = " + lngIdRegistrRutaItemId.ToString() + " AND [lngIdRegistroViaje] = " + lngIdRegistroViaje.ToString() + " AND [lngIdRegistrRuta] = " + lngIdRegistrRuta.ToString() + " AND [strCuenta] = '" + strCuenta.ToString()+ "'" + " AND [intRowRegistro] = " + intRowRegistro.ToString();
+			return "[Codigo] = " + Codigo.ToString() + " AND [lngIdRegistrRutaItemId] = " + lngIdRegistrRutaItemId.ToString() + " AND [lngIdRegistroViaje] = " + lngIdRegistroViaje.ToString() + " AND [lngIdRegistrRuta] = " + lngIdRegistrRuta.ToString() + " AND [strCuenta] = '" + strCuenta.ToString()+ "'" + " AND [intRowRegistro] = " + intRowRegistro.ToString();
 		}
 		/// <summary>
 		/// Gets or sets the reference to LiquidacionRutas accessed by lngIdRegistrRutaItemId
@@ -737,46 +775,29 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets the reference to foreign LiquidacionGastosDetalleList object accessed by lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro
-		/// </summary>
-		public LiquidacionGastosDetalleList LiquidacionGastosDetalle
-		{
-			get
-			{
-				if (m_LiquidacionGastosDetalle == null)
-				{
-					m_LiquidacionGastosDetalle = LiquidacionGastosDetalleController.Instance.GetBy_RegistrRutaItemId_RegistroViaje_RegistroRuta_Cuenta_RowRegistro(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro);
-			}
+		#endregion
 
-			return m_LiquidacionGastosDetalle;
-		}
-		set { m_LiquidacionGastosDetalle = value; }
 	}
 
 	#endregion
 
-}
-
-#endregion
-
-#region LiquidacionGastosList object
-
-/// <summary>
-/// Class for reading and access a list of LiquidacionGastos object
-/// </summary>
-[CollectionDataContract]
-public partial class LiquidacionGastosList : List<LiquidacionGastos>
-{
+	#region LiquidacionGastosList object
 
 	/// <summary>
-	/// Default constructor
+	/// Class for reading and access a list of LiquidacionGastos object
 	/// </summary>
-	public LiquidacionGastosList()
+	[CollectionDataContract]
+	public partial class LiquidacionGastosList : List<LiquidacionGastos>
 	{
-	}
-}
 
-#endregion
+		/// <summary>
+		/// Default constructor
+		/// </summary>
+		public LiquidacionGastosList()
+		{
+		}
+	}
+
+	#endregion
 
 }

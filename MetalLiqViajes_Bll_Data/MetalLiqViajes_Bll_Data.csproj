@@ -93,6 +93,7 @@
     <Compile Include="bll\RutaSatrackKilometros.cs" />
     <Compile Include="bll\RutaSatrackLastEvents.cs" />
     <Compile Include="bll\RutasCombustible.cs" />
+    <Compile Include="bll\RutasCuentaGastos.cs" />
     <Compile Include="bll\RutasCuentas.cs" />
     <Compile Include="bll\RutasDestino.cs" />
     <Compile Include="bll\RutasDet.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="bll\VehiculosKmMantenimientoDet.cs" />
     <Compile Include="bll\VehiculosKmMantenimientoDetAcum.cs" />
     <Compile Include="bll\VehiculoTraylers.cs" />
+    <Compile Include="bll\VentasFlota.cs" />
     <Compile Include="bll\y_novedades_Liq.cs" />
     <Compile Include="bll_add\AnticiposDms.cs" />
     <Compile Include="bll_add\LiquidacionGastos.cs" />
@@ -191,6 +193,7 @@
     <Compile Include="dal\RutaSatrackKilometrosDataProvider.cs" />
     <Compile Include="dal\RutaSatrackLastEventsDataProvider.cs" />
     <Compile Include="dal\RutasCombustibleDataProvider.cs" />
+    <Compile Include="dal\RutasCuentaGastosDataProvider.cs" />
     <Compile Include="dal\RutasCuentasDataProvider.cs" />
     <Compile Include="dal\RutasDataProvider.cs" />
     <Compile Include="dal\RutasDestinoDataProvider.cs" />
@@ -231,6 +234,7 @@
     <Compile Include="dal\VehiculosKmMantenimientoDetAcumDataProvider.cs" />
     <Compile Include="dal\VehiculosKmMantenimientoDetDataProvider.cs" />
     <Compile Include="dal\VehiculoTraylersDataProvider.cs" />
+    <Compile Include="dal\VentasFlotaDataProvider.cs" />
     <Compile Include="dal\y_novedades_LiqDataProvider.cs" />
     <Compile Include="dal_add\AnticiposDmsDataProvider.cs" />
     <Compile Include="dal_add\LiquidacionGastosDataProvider.cs" />
@@ -292,6 +296,7 @@
     <Compile Include="dto\RutaSatrackKilometros.cs" />
     <Compile Include="dto\RutaSatrackLastEvents.cs" />
     <Compile Include="dto\RutasCombustible.cs" />
+    <Compile Include="dto\RutasCuentaGastos.cs" />
     <Compile Include="dto\RutasCuentas.cs" />
     <Compile Include="dto\RutasDestino.cs" />
     <Compile Include="dto\RutasDet.cs" />
@@ -331,6 +336,7 @@
     <Compile Include="dto\VehiculosKmMantenimientoDet.cs" />
     <Compile Include="dto\VehiculosKmMantenimientoDetAcum.cs" />
     <Compile Include="dto\VehiculoTraylers.cs" />
+    <Compile Include="dto\VentasFlota.cs" />
     <Compile Include="dto\y_novedades_Liq.cs" />
     <Compile Include="dto_add\LiquidacionGastos.cs" />
     <Compile Include="dto_add\LiquidacionPlanilla.cs" />

@@ -71,7 +71,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="LogAnticipoACPM"></param>
 		/// <param name="AntipoConductor"></param>
 		/// <param name="NombreTercero"></param>
-		public void Create(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Detalle"></param>
+		/// <returns>long that contents the Codigo value</returns>
+		public long Create(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, bool? Detalle,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -95,6 +97,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 
+				paramlist.AddWithValue("@Codigo",Codigo);
 				paramlist.AddWithValue("@lngIdRegistrRutaItemId",lngIdRegistrRutaItemId);
 				paramlist.AddWithValue("@lngIdRegistroViaje",lngIdRegistroViaje);
 				paramlist.AddWithValue("@lngIdRegistrRuta",lngIdRegistrRuta);
@@ -196,7 +199,14 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@NombreTercero",NombreTercero);
 				}
-				LocalDataProvider.EjecutarProcedimiento("dbo.LiquidacionGastosCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				if (Detalle !=null)
+				{
+					paramlist.AddWithValue("@Detalle",Detalle);
+				}
+				// Execute the query and return the new identity value
+				long returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.LiquidacionGastosCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
+
+				return returnValue;
 			}
 			catch (Exception ex)
 			{
@@ -208,6 +218,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into tblLiquidacionGastos by passing all fields
 		/// </summary>
+		/// <param name="Codigo"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="lngIdRegistroViaje"></param>
 		/// <param name="lngIdRegistrRuta"></param>
@@ -237,7 +248,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="LogAnticipoACPM"></param>
 		/// <param name="AntipoConductor"></param>
 		/// <param name="NombreTercero"></param>
-		public void Update(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Detalle"></param>
+		public void Update(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, bool? Detalle,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -260,6 +272,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@Codigo",Codigo);
 				paramlist.AddWithValue("@lngIdRegistrRutaItemId",lngIdRegistrRutaItemId);
 				paramlist.AddWithValue("@lngIdRegistroViaje",lngIdRegistroViaje);
 				paramlist.AddWithValue("@lngIdRegistrRuta",lngIdRegistrRuta);
@@ -361,6 +374,10 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@NombreTercero",NombreTercero);
 				}
+				if (Detalle !=null)
+				{
+					paramlist.AddWithValue("@Detalle",Detalle);
+				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.LiquidacionGastosUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
@@ -373,12 +390,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Deletes one record from tblLiquidacionGastos by passing all key fields
 		/// </summary>
+		/// <param name="Codigo"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="lngIdRegistroViaje"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="strCuenta"></param>
 		/// <param name="intRowRegistro"></param>
-		public void Delete(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -401,6 +419,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@Codigo",Codigo);
 				paramlist.AddWithValue("@lngIdRegistrRutaItemId",lngIdRegistrRutaItemId);
 				paramlist.AddWithValue("@lngIdRegistroViaje",lngIdRegistroViaje);
 				paramlist.AddWithValue("@lngIdRegistrRuta",lngIdRegistrRuta);
@@ -418,13 +437,14 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets one record from tblLiquidacionGastos passing all key fields
 		/// </summary>
+		/// <param name="Codigo"></param>
 		/// <param name="lngIdRegistrRutaItemId"></param>
 		/// <param name="lngIdRegistroViaje"></param>
 		/// <param name="lngIdRegistrRuta"></param>
 		/// <param name="strCuenta"></param>
 		/// <param name="intRowRegistro"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro)
+		public DataTable Get(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro)
 		{
 			try 
 			{
@@ -443,6 +463,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
+				paramlist.AddWithValue("@Codigo",Codigo);
 				paramlist.AddWithValue("@lngIdRegistrRutaItemId",lngIdRegistrRutaItemId);
 				paramlist.AddWithValue("@lngIdRegistroViaje",lngIdRegistroViaje);
 				paramlist.AddWithValue("@lngIdRegistrRuta",lngIdRegistrRuta);

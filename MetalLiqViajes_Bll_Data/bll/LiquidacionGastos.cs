@@ -52,6 +52,7 @@ namespace LiqViajes_Bll_Data
 		{
 			try 
 			{
+				liquidaciongastos.Codigo = (long) dr["Codigo"];
 				liquidaciongastos.lngIdRegistrRutaItemId = (long) dr["lngIdRegistrRutaItemId"];
 				liquidaciongastos.lngIdRegistroViaje = (long) dr["lngIdRegistroViaje"];
 				liquidaciongastos.lngIdRegistrRuta = (long) dr["lngIdRegistrRuta"];
@@ -81,6 +82,7 @@ namespace LiqViajes_Bll_Data
 				liquidaciongastos.LogAnticipoACPM = dr.IsNull("LogAnticipoACPM") ? null :(bool?) dr["LogAnticipoACPM"];
 				liquidaciongastos.AntipoConductor = dr.IsNull("AntipoConductor") ? null :(bool?) dr["AntipoConductor"];
 				liquidaciongastos.NombreTercero = dr.IsNull("NombreTercero") ? null :(string) dr["NombreTercero"];
+				liquidaciongastos.Detalle = dr.IsNull("Detalle") ? null :(bool?) dr["Detalle"];
 			}
 			catch (Exception ex)
 			{
@@ -95,7 +97,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public LiquidacionGastos Create(LiquidacionGastos liquidaciongastos, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			return Create(liquidaciongastos.lngIdRegistrRutaItemId,liquidaciongastos.lngIdRegistroViaje,liquidaciongastos.lngIdRegistrRuta,liquidaciongastos.strCuenta,liquidaciongastos.intRowRegistro,liquidaciongastos.strDescripcionCuenta,liquidaciongastos.strDescripcion,liquidaciongastos.dtmFechaAsignacion,liquidaciongastos.curValorTramo,liquidaciongastos.curValorAdicional,liquidaciongastos.curValorTotal,liquidaciongastos.strObservaciones,liquidaciongastos.nitTercero,liquidaciongastos.strPlaca,liquidaciongastos.lngIdUsuario,liquidaciongastos.logLiquidado,liquidaciongastos.dtmFechaSalida,liquidaciongastos.dtmFechaLlegada,liquidaciongastos.dtmFechaModif,liquidaciongastos.LogExcluido,liquidaciongastos.floGalones,liquidaciongastos.floGalonesAdicional,liquidaciongastos.floGalonesReales,liquidaciongastos.curValorGalon,liquidaciongastos.CombustibleCarretera,liquidaciongastos.cutCombustible,liquidaciongastos.LogAnticipoACPM,liquidaciongastos.AntipoConductor,liquidaciongastos.NombreTercero,datosTransaccion);
+			return Create(liquidaciongastos.Codigo,liquidaciongastos.lngIdRegistrRutaItemId,liquidaciongastos.lngIdRegistroViaje,liquidaciongastos.lngIdRegistrRuta,liquidaciongastos.strCuenta,liquidaciongastos.intRowRegistro,liquidaciongastos.strDescripcionCuenta,liquidaciongastos.strDescripcion,liquidaciongastos.dtmFechaAsignacion,liquidaciongastos.curValorTramo,liquidaciongastos.curValorAdicional,liquidaciongastos.curValorTotal,liquidaciongastos.strObservaciones,liquidaciongastos.nitTercero,liquidaciongastos.strPlaca,liquidaciongastos.lngIdUsuario,liquidaciongastos.logLiquidado,liquidaciongastos.dtmFechaSalida,liquidaciongastos.dtmFechaLlegada,liquidaciongastos.dtmFechaModif,liquidaciongastos.LogExcluido,liquidaciongastos.floGalones,liquidaciongastos.floGalonesAdicional,liquidaciongastos.floGalonesReales,liquidaciongastos.curValorGalon,liquidaciongastos.CombustibleCarretera,liquidaciongastos.cutCombustible,liquidaciongastos.LogAnticipoACPM,liquidaciongastos.AntipoConductor,liquidaciongastos.NombreTercero,liquidaciongastos.Detalle,datosTransaccion);
 		}
 
 		/// <summary>
@@ -125,13 +127,16 @@ namespace LiqViajes_Bll_Data
 		/// <param name="LogAnticipoACPM">bool that contents the LogAnticipoACPM value for the LiquidacionGastos object</param>
 		/// <param name="AntipoConductor">bool that contents the AntipoConductor value for the LiquidacionGastos object</param>
 		/// <param name="NombreTercero">string that contents the NombreTercero value for the LiquidacionGastos object</param>
+		/// <param name="Detalle">bool that contents the Detalle value for the LiquidacionGastos object</param>
 		/// <returns>One LiquidacionGastos object</returns>
-		public LiquidacionGastos Create(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, Sinapsys.Datos.SQL datosTransaccion=null)
+		public LiquidacionGastos Create(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, bool? Detalle, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				LiquidacionGastos liquidaciongastos = new LiquidacionGastos();
 
+				liquidaciongastos.Codigo = Codigo;
+				liquidaciongastos.Codigo = Codigo;
 				liquidaciongastos.lngIdRegistrRutaItemId = lngIdRegistrRutaItemId;
 				liquidaciongastos.lngIdRegistroViaje = lngIdRegistroViaje;
 				liquidaciongastos.lngIdRegistrRuta = lngIdRegistrRuta;
@@ -161,7 +166,12 @@ namespace LiqViajes_Bll_Data
 				liquidaciongastos.LogAnticipoACPM = LogAnticipoACPM;
 				liquidaciongastos.AntipoConductor = AntipoConductor;
 				liquidaciongastos.NombreTercero = NombreTercero;
-				LiquidacionGastosDataProvider.Instance.Create(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro, strDescripcionCuenta, strDescripcion, dtmFechaAsignacion, curValorTramo, curValorAdicional, curValorTotal, strObservaciones, nitTercero, strPlaca, lngIdUsuario, logLiquidado, dtmFechaSalida, dtmFechaLlegada, dtmFechaModif, LogExcluido, floGalones, floGalonesAdicional, floGalonesReales, curValorGalon, CombustibleCarretera, cutCombustible, LogAnticipoACPM, AntipoConductor, NombreTercero,"LiquidacionGastos");
+				liquidaciongastos.Detalle = Detalle;
+				Codigo = LiquidacionGastosDataProvider.Instance.Create(Codigo, lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro, strDescripcionCuenta, strDescripcion, dtmFechaAsignacion, curValorTramo, curValorAdicional, curValorTotal, strObservaciones, nitTercero, strPlaca, lngIdUsuario, logLiquidado, dtmFechaSalida, dtmFechaLlegada, dtmFechaModif, LogExcluido, floGalones, floGalonesAdicional, floGalonesReales, curValorGalon, CombustibleCarretera, cutCombustible, LogAnticipoACPM, AntipoConductor, NombreTercero, Detalle,"LiquidacionGastos",datosTransaccion);
+				if (Codigo == 0)
+					return null;
+
+				liquidaciongastos.Codigo = Codigo;
 
 				return liquidaciongastos;
 			}
@@ -174,6 +184,7 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates an LiquidacionGastos object by passing all object's fields
 		/// </summary>
+		/// <param name="Codigo">long that contents the Codigo value for the LiquidacionGastos object</param>
 		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
 		/// <param name="lngIdRegistroViaje">long that contents the lngIdRegistroViaje value for the LiquidacionGastos object</param>
 		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionGastos object</param>
@@ -203,7 +214,8 @@ namespace LiqViajes_Bll_Data
 		/// <param name="LogAnticipoACPM">bool that contents the LogAnticipoACPM value for the LiquidacionGastos object</param>
 		/// <param name="AntipoConductor">bool that contents the AntipoConductor value for the LiquidacionGastos object</param>
 		/// <param name="NombreTercero">string that contents the NombreTercero value for the LiquidacionGastos object</param>
-		public void Update(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Detalle">bool that contents the Detalle value for the LiquidacionGastos object</param>
+		public void Update(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, string strDescripcionCuenta, string strDescripcion, DateTime? dtmFechaAsignacion, decimal? curValorTramo, decimal? curValorAdicional, decimal? curValorTotal, string strObservaciones, string nitTercero, string strPlaca, int? lngIdUsuario, bool? logLiquidado, DateTime? dtmFechaSalida, DateTime? dtmFechaLlegada, DateTime? dtmFechaModif, bool? LogExcluido, decimal? floGalones, decimal? floGalonesAdicional, decimal? floGalonesReales, decimal? curValorGalon, decimal? CombustibleCarretera, decimal? cutCombustible, bool? LogAnticipoACPM, bool? AntipoConductor, string NombreTercero, bool? Detalle, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -232,7 +244,8 @@ namespace LiqViajes_Bll_Data
 				new_values.LogAnticipoACPM = LogAnticipoACPM;
 				new_values.AntipoConductor = AntipoConductor;
 				new_values.NombreTercero = NombreTercero;
-				LiquidacionGastosDataProvider.Instance.Update(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro, strDescripcionCuenta, strDescripcion, dtmFechaAsignacion, curValorTramo, curValorAdicional, curValorTotal, strObservaciones, nitTercero, strPlaca, lngIdUsuario, logLiquidado, dtmFechaSalida, dtmFechaLlegada, dtmFechaModif, LogExcluido, floGalones, floGalonesAdicional, floGalonesReales, curValorGalon, CombustibleCarretera, cutCombustible, LogAnticipoACPM, AntipoConductor, NombreTercero,"LiquidacionGastos",datosTransaccion);
+				new_values.Detalle = Detalle;
+				LiquidacionGastosDataProvider.Instance.Update(Codigo, lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro, strDescripcionCuenta, strDescripcion, dtmFechaAsignacion, curValorTramo, curValorAdicional, curValorTotal, strObservaciones, nitTercero, strPlaca, lngIdUsuario, logLiquidado, dtmFechaSalida, dtmFechaLlegada, dtmFechaModif, LogExcluido, floGalones, floGalonesAdicional, floGalonesReales, curValorGalon, CombustibleCarretera, cutCombustible, LogAnticipoACPM, AntipoConductor, NombreTercero, Detalle,"LiquidacionGastos",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -246,7 +259,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="liquidaciongastos">An instance of LiquidacionGastos for reference</param>
 		public void Update(LiquidacionGastos liquidaciongastos,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(liquidaciongastos.lngIdRegistrRutaItemId, liquidaciongastos.lngIdRegistroViaje, liquidaciongastos.lngIdRegistrRuta, liquidaciongastos.strCuenta, liquidaciongastos.intRowRegistro, liquidaciongastos.strDescripcionCuenta, liquidaciongastos.strDescripcion, liquidaciongastos.dtmFechaAsignacion, liquidaciongastos.curValorTramo, liquidaciongastos.curValorAdicional, liquidaciongastos.curValorTotal, liquidaciongastos.strObservaciones, liquidaciongastos.nitTercero, liquidaciongastos.strPlaca, liquidaciongastos.lngIdUsuario, liquidaciongastos.logLiquidado, liquidaciongastos.dtmFechaSalida, liquidaciongastos.dtmFechaLlegada, liquidaciongastos.dtmFechaModif, liquidaciongastos.LogExcluido, liquidaciongastos.floGalones, liquidaciongastos.floGalonesAdicional, liquidaciongastos.floGalonesReales, liquidaciongastos.curValorGalon, liquidaciongastos.CombustibleCarretera, liquidaciongastos.cutCombustible, liquidaciongastos.LogAnticipoACPM, liquidaciongastos.AntipoConductor, liquidaciongastos.NombreTercero);
+			Update(liquidaciongastos.Codigo, liquidaciongastos.lngIdRegistrRutaItemId, liquidaciongastos.lngIdRegistroViaje, liquidaciongastos.lngIdRegistrRuta, liquidaciongastos.strCuenta, liquidaciongastos.intRowRegistro, liquidaciongastos.strDescripcionCuenta, liquidaciongastos.strDescripcion, liquidaciongastos.dtmFechaAsignacion, liquidaciongastos.curValorTramo, liquidaciongastos.curValorAdicional, liquidaciongastos.curValorTotal, liquidaciongastos.strObservaciones, liquidaciongastos.nitTercero, liquidaciongastos.strPlaca, liquidaciongastos.lngIdUsuario, liquidaciongastos.logLiquidado, liquidaciongastos.dtmFechaSalida, liquidaciongastos.dtmFechaLlegada, liquidaciongastos.dtmFechaModif, liquidaciongastos.LogExcluido, liquidaciongastos.floGalones, liquidaciongastos.floGalonesAdicional, liquidaciongastos.floGalonesReales, liquidaciongastos.curValorGalon, liquidaciongastos.CombustibleCarretera, liquidaciongastos.cutCombustible, liquidaciongastos.LogAnticipoACPM, liquidaciongastos.AntipoConductor, liquidaciongastos.NombreTercero, liquidaciongastos.Detalle);
 		}
 
 		/// <summary>
@@ -254,18 +267,22 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public void  Delete(LiquidacionGastos liquidaciongastos, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Delete(liquidaciongastos.lngIdRegistrRutaItemId, liquidaciongastos.lngIdRegistroViaje, liquidaciongastos.lngIdRegistrRuta, liquidaciongastos.strCuenta, liquidaciongastos.intRowRegistro,datosTransaccion);
+			Delete(liquidaciongastos.Codigo, liquidaciongastos.lngIdRegistrRutaItemId, liquidaciongastos.lngIdRegistroViaje, liquidaciongastos.lngIdRegistrRuta, liquidaciongastos.strCuenta, liquidaciongastos.intRowRegistro,datosTransaccion);
 		}
 
 		/// <summary>
 		/// Deletes the LiquidacionGastos object by passing one object's instance as reference
 		/// </summary>
 		/// <param name="liquidaciongastos">An instance of LiquidacionGastos for reference</param>
-		public void Delete(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Delete(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
-				LiquidacionGastosDataProvider.Instance.Delete(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro,"LiquidacionGastos");
+				//LiquidacionGastos old_values = LiquidacionGastosController.Instance.Get(Codigo);
+				//if(!Validate.security.CanDeleteSecurityField(LiquidacionGastosController.Instance, (ILatinodeObject)old_values))
+				//    throw new Exception("Access denied by security field, you can't delete object");
+
+				LiquidacionGastosDataProvider.Instance.Delete(Codigo, lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro,"LiquidacionGastos");
 			}
 			catch (Exception ex)
 			{
@@ -282,12 +299,13 @@ namespace LiqViajes_Bll_Data
 			string[] StrCommand=CVSParameter.Split(',');
 			try 
 			{
-				long lngIdRegistrRutaItemId=long.Parse(StrCommand[0]);
-				long lngIdRegistroViaje=long.Parse(StrCommand[1]);
-				long lngIdRegistrRuta=long.Parse(StrCommand[2]);
-				string strCuenta=StrCommand[3];
-				int intRowRegistro=int.Parse(StrCommand[4]);
-				LiquidacionGastosDataProvider.Instance.Delete(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro,"LiquidacionGastos");
+				long Codigo=long.Parse(StrCommand[0]);
+				long lngIdRegistrRutaItemId=long.Parse(StrCommand[1]);
+				long lngIdRegistroViaje=long.Parse(StrCommand[2]);
+				long lngIdRegistrRuta=long.Parse(StrCommand[3]);
+				string strCuenta=StrCommand[4];
+				int intRowRegistro=int.Parse(StrCommand[5]);
+				LiquidacionGastosDataProvider.Instance.Delete(Codigo, lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro,"LiquidacionGastos");
 			}
 			catch (Exception ex)
 			{
@@ -298,18 +316,19 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets the LiquidacionGastos object by passing the object's key fields
 		/// </summary>
+		/// <param name="Codigo">long that contents the Codigo value for the LiquidacionGastos object</param>
 		/// <param name="lngIdRegistrRutaItemId">long that contents the lngIdRegistrRutaItemId value for the LiquidacionGastos object</param>
 		/// <param name="lngIdRegistroViaje">long that contents the lngIdRegistroViaje value for the LiquidacionGastos object</param>
 		/// <param name="lngIdRegistrRuta">long that contents the lngIdRegistrRuta value for the LiquidacionGastos object</param>
 		/// <param name="strCuenta">string that contents the strCuenta value for the LiquidacionGastos object</param>
 		/// <param name="intRowRegistro">int that contents the intRowRegistro value for the LiquidacionGastos object</param>
 		/// <returns>One LiquidacionGastos object</returns>
-		public LiquidacionGastos Get(long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, bool generateUndo=false)
+		public LiquidacionGastos Get(long Codigo, long lngIdRegistrRutaItemId, long lngIdRegistroViaje, long lngIdRegistrRuta, string strCuenta, int intRowRegistro, bool generateUndo=false)
 		{
 			try 
 			{
 				LiquidacionGastos liquidaciongastos = null;
-				DataTable dt = LiquidacionGastosDataProvider.Instance.Get(lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro);
+				DataTable dt = LiquidacionGastosDataProvider.Instance.Get(Codigo, lngIdRegistrRutaItemId, lngIdRegistroViaje, lngIdRegistrRuta, strCuenta, intRowRegistro);
 				if ((dt.Rows.Count > 0))
 				{
 					liquidaciongastos = new LiquidacionGastos();
@@ -432,6 +451,9 @@ namespace LiqViajes_Bll_Data
 			// Perform the search for the property's value
 			switch (propertyname)
 			{
+				case "Codigo":
+					return liquidaciongastos.Codigo.GetType();
+
 				case "lngIdRegistrRutaItemId":
 					return liquidaciongastos.lngIdRegistrRutaItemId.GetType();
 
@@ -518,6 +540,9 @@ namespace LiqViajes_Bll_Data
 
 				case "NombreTercero":
 					return liquidaciongastos.NombreTercero.GetType();
+
+				case "Detalle":
+					return liquidaciongastos.Detalle.GetType();
 
 			}
 

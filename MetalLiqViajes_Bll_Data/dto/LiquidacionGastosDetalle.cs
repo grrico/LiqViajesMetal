@@ -356,7 +356,7 @@ namespace LiqViajes_Bll_Data
 								{
 									if (m_RowRegistro != null)
 									{
-										m_LiquidacionGastos = LiquidacionGastosController.Instance.Get((long)m_RegistrRutaItemId,(long)m_RegistroViaje,(long)m_RegistroRuta,(string)m_Cuenta,(int)m_RowRegistro);
+                                        m_LiquidacionGastos = LiquidacionGastosController.Instance.Get((long)Codigo,(long)m_RegistrRutaItemId,(long)m_RegistroViaje,(long)m_RegistroRuta,(string)m_Cuenta,(int)m_RowRegistro);
 									}
 								}
 							}
