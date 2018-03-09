@@ -13,6 +13,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Dynamic;
 using System.Net;
+using MetalLiqViajes_Forms.com.terpel.movilidad;
 
 namespace MetalLiqViajes_Forms
 {
@@ -61,6 +62,7 @@ namespace MetalLiqViajes_Forms
             //{"Codigo":"0010101010","Placas":"FPOP1,LFV112","FechaInicio":"20080805 12:00", "FechaFin":"20120805 17:00"}
             //string jsonString = people.ToJSON();
 
+            string codigocliente = "0010240247";
             string listaPlacas = "";
             string delimitador = ",";
             int contador = 0;
@@ -98,8 +100,20 @@ namespace MetalLiqViajes_Forms
 
 
             com.terpel.movilidad.Integrator integr = new com.terpel.movilidad.Integrator();
-
+            integr.Credentials = new NetworkCredential("Flotas", "Flotas2013%");
+            //CosultaEDSFlota[] consultaEDS = integr.ConsultaEDS(codigocliente);
             var resultado2 = integr.ConsultaVentas(resultado);
+            VentasFlotaResponse venta = null;
+            foreach (var item in resultado2)
+            {
+                venta = item;
+            }
+
+            //List<VentasFlotaResponse> ventasFlotas = new List<VentasFlotaResponse>();
+
+            //ICredentials Credentials
+            //integr.
+
 
             //ICredentials credentials;
 
