@@ -90,5 +90,17 @@ namespace MetalLiqViajes_Forms.Properties {
                 return ((string)(this["MetalLiqViajes_Forms_com_terpel_movilidad_Integrator"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Metal\\Terpel")]
+        public string PathFacturaTerpel {
+            get {
+                return ((string)(this["PathFacturaTerpel"]));
+            }
+            set {
+                this["PathFacturaTerpel"] = value;
+            }
+        }
     }
 }
