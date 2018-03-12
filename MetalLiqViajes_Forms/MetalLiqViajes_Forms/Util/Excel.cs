@@ -31,4 +31,15 @@ namespace MetalLiqViajes_Forms.Util
         public string Factura { get; set; }//{Factura}
 
     }
+
+
+    public class FileExcel
+    {
+        public string nameFile { get; set; }
+        public string GetFullPath { get; set; }
+        public bool Excluir { get; set; }
+        public string Notaexcluir { get; set; }
+        public bool Importado { get; set; }
+
+    }
 }

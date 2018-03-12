@@ -349,8 +349,6 @@ namespace MetalLiqViajes_Forms
 
         }
 
-
-
         private static void LeerExcel()
         {
             OpenFileDialog of = new OpenFileDialog();
@@ -389,20 +387,17 @@ namespace MetalLiqViajes_Forms
             {
                 if (textBoxPath.Text != "")
                 {
-                    Properties.Settings.Default.PathArchivoModulo = textBoxPath.Text;
+                    Properties.Settings.Default.PathFacturaTerpel = textBoxPath.Text;
                     dlgOpenDir.SelectedPath = textBoxPath.Text;
                 }
                 DialogResult resDialog = new System.Windows.Forms.DialogResult();
-                dlgOpenDir.SelectedPath = Properties.Settings.Default.PathArchivoModulo;
+                dlgOpenDir.SelectedPath = Properties.Settings.Default.PathFacturaTerpel;
                 resDialog = dlgOpenDir.ShowDialog();
                 if (resDialog.ToString() == "OK")
                 {
                     textBoxPath.Text = dlgOpenDir.SelectedPath;
                     textBoxPath.Refresh();
-
-                    Imagen_PlacaList = new List<Imagen_Placa>();
-
-                    Properties.Settings.Default.PathArchivoModulo = dlgOpenDir.SelectedPath + "\\";
+                    Properties.Settings.Default.PathFacturaTerpel = dlgOpenDir.SelectedPath + "\\";
                     CargaArchivos(dlgOpenDir.SelectedPath);
 
                 }
@@ -413,6 +408,38 @@ namespace MetalLiqViajes_Forms
             }
 
         }
+
+        private void CargaArchivos(string @iPath)
+        {
+            try
+            {
+                List<FileExcel> m_FileExcelList = new List<FileExcel>();
+                FileExcel m_FileExcel;
+                string[] DirPathfiles = Directory.GetFiles(@iPath);
+                foreach (string file in DirPathfiles)
+                {
+                    if (Path.GetExtension(file) != ".csv")
+                    {
+                        continue;
+                    }
+                    m_FileExcel = new FileExcel();
+                    m_FileExcel.nameFile = Path.GetFileName(file);
+                    m_FileExcel.GetFullPath = Path.GetFullPath(file);
+                    m_FileExcel.Importado = false;
+                    m_FileExcel.Excluir = false;
+                    m_FileExcel.Notaexcluir = "";
+                    m_FileExcelList.Add(m_FileExcel);
+                }
+
+                dataGridView2.DataSource = m_FileExcelList;
+                dataGridView2.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Aviso: hay un error cargando el archivo, " + ex.Message, "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
 
