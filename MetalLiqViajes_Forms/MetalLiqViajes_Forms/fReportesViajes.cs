@@ -607,7 +607,7 @@ namespace MetalLiqViajes_Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: Debe ingresar un valor numérico", "Jurídico", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error: Debe ingresar un valor numérico", "Reporte Viajes Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxValor.Text = "";
                 textBoxValor.Refresh();
             }

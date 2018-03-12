@@ -49,7 +49,7 @@
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 0;
-            this.btnConsultar.Text = "Consultar Placa";
+            this.btnConsultar.Text = "Leer API";
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
@@ -126,7 +126,7 @@
             this.btnCargaExcel.Name = "btnCargaExcel";
             this.btnCargaExcel.Size = new System.Drawing.Size(75, 23);
             this.btnCargaExcel.TabIndex = 0;
-            this.btnCargaExcel.Text = "Consultar Placa";
+            this.btnCargaExcel.Text = "Leer Excel";
             this.btnCargaExcel.UseVisualStyleBackColor = true;
             this.btnCargaExcel.Click += new System.EventHandler(this.btnCargaExcel_Click);
             // 
