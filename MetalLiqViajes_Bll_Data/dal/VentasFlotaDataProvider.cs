@@ -48,15 +48,17 @@ namespace LiqViajes_Bll_Data
 		/// Creates a new record into VentasFlota by passing all fields
 		/// </summary>
 		/// <param name="CodEds"></param>
-		/// <param name="Recibo"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="Placa"></param>
 		/// <param name="Producto"></param>
 		/// <param name="Dinero"></param>
+		/// <param name="Descuento"></param>
+		/// <param name="PrecioEspecial"></param>
+		/// <param name="TotalFactura"></param>
 		/// <param name="Volumen"></param>
 		/// <param name="Kilometraje"></param>
-		/// <returns>long that contents the Codigo value</returns>
-		public long Create(long Codigo, long? CodEds, long? Recibo, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Volumen, decimal? Kilometraje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Factura"></param>
+		public void Create(long Recibo, long? CodEds, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -80,14 +82,10 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 
-				paramlist.AddWithValue("@Codigo",Codigo);
+				paramlist.AddWithValue("@Recibo",Recibo);
 				if (CodEds !=null)
 				{
 					paramlist.AddWithValue("@CodEds",CodEds);
-				}
-				if (Recibo !=null)
-				{
-					paramlist.AddWithValue("@Recibo",Recibo);
 				}
 				if (Fecha !=null)
 				{
@@ -105,6 +103,18 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@Dinero",Dinero);
 				}
+				if (Descuento !=null)
+				{
+					paramlist.AddWithValue("@Descuento",Descuento);
+				}
+				if (PrecioEspecial !=null)
+				{
+					paramlist.AddWithValue("@PrecioEspecial",PrecioEspecial);
+				}
+				if (TotalFactura !=null)
+				{
+					paramlist.AddWithValue("@TotalFactura",TotalFactura);
+				}
 				if (Volumen !=null)
 				{
 					paramlist.AddWithValue("@Volumen",Volumen);
@@ -113,10 +123,11 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@Kilometraje",Kilometraje);
 				}
-				// Execute the query and return the new identity value
-				long returnValue = Convert.ToInt32(LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0]);
-
-				return returnValue;
+				if (Factura !=null)
+				{
+					paramlist.AddWithValue("@Factura",Factura);
+				}
+				LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -128,16 +139,19 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Updates one record into VentasFlota by passing all fields
 		/// </summary>
-		/// <param name="Codigo"></param>
-		/// <param name="CodEds"></param>
 		/// <param name="Recibo"></param>
+		/// <param name="CodEds"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="Placa"></param>
 		/// <param name="Producto"></param>
 		/// <param name="Dinero"></param>
+		/// <param name="Descuento"></param>
+		/// <param name="PrecioEspecial"></param>
+		/// <param name="TotalFactura"></param>
 		/// <param name="Volumen"></param>
 		/// <param name="Kilometraje"></param>
-		public void Update(long Codigo, long? CodEds, long? Recibo, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Volumen, decimal? Kilometraje,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Factura"></param>
+		public void Update(long Recibo, long? CodEds, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -160,14 +174,10 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				paramlist.AddWithValue("@Codigo",Codigo);
+				paramlist.AddWithValue("@Recibo",Recibo);
 				if (CodEds !=null)
 				{
 					paramlist.AddWithValue("@CodEds",CodEds);
-				}
-				if (Recibo !=null)
-				{
-					paramlist.AddWithValue("@Recibo",Recibo);
 				}
 				if (Fecha !=null)
 				{
@@ -185,6 +195,18 @@ namespace LiqViajes_Bll_Data
 				{
 					paramlist.AddWithValue("@Dinero",Dinero);
 				}
+				if (Descuento !=null)
+				{
+					paramlist.AddWithValue("@Descuento",Descuento);
+				}
+				if (PrecioEspecial !=null)
+				{
+					paramlist.AddWithValue("@PrecioEspecial",PrecioEspecial);
+				}
+				if (TotalFactura !=null)
+				{
+					paramlist.AddWithValue("@TotalFactura",TotalFactura);
+				}
 				if (Volumen !=null)
 				{
 					paramlist.AddWithValue("@Volumen",Volumen);
@@ -192,6 +214,10 @@ namespace LiqViajes_Bll_Data
 				if (Kilometraje !=null)
 				{
 					paramlist.AddWithValue("@Kilometraje",Kilometraje);
+				}
+				if (Factura !=null)
+				{
+					paramlist.AddWithValue("@Factura",Factura);
 				}
 				LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
@@ -205,8 +231,8 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Deletes one record from VentasFlota by passing all key fields
 		/// </summary>
-		/// <param name="Codigo"></param>
-		public void Delete(long Codigo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="Recibo"></param>
+		public void Delete(long Recibo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -229,7 +255,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				paramlist.AddWithValue("@Codigo",Codigo);
+				paramlist.AddWithValue("@Recibo",Recibo);
 				LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDelete", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
@@ -242,9 +268,9 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Gets one record from VentasFlota passing all key fields
 		/// </summary>
-		/// <param name="Codigo"></param>
+		/// <param name="Recibo"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(long Codigo)
+		public DataTable Get(long Recibo)
 		{
 			try 
 			{
@@ -263,7 +289,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				paramlist.AddWithValue("@Codigo",Codigo);
+				paramlist.AddWithValue("@Recibo",Recibo);
 				return LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaGet", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 
 			}

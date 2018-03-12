@@ -26,15 +26,18 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public VentasFlota()
 		{
-			m_Codigo = 0;
+			m_Recibo = 0;
 			m_CodEds = null;
-			m_Recibo = null;
 			m_Fecha = null;
 			m_Placa = null;
 			m_Producto = null;
 			m_Dinero = null;
+			m_Descuento = null;
+			m_PrecioEspecial = null;
+			m_TotalFactura = null;
 			m_Volumen = null;
 			m_Kilometraje = null;
+			m_Factura = null;
 			m_changed=false;
 		}
 		        //Return the table name of object
@@ -48,15 +51,18 @@ namespace LiqViajes_Bll_Data
 		public void GenerateUndo()
 		{
 			m_oldVentasFlota=new VentasFlota();
-			m_oldVentasFlota.m_Codigo = m_Codigo;
+			m_oldVentasFlota.m_Recibo = m_Recibo;
 			m_oldVentasFlota.CodEds = m_CodEds;
-			m_oldVentasFlota.Recibo = m_Recibo;
 			m_oldVentasFlota.Fecha = m_Fecha;
 			m_oldVentasFlota.Placa = m_Placa;
 			m_oldVentasFlota.Producto = m_Producto;
 			m_oldVentasFlota.Dinero = m_Dinero;
+			m_oldVentasFlota.Descuento = m_Descuento;
+			m_oldVentasFlota.PrecioEspecial = m_PrecioEspecial;
+			m_oldVentasFlota.TotalFactura = m_TotalFactura;
 			m_oldVentasFlota.Volumen = m_Volumen;
 			m_oldVentasFlota.Kilometraje = m_Kilometraje;
+			m_oldVentasFlota.Factura = m_Factura;
 		}
 
 		public VentasFlota OldVentasFlota
@@ -68,13 +74,16 @@ namespace LiqViajes_Bll_Data
 		{
 			List<string> fields=new List<string>();
 			if (m_oldVentasFlota.CodEds != m_CodEds) fields.Add("CodEds");
-			if (m_oldVentasFlota.Recibo != m_Recibo) fields.Add("Recibo");
 			if (m_oldVentasFlota.Fecha != m_Fecha) fields.Add("Fecha");
 			if (m_oldVentasFlota.Placa != m_Placa) fields.Add("Placa");
 			if (m_oldVentasFlota.Producto != m_Producto) fields.Add("Producto");
 			if (m_oldVentasFlota.Dinero != m_Dinero) fields.Add("Dinero");
+			if (m_oldVentasFlota.Descuento != m_Descuento) fields.Add("Descuento");
+			if (m_oldVentasFlota.PrecioEspecial != m_PrecioEspecial) fields.Add("PrecioEspecial");
+			if (m_oldVentasFlota.TotalFactura != m_TotalFactura) fields.Add("TotalFactura");
 			if (m_oldVentasFlota.Volumen != m_Volumen) fields.Add("Volumen");
 			if (m_oldVentasFlota.Kilometraje != m_Kilometraje) fields.Add("Kilometraje");
+			if (m_oldVentasFlota.Factura != m_Factura) fields.Add("Factura");
 			string[] fieldst = new string[fields.Count];
 			int i = 0;
 			foreach(string st in fields)
@@ -88,14 +97,11 @@ namespace LiqViajes_Bll_Data
 		#region Fields
 
 
-		// Field for storing the VentasFlota's Codigo value
-		private long m_Codigo;
+		// Field for storing the VentasFlota's Recibo value
+		private long m_Recibo;
 
 		// Field for storing the VentasFlota's CodEds value
 		private long? m_CodEds;
-
-		// Field for storing the VentasFlota's Recibo value
-		private long? m_Recibo;
 
 		// Field for storing the VentasFlota's Fecha value
 		private DateTime? m_Fecha;
@@ -109,11 +115,23 @@ namespace LiqViajes_Bll_Data
 		// Field for storing the VentasFlota's Dinero value
 		private decimal? m_Dinero;
 
+		// Field for storing the VentasFlota's Descuento value
+		private decimal? m_Descuento;
+
+		// Field for storing the VentasFlota's PrecioEspecial value
+		private decimal? m_PrecioEspecial;
+
+		// Field for storing the VentasFlota's TotalFactura value
+		private decimal? m_TotalFactura;
+
 		// Field for storing the VentasFlota's Volumen value
 		private decimal? m_Volumen;
 
 		// Field for storing the VentasFlota's Kilometraje value
 		private decimal? m_Kilometraje;
+
+		// Field for storing the VentasFlota's Factura value
+		private long? m_Factura;
 
 		// Evaluate changed state
 		private bool m_changed=false;
@@ -129,16 +147,16 @@ namespace LiqViajes_Bll_Data
 			set { m_changed=value;}
 		}
 		/// <summary>
-		/// Attribute for access the VentasFlota's Codigo value (long)
+		/// Attribute for access the VentasFlota's Recibo value (long)
 		/// </summary>
 		[DataMember]
-		public long Codigo
+		public long Recibo
 		{
-			get { return m_Codigo; }
+			get { return m_Recibo; }
 			set 
 			{
 				m_changed=true;
-				m_Codigo = value;
+				m_Recibo = value;
 			}
 		}
 
@@ -153,20 +171,6 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_CodEds = value;
-			}
-		}
-
-		/// <summary>
-		/// Attribute for access the VentasFlota's Recibo value (long)
-		/// </summary>
-		[DataMember]
-		public long? Recibo
-		{
-			get { return m_Recibo; }
-			set 
-			{
-				m_changed=true;
-				m_Recibo = value;
 			}
 		}
 
@@ -227,6 +231,48 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
+		/// Attribute for access the VentasFlota's Descuento value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal? Descuento
+		{
+			get { return m_Descuento; }
+			set 
+			{
+				m_changed=true;
+				m_Descuento = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlota's PrecioEspecial value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal? PrecioEspecial
+		{
+			get { return m_PrecioEspecial; }
+			set 
+			{
+				m_changed=true;
+				m_PrecioEspecial = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlota's TotalFactura value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal? TotalFactura
+		{
+			get { return m_TotalFactura; }
+			set 
+			{
+				m_changed=true;
+				m_TotalFactura = value;
+			}
+		}
+
+		/// <summary>
 		/// Attribute for access the VentasFlota's Volumen value (decimal)
 		/// </summary>
 		[DataMember]
@@ -254,19 +300,36 @@ namespace LiqViajes_Bll_Data
 			}
 		}
 
+		/// <summary>
+		/// Attribute for access the VentasFlota's Factura value (long)
+		/// </summary>
+		[DataMember]
+		public long? Factura
+		{
+			get { return m_Factura; }
+			set 
+			{
+				m_changed=true;
+				m_Factura = value;
+			}
+		}
+
 		public object GetAttribute(string pattribute)
 		{
 			switch (pattribute)
 			{
-				case "Codigo": return Codigo;
-				case "CodEds": return CodEds;
 				case "Recibo": return Recibo;
+				case "CodEds": return CodEds;
 				case "Fecha": return Fecha;
 				case "Placa": return Placa;
 				case "Producto": return Producto;
 				case "Dinero": return Dinero;
+				case "Descuento": return Descuento;
+				case "PrecioEspecial": return PrecioEspecial;
+				case "TotalFactura": return TotalFactura;
 				case "Volumen": return Volumen;
 				case "Kilometraje": return Kilometraje;
+				case "Factura": return Factura;
 				default: return null;
 			}
 		}
@@ -278,7 +341,7 @@ namespace LiqViajes_Bll_Data
 
 		public string GetSqlKey()
 		{
-			return "[Codigo] = " + Codigo.ToString();
+			return "[Recibo] = " + Recibo.ToString();
 		}
 		#endregion
 

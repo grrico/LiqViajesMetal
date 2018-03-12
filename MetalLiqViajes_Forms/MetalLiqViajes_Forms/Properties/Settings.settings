@@ -20,14 +20,5 @@
     <Setting Name="MetalLiqViajes_Forms_com_terpel_movilidad_Integrator" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://movilidad.terpel.com/Terpel.ConsultaFlotas/Integrator.asmx</Value>
     </Setting>
-    <Setting Name="ClienteTerpel" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0010240247</Value>
-    </Setting>
-    <Setting Name="UsuarioTerpel" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Flotas</Value>
-    </Setting>
-    <Setting Name="PasswordTerpel" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Flotas2013%</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
