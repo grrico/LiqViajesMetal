@@ -25,7 +25,7 @@ namespace MetalLiqViajes_Forms.Util
         public decimal PrecioEspecial { get; set; }//{Precio Especial}
         public decimal TotalFactura { get; set; }//{Total Factura}
         public decimal Descuento { get; set; }//{Descuento}
-        public decimal UnidadVenta { get; set; }//{Unidad de Venta}
+        public string UnidadVenta { get; set; }//{Unidad de Venta}
         public decimal Kilometraje { get; set; }//{Kilometraje}
         public string TipoVenta { get; set; }//{Tipo de Venta}
         public string Factura { get; set; }//{Factura}

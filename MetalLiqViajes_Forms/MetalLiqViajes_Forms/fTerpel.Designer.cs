@@ -38,14 +38,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxMonth = new System.Windows.Forms.ComboBox();
-            this.utilPlacaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnCargaExcel = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridDataExcel = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridFiles = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFileImportar = new System.Windows.Forms.TextBox();
@@ -53,19 +52,20 @@
             this.btnCargaDirectorio = new System.Windows.Forms.Button();
             this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.utilPlacaBindingSource)).BeginInit();
+            this.utilPlacaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDataExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utilPlacaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConsultar
@@ -141,15 +141,11 @@
             this.comboBoxMonth.Size = new System.Drawing.Size(100, 21);
             this.comboBoxMonth.TabIndex = 9;
             // 
-            // utilPlacaBindingSource
-            // 
-            this.utilPlacaBindingSource.DataSource = typeof(MetalLiqViajes_Forms.UtilPlaca);
-            // 
             // btnCargaExcel
             // 
-            this.btnCargaExcel.Location = new System.Drawing.Point(178, 48);
+            this.btnCargaExcel.Location = new System.Drawing.Point(454, 3);
             this.btnCargaExcel.Name = "btnCargaExcel";
-            this.btnCargaExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnCargaExcel.Size = new System.Drawing.Size(60, 48);
             this.btnCargaExcel.TabIndex = 0;
             this.btnCargaExcel.Text = "Leer Excel";
             this.btnCargaExcel.UseVisualStyleBackColor = true;
@@ -165,7 +161,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.comboBoxYear);
-            this.splitContainer1.Panel1.Controls.Add(this.btnCargaExcel);
             this.splitContainer1.Panel1.Controls.Add(this.checkBoxMarcar);
             this.splitContainer1.Panel1.Controls.Add(this.btnConsultar);
             this.splitContainer1.Panel1.Controls.Add(this.comboBoxMonth);
@@ -181,14 +176,14 @@
             this.splitContainer1.SplitterDistance = 294;
             this.splitContainer1.TabIndex = 10;
             // 
-            // dataGridView1
+            // dataGridDataExcel
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(750, 191);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridDataExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDataExcel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridDataExcel.Location = new System.Drawing.Point(0, 0);
+            this.dataGridDataExcel.Name = "dataGridDataExcel";
+            this.dataGridDataExcel.Size = new System.Drawing.Size(750, 191);
+            this.dataGridDataExcel.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -205,7 +200,7 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer2.Panel2.Controls.Add(this.dataGridDataExcel);
             this.splitContainer2.Size = new System.Drawing.Size(752, 393);
             this.splitContainer2.SplitterDistance = 196;
             this.splitContainer2.TabIndex = 1;
@@ -213,6 +208,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnCargaDirectorio);
+            this.panel1.Controls.Add(this.btnCargaExcel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBoxFileImportar);
@@ -225,21 +221,22 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dataGridView2);
+            this.panel2.Controls.Add(this.dataGridFiles);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 61);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(750, 133);
             this.panel2.TabIndex = 2;
             // 
-            // dataGridView2
+            // dataGridFiles
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(750, 133);
-            this.dataGridView2.TabIndex = 1;
+            this.dataGridFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridFiles.Location = new System.Drawing.Point(0, 0);
+            this.dataGridFiles.Name = "dataGridFiles";
+            this.dataGridFiles.Size = new System.Drawing.Size(750, 133);
+            this.dataGridFiles.TabIndex = 1;
+            this.dataGridFiles.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridFiles_RowEnter);
             // 
             // label2
             // 
@@ -297,6 +294,10 @@
             // 
             this.dlgOpenFile.FileName = "openFileDialog";
             // 
+            // utilPlacaBindingSource
+            // 
+            this.utilPlacaBindingSource.DataSource = typeof(MetalLiqViajes_Forms.UtilPlaca);
+            // 
             // fTerpel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,13 +308,12 @@
             this.Name = "fTerpel";
             this.Text = "fTerpel";
             this.Load += new System.EventHandler(this.fTerpel_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.utilPlacaBindingSource)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDataExcel)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -321,7 +321,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utilPlacaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -341,9 +342,9 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridFiles;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridDataExcel;
         private System.Windows.Forms.Button btnCargaDirectorio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

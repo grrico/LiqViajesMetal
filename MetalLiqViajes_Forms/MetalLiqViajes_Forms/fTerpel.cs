@@ -22,9 +22,10 @@ namespace MetalLiqViajes_Forms
 
         public List<UtilPlaca> ultilplacalist { get; set; }
 
+        private FileExcel m_FileExcel { get; set; }
+
         private List<YearTerpel> YearsList { get; set; }
         private YearTerpel yearTerpel { get; set; }
-
         private List<MonthTerpel> monthTerpelList { get; set; }
         private MonthTerpel monthTerpel { get; set; }
 
@@ -96,7 +97,7 @@ namespace MetalLiqViajes_Forms
             monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
 
 
-           
+
 
 
         }
@@ -278,16 +279,15 @@ namespace MetalLiqViajes_Forms
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
-            //LeerExcel();
             ToEntidadHojaExcelListTest();
 
         }
         public void ToEntidadHojaExcelListTest()
         {
-            //book.Dispose();
+            if (@m_FileExcel == null) return;
             this.Cursor = Cursors.WaitCursor;
 
-            string pathToExcelFile = @"D:\Genaro\Metal\Terpel\FEBRERO\201802  Corte 01 - 08 Metal ltda.xlsx";
+            string pathToExcelFile = @m_FileExcel.GetFullPath;//  @"D:\Genaro\Metal\Terpel\FEBRERO\201802  Corte 01 - 08 Metal ltda.xlsx";
 
             string sheetName = "METAL LTDA";
 
@@ -296,88 +296,67 @@ namespace MetalLiqViajes_Forms
             bool swtEncabezado = false;
             ExcelTerpel excelTerpel = null;
             List<ExcelTerpel> excelTerpelList = new List<ExcelTerpel>();
-            foreach (var a in artistAlbums)
+
+            try
             {
-                try
+                foreach (var a in artistAlbums)
                 {
-
-                    if (a[0]== "No. Venta")
+                    try
                     {
-                        swtEncabezado = true;
-                        continue;
-                    }
-
-                    if (swtEncabezado && (a[8]==null || a[8]==""))
-                    {
-                        break;
-                    }
-                    if (Convert.ToInt32(a[8].ToString()) > 0)
-                    {
-                        excelTerpel = new ExcelTerpel();
-                        excelTerpel.Recibo = Convert.ToInt64(a[0].Value);
-                        excelTerpel.Fecha = Convert.ToDateTime(a[1].Value);
-                        excelTerpel.Hora = a[2];
-                        excelTerpel.NombreCliente = a[3];
-                        excelTerpel.Estacion = a[4];
-                        excelTerpel.TipoEstacion = a[5];
-                        excelTerpel.Destinatario = a[6];
-                        excelTerpel.Ciudad = a[7];
-                        excelTerpel.IdEDS = Convert.ToInt64(a[8].Value);
-                        excelTerpel.Placa = a[9];
-                        excelTerpel.Producto = a[10];
-                        excelTerpel.cantidad = Convert.ToDecimal(a[11].Value);
-                        excelTerpel.Precio = Convert.ToDecimal(a[12].Value);
-                        excelTerpel.TotalVentas = Convert.ToDecimal(a[13].Value);
-                        excelTerpel.PrecioEspecial = Convert.ToDecimal(a[14].Value);
-                        excelTerpel.TotalFactura = Convert.ToDecimal(a[15].Value);
-                        excelTerpel.Descuento = Convert.ToDecimal(a[16].Value);
-                        excelTerpel.UnidadVenta = Convert.ToDecimal(a[17].Value);
-                        excelTerpel.Kilometraje = Convert.ToDecimal(a[18].Value);
-                        excelTerpel.TipoVenta = a[19];
-                        excelTerpel.Factura = a[20];
-                        excelTerpelList.Add(excelTerpel);
-                        continue;
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-
-            this.Cursor = Cursors.Default;
-            MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelTerpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        }
-
-        private static void LeerExcel()
-        {
-            OpenFileDialog of = new OpenFileDialog();
-            string directoryPath = Path.GetDirectoryName("c:\\Metal\\Terpel\\");
-            of.InitialDirectory = directoryPath;
-            of.Filter = "Excel Files(.xls)|*.xls|Excel Files(.xlsx)|*.xlsx|Excel Files(.csv)|*.csv|Excel Files(.xlsm)|*.xlsm|Files Open(.ods)|*.ods|Excel Files(.sxc)|*.sxc|Texto (*.txt)|*.txt";
-            if (of.ShowDialog() == DialogResult.OK)
-            {
-                StreamReader objReader = new StreamReader(@of.FileName);
-                string sLine = "";
-                string cedula = "";
-                int _Procesos = 0;
-                while (sLine != null)
-                {
-                    sLine = objReader.ReadLine();
-                    if ((sLine != null) && (sLine != ";;;"))
-                    {
-                        cedula = sLine.Split(',')[0];
-                        if ((cedula == "Cédula") || (cedula == "") || (cedula == "cedula"))
+                        if (a[0] == "No. Venta")
+                        {
+                            swtEncabezado = true;
                             continue;
+                        }
 
-                        //foreach (Sistecredito.Procesos.Proceso proceso in m_ProcesoGridList.Where(t => t.Referencia2 == cedula))
-                        //{
-                        //    proceso.Seleccionada = true;
-                        //    _Procesos++;
-                        //}
+                        if (swtEncabezado && (a[8] == null || a[8] == ""))
+                        {
+                            break;
+                        }
+                        if (Convert.ToInt32(a[8].ToString()) > 0)
+                        {
+                            excelTerpel = new ExcelTerpel();
+                            excelTerpel.Recibo = Convert.ToInt64(a[0].Value);
+                            excelTerpel.Fecha = Convert.ToDateTime(a[1].Value);
+                            excelTerpel.Hora = a[2];
+                            excelTerpel.NombreCliente = a[3];
+                            excelTerpel.Estacion = a[4];
+                            excelTerpel.TipoEstacion = a[5];
+                            excelTerpel.Destinatario = a[6];
+                            excelTerpel.Ciudad = a[7];
+                            excelTerpel.IdEDS = Convert.ToInt64(a[8].Value);
+                            excelTerpel.Placa = a[9];
+                            excelTerpel.Producto = a[10];
+                            excelTerpel.cantidad = Convert.ToDecimal(a[11].Value);
+                            excelTerpel.Precio = Convert.ToDecimal(a[12].Value);
+                            excelTerpel.TotalVentas = Convert.ToDecimal(a[13].Value);
+                            excelTerpel.PrecioEspecial = Convert.ToDecimal(a[14].Value);
+                            excelTerpel.TotalFactura = Convert.ToDecimal(a[15].Value);
+                            excelTerpel.Descuento = Convert.ToDecimal(a[16].Value);
+                            excelTerpel.UnidadVenta = a[17].Value.ToString();
+                            excelTerpel.Kilometraje = Convert.ToDecimal(a[18].Value);
+                            excelTerpel.TipoVenta = a[19];
+                            excelTerpel.Factura = a[20];
+                            excelTerpelList.Add(excelTerpel);
+                            continue;
+                        }
+                    }
+                    catch
+                    {
                     }
                 }
-                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridDataExcel.DataSource = excelTerpelList;
+                dataGridDataExcel.Refresh();
+
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelTerpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Error cargando la información del registro "  + m_FileExcel.nameFile, "Facturación Terpel, Registro Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
         }
 
@@ -414,25 +393,25 @@ namespace MetalLiqViajes_Forms
             try
             {
                 List<FileExcel> m_FileExcelList = new List<FileExcel>();
-                FileExcel m_FileExcel;
+                string Extension = "";
                 string[] DirPathfiles = Directory.GetFiles(@iPath);
                 foreach (string file in DirPathfiles)
                 {
-                    if (Path.GetExtension(file) != ".csv")
+                    Extension = Path.GetExtension(file);
+                    if (Extension != ".xls" || Extension != ".xlsx" || Extension != ".csv")
                     {
-                        continue;
+                        m_FileExcel = new FileExcel();
+                        m_FileExcel.nameFile = Path.GetFileName(file);
+                        m_FileExcel.GetFullPath = Path.GetFullPath(file);
+                        m_FileExcel.Importado = false;
+                        m_FileExcel.Excluir = false;
+                        m_FileExcel.Notaexcluir = "";
+                        m_FileExcelList.Add(m_FileExcel);
                     }
-                    m_FileExcel = new FileExcel();
-                    m_FileExcel.nameFile = Path.GetFileName(file);
-                    m_FileExcel.GetFullPath = Path.GetFullPath(file);
-                    m_FileExcel.Importado = false;
-                    m_FileExcel.Excluir = false;
-                    m_FileExcel.Notaexcluir = "";
-                    m_FileExcelList.Add(m_FileExcel);
                 }
 
-                dataGridView2.DataSource = m_FileExcelList;
-                dataGridView2.Refresh();
+                dataGridFiles.DataSource = m_FileExcelList;
+                dataGridFiles.Refresh();
             }
             catch (Exception ex)
             {
@@ -440,6 +419,42 @@ namespace MetalLiqViajes_Forms
             }
         }
 
+        private static void LeerExcel()
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            string directoryPath = Path.GetDirectoryName("c:\\Metal\\Terpel\\");
+            of.InitialDirectory = directoryPath;
+            of.Filter = "Excel Files(.xls)|*.xls|Excel Files(.xlsx)|*.xlsx|Excel Files(.csv)|*.csv|Excel Files(.xlsm)|*.xlsm|Files Open(.ods)|*.ods|Excel Files(.sxc)|*.sxc|Texto (*.txt)|*.txt";
+            if (of.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader objReader = new StreamReader(@of.FileName);
+                string sLine = "";
+                string cedula = "";
+                int _Procesos = 0;
+                while (sLine != null)
+                {
+                    sLine = objReader.ReadLine();
+                    if ((sLine != null) && (sLine != ";;;"))
+                    {
+                        cedula = sLine.Split(',')[0];
+                        if ((cedula == "Cédula") || (cedula == "") || (cedula == "cedula"))
+                            continue;
+
+                        //foreach (Sistecredito.Procesos.Proceso proceso in m_ProcesoGridList.Where(t => t.Referencia2 == cedula))
+                        //{
+                        //    proceso.Seleccionada = true;
+                        //    _Procesos++;
+                        //}
+                    }
+                }
+                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dataGridFiles_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            m_FileExcel = dataGridFiles.Rows[e.RowIndex].DataBoundItem as FileExcel;
+        }
     }
 }
 
