@@ -96,6 +96,9 @@ namespace MetalLiqViajes_Forms
             monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
 
 
+           
+
+
         }
 
         private void checkBoxMarcar_CheckedChanged(object sender, EventArgs e)
@@ -378,6 +381,37 @@ namespace MetalLiqViajes_Forms
                 }
                 MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnCargaDirectorio_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBoxPath.Text != "")
+                {
+                    Properties.Settings.Default.PathArchivoModulo = textBoxPath.Text;
+                    dlgOpenDir.SelectedPath = textBoxPath.Text;
+                }
+                DialogResult resDialog = new System.Windows.Forms.DialogResult();
+                dlgOpenDir.SelectedPath = Properties.Settings.Default.PathArchivoModulo;
+                resDialog = dlgOpenDir.ShowDialog();
+                if (resDialog.ToString() == "OK")
+                {
+                    textBoxPath.Text = dlgOpenDir.SelectedPath;
+                    textBoxPath.Refresh();
+
+                    Imagen_PlacaList = new List<Imagen_Placa>();
+
+                    Properties.Settings.Default.PathArchivoModulo = dlgOpenDir.SelectedPath + "\\";
+                    CargaArchivos(dlgOpenDir.SelectedPath);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Aviso: hay un error buscando el directorio origen, " + ex.Message, "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
     }
 }
