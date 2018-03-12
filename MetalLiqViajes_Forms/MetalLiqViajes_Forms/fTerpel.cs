@@ -1,20 +1,18 @@
-﻿using System;
+﻿using LinqToExcel;
+using LiqViajes_Bll_Data;
+using MetalLiqViajes_Forms.com.terpel.movilidad;
+using MetalLiqViajes_Forms.Util;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Dynamic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using System.IO;
-using System.Security.Cryptography;
-using System.Dynamic;
-using System.Net;
-using MetalLiqViajes_Forms.com.terpel.movilidad;
-using LiqViajes_Bll_Data;
 using static MetalLiqViajes_Forms.Util.Parametros;
 
 namespace MetalLiqViajes_Forms
@@ -259,7 +257,7 @@ namespace MetalLiqViajes_Forms
 
         private void CargaFecha()
         {
-            
+
             yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
             monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
             if (monthTerpel != null)
@@ -276,6 +274,81 @@ namespace MetalLiqViajes_Forms
         }
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
+        {
+            //LeerExcel();
+            ToEntidadHojaExcelListTest();
+
+        }
+        public void ToEntidadHojaExcelListTest()
+        {
+            //book.Dispose();
+            this.Cursor = Cursors.WaitCursor;
+
+            string pathToExcelFile = @"D:\Genaro\Metal\Terpel\FEBRERO\201802  Corte 01 - 08 Metal ltda.xlsx";
+
+            string sheetName = "METAL LTDA";
+
+            var excelFile = new ExcelQueryFactory(pathToExcelFile);
+            var artistAlbums = from a in excelFile.Worksheet(sheetName) select a;
+            bool swtEncabezado = false;
+            ExcelTerpel excelTerpel = null;
+            List<ExcelTerpel> excelTerpelList = new List<ExcelTerpel>();
+            foreach (var a in artistAlbums)
+            {
+                try
+                {
+
+                    if (a[0]== "No. Venta")
+                    {
+                        swtEncabezado = true;
+                        continue;
+                    }
+
+                    if (swtEncabezado && (a[8]==null || a[8]==""))
+                    {
+                        break;
+                    }
+                    if (Convert.ToInt32(a[8].ToString()) > 0)
+                    {
+                        excelTerpel = new ExcelTerpel();
+                        excelTerpel.Recibo = a[0];
+                        excelTerpel.Fecha = a[1];
+                        excelTerpel.Hora = a[2];
+                        excelTerpel.NombreCliente = a[3];
+                        excelTerpel.Estacion = a[4];
+                        excelTerpel.TipoEstacion = a[5];
+                        excelTerpel.Destinatario = a[6];
+                        excelTerpel.Ciudad = a[7];
+                        excelTerpel.IdEDS = a[8];
+                        excelTerpel.Placa = a[9];
+                        excelTerpel.Producto = a[10];
+                        excelTerpel.cantidad = a[11];
+                        excelTerpel.Precio = a[12];
+                        excelTerpel.TotalVentas = a[13];
+                        excelTerpel.PrecioEspecial = a[14];
+                        excelTerpel.TotalFactura = a[15];
+                        excelTerpel.Descuento = a[16];
+                        excelTerpel.UnidadVenta = a[17];
+                        excelTerpel.Kilometraje = a[18];
+                        excelTerpel.TipoVenta = a[19];
+                        excelTerpel.Factura = a[20];
+                        excelTerpelList.Add(excelTerpel);
+                        continue;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            this.Cursor = Cursors.Default;
+            MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelTerpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+
+
+        private static void LeerExcel()
         {
             OpenFileDialog of = new OpenFileDialog();
             string directoryPath = Path.GetDirectoryName("c:\\Metal\\Terpel\\");
@@ -303,9 +376,7 @@ namespace MetalLiqViajes_Forms
                         //}
                     }
                 }
-
-
-                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Jurídico", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
