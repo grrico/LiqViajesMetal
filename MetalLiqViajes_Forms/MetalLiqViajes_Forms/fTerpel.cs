@@ -311,25 +311,25 @@ namespace MetalLiqViajes_Forms
                     if (Convert.ToInt32(a[8].ToString()) > 0)
                     {
                         excelTerpel = new ExcelTerpel();
-                        excelTerpel.Recibo = a[0];
-                        excelTerpel.Fecha = a[1];
+                        excelTerpel.Recibo = Convert.ToInt64(a[0].Value);
+                        excelTerpel.Fecha = Convert.ToDateTime(a[1].Value);
                         excelTerpel.Hora = a[2];
                         excelTerpel.NombreCliente = a[3];
                         excelTerpel.Estacion = a[4];
                         excelTerpel.TipoEstacion = a[5];
                         excelTerpel.Destinatario = a[6];
                         excelTerpel.Ciudad = a[7];
-                        excelTerpel.IdEDS = a[8];
+                        excelTerpel.IdEDS = Convert.ToInt64(a[8].Value);
                         excelTerpel.Placa = a[9];
                         excelTerpel.Producto = a[10];
-                        excelTerpel.cantidad = a[11];
-                        excelTerpel.Precio = a[12];
-                        excelTerpel.TotalVentas = a[13];
-                        excelTerpel.PrecioEspecial = a[14];
-                        excelTerpel.TotalFactura = a[15];
-                        excelTerpel.Descuento = a[16];
-                        excelTerpel.UnidadVenta = a[17];
-                        excelTerpel.Kilometraje = a[18];
+                        excelTerpel.cantidad = Convert.ToDecimal(a[11].Value);
+                        excelTerpel.Precio = Convert.ToDecimal(a[12].Value);
+                        excelTerpel.TotalVentas = Convert.ToDecimal(a[13].Value);
+                        excelTerpel.PrecioEspecial = Convert.ToDecimal(a[14].Value);
+                        excelTerpel.TotalFactura = Convert.ToDecimal(a[15].Value);
+                        excelTerpel.Descuento = Convert.ToDecimal(a[16].Value);
+                        excelTerpel.UnidadVenta = Convert.ToDecimal(a[17].Value);
+                        excelTerpel.Kilometraje = Convert.ToDecimal(a[18].Value);
                         excelTerpel.TipoVenta = a[19];
                         excelTerpel.Factura = a[20];
                         excelTerpelList.Add(excelTerpel);
