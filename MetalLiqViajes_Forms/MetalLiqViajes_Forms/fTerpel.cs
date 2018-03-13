@@ -13,6 +13,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+
 using static MetalLiqViajes_Forms.Util.Parametros;
 
 namespace MetalLiqViajes_Forms
@@ -280,8 +281,9 @@ namespace MetalLiqViajes_Forms
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
             ToEntidadHojaExcelListTest();
-
+            //LeerExcel();
         }
+
         public void ToEntidadHojaExcelListTest()
         {
             if (@m_FileExcel == null) return;
@@ -355,7 +357,7 @@ namespace MetalLiqViajes_Forms
             catch (Exception ex)
             {
                 this.Cursor = Cursors.Default;
-                MessageBox.Show("Error cargando la información del registro "  + m_FileExcel.nameFile, "Facturación Terpel, Registro Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error cargando la información del registro " + m_FileExcel.nameFile, "Facturación Terpel, Registro Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }
@@ -419,36 +421,29 @@ namespace MetalLiqViajes_Forms
             }
         }
 
-        private static void LeerExcel()
+        private void LeerExcel()
         {
-            OpenFileDialog of = new OpenFileDialog();
-            string directoryPath = Path.GetDirectoryName("c:\\Metal\\Terpel\\");
-            of.InitialDirectory = directoryPath;
-            of.Filter = "Excel Files(.xls)|*.xls|Excel Files(.xlsx)|*.xlsx|Excel Files(.csv)|*.csv|Excel Files(.xlsm)|*.xlsm|Files Open(.ods)|*.ods|Excel Files(.sxc)|*.sxc|Texto (*.txt)|*.txt";
-            if (of.ShowDialog() == DialogResult.OK)
+            StreamReader objReader = new StreamReader(@m_FileExcel.GetFullPath);//@of.FileName);
+            string sLine = "";
+            string cedula = "";
+            int _Procesos = 0;
+            while (sLine != null)
             {
-                StreamReader objReader = new StreamReader(@of.FileName);
-                string sLine = "";
-                string cedula = "";
-                int _Procesos = 0;
-                while (sLine != null)
+                sLine = objReader.ReadLine();
+                if ((sLine != null) && (sLine != ";;;"))
                 {
-                    sLine = objReader.ReadLine();
-                    if ((sLine != null) && (sLine != ";;;"))
-                    {
-                        cedula = sLine.Split(',')[0];
-                        if ((cedula == "Cédula") || (cedula == "") || (cedula == "cedula"))
-                            continue;
+                    cedula = sLine.Split(',')[0];
+                    if ((cedula == "Cédula") || (cedula == "") || (cedula == "cedula"))
+                        continue;
 
-                        //foreach (Sistecredito.Procesos.Proceso proceso in m_ProcesoGridList.Where(t => t.Referencia2 == cedula))
-                        //{
-                        //    proceso.Seleccionada = true;
-                        //    _Procesos++;
-                        //}
-                    }
+                    //foreach (Sistecredito.Procesos.Proceso proceso in m_ProcesoGridList.Where(t => t.Referencia2 == cedula))
+                    //{
+                    //    proceso.Seleccionada = true;
+                    //    _Procesos++;
+                    //}
                 }
-                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dataGridFiles_RowEnter(object sender, DataGridViewCellEventArgs e)
