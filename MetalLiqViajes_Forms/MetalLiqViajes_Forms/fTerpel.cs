@@ -285,45 +285,55 @@ namespace MetalLiqViajes_Forms
         }
         public void ExcelDataReader()
         {
-            //Reading from a OpenXml Excel file (2007 format; *.xlsx)
-            FileStream stream = new FileStream(m_FileExcel.GetFullPath, FileMode.Open);
-            IExcelDataReader excelReader2007 = ExcelReaderFactory.CreateOpenXmlReader(stream);
-
-            //DataSet - The result of each spreadsheet will be created in the result.Tables
-            DataSet result = excelReader2007.AsDataSet();
-
-            ExcelTerpel excelTerpel;
-            List<ExcelTerpel> excelterpelList = new List<ExcelTerpel>();
-            string itemArray = "";
-            //Data Reader methods
-            foreach (DataTable dt in result.Tables)
+            try
             {
-                if (dt.TableName == "METAL LTDA")
+                this.Cursor = Cursors.WaitCursor;
+
+                //Reading from a OpenXml Excel file (2007 format; *.xlsx)
+                FileStream stream = new FileStream(m_FileExcel.GetFullPath, FileMode.Open);
+                IExcelDataReader excelReader2007 = ExcelReaderFactory.CreateOpenXmlReader(stream);
+
+                //DataSet - The result of each spreadsheet will be created in the result.Tables
+                DataSet result = excelReader2007.AsDataSet();
+
+                ExcelTerpel excelTerpel;
+                List<ExcelTerpel> excelterpelList = new List<ExcelTerpel>();
+                string itemArray = "";
+                //Data Reader methods
+                foreach (DataTable dt in result.Tables)
                 {
-                    if (dt.Rows.Count > 0)
+                    if (dt.TableName == "METAL LTDA")
                     {
-                        for (int i = 0; i < dt.Rows.Count; i++)
+                        if (dt.Rows.Count > 0)
                         {
-                            itemArray = dt.Rows[i].ItemArray[0].ToString();
-                            if (itemArray != "")
+                            for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                if (itemArray != "No. Venta")
+                                itemArray = dt.Rows[i].ItemArray[0].ToString();
+                                if (itemArray != "")
                                 {
-                                    excelTerpel = ReadData(excelterpelList, dt, i);
+                                    if (itemArray != "No. Venta")
+                                    {
+                                        excelTerpel = ReadData(excelterpelList, dt, i);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+
+                excelReader2007.Close();
+                dataGridDataExcel.DataSource = excelterpelList;
+                dataGridDataExcel.Refresh();
+
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelterpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
-
-            excelReader2007.Close();
-            dataGridDataExcel.DataSource = excelterpelList;
-            dataGridDataExcel.Refresh();
-
-            this.Cursor = Cursors.Default;
-            MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelterpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            catch (Exception ex)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Error: se produjo un error en la carga de información, error: " +  ex.Message , "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
