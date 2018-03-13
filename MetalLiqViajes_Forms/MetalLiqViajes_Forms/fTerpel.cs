@@ -40,6 +40,9 @@ namespace MetalLiqViajes_Forms
         private void fTerpel_Load(object sender, EventArgs e)
         {
             ListPlacas.Items.Clear();
+
+            btnCargaExcel.Enabled = false;
+
             foreach (var item in ultilplacalist)
             {
                 if (item.Placa != "_Seleccionar")
@@ -279,13 +282,16 @@ namespace MetalLiqViajes_Forms
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
-            ExcelDataReader();            
+            ExcelDataReader();
         }
 
         public void ExcelDataReader()
         {
             try
             {
+
+                if (m_FileExcel == null) return;
+
                 this.Cursor = Cursors.WaitCursor;
 
                 //Reading from a OpenXml Excel file (2007 format; *.xlsx)
@@ -331,7 +337,7 @@ namespace MetalLiqViajes_Forms
             catch (Exception ex)
             {
                 this.Cursor = Cursors.Default;
-                MessageBox.Show("Error: se produjo un error en la carga de información, error: " +  ex.Message , "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error: se produjo un error en la carga de información, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -339,72 +345,93 @@ namespace MetalLiqViajes_Forms
         private static ExcelTerpel ReadData(List<ExcelTerpel> excelterpelList, DataTable dt, int i)
         {
             ExcelTerpel excelTerpel = new ExcelTerpel();
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column0")] != null)
+            try
+            {
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column0")] != null)
 
-                excelTerpel.Recibo = (long)Convert.ToUInt64(dt.Rows[i].ItemArray[0].ToString());
+                    excelTerpel.Recibo = Convert.ToInt64(dt.Rows[i].ItemArray[0]);
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column1")] != null)
-                excelTerpel.Fecha = (DateTime)Convert.ToDateTime(dt.Rows[i].ItemArray[1].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column1")] != null)
+                    try
+                    {
+                        excelTerpel.Fecha = Convert.ToDateTime(dt.Rows[i].ItemArray[1].ToString());
+                    }
+                    catch (Exception)
+                    {
+                        //string dateFecha = dt.Rows[i].ItemArray[1].ToString();
+                        //DateTime dte = DateTime.FromOADate(Convert.ToDouble(dateFecha));
+                        excelTerpel.Fecha = Convert.ToDateTime(DateTime.FromOADate(Convert.ToDouble(dt.Rows[i].ItemArray[1].ToString())));
+                    }
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column2")] != null)
-                excelTerpel.Hora = (string)dt.Rows[i].ItemArray[2].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column2")] != null)
+                    excelTerpel.Hora = dt.Rows[i].ItemArray[2].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column3")] != null)
-                excelTerpel.NombreCliente = (string)dt.Rows[i].ItemArray[3].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column3")] != null)
+                    excelTerpel.NombreCliente = dt.Rows[i].ItemArray[3].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column4")] != null)
-                excelTerpel.Estacion = (string)dt.Rows[i].ItemArray[4].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column4")] != null)
+                    excelTerpel.Estacion = dt.Rows[i].ItemArray[4].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column5")] != null)
-                excelTerpel.TipoEstacion = (string)dt.Rows[i].ItemArray[5].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column5")] != null)
+                    excelTerpel.TipoEstacion = dt.Rows[i].ItemArray[5].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column6")] != null)
-                excelTerpel.Destinatario = (string)dt.Rows[i].ItemArray[6].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column6")] != null)
+                    excelTerpel.Destinatario = dt.Rows[i].ItemArray[6].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column7")] != null)
-                excelTerpel.Ciudad = (string)dt.Rows[i].ItemArray[7].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column7")] != null)
+                    excelTerpel.Ciudad = dt.Rows[i].ItemArray[7].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column8")] != null)
-                excelTerpel.IdEDS = Convert.ToInt64(dt.Rows[i].ItemArray[8].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column8")] != null)
+                    excelTerpel.IdEDS = Convert.ToInt64(dt.Rows[i].ItemArray[8].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column9")] != null)
-                excelTerpel.Placa = (string)dt.Rows[i].ItemArray[9].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column9")] != null)
+                    excelTerpel.Placa = dt.Rows[i].ItemArray[9].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column10")] != null)
-                excelTerpel.Producto = (string)dt.Rows[i].ItemArray[10].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column10")] != null)
+                    excelTerpel.Producto = dt.Rows[i].ItemArray[10].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column11")] != null)
-                excelTerpel.cantidad = Convert.ToDecimal(dt.Rows[i].ItemArray[11].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column11")] != null)
+                    excelTerpel.cantidad = Convert.ToDecimal(dt.Rows[i].ItemArray[11].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column12")] != null)
-                excelTerpel.Precio = Convert.ToDecimal(dt.Rows[i].ItemArray[12].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column12")] != null)
+                    excelTerpel.Precio = Convert.ToDecimal(dt.Rows[i].ItemArray[12].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column13")] != null)
-                excelTerpel.TotalVentas = Convert.ToDecimal(dt.Rows[i].ItemArray[13].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column13")] != null)
+                    excelTerpel.TotalVentas = Convert.ToDecimal(dt.Rows[i].ItemArray[13].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column14")] != null)
-                excelTerpel.PrecioEspecial = Convert.ToDecimal(dt.Rows[i].ItemArray[14].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column14")] != null)
+                    excelTerpel.PrecioEspecial = Convert.ToDecimal(dt.Rows[i].ItemArray[14].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column15")] != null)
-                excelTerpel.TotalFactura = Convert.ToDecimal(dt.Rows[i].ItemArray[15].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column15")] != null)
+                    excelTerpel.TotalFactura = Convert.ToDecimal(dt.Rows[i].ItemArray[15].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column16")] != null)
-                excelTerpel.Descuento = Convert.ToDecimal(dt.Rows[i].ItemArray[16].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column16")] != null)
+                    excelTerpel.Descuento = Convert.ToDecimal(dt.Rows[i].ItemArray[16].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column17")] != null)
-                excelTerpel.UnidadVenta = dt.Rows[i].ItemArray[17].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column17")] != null)
+                    excelTerpel.UnidadVenta = dt.Rows[i].ItemArray[17].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column18")] != null)
-                excelTerpel.Kilometraje = Convert.ToDecimal(dt.Rows[i].ItemArray[18].ToString());
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column18")] != null)
+                    excelTerpel.Kilometraje = Convert.ToDecimal(dt.Rows[i].ItemArray[18].ToString());
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column19")] != null)
-                excelTerpel.TipoVenta = (string)dt.Rows[i].ItemArray[19].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column19")] != null)
+                    excelTerpel.TipoVenta = dt.Rows[i].ItemArray[19].ToString();
 
-            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column20")] != null)
-                excelTerpel.Factura = (string)dt.Rows[i].ItemArray[20].ToString();
+                if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column20")] != null)
+                    excelTerpel.Factura = dt.Rows[i].ItemArray[20].ToString();
 
-            excelterpelList.Add(excelTerpel);
+                excelterpelList.Add(excelTerpel);
+            }
+            catch (Exception ex)
+            {
+            }
             return excelTerpel;
+        }
+
+        public static DateTime FromExcelSerialDate(int SerialDate)
+        {
+            if (SerialDate > 59) SerialDate -= 1; //Excel/Lotus 2/29/1900 bug   
+            return new DateTime(1899, 12, 31).AddDays(SerialDate);
         }
 
         private void btnCargaDirectorio_Click(object sender, EventArgs e)
@@ -457,6 +484,8 @@ namespace MetalLiqViajes_Forms
                     }
                 }
 
+                btnCargaExcel.Enabled = true;
+
                 dataGridFiles.DataSource = m_FileExcelList;
                 dataGridFiles.Refresh();
             }
@@ -469,6 +498,7 @@ namespace MetalLiqViajes_Forms
         private void dataGridFiles_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             m_FileExcel = dataGridFiles.Rows[e.RowIndex].DataBoundItem as FileExcel;
+
         }
     }
 }

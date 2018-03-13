@@ -45,12 +45,12 @@
             this.dataGridFiles = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCargaDirectorio = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBoxPath = new System.Windows.Forms.TextBox();
             this.dataGridDataExcel = new System.Windows.Forms.DataGridView();
+            this.utilPlacaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.utilPlacaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,9 +70,9 @@
             // 
             this.btnConsultar.Location = new System.Drawing.Point(160, 11);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
+            this.btnConsultar.Size = new System.Drawing.Size(75, 56);
             this.btnConsultar.TabIndex = 4;
-            this.btnConsultar.Text = "Leer API";
+            this.btnConsultar.Text = "Cargar Datos de API Terpel";
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
@@ -141,11 +141,14 @@
             // 
             // btnCargaExcel
             // 
-            this.btnCargaExcel.Location = new System.Drawing.Point(123, 34);
+            this.btnCargaExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaExcel.Image")));
+            this.btnCargaExcel.Location = new System.Drawing.Point(207, 5);
             this.btnCargaExcel.Name = "btnCargaExcel";
             this.btnCargaExcel.Size = new System.Drawing.Size(178, 30);
-            this.btnCargaExcel.TabIndex = 1;
+            this.btnCargaExcel.TabIndex = 2;
             this.btnCargaExcel.Text = "Leer Excel";
+            this.btnCargaExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCargaExcel, "Haga clic aquí para recuperar los datos del archivo seleccionado");
             this.btnCargaExcel.UseVisualStyleBackColor = true;
             this.btnCargaExcel.Click += new System.EventHandler(this.btnCargaExcel_Click);
             // 
@@ -217,7 +220,6 @@
             // 
             this.panel1.Controls.Add(this.btnCargaDirectorio);
             this.panel1.Controls.Add(this.btnCargaExcel);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBoxPath);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -229,30 +231,28 @@
             // 
             this.btnCargaDirectorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnCargaDirectorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargaDirectorio.Location = new System.Drawing.Point(301, 34);
+            this.btnCargaDirectorio.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaDirectorio.Image")));
+            this.btnCargaDirectorio.Location = new System.Drawing.Point(2, 5);
             this.btnCargaDirectorio.Name = "btnCargaDirectorio";
-            this.btnCargaDirectorio.Size = new System.Drawing.Size(178, 30);
-            this.btnCargaDirectorio.TabIndex = 2;
+            this.btnCargaDirectorio.Size = new System.Drawing.Size(199, 30);
+            this.btnCargaDirectorio.TabIndex = 1;
             this.btnCargaDirectorio.Text = "Cargar Arhivos";
+            this.btnCargaDirectorio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCargaDirectorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCargaDirectorio, "Haga clic aquí para buscar la carpeta donde están los archivos de Terpel");
             this.btnCargaDirectorio.UseVisualStyleBackColor = false;
             this.btnCargaDirectorio.Click += new System.EventHandler(this.btnCargaDirectorio_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 18);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Ruta archivos:";
-            // 
             // textBoxPath
             // 
+            this.textBoxPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.textBoxPath.Location = new System.Drawing.Point(123, 10);
+            this.textBoxPath.Enabled = false;
+            this.textBoxPath.Location = new System.Drawing.Point(3, 39);
+            this.textBoxPath.Multiline = true;
             this.textBoxPath.Name = "textBoxPath";
-            this.textBoxPath.Size = new System.Drawing.Size(670, 20);
+            this.textBoxPath.Size = new System.Drawing.Size(790, 25);
             this.textBoxPath.TabIndex = 0;
             // 
             // dataGridDataExcel
@@ -264,6 +264,10 @@
             this.dataGridDataExcel.Size = new System.Drawing.Size(796, 192);
             this.dataGridDataExcel.TabIndex = 0;
             // 
+            // utilPlacaBindingSource
+            // 
+            this.utilPlacaBindingSource.DataSource = typeof(MetalLiqViajes_Forms.UtilPlaca);
+            // 
             // dlgOpenDir
             // 
             this.dlgOpenDir.RootFolder = System.Environment.SpecialFolder.MyComputer;
@@ -271,10 +275,6 @@
             // dlgOpenFile
             // 
             this.dlgOpenFile.FileName = "openFileDialog";
-            // 
-            // utilPlacaBindingSource
-            // 
-            this.utilPlacaBindingSource.DataSource = typeof(MetalLiqViajes_Forms.UtilPlaca);
             // 
             // fTerpel
             // 
@@ -324,8 +324,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridDataExcel;
         private System.Windows.Forms.Button btnCargaDirectorio;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxPath;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.FolderBrowserDialog dlgOpenDir;
         private System.Windows.Forms.OpenFileDialog dlgOpenFile;
     }
