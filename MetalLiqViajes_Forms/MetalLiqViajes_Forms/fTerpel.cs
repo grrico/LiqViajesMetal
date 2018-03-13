@@ -279,10 +279,9 @@ namespace MetalLiqViajes_Forms
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
-            ExcelDataReader();
-            //ToEntidadHojaExcelListTest();
-            //LeerExcel();
+            ExcelDataReader();            
         }
+
         public void ExcelDataReader()
         {
             try
@@ -465,31 +464,6 @@ namespace MetalLiqViajes_Forms
             {
                 MessageBox.Show("Aviso: hay un error cargando el archivo, " + ex.Message, "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void LeerExcel()
-        {
-            StreamReader objReader = new StreamReader(@m_FileExcel.GetFullPath);//@of.FileName);
-            string sLine = "";
-            string cedula = "";
-            int _Procesos = 0;
-            while (sLine != null)
-            {
-                sLine = objReader.ReadLine();
-                if ((sLine != null) && (sLine != ";;;"))
-                {
-                    cedula = sLine.Split(',')[0];
-                    if ((cedula == "Cédula") || (cedula == "") || (cedula == "cedula"))
-                        continue;
-
-                    //foreach (Sistecredito.Procesos.Proceso proceso in m_ProcesoGridList.Where(t => t.Referencia2 == cedula))
-                    //{
-                    //    proceso.Seleccionada = true;
-                    //    _Procesos++;
-                    //}
-                }
-            }
-            MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + _Procesos.ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dataGridFiles_RowEnter(object sender, DataGridViewCellEventArgs e)
