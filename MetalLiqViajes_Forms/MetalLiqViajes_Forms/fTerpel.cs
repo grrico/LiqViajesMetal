@@ -1,4 +1,4 @@
-﻿using LinqToExcel;
+﻿using ExcelDataReader;
 using LiqViajes_Bll_Data;
 using MetalLiqViajes_Forms.com.terpel.movilidad;
 using MetalLiqViajes_Forms.Util;
@@ -13,7 +13,6 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-
 using static MetalLiqViajes_Forms.Util.Parametros;
 
 namespace MetalLiqViajes_Forms
@@ -280,86 +279,123 @@ namespace MetalLiqViajes_Forms
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
-            ToEntidadHojaExcelListTest();
+            ExcelDataReader();
+            //ToEntidadHojaExcelListTest();
             //LeerExcel();
         }
-
-        public void ToEntidadHojaExcelListTest()
+        public void ExcelDataReader()
         {
-            if (@m_FileExcel == null) return;
-            this.Cursor = Cursors.WaitCursor;
+            //Reading from a OpenXml Excel file (2007 format; *.xlsx)
+            FileStream stream = new FileStream(m_FileExcel.GetFullPath, FileMode.Open);
+            IExcelDataReader excelReader2007 = ExcelReaderFactory.CreateOpenXmlReader(stream);
 
-            string pathToExcelFile = @m_FileExcel.GetFullPath;//  @"D:\Genaro\Metal\Terpel\FEBRERO\201802  Corte 01 - 08 Metal ltda.xlsx";
+            //DataSet - The result of each spreadsheet will be created in the result.Tables
+            DataSet result = excelReader2007.AsDataSet();
 
-            string sheetName = "METAL LTDA";
-
-            var excelFile = new ExcelQueryFactory(pathToExcelFile);
-            var artistAlbums = from a in excelFile.Worksheet(sheetName) select a;
-            bool swtEncabezado = false;
-            ExcelTerpel excelTerpel = null;
-            List<ExcelTerpel> excelTerpelList = new List<ExcelTerpel>();
-
-            try
+            ExcelTerpel excelTerpel;
+            List<ExcelTerpel> excelterpelList = new List<ExcelTerpel>();
+            string itemArray = "";
+            //Data Reader methods
+            foreach (DataTable dt in result.Tables)
             {
-                foreach (var a in artistAlbums)
+                if (dt.TableName == "METAL LTDA")
                 {
-                    try
+                    if (dt.Rows.Count > 0)
                     {
-                        if (a[0] == "No. Venta")
+                        for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            swtEncabezado = true;
-                            continue;
+                            itemArray = dt.Rows[i].ItemArray[0].ToString();
+                            if (itemArray != "")
+                            {
+                                if (itemArray != "No. Venta")
+                                {
+                                    excelTerpel = ReadData(excelterpelList, dt, i);
+                                }
+                            }
                         }
-
-                        if (swtEncabezado && (a[8] == null || a[8] == ""))
-                        {
-                            break;
-                        }
-                        if (Convert.ToInt32(a[8].ToString()) > 0)
-                        {
-                            excelTerpel = new ExcelTerpel();
-                            excelTerpel.Recibo = Convert.ToInt64(a[0].Value);
-                            excelTerpel.Fecha = Convert.ToDateTime(a[1].Value);
-                            excelTerpel.Hora = a[2];
-                            excelTerpel.NombreCliente = a[3];
-                            excelTerpel.Estacion = a[4];
-                            excelTerpel.TipoEstacion = a[5];
-                            excelTerpel.Destinatario = a[6];
-                            excelTerpel.Ciudad = a[7];
-                            excelTerpel.IdEDS = Convert.ToInt64(a[8].Value);
-                            excelTerpel.Placa = a[9];
-                            excelTerpel.Producto = a[10];
-                            excelTerpel.cantidad = Convert.ToDecimal(a[11].Value);
-                            excelTerpel.Precio = Convert.ToDecimal(a[12].Value);
-                            excelTerpel.TotalVentas = Convert.ToDecimal(a[13].Value);
-                            excelTerpel.PrecioEspecial = Convert.ToDecimal(a[14].Value);
-                            excelTerpel.TotalFactura = Convert.ToDecimal(a[15].Value);
-                            excelTerpel.Descuento = Convert.ToDecimal(a[16].Value);
-                            excelTerpel.UnidadVenta = a[17].Value.ToString();
-                            excelTerpel.Kilometraje = Convert.ToDecimal(a[18].Value);
-                            excelTerpel.TipoVenta = a[19];
-                            excelTerpel.Factura = a[20];
-                            excelTerpelList.Add(excelTerpel);
-                            continue;
-                        }
-                    }
-                    catch
-                    {
                     }
                 }
-                dataGridDataExcel.DataSource = excelTerpelList;
-                dataGridDataExcel.Refresh();
-
-                this.Cursor = Cursors.Default;
-                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelTerpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
-            catch (Exception ex)
-            {
-                this.Cursor = Cursors.Default;
-                MessageBox.Show("Error cargando la información del registro " + m_FileExcel.nameFile, "Facturación Terpel, Registro Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
+            excelReader2007.Close();
+            dataGridDataExcel.DataSource = excelterpelList;
+            dataGridDataExcel.Refresh();
+
+            this.Cursor = Cursors.Default;
+            MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelterpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+        }
+
+        private static ExcelTerpel ReadData(List<ExcelTerpel> excelterpelList, DataTable dt, int i)
+        {
+            ExcelTerpel excelTerpel = new ExcelTerpel();
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column0")] != null)
+
+                excelTerpel.Recibo = (long)Convert.ToUInt64(dt.Rows[i].ItemArray[0].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column1")] != null)
+                excelTerpel.Fecha = (DateTime)Convert.ToDateTime(dt.Rows[i].ItemArray[1].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column2")] != null)
+                excelTerpel.Hora = (string)dt.Rows[i].ItemArray[2].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column3")] != null)
+                excelTerpel.NombreCliente = (string)dt.Rows[i].ItemArray[3].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column4")] != null)
+                excelTerpel.Estacion = (string)dt.Rows[i].ItemArray[4].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column5")] != null)
+                excelTerpel.TipoEstacion = (string)dt.Rows[i].ItemArray[5].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column6")] != null)
+                excelTerpel.Destinatario = (string)dt.Rows[i].ItemArray[6].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column7")] != null)
+                excelTerpel.Ciudad = (string)dt.Rows[i].ItemArray[7].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column8")] != null)
+                excelTerpel.IdEDS = Convert.ToInt64(dt.Rows[i].ItemArray[8].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column9")] != null)
+                excelTerpel.Placa = (string)dt.Rows[i].ItemArray[9].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column10")] != null)
+                excelTerpel.Producto = (string)dt.Rows[i].ItemArray[10].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column11")] != null)
+                excelTerpel.cantidad = Convert.ToDecimal(dt.Rows[i].ItemArray[11].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column12")] != null)
+                excelTerpel.Precio = Convert.ToDecimal(dt.Rows[i].ItemArray[12].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column13")] != null)
+                excelTerpel.TotalVentas = Convert.ToDecimal(dt.Rows[i].ItemArray[13].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column14")] != null)
+                excelTerpel.PrecioEspecial = Convert.ToDecimal(dt.Rows[i].ItemArray[14].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column15")] != null)
+                excelTerpel.TotalFactura = Convert.ToDecimal(dt.Rows[i].ItemArray[15].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column16")] != null)
+                excelTerpel.Descuento = Convert.ToDecimal(dt.Rows[i].ItemArray[16].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column17")] != null)
+                excelTerpel.UnidadVenta = dt.Rows[i].ItemArray[17].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column18")] != null)
+                excelTerpel.Kilometraje = Convert.ToDecimal(dt.Rows[i].ItemArray[18].ToString());
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column19")] != null)
+                excelTerpel.TipoVenta = (string)dt.Rows[i].ItemArray[19].ToString();
+
+            if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column20")] != null)
+                excelTerpel.Factura = (string)dt.Rows[i].ItemArray[20].ToString();
+
+            excelterpelList.Add(excelTerpel);
+            return excelTerpel;
         }
 
         private void btnCargaDirectorio_Click(object sender, EventArgs e)

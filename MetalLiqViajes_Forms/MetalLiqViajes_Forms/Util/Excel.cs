@@ -31,8 +31,7 @@ namespace MetalLiqViajes_Forms.Util
         public string Factura { get; set; }//{Factura}
 
     }
-
-
+    
     public class FileExcel
     {
         public string nameFile { get; set; }
@@ -42,4 +41,8 @@ namespace MetalLiqViajes_Forms.Util
         public bool Importado { get; set; }
 
     }
+
+
+
+
 }
