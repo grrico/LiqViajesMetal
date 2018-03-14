@@ -342,7 +342,7 @@ namespace MetalLiqViajes_Forms
 
         }
 
-        private static ExcelTerpel ReadData(List<ExcelTerpel> excelterpelList, DataTable dt, int i)
+        private ExcelTerpel ReadData(List<ExcelTerpel> excelterpelList, DataTable dt, int i)
         {
             ExcelTerpel excelTerpel = new ExcelTerpel();
             try
@@ -358,8 +358,6 @@ namespace MetalLiqViajes_Forms
                     }
                     catch (Exception)
                     {
-                        //string dateFecha = dt.Rows[i].ItemArray[1].ToString();
-                        //DateTime dte = DateTime.FromOADate(Convert.ToDouble(dateFecha));
                         excelTerpel.Fecha = Convert.ToDateTime(DateTime.FromOADate(Convert.ToDouble(dt.Rows[i].ItemArray[1].ToString())));
                     }
 
@@ -391,7 +389,7 @@ namespace MetalLiqViajes_Forms
                     excelTerpel.Producto = dt.Rows[i].ItemArray[10].ToString();
 
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column11")] != null)
-                    excelTerpel.cantidad = Convert.ToDecimal(dt.Rows[i].ItemArray[11].ToString());
+                    excelTerpel.Cantidad = Convert.ToDecimal(dt.Rows[i].ItemArray[11].ToString());
 
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column12")] != null)
                     excelTerpel.Precio = Convert.ToDecimal(dt.Rows[i].ItemArray[12].ToString());
