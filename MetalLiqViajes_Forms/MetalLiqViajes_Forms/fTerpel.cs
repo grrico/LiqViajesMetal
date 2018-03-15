@@ -358,8 +358,6 @@ namespace MetalLiqViajes_Forms
                     }
                     catch (Exception)
                     {
-                        //string dateFecha = dt.Rows[i].ItemArray[1].ToString();
-                        //DateTime dte = DateTime.FromOADate(Convert.ToDouble(dateFecha));
                         excelTerpel.Fecha = Convert.ToDateTime(DateTime.FromOADate(Convert.ToDouble(dt.Rows[i].ItemArray[1].ToString())));
                     }
 
