@@ -134,6 +134,7 @@
     <Compile Include="bll\VehiculosKmMantenimientoDetAcum.cs" />
     <Compile Include="bll\VehiculoTraylers.cs" />
     <Compile Include="bll\VentasFlota.cs" />
+    <Compile Include="bll\VentasFlotaDetalle.cs" />
     <Compile Include="bll\y_novedades_Liq.cs" />
     <Compile Include="bll_add\AnticiposDms.cs" />
     <Compile Include="bll_add\LiquidacionGastos.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="dal\VehiculosKmMantenimientoDetDataProvider.cs" />
     <Compile Include="dal\VehiculoTraylersDataProvider.cs" />
     <Compile Include="dal\VentasFlotaDataProvider.cs" />
+    <Compile Include="dal\VentasFlotaDetalleDataProvider.cs" />
     <Compile Include="dal\y_novedades_LiqDataProvider.cs" />
     <Compile Include="dal_add\AnticiposDmsDataProvider.cs" />
     <Compile Include="dal_add\LiquidacionGastosDataProvider.cs" />
@@ -337,6 +339,7 @@
     <Compile Include="dto\VehiculosKmMantenimientoDetAcum.cs" />
     <Compile Include="dto\VehiculoTraylers.cs" />
     <Compile Include="dto\VentasFlota.cs" />
+    <Compile Include="dto\VentasFlotaDetalle.cs" />
     <Compile Include="dto\y_novedades_Liq.cs" />
     <Compile Include="dto_add\LiquidacionGastos.cs" />
     <Compile Include="dto_add\LiquidacionPlanilla.cs" />

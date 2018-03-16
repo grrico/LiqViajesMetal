@@ -51,6 +51,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.btnGuadarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -219,6 +220,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnCargaDirectorio);
+            this.panel1.Controls.Add(this.btnGuadarExcel);
             this.panel1.Controls.Add(this.btnCargaExcel);
             this.panel1.Controls.Add(this.textBoxPath);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -276,6 +278,18 @@
             // 
             this.dlgOpenFile.FileName = "openFileDialog";
             // 
+            // btnGuadarExcel
+            // 
+            this.btnGuadarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnGuadarExcel.Image")));
+            this.btnGuadarExcel.Location = new System.Drawing.Point(391, 5);
+            this.btnGuadarExcel.Name = "btnGuadarExcel";
+            this.btnGuadarExcel.Size = new System.Drawing.Size(178, 30);
+            this.btnGuadarExcel.TabIndex = 2;
+            this.btnGuadarExcel.Text = "Guardar Datos";
+            this.btnGuadarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuadarExcel.UseVisualStyleBackColor = true;
+            this.btnGuadarExcel.Click += new System.EventHandler(this.btnGuadarExcel_Click);
+            // 
             // fTerpel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,5 +342,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.FolderBrowserDialog dlgOpenDir;
         private System.Windows.Forms.OpenFileDialog dlgOpenFile;
+        private System.Windows.Forms.Button btnGuadarExcel;
     }
 }

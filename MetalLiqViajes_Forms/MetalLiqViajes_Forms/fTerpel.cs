@@ -23,6 +23,8 @@ namespace MetalLiqViajes_Forms
         public List<UtilPlaca> ultilplacalist { get; set; }
 
         private FileExcel m_FileExcel { get; set; }
+        private ExcelTerpel excelTerpel { get; set; }
+        private List<ExcelTerpel> excelterpelList { get; set; }
 
         private List<YearTerpel> YearsList { get; set; }
         private YearTerpel yearTerpel { get; set; }
@@ -301,8 +303,7 @@ namespace MetalLiqViajes_Forms
                 //DataSet - The result of each spreadsheet will be created in the result.Tables
                 DataSet result = excelReader2007.AsDataSet();
 
-                ExcelTerpel excelTerpel;
-                List<ExcelTerpel> excelterpelList = new List<ExcelTerpel>();
+                excelterpelList = new List<ExcelTerpel>();
                 string itemArray = "";
                 //Data Reader methods
                 foreach (DataTable dt in result.Tables)
@@ -318,7 +319,8 @@ namespace MetalLiqViajes_Forms
                                 {
                                     if (itemArray != "No. Venta")
                                     {
-                                        excelTerpel = ReadData(excelterpelList, dt, i);
+                                        excelTerpel = ReadData(dt, i);
+                                        excelterpelList.Add(excelTerpel);
                                     }
                                 }
                             }
@@ -329,7 +331,7 @@ namespace MetalLiqViajes_Forms
                 excelReader2007.Close();
                 dataGridDataExcel.DataSource = excelterpelList;
                 dataGridDataExcel.Refresh();
-
+                btnGuadarExcel.Enabled = true;
                 this.Cursor = Cursors.Default;
                 MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + excelterpelList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -342,7 +344,7 @@ namespace MetalLiqViajes_Forms
 
         }
 
-        private ExcelTerpel ReadData(List<ExcelTerpel> excelterpelList, DataTable dt, int i)
+        private ExcelTerpel ReadData(DataTable dt, int i)
         {
             ExcelTerpel excelTerpel = new ExcelTerpel();
             try
@@ -418,7 +420,7 @@ namespace MetalLiqViajes_Forms
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column20")] != null)
                     excelTerpel.Factura = dt.Rows[i].ItemArray[20].ToString();
 
-                excelterpelList.Add(excelTerpel);
+
             }
             catch (Exception ex)
             {
@@ -450,6 +452,12 @@ namespace MetalLiqViajes_Forms
                     textBoxPath.Refresh();
                     Properties.Settings.Default.PathFacturaTerpel = dlgOpenDir.SelectedPath + "\\";
                     CargaArchivos(dlgOpenDir.SelectedPath);
+                    btnGuadarExcel.Enabled = false;
+
+                    m_FileExcel = new FileExcel();
+                    excelterpelList = new List<ExcelTerpel>();
+                    dataGridDataExcel.DataSource = excelterpelList;
+                    dataGridDataExcel.Refresh();
 
                 }
             }
@@ -497,6 +505,63 @@ namespace MetalLiqViajes_Forms
         {
             m_FileExcel = dataGridFiles.Rows[e.RowIndex].DataBoundItem as FileExcel;
 
+        }
+
+        private void btnGuadarExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Confirma Actualizar los registros Importados de Terpel?", "Validar Crear Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (resultado == DialogResult.Yes)
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                VentasFlotaDetalle Ventas;
+                int cantidad = 0;
+                foreach (var ExcelItem in excelterpelList)
+                {
+                    Ventas = VentasFlotaDetalleController.Instance.Get(ExcelItem.Recibo);
+                    if (Ventas == null)
+                    {
+                        Ventas = new VentasFlotaDetalle();
+                        Ventas.Recibo = ExcelItem.Recibo;
+                        Ventas.IdEDS = ExcelItem.IdEDS;
+                        Ventas.Factura = ExcelItem.Factura;
+                        Ventas.Fecha = ExcelItem.Fecha;
+                        Ventas.Hora = ExcelItem.Hora;
+                        Ventas.NombreCliente = ExcelItem.NombreCliente;
+                        Ventas.Estacion = ExcelItem.Estacion;
+                        Ventas.TipoEstacion = ExcelItem.TipoEstacion;
+                        Ventas.Destinatario = ExcelItem.Destinatario;
+                        Ventas.Ciudad = ExcelItem.Ciudad;
+                        Ventas.Placa = ExcelItem.Placa;
+                        Ventas.Producto = ExcelItem.Producto;
+                        Ventas.Cantidad = ExcelItem.Cantidad;
+                        Ventas.Precio = ExcelItem.Precio;
+                        Ventas.TotalVentas = ExcelItem.TotalVentas;
+                        Ventas.PrecioEspecial = ExcelItem.PrecioEspecial;
+                        Ventas.TotalFactura = ExcelItem.TotalFactura;
+                        Ventas.Descuento = ExcelItem.Descuento;
+                        Ventas.Kilometraje = ExcelItem.Kilometraje;
+                        Ventas.UnidadVenta = ExcelItem.UnidadVenta;
+                        Ventas.TipoVenta = ExcelItem.TipoVenta;
+                        VentasFlotaDetalleController.Instance.Create(Ventas);
+                        cantidad++;
+                    }
+                }
+
+                this.Cursor = Cursors.Default;
+                btnGuadarExcel.Enabled = false;
+                if (cantidad > 0)
+                {
+                    m_FileExcel.Importado = true;
+                    dataGridFiles.Refresh();
+                    MessageBox.Show("Proceso concluido con éxito, registros actualizados" + cantidad.ToString("n0"), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Aviso: los registro ya existen en la base de datos de Metal.", "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                }
+            }
         }
     }
 }
