@@ -41,8 +41,4 @@ namespace MetalLiqViajes_Forms.Util
         public bool Importado { get; set; }
 
     }
-
-
-
-
 }
