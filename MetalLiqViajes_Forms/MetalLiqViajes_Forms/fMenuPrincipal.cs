@@ -55,8 +55,16 @@ namespace MetalLiqViajes_Forms
 
         private void terpelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             fTerpel terpel = new fTerpel();
+            terpel.ultilplacalist = childForm.ultilplacalist;
+            terpel.MdiParent = this;
+            terpel.WindowState = FormWindowState.Maximized;
+            terpel.Show();
+        }
+
+        private void terpelDMSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fTerpelDMS terpel = new fTerpelDMS();
             terpel.ultilplacalist = childForm.ultilplacalist;
             terpel.MdiParent = this;
             terpel.WindowState = FormWindowState.Maximized;

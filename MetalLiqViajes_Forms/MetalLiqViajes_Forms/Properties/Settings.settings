@@ -23,5 +23,11 @@
     <Setting Name="PathFacturaTerpel" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Metal\Terpel</Value>
     </Setting>
+    <Setting Name="TipoTerpel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">83</Value>
+    </Setting>
+    <Setting Name="NitTerpel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">830095213</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

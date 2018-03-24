@@ -145,6 +145,12 @@
     <Compile Include="fTerpel.Designer.cs">
       <DependentUpon>fTerpel.cs</DependentUpon>
     </Compile>
+    <Compile Include="fTerpelDMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTerpelDMS.Designer.cs">
+      <DependentUpon>fTerpelDMS.cs</DependentUpon>
+    </Compile>
     <Compile Include="GastosCambios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     <EmbeddedResource Include="fTerpel.resx">
       <DependentUpon>fTerpel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fTerpelDMS.resx">
+      <DependentUpon>fTerpelDMS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GastosCambios.resx">
       <DependentUpon>GastosCambios.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,7 +206,9 @@
     <None Include="MetalLiqViajes_Forms_1_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.documentos.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.LiquidacionGastosList.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.movimientos.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.Rutas.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackHistoryEvents.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackLastEvents.datasource" />

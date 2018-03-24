@@ -102,5 +102,29 @@ namespace MetalLiqViajes_Forms.Properties {
                 this["PathFacturaTerpel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("83")]
+        public string TipoTerpel {
+            get {
+                return ((string)(this["TipoTerpel"]));
+            }
+            set {
+                this["TipoTerpel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("830095213")]
+        public string NitTerpel {
+            get {
+                return ((string)(this["NitTerpel"]));
+            }
+            set {
+                this["NitTerpel"] = value;
+            }
+        }
     }
 }

@@ -16,14 +16,12 @@ using System.Runtime.Serialization;
 
 namespace LiqViajes_Bll_Data
 {
-    #region documentos object
+
 
     [DataContract]
-    public partial class documentos : IDTOObject
+    public partial class documentos 
     {
-        /// <summary>
-        /// Default constructor
-        /// </summary>
+        
         public documentos()
         {
             m_id = 0;
@@ -98,11 +96,11 @@ namespace LiqViajes_Bll_Data
             m_changed = false;
         }
 
-        //Return the table name of object
         public string TableName()
         {
             return "documentos";
         }
+
         #region Undo 
         // Internal class for storing changes
         private documentos m_olddocumentos;
@@ -1412,9 +1410,6 @@ namespace LiqViajes_Bll_Data
             }
         }
 
-        /// <summary>
-        /// Attribute for access the documentos's id value (int)
-        /// </summary>
         [DataMember]
         public int id
         {
@@ -1426,9 +1421,6 @@ namespace LiqViajes_Bll_Data
             }
         }
 
-        /// <summary>
-        /// Attribute for access the documentos's tipo value (string)
-        /// </summary>
         [DataMember]
         public string tipo
         {
@@ -1440,9 +1432,6 @@ namespace LiqViajes_Bll_Data
             }
         }
 
-        /// <summary>
-        /// Attribute for access the documentos's numero value (int)
-        /// </summary>
         [DataMember]
         public int numero
         {
@@ -1454,104 +1443,11 @@ namespace LiqViajes_Bll_Data
             }
         }
 
-        public object GetAttribute(string pattribute)
-        {
-            switch (pattribute)
-            {
-                case "sw": return sw;
-                case "nit": return nit;
-                case "fecha": return fecha;
-                case "condicion": return condicion;
-                case "vencimiento": return vencimiento;
-                case "valor_total": return valor_total;
-                case "iva": return iva;
-                case "retencion": return retencion;
-                case "retencion_causada": return retencion_causada;
-                case "retencion_iva": return retencion_iva;
-                case "retencion_ica": return retencion_ica;
-                case "descuento_pie": return descuento_pie;
-                case "fletes": return fletes;
-                case "iva_fletes": return iva_fletes;
-                case "costo": return costo;
-                case "vendedor": return vendedor;
-                case "valor_aplicado": return valor_aplicado;
-                case "anulado": return anulado;
-                case "modelo": return modelo;
-                case "documento": return documento;
-                case "notas": return notas;
-                case "usuario": return usuario;
-                case "pc": return pc;
-                case "fecha_hora": return fecha_hora;
-                case "retencion2": return retencion2;
-                case "retencion3": return retencion3;
-                case "bodega": return bodega;
-                case "impoconsumo": return impoconsumo;
-                case "descuento2": return descuento2;
-                case "duracion": return duracion;
-                case "concepto": return concepto;
-                case "vencimiento_presup": return vencimiento_presup;
-                case "exportado": return exportado;
-                case "impuesto_deporte": return impuesto_deporte;
-                case "prefijo": return prefijo;
-                case "moneda": return moneda;
-                case "tasa": return tasa;
-                case "centro_doc": return centro_doc;
-                case "valor_mercancia": return valor_mercancia;
-                case "numero_cuotas": return numero_cuotas;
-                case "codigo_direccion": return codigo_direccion;
-                case "descuento_1": return descuento_1;
-                case "descuento_2": return descuento_2;
-                case "descuento_3": return descuento_3;
-                case "abono": return abono;
-                case "fecha_consignacion": return fecha_consignacion;
-                case "Iva_Costo": return Iva_Costo;
-                case "concepto_Retencion": return concepto_Retencion;
-                case "porc_RteFuente": return porc_RteFuente;
-                case "porc_RteIva": return porc_RteIva;
-                case "porc_RteIvaSimpl": return porc_RteIvaSimpl;
-                case "porc_RteIca": return porc_RteIca;
-                case "porc_RteA": return porc_RteA;
-                case "porc_RteB": return porc_RteB;
-                case "bodega_ot": return bodega_ot;
-                case "numero_ot": return numero_ot;
-                case "provision": return provision;
-                case "ajuste": return ajuste;
-                case "porc_RteCree": return porc_RteCree;
-                case "retencion_cree": return retencion_cree;
-                case "codigo_retencion_cree": return codigo_retencion_cree;
-                case "cree_causado": return cree_causado;
-                case "ObligacionFinanciera": return ObligacionFinanciera;
-                case "Base_dcto_RC": return Base_dcto_RC;
-                case "numincapacidad": return numincapacidad;
-                case "idincapacidad": return idincapacidad;
-                case "id": return id;
-                case "tipo": return tipo;
-                case "numero": return numero;
-                default: return null;
-            }
-        }
-
-        public Type GetAttributeType(string pattribute)
-        {
-            return documentosController.Instance.GetMethodType(pattribute, this);
-        }
-
-        public string GetSqlKey()
-        {
-            return "[id] = " + id.ToString() + " AND [tipo] = '" + tipo.ToString() + "'" + " AND [numero] = " + numero.ToString();
-        }
-
         #endregion
 
     }
 
-    #endregion
 
-    #region documentosList object
-
-    /// <summary>
-    /// Class for reading and access a list of documentos object
-    /// </summary>
     [CollectionDataContract]
     public partial class documentosList : List<documentos>
     {
@@ -1564,6 +1460,5 @@ namespace LiqViajes_Bll_Data
         }
     }
 
-    #endregion
 
 }

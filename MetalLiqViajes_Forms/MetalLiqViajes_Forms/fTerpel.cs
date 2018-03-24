@@ -101,10 +101,6 @@ namespace MetalLiqViajes_Forms
             yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
             monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
 
-
-
-
-
         }
 
         private void checkBoxMarcar_CheckedChanged(object sender, EventArgs e)

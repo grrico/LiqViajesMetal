@@ -417,7 +417,7 @@ namespace Sinapsys.Datos
                             }
                             ParametroSalidaTmp = AdicionarParametros(ref Comando, Parametros);
                         }
-                        EscribirLog("\t " + (Procedimiento.IndexOf("CIFIN") > -1 ? "CIFIN" : "SISTECREDITO") + "\t" + SentenciaTmp);
+                        EscribirLog("\t " + (Procedimiento.IndexOf("Metal") > -1 ? "Metal" : "Metal LTDA") + "\t" + SentenciaTmp);
 
                         System.Data.SqlClient.SqlDataAdapter Adaptador = new SqlDataAdapter(Comando);
                         System.Data.DataSet Resultado = new DataSet();

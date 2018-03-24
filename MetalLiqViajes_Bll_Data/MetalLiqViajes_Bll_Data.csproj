@@ -255,7 +255,7 @@
     <Compile Include="dal_add\TramosReportesLiqVehiculosDataProvider.cs" />
     <Compile Include="dal_add\VehiculoCCostoDataProvider.cs" />
     <Compile Include="dal_dms\documentosDataProvider.cs" />
-    <Compile Include="dal_dms\movimientoDataProvider.cs" />
+    <Compile Include="dal_dms\movimientosDataProvider.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="dto\A2MontoEscrito.cs" />
     <Compile Include="dto\AnticiposDms.cs" />
@@ -356,7 +356,7 @@
     <Compile Include="dto_add\TramosGastos.cs" />
     <Compile Include="dto_add\TramosMovViajes.cs" />
     <Compile Include="dto_dms\documentos.cs" />
-    <Compile Include="dto_dms\movimiento.cs" />
+    <Compile Include="dto_dms\movimientos.cs" />
     <Compile Include="IBLLObject.cs" />
     <Compile Include="MasterTables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
