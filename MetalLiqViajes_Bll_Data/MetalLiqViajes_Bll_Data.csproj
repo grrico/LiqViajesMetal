@@ -150,6 +150,8 @@
     <Compile Include="bll_add\TramosMovViajes.cs" />
     <Compile Include="bll_add\TramosReportesLiqVehiculos.cs" />
     <Compile Include="bll_add\VehiculoCCosto.cs" />
+    <Compile Include="bll_dms\documentos.cs" />
+    <Compile Include="bll_dms\movimiento.cs" />
     <Compile Include="dal\A2MontoEscritoDataProvider.cs" />
     <Compile Include="dal\AnticiposDmsDataProvider.cs" />
     <Compile Include="dal\CatalogoDataProvider.cs" />
@@ -252,6 +254,8 @@
     <Compile Include="dal_add\TramosMovViajesDataProvider.cs" />
     <Compile Include="dal_add\TramosReportesLiqVehiculosDataProvider.cs" />
     <Compile Include="dal_add\VehiculoCCostoDataProvider.cs" />
+    <Compile Include="dal_dms\documentosDataProvider.cs" />
+    <Compile Include="dal_dms\movimientoDataProvider.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="dto\A2MontoEscrito.cs" />
     <Compile Include="dto\AnticiposDms.cs" />
@@ -351,6 +355,8 @@
     <Compile Include="dto_add\RegistroViajeDTO.cs" />
     <Compile Include="dto_add\TramosGastos.cs" />
     <Compile Include="dto_add\TramosMovViajes.cs" />
+    <Compile Include="dto_dms\documentos.cs" />
+    <Compile Include="dto_dms\movimiento.cs" />
     <Compile Include="IBLLObject.cs" />
     <Compile Include="MasterTables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -365,5 +371,6 @@
       <Name>MetalLiqViajes_UtilDatos</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
