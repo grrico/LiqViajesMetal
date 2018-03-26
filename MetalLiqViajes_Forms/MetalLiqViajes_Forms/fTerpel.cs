@@ -573,7 +573,39 @@ namespace MetalLiqViajes_Forms
 
                 textBoxTotalVentas.Text = ventasDetalleList.Sum(t => t.TotalFactura).Value.ToString("n0");
                 textBoxTotalFactura.Text = ventasDetalleList.Sum(t => t.TotalVentas).Value.ToString("n0");
-                textBoxCantidad.Text= ventasDetalleList.Count().ToString("n0");
+                textBoxCantidad.Text = ventasDetalleList.Count().ToString("n0");
+
+                //movimientos movimiento
+
+                var distinctmoviento = ventasDetalleList.AsEnumerable()
+               .Select(row => new
+               {
+                   Factura = row.Factura,
+                   Tipo = row.Tipo,
+                   Placa = row.Placa,
+                   Nit= row.Nit,
+                   Seq=0,
+                   Cuenta=row.Cuenta,
+                   Fecha=row.Fecha,
+                   TotalVentas= ventasDetalleList.Where(t => t.Factura == row.Factura && t.Placa == row.Placa && t.Nit==row.Nit && t.Fecha== row.Fecha).Sum(v => v.TotalVentas).Value,
+                   TotalFactura= ventasDetalleList.Where(t => t.Factura == row.Factura && t.Placa == row.Placa && t.Nit == row.Nit && t.Fecha == row.Fecha).Sum(v => v.TotalFactura).Value,
+               })
+               .Distinct();
+                int cantidad = distinctmoviento.Count();
+                decimal TotalVentas = distinctmoviento.Sum(s => s.TotalVentas);
+                decimal TotalFactura = distinctmoviento.Sum(s => s.TotalFactura);
+
+                dataGridViewDocumento.DataSource = distinctmoviento.ToList();
+                dataGridViewDocumento.Refresh();
+                //registroviajelist .Where(t => t.NitConductor == item.Cedula).Sum(t => t.ValorAnticipos);
+
+                //  SELECT Factura, Tipo, Numero, Nit, Seq, Cuenta, CAST(Fecha AS date) AS Fecha, 
+                //  SUM(TotalVentas)AS TotalVentas, SUM(TotalFactura) AS TotalFactura
+                //  FROM    VentasFlotaDetalle WITH(NOLOCK)
+                //  GROUP BY Factura, Tipo, Numero, Nit, Seq, Cuenta, CAST(Fecha AS date)
+                //  HAVING(Factura = '9018015368')
+                //  ORDER BY Nit, Fecha
+
             }
 
         }
