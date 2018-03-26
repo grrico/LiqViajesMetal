@@ -29,6 +29,13 @@ namespace LiqViajes_Bll_Data
 			m_Recibo = 0;
 			m_IdEDS = null;
 			m_Factura = null;
+			m_Tipo = null;
+			m_Numero = null;
+			m_Tipo52v = null;
+			m_Numero52v = null;
+			m_Nit = null;
+			m_Seq = null;
+			m_Cuenta = null;
 			m_Fecha = null;
 			m_Hora = null;
 			m_NombreCliente = null;
@@ -63,6 +70,13 @@ namespace LiqViajes_Bll_Data
 			m_oldVentasFlotaDetalle.m_Recibo = m_Recibo;
 			m_oldVentasFlotaDetalle.IdEDS = m_IdEDS;
 			m_oldVentasFlotaDetalle.Factura = m_Factura;
+			m_oldVentasFlotaDetalle.Tipo = m_Tipo;
+			m_oldVentasFlotaDetalle.Numero = m_Numero;
+			m_oldVentasFlotaDetalle.Tipo52v = m_Tipo52v;
+			m_oldVentasFlotaDetalle.Numero52v = m_Numero52v;
+			m_oldVentasFlotaDetalle.Nit = m_Nit;
+			m_oldVentasFlotaDetalle.Seq = m_Seq;
+			m_oldVentasFlotaDetalle.Cuenta = m_Cuenta;
 			m_oldVentasFlotaDetalle.Fecha = m_Fecha;
 			m_oldVentasFlotaDetalle.Hora = m_Hora;
 			m_oldVentasFlotaDetalle.NombreCliente = m_NombreCliente;
@@ -93,6 +107,13 @@ namespace LiqViajes_Bll_Data
 			List<string> fields=new List<string>();
 			if (m_oldVentasFlotaDetalle.IdEDS != m_IdEDS) fields.Add("IdEDS");
 			if (m_oldVentasFlotaDetalle.Factura != m_Factura) fields.Add("Factura");
+			if (m_oldVentasFlotaDetalle.Tipo != m_Tipo) fields.Add("Tipo");
+			if (m_oldVentasFlotaDetalle.Numero != m_Numero) fields.Add("Numero");
+			if (m_oldVentasFlotaDetalle.Tipo52v != m_Tipo52v) fields.Add("Tipo52v");
+			if (m_oldVentasFlotaDetalle.Numero52v != m_Numero52v) fields.Add("Numero52v");
+			if (m_oldVentasFlotaDetalle.Nit != m_Nit) fields.Add("Nit");
+			if (m_oldVentasFlotaDetalle.Seq != m_Seq) fields.Add("Seq");
+			if (m_oldVentasFlotaDetalle.Cuenta != m_Cuenta) fields.Add("Cuenta");
 			if (m_oldVentasFlotaDetalle.Fecha != m_Fecha) fields.Add("Fecha");
 			if (m_oldVentasFlotaDetalle.Hora != m_Hora) fields.Add("Hora");
 			if (m_oldVentasFlotaDetalle.NombreCliente != m_NombreCliente) fields.Add("NombreCliente");
@@ -132,6 +153,27 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the VentasFlotaDetalle's Factura value
 		private string m_Factura;
+
+		// Field for storing the VentasFlotaDetalle's Tipo value
+		private string m_Tipo;
+
+		// Field for storing the VentasFlotaDetalle's Numero value
+		private int? m_Numero;
+
+		// Field for storing the VentasFlotaDetalle's Tipo52v value
+		private string m_Tipo52v;
+
+		// Field for storing the VentasFlotaDetalle's Numero52v value
+		private int? m_Numero52v;
+
+		// Field for storing the VentasFlotaDetalle's Nit value
+		private decimal? m_Nit;
+
+		// Field for storing the VentasFlotaDetalle's Seq value
+		private int? m_Seq;
+
+		// Field for storing the VentasFlotaDetalle's Cuenta value
+		private string m_Cuenta;
 
 		// Field for storing the VentasFlotaDetalle's Fecha value
 		private DateTime? m_Fecha;
@@ -239,6 +281,104 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_Factura = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlotaDetalle's Tipo value (string)
+		/// </summary>
+		[DataMember]
+		public string Tipo
+		{
+			get { return m_Tipo; }
+			set 
+			{
+				m_changed=true;
+				m_Tipo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlotaDetalle's Numero value (int)
+		/// </summary>
+		[DataMember]
+		public int? Numero
+		{
+			get { return m_Numero; }
+			set 
+			{
+				m_changed=true;
+				m_Numero = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlotaDetalle's Tipo52v value (string)
+		/// </summary>
+		[DataMember]
+		public string Tipo52v
+		{
+			get { return m_Tipo52v; }
+			set 
+			{
+				m_changed=true;
+				m_Tipo52v = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlotaDetalle's Numero52v value (int)
+		/// </summary>
+		[DataMember]
+		public int? Numero52v
+		{
+			get { return m_Numero52v; }
+			set 
+			{
+				m_changed=true;
+				m_Numero52v = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlotaDetalle's Nit value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal? Nit
+		{
+			get { return m_Nit; }
+			set 
+			{
+				m_changed=true;
+				m_Nit = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlotaDetalle's Seq value (int)
+		/// </summary>
+		[DataMember]
+		public int? Seq
+		{
+			get { return m_Seq; }
+			set 
+			{
+				m_changed=true;
+				m_Seq = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlotaDetalle's Cuenta value (string)
+		/// </summary>
+		[DataMember]
+		public string Cuenta
+		{
+			get { return m_Cuenta; }
+			set 
+			{
+				m_changed=true;
+				m_Cuenta = value;
 			}
 		}
 
@@ -501,6 +641,13 @@ namespace LiqViajes_Bll_Data
 				case "Recibo": return Recibo;
 				case "IdEDS": return IdEDS;
 				case "Factura": return Factura;
+				case "Tipo": return Tipo;
+				case "Numero": return Numero;
+				case "Tipo52v": return Tipo52v;
+				case "Numero52v": return Numero52v;
+				case "Nit": return Nit;
+				case "Seq": return Seq;
+				case "Cuenta": return Cuenta;
 				case "Fecha": return Fecha;
 				case "Hora": return Hora;
 				case "NombreCliente": return NombreCliente;

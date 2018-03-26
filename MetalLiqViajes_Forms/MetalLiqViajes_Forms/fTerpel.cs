@@ -34,6 +34,9 @@ namespace MetalLiqViajes_Forms
         private DateTime FechaInicial { get; set; }
         private DateTime FechaFinal { get; set; }
 
+        private List<VentasFlotaDetalle> ventasDetalleList { get; set; }
+        private VentasFlotaDetalle ventasDetalle { get; set; }
+
         public fTerpel()
         {
             InitializeComponent();
@@ -559,6 +562,20 @@ namespace MetalLiqViajes_Forms
                 }
             }
         }
+
+        private void btnGetDataVentas_Click(object sender, EventArgs e)
+        {
+            if (textBoxFactura.Text.Length > 0 && textBoxFactura.Text != "")
+            {
+                ventasDetalleList = VentasFlotaDetalleController.Instance.GetByFactura(textBoxFactura.Text);
+                dataGridViewVentasDetalle.DataSource = ventasDetalleList;
+                dataGridViewVentasDetalle.Refresh();
+
+                textBoxTotalVentas.Text = ventasDetalleList.Sum(t => t.TotalFactura).Value.ToString("n0");
+                textBoxTotalFactura.Text = ventasDetalleList.Sum(t => t.TotalVentas).Value.ToString("n0");
+                textBoxCantidad.Text= ventasDetalleList.Count().ToString("n0");
+            }
+
+        }
     }
 }
-

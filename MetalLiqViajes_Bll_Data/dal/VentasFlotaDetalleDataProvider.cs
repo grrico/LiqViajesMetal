@@ -49,6 +49,13 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="IdEDS"></param>
 		/// <param name="Factura"></param>
+		/// <param name="Tipo"></param>
+		/// <param name="Numero"></param>
+		/// <param name="Tipo52v"></param>
+		/// <param name="Numero52v"></param>
+		/// <param name="Nit"></param>
+		/// <param name="Seq"></param>
+		/// <param name="Cuenta"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="Hora"></param>
 		/// <param name="NombreCliente"></param>
@@ -67,7 +74,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Kilometraje"></param>
 		/// <param name="UnidadVenta"></param>
 		/// <param name="TipoVenta"></param>
-		public void Create(long Recibo, long? IdEDS, string Factura, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Create(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -99,6 +106,34 @@ namespace LiqViajes_Bll_Data
 				if (Factura !=null)
 				{
 					paramlist.AddWithValue("@Factura",Factura);
+				}
+				if (Tipo !=null)
+				{
+					paramlist.AddWithValue("@Tipo",Tipo);
+				}
+				if (Numero !=null)
+				{
+					paramlist.AddWithValue("@Numero",Numero);
+				}
+				if (Tipo52v !=null)
+				{
+					paramlist.AddWithValue("@Tipo52v",Tipo52v);
+				}
+				if (Numero52v !=null)
+				{
+					paramlist.AddWithValue("@Numero52v",Numero52v);
+				}
+				if (Nit !=null)
+				{
+					paramlist.AddWithValue("@Nit",Nit);
+				}
+				if (Seq !=null)
+				{
+					paramlist.AddWithValue("@Seq",Seq);
+				}
+				if (Cuenta !=null)
+				{
+					paramlist.AddWithValue("@Cuenta",Cuenta);
 				}
 				if (Fecha !=null)
 				{
@@ -187,6 +222,13 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Recibo"></param>
 		/// <param name="IdEDS"></param>
 		/// <param name="Factura"></param>
+		/// <param name="Tipo"></param>
+		/// <param name="Numero"></param>
+		/// <param name="Tipo52v"></param>
+		/// <param name="Numero52v"></param>
+		/// <param name="Nit"></param>
+		/// <param name="Seq"></param>
+		/// <param name="Cuenta"></param>
 		/// <param name="Fecha"></param>
 		/// <param name="Hora"></param>
 		/// <param name="NombreCliente"></param>
@@ -205,7 +247,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Kilometraje"></param>
 		/// <param name="UnidadVenta"></param>
 		/// <param name="TipoVenta"></param>
-		public void Update(long Recibo, long? IdEDS, string Factura, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -236,6 +278,34 @@ namespace LiqViajes_Bll_Data
 				if (Factura !=null)
 				{
 					paramlist.AddWithValue("@Factura",Factura);
+				}
+				if (Tipo !=null)
+				{
+					paramlist.AddWithValue("@Tipo",Tipo);
+				}
+				if (Numero !=null)
+				{
+					paramlist.AddWithValue("@Numero",Numero);
+				}
+				if (Tipo52v !=null)
+				{
+					paramlist.AddWithValue("@Tipo52v",Tipo52v);
+				}
+				if (Numero52v !=null)
+				{
+					paramlist.AddWithValue("@Numero52v",Numero52v);
+				}
+				if (Nit !=null)
+				{
+					paramlist.AddWithValue("@Nit",Nit);
+				}
+				if (Seq !=null)
+				{
+					paramlist.AddWithValue("@Seq",Seq);
+				}
+				if (Cuenta !=null)
+				{
+					paramlist.AddWithValue("@Cuenta",Cuenta);
 				}
 				if (Fecha !=null)
 				{

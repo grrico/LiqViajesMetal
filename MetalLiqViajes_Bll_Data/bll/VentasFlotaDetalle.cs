@@ -55,6 +55,13 @@ namespace LiqViajes_Bll_Data
 				ventasflotadetalle.Recibo = (long) dr["Recibo"];
 				ventasflotadetalle.IdEDS = dr.IsNull("IdEDS") ? null :(long?) dr["IdEDS"];
 				ventasflotadetalle.Factura = dr.IsNull("Factura") ? null :(string) dr["Factura"];
+				ventasflotadetalle.Tipo = dr.IsNull("Tipo") ? null :(string) dr["Tipo"];
+				ventasflotadetalle.Numero = dr.IsNull("Numero") ? null :(int?) dr["Numero"];
+				ventasflotadetalle.Tipo52v = dr.IsNull("Tipo52v") ? null :(string) dr["Tipo52v"];
+				ventasflotadetalle.Numero52v = dr.IsNull("Numero52v") ? null :(int?) dr["Numero52v"];
+				ventasflotadetalle.Nit = dr.IsNull("Nit") ? null :(decimal?) dr["Nit"];
+				ventasflotadetalle.Seq = dr.IsNull("Seq") ? null :(int?) dr["Seq"];
+				ventasflotadetalle.Cuenta = dr.IsNull("Cuenta") ? null :(string) dr["Cuenta"];
 				ventasflotadetalle.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
 				ventasflotadetalle.Hora = dr.IsNull("Hora") ? null :(string) dr["Hora"];
 				ventasflotadetalle.NombreCliente = dr.IsNull("NombreCliente") ? null :(string) dr["NombreCliente"];
@@ -87,7 +94,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public VentasFlotaDetalle Create(VentasFlotaDetalle ventasflotadetalle, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			return Create(ventasflotadetalle.Recibo,ventasflotadetalle.IdEDS,ventasflotadetalle.Factura,ventasflotadetalle.Fecha,ventasflotadetalle.Hora,ventasflotadetalle.NombreCliente,ventasflotadetalle.Estacion,ventasflotadetalle.TipoEstacion,ventasflotadetalle.Destinatario,ventasflotadetalle.Ciudad,ventasflotadetalle.Placa,ventasflotadetalle.Producto,ventasflotadetalle.Cantidad,ventasflotadetalle.Precio,ventasflotadetalle.TotalVentas,ventasflotadetalle.PrecioEspecial,ventasflotadetalle.TotalFactura,ventasflotadetalle.Descuento,ventasflotadetalle.Kilometraje,ventasflotadetalle.UnidadVenta,ventasflotadetalle.TipoVenta,datosTransaccion);
+			return Create(ventasflotadetalle.Recibo,ventasflotadetalle.IdEDS,ventasflotadetalle.Factura,ventasflotadetalle.Tipo,ventasflotadetalle.Numero,ventasflotadetalle.Tipo52v,ventasflotadetalle.Numero52v,ventasflotadetalle.Nit,ventasflotadetalle.Seq,ventasflotadetalle.Cuenta,ventasflotadetalle.Fecha,ventasflotadetalle.Hora,ventasflotadetalle.NombreCliente,ventasflotadetalle.Estacion,ventasflotadetalle.TipoEstacion,ventasflotadetalle.Destinatario,ventasflotadetalle.Ciudad,ventasflotadetalle.Placa,ventasflotadetalle.Producto,ventasflotadetalle.Cantidad,ventasflotadetalle.Precio,ventasflotadetalle.TotalVentas,ventasflotadetalle.PrecioEspecial,ventasflotadetalle.TotalFactura,ventasflotadetalle.Descuento,ventasflotadetalle.Kilometraje,ventasflotadetalle.UnidadVenta,ventasflotadetalle.TipoVenta,datosTransaccion);
 		}
 
 		/// <summary>
@@ -95,6 +102,13 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="IdEDS">long that contents the IdEDS value for the VentasFlotaDetalle object</param>
 		/// <param name="Factura">string that contents the Factura value for the VentasFlotaDetalle object</param>
+		/// <param name="Tipo">string that contents the Tipo value for the VentasFlotaDetalle object</param>
+		/// <param name="Numero">int that contents the Numero value for the VentasFlotaDetalle object</param>
+		/// <param name="Tipo52v">string that contents the Tipo52v value for the VentasFlotaDetalle object</param>
+		/// <param name="Numero52v">int that contents the Numero52v value for the VentasFlotaDetalle object</param>
+		/// <param name="Nit">decimal that contents the Nit value for the VentasFlotaDetalle object</param>
+		/// <param name="Seq">int that contents the Seq value for the VentasFlotaDetalle object</param>
+		/// <param name="Cuenta">string that contents the Cuenta value for the VentasFlotaDetalle object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the VentasFlotaDetalle object</param>
 		/// <param name="Hora">string that contents the Hora value for the VentasFlotaDetalle object</param>
 		/// <param name="NombreCliente">string that contents the NombreCliente value for the VentasFlotaDetalle object</param>
@@ -114,7 +128,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="UnidadVenta">string that contents the UnidadVenta value for the VentasFlotaDetalle object</param>
 		/// <param name="TipoVenta">string that contents the TipoVenta value for the VentasFlotaDetalle object</param>
 		/// <returns>One VentasFlotaDetalle object</returns>
-		public VentasFlotaDetalle Create(long Recibo, long? IdEDS, string Factura, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public VentasFlotaDetalle Create(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -123,6 +137,13 @@ namespace LiqViajes_Bll_Data
 				ventasflotadetalle.Recibo = Recibo;
 				ventasflotadetalle.IdEDS = IdEDS;
 				ventasflotadetalle.Factura = Factura;
+				ventasflotadetalle.Tipo = Tipo;
+				ventasflotadetalle.Numero = Numero;
+				ventasflotadetalle.Tipo52v = Tipo52v;
+				ventasflotadetalle.Numero52v = Numero52v;
+				ventasflotadetalle.Nit = Nit;
+				ventasflotadetalle.Seq = Seq;
+				ventasflotadetalle.Cuenta = Cuenta;
 				ventasflotadetalle.Fecha = Fecha;
 				ventasflotadetalle.Hora = Hora;
 				ventasflotadetalle.NombreCliente = NombreCliente;
@@ -141,7 +162,7 @@ namespace LiqViajes_Bll_Data
 				ventasflotadetalle.Kilometraje = Kilometraje;
 				ventasflotadetalle.UnidadVenta = UnidadVenta;
 				ventasflotadetalle.TipoVenta = TipoVenta;
-				VentasFlotaDetalleDataProvider.Instance.Create(Recibo, IdEDS, Factura, Fecha, Hora, NombreCliente, Estacion, TipoEstacion, Destinatario, Ciudad, Placa, Producto, Cantidad, Precio, TotalVentas, PrecioEspecial, TotalFactura, Descuento, Kilometraje, UnidadVenta, TipoVenta,"VentasFlotaDetalle");
+				VentasFlotaDetalleDataProvider.Instance.Create(Recibo, IdEDS, Factura, Tipo, Numero, Tipo52v, Numero52v, Nit, Seq, Cuenta, Fecha, Hora, NombreCliente, Estacion, TipoEstacion, Destinatario, Ciudad, Placa, Producto, Cantidad, Precio, TotalVentas, PrecioEspecial, TotalFactura, Descuento, Kilometraje, UnidadVenta, TipoVenta,"VentasFlotaDetalle");
 
 				return ventasflotadetalle;
 			}
@@ -157,6 +178,13 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Recibo">long that contents the Recibo value for the VentasFlotaDetalle object</param>
 		/// <param name="IdEDS">long that contents the IdEDS value for the VentasFlotaDetalle object</param>
 		/// <param name="Factura">string that contents the Factura value for the VentasFlotaDetalle object</param>
+		/// <param name="Tipo">string that contents the Tipo value for the VentasFlotaDetalle object</param>
+		/// <param name="Numero">int that contents the Numero value for the VentasFlotaDetalle object</param>
+		/// <param name="Tipo52v">string that contents the Tipo52v value for the VentasFlotaDetalle object</param>
+		/// <param name="Numero52v">int that contents the Numero52v value for the VentasFlotaDetalle object</param>
+		/// <param name="Nit">decimal that contents the Nit value for the VentasFlotaDetalle object</param>
+		/// <param name="Seq">int that contents the Seq value for the VentasFlotaDetalle object</param>
+		/// <param name="Cuenta">string that contents the Cuenta value for the VentasFlotaDetalle object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the VentasFlotaDetalle object</param>
 		/// <param name="Hora">string that contents the Hora value for the VentasFlotaDetalle object</param>
 		/// <param name="NombreCliente">string that contents the NombreCliente value for the VentasFlotaDetalle object</param>
@@ -175,13 +203,20 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Kilometraje">decimal that contents the Kilometraje value for the VentasFlotaDetalle object</param>
 		/// <param name="UnidadVenta">string that contents the UnidadVenta value for the VentasFlotaDetalle object</param>
 		/// <param name="TipoVenta">string that contents the TipoVenta value for the VentasFlotaDetalle object</param>
-		public void Update(long Recibo, long? IdEDS, string Factura, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				VentasFlotaDetalle new_values = new VentasFlotaDetalle();
 				new_values.IdEDS = IdEDS;
 				new_values.Factura = Factura;
+				new_values.Tipo = Tipo;
+				new_values.Numero = Numero;
+				new_values.Tipo52v = Tipo52v;
+				new_values.Numero52v = Numero52v;
+				new_values.Nit = Nit;
+				new_values.Seq = Seq;
+				new_values.Cuenta = Cuenta;
 				new_values.Fecha = Fecha;
 				new_values.Hora = Hora;
 				new_values.NombreCliente = NombreCliente;
@@ -200,7 +235,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Kilometraje = Kilometraje;
 				new_values.UnidadVenta = UnidadVenta;
 				new_values.TipoVenta = TipoVenta;
-				VentasFlotaDetalleDataProvider.Instance.Update(Recibo, IdEDS, Factura, Fecha, Hora, NombreCliente, Estacion, TipoEstacion, Destinatario, Ciudad, Placa, Producto, Cantidad, Precio, TotalVentas, PrecioEspecial, TotalFactura, Descuento, Kilometraje, UnidadVenta, TipoVenta,"VentasFlotaDetalle",datosTransaccion);
+				VentasFlotaDetalleDataProvider.Instance.Update(Recibo, IdEDS, Factura, Tipo, Numero, Tipo52v, Numero52v, Nit, Seq, Cuenta, Fecha, Hora, NombreCliente, Estacion, TipoEstacion, Destinatario, Ciudad, Placa, Producto, Cantidad, Precio, TotalVentas, PrecioEspecial, TotalFactura, Descuento, Kilometraje, UnidadVenta, TipoVenta,"VentasFlotaDetalle",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -214,7 +249,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="ventasflotadetalle">An instance of VentasFlotaDetalle for reference</param>
 		public void Update(VentasFlotaDetalle ventasflotadetalle,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(ventasflotadetalle.Recibo, ventasflotadetalle.IdEDS, ventasflotadetalle.Factura, ventasflotadetalle.Fecha, ventasflotadetalle.Hora, ventasflotadetalle.NombreCliente, ventasflotadetalle.Estacion, ventasflotadetalle.TipoEstacion, ventasflotadetalle.Destinatario, ventasflotadetalle.Ciudad, ventasflotadetalle.Placa, ventasflotadetalle.Producto, ventasflotadetalle.Cantidad, ventasflotadetalle.Precio, ventasflotadetalle.TotalVentas, ventasflotadetalle.PrecioEspecial, ventasflotadetalle.TotalFactura, ventasflotadetalle.Descuento, ventasflotadetalle.Kilometraje, ventasflotadetalle.UnidadVenta, ventasflotadetalle.TipoVenta);
+			Update(ventasflotadetalle.Recibo, ventasflotadetalle.IdEDS, ventasflotadetalle.Factura, ventasflotadetalle.Tipo, ventasflotadetalle.Numero, ventasflotadetalle.Tipo52v, ventasflotadetalle.Numero52v, ventasflotadetalle.Nit, ventasflotadetalle.Seq, ventasflotadetalle.Cuenta, ventasflotadetalle.Fecha, ventasflotadetalle.Hora, ventasflotadetalle.NombreCliente, ventasflotadetalle.Estacion, ventasflotadetalle.TipoEstacion, ventasflotadetalle.Destinatario, ventasflotadetalle.Ciudad, ventasflotadetalle.Placa, ventasflotadetalle.Producto, ventasflotadetalle.Cantidad, ventasflotadetalle.Precio, ventasflotadetalle.TotalVentas, ventasflotadetalle.PrecioEspecial, ventasflotadetalle.TotalFactura, ventasflotadetalle.Descuento, ventasflotadetalle.Kilometraje, ventasflotadetalle.UnidadVenta, ventasflotadetalle.TipoVenta);
 		}
 
 		/// <summary>
@@ -374,6 +409,27 @@ namespace LiqViajes_Bll_Data
 
 				case "Factura":
 					return ventasflotadetalle.Factura.GetType();
+
+				case "Tipo":
+					return ventasflotadetalle.Tipo.GetType();
+
+				case "Numero":
+					return ventasflotadetalle.Numero.GetType();
+
+				case "Tipo52v":
+					return ventasflotadetalle.Tipo52v.GetType();
+
+				case "Numero52v":
+					return ventasflotadetalle.Numero52v.GetType();
+
+				case "Nit":
+					return ventasflotadetalle.Nit.GetType();
+
+				case "Seq":
+					return ventasflotadetalle.Seq.GetType();
+
+				case "Cuenta":
+					return ventasflotadetalle.Cuenta.GetType();
 
 				case "Fecha":
 					return ventasflotadetalle.Fecha.GetType();

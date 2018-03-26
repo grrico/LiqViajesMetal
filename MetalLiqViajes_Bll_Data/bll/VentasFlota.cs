@@ -55,6 +55,9 @@ namespace LiqViajes_Bll_Data
 				ventasflota.Recibo = (long) dr["Recibo"];
 				ventasflota.CodEds = dr.IsNull("CodEds") ? null :(long?) dr["CodEds"];
 				ventasflota.Fecha = dr.IsNull("Fecha") ? null :(DateTime?) dr["Fecha"];
+				ventasflota.Tipo = dr.IsNull("Tipo") ? null :(string) dr["Tipo"];
+				ventasflota.Numero = dr.IsNull("Numero") ? null :(int?) dr["Numero"];
+				ventasflota.Nit = dr.IsNull("Nit") ? null :(decimal?) dr["Nit"];
 				ventasflota.Placa = dr.IsNull("Placa") ? null :(string) dr["Placa"];
 				ventasflota.Producto = dr.IsNull("Producto") ? null :(string) dr["Producto"];
 				ventasflota.Dinero = dr.IsNull("Dinero") ? null :(decimal?) dr["Dinero"];
@@ -78,7 +81,7 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		public VentasFlota Create(VentasFlota ventasflota, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			return Create(ventasflota.Recibo,ventasflota.CodEds,ventasflota.Fecha,ventasflota.Placa,ventasflota.Producto,ventasflota.Dinero,ventasflota.Descuento,ventasflota.PrecioEspecial,ventasflota.TotalFactura,ventasflota.Volumen,ventasflota.Kilometraje,ventasflota.Factura,datosTransaccion);
+			return Create(ventasflota.Recibo,ventasflota.CodEds,ventasflota.Fecha,ventasflota.Tipo,ventasflota.Numero,ventasflota.Nit,ventasflota.Placa,ventasflota.Producto,ventasflota.Dinero,ventasflota.Descuento,ventasflota.PrecioEspecial,ventasflota.TotalFactura,ventasflota.Volumen,ventasflota.Kilometraje,ventasflota.Factura,datosTransaccion);
 		}
 
 		/// <summary>
@@ -86,6 +89,9 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="CodEds">long that contents the CodEds value for the VentasFlota object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the VentasFlota object</param>
+		/// <param name="Tipo">string that contents the Tipo value for the VentasFlota object</param>
+		/// <param name="Numero">int that contents the Numero value for the VentasFlota object</param>
+		/// <param name="Nit">decimal that contents the Nit value for the VentasFlota object</param>
 		/// <param name="Placa">string that contents the Placa value for the VentasFlota object</param>
 		/// <param name="Producto">string that contents the Producto value for the VentasFlota object</param>
 		/// <param name="Dinero">decimal that contents the Dinero value for the VentasFlota object</param>
@@ -96,7 +102,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Kilometraje">decimal that contents the Kilometraje value for the VentasFlota object</param>
 		/// <param name="Factura">long that contents the Factura value for the VentasFlota object</param>
 		/// <returns>One VentasFlota object</returns>
-		public VentasFlota Create(long Recibo, long? CodEds, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura, Sinapsys.Datos.SQL datosTransaccion=null)
+		public VentasFlota Create(long Recibo, long? CodEds, DateTime? Fecha, string Tipo, int? Numero, decimal? Nit, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -105,6 +111,9 @@ namespace LiqViajes_Bll_Data
 				ventasflota.Recibo = Recibo;
 				ventasflota.CodEds = CodEds;
 				ventasflota.Fecha = Fecha;
+				ventasflota.Tipo = Tipo;
+				ventasflota.Numero = Numero;
+				ventasflota.Nit = Nit;
 				ventasflota.Placa = Placa;
 				ventasflota.Producto = Producto;
 				ventasflota.Dinero = Dinero;
@@ -114,7 +123,7 @@ namespace LiqViajes_Bll_Data
 				ventasflota.Volumen = Volumen;
 				ventasflota.Kilometraje = Kilometraje;
 				ventasflota.Factura = Factura;
-				VentasFlotaDataProvider.Instance.Create(Recibo, CodEds, Fecha, Placa, Producto, Dinero, Descuento, PrecioEspecial, TotalFactura, Volumen, Kilometraje, Factura,"VentasFlota");
+				VentasFlotaDataProvider.Instance.Create(Recibo, CodEds, Fecha, Tipo, Numero, Nit, Placa, Producto, Dinero, Descuento, PrecioEspecial, TotalFactura, Volumen, Kilometraje, Factura,"VentasFlota");
 
 				return ventasflota;
 			}
@@ -130,6 +139,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Recibo">long that contents the Recibo value for the VentasFlota object</param>
 		/// <param name="CodEds">long that contents the CodEds value for the VentasFlota object</param>
 		/// <param name="Fecha">DateTime that contents the Fecha value for the VentasFlota object</param>
+		/// <param name="Tipo">string that contents the Tipo value for the VentasFlota object</param>
+		/// <param name="Numero">int that contents the Numero value for the VentasFlota object</param>
+		/// <param name="Nit">decimal that contents the Nit value for the VentasFlota object</param>
 		/// <param name="Placa">string that contents the Placa value for the VentasFlota object</param>
 		/// <param name="Producto">string that contents the Producto value for the VentasFlota object</param>
 		/// <param name="Dinero">decimal that contents the Dinero value for the VentasFlota object</param>
@@ -139,13 +151,16 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Volumen">decimal that contents the Volumen value for the VentasFlota object</param>
 		/// <param name="Kilometraje">decimal that contents the Kilometraje value for the VentasFlota object</param>
 		/// <param name="Factura">long that contents the Factura value for the VentasFlota object</param>
-		public void Update(long Recibo, long? CodEds, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Recibo, long? CodEds, DateTime? Fecha, string Tipo, int? Numero, decimal? Nit, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
 				VentasFlota new_values = new VentasFlota();
 				new_values.CodEds = CodEds;
 				new_values.Fecha = Fecha;
+				new_values.Tipo = Tipo;
+				new_values.Numero = Numero;
+				new_values.Nit = Nit;
 				new_values.Placa = Placa;
 				new_values.Producto = Producto;
 				new_values.Dinero = Dinero;
@@ -155,7 +170,7 @@ namespace LiqViajes_Bll_Data
 				new_values.Volumen = Volumen;
 				new_values.Kilometraje = Kilometraje;
 				new_values.Factura = Factura;
-				VentasFlotaDataProvider.Instance.Update(Recibo, CodEds, Fecha, Placa, Producto, Dinero, Descuento, PrecioEspecial, TotalFactura, Volumen, Kilometraje, Factura,"VentasFlota",datosTransaccion);
+				VentasFlotaDataProvider.Instance.Update(Recibo, CodEds, Fecha, Tipo, Numero, Nit, Placa, Producto, Dinero, Descuento, PrecioEspecial, TotalFactura, Volumen, Kilometraje, Factura,"VentasFlota",datosTransaccion);
 			}
 			catch (Exception ex)
 			{
@@ -169,7 +184,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="ventasflota">An instance of VentasFlota for reference</param>
 		public void Update(VentasFlota ventasflota,Sinapsys.Datos.SQL datosTransaccion=null)
 		{
-			Update(ventasflota.Recibo, ventasflota.CodEds, ventasflota.Fecha, ventasflota.Placa, ventasflota.Producto, ventasflota.Dinero, ventasflota.Descuento, ventasflota.PrecioEspecial, ventasflota.TotalFactura, ventasflota.Volumen, ventasflota.Kilometraje, ventasflota.Factura);
+			Update(ventasflota.Recibo, ventasflota.CodEds, ventasflota.Fecha, ventasflota.Tipo, ventasflota.Numero, ventasflota.Nit, ventasflota.Placa, ventasflota.Producto, ventasflota.Dinero, ventasflota.Descuento, ventasflota.PrecioEspecial, ventasflota.TotalFactura, ventasflota.Volumen, ventasflota.Kilometraje, ventasflota.Factura);
 		}
 
 		/// <summary>
@@ -329,6 +344,15 @@ namespace LiqViajes_Bll_Data
 
 				case "Fecha":
 					return ventasflota.Fecha.GetType();
+
+				case "Tipo":
+					return ventasflota.Tipo.GetType();
+
+				case "Numero":
+					return ventasflota.Numero.GetType();
+
+				case "Nit":
+					return ventasflota.Nit.GetType();
 
 				case "Placa":
 					return ventasflota.Placa.GetType();

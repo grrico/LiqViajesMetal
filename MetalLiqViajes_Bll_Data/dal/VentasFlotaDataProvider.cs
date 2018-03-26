@@ -49,6 +49,9 @@ namespace LiqViajes_Bll_Data
 		/// </summary>
 		/// <param name="CodEds"></param>
 		/// <param name="Fecha"></param>
+		/// <param name="Tipo"></param>
+		/// <param name="Numero"></param>
+		/// <param name="Nit"></param>
 		/// <param name="Placa"></param>
 		/// <param name="Producto"></param>
 		/// <param name="Dinero"></param>
@@ -58,7 +61,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Volumen"></param>
 		/// <param name="Kilometraje"></param>
 		/// <param name="Factura"></param>
-		public void Create(long Recibo, long? CodEds, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Create(long Recibo, long? CodEds, DateTime? Fecha, string Tipo, int? Numero, decimal? Nit, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -90,6 +93,18 @@ namespace LiqViajes_Bll_Data
 				if (Fecha !=null)
 				{
 					paramlist.AddWithValue("@Fecha",Fecha);
+				}
+				if (Tipo !=null)
+				{
+					paramlist.AddWithValue("@Tipo",Tipo);
+				}
+				if (Numero !=null)
+				{
+					paramlist.AddWithValue("@Numero",Numero);
+				}
+				if (Nit !=null)
+				{
+					paramlist.AddWithValue("@Nit",Nit);
 				}
 				if (Placa !=null)
 				{
@@ -142,6 +157,9 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Recibo"></param>
 		/// <param name="CodEds"></param>
 		/// <param name="Fecha"></param>
+		/// <param name="Tipo"></param>
+		/// <param name="Numero"></param>
+		/// <param name="Nit"></param>
 		/// <param name="Placa"></param>
 		/// <param name="Producto"></param>
 		/// <param name="Dinero"></param>
@@ -151,7 +169,7 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Volumen"></param>
 		/// <param name="Kilometraje"></param>
 		/// <param name="Factura"></param>
-		public void Update(long Recibo, long? CodEds, DateTime? Fecha, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Recibo, long? CodEds, DateTime? Fecha, string Tipo, int? Numero, decimal? Nit, string Placa, string Producto, decimal? Dinero, decimal? Descuento, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Volumen, decimal? Kilometraje, long? Factura,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -182,6 +200,18 @@ namespace LiqViajes_Bll_Data
 				if (Fecha !=null)
 				{
 					paramlist.AddWithValue("@Fecha",Fecha);
+				}
+				if (Tipo !=null)
+				{
+					paramlist.AddWithValue("@Tipo",Tipo);
+				}
+				if (Numero !=null)
+				{
+					paramlist.AddWithValue("@Numero",Numero);
+				}
+				if (Nit !=null)
+				{
+					paramlist.AddWithValue("@Nit",Nit);
 				}
 				if (Placa !=null)
 				{

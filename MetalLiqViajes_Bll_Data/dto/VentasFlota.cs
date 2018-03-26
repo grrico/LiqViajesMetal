@@ -29,6 +29,9 @@ namespace LiqViajes_Bll_Data
 			m_Recibo = 0;
 			m_CodEds = null;
 			m_Fecha = null;
+			m_Tipo = null;
+			m_Numero = null;
+			m_Nit = null;
 			m_Placa = null;
 			m_Producto = null;
 			m_Dinero = null;
@@ -54,6 +57,9 @@ namespace LiqViajes_Bll_Data
 			m_oldVentasFlota.m_Recibo = m_Recibo;
 			m_oldVentasFlota.CodEds = m_CodEds;
 			m_oldVentasFlota.Fecha = m_Fecha;
+			m_oldVentasFlota.Tipo = m_Tipo;
+			m_oldVentasFlota.Numero = m_Numero;
+			m_oldVentasFlota.Nit = m_Nit;
 			m_oldVentasFlota.Placa = m_Placa;
 			m_oldVentasFlota.Producto = m_Producto;
 			m_oldVentasFlota.Dinero = m_Dinero;
@@ -75,6 +81,9 @@ namespace LiqViajes_Bll_Data
 			List<string> fields=new List<string>();
 			if (m_oldVentasFlota.CodEds != m_CodEds) fields.Add("CodEds");
 			if (m_oldVentasFlota.Fecha != m_Fecha) fields.Add("Fecha");
+			if (m_oldVentasFlota.Tipo != m_Tipo) fields.Add("Tipo");
+			if (m_oldVentasFlota.Numero != m_Numero) fields.Add("Numero");
+			if (m_oldVentasFlota.Nit != m_Nit) fields.Add("Nit");
 			if (m_oldVentasFlota.Placa != m_Placa) fields.Add("Placa");
 			if (m_oldVentasFlota.Producto != m_Producto) fields.Add("Producto");
 			if (m_oldVentasFlota.Dinero != m_Dinero) fields.Add("Dinero");
@@ -105,6 +114,15 @@ namespace LiqViajes_Bll_Data
 
 		// Field for storing the VentasFlota's Fecha value
 		private DateTime? m_Fecha;
+
+		// Field for storing the VentasFlota's Tipo value
+		private string m_Tipo;
+
+		// Field for storing the VentasFlota's Numero value
+		private int? m_Numero;
+
+		// Field for storing the VentasFlota's Nit value
+		private decimal? m_Nit;
 
 		// Field for storing the VentasFlota's Placa value
 		private string m_Placa;
@@ -185,6 +203,48 @@ namespace LiqViajes_Bll_Data
 			{
 				m_changed=true;
 				m_Fecha = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlota's Tipo value (string)
+		/// </summary>
+		[DataMember]
+		public string Tipo
+		{
+			get { return m_Tipo; }
+			set 
+			{
+				m_changed=true;
+				m_Tipo = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlota's Numero value (int)
+		/// </summary>
+		[DataMember]
+		public int? Numero
+		{
+			get { return m_Numero; }
+			set 
+			{
+				m_changed=true;
+				m_Numero = value;
+			}
+		}
+
+		/// <summary>
+		/// Attribute for access the VentasFlota's Nit value (decimal)
+		/// </summary>
+		[DataMember]
+		public decimal? Nit
+		{
+			get { return m_Nit; }
+			set 
+			{
+				m_changed=true;
+				m_Nit = value;
 			}
 		}
 
@@ -321,6 +381,9 @@ namespace LiqViajes_Bll_Data
 				case "Recibo": return Recibo;
 				case "CodEds": return CodEds;
 				case "Fecha": return Fecha;
+				case "Tipo": return Tipo;
+				case "Numero": return Numero;
+				case "Nit": return Nit;
 				case "Placa": return Placa;
 				case "Producto": return Producto;
 				case "Dinero": return Dinero;
