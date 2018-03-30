@@ -20,10 +20,10 @@ namespace MetalLiqViajes_Forms.Util
         public string Placa { get; set; }
         public string Producto { get; set; }
         public decimal Cantidad { get; set; }
-        public decimal Precio { get; set; }
-        public decimal TotalVentas { get; set; }
-        public decimal PrecioEspecial { get; set; }
-        public decimal TotalFactura { get; set; }
+        public double Precio { get; set; }
+        public double TotalVentas { get; set; }
+        public double PrecioEspecial { get; set; }
+        public double TotalFactura { get; set; }
         public decimal Descuento { get; set; }
         public string UnidadVenta { get; set; }
         public decimal Kilometraje { get; set; }

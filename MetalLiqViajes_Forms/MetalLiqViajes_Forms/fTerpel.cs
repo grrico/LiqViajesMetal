@@ -37,6 +37,10 @@ namespace MetalLiqViajes_Forms
         private List<VentasFlotaDetalle> ventasDetalleList { get; set; }
         private VentasFlotaDetalle ventasDetalle { get; set; }
 
+        private List<movimientos> movimientoslist { get; set; }
+
+        private List<documentos> documentosList { get; set; }
+
         public fTerpel()
         {
             InitializeComponent();
@@ -393,16 +397,16 @@ namespace MetalLiqViajes_Forms
                     excelTerpel.Cantidad = Convert.ToDecimal(dt.Rows[i].ItemArray[11].ToString());
 
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column12")] != null)
-                    excelTerpel.Precio = Convert.ToDecimal(dt.Rows[i].ItemArray[12].ToString());
+                    excelTerpel.Precio = Convert.ToDouble(dt.Rows[i].ItemArray[12].ToString());
 
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column13")] != null)
-                    excelTerpel.TotalVentas = Convert.ToDecimal(dt.Rows[i].ItemArray[13].ToString());
+                    excelTerpel.TotalVentas = Convert.ToDouble(dt.Rows[i].ItemArray[13].ToString());
 
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column14")] != null)
-                    excelTerpel.PrecioEspecial = Convert.ToDecimal(dt.Rows[i].ItemArray[14].ToString());
+                    excelTerpel.PrecioEspecial = Convert.ToDouble(dt.Rows[i].ItemArray[14].ToString());
 
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column15")] != null)
-                    excelTerpel.TotalFactura = Convert.ToDecimal(dt.Rows[i].ItemArray[15].ToString());
+                    excelTerpel.TotalFactura = Convert.ToDouble(dt.Rows[i].ItemArray[15].ToString());
 
                 if (dt.Rows[0].ItemArray[dt.Columns.IndexOf("Column16")] != null)
                     excelTerpel.Descuento = Convert.ToDecimal(dt.Rows[i].ItemArray[16].ToString());
@@ -575,39 +579,334 @@ namespace MetalLiqViajes_Forms
                 textBoxTotalFactura.Text = ventasDetalleList.Sum(t => t.TotalVentas).Value.ToString("n0");
                 textBoxCantidad.Text = ventasDetalleList.Count().ToString("n0");
 
-                //movimientos movimiento
+                if (ventasDetalleList.Count() == 0) return;
 
+                //movimientos movimiento
                 var distinctmoviento = ventasDetalleList.AsEnumerable()
                .Select(row => new
                {
                    Factura = row.Factura,
                    Tipo = row.Tipo,
                    Placa = row.Placa,
-                   Nit= row.Nit,
-                   Seq=0,
-                   Cuenta=row.Cuenta,
-                   Fecha=row.Fecha,
-                   TotalVentas= ventasDetalleList.Where(t => t.Factura == row.Factura && t.Placa == row.Placa && t.Nit==row.Nit && t.Fecha== row.Fecha).Sum(v => v.TotalVentas).Value,
-                   TotalFactura= ventasDetalleList.Where(t => t.Factura == row.Factura && t.Placa == row.Placa && t.Nit == row.Nit && t.Fecha == row.Fecha).Sum(v => v.TotalFactura).Value,
+                   Nit = row.Nit,
+                   Seq = 0,
+                   Cuenta = row.Cuenta,
+                   Fecha = row.Fecha,
+                   TotalVentas = ventasDetalleList.Where(t => t.Factura == row.Factura && t.Placa == row.Placa && t.Nit == row.Nit && t.Fecha == row.Fecha).Sum(v => v.TotalVentas).Value,
+                   TotalFactura = ventasDetalleList.Where(t => t.Factura == row.Factura && t.Placa == row.Placa && t.Nit == row.Nit && t.Fecha == row.Fecha).Sum(v => v.TotalFactura).Value,
                })
                .Distinct();
                 int cantidad = distinctmoviento.Count();
-                decimal TotalVentas = distinctmoviento.Sum(s => s.TotalVentas);
-                decimal TotalFactura = distinctmoviento.Sum(s => s.TotalFactura);
+                double TotalVentas = distinctmoviento.Sum(s => s.TotalVentas);
+                double TotalFactura = distinctmoviento.Sum(s => s.TotalFactura);
 
-                dataGridViewDocumento.DataSource = distinctmoviento.ToList();
+                string tipo = "83";
+                int numero = 11088;
+                int numerodms = 11118;//
+
+                if (textBoxFactura.Text != "9018016645")
+                    numerodms = consecutivosController.Instance.Get("83").siguiente.Value;
+
+                documentos documento = documentosController.Instance.GetByTipoNumero(tipo, numero);
+
+                documentosList = new List<documentos>();
+
+                string nota = "FACT. @@@@@@@ COMPRA ACPM DEL @DDI AL @DDF";
+
+                DateTime fechai = ventasDetalleList.FirstOrDefault().Fecha.Value;
+                DateTime fechaf = ventasDetalleList.LastOrDefault().Fecha.Value;
+
+                nota = CrearDocumento83(documento, nota, fechai, fechaf, numerodms);
+
+                documentosList.Add(documento);
+
+                decimal valor = documento.valor_total.Value * -1;
+                decimal valorniiff = documento.valor_total.Value * -1;
+                string cuenta = "23359501";
+                int seq = 1;
+
+                decimal nit = 830095213;
+
+
+                DateTime fecha = Convert.ToDateTime(fechai.ToShortDateString());
+                tipo = "83";
+                movimientoslist = new List<movimientos>();
+                movimientos movimiento = CrearMovimiento(documento, nota, valor, cuenta, seq, nit, numerodms, valorniiff, fecha, tipo);
+                movimientoslist.Add(movimiento);
+
+                foreach (var item in distinctmoviento)
+                {
+                    #region crea detalle movimento
+                    valor = Convert.ToInt64(item.TotalFactura);
+                    valorniiff = Convert.ToInt64(item.TotalFactura);
+                    cuenta = "13301504";
+                    seq++;
+                    nit = item.Nit.Value;
+                    fecha = Convert.ToDateTime(item.Fecha.Value.ToShortDateString());
+                    tipo = "83";
+                    movimiento = CrearMovimiento(documento, nota, valor, cuenta, seq, nit, numerodms, valorniiff, fecha, tipo);
+                    movimientoslist.Add(movimiento);
+                    #endregion
+                }
+
+                textBoxMovCuenta1.Text = movimientoslist.Where(t => t.cuenta == "23359501").Sum(s => s.valor).ToString("n2");
+                textBoxMovCuenta2.Text = movimientoslist.Where(t => t.cuenta == "13301504").Sum(s => s.valor).ToString("n2");
+
+                //  por cada nit para 52V, se debe crear un documento, se debe crear 3 movimientos.
+                //  16430
+
+                tipo = "52V";
+                numero = 11088;
+                documentos documento52V = documentosController.Instance.GetByTipoNumero(tipo, numero);
+                numero = 0;
+
+                numerodms = consecutivosController.Instance.Get("52V").siguiente.Value;
+                numerodms--;
+                foreach (var item in ventasDetalleList)
+                {
+
+                    nota = "RECIBO @@@@@@@ COMPRA ACPM FECHA @DDF";
+                    fechai = Convert.ToDateTime(item.Fecha.Value.ToShortDateString());
+
+                    documento = ClonarDocumento(documento52V);// clona el documento
+
+                    numerodms++; //= consecutivosController.Instance.Get("83").siguiente.Value;
+
+                    documento.id = 0;
+                    documento.nit = item.Nit.Value;
+                    documento.numero = Convert.ToInt32(numerodms);
+                    documento.fecha = Convert.ToDateTime(fechai.ToShortDateString());
+                    documento.vencimiento = dateTimePickerDocumento.Value;
+                    documento.valor_total = Convert.ToInt64(item.TotalFactura.Value);
+                    documento.valor_aplicado = 0;
+                    documento.documento = item.Recibo.ToString();
+                    nota = nota.Replace("@@@@@@@", item.Recibo.ToString());
+                    nota = nota.Replace("@DDF", fechai.ToString("dd/MMM/yyyy"));
+                    documento.notas = nota;
+                    documento.fecha_hora = dateTimePickerDocumento.Value;
+                    documento.valor_mercancia = Convert.ToInt64(item.TotalFactura.Value);
+
+                    documentosList.Add(documento);
+
+                    // por cada 52V se debe crear 3 movientos
+
+                    //13301503
+                    //13301504
+                    //17057004
+
+                    #region crea detalle movimento 
+
+                    //  seq = 1
+
+                    valor = Convert.ToInt64(item.TotalFactura.Value);
+                    valorniiff = Convert.ToInt64(0);
+                    cuenta = "13301503";
+                    seq = 1;
+                    nit = item.Nit.Value;
+                    movimiento = CrearMovimiento(documento, nota, valor, cuenta, seq, nit, numerodms, valorniiff, fechai, tipo);
+                    movimientoslist.Add(movimiento);
+
+                    //  seq = 2
+
+                    valor = Convert.ToInt64(item.TotalFactura.Value) * -1;
+                    valorniiff = Convert.ToInt64(item.TotalFactura.Value) * -1;
+                    cuenta = "13301504";
+                    seq = 2;
+                    nit = item.Nit.Value;
+                    movimiento = CrearMovimiento(documento, nota, valor, cuenta, seq, nit, numerodms, valorniiff, fechai, tipo);
+                    movimientoslist.Add(movimiento);
+
+                    //  seq = 3
+
+                    valor = Convert.ToInt64(0);
+                    valorniiff = Convert.ToInt64(item.TotalFactura.Value);
+                    cuenta = "17057004";
+                    seq = 3;
+                    nit = item.Nit.Value;
+                    movimiento = CrearMovimiento(documento, nota, valor, cuenta, seq, nit, numerodms, valorniiff, fechai, tipo);
+                    movimientoslist.Add(movimiento);
+
+
+                    #endregion
+
+
+                }
+
+                dataGridViewDocumento.DataSource = documentosList.ToList();
                 dataGridViewDocumento.Refresh();
-                //registroviajelist .Where(t => t.NitConductor == item.Cedula).Sum(t => t.ValorAnticipos);
 
-                //  SELECT Factura, Tipo, Numero, Nit, Seq, Cuenta, CAST(Fecha AS date) AS Fecha, 
-                //  SUM(TotalVentas)AS TotalVentas, SUM(TotalFactura) AS TotalFactura
-                //  FROM    VentasFlotaDetalle WITH(NOLOCK)
-                //  GROUP BY Factura, Tipo, Numero, Nit, Seq, Cuenta, CAST(Fecha AS date)
-                //  HAVING(Factura = '9018015368')
-                //  ORDER BY Nit, Fecha
+                dataGridViewMovimiento83.DataSource = movimientoslist;
+                dataGridViewMovimiento83.Refresh();
 
             }
 
+        }
+
+        private string CrearDocumento83(documentos documento, string nota, DateTime fechai, DateTime fechaf, int numero)
+        {
+            documento.numero = numero;
+            documento.fecha = Convert.ToDateTime(fechai.ToShortDateString());
+            documento.vencimiento = dateTimePickerDocumento.Value;
+            documento.valor_total = Convert.ToInt64(ventasDetalleList.Sum(v => v.TotalFactura).Value);
+            documento.valor_aplicado = 0;
+            documento.documento = ventasDetalleList.FirstOrDefault().Factura;
+            nota = nota.Replace("@@@@@@@", documento.documento);
+            nota = nota.Replace("@DDI", fechai.Day.ToString("##"));
+            nota = nota.Replace("@DDF", fechaf.ToString("dd/MMM/yyyy"));
+            documento.notas = nota;
+            documento.fecha_hora = dateTimePickerDocumento.Value;
+            documento.valor_mercancia = documento.valor_total;
+            return nota;
+        }
+
+        private static documentos ClonarDocumento(documentos documento52V)
+        {
+            return new documentos
+            {
+                tipo = documento52V.tipo,
+                numero = documento52V.numero,
+                sw = documento52V.sw,
+                nit = documento52V.nit,
+                fecha = documento52V.fecha,
+                condicion = documento52V.condicion,
+                vencimiento = documento52V.vencimiento,
+                valor_total = documento52V.valor_total,
+                iva = documento52V.iva,
+                retencion = documento52V.retencion,
+                retencion_causada = documento52V.retencion_causada,
+                retencion_iva = documento52V.retencion_iva,
+                retencion_ica = documento52V.retencion_ica,
+                descuento_pie = documento52V.descuento_pie,
+                fletes = documento52V.fletes,
+                iva_fletes = documento52V.iva_fletes,
+                costo = documento52V.costo,
+                vendedor = documento52V.vendedor,
+                valor_aplicado = documento52V.valor_aplicado,
+                anulado = documento52V.anulado,
+                modelo = documento52V.modelo,
+                documento = documento52V.documento,
+                notas = documento52V.notas,
+                usuario = documento52V.usuario,
+                pc = documento52V.pc,
+                fecha_hora = documento52V.fecha_hora,
+                retencion2 = documento52V.retencion2,
+                retencion3 = documento52V.retencion3,
+                bodega = documento52V.bodega,
+                impoconsumo = documento52V.impoconsumo,
+                descuento2 = documento52V.descuento2,
+                duracion = documento52V.duracion,
+                concepto = documento52V.concepto,
+                vencimiento_presup = documento52V.vencimiento_presup,
+                exportado = documento52V.exportado,
+                impuesto_deporte = documento52V.impuesto_deporte,
+                prefijo = documento52V.prefijo,
+                moneda = documento52V.moneda,
+                tasa = documento52V.tasa,
+                centro_doc = documento52V.centro_doc,
+                valor_mercancia = documento52V.valor_mercancia,
+                numero_cuotas = documento52V.numero_cuotas,
+                codigo_direccion = documento52V.codigo_direccion,
+                descuento_1 = documento52V.descuento_1,
+                descuento_2 = documento52V.descuento_2,
+                descuento_3 = documento52V.descuento_3,
+                abono = documento52V.abono,
+                fecha_consignacion = documento52V.fecha_consignacion,
+                Iva_Costo = documento52V.Iva_Costo,
+                concepto_Retencion = documento52V.concepto_Retencion,
+                porc_RteFuente = documento52V.porc_RteFuente,
+                porc_RteIva = documento52V.porc_RteIva,
+                porc_RteIvaSimpl = documento52V.porc_RteIvaSimpl,
+                porc_RteIca = documento52V.porc_RteIca,
+                porc_RteA = documento52V.porc_RteA,
+                porc_RteB = documento52V.porc_RteB,
+                bodega_ot = documento52V.bodega_ot,
+                numero_ot = documento52V.numero_ot,
+                provision = documento52V.provision,
+                ajuste = documento52V.ajuste,
+                porc_RteCree = documento52V.porc_RteCree,
+                retencion_cree = documento52V.retencion_cree,
+                codigo_retencion_cree = documento52V.codigo_retencion_cree,
+                cree_causado = documento52V.cree_causado,
+                ObligacionFinanciera = documento52V.ObligacionFinanciera,
+                Base_dcto_RC = documento52V.Base_dcto_RC,
+                numincapacidad = documento52V.numincapacidad,
+                idincapacidad = documento52V.idincapacidad,
+
+            };
+        }
+
+        private static movimientos CrearMovimiento(documentos documento, string nota, decimal valor, string cuenta, int seq, decimal nit, int numerodms, decimal valorniif, DateTime fecha, string tipo)
+        {
+            movimientos movimiento = new movimientos();
+            movimiento.tipo = tipo;
+            movimiento.numero = numerodms;
+            movimiento.seq = seq;
+            movimiento.cuenta = cuenta;
+            movimiento.centro = 0;
+            movimiento.nit = nit;
+            movimiento.fec = fecha;
+            movimiento.valor = valor;
+            //movimiento.base    NULL
+            //movimiento.documento   NULL
+            movimiento.explicacion = nota;
+            //movimiento.concilio NULL;
+            //movimiento.concepto_mov NULL;
+            //movimiento.concilio_ano NULL
+            //movimiento.secuencia_extracto NULL
+            //movimiento.ano_concilia NULL
+            //movimiento.mes_concilia NULL
+            //movimiento.ID_CRUCE NULL
+            //movimiento.TIPO_CRUCE NULL
+            movimiento.valor_niif = valorniif;
+            return movimiento;
+        }
+
+        private void btnSaveDocumento_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            try
+            {
+                DialogResult resultado = MessageBox.Show("Confirma crear movimientos DMS por Facturación a Terpel?", "Validar Crear Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Yes)
+                {
+                    int numerodms = 0;
+                    movimientos movimiento = null;
+                    List<movimientos> movimientoList = null;
+                    foreach (var item in documentosList)
+                    {
+                        movimientoList = movimientoslist.Where(t => t.numero == item.numero).ToList();
+                        if (item.numero != 11118)
+                        {
+                            documentosController.Instance.Create(item);
+                            numerodms = item.numero;
+                            foreach (var itemmov in movimientoList)
+                            {
+                                movimiento = itemmov;
+                                movimientosController.Instance.Create(movimiento);
+                            }
+                        }
+                    }
+
+                    numerodms++;
+                    consecutivos consecutivo52V = consecutivosController.Instance.Get("52V");
+                    consecutivo52V.siguiente = numerodms;
+                    consecutivosController.Instance.Update(consecutivo52V);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void dataGridViewDocumento_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            documentos documento = dataGridViewDocumento.Rows[e.RowIndex].DataBoundItem as documentos;
+            List<movimientos> movimientoList = movimientoslist.Where(t => t.numero == documento.numero).ToList();
+            dataGridViewMovimiento52V.DataSource = movimientoList;
+            dataGridViewMovimiento52V.Refresh();
         }
     }
 }

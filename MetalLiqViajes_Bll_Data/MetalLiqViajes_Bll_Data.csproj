@@ -151,6 +151,7 @@
     <Compile Include="bll_add\TramosReportesLiqVehiculos.cs" />
     <Compile Include="bll_add\VehiculoCCosto.cs" />
     <Compile Include="bll_add\VentasFlotaDetalle.cs" />
+    <Compile Include="bll_dms\consecutivos.cs" />
     <Compile Include="bll_dms\documentos.cs" />
     <Compile Include="bll_dms\movimiento.cs" />
     <Compile Include="dal\A2MontoEscritoDataProvider.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="dal_add\TramosReportesLiqVehiculosDataProvider.cs" />
     <Compile Include="dal_add\VehiculoCCostoDataProvider.cs" />
     <Compile Include="dal_add\VentasFlotaDetalleDataProvider.cs" />
+    <Compile Include="dal_dms\consecutivosDataProvider.cs" />
     <Compile Include="dal_dms\documentosDataProvider.cs" />
     <Compile Include="dal_dms\movimientosDataProvider.cs" />
     <Compile Include="DataProvider.cs" />
@@ -357,6 +359,7 @@
     <Compile Include="dto_add\RegistroViajeDTO.cs" />
     <Compile Include="dto_add\TramosGastos.cs" />
     <Compile Include="dto_add\TramosMovViajes.cs" />
+    <Compile Include="dto_dms\consecutivos.cs" />
     <Compile Include="dto_dms\documentos.cs" />
     <Compile Include="dto_dms\movimientos.cs" />
     <Compile Include="IBLLObject.cs" />

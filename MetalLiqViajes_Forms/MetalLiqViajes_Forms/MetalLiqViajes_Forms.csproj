@@ -209,6 +209,7 @@
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.documentos.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.LiquidacionGastosList.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.movimientos.datasource" />
+    <None Include="Properties\DataSources\LiqViajes_Bll_Data.movimientosList.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.Rutas.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackHistoryEvents.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.RutaSatrackLastEvents.datasource" />
@@ -221,6 +222,7 @@
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.TipoVehiculo.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.VehiculoCCosto.datasource" />
     <None Include="Properties\DataSources\LiqViajes_Bll_Data.VentasFlotaDetalle.datasource" />
+    <None Include="Properties\DataSources\MetalLiqViajes_Forms.Util.ExcelTerpel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

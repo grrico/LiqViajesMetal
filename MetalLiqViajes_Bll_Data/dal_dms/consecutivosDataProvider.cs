@@ -8,22 +8,22 @@ using System.Runtime.Serialization;
 namespace LiqViajes_Bll_Data
 {
 	/// <summary>
-	/// Data Access Layer class for VentasFlotaDetalle object
+	/// Data Access Layer class for consecutivos object
 	/// </summary>
 	/// <remarks>
 	/// This class is a Singleton
 	/// </remarks>
-	public partial class VentasFlotaDetalleDataProvider
+	public partial class consecutivosDataProvider
 	{
 		/// <summary>
 		/// Internal member for create this singleton
 		/// </summary>
-		private static VentasFlotaDetalleDataProvider MySingleObj = null;
+		private static consecutivosDataProvider MySingleObj = null;
 
 		/// <summary>
 		/// Protected constructor to avoid access this singleton other way than calling the Instance method
 		/// </summary>
-		public VentasFlotaDetalleDataProvider()
+		public consecutivosDataProvider()
 		{
 
 		}
@@ -31,13 +31,13 @@ namespace LiqViajes_Bll_Data
 		/// <summary>
 		/// Instance accessor for this singleton
 		/// </summary>
-		public static VentasFlotaDetalleDataProvider Instance
+		public static consecutivosDataProvider Instance
 		{
 			get
 			{
 				if (MySingleObj == null)
 				{
-					MySingleObj = new VentasFlotaDetalleDataProvider();
+					MySingleObj = new consecutivosDataProvider();
 				}
 
 				return MySingleObj;
@@ -45,36 +45,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Creates a new record into VentasFlotaDetalle by passing all fields
+		/// Creates a new record into consecutivos by passing all fields
 		/// </summary>
-		/// <param name="IdEDS"></param>
-		/// <param name="Factura"></param>
-		/// <param name="Tipo"></param>
-		/// <param name="Numero"></param>
-		/// <param name="Tipo52v"></param>
-		/// <param name="Numero52v"></param>
-		/// <param name="Nit"></param>
-		/// <param name="Seq"></param>
-		/// <param name="Cuenta"></param>
-		/// <param name="Fecha"></param>
-		/// <param name="Hora"></param>
-		/// <param name="NombreCliente"></param>
-		/// <param name="Estacion"></param>
-		/// <param name="TipoEstacion"></param>
-		/// <param name="Destinatario"></param>
-		/// <param name="Ciudad"></param>
-		/// <param name="Placa"></param>
-		/// <param name="Producto"></param>
-		/// <param name="Cantidad"></param>
-		/// <param name="Precio"></param>
-		/// <param name="TotalVentas"></param>
-		/// <param name="PrecioEspecial"></param>
-		/// <param name="TotalFactura"></param>
-		/// <param name="Descuento"></param>
-		/// <param name="Kilometraje"></param>
-		/// <param name="UnidadVenta"></param>
-		/// <param name="TipoVenta"></param>
-		public void Create(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, double? Precio, double? TotalVentas, double? PrecioEspecial, double? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="siguiente"></param>
+		public void Create(string tipo, int? siguiente,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -98,116 +72,12 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
 
-				paramlist.AddWithValue("@Recibo",Recibo);
-				if (IdEDS !=null)
+				paramlist.AddWithValue("@tipo",tipo);
+				if (siguiente !=null)
 				{
-					paramlist.AddWithValue("@IdEDS",IdEDS);
+					paramlist.AddWithValue("@siguiente",siguiente);
 				}
-				if (Factura !=null)
-				{
-					paramlist.AddWithValue("@Factura",Factura);
-				}
-				if (Tipo !=null)
-				{
-					paramlist.AddWithValue("@Tipo",Tipo);
-				}
-				if (Numero !=null)
-				{
-					paramlist.AddWithValue("@Numero",Numero);
-				}
-				if (Tipo52v !=null)
-				{
-					paramlist.AddWithValue("@Tipo52v",Tipo52v);
-				}
-				if (Numero52v !=null)
-				{
-					paramlist.AddWithValue("@Numero52v",Numero52v);
-				}
-				if (Nit !=null)
-				{
-					paramlist.AddWithValue("@Nit",Nit);
-				}
-				if (Seq !=null)
-				{
-					paramlist.AddWithValue("@Seq",Seq);
-				}
-				if (Cuenta !=null)
-				{
-					paramlist.AddWithValue("@Cuenta",Cuenta);
-				}
-				if (Fecha !=null)
-				{
-					paramlist.AddWithValue("@Fecha",Fecha);
-				}
-				if (Hora !=null)
-				{
-					paramlist.AddWithValue("@Hora",Hora);
-				}
-				if (NombreCliente !=null)
-				{
-					paramlist.AddWithValue("@NombreCliente",NombreCliente);
-				}
-				if (Estacion !=null)
-				{
-					paramlist.AddWithValue("@Estacion",Estacion);
-				}
-				if (TipoEstacion !=null)
-				{
-					paramlist.AddWithValue("@TipoEstacion",TipoEstacion);
-				}
-				if (Destinatario !=null)
-				{
-					paramlist.AddWithValue("@Destinatario",Destinatario);
-				}
-				if (Ciudad !=null)
-				{
-					paramlist.AddWithValue("@Ciudad",Ciudad);
-				}
-				if (Placa !=null)
-				{
-					paramlist.AddWithValue("@Placa",Placa);
-				}
-				if (Producto !=null)
-				{
-					paramlist.AddWithValue("@Producto",Producto);
-				}
-				if (Cantidad !=null)
-				{
-					paramlist.AddWithValue("@Cantidad",Cantidad);
-				}
-				if (Precio !=null)
-				{
-					paramlist.AddWithValue("@Precio",Precio);
-				}
-				if (TotalVentas !=null)
-				{
-					paramlist.AddWithValue("@TotalVentas",TotalVentas);
-				}
-				if (PrecioEspecial !=null)
-				{
-					paramlist.AddWithValue("@PrecioEspecial",PrecioEspecial);
-				}
-				if (TotalFactura !=null)
-				{
-					paramlist.AddWithValue("@TotalFactura",TotalFactura);
-				}
-				if (Descuento !=null)
-				{
-					paramlist.AddWithValue("@Descuento",Descuento);
-				}
-				if (Kilometraje !=null)
-				{
-					paramlist.AddWithValue("@Kilometraje",Kilometraje);
-				}
-				if (UnidadVenta !=null)
-				{
-					paramlist.AddWithValue("@UnidadVenta",UnidadVenta);
-				}
-				if (TipoVenta !=null)
-				{
-					paramlist.AddWithValue("@TipoVenta",TipoVenta);
-				}
-				LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDetalleCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				LocalDataProvider.EjecutarProcedimiento("dbo.consecutivosCreate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -217,37 +87,11 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Updates one record into VentasFlotaDetalle by passing all fields
+		/// Updates one record into consecutivos by passing all fields
 		/// </summary>
-		/// <param name="Recibo"></param>
-		/// <param name="IdEDS"></param>
-		/// <param name="Factura"></param>
-		/// <param name="Tipo"></param>
-		/// <param name="Numero"></param>
-		/// <param name="Tipo52v"></param>
-		/// <param name="Numero52v"></param>
-		/// <param name="Nit"></param>
-		/// <param name="Seq"></param>
-		/// <param name="Cuenta"></param>
-		/// <param name="Fecha"></param>
-		/// <param name="Hora"></param>
-		/// <param name="NombreCliente"></param>
-		/// <param name="Estacion"></param>
-		/// <param name="TipoEstacion"></param>
-		/// <param name="Destinatario"></param>
-		/// <param name="Ciudad"></param>
-		/// <param name="Placa"></param>
-		/// <param name="Producto"></param>
-		/// <param name="Cantidad"></param>
-		/// <param name="Precio"></param>
-		/// <param name="TotalVentas"></param>
-		/// <param name="PrecioEspecial"></param>
-		/// <param name="TotalFactura"></param>
-		/// <param name="Descuento"></param>
-		/// <param name="Kilometraje"></param>
-		/// <param name="UnidadVenta"></param>
-		/// <param name="TipoVenta"></param>
-		public void Update(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, double? Precio, double? TotalVentas, double? PrecioEspecial, double? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="tipo"></param>
+		/// <param name="siguiente"></param>
+		public void Update(string tipo, int? siguiente,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -270,116 +114,12 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				paramlist.AddWithValue("@Recibo",Recibo);
-				if (IdEDS !=null)
+				paramlist.AddWithValue("@tipo",tipo);
+				if (siguiente !=null)
 				{
-					paramlist.AddWithValue("@IdEDS",IdEDS);
+					paramlist.AddWithValue("@siguiente",siguiente);
 				}
-				if (Factura !=null)
-				{
-					paramlist.AddWithValue("@Factura",Factura);
-				}
-				if (Tipo !=null)
-				{
-					paramlist.AddWithValue("@Tipo",Tipo);
-				}
-				if (Numero !=null)
-				{
-					paramlist.AddWithValue("@Numero",Numero);
-				}
-				if (Tipo52v !=null)
-				{
-					paramlist.AddWithValue("@Tipo52v",Tipo52v);
-				}
-				if (Numero52v !=null)
-				{
-					paramlist.AddWithValue("@Numero52v",Numero52v);
-				}
-				if (Nit !=null)
-				{
-					paramlist.AddWithValue("@Nit",Nit);
-				}
-				if (Seq !=null)
-				{
-					paramlist.AddWithValue("@Seq",Seq);
-				}
-				if (Cuenta !=null)
-				{
-					paramlist.AddWithValue("@Cuenta",Cuenta);
-				}
-				if (Fecha !=null)
-				{
-					paramlist.AddWithValue("@Fecha",Fecha);
-				}
-				if (Hora !=null)
-				{
-					paramlist.AddWithValue("@Hora",Hora);
-				}
-				if (NombreCliente !=null)
-				{
-					paramlist.AddWithValue("@NombreCliente",NombreCliente);
-				}
-				if (Estacion !=null)
-				{
-					paramlist.AddWithValue("@Estacion",Estacion);
-				}
-				if (TipoEstacion !=null)
-				{
-					paramlist.AddWithValue("@TipoEstacion",TipoEstacion);
-				}
-				if (Destinatario !=null)
-				{
-					paramlist.AddWithValue("@Destinatario",Destinatario);
-				}
-				if (Ciudad !=null)
-				{
-					paramlist.AddWithValue("@Ciudad",Ciudad);
-				}
-				if (Placa !=null)
-				{
-					paramlist.AddWithValue("@Placa",Placa);
-				}
-				if (Producto !=null)
-				{
-					paramlist.AddWithValue("@Producto",Producto);
-				}
-				if (Cantidad !=null)
-				{
-					paramlist.AddWithValue("@Cantidad",Cantidad);
-				}
-				if (Precio !=null)
-				{
-					paramlist.AddWithValue("@Precio",Precio);
-				}
-				if (TotalVentas !=null)
-				{
-					paramlist.AddWithValue("@TotalVentas",TotalVentas);
-				}
-				if (PrecioEspecial !=null)
-				{
-					paramlist.AddWithValue("@PrecioEspecial",PrecioEspecial);
-				}
-				if (TotalFactura !=null)
-				{
-					paramlist.AddWithValue("@TotalFactura",TotalFactura);
-				}
-				if (Descuento !=null)
-				{
-					paramlist.AddWithValue("@Descuento",Descuento);
-				}
-				if (Kilometraje !=null)
-				{
-					paramlist.AddWithValue("@Kilometraje",Kilometraje);
-				}
-				if (UnidadVenta !=null)
-				{
-					paramlist.AddWithValue("@UnidadVenta",UnidadVenta);
-				}
-				if (TipoVenta !=null)
-				{
-					paramlist.AddWithValue("@TipoVenta",TipoVenta);
-				}
-				LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDetalleUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				LocalDataProvider.EjecutarProcedimiento("dbo.consecutivosUpdate", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -389,10 +129,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Deletes one record from VentasFlotaDetalle by passing all key fields
+		/// Deletes one record from consecutivos by passing all key fields
 		/// </summary>
-		/// <param name="Recibo"></param>
-		public void Delete(long Recibo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
+		/// <param name="tipo"></param>
+		public void Delete(string tipo,string module, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -415,8 +155,8 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				paramlist.AddWithValue("@Recibo",Recibo);
-				LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDetalleDelete", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				paramlist.AddWithValue("@tipo",tipo);
+				LocalDataProvider.EjecutarProcedimiento("dbo.consecutivosDelete", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -426,11 +166,11 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets one record from VentasFlotaDetalle passing all key fields
+		/// Gets one record from consecutivos passing all key fields
 		/// </summary>
-		/// <param name="Recibo"></param>
+		/// <param name="tipo"></param>
 		/// <returns>A DataTable object containing the data</returns>
-		public DataTable Get(long Recibo)
+		public DataTable Get(string tipo)
 		{
 			try 
 			{
@@ -449,8 +189,8 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				paramlist.AddWithValue("@Recibo",Recibo);
-				return LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDetalleGet", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				paramlist.AddWithValue("@tipo",tipo);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.consecutivosGet", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 
 			}
 			catch (Exception ex)
@@ -461,7 +201,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets all records from VentasFlotaDetalle
+		/// Gets all records from consecutivos
 		/// </summary>
 		/// <returns>A DataTable object containing all records data</returns>
 		public DataTable GetAll()
@@ -483,7 +223,7 @@ namespace LiqViajes_Bll_Data
 				System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
 				System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
 				System.Collections.Hashtable nullExit = null;
-				return LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDetalleGetAll", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.consecutivosGetAll", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -493,7 +233,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets all records from VentasFlotaDetalle applying filter and sort criteria
+		/// Gets all records from consecutivos applying filter and sort criteria
 		/// </summary>
 		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>
 		/// <param name="pagesize">Contents the number of records per page (0 for returns all records).</param>
@@ -538,7 +278,7 @@ namespace LiqViajes_Bll_Data
 				paramlist.AddWithValue("@strExtraTablesFieldsSort", extablesfieldssort);
 				paramlist.AddWithValue("@strExtraTablesRelationsSort",extablesrelationssort);
 
-				return LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDetalleGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+				return LocalDataProvider.EjecutarProcedimiento("dbo.consecutivosGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
 			}
 			catch (Exception ex)
 			{
@@ -558,7 +298,7 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Gets the numbers of records from VentasFlotaDetalle applying filter and sort criteria
+		/// Gets the numbers of records from consecutivos applying filter and sort criteria
 		/// </summary>
 		/// <param name="pagenum">Contents the page number (z-ordered) of records to return.</param>
 		/// <param name="pagesize">Contents the number of records per page (0 for returns all records).</param>
@@ -602,7 +342,7 @@ namespace LiqViajes_Bll_Data
 				paramlist.AddWithValue("@strExtraTablesFieldsSort", extablesfieldssort);
 				paramlist.AddWithValue("@strExtraTablesRelationsSort",extablesrelationssort);
 
-				return (int) LocalDataProvider.EjecutarProcedimiento("dbo.VentasFlotaDetalleGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0];
+				return (int) LocalDataProvider.EjecutarProcedimiento("dbo.consecutivosGetFilter", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera).Rows[0][0];
 			}
 			catch (Exception ex)
 			{

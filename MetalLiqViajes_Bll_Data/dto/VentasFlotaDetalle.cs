@@ -206,16 +206,16 @@ namespace LiqViajes_Bll_Data
 		private decimal? m_Cantidad;
 
 		// Field for storing the VentasFlotaDetalle's Precio value
-		private decimal? m_Precio;
+		private double? m_Precio;
 
 		// Field for storing the VentasFlotaDetalle's TotalVentas value
-		private decimal? m_TotalVentas;
+		private double? m_TotalVentas;
 
 		// Field for storing the VentasFlotaDetalle's PrecioEspecial value
-		private decimal? m_PrecioEspecial;
+		private double? m_PrecioEspecial;
 
 		// Field for storing the VentasFlotaDetalle's TotalFactura value
-		private decimal? m_TotalFactura;
+		private double? m_TotalFactura;
 
 		// Field for storing the VentasFlotaDetalle's Descuento value
 		private decimal? m_Descuento;
@@ -523,10 +523,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the VentasFlotaDetalle's Precio value (decimal)
+		/// Attribute for access the VentasFlotaDetalle's Precio value (double)
 		/// </summary>
 		[DataMember]
-		public decimal? Precio
+		public double? Precio
 		{
 			get { return m_Precio; }
 			set 
@@ -537,10 +537,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the VentasFlotaDetalle's TotalVentas value (decimal)
+		/// Attribute for access the VentasFlotaDetalle's TotalVentas value (double)
 		/// </summary>
 		[DataMember]
-		public decimal? TotalVentas
+		public double? TotalVentas
 		{
 			get { return m_TotalVentas; }
 			set 
@@ -551,10 +551,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the VentasFlotaDetalle's PrecioEspecial value (decimal)
+		/// Attribute for access the VentasFlotaDetalle's PrecioEspecial value (double)
 		/// </summary>
 		[DataMember]
-		public decimal? PrecioEspecial
+		public double? PrecioEspecial
 		{
 			get { return m_PrecioEspecial; }
 			set 
@@ -565,10 +565,10 @@ namespace LiqViajes_Bll_Data
 		}
 
 		/// <summary>
-		/// Attribute for access the VentasFlotaDetalle's TotalFactura value (decimal)
+		/// Attribute for access the VentasFlotaDetalle's TotalFactura value (double)
 		/// </summary>
 		[DataMember]
-		public decimal? TotalFactura
+		public double? TotalFactura
 		{
 			get { return m_TotalFactura; }
 			set 

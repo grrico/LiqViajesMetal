@@ -72,10 +72,10 @@ namespace LiqViajes_Bll_Data
 				ventasflotadetalle.Placa = dr.IsNull("Placa") ? null :(string) dr["Placa"];
 				ventasflotadetalle.Producto = dr.IsNull("Producto") ? null :(string) dr["Producto"];
 				ventasflotadetalle.Cantidad = dr.IsNull("Cantidad") ? null :(decimal?) dr["Cantidad"];
-				ventasflotadetalle.Precio = dr.IsNull("Precio") ? null :(decimal?) dr["Precio"];
-				ventasflotadetalle.TotalVentas = dr.IsNull("TotalVentas") ? null :(decimal?) dr["TotalVentas"];
-				ventasflotadetalle.PrecioEspecial = dr.IsNull("PrecioEspecial") ? null :(decimal?) dr["PrecioEspecial"];
-				ventasflotadetalle.TotalFactura = dr.IsNull("TotalFactura") ? null :(decimal?) dr["TotalFactura"];
+				ventasflotadetalle.Precio = dr.IsNull("Precio") ? null :(double?) dr["Precio"];
+				ventasflotadetalle.TotalVentas = dr.IsNull("TotalVentas") ? null :(double?) dr["TotalVentas"];
+				ventasflotadetalle.PrecioEspecial = dr.IsNull("PrecioEspecial") ? null :(double?) dr["PrecioEspecial"];
+				ventasflotadetalle.TotalFactura = dr.IsNull("TotalFactura") ? null :(double?) dr["TotalFactura"];
 				ventasflotadetalle.Descuento = dr.IsNull("Descuento") ? null :(decimal?) dr["Descuento"];
 				ventasflotadetalle.Kilometraje = dr.IsNull("Kilometraje") ? null :(decimal?) dr["Kilometraje"];
 				ventasflotadetalle.UnidadVenta = dr.IsNull("UnidadVenta") ? null :(string) dr["UnidadVenta"];
@@ -119,16 +119,16 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Placa">string that contents the Placa value for the VentasFlotaDetalle object</param>
 		/// <param name="Producto">string that contents the Producto value for the VentasFlotaDetalle object</param>
 		/// <param name="Cantidad">decimal that contents the Cantidad value for the VentasFlotaDetalle object</param>
-		/// <param name="Precio">decimal that contents the Precio value for the VentasFlotaDetalle object</param>
-		/// <param name="TotalVentas">decimal that contents the TotalVentas value for the VentasFlotaDetalle object</param>
-		/// <param name="PrecioEspecial">decimal that contents the PrecioEspecial value for the VentasFlotaDetalle object</param>
-		/// <param name="TotalFactura">decimal that contents the TotalFactura value for the VentasFlotaDetalle object</param>
+		/// <param name="Precio">double that contents the Precio value for the VentasFlotaDetalle object</param>
+		/// <param name="TotalVentas">double that contents the TotalVentas value for the VentasFlotaDetalle object</param>
+		/// <param name="PrecioEspecial">double that contents the PrecioEspecial value for the VentasFlotaDetalle object</param>
+		/// <param name="TotalFactura">double that contents the TotalFactura value for the VentasFlotaDetalle object</param>
 		/// <param name="Descuento">decimal that contents the Descuento value for the VentasFlotaDetalle object</param>
 		/// <param name="Kilometraje">decimal that contents the Kilometraje value for the VentasFlotaDetalle object</param>
 		/// <param name="UnidadVenta">string that contents the UnidadVenta value for the VentasFlotaDetalle object</param>
 		/// <param name="TipoVenta">string that contents the TipoVenta value for the VentasFlotaDetalle object</param>
 		/// <returns>One VentasFlotaDetalle object</returns>
-		public VentasFlotaDetalle Create(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public VentasFlotaDetalle Create(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, double? Precio, double? TotalVentas, double? PrecioEspecial, double? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{
@@ -195,15 +195,15 @@ namespace LiqViajes_Bll_Data
 		/// <param name="Placa">string that contents the Placa value for the VentasFlotaDetalle object</param>
 		/// <param name="Producto">string that contents the Producto value for the VentasFlotaDetalle object</param>
 		/// <param name="Cantidad">decimal that contents the Cantidad value for the VentasFlotaDetalle object</param>
-		/// <param name="Precio">decimal that contents the Precio value for the VentasFlotaDetalle object</param>
-		/// <param name="TotalVentas">decimal that contents the TotalVentas value for the VentasFlotaDetalle object</param>
-		/// <param name="PrecioEspecial">decimal that contents the PrecioEspecial value for the VentasFlotaDetalle object</param>
-		/// <param name="TotalFactura">decimal that contents the TotalFactura value for the VentasFlotaDetalle object</param>
+		/// <param name="Precio">double that contents the Precio value for the VentasFlotaDetalle object</param>
+		/// <param name="TotalVentas">double that contents the TotalVentas value for the VentasFlotaDetalle object</param>
+		/// <param name="PrecioEspecial">double that contents the PrecioEspecial value for the VentasFlotaDetalle object</param>
+		/// <param name="TotalFactura">double that contents the TotalFactura value for the VentasFlotaDetalle object</param>
 		/// <param name="Descuento">decimal that contents the Descuento value for the VentasFlotaDetalle object</param>
 		/// <param name="Kilometraje">decimal that contents the Kilometraje value for the VentasFlotaDetalle object</param>
 		/// <param name="UnidadVenta">string that contents the UnidadVenta value for the VentasFlotaDetalle object</param>
 		/// <param name="TipoVenta">string that contents the TipoVenta value for the VentasFlotaDetalle object</param>
-		public void Update(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, decimal? Precio, decimal? TotalVentas, decimal? PrecioEspecial, decimal? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
+		public void Update(long Recibo, long? IdEDS, string Factura, string Tipo, int? Numero, string Tipo52v, int? Numero52v, decimal? Nit, int? Seq, string Cuenta, DateTime? Fecha, string Hora, string NombreCliente, string Estacion, string TipoEstacion, string Destinatario, string Ciudad, string Placa, string Producto, decimal? Cantidad, double? Precio, double? TotalVentas, double? PrecioEspecial, double? TotalFactura, decimal? Descuento, decimal? Kilometraje, string UnidadVenta, string TipoVenta, Sinapsys.Datos.SQL datosTransaccion=null)
 		{
 			try 
 			{

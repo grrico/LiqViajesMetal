@@ -151,12 +151,12 @@ namespace LiqViajes_Bll_Data
             if (generateUndo) movimiento.GenerateUndo();
         }
 
-        public documentos Get(int id, string tipo, int numero, bool generateUndo = false)
+        public documentos GetByTipoNumero(string tipo, int numero, bool generateUndo = false)
         {
             try
             {
                 documentos documentos = null;
-                DataTable dt = documentosDataProvider.Instance.Get(id, tipo, numero);
+                DataTable dt = documentosDataProvider.Instance.GetByTipoNumero(tipo, numero);
                 if ((dt.Rows.Count > 0))
                 {
                     documentos = new documentos();
@@ -213,8 +213,6 @@ namespace LiqViajes_Bll_Data
             }
         }
 
-
-
         public Tuple<documentosList, movimientosList> GetBy_TipoNitFecha(string tipo, string nit, DateTime fechaI, DateTime fechaF, bool generateUndo = false)
         {
             try
@@ -244,6 +242,101 @@ namespace LiqViajes_Bll_Data
                     }
                 }
                 return new Tuple<documentosList, movimientosList>(documentosList, movimientosList);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public documentos Create(documentos documentos, Sinapsys.Datos.SQL datosTransaccion = null)
+        {
+            return Create(documentos.id, documentos.tipo, documentos.numero, documentos.sw, documentos.nit, documentos.fecha, documentos.condicion, documentos.vencimiento, documentos.valor_total, documentos.iva, documentos.retencion, documentos.retencion_causada, documentos.retencion_iva, documentos.retencion_ica, documentos.descuento_pie, documentos.fletes, documentos.iva_fletes, documentos.costo, documentos.vendedor, documentos.valor_aplicado, documentos.anulado, documentos.modelo, documentos.documento, documentos.notas, documentos.usuario, documentos.pc, documentos.fecha_hora, documentos.retencion2, documentos.retencion3, documentos.bodega, documentos.impoconsumo, documentos.descuento2, documentos.duracion, documentos.concepto, documentos.vencimiento_presup, documentos.exportado, documentos.impuesto_deporte, documentos.prefijo, documentos.moneda, documentos.tasa, documentos.centro_doc, documentos.valor_mercancia, documentos.numero_cuotas, documentos.codigo_direccion, documentos.descuento_1, documentos.descuento_2, documentos.descuento_3, documentos.abono, documentos.fecha_consignacion, documentos.Iva_Costo, documentos.concepto_Retencion, documentos.porc_RteFuente, documentos.porc_RteIva, documentos.porc_RteIvaSimpl, documentos.porc_RteIca, documentos.porc_RteA, documentos.porc_RteB, documentos.bodega_ot, documentos.numero_ot, documentos.provision, documentos.ajuste, documentos.porc_RteCree, documentos.retencion_cree, documentos.codigo_retencion_cree, documentos.cree_causado, documentos.ObligacionFinanciera, documentos.Base_dcto_RC, documentos.numincapacidad, documentos.idincapacidad, datosTransaccion);
+        }
+
+        public documentos Create(int id, string tipo, int numero, byte sw, decimal nit, DateTime fecha, string condicion, DateTime? vencimiento, decimal? valor_total, decimal? iva, decimal? retencion, decimal? retencion_causada, decimal? retencion_iva, decimal? retencion_ica, decimal? descuento_pie, decimal? fletes, decimal? iva_fletes, decimal? costo, decimal? vendedor, decimal? valor_aplicado, bool anulado, string modelo, string documento, string notas, string usuario, string pc, DateTime fecha_hora, decimal? retencion2, decimal? retencion3, short bodega, decimal? impoconsumo, decimal? descuento2, short? duracion, short? concepto, DateTime? vencimiento_presup, char? exportado, decimal? impuesto_deporte, string prefijo, string moneda, float? tasa, int? centro_doc, decimal? valor_mercancia, short? numero_cuotas, short? codigo_direccion, float? descuento_1, float? descuento_2, float? descuento_3, decimal? abono, DateTime? fecha_consignacion, char? Iva_Costo, short? concepto_Retencion, decimal? porc_RteFuente, decimal? porc_RteIva, decimal? porc_RteIvaSimpl, decimal? porc_RteIca, decimal? porc_RteA, decimal? porc_RteB, short? bodega_ot, int? numero_ot, decimal? provision, decimal? ajuste, decimal? porc_RteCree, decimal? retencion_cree, string codigo_retencion_cree, decimal? cree_causado, string ObligacionFinanciera, decimal? Base_dcto_RC, string numincapacidad, int? idincapacidad, Sinapsys.Datos.SQL datosTransaccion = null)
+        {
+            try
+            {
+                documentos documentos = new documentos();
+
+                documentos.id = id;
+                documentos.id = id;
+                documentos.tipo = tipo;
+                documentos.numero = numero;
+                documentos.sw = sw;
+                documentos.nit = nit;
+                documentos.fecha = fecha;
+                documentos.condicion = condicion;
+                documentos.vencimiento = vencimiento;
+                documentos.valor_total = valor_total;
+                documentos.iva = iva;
+                documentos.retencion = retencion;
+                documentos.retencion_causada = retencion_causada;
+                documentos.retencion_iva = retencion_iva;
+                documentos.retencion_ica = retencion_ica;
+                documentos.descuento_pie = descuento_pie;
+                documentos.fletes = fletes;
+                documentos.iva_fletes = iva_fletes;
+                documentos.costo = costo;
+                documentos.vendedor = vendedor;
+                documentos.valor_aplicado = valor_aplicado;
+                documentos.anulado = anulado;
+                documentos.modelo = modelo;
+                documentos.documento = documento;
+                documentos.notas = notas;
+                documentos.usuario = usuario;
+                documentos.pc = pc;
+                documentos.fecha_hora = fecha_hora;
+                documentos.retencion2 = retencion2;
+                documentos.retencion3 = retencion3;
+                documentos.bodega = bodega;
+                documentos.impoconsumo = impoconsumo;
+                documentos.descuento2 = descuento2;
+                documentos.duracion = duracion;
+                documentos.concepto = concepto;
+                documentos.vencimiento_presup = vencimiento_presup;
+                documentos.exportado = exportado;
+                documentos.impuesto_deporte = impuesto_deporte;
+                documentos.prefijo = prefijo;
+                documentos.moneda = moneda;
+                documentos.tasa = tasa;
+                documentos.centro_doc = centro_doc;
+                documentos.valor_mercancia = valor_mercancia;
+                documentos.numero_cuotas = numero_cuotas;
+                documentos.codigo_direccion = codigo_direccion;
+                documentos.descuento_1 = descuento_1;
+                documentos.descuento_2 = descuento_2;
+                documentos.descuento_3 = descuento_3;
+                documentos.abono = abono;
+                documentos.fecha_consignacion = fecha_consignacion;
+                documentos.Iva_Costo = Iva_Costo;
+                documentos.concepto_Retencion = concepto_Retencion;
+                documentos.porc_RteFuente = porc_RteFuente;
+                documentos.porc_RteIva = porc_RteIva;
+                documentos.porc_RteIvaSimpl = porc_RteIvaSimpl;
+                documentos.porc_RteIca = porc_RteIca;
+                documentos.porc_RteA = porc_RteA;
+                documentos.porc_RteB = porc_RteB;
+                documentos.bodega_ot = bodega_ot;
+                documentos.numero_ot = numero_ot;
+                documentos.provision = provision;
+                documentos.ajuste = ajuste;
+                documentos.porc_RteCree = porc_RteCree;
+                documentos.retencion_cree = retencion_cree;
+                documentos.codigo_retencion_cree = codigo_retencion_cree;
+                documentos.cree_causado = cree_causado;
+                documentos.ObligacionFinanciera = ObligacionFinanciera;
+                documentos.Base_dcto_RC = Base_dcto_RC;
+                documentos.numincapacidad = numincapacidad;
+                documentos.idincapacidad = idincapacidad;
+                id = documentosDataProvider.Instance.Create(id, tipo, numero, sw, nit, fecha, condicion, vencimiento, valor_total, iva, retencion, retencion_causada, retencion_iva, retencion_ica, descuento_pie, fletes, iva_fletes, costo, vendedor, valor_aplicado, anulado, modelo, documento, notas, usuario, pc, fecha_hora, retencion2, retencion3, bodega, impoconsumo, descuento2, duracion, concepto, vencimiento_presup, exportado, impuesto_deporte, prefijo, moneda, tasa, centro_doc, valor_mercancia, numero_cuotas, codigo_direccion, descuento_1, descuento_2, descuento_3, abono, fecha_consignacion, Iva_Costo, concepto_Retencion, porc_RteFuente, porc_RteIva, porc_RteIvaSimpl, porc_RteIca, porc_RteA, porc_RteB, bodega_ot, numero_ot, provision, ajuste, porc_RteCree, retencion_cree, codigo_retencion_cree, cree_causado, ObligacionFinanciera, Base_dcto_RC, numincapacidad, idincapacidad, "documentos", datosTransaccion);
+                if (id == 0)
+                    return null;
+
+                documentos.id = id;
+
+                return documentos;
             }
             catch (Exception ex)
             {
