@@ -874,23 +874,25 @@ namespace MetalLiqViajes_Forms
                     List<movimientos> movimientoList = null;
                     foreach (var item in documentosList)
                     {
+
+                        // hay que separar los numero 83, para actualizar
+
+
                         movimientoList = movimientoslist.Where(t => t.numero == item.numero).ToList();
-                        if (item.numero != 11118)
+                        //documentosController.Instance.Create(item);
+                        numerodms = item.numero;
+                        foreach (var itemmov in movimientoList)
                         {
-                            documentosController.Instance.Create(item);
-                            numerodms = item.numero;
-                            foreach (var itemmov in movimientoList)
-                            {
-                                movimiento = itemmov;
-                                movimientosController.Instance.Create(movimiento);
-                            }
+                            movimiento = itemmov;
+                            //movimientosController.Instance.Create(movimiento);
                         }
+
                     }
 
                     numerodms++;
                     consecutivos consecutivo52V = consecutivosController.Instance.Get("52V");
                     consecutivo52V.siguiente = numerodms;
-                    consecutivosController.Instance.Update(consecutivo52V);
+                    //consecutivosController.Instance.Update(consecutivo52V);
 
                 }
 
