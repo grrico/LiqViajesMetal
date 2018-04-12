@@ -34,6 +34,7 @@
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terpelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.terpelDMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.terpelDMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administraciónRutasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.printToolStripMenuItem,
+            this.administraciónRutasToolStripMenuItem,
             this.terpelToolStripMenuItem,
             this.terpelDMSToolStripMenuItem,
             this.toolStripSeparator4,
@@ -98,6 +100,14 @@
             this.terpelToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.terpelToolStripMenuItem.Text = "Carga Archivos Terpel";
             this.terpelToolStripMenuItem.Click += new System.EventHandler(this.terpelToolStripMenuItem_Click);
+            // 
+            // terpelDMSToolStripMenuItem
+            // 
+            this.terpelDMSToolStripMenuItem.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
+            this.terpelDMSToolStripMenuItem.Name = "terpelDMSToolStripMenuItem";
+            this.terpelDMSToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.terpelDMSToolStripMenuItem.Text = "Terpel DMS";
+            this.terpelDMSToolStripMenuItem.Click += new System.EventHandler(this.terpelDMSToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -211,13 +221,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
             // 
-            // terpelDMSToolStripMenuItem
+            // administraciónRutasToolStripMenuItem
             // 
-            this.terpelDMSToolStripMenuItem.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
-            this.terpelDMSToolStripMenuItem.Name = "terpelDMSToolStripMenuItem";
-            this.terpelDMSToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.terpelDMSToolStripMenuItem.Text = "Terpel DMS";
-            this.terpelDMSToolStripMenuItem.Click += new System.EventHandler(this.terpelDMSToolStripMenuItem_Click);
+            this.administraciónRutasToolStripMenuItem.Image = global::MetalLiqViajes_Forms.Properties.Resources.Truck;
+            this.administraciónRutasToolStripMenuItem.Name = "administraciónRutasToolStripMenuItem";
+            this.administraciónRutasToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.administraciónRutasToolStripMenuItem.Text = "Administración Rutas";
+            this.administraciónRutasToolStripMenuItem.Click += new System.EventHandler(this.administraciónRutasToolStripMenuItem_Click);
             // 
             // fMenuPrincipal
             // 
@@ -268,6 +278,7 @@
         private System.Diagnostics.EventLog MetalOlapEventLog;
         private System.Windows.Forms.ToolStripMenuItem terpelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem terpelDMSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administraciónRutasToolStripMenuItem;
     }
 }
 

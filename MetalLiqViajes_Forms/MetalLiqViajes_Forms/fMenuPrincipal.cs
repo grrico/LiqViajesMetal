@@ -129,5 +129,12 @@ namespace MetalLiqViajes_Forms
                MessageBoxDefaultButton.Button1);
         }
 
+        private void administraciónRutasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fRutas fruta = new fRutas();
+            fruta.MdiParent = this;
+            fruta.WindowState = FormWindowState.Maximized;
+            fruta.Show();
+        }
     }
 }

@@ -139,6 +139,12 @@
     <Compile Include="fReportesViajes.Designer.cs">
       <DependentUpon>fReportesViajes.cs</DependentUpon>
     </Compile>
+    <Compile Include="fRutas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fRutas.Designer.cs">
+      <DependentUpon>fRutas.cs</DependentUpon>
+    </Compile>
     <Compile Include="fTerpel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fReportesViajes.resx">
       <DependentUpon>fReportesViajes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fRutas.resx">
+      <DependentUpon>fRutas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTerpel.resx">
       <DependentUpon>fTerpel.cs</DependentUpon>
