@@ -870,21 +870,22 @@ namespace MetalLiqViajes_Forms
                 if (resultado == DialogResult.Yes)
                 {
                     int numerodms = 0;
+                    int consecutivo83 = 0;
                     movimientos movimiento = null;
                     List<movimientos> movimientoList = null;
                     foreach (var item in documentosList)
                     {
-
-                        // hay que separar los numero 83, para actualizar
-
-
                         movimientoList = movimientoslist.Where(t => t.numero == item.numero).ToList();
-                        //documentosController.Instance.Create(item);
+                        documentosController.Instance.Create(item);
+                        if (item.tipo=="83")
+                        {
+                            consecutivo83 = item.numero;
+                        }
                         numerodms = item.numero;
                         foreach (var itemmov in movimientoList)
                         {
                             movimiento = itemmov;
-                            //movimientosController.Instance.Create(movimiento);
+                            movimientosController.Instance.Create(movimiento);
                         }
 
                     }
@@ -892,7 +893,12 @@ namespace MetalLiqViajes_Forms
                     numerodms++;
                     consecutivos consecutivo52V = consecutivosController.Instance.Get("52V");
                     consecutivo52V.siguiente = numerodms;
-                    //consecutivosController.Instance.Update(consecutivo52V);
+                    consecutivosController.Instance.Update(consecutivo52V);
+
+                    consecutivo83++;
+                    consecutivos consecutivo83V = consecutivosController.Instance.Get("83");
+                    consecutivo83V.siguiente = consecutivo83;
+                    consecutivosController.Instance.Update(consecutivo83V);
 
                 }
 
