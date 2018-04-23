@@ -1,8 +1,10 @@
-﻿using GMap.NET;
+﻿using ExcelDataReader;
+using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using LiqViajes_Bll_Data;
+using MetalLiqViajes_Forms.Util;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections;
@@ -25,10 +27,14 @@ namespace MetalLiqViajes_Forms
         public List<UtilPlaca> ultilplacalist = new List<UtilPlaca>();
 
         GMarkerGoogle marker;
+
         GMapOverlay markerOverlay;
+
+        private FileExcel m_FileExcel { get; set; }
 
         //Latitud	Longitud
         //9.530720	-75.418800
+
         double LatIncial = 9.530720;
         double lngInicial = -75.418800;
         private Providedor proveedor;
@@ -1750,6 +1756,79 @@ namespace MetalLiqViajes_Forms
         private RutasDestino rutadestino;
         private RutasOrigenDestino rutaorigendestino;
 
+        private void btnCargaDirectorio_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBoxPath.Text != "")
+                {
+                    Properties.Settings.Default.PathFacturaTerpel = textBoxPath.Text;
+                    dlgOpenDir.SelectedPath = textBoxPath.Text;
+                }
+                DialogResult resDialog = new System.Windows.Forms.DialogResult();
+                dlgOpenDir.SelectedPath = Properties.Settings.Default.PathFacturaTerpel;
+                resDialog = dlgOpenDir.ShowDialog();
+                if (resDialog.ToString() == "OK")
+                {
+                    textBoxPath.Text = dlgOpenDir.SelectedPath;
+                    textBoxPath.Refresh();
+                    Properties.Settings.Default.PathFacturaTerpel = dlgOpenDir.SelectedPath + "\\";
+                    CargaArchivos(dlgOpenDir.SelectedPath);
+                    btnGuadarExcel.Enabled = false;
+
+                    m_FileExcel = new FileExcel();
+                    //excelterpelList = new List<ExcelTerpel>();
+                    //dataGridDataExcel.DataSource = excelterpelList;
+                    //dataGridDataExcel.Refresh();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Aviso: hay un error buscando el directorio origen, " + ex.Message, "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void CargaArchivos(string @iPath)
+        {
+            try
+            {
+                List<FileExcel> m_FileExcelList = new List<FileExcel>();
+                string Extension = "";
+                string Nombre = "";
+                string[] DirPathfiles = Directory.GetFiles(@iPath);
+                foreach (string file in DirPathfiles)
+                {
+
+                    //FormatoCrearRutasMetal.xlsm
+                    Extension = Path.GetExtension(file);
+                    Nombre = Path.GetFileName(file);
+                    if (Nombre == "FormatoCrearRutasMetal.xlsm")
+                    {
+                        if (Extension != ".xls" || Extension != ".xlsx" || Extension != ".csv")
+                        {
+                            m_FileExcel = new FileExcel();
+                            m_FileExcel.nameFile = Path.GetFileName(file);
+                            m_FileExcel.GetFullPath = Path.GetFullPath(file);
+                            m_FileExcel.Importado = false;
+                            m_FileExcel.Excluir = false;
+                            m_FileExcel.Notaexcluir = "";
+                            m_FileExcelList.Add(m_FileExcel);
+                        }
+                    }
+                }
+
+                btnCargaExcel.Enabled = true;
+
+                dataGridFiles.DataSource = m_FileExcelList;
+                dataGridFiles.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Aviso: hay un error cargando el archivo, " + ex.Message, "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void treeViewRutas_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode tn = e.Node;
@@ -1775,6 +1854,165 @@ namespace MetalLiqViajes_Forms
                 dataGridViewRuta.DataSource = rutalist;
                 dataGridViewRuta.Refresh();
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            fMenuPrincipal c = (fMenuPrincipal)this.ParentForm;
+            c.panelMenu.Visible = true;
+            this.Close();
+        }
+
+        private void btnCargaExcel_Click(object sender, EventArgs e)
+        {
+            ExcelDataReader();
+        }
+
+        public void ExcelDataReader()
+        {
+            try
+            {
+
+                if (m_FileExcel == null) return;
+
+                this.Cursor = Cursors.WaitCursor;
+
+                List<Rutas> rutasList = new List<Rutas>();
+
+                //Reading from a OpenXml Excel file (2007 format; *.xlsx)
+                FileStream stream = new FileStream(m_FileExcel.GetFullPath, FileMode.Open);
+                IExcelDataReader excelReader2007 = ExcelReaderFactory.CreateOpenXmlReader(stream);
+
+                //DataSet - The result of each spreadsheet will be created in the result.Tables
+                DataSet result = excelReader2007.AsDataSet();
+
+                string itemArray = "";
+                Rutas rutas;
+
+                //Data Reader methods
+                foreach (DataTable dt in result.Tables)
+                {
+                    if (dt.TableName.ToUpper() == "FORMATO RUTAS")
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            for (int i = 4; i < dt.Rows.Count; i++)
+                            {
+                                itemArray = dt.Rows[i].ItemArray[0].ToString();
+                                if (itemArray != "")
+                                {
+                                    if (itemArray != "No. Venta")
+                                    {
+                                        rutas = ReadData(dt, i);
+                                        rutasList.Add(rutas);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                dataGridViewRutas.DataSource = rutasList;
+                dataGridViewRutas.Refresh();
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + rutasList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Error: se produjo un error en la carga de información, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private Rutas ReadData(DataTable dt, int i)
+        {
+            Rutas rutas = new Rutas();
+            try
+            {
+                if (dt.Rows[1].ItemArray[dt.Columns.IndexOf("Column1")] != null) rutas.lngIdRegistrRuta = Convert.ToInt64(dt.Rows[i].ItemArray[1]);
+                if (dt.Rows[2].ItemArray[dt.Columns.IndexOf("Column2")] != null) rutas.RutasOrigenDestinoVehTrailerCodigo = Convert.ToInt64(dt.Rows[i].ItemArray[2]);
+                if (dt.Rows[3].ItemArray[dt.Columns.IndexOf("Column3")] != null) rutas.strRutaAnticipoGrupoOrigen = (string)dt.Rows[i].ItemArray[3];
+                if (dt.Rows[4].ItemArray[dt.Columns.IndexOf("Column4")] != null) rutas.strRutaAnticipoGrupoDestino = (string)dt.Rows[i].ItemArray[4];
+                if (dt.Rows[5].ItemArray[dt.Columns.IndexOf("Column5")] != null) rutas.strRutaAnticipoGrupo = (string)dt.Rows[i].ItemArray[5];
+                if (dt.Rows[6].ItemArray[dt.Columns.IndexOf("Column6")] != null) rutas.strRutaAnticipo = (string)dt.Rows[i].ItemArray[6];
+                if (dt.Rows[7].ItemArray[dt.Columns.IndexOf("Column7")] != null) rutas.TipoVehiculoCodigo = Convert.ToInt32(dt.Rows[i].ItemArray[7]);
+                if (dt.Rows[8].ItemArray[dt.Columns.IndexOf("Column8")] != null) rutas.TipoVehiculo = (string)dt.Rows[i].ItemArray[8];
+                if (dt.Rows[9].ItemArray[dt.Columns.IndexOf("Column9")] != null) rutas.TipoTrailerCodigo = Convert.ToInt32(dt.Rows[i].ItemArray[9]);
+                if (dt.Rows[10].ItemArray[dt.Columns.IndexOf("Column10")] != null) rutas.DescripcionTipoTrailer = (string)dt.Rows[i].ItemArray[10];
+                if (dt.Rows[11].ItemArray[dt.Columns.IndexOf("Column11")] != null) rutas.Peso = Convert.ToInt32(dt.Rows[i].ItemArray[11]);
+                if (dt.Rows[12].ItemArray[dt.Columns.IndexOf("Column12")] != null) rutas.Programa = (string)dt.Rows[i].ItemArray[12];
+                if (dt.Rows[13].ItemArray[dt.Columns.IndexOf("Column13")] != null) rutas.logViajeVacio = (bool)dt.Rows[i].ItemArray[13];
+                if (dt.Rows[14].ItemArray[dt.Columns.IndexOf("Column14")] != null) rutas.floGalones = Convert.ToDecimal(dt.Rows[i].ItemArray[14]);
+                if (dt.Rows[15].ItemArray[dt.Columns.IndexOf("Column15")] != null) rutas.curValorGalon = Convert.ToDecimal(dt.Rows[i].ItemArray[15]);
+                if (dt.Rows[16].ItemArray[dt.Columns.IndexOf("Column16")] != null) rutas.cutCombustible = Convert.ToDecimal(dt.Rows[i].ItemArray[16]);
+                if (dt.Rows[17].ItemArray[dt.Columns.IndexOf("Column17")] != null) rutas.CombustibleCarretera = Convert.ToDecimal(dt.Rows[i].ItemArray[17]);
+                if (dt.Rows[18].ItemArray[dt.Columns.IndexOf("Column18")] != null) rutas.lngIdNroPeajes = Convert.ToInt32(dt.Rows[i].ItemArray[18]);
+                if (dt.Rows[19].ItemArray[dt.Columns.IndexOf("Column19")] != null) rutas.cutPeaje = Convert.ToDecimal(dt.Rows[i].ItemArray[19]);
+                if (dt.Rows[20].ItemArray[dt.Columns.IndexOf("Column20")] != null) rutas.strNombrePeajes = (string)dt.Rows[i].ItemArray[20];
+                if (dt.Rows[21].ItemArray[dt.Columns.IndexOf("Column21")] != null) rutas.cutVariosLlantas = Convert.ToDecimal(dt.Rows[i].ItemArray[21]);
+                if (dt.Rows[22].ItemArray[dt.Columns.IndexOf("Column22")] != null) rutas.cutVariosCelada = Convert.ToDecimal(dt.Rows[i].ItemArray[22]);
+                if (dt.Rows[23].ItemArray[dt.Columns.IndexOf("Column23")] != null) rutas.cutVariosPropina = Convert.ToDecimal(dt.Rows[i].ItemArray[23]);
+                if (dt.Rows[24].ItemArray[dt.Columns.IndexOf("Column24")] != null) rutas.cutVarios = Convert.ToDecimal(dt.Rows[i].ItemArray[24]);
+                if (dt.Rows[25].ItemArray[dt.Columns.IndexOf("Column25")] != null) rutas.Llamadas = Convert.ToDecimal(dt.Rows[i].ItemArray[25]);
+                if (dt.Rows[26].ItemArray[dt.Columns.IndexOf("Column26")] != null) rutas.Taxi = Convert.ToDecimal(dt.Rows[i].ItemArray[26]);
+                if (dt.Rows[27].ItemArray[dt.Columns.IndexOf("Column27")] != null) rutas.Aseo = Convert.ToDecimal(dt.Rows[i].ItemArray[27]);
+                if (dt.Rows[28].ItemArray[dt.Columns.IndexOf("Column28")] != null) rutas.cutVariosLlantasVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[28]);
+                if (dt.Rows[29].ItemArray[dt.Columns.IndexOf("Column29")] != null) rutas.cutVariosCeladaVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[29]);
+                if (dt.Rows[30].ItemArray[dt.Columns.IndexOf("Column30")] != null) rutas.cutVariosPropinaVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[30]);
+                if (dt.Rows[31].ItemArray[dt.Columns.IndexOf("Column31")] != null) rutas.cutVariosVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[31]);
+                if (dt.Rows[32].ItemArray[dt.Columns.IndexOf("Column32")] != null) rutas.Viaticos = Convert.ToDecimal(dt.Rows[i].ItemArray[32]);
+                if (dt.Rows[33].ItemArray[dt.Columns.IndexOf("Column33")] != null) rutas.cutParticipacion = Convert.ToDecimal(dt.Rows[i].ItemArray[33]);
+                if (dt.Rows[34].ItemArray[dt.Columns.IndexOf("Column34")] != null) rutas.cutParticipacionVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[34]);
+                if (dt.Rows[35].ItemArray[dt.Columns.IndexOf("Column35")] != null) rutas.curHotelCarretera = Convert.ToInt32(dt.Rows[i].ItemArray[35]);
+                if (dt.Rows[36].ItemArray[dt.Columns.IndexOf("Column36")] != null) rutas.curHotelCiudad = Convert.ToInt32(dt.Rows[i].ItemArray[36]);
+                if (dt.Rows[37].ItemArray[dt.Columns.IndexOf("Column37")] != null) rutas.curHotel = Convert.ToDecimal(dt.Rows[i].ItemArray[37]);
+                if (dt.Rows[38].ItemArray[dt.Columns.IndexOf("Column38")] != null) rutas.curHotelCarreteraVacio = Convert.ToInt32(dt.Rows[i].ItemArray[38]);
+                if (dt.Rows[39].ItemArray[dt.Columns.IndexOf("Column39")] != null) rutas.curHotelCiudadVacio = Convert.ToInt32(dt.Rows[i].ItemArray[39]);
+                if (dt.Rows[40].ItemArray[dt.Columns.IndexOf("Column40")] != null) rutas.curHotelVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[40]);
+                if (dt.Rows[41].ItemArray[dt.Columns.IndexOf("Column41")] != null) rutas.intTiempoCargue = Convert.ToDecimal(dt.Rows[i].ItemArray[41]);
+                if (dt.Rows[42].ItemArray[dt.Columns.IndexOf("Column42")] != null) rutas.intTiempoDescargue = Convert.ToDecimal(dt.Rows[i].ItemArray[42]);
+                if (dt.Rows[43].ItemArray[dt.Columns.IndexOf("Column43")] != null) rutas.intTiempoAduana = Convert.ToDecimal(dt.Rows[i].ItemArray[43]);
+                if (dt.Rows[44].ItemArray[dt.Columns.IndexOf("Column44")] != null) rutas.intTotalTrayecto = Convert.ToDecimal(dt.Rows[i].ItemArray[44]);
+                if (dt.Rows[45].ItemArray[dt.Columns.IndexOf("Column45")] != null) rutas.intTotalTiempo = Convert.ToDecimal(dt.Rows[i].ItemArray[45]);
+                if (dt.Rows[46].ItemArray[dt.Columns.IndexOf("Column46")] != null) rutas.curComida = Convert.ToDecimal(dt.Rows[i].ItemArray[46]);
+                if (dt.Rows[47].ItemArray[dt.Columns.IndexOf("Column47")] != null) rutas.intTiempoCargueVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[47]);
+                if (dt.Rows[48].ItemArray[dt.Columns.IndexOf("Column48")] != null) rutas.intTiempoDescargueVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[48]);
+                if (dt.Rows[49].ItemArray[dt.Columns.IndexOf("Column49")] != null) rutas.intTiempoAduanaVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[49]);
+                if (dt.Rows[50].ItemArray[dt.Columns.IndexOf("Column50")] != null) rutas.intTotalTrayectoVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[50]);
+                if (dt.Rows[51].ItemArray[dt.Columns.IndexOf("Column51")] != null) rutas.intTotalTiempoVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[51]);
+                if (dt.Rows[52].ItemArray[dt.Columns.IndexOf("Column52")] != null) rutas.curComidaVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[52]);
+                if (dt.Rows[53].ItemArray[dt.Columns.IndexOf("Column53")] != null) rutas.curDesvareManoRepuestos = Convert.ToDecimal(dt.Rows[i].ItemArray[53]);
+                if (dt.Rows[54].ItemArray[dt.Columns.IndexOf("Column54")] != null) rutas.curDesvareManoObra = Convert.ToDecimal(dt.Rows[i].ItemArray[54]);
+                if (dt.Rows[55].ItemArray[dt.Columns.IndexOf("Column55")] != null) rutas.cutSaldo = Convert.ToDecimal(dt.Rows[i].ItemArray[55]);
+                if (dt.Rows[56].ItemArray[dt.Columns.IndexOf("Column56")] != null) rutas.cutSaldoVacio = Convert.ToDecimal(dt.Rows[i].ItemArray[56]);
+                if (dt.Rows[57].ItemArray[dt.Columns.IndexOf("Column57")] != null) rutas.cutKmts = Convert.ToDecimal(dt.Rows[i].ItemArray[57]);
+                if (dt.Rows[58].ItemArray[dt.Columns.IndexOf("Column58")] != null) rutas.logActualizaPeajes = Convert.ToDecimal(dt.Rows[i].ItemArray[58]);
+                if (dt.Rows[59].ItemArray[dt.Columns.IndexOf("Column59")] != null) rutas.intFactorKmPorGalon = Convert.ToDecimal(dt.Rows[i].ItemArray[59]);
+                if (dt.Rows[60].ItemArray[dt.Columns.IndexOf("Column60")] != null) rutas.logEstadoRuta = (bool)(dt.Rows[i].ItemArray[60]);
+                if (dt.Rows[61].ItemArray[dt.Columns.IndexOf("Column61")] != null) rutas.ParqueaderoCarretera = Convert.ToDecimal(dt.Rows[i].ItemArray[61]);
+                if (dt.Rows[62].ItemArray[dt.Columns.IndexOf("Column62")] != null) rutas.ParqueaderoCiudad = Convert.ToDecimal(dt.Rows[i].ItemArray[62]);
+                if (dt.Rows[63].ItemArray[dt.Columns.IndexOf("Column63")] != null) rutas.MontadaLLantaCarretera = Convert.ToDecimal(dt.Rows[i].ItemArray[63]);
+                if (dt.Rows[64].ItemArray[dt.Columns.IndexOf("Column64")] != null) rutas.MontadaLLantaCiudad = Convert.ToDecimal(dt.Rows[i].ItemArray[64]);
+                if (dt.Rows[65].ItemArray[dt.Columns.IndexOf("Column65")] != null) rutas.AjusteCarretera = Convert.ToDecimal(dt.Rows[i].ItemArray[65]);
+                if (dt.Rows[66].ItemArray[dt.Columns.IndexOf("Column66")] != null) rutas.Lavada = Convert.ToDecimal(dt.Rows[i].ItemArray[66]);
+                if (dt.Rows[67].ItemArray[dt.Columns.IndexOf("Column67")] != null) rutas.Amarres = Convert.ToDecimal(dt.Rows[i].ItemArray[67]);
+                if (dt.Rows[68].ItemArray[dt.Columns.IndexOf("Column68")] != null) rutas.Engradasa = Convert.ToDecimal(dt.Rows[i].ItemArray[68]);
+                if (dt.Rows[69].ItemArray[dt.Columns.IndexOf("Column69")] != null) rutas.Calibrada = Convert.ToDecimal(dt.Rows[i].ItemArray[69]);
+                if (dt.Rows[70].ItemArray[dt.Columns.IndexOf("Column70")] != null) rutas.Liquidado = (bool)(dt.Rows[i].ItemArray[70]);
+                if (dt.Rows[71].ItemArray[dt.Columns.IndexOf("Column71")] != null) rutas.logVacio = (bool)(dt.Rows[i].ItemArray[71]);
+                if (dt.Rows[72].ItemArray[dt.Columns.IndexOf("Column72")] != null) rutas.Papeleria = Convert.ToDecimal(dt.Rows[i].ItemArray[72]);
+                if (dt.Rows[73].ItemArray[dt.Columns.IndexOf("Column73")] != null) rutas.logFavorito = (bool)(dt.Rows[i].ItemArray[73]);
+                if (dt.Rows[74].ItemArray[dt.Columns.IndexOf("Column74")] != null) rutas.CurCargue = Convert.ToDecimal(dt.Rows[i].ItemArray[74]);
+                if (dt.Rows[75].ItemArray[dt.Columns.IndexOf("Column75")] != null) rutas.CurDescargue = Convert.ToDecimal(dt.Rows[i].ItemArray[75]);
+                if (dt.Rows[76].ItemArray[dt.Columns.IndexOf("Column76")] != null) rutas.LogAnticipoACPM = (bool)(dt.Rows[i].ItemArray[76]);
+
+            }
+            catch (Exception ex)
+            {
+            }
+            return rutas;
+
         }
     }
 }

@@ -13,18 +13,9 @@ namespace MetalLiqViajes_Forms
     public partial class fMenuPrincipal : Form
     {
 
-        private fReportesViajes childForm;
-
-        private int childFormNumber = 0;
-
         public fMenuPrincipal()
         {
             InitializeComponent();
-        }
-
-        private void fMenuPrincipal_Load(object sender, EventArgs e)
-        {
-            MenuReportes();
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,7 +32,9 @@ namespace MetalLiqViajes_Forms
         {
             try
             {
-                childForm = new fReportesViajes();
+                panelMenu.Visible = false;
+
+                fReportesViajes childForm = new fReportesViajes();
                 childForm.MdiParent = this;
                 childForm.WindowState = FormWindowState.Maximized;
                 childForm.Show();
@@ -55,8 +48,14 @@ namespace MetalLiqViajes_Forms
 
         private void terpelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CargarFacturaTerpel();
+        }
+
+        private void CargarFacturaTerpel()
+        {
+            panelMenu.Visible = false;
+
             fTerpel terpel = new fTerpel();
-            terpel.ultilplacalist = childForm.ultilplacalist;
             terpel.MdiParent = this;
             terpel.WindowState = FormWindowState.Maximized;
             terpel.Show();
@@ -64,11 +63,19 @@ namespace MetalLiqViajes_Forms
 
         private void terpelDMSToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MovimientosDMS();
+        }
+
+        private void MovimientosDMS()
+        {
+            panelMenu.Visible = false;
+
             fTerpelDMS terpel = new fTerpelDMS();
-            terpel.ultilplacalist = childForm.ultilplacalist;
+            //terpel.ultilplacalist = childForm.ultilplacalist;
             terpel.MdiParent = this;
             terpel.WindowState = FormWindowState.Maximized;
             terpel.Show();
+
         }
 
         private void OpenReporte(object sender, EventArgs e)
@@ -84,6 +91,10 @@ namespace MetalLiqViajes_Forms
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.Close();
+            }
             this.Close();
         }
 
@@ -117,11 +128,16 @@ namespace MetalLiqViajes_Forms
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.Close();
+            }
             this.Close();
         }
 
         public static void CargaExection(Exception ex)
         {
+
             DialogResult result3 = MessageBox.Show(ex.Message,
                "Error Cargando Datos",
                MessageBoxButtons.OK,
@@ -129,5 +145,32 @@ namespace MetalLiqViajes_Forms
                MessageBoxDefaultButton.Button1);
         }
 
+        private void btnLiqVaiajes_Click(object sender, EventArgs e)
+        {
+            MenuReportes();
+        }
+
+        private void btnCargaFacturaTerpel_Click(object sender, EventArgs e)
+        {
+            CargarFacturaTerpel();
+        }
+
+        private void btnCargaDMS_Click(object sender, EventArgs e)
+        {
+            MovimientosDMS();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.Close();
+            }
+            this.Close();
+
+            panelMenu.Visible = false;
+            Application.Exit();
+        }
     }
 }

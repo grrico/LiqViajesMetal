@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReportesViajes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,7 +42,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReportesViajes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -74,6 +74,7 @@
             this.conductorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBoxiRegistroViaje = new System.Windows.Forms.TextBox();
@@ -290,8 +291,22 @@
             this.btnRefrescarMapa = new System.Windows.Forms.Button();
             this.btnRuta = new System.Windows.Forms.Button();
             this.btnInterrogar = new System.Windows.Forms.Button();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.splitContainer7 = new System.Windows.Forms.SplitContainer();
+            this.dataGridFiles = new System.Windows.Forms.DataGridView();
+            this.dataGridViewRutas = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxPath = new System.Windows.Forms.TextBox();
+            this.btnCargaDirectorio = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnGuadarExcel = new System.Windows.Forms.Button();
+            this.btnCargaExcel = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionVehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LiquidacionPlanillaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TramosReportesLiqVehiculosBindingSource)).BeginInit();
@@ -369,6 +384,15 @@
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).BeginInit();
+            this.tabPage10.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
+            this.splitContainer7.Panel1.SuspendLayout();
+            this.splitContainer7.Panel2.SuspendLayout();
+            this.splitContainer7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRutas)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LiquidacionVehiculoBindingSource
@@ -410,9 +434,9 @@
             // 
             this.panel3.Controls.Add(this.dataGridViewConductor);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(340, 0);
+            this.panel3.Location = new System.Drawing.Point(329, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(682, 193);
+            this.panel3.Size = new System.Drawing.Size(693, 193);
             this.panel3.TabIndex = 4;
             // 
             // dataGridViewConductor
@@ -435,7 +459,7 @@
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
             this.dataGridViewConductor.RowHeadersWidth = 10;
-            this.dataGridViewConductor.Size = new System.Drawing.Size(682, 193);
+            this.dataGridViewConductor.Size = new System.Drawing.Size(693, 193);
             this.dataGridViewConductor.TabIndex = 0;
             this.dataGridViewConductor.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConductor_RowEnter);
             // 
@@ -500,7 +524,7 @@
             // 
             this.splitter1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitter1.Location = new System.Drawing.Point(330, 0);
+            this.splitter1.Location = new System.Drawing.Point(319, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(10, 193);
             this.splitter1.TabIndex = 3;
@@ -508,6 +532,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSalir);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.textBoxiRegistroViaje);
@@ -528,12 +553,24 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(330, 193);
+            this.panel2.Size = new System.Drawing.Size(319, 193);
             this.panel2.TabIndex = 2;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.Location = new System.Drawing.Point(177, 139);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(100, 37);
+            this.btnSalir.TabIndex = 6;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(244, 35);
+            this.button2.Location = new System.Drawing.Point(283, 139);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(43, 23);
             this.button2.TabIndex = 5;
@@ -544,7 +581,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(244, 12);
+            this.textBox1.Location = new System.Drawing.Point(283, 167);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(43, 20);
             this.textBox1.TabIndex = 4;
@@ -552,7 +589,7 @@
             // 
             // textBoxiRegistroViaje
             // 
-            this.textBoxiRegistroViaje.Location = new System.Drawing.Point(71, 93);
+            this.textBoxiRegistroViaje.Location = new System.Drawing.Point(71, 86);
             this.textBoxiRegistroViaje.Name = "textBoxiRegistroViaje";
             this.textBoxiRegistroViaje.Size = new System.Drawing.Size(100, 20);
             this.textBoxiRegistroViaje.TabIndex = 3;
@@ -560,7 +597,7 @@
             // btnPruebaWhasaaps
             // 
             this.btnPruebaWhasaaps.Image = global::MetalLiqViajes_Forms.Properties.Resources.NewDocumentHS;
-            this.btnPruebaWhasaaps.Location = new System.Drawing.Point(244, 120);
+            this.btnPruebaWhasaaps.Location = new System.Drawing.Point(273, 12);
             this.btnPruebaWhasaaps.Name = "btnPruebaWhasaaps";
             this.btnPruebaWhasaaps.Size = new System.Drawing.Size(43, 37);
             this.btnPruebaWhasaaps.TabIndex = 2;
@@ -571,12 +608,12 @@
             // btnCreaViaje
             // 
             this.btnCreaViaje.Image = global::MetalLiqViajes_Forms.Properties.Resources.NewDocumentHS;
-            this.btnCreaViaje.Location = new System.Drawing.Point(71, 146);
+            this.btnCreaViaje.Location = new System.Drawing.Point(71, 139);
             this.btnCreaViaje.Name = "btnCreaViaje";
             this.btnCreaViaje.Size = new System.Drawing.Size(100, 37);
             this.btnCreaViaje.TabIndex = 2;
             this.btnCreaViaje.Text = "Crear Viaje";
-            this.btnCreaViaje.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCreaViaje.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btnCreaViaje, "Crear Viaje");
             this.btnCreaViaje.UseVisualStyleBackColor = true;
             this.btnCreaViaje.Click += new System.EventHandler(this.btnCreaViaje_Click);
@@ -584,7 +621,7 @@
             // btnSatrac
             // 
             this.btnSatrac.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
-            this.btnSatrac.Location = new System.Drawing.Point(244, 79);
+            this.btnSatrac.Location = new System.Drawing.Point(230, 12);
             this.btnSatrac.Name = "btnSatrac";
             this.btnSatrac.Size = new System.Drawing.Size(43, 37);
             this.btnSatrac.TabIndex = 2;
@@ -596,9 +633,9 @@
             // 
             this.btnQuitarFintro.Enabled = false;
             this.btnQuitarFintro.Image = global::MetalLiqViajes_Forms.Properties.Resources.ClearFilter2HS;
-            this.btnQuitarFintro.Location = new System.Drawing.Point(177, 120);
+            this.btnQuitarFintro.Location = new System.Drawing.Point(226, 86);
             this.btnQuitarFintro.Name = "btnQuitarFintro";
-            this.btnQuitarFintro.Size = new System.Drawing.Size(49, 22);
+            this.btnQuitarFintro.Size = new System.Drawing.Size(43, 37);
             this.btnQuitarFintro.TabIndex = 2;
             this.btnQuitarFintro.UseVisualStyleBackColor = true;
             this.btnQuitarFintro.Visible = false;
@@ -607,9 +644,9 @@
             // btnBuscaViajes
             // 
             this.btnBuscaViajes.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
-            this.btnBuscaViajes.Location = new System.Drawing.Point(177, 93);
+            this.btnBuscaViajes.Location = new System.Drawing.Point(177, 86);
             this.btnBuscaViajes.Name = "btnBuscaViajes";
-            this.btnBuscaViajes.Size = new System.Drawing.Size(49, 21);
+            this.btnBuscaViajes.Size = new System.Drawing.Size(43, 37);
             this.btnBuscaViajes.TabIndex = 2;
             this.toolTip1.SetToolTip(this.btnBuscaViajes, "Busca un Viaje en la base de datos");
             this.btnBuscaViajes.UseVisualStyleBackColor = true;
@@ -618,9 +655,9 @@
             // btnRefrescar
             // 
             this.btnRefrescar.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
-            this.btnRefrescar.Location = new System.Drawing.Point(177, 37);
+            this.btnRefrescar.Location = new System.Drawing.Point(177, 12);
             this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(49, 21);
+            this.btnRefrescar.Size = new System.Drawing.Size(43, 37);
             this.btnRefrescar.TabIndex = 2;
             this.toolTip1.SetToolTip(this.btnRefrescar, "Lee información por Año y Mes");
             this.btnRefrescar.UseVisualStyleBackColor = true;
@@ -629,7 +666,7 @@
             // comboBoxYear
             // 
             this.comboBoxYear.FormattingEnabled = true;
-            this.comboBoxYear.Location = new System.Drawing.Point(71, 10);
+            this.comboBoxYear.Location = new System.Drawing.Point(71, 5);
             this.comboBoxYear.Name = "comboBoxYear";
             this.comboBoxYear.Size = new System.Drawing.Size(100, 21);
             this.comboBoxYear.TabIndex = 1;
@@ -640,7 +677,7 @@
             this.comboBoxRegViaje.DataSource = this.utiliDRegistroBindingSource;
             this.comboBoxRegViaje.DisplayMember = "idRegistro";
             this.comboBoxRegViaje.FormattingEnabled = true;
-            this.comboBoxRegViaje.Location = new System.Drawing.Point(71, 119);
+            this.comboBoxRegViaje.Location = new System.Drawing.Point(71, 112);
             this.comboBoxRegViaje.Name = "comboBoxRegViaje";
             this.comboBoxRegViaje.Size = new System.Drawing.Size(100, 21);
             this.comboBoxRegViaje.TabIndex = 1;
@@ -654,7 +691,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 10);
+            this.label1.Location = new System.Drawing.Point(36, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 0;
@@ -665,7 +702,7 @@
             this.comboBoxPlaca.DataSource = this.utilPlacaBindingSource;
             this.comboBoxPlaca.DisplayMember = "Placa";
             this.comboBoxPlaca.FormattingEnabled = true;
-            this.comboBoxPlaca.Location = new System.Drawing.Point(71, 60);
+            this.comboBoxPlaca.Location = new System.Drawing.Point(71, 55);
             this.comboBoxPlaca.Name = "comboBoxPlaca";
             this.comboBoxPlaca.Size = new System.Drawing.Size(100, 21);
             this.comboBoxPlaca.TabIndex = 1;
@@ -679,7 +716,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 35);
+            this.label2.Location = new System.Drawing.Point(35, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 0;
@@ -688,7 +725,7 @@
             // comboBoxMonth
             // 
             this.comboBoxMonth.FormattingEnabled = true;
-            this.comboBoxMonth.Location = new System.Drawing.Point(71, 37);
+            this.comboBoxMonth.Location = new System.Drawing.Point(71, 28);
             this.comboBoxMonth.Name = "comboBoxMonth";
             this.comboBoxMonth.Size = new System.Drawing.Size(100, 21);
             this.comboBoxMonth.TabIndex = 1;
@@ -697,7 +734,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 60);
+            this.label3.Location = new System.Drawing.Point(28, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 0;
@@ -706,7 +743,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 93);
+            this.label4.Location = new System.Drawing.Point(9, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 0;
@@ -1960,6 +1997,7 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage5);
+            this.tabControl.Controls.Add(this.tabPage10);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.ImageList = this.imageListBase2;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
@@ -1987,7 +2025,7 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 209);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 206);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -1998,8 +2036,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAnticipo);
-            this.splitContainer1.Size = new System.Drawing.Size(1022, 389);
-            this.splitContainer1.SplitterDistance = 134;
+            this.splitContainer1.Size = new System.Drawing.Size(1022, 392);
+            this.splitContainer1.SplitterDistance = 135;
             this.splitContainer1.TabIndex = 3;
             // 
             // dataGridViewViajes
@@ -2022,7 +2060,7 @@
             this.dataGridViewViajes.Name = "dataGridViewViajes";
             this.dataGridViewViajes.ReadOnly = true;
             this.dataGridViewViajes.RowHeadersWidth = 15;
-            this.dataGridViewViajes.Size = new System.Drawing.Size(1020, 132);
+            this.dataGridViewViajes.Size = new System.Drawing.Size(1020, 133);
             this.dataGridViewViajes.TabIndex = 0;
             this.dataGridViewViajes.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewViajes_RowEnter);
             // 
@@ -2111,7 +2149,7 @@
             this.dataGridViewAnticipo.Name = "dataGridViewAnticipo";
             this.dataGridViewAnticipo.ReadOnly = true;
             this.dataGridViewAnticipo.RowHeadersWidth = 15;
-            this.dataGridViewAnticipo.Size = new System.Drawing.Size(1020, 249);
+            this.dataGridViewAnticipo.Size = new System.Drawing.Size(1020, 251);
             this.dataGridViewAnticipo.TabIndex = 0;
             // 
             // dmsTipoDataGridViewTextBoxColumn
@@ -2219,7 +2257,7 @@
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter2.Location = new System.Drawing.Point(3, 196);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(1022, 13);
+            this.splitter2.Size = new System.Drawing.Size(1022, 10);
             this.splitter2.TabIndex = 2;
             this.splitter2.TabStop = false;
             // 
@@ -2713,10 +2751,156 @@
             this.btnInterrogar.UseVisualStyleBackColor = true;
             this.btnInterrogar.Click += new System.EventHandler(this.btnInterrogar_Click);
             // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.panel5);
+            this.tabPage10.Controls.Add(this.panel1);
+            this.tabPage10.Location = new System.Drawing.Point(4, 23);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(1028, 601);
+            this.tabPage10.TabIndex = 5;
+            this.tabPage10.Text = "Importa Ruta";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.splitContainer7);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 100);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1028, 501);
+            this.panel5.TabIndex = 1;
+            // 
+            // splitContainer7
+            // 
+            this.splitContainer7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer7.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer7.Name = "splitContainer7";
+            this.splitContainer7.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer7.Panel1
+            // 
+            this.splitContainer7.Panel1.Controls.Add(this.dataGridFiles);
+            // 
+            // splitContainer7.Panel2
+            // 
+            this.splitContainer7.Panel2.Controls.Add(this.dataGridViewRutas);
+            this.splitContainer7.Size = new System.Drawing.Size(1028, 501);
+            this.splitContainer7.SplitterDistance = 75;
+            this.splitContainer7.TabIndex = 2;
+            // 
+            // dataGridFiles
+            // 
+            this.dataGridFiles.AllowUserToAddRows = false;
+            this.dataGridFiles.AllowUserToDeleteRows = false;
+            this.dataGridFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridFiles.Location = new System.Drawing.Point(0, 0);
+            this.dataGridFiles.Name = "dataGridFiles";
+            this.dataGridFiles.ReadOnly = true;
+            this.dataGridFiles.Size = new System.Drawing.Size(1026, 73);
+            this.dataGridFiles.TabIndex = 1;
+            // 
+            // dataGridViewRutas
+            // 
+            this.dataGridViewRutas.AllowUserToAddRows = false;
+            this.dataGridViewRutas.AllowUserToDeleteRows = false;
+            this.dataGridViewRutas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRutas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewRutas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewRutas.Name = "dataGridViewRutas";
+            this.dataGridViewRutas.ReadOnly = true;
+            this.dataGridViewRutas.Size = new System.Drawing.Size(1026, 420);
+            this.dataGridViewRutas.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBoxPath);
+            this.panel1.Controls.Add(this.btnCargaDirectorio);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnGuadarExcel);
+            this.panel1.Controls.Add(this.btnCargaExcel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1028, 100);
+            this.panel1.TabIndex = 0;
+            // 
+            // textBoxPath
+            // 
+            this.textBoxPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.textBoxPath.Enabled = false;
+            this.textBoxPath.Location = new System.Drawing.Point(4, 69);
+            this.textBoxPath.Multiline = true;
+            this.textBoxPath.Name = "textBoxPath";
+            this.textBoxPath.Size = new System.Drawing.Size(1028, 25);
+            this.textBoxPath.TabIndex = 2;
+            // 
+            // btnCargaDirectorio
+            // 
+            this.btnCargaDirectorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnCargaDirectorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargaDirectorio.Image = global::MetalLiqViajes_Forms.Properties.Resources.Truck;
+            this.btnCargaDirectorio.Location = new System.Drawing.Point(9, 16);
+            this.btnCargaDirectorio.Name = "btnCargaDirectorio";
+            this.btnCargaDirectorio.Size = new System.Drawing.Size(171, 40);
+            this.btnCargaDirectorio.TabIndex = 3;
+            this.btnCargaDirectorio.Text = "Cargar Arhivos";
+            this.btnCargaDirectorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCargaDirectorio, "Haga clic aquí para buscar la carpeta donde están los archivos de Rutas");
+            this.btnCargaDirectorio.UseVisualStyleBackColor = false;
+            this.btnCargaDirectorio.Click += new System.EventHandler(this.btnCargaDirectorio_Click);
+            // 
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(540, 16);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(171, 40);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Salir";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnGuadarExcel
+            // 
+            this.btnGuadarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnGuadarExcel.Image")));
+            this.btnGuadarExcel.Location = new System.Drawing.Point(363, 16);
+            this.btnGuadarExcel.Name = "btnGuadarExcel";
+            this.btnGuadarExcel.Size = new System.Drawing.Size(171, 40);
+            this.btnGuadarExcel.TabIndex = 5;
+            this.btnGuadarExcel.Text = "Guardar Datos";
+            this.btnGuadarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuadarExcel.UseVisualStyleBackColor = true;
+            // 
+            // btnCargaExcel
+            // 
+            this.btnCargaExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaExcel.Image")));
+            this.btnCargaExcel.Location = new System.Drawing.Point(186, 16);
+            this.btnCargaExcel.Name = "btnCargaExcel";
+            this.btnCargaExcel.Size = new System.Drawing.Size(171, 40);
+            this.btnCargaExcel.TabIndex = 6;
+            this.btnCargaExcel.Text = "Leer Excel";
+            this.btnCargaExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCargaExcel, "Haga clic aquí para recuperar los datos del archivo seleccionado");
+            this.btnCargaExcel.UseVisualStyleBackColor = true;
+            this.btnCargaExcel.Click += new System.EventHandler(this.btnCargaExcel_Click);
+            // 
             // timer1
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // dlgOpenFile
+            // 
+            this.dlgOpenFile.FileName = "openFileDialog";
+            // 
+            // dlgOpenDir
+            // 
+            this.dlgOpenDir.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // fReportesViajes
             // 
@@ -2809,6 +2993,16 @@
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarcadores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDias)).EndInit();
+            this.tabPage10.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.splitContainer7.Panel1.ResumeLayout(false);
+            this.splitContainer7.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
+            this.splitContainer7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRutas)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3055,5 +3249,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pesoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.TreeView treeViewRutas;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView dataGridFiles;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnCargaDirectorio;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnGuadarExcel;
+        private System.Windows.Forms.Button btnCargaExcel;
+        private System.Windows.Forms.TextBox textBoxPath;
+        private System.Windows.Forms.OpenFileDialog dlgOpenFile;
+        private System.Windows.Forms.FolderBrowserDialog dlgOpenDir;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.SplitContainer splitContainer7;
+        private System.Windows.Forms.DataGridView dataGridViewRutas;
     }
 }

@@ -34,6 +34,7 @@
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terpelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.terpelDMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,10 +50,15 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.terpelDMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnCargaFacturaTerpel = new System.Windows.Forms.Button();
+            this.btnLiqVaiajes = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnCargaDMS = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -98,6 +104,14 @@
             this.terpelToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.terpelToolStripMenuItem.Text = "Carga Archivos Terpel";
             this.terpelToolStripMenuItem.Click += new System.EventHandler(this.terpelToolStripMenuItem_Click);
+            // 
+            // terpelDMSToolStripMenuItem
+            // 
+            this.terpelDMSToolStripMenuItem.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
+            this.terpelDMSToolStripMenuItem.Name = "terpelDMSToolStripMenuItem";
+            this.terpelDMSToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.terpelDMSToolStripMenuItem.Text = "Terpel DMS";
+            this.terpelDMSToolStripMenuItem.Click += new System.EventHandler(this.terpelDMSToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -184,6 +198,7 @@
             this.printToolStripButton.Name = "printToolStripButton";
             this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.printToolStripButton.Text = "Imprimir";
+            this.printToolStripButton.Visible = false;
             this.printToolStripButton.Click += new System.EventHandler(this.printToolStripButton_Click);
             // 
             // printPreviewToolStripButton
@@ -194,6 +209,7 @@
             this.printPreviewToolStripButton.Name = "printPreviewToolStripButton";
             this.printPreviewToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.printPreviewToolStripButton.Text = "Vista previa de impresión";
+            this.printPreviewToolStripButton.Visible = false;
             // 
             // statusStrip
             // 
@@ -211,19 +227,75 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
             // 
-            // terpelDMSToolStripMenuItem
+            // panelMenu
             // 
-            this.terpelDMSToolStripMenuItem.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
-            this.terpelDMSToolStripMenuItem.Name = "terpelDMSToolStripMenuItem";
-            this.terpelDMSToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.terpelDMSToolStripMenuItem.Text = "Terpel DMS";
-            this.terpelDMSToolStripMenuItem.Click += new System.EventHandler(this.terpelDMSToolStripMenuItem_Click);
+            this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMenu.Controls.Add(this.btnCargaFacturaTerpel);
+            this.panelMenu.Controls.Add(this.btnLiqVaiajes);
+            this.panelMenu.Controls.Add(this.btnClose);
+            this.panelMenu.Controls.Add(this.btnCargaDMS);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMenu.Location = new System.Drawing.Point(0, 49);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(632, 382);
+            this.panelMenu.TabIndex = 4;
+            // 
+            // btnCargaFacturaTerpel
+            // 
+            this.btnCargaFacturaTerpel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnCargaFacturaTerpel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargaFacturaTerpel.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaFacturaTerpel.Image")));
+            this.btnCargaFacturaTerpel.Location = new System.Drawing.Point(154, 67);
+            this.btnCargaFacturaTerpel.Name = "btnCargaFacturaTerpel";
+            this.btnCargaFacturaTerpel.Size = new System.Drawing.Size(171, 104);
+            this.btnCargaFacturaTerpel.TabIndex = 6;
+            this.btnCargaFacturaTerpel.Text = "Facturación Terpel";
+            this.btnCargaFacturaTerpel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCargaFacturaTerpel.UseVisualStyleBackColor = false;
+            this.btnCargaFacturaTerpel.Click += new System.EventHandler(this.btnCargaFacturaTerpel_Click);
+            // 
+            // btnLiqVaiajes
+            // 
+            this.btnLiqVaiajes.Image = global::MetalLiqViajes_Forms.Properties.Resources.Truck;
+            this.btnLiqVaiajes.Location = new System.Drawing.Point(331, 68);
+            this.btnLiqVaiajes.Name = "btnLiqVaiajes";
+            this.btnLiqVaiajes.Size = new System.Drawing.Size(171, 104);
+            this.btnLiqVaiajes.TabIndex = 7;
+            this.btnLiqVaiajes.Text = "Liquidación Viajes";
+            this.btnLiqVaiajes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLiqVaiajes.UseVisualStyleBackColor = true;
+            this.btnLiqVaiajes.Click += new System.EventHandler(this.btnLiqVaiajes_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(331, 178);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(171, 104);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Salir";
+            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnCargaDMS
+            // 
+            this.btnCargaDMS.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaDMS.Image")));
+            this.btnCargaDMS.Location = new System.Drawing.Point(154, 178);
+            this.btnCargaDMS.Name = "btnCargaDMS";
+            this.btnCargaDMS.Size = new System.Drawing.Size(171, 104);
+            this.btnCargaDMS.TabIndex = 9;
+            this.btnCargaDMS.Text = "Consulta DMS";
+            this.btnCargaDMS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCargaDMS.UseVisualStyleBackColor = true;
+            this.btnCargaDMS.Click += new System.EventHandler(this.btnCargaDMS_Click);
             // 
             // fMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 453);
+            this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -233,13 +305,13 @@
             this.Name = "fMenuPrincipal";
             this.Text = "Menu Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.fMenuPrincipal_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,6 +340,11 @@
         private System.Diagnostics.EventLog MetalOlapEventLog;
         private System.Windows.Forms.ToolStripMenuItem terpelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem terpelDMSToolStripMenuItem;
+        private System.Windows.Forms.Button btnCargaFacturaTerpel;
+        private System.Windows.Forms.Button btnLiqVaiajes;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnCargaDMS;
+        public System.Windows.Forms.Panel panelMenu;
     }
 }
 

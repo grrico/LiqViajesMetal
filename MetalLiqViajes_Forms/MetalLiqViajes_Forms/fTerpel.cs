@@ -48,166 +48,6 @@ namespace MetalLiqViajes_Forms
 
         private void fTerpel_Load(object sender, EventArgs e)
         {
-            ListPlacas.Items.Clear();
-
-            btnCargaExcel.Enabled = false;
-
-            foreach (var item in ultilplacalist)
-            {
-                if (item.Placa != "_Seleccionar")
-                    ListPlacas.Items.Add(item.Placa);
-            }
-
-            YearsList = new List<YearTerpel>();
-            int yi = 2017;
-            int yf = DateTime.Now.Year;
-            for (int i = yi; i <= yf; i++)
-            {
-                yearTerpel = new YearTerpel();
-                yearTerpel.CodYear = i;
-                YearsList.Add(yearTerpel);
-            }
-
-            string[] MesesTerpel = new string[12];
-            MesesTerpel[0] = "Enero";
-            MesesTerpel[1] = "Febrero";
-            MesesTerpel[2] = "Marzo";
-            MesesTerpel[3] = "Abril";
-            MesesTerpel[4] = "Mayo";
-            MesesTerpel[5] = "Junio";
-            MesesTerpel[6] = "Julio";
-            MesesTerpel[7] = "Agosto";
-            MesesTerpel[8] = "Septiembre";
-            MesesTerpel[9] = "Octubre";
-            MesesTerpel[10] = "Noviembre";
-            MesesTerpel[11] = "Diciembre";
-
-            monthTerpelList = new List<MonthTerpel>();
-            for (int i = 0; i < MesesTerpel.Count(); i++)
-            {
-                monthTerpel = new MonthTerpel();
-                monthTerpel.CodMonth = i + 1;
-                monthTerpel.NomMonth = MesesTerpel[i];
-                monthTerpelList.Add(monthTerpel);
-            }
-
-            this.comboBoxYear.DisplayMember = "CodYear";
-            this.comboBoxYear.ValueMember = "CodYear";
-
-            this.comboBoxMonth.DisplayMember = "NomMonth";
-            this.comboBoxMonth.ValueMember = "CodMonth";
-
-            comboBoxYear.DataSource = YearsList.OrderByDescending(o => o.CodYear).ToList();
-            comboBoxYear.SelectedValue = DateTime.Now.Year;
-
-            comboBoxMonth.DataSource = monthTerpelList.ToList();
-            comboBoxMonth.SelectedIndex = (DateTime.Now.Month) - 1;
-            comboBoxMonth.SelectedValue = DateTime.Now.Month;
-
-            comboBoxYear.SelectedValue = DateTime.Now.Year;
-            yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
-            monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
-
-        }
-
-        private void checkBoxMarcar_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxMarcar.Checked)
-                for (int i = 0; i < ListPlacas.Items.Count; i++)
-                    ListPlacas.SetItemChecked(i, true);
-            else
-                for (int i = 0; i < ListPlacas.Items.Count; i++)
-                    ListPlacas.SetItemChecked(i, false);
-        }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-
-            try
-            {
-                string listaPlacas = "";
-                string delimitador = ",";
-                int contador = 0;
-                foreach (var item in ListPlacas.CheckedItems)
-                {
-                    listaPlacas += item.ToString();
-                    contador++;
-                    if (ListPlacas.CheckedItems.Count > contador)
-                    {
-                        listaPlacas += delimitador;
-                    }
-                }
-
-                CargaFecha();
-
-
-                listaPlacas = listaPlacas.Replace("-", "");
-                Util.Terpel terpel = new Util.Terpel();
-                terpel.Codigo = ParametrosGeneralesController.Instance.Get(5).ValorParametro; // codigo cliente terpel
-                terpel.Placas = listaPlacas;
-                terpel.FechaInicial = FechaInicial.ToString("yyyyMMdd 12:00");
-                terpel.FechaFinal = FechaFinal.ToString("yyyyMMdd 23:59");
-
-                dynamic ObjTerpel = new ExpandoObject();
-
-                ObjTerpel.Codigo = terpel.Codigo;
-                ObjTerpel.Placas = terpel.Placas;
-                ObjTerpel.FechaInicio = terpel.FechaInicial;
-                ObjTerpel.FechaFin = terpel.FechaFinal;
-
-                string json = JsonConvert.SerializeObject(ObjTerpel);
-                var resultado = TripleDes(json);
-
-                com.terpel.movilidad.Integrator integr = new com.terpel.movilidad.Integrator();
-                integr.Credentials = new NetworkCredential(ParametrosGeneralesController.Instance.Get(3).ValorParametro, ParametrosGeneralesController.Instance.Get(4).ValorParametro);
-
-                var resultado2 = integr.ConsultaVentas(resultado);
-                List<VentasFlotaResponse> ventaTerpelList = new List<VentasFlotaResponse>();
-
-                List<VentasFlota> ventasFlotaList = new List<VentasFlota>();
-                ventasFlotaList = VentasFlotaController.Instance.GetAll();
-
-                //var distinctregistro = resultado2.AsEnumerable()
-                //.Select(row => new
-                //{
-                //    CodEds = row.CodEds,
-                //    Recibo = row.Recibo,
-                //    Fecha = row.Fecha,
-                //})
-                //.Distinct();
-
-                //  guarda el registro detalle
-                int cantidad = 0;
-                VentasFlota ventasflota = null;
-                int cantid2 = resultado2.Count();
-                foreach (VentasFlotaResponse itemRegiD in resultado2)
-                {
-                    ventasflota = VentasFlotaController.Instance.Get(Convert.ToInt64(itemRegiD.Recibo));
-                    if (ventasflota == null && itemRegiD.CodEds > 0)
-                    {
-                        ventasflota = new VentasFlota();
-                        ventasflota.CodEds = itemRegiD.CodEds;
-                        ventasflota.Dinero = itemRegiD.Dinero;
-                        ventasflota.Fecha = itemRegiD.Fecha;
-                        ventasflota.Kilometraje = itemRegiD.Kilometraje;
-                        ventasflota.Placa = itemRegiD.Placa;
-                        ventasflota.Producto = itemRegiD.Producto;
-                        ventasflota.Recibo = itemRegiD.Recibo;
-                        ventasflota.Volumen = itemRegiD.Volumen;
-                        VentasFlotaController.Instance.Create(ventasflota);
-                        cantidad++;
-                    }
-                }
-
-                MessageBox.Show("proceso terminado, Cantidad: " + cantidad.ToString("#####"), "Compras Terpen", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-            }
-
-            this.Cursor = Cursors.Default;
-
         }
 
         public string TripleDes(string Data)
@@ -267,23 +107,7 @@ namespace MetalLiqViajes_Forms
             return codificador.GetBytes(cadena);
         }
 
-        private void CargaFecha()
-        {
-
-            yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
-            monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
-            if (monthTerpel != null)
-            {
-                int imes = monthTerpel.CodMonth;
-                if (imes >= 12)
-                    imes = 1;
-                imes++;
-                string ifecha = yearTerpel.CodYear.ToString() + "/" + monthTerpel.CodMonth.ToString("##") + "/01";
-                string ffecha = yearTerpel.CodYear.ToString() + "/" + imes.ToString("##") + "/01";
-                FechaInicial = Convert.ToDateTime(ifecha);
-                FechaFinal = Convert.ToDateTime(ffecha).AddDays(-1);
-            }
-        }
+        
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
@@ -916,5 +740,121 @@ namespace MetalLiqViajes_Forms
             dataGridViewMovimiento52V.DataSource = movimientoList;
             dataGridViewMovimiento52V.Refresh();
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            fMenuPrincipal c = (fMenuPrincipal)this.ParentForm;
+            c.panelMenu.Visible = true;
+            this.Close();
+        }
+
+        //private void btnConsultar_Click(object sender, EventArgs e)
+        //{
+        //    this.Cursor = Cursors.WaitCursor;
+
+        //    try
+        //    {
+        //        string listaPlacas = "";
+        //        string delimitador = ",";
+        //        int contador = 0;
+        //        foreach (var item in ListPlacas.CheckedItems)
+        //        {
+        //            listaPlacas += item.ToString();
+        //            contador++;
+        //            if (ListPlacas.CheckedItems.Count > contador)
+        //            {
+        //                listaPlacas += delimitador;
+        //            }
+        //        }
+
+        //        CargaFecha();
+
+
+        //        listaPlacas = listaPlacas.Replace("-", "");
+        //        Util.Terpel terpel = new Util.Terpel();
+        //        terpel.Codigo = ParametrosGeneralesController.Instance.Get(5).ValorParametro; // codigo cliente terpel
+        //        terpel.Placas = listaPlacas;
+        //        terpel.FechaInicial = FechaInicial.ToString("yyyyMMdd 12:00");
+        //        terpel.FechaFinal = FechaFinal.ToString("yyyyMMdd 23:59");
+
+        //        dynamic ObjTerpel = new ExpandoObject();
+
+        //        ObjTerpel.Codigo = terpel.Codigo;
+        //        ObjTerpel.Placas = terpel.Placas;
+        //        ObjTerpel.FechaInicio = terpel.FechaInicial;
+        //        ObjTerpel.FechaFin = terpel.FechaFinal;
+
+        //        string json = JsonConvert.SerializeObject(ObjTerpel);
+        //        var resultado = TripleDes(json);
+
+        //        com.terpel.movilidad.Integrator integr = new com.terpel.movilidad.Integrator();
+        //        integr.Credentials = new NetworkCredential(ParametrosGeneralesController.Instance.Get(3).ValorParametro, ParametrosGeneralesController.Instance.Get(4).ValorParametro);
+
+        //        var resultado2 = integr.ConsultaVentas(resultado);
+        //        List<VentasFlotaResponse> ventaTerpelList = new List<VentasFlotaResponse>();
+
+        //        List<VentasFlota> ventasFlotaList = new List<VentasFlota>();
+        //        ventasFlotaList = VentasFlotaController.Instance.GetAll();
+
+        //        //var distinctregistro = resultado2.AsEnumerable()
+        //        //.Select(row => new
+        //        //{
+        //        //    CodEds = row.CodEds,
+        //        //    Recibo = row.Recibo,
+        //        //    Fecha = row.Fecha,
+        //        //})
+        //        //.Distinct();
+
+        //        //  guarda el registro detalle
+        //        int cantidad = 0;
+        //        VentasFlota ventasflota = null;
+        //        int cantid2 = resultado2.Count();
+        //        foreach (VentasFlotaResponse itemRegiD in resultado2)
+        //        {
+        //            ventasflota = VentasFlotaController.Instance.Get(Convert.ToInt64(itemRegiD.Recibo));
+        //            if (ventasflota == null && itemRegiD.CodEds > 0)
+        //            {
+        //                ventasflota = new VentasFlota();
+        //                ventasflota.CodEds = itemRegiD.CodEds;
+        //                ventasflota.Dinero = itemRegiD.Dinero;
+        //                ventasflota.Fecha = itemRegiD.Fecha;
+        //                ventasflota.Kilometraje = itemRegiD.Kilometraje;
+        //                ventasflota.Placa = itemRegiD.Placa;
+        //                ventasflota.Producto = itemRegiD.Producto;
+        //                ventasflota.Recibo = itemRegiD.Recibo;
+        //                ventasflota.Volumen = itemRegiD.Volumen;
+        //                VentasFlotaController.Instance.Create(ventasflota);
+        //                cantidad++;
+        //            }
+        //        }
+
+        //        MessageBox.Show("proceso terminado, Cantidad: " + cantidad.ToString("#####"), "Compras Terpen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+
+        //    this.Cursor = Cursors.Default;
+
+        //}
+
+        //private void CargaFecha()
+        //{
+
+        //    yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
+        //    monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
+        //    if (monthTerpel != null)
+        //    {
+        //        int imes = monthTerpel.CodMonth;
+        //        if (imes >= 12)
+        //            imes = 1;
+        //        imes++;
+        //        string ifecha = yearTerpel.CodYear.ToString() + "/" + monthTerpel.CodMonth.ToString("##") + "/01";
+        //        string ffecha = yearTerpel.CodYear.ToString() + "/" + imes.ToString("##") + "/01";
+        //        FechaInicial = Convert.ToDateTime(ifecha);
+        //        FechaFinal = Convert.ToDateTime(ffecha).AddDays(-1);
+        //    }
+        //}
+
     }
 }

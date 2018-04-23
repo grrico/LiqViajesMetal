@@ -41,16 +41,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnConsultar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ListPlacas = new System.Windows.Forms.CheckedListBox();
-            this.checkBoxMarcar = new System.Windows.Forms.CheckBox();
-            this.comboBoxYear = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxMonth = new System.Windows.Forms.ComboBox();
             this.btnCargaExcel = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -58,45 +49,10 @@
             this.dataGridFiles = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCargaDirectorio = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuadarExcel = new System.Windows.Forms.Button();
             this.textBoxPath = new System.Windows.Forms.TextBox();
             this.dataGridDataExcel = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewDocumento = new System.Windows.Forms.DataGridView();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewMovimiento83 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewMovimiento52V = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxTotalVentas = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxCantidad = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxMovCuenta1 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxMovCuenta2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxTotalFactura = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dateTimePickerDocumento = new System.Windows.Forms.DateTimePicker();
-            this.btnSaveDocumento = new System.Windows.Forms.Button();
-            this.btnGetDataVentas = new System.Windows.Forms.Button();
-            this.textBoxFactura = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewVentasDetalle = new System.Windows.Forms.DataGridView();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
-            this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.reciboDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,6 +75,11 @@
             this.tipoVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.facturaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.excelTerpelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewDocumento = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.swDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -179,6 +140,8 @@
             this.numincapacidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idincapacidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewMovimiento83 = new System.Windows.Forms.DataGridView();
             this.tipoDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.seqDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -198,6 +161,7 @@
             this.tIPOCRUCEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorniifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.movimientosListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewMovimiento52V = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,6 +180,27 @@
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxTotalVentas = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxCantidad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxMovCuenta1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxMovCuenta2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxTotalFactura = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dateTimePickerDocumento = new System.Windows.Forms.DateTimePicker();
+            this.btnSaveDocumento = new System.Windows.Forms.Button();
+            this.btnGetDataVentas = new System.Windows.Forms.Button();
+            this.textBoxFactura = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewVentasDetalle = new System.Windows.Forms.DataGridView();
             this.reciboDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.facturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -230,11 +215,13 @@
             this.totalVentasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalFacturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ventasFlotaDetalleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dlgOpenDir = new System.Windows.Forms.FolderBrowserDialog();
+            this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.utilPlacaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -245,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFiles)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDataExcel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.excelTerpelBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -253,11 +241,13 @@
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocumento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovimiento83)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movimientosListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovimiento52V)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -266,93 +256,17 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVentasDetalle)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.excelTerpelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.movimientosListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventasFlotaDetalleBindingSource)).BeginInit();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utilPlacaBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Location = new System.Drawing.Point(160, 11);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(75, 56);
-            this.btnConsultar.TabIndex = 4;
-            this.btnConsultar.Text = "Cargar Datos de API Terpel";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Placa:";
-            // 
-            // ListPlacas
-            // 
-            this.ListPlacas.CheckOnClick = true;
-            this.ListPlacas.FormattingEnabled = true;
-            this.ListPlacas.Location = new System.Drawing.Point(54, 99);
-            this.ListPlacas.Name = "ListPlacas";
-            this.ListPlacas.Size = new System.Drawing.Size(101, 259);
-            this.ListPlacas.TabIndex = 3;
-            // 
-            // checkBoxMarcar
-            // 
-            this.checkBoxMarcar.AutoSize = true;
-            this.checkBoxMarcar.Location = new System.Drawing.Point(54, 76);
-            this.checkBoxMarcar.Name = "checkBoxMarcar";
-            this.checkBoxMarcar.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxMarcar.TabIndex = 2;
-            this.checkBoxMarcar.Text = "Marcar Todas";
-            this.checkBoxMarcar.UseVisualStyleBackColor = true;
-            this.checkBoxMarcar.CheckedChanged += new System.EventHandler(this.checkBoxMarcar_CheckedChanged);
-            // 
-            // comboBoxYear
-            // 
-            this.comboBoxYear.FormattingEnabled = true;
-            this.comboBoxYear.Location = new System.Drawing.Point(54, 11);
-            this.comboBoxYear.Name = "comboBoxYear";
-            this.comboBoxYear.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxYear.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Año:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Mes:";
-            // 
-            // comboBoxMonth
-            // 
-            this.comboBoxMonth.FormattingEnabled = true;
-            this.comboBoxMonth.Location = new System.Drawing.Point(54, 46);
-            this.comboBoxMonth.Name = "comboBoxMonth";
-            this.comboBoxMonth.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxMonth.TabIndex = 1;
             // 
             // btnCargaExcel
             // 
             this.btnCargaExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaExcel.Image")));
-            this.btnCargaExcel.Location = new System.Drawing.Point(207, 5);
+            this.btnCargaExcel.Location = new System.Drawing.Point(179, 5);
             this.btnCargaExcel.Name = "btnCargaExcel";
-            this.btnCargaExcel.Size = new System.Drawing.Size(178, 30);
+            this.btnCargaExcel.Size = new System.Drawing.Size(171, 40);
             this.btnCargaExcel.TabIndex = 2;
             this.btnCargaExcel.Text = "Leer Excel";
             this.btnCargaExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -360,51 +274,26 @@
             this.btnCargaExcel.UseVisualStyleBackColor = true;
             this.btnCargaExcel.Click += new System.EventHandler(this.btnCargaExcel_Click);
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.comboBoxYear);
-            this.splitContainer1.Panel1.Controls.Add(this.checkBoxMarcar);
-            this.splitContainer1.Panel1.Controls.Add(this.btnConsultar);
-            this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBoxMonth);
-            this.splitContainer1.Panel1.Controls.Add(this.ListPlacas);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1050, 393);
-            this.splitContainer1.SplitterDistance = 170;
-            this.splitContainer1.TabIndex = 10;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(874, 391);
+            this.tabControl1.Size = new System.Drawing.Size(1050, 393);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.splitContainer2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(866, 365);
+            this.tabPage1.Size = new System.Drawing.Size(1042, 365);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Importa Data Terpel";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -425,7 +314,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dataGridDataExcel);
-            this.splitContainer2.Size = new System.Drawing.Size(860, 359);
+            this.splitContainer2.Size = new System.Drawing.Size(1036, 359);
             this.splitContainer2.SplitterDistance = 178;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -433,9 +322,9 @@
             // 
             this.panel2.Controls.Add(this.dataGridFiles);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 67);
+            this.panel2.Location = new System.Drawing.Point(0, 79);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 109);
+            this.panel2.Size = new System.Drawing.Size(1034, 97);
             this.panel2.TabIndex = 2;
             // 
             // dataGridFiles
@@ -447,20 +336,21 @@
             this.dataGridFiles.Location = new System.Drawing.Point(0, 0);
             this.dataGridFiles.Name = "dataGridFiles";
             this.dataGridFiles.ReadOnly = true;
-            this.dataGridFiles.Size = new System.Drawing.Size(858, 109);
+            this.dataGridFiles.Size = new System.Drawing.Size(1034, 97);
             this.dataGridFiles.TabIndex = 0;
             this.dataGridFiles.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridFiles_RowEnter);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnCargaDirectorio);
+            this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.btnGuadarExcel);
             this.panel1.Controls.Add(this.btnCargaExcel);
             this.panel1.Controls.Add(this.textBoxPath);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(858, 67);
+            this.panel1.Size = new System.Drawing.Size(1034, 79);
             this.panel1.TabIndex = 1;
             // 
             // btnCargaDirectorio
@@ -470,21 +360,32 @@
             this.btnCargaDirectorio.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaDirectorio.Image")));
             this.btnCargaDirectorio.Location = new System.Drawing.Point(2, 5);
             this.btnCargaDirectorio.Name = "btnCargaDirectorio";
-            this.btnCargaDirectorio.Size = new System.Drawing.Size(199, 30);
+            this.btnCargaDirectorio.Size = new System.Drawing.Size(171, 40);
             this.btnCargaDirectorio.TabIndex = 1;
             this.btnCargaDirectorio.Text = "Cargar Arhivos";
-            this.btnCargaDirectorio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCargaDirectorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btnCargaDirectorio, "Haga clic aquí para buscar la carpeta donde están los archivos de Terpel");
             this.btnCargaDirectorio.UseVisualStyleBackColor = false;
             this.btnCargaDirectorio.Click += new System.EventHandler(this.btnCargaDirectorio_Click);
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.Location = new System.Drawing.Point(533, 5);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(171, 40);
+            this.btnSalir.TabIndex = 2;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // btnGuadarExcel
             // 
             this.btnGuadarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnGuadarExcel.Image")));
-            this.btnGuadarExcel.Location = new System.Drawing.Point(391, 5);
+            this.btnGuadarExcel.Location = new System.Drawing.Point(356, 5);
             this.btnGuadarExcel.Name = "btnGuadarExcel";
-            this.btnGuadarExcel.Size = new System.Drawing.Size(178, 30);
+            this.btnGuadarExcel.Size = new System.Drawing.Size(171, 40);
             this.btnGuadarExcel.TabIndex = 2;
             this.btnGuadarExcel.Text = "Guardar Datos";
             this.btnGuadarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -497,10 +398,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.textBoxPath.Enabled = false;
-            this.textBoxPath.Location = new System.Drawing.Point(3, 39);
+            this.textBoxPath.Location = new System.Drawing.Point(3, 51);
             this.textBoxPath.Multiline = true;
             this.textBoxPath.Name = "textBoxPath";
-            this.textBoxPath.Size = new System.Drawing.Size(852, 25);
+            this.textBoxPath.Size = new System.Drawing.Size(1028, 25);
             this.textBoxPath.TabIndex = 0;
             // 
             // dataGridDataExcel
@@ -536,496 +437,8 @@
             this.dataGridDataExcel.Location = new System.Drawing.Point(0, 0);
             this.dataGridDataExcel.Name = "dataGridDataExcel";
             this.dataGridDataExcel.ReadOnly = true;
-            this.dataGridDataExcel.Size = new System.Drawing.Size(858, 175);
+            this.dataGridDataExcel.Size = new System.Drawing.Size(1034, 175);
             this.dataGridDataExcel.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panel5);
-            this.tabPage2.Controls.Add(this.panel4);
-            this.tabPage2.Controls.Add(this.panel3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(866, 365);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Crea Registro DMS";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.panel8);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 57);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(860, 235);
-            this.panel5.TabIndex = 2;
-            // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.splitContainer5);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(860, 235);
-            this.panel8.TabIndex = 3;
-            // 
-            // splitContainer5
-            // 
-            this.splitContainer5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer5.Name = "splitContainer5";
-            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.dataGridViewDocumento);
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer5.Size = new System.Drawing.Size(858, 233);
-            this.splitContainer5.SplitterDistance = 46;
-            this.splitContainer5.TabIndex = 3;
-            // 
-            // dataGridViewDocumento
-            // 
-            this.dataGridViewDocumento.AllowUserToAddRows = false;
-            this.dataGridViewDocumento.AllowUserToDeleteRows = false;
-            this.dataGridViewDocumento.AutoGenerateColumns = false;
-            this.dataGridViewDocumento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDocumento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.swDataGridViewTextBoxColumn,
-            this.tipoDataGridViewTextBoxColumn1,
-            this.numeroDataGridViewTextBoxColumn1,
-            this.nitDataGridViewTextBoxColumn1,
-            this.fechaDataGridViewTextBoxColumn1,
-            this.condicionDataGridViewTextBoxColumn,
-            this.vencimientoDataGridViewTextBoxColumn,
-            this.valortotalDataGridViewTextBoxColumn,
-            this.valoraplicadoDataGridViewTextBoxColumn,
-            this.valormercanciaDataGridViewTextBoxColumn,
-            this.anuladoDataGridViewCheckBoxColumn,
-            this.modeloDataGridViewTextBoxColumn,
-            this.documentoDataGridViewTextBoxColumn,
-            this.notasDataGridViewTextBoxColumn,
-            this.usuarioDataGridViewTextBoxColumn,
-            this.pcDataGridViewTextBoxColumn,
-            this.fechahoraDataGridViewTextBoxColumn,
-            this.retencion2DataGridViewTextBoxColumn,
-            this.retencion3DataGridViewTextBoxColumn,
-            this.bodegaDataGridViewTextBoxColumn,
-            this.impoconsumoDataGridViewTextBoxColumn,
-            this.descuento2DataGridViewTextBoxColumn,
-            this.duracionDataGridViewTextBoxColumn,
-            this.conceptoDataGridViewTextBoxColumn,
-            this.vencimientopresupDataGridViewTextBoxColumn,
-            this.exportadoDataGridViewTextBoxColumn,
-            this.impuestodeporteDataGridViewTextBoxColumn,
-            this.prefijoDataGridViewTextBoxColumn,
-            this.monedaDataGridViewTextBoxColumn,
-            this.tasaDataGridViewTextBoxColumn,
-            this.centrodocDataGridViewTextBoxColumn,
-            this.numerocuotasDataGridViewTextBoxColumn,
-            this.codigodireccionDataGridViewTextBoxColumn,
-            this.descuento1DataGridViewTextBoxColumn,
-            this.descuento2DataGridViewTextBoxColumn1,
-            this.descuento3DataGridViewTextBoxColumn,
-            this.abonoDataGridViewTextBoxColumn,
-            this.fechaconsignacionDataGridViewTextBoxColumn,
-            this.ivaCostoDataGridViewTextBoxColumn,
-            this.conceptoRetencionDataGridViewTextBoxColumn,
-            this.porcRteFuenteDataGridViewTextBoxColumn,
-            this.porcRteIvaDataGridViewTextBoxColumn,
-            this.porcRteIvaSimplDataGridViewTextBoxColumn,
-            this.porcRteIcaDataGridViewTextBoxColumn,
-            this.porcRteADataGridViewTextBoxColumn,
-            this.porcRteBDataGridViewTextBoxColumn,
-            this.bodegaotDataGridViewTextBoxColumn,
-            this.numerootDataGridViewTextBoxColumn,
-            this.provisionDataGridViewTextBoxColumn,
-            this.ajusteDataGridViewTextBoxColumn,
-            this.porcRteCreeDataGridViewTextBoxColumn,
-            this.retencioncreeDataGridViewTextBoxColumn,
-            this.codigoretencioncreeDataGridViewTextBoxColumn,
-            this.creecausadoDataGridViewTextBoxColumn,
-            this.obligacionFinancieraDataGridViewTextBoxColumn,
-            this.basedctoRCDataGridViewTextBoxColumn,
-            this.numincapacidadDataGridViewTextBoxColumn,
-            this.idincapacidadDataGridViewTextBoxColumn});
-            this.dataGridViewDocumento.DataSource = this.documentosBindingSource;
-            this.dataGridViewDocumento.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewDocumento.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewDocumento.Name = "dataGridViewDocumento";
-            this.dataGridViewDocumento.Size = new System.Drawing.Size(856, 44);
-            this.dataGridViewDocumento.TabIndex = 2;
-            this.dataGridViewDocumento.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDocumento_RowEnter);
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.dataGridViewMovimiento83);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.dataGridViewMovimiento52V);
-            this.splitContainer4.Size = new System.Drawing.Size(858, 183);
-            this.splitContainer4.SplitterDistance = 101;
-            this.splitContainer4.TabIndex = 1;
-            // 
-            // dataGridViewMovimiento83
-            // 
-            this.dataGridViewMovimiento83.AllowUserToAddRows = false;
-            this.dataGridViewMovimiento83.AllowUserToDeleteRows = false;
-            this.dataGridViewMovimiento83.AutoGenerateColumns = false;
-            this.dataGridViewMovimiento83.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovimiento83.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.tipoDataGridViewTextBoxColumn2,
-            this.numeroDataGridViewTextBoxColumn2,
-            this.seqDataGridViewTextBoxColumn1,
-            this.cuentaDataGridViewTextBoxColumn1,
-            this.centroDataGridViewTextBoxColumn,
-            this.nitDataGridViewTextBoxColumn2,
-            this.fecDataGridViewTextBoxColumn,
-            this.valorDataGridViewTextBoxColumn,
-            this.documentoDataGridViewTextBoxColumn1,
-            this.explicacionDataGridViewTextBoxColumn,
-            this.concilioDataGridViewTextBoxColumn,
-            this.conceptomovDataGridViewTextBoxColumn,
-            this.concilioanoDataGridViewTextBoxColumn,
-            this.secuenciaextractoDataGridViewTextBoxColumn,
-            this.anoconciliaDataGridViewTextBoxColumn,
-            this.mesconciliaDataGridViewTextBoxColumn,
-            this.tIPOCRUCEDataGridViewTextBoxColumn,
-            this.valorniifDataGridViewTextBoxColumn});
-            this.dataGridViewMovimiento83.DataSource = this.movimientosListBindingSource;
-            this.dataGridViewMovimiento83.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewMovimiento83.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewMovimiento83.Name = "dataGridViewMovimiento83";
-            this.dataGridViewMovimiento83.ReadOnly = true;
-            this.dataGridViewMovimiento83.Size = new System.Drawing.Size(856, 99);
-            this.dataGridViewMovimiento83.TabIndex = 0;
-            // 
-            // dataGridViewMovimiento52V
-            // 
-            this.dataGridViewMovimiento52V.AllowUserToAddRows = false;
-            this.dataGridViewMovimiento52V.AllowUserToDeleteRows = false;
-            this.dataGridViewMovimiento52V.AutoGenerateColumns = false;
-            this.dataGridViewMovimiento52V.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovimiento52V.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18});
-            this.dataGridViewMovimiento52V.DataSource = this.movimientosListBindingSource;
-            this.dataGridViewMovimiento52V.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewMovimiento52V.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewMovimiento52V.Name = "dataGridViewMovimiento52V";
-            this.dataGridViewMovimiento52V.ReadOnly = true;
-            this.dataGridViewMovimiento52V.Size = new System.Drawing.Size(856, 76);
-            this.dataGridViewMovimiento52V.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.textBoxTotalVentas);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.textBoxCantidad);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.textBoxMovCuenta1);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.textBoxMovCuenta2);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.textBoxTotalFactura);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(3, 292);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(860, 70);
-            this.panel4.TabIndex = 1;
-            // 
-            // textBoxTotalVentas
-            // 
-            this.textBoxTotalVentas.Enabled = false;
-            this.textBoxTotalVentas.Location = new System.Drawing.Point(91, 6);
-            this.textBoxTotalVentas.Name = "textBoxTotalVentas";
-            this.textBoxTotalVentas.Size = new System.Drawing.Size(97, 20);
-            this.textBoxTotalVentas.TabIndex = 19;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Total Ventas:";
-            // 
-            // textBoxCantidad
-            // 
-            this.textBoxCantidad.Enabled = false;
-            this.textBoxCantidad.Location = new System.Drawing.Point(91, 29);
-            this.textBoxCantidad.Name = "textBoxCantidad";
-            this.textBoxCantidad.Size = new System.Drawing.Size(97, 20);
-            this.textBoxCantidad.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Cantidad:";
-            // 
-            // textBoxMovCuenta1
-            // 
-            this.textBoxMovCuenta1.Enabled = false;
-            this.textBoxMovCuenta1.Location = new System.Drawing.Point(687, 5);
-            this.textBoxMovCuenta1.Name = "textBoxMovCuenta1";
-            this.textBoxMovCuenta1.Size = new System.Drawing.Size(97, 20);
-            this.textBoxMovCuenta1.TabIndex = 20;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(597, 5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Total 23359501:";
-            // 
-            // textBoxMovCuenta2
-            // 
-            this.textBoxMovCuenta2.Enabled = false;
-            this.textBoxMovCuenta2.Location = new System.Drawing.Point(687, 29);
-            this.textBoxMovCuenta2.Name = "textBoxMovCuenta2";
-            this.textBoxMovCuenta2.Size = new System.Drawing.Size(97, 20);
-            this.textBoxMovCuenta2.TabIndex = 20;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(597, 29);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Total 13301504:";
-            // 
-            // textBoxTotalFactura
-            // 
-            this.textBoxTotalFactura.Enabled = false;
-            this.textBoxTotalFactura.Location = new System.Drawing.Point(288, 6);
-            this.textBoxTotalFactura.Name = "textBoxTotalFactura";
-            this.textBoxTotalFactura.Size = new System.Drawing.Size(97, 20);
-            this.textBoxTotalFactura.TabIndex = 20;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(198, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Total Factura:";
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.dateTimePickerDocumento);
-            this.panel3.Controls.Add(this.btnSaveDocumento);
-            this.panel3.Controls.Add(this.btnGetDataVentas);
-            this.panel3.Controls.Add(this.textBoxFactura);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(860, 54);
-            this.panel3.TabIndex = 0;
-            // 
-            // dateTimePickerDocumento
-            // 
-            this.dateTimePickerDocumento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDocumento.Location = new System.Drawing.Point(88, 27);
-            this.dateTimePickerDocumento.Name = "dateTimePickerDocumento";
-            this.dateTimePickerDocumento.Size = new System.Drawing.Size(108, 20);
-            this.dateTimePickerDocumento.TabIndex = 9;
-            // 
-            // btnSaveDocumento
-            // 
-            this.btnSaveDocumento.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveDocumento.Image")));
-            this.btnSaveDocumento.Location = new System.Drawing.Point(333, 6);
-            this.btnSaveDocumento.Name = "btnSaveDocumento";
-            this.btnSaveDocumento.Size = new System.Drawing.Size(121, 30);
-            this.btnSaveDocumento.TabIndex = 8;
-            this.btnSaveDocumento.Text = "Crear Movimiento";
-            this.btnSaveDocumento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.btnSaveDocumento, "Crea registro DMS");
-            this.btnSaveDocumento.UseVisualStyleBackColor = true;
-            this.btnSaveDocumento.Click += new System.EventHandler(this.btnSaveDocumento_Click);
-            // 
-            // btnGetDataVentas
-            // 
-            this.btnGetDataVentas.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
-            this.btnGetDataVentas.Location = new System.Drawing.Point(206, 6);
-            this.btnGetDataVentas.Name = "btnGetDataVentas";
-            this.btnGetDataVentas.Size = new System.Drawing.Size(121, 30);
-            this.btnGetDataVentas.TabIndex = 8;
-            this.btnGetDataVentas.Text = "Consulta Datos";
-            this.btnGetDataVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.btnGetDataVentas, "Cargar Datos Ventas por Factura");
-            this.btnGetDataVentas.UseVisualStyleBackColor = true;
-            this.btnGetDataVentas.Click += new System.EventHandler(this.btnGetDataVentas_Click);
-            // 
-            // textBoxFactura
-            // 
-            this.textBoxFactura.Location = new System.Drawing.Point(87, 6);
-            this.textBoxFactura.Name = "textBoxFactura";
-            this.textBoxFactura.Size = new System.Drawing.Size(109, 20);
-            this.textBoxFactura.TabIndex = 7;
-            this.textBoxFactura.Text = "9018016645";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 27);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 13);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Fecha DMS:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(35, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Factura:";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.splitContainer3);
-            this.tabPage3.Controls.Add(this.panel6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(866, 365);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Detalle 83";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 45);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.dataGridViewVentasDetalle);
-            this.splitContainer3.Size = new System.Drawing.Size(866, 320);
-            this.splitContainer3.SplitterDistance = 160;
-            this.splitContainer3.TabIndex = 2;
-            // 
-            // dataGridViewVentasDetalle
-            // 
-            this.dataGridViewVentasDetalle.AllowUserToAddRows = false;
-            this.dataGridViewVentasDetalle.AllowUserToDeleteRows = false;
-            this.dataGridViewVentasDetalle.AutoGenerateColumns = false;
-            this.dataGridViewVentasDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVentasDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.reciboDataGridViewTextBoxColumn,
-            this.facturaDataGridViewTextBoxColumn,
-            this.placaDataGridViewTextBoxColumn,
-            this.tipoDataGridViewTextBoxColumn,
-            this.numeroDataGridViewTextBoxColumn,
-            this.tipo52vDataGridViewTextBoxColumn,
-            this.numero52vDataGridViewTextBoxColumn,
-            this.nitDataGridViewTextBoxColumn,
-            this.seqDataGridViewTextBoxColumn,
-            this.cuentaDataGridViewTextBoxColumn,
-            this.fechaDataGridViewTextBoxColumn,
-            this.totalVentasDataGridViewTextBoxColumn,
-            this.totalFacturaDataGridViewTextBoxColumn});
-            this.dataGridViewVentasDetalle.DataSource = this.ventasFlotaDetalleBindingSource;
-            this.dataGridViewVentasDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewVentasDetalle.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewVentasDetalle.Name = "dataGridViewVentasDetalle";
-            this.dataGridViewVentasDetalle.ReadOnly = true;
-            this.dataGridViewVentasDetalle.Size = new System.Drawing.Size(866, 160);
-            this.dataGridViewVentasDetalle.TabIndex = 1;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.button1);
-            this.panel6.Controls.Add(this.textBox1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(866, 45);
-            this.panel6.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
-            this.button1.Location = new System.Drawing.Point(460, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 30);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Consulta Datos";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button1, "Cargar Datos Ventas por Factura");
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(293, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "9018015368";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(866, 365);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Detalle 52V";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // dlgOpenDir
-            // 
-            this.dlgOpenDir.RootFolder = System.Environment.SpecialFolder.MyComputer;
-            // 
-            // dlgOpenFile
-            // 
-            this.dlgOpenFile.FileName = "openFileDialog";
             // 
             // reciboDataGridViewTextBoxColumn1
             // 
@@ -1189,6 +602,131 @@
             // excelTerpelBindingSource
             // 
             this.excelTerpelBindingSource.DataSource = typeof(MetalLiqViajes_Forms.Util.ExcelTerpel);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panel5);
+            this.tabPage2.Controls.Add(this.panel4);
+            this.tabPage2.Controls.Add(this.panel3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1042, 365);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Crea Registro DMS";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel8);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 57);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1036, 235);
+            this.panel5.TabIndex = 2;
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.splitContainer5);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1036, 235);
+            this.panel8.TabIndex = 3;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.dataGridViewDocumento);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.splitContainer4);
+            this.splitContainer5.Size = new System.Drawing.Size(1034, 233);
+            this.splitContainer5.SplitterDistance = 46;
+            this.splitContainer5.TabIndex = 3;
+            // 
+            // dataGridViewDocumento
+            // 
+            this.dataGridViewDocumento.AllowUserToAddRows = false;
+            this.dataGridViewDocumento.AllowUserToDeleteRows = false;
+            this.dataGridViewDocumento.AutoGenerateColumns = false;
+            this.dataGridViewDocumento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDocumento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.swDataGridViewTextBoxColumn,
+            this.tipoDataGridViewTextBoxColumn1,
+            this.numeroDataGridViewTextBoxColumn1,
+            this.nitDataGridViewTextBoxColumn1,
+            this.fechaDataGridViewTextBoxColumn1,
+            this.condicionDataGridViewTextBoxColumn,
+            this.vencimientoDataGridViewTextBoxColumn,
+            this.valortotalDataGridViewTextBoxColumn,
+            this.valoraplicadoDataGridViewTextBoxColumn,
+            this.valormercanciaDataGridViewTextBoxColumn,
+            this.anuladoDataGridViewCheckBoxColumn,
+            this.modeloDataGridViewTextBoxColumn,
+            this.documentoDataGridViewTextBoxColumn,
+            this.notasDataGridViewTextBoxColumn,
+            this.usuarioDataGridViewTextBoxColumn,
+            this.pcDataGridViewTextBoxColumn,
+            this.fechahoraDataGridViewTextBoxColumn,
+            this.retencion2DataGridViewTextBoxColumn,
+            this.retencion3DataGridViewTextBoxColumn,
+            this.bodegaDataGridViewTextBoxColumn,
+            this.impoconsumoDataGridViewTextBoxColumn,
+            this.descuento2DataGridViewTextBoxColumn,
+            this.duracionDataGridViewTextBoxColumn,
+            this.conceptoDataGridViewTextBoxColumn,
+            this.vencimientopresupDataGridViewTextBoxColumn,
+            this.exportadoDataGridViewTextBoxColumn,
+            this.impuestodeporteDataGridViewTextBoxColumn,
+            this.prefijoDataGridViewTextBoxColumn,
+            this.monedaDataGridViewTextBoxColumn,
+            this.tasaDataGridViewTextBoxColumn,
+            this.centrodocDataGridViewTextBoxColumn,
+            this.numerocuotasDataGridViewTextBoxColumn,
+            this.codigodireccionDataGridViewTextBoxColumn,
+            this.descuento1DataGridViewTextBoxColumn,
+            this.descuento2DataGridViewTextBoxColumn1,
+            this.descuento3DataGridViewTextBoxColumn,
+            this.abonoDataGridViewTextBoxColumn,
+            this.fechaconsignacionDataGridViewTextBoxColumn,
+            this.ivaCostoDataGridViewTextBoxColumn,
+            this.conceptoRetencionDataGridViewTextBoxColumn,
+            this.porcRteFuenteDataGridViewTextBoxColumn,
+            this.porcRteIvaDataGridViewTextBoxColumn,
+            this.porcRteIvaSimplDataGridViewTextBoxColumn,
+            this.porcRteIcaDataGridViewTextBoxColumn,
+            this.porcRteADataGridViewTextBoxColumn,
+            this.porcRteBDataGridViewTextBoxColumn,
+            this.bodegaotDataGridViewTextBoxColumn,
+            this.numerootDataGridViewTextBoxColumn,
+            this.provisionDataGridViewTextBoxColumn,
+            this.ajusteDataGridViewTextBoxColumn,
+            this.porcRteCreeDataGridViewTextBoxColumn,
+            this.retencioncreeDataGridViewTextBoxColumn,
+            this.codigoretencioncreeDataGridViewTextBoxColumn,
+            this.creecausadoDataGridViewTextBoxColumn,
+            this.obligacionFinancieraDataGridViewTextBoxColumn,
+            this.basedctoRCDataGridViewTextBoxColumn,
+            this.numincapacidadDataGridViewTextBoxColumn,
+            this.idincapacidadDataGridViewTextBoxColumn});
+            this.dataGridViewDocumento.DataSource = this.documentosBindingSource;
+            this.dataGridViewDocumento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDocumento.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewDocumento.Name = "dataGridViewDocumento";
+            this.dataGridViewDocumento.Size = new System.Drawing.Size(1032, 44);
+            this.dataGridViewDocumento.TabIndex = 2;
+            this.dataGridViewDocumento.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDocumento_RowEnter);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -1557,6 +1095,58 @@
             // 
             this.documentosBindingSource.DataSource = typeof(LiqViajes_Bll_Data.documentos);
             // 
+            // splitContainer4
+            // 
+            this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.dataGridViewMovimiento83);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.dataGridViewMovimiento52V);
+            this.splitContainer4.Size = new System.Drawing.Size(1034, 183);
+            this.splitContainer4.SplitterDistance = 101;
+            this.splitContainer4.TabIndex = 1;
+            // 
+            // dataGridViewMovimiento83
+            // 
+            this.dataGridViewMovimiento83.AllowUserToAddRows = false;
+            this.dataGridViewMovimiento83.AllowUserToDeleteRows = false;
+            this.dataGridViewMovimiento83.AutoGenerateColumns = false;
+            this.dataGridViewMovimiento83.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMovimiento83.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tipoDataGridViewTextBoxColumn2,
+            this.numeroDataGridViewTextBoxColumn2,
+            this.seqDataGridViewTextBoxColumn1,
+            this.cuentaDataGridViewTextBoxColumn1,
+            this.centroDataGridViewTextBoxColumn,
+            this.nitDataGridViewTextBoxColumn2,
+            this.fecDataGridViewTextBoxColumn,
+            this.valorDataGridViewTextBoxColumn,
+            this.documentoDataGridViewTextBoxColumn1,
+            this.explicacionDataGridViewTextBoxColumn,
+            this.concilioDataGridViewTextBoxColumn,
+            this.conceptomovDataGridViewTextBoxColumn,
+            this.concilioanoDataGridViewTextBoxColumn,
+            this.secuenciaextractoDataGridViewTextBoxColumn,
+            this.anoconciliaDataGridViewTextBoxColumn,
+            this.mesconciliaDataGridViewTextBoxColumn,
+            this.tIPOCRUCEDataGridViewTextBoxColumn,
+            this.valorniifDataGridViewTextBoxColumn});
+            this.dataGridViewMovimiento83.DataSource = this.movimientosListBindingSource;
+            this.dataGridViewMovimiento83.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewMovimiento83.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewMovimiento83.Name = "dataGridViewMovimiento83";
+            this.dataGridViewMovimiento83.ReadOnly = true;
+            this.dataGridViewMovimiento83.Size = new System.Drawing.Size(1032, 99);
+            this.dataGridViewMovimiento83.TabIndex = 0;
+            // 
             // tipoDataGridViewTextBoxColumn2
             // 
             this.tipoDataGridViewTextBoxColumn2.DataPropertyName = "tipo";
@@ -1693,6 +1283,39 @@
             // 
             this.movimientosListBindingSource.DataSource = typeof(LiqViajes_Bll_Data.movimientosList);
             // 
+            // dataGridViewMovimiento52V
+            // 
+            this.dataGridViewMovimiento52V.AllowUserToAddRows = false;
+            this.dataGridViewMovimiento52V.AllowUserToDeleteRows = false;
+            this.dataGridViewMovimiento52V.AutoGenerateColumns = false;
+            this.dataGridViewMovimiento52V.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMovimiento52V.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18});
+            this.dataGridViewMovimiento52V.DataSource = this.movimientosListBindingSource;
+            this.dataGridViewMovimiento52V.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewMovimiento52V.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewMovimiento52V.Name = "dataGridViewMovimiento52V";
+            this.dataGridViewMovimiento52V.ReadOnly = true;
+            this.dataGridViewMovimiento52V.Size = new System.Drawing.Size(1032, 76);
+            this.dataGridViewMovimiento52V.TabIndex = 1;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "tipo";
@@ -1825,6 +1448,236 @@
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.textBoxTotalVentas);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.textBoxCantidad);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.textBoxMovCuenta1);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.textBoxMovCuenta2);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.textBoxTotalFactura);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(3, 292);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1036, 70);
+            this.panel4.TabIndex = 1;
+            // 
+            // textBoxTotalVentas
+            // 
+            this.textBoxTotalVentas.Enabled = false;
+            this.textBoxTotalVentas.Location = new System.Drawing.Point(91, 6);
+            this.textBoxTotalVentas.Name = "textBoxTotalVentas";
+            this.textBoxTotalVentas.Size = new System.Drawing.Size(97, 21);
+            this.textBoxTotalVentas.TabIndex = 19;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 15);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Total Ventas:";
+            // 
+            // textBoxCantidad
+            // 
+            this.textBoxCantidad.Enabled = false;
+            this.textBoxCantidad.Location = new System.Drawing.Point(91, 29);
+            this.textBoxCantidad.Name = "textBoxCantidad";
+            this.textBoxCantidad.Size = new System.Drawing.Size(97, 21);
+            this.textBoxCantidad.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 15);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Cantidad:";
+            // 
+            // textBoxMovCuenta1
+            // 
+            this.textBoxMovCuenta1.Enabled = false;
+            this.textBoxMovCuenta1.Location = new System.Drawing.Point(687, 5);
+            this.textBoxMovCuenta1.Name = "textBoxMovCuenta1";
+            this.textBoxMovCuenta1.Size = new System.Drawing.Size(97, 21);
+            this.textBoxMovCuenta1.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(597, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 15);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Total 23359501:";
+            // 
+            // textBoxMovCuenta2
+            // 
+            this.textBoxMovCuenta2.Enabled = false;
+            this.textBoxMovCuenta2.Location = new System.Drawing.Point(687, 29);
+            this.textBoxMovCuenta2.Name = "textBoxMovCuenta2";
+            this.textBoxMovCuenta2.Size = new System.Drawing.Size(97, 21);
+            this.textBoxMovCuenta2.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(597, 29);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(111, 15);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Total 13301504:";
+            // 
+            // textBoxTotalFactura
+            // 
+            this.textBoxTotalFactura.Enabled = false;
+            this.textBoxTotalFactura.Location = new System.Drawing.Point(288, 6);
+            this.textBoxTotalFactura.Name = "textBoxTotalFactura";
+            this.textBoxTotalFactura.Size = new System.Drawing.Size(97, 21);
+            this.textBoxTotalFactura.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(198, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 15);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Total Factura:";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.dateTimePickerDocumento);
+            this.panel3.Controls.Add(this.btnSaveDocumento);
+            this.panel3.Controls.Add(this.btnGetDataVentas);
+            this.panel3.Controls.Add(this.textBoxFactura);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1036, 54);
+            this.panel3.TabIndex = 0;
+            // 
+            // dateTimePickerDocumento
+            // 
+            this.dateTimePickerDocumento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDocumento.Location = new System.Drawing.Point(100, 27);
+            this.dateTimePickerDocumento.Name = "dateTimePickerDocumento";
+            this.dateTimePickerDocumento.Size = new System.Drawing.Size(108, 21);
+            this.dateTimePickerDocumento.TabIndex = 9;
+            // 
+            // btnSaveDocumento
+            // 
+            this.btnSaveDocumento.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveDocumento.Image")));
+            this.btnSaveDocumento.Location = new System.Drawing.Point(353, 3);
+            this.btnSaveDocumento.Name = "btnSaveDocumento";
+            this.btnSaveDocumento.Size = new System.Drawing.Size(124, 46);
+            this.btnSaveDocumento.TabIndex = 8;
+            this.btnSaveDocumento.Text = "Crear Movimiento";
+            this.btnSaveDocumento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnSaveDocumento, "Crea registro DMS");
+            this.btnSaveDocumento.UseVisualStyleBackColor = true;
+            this.btnSaveDocumento.Click += new System.EventHandler(this.btnSaveDocumento_Click);
+            // 
+            // btnGetDataVentas
+            // 
+            this.btnGetDataVentas.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
+            this.btnGetDataVentas.Location = new System.Drawing.Point(223, 3);
+            this.btnGetDataVentas.Name = "btnGetDataVentas";
+            this.btnGetDataVentas.Size = new System.Drawing.Size(124, 46);
+            this.btnGetDataVentas.TabIndex = 8;
+            this.btnGetDataVentas.Text = "Consulta Datos";
+            this.btnGetDataVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnGetDataVentas, "Cargar Datos Ventas por Factura");
+            this.btnGetDataVentas.UseVisualStyleBackColor = true;
+            this.btnGetDataVentas.Click += new System.EventHandler(this.btnGetDataVentas_Click);
+            // 
+            // textBoxFactura
+            // 
+            this.textBoxFactura.Location = new System.Drawing.Point(99, 3);
+            this.textBoxFactura.Name = "textBoxFactura";
+            this.textBoxFactura.Size = new System.Drawing.Size(109, 21);
+            this.textBoxFactura.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 15);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Fecha DMS:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(40, 3);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 15);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Factura:";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.splitContainer3);
+            this.tabPage3.Controls.Add(this.panel6);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1042, 365);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Detalle 83";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 45);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.dataGridViewVentasDetalle);
+            this.splitContainer3.Size = new System.Drawing.Size(1042, 320);
+            this.splitContainer3.SplitterDistance = 159;
+            this.splitContainer3.TabIndex = 2;
+            // 
+            // dataGridViewVentasDetalle
+            // 
+            this.dataGridViewVentasDetalle.AllowUserToAddRows = false;
+            this.dataGridViewVentasDetalle.AllowUserToDeleteRows = false;
+            this.dataGridViewVentasDetalle.AutoGenerateColumns = false;
+            this.dataGridViewVentasDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewVentasDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.reciboDataGridViewTextBoxColumn,
+            this.facturaDataGridViewTextBoxColumn,
+            this.placaDataGridViewTextBoxColumn,
+            this.tipoDataGridViewTextBoxColumn,
+            this.numeroDataGridViewTextBoxColumn,
+            this.tipo52vDataGridViewTextBoxColumn,
+            this.numero52vDataGridViewTextBoxColumn,
+            this.nitDataGridViewTextBoxColumn,
+            this.seqDataGridViewTextBoxColumn,
+            this.cuentaDataGridViewTextBoxColumn,
+            this.fechaDataGridViewTextBoxColumn,
+            this.totalVentasDataGridViewTextBoxColumn,
+            this.totalFacturaDataGridViewTextBoxColumn});
+            this.dataGridViewVentasDetalle.DataSource = this.ventasFlotaDetalleBindingSource;
+            this.dataGridViewVentasDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewVentasDetalle.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewVentasDetalle.Name = "dataGridViewVentasDetalle";
+            this.dataGridViewVentasDetalle.ReadOnly = true;
+            this.dataGridViewVentasDetalle.Size = new System.Drawing.Size(1042, 159);
+            this.dataGridViewVentasDetalle.TabIndex = 1;
+            // 
             // reciboDataGridViewTextBoxColumn
             // 
             this.reciboDataGridViewTextBoxColumn.DataPropertyName = "Recibo";
@@ -1920,6 +1773,44 @@
             // 
             this.ventasFlotaDetalleBindingSource.DataSource = typeof(LiqViajes_Bll_Data.VentasFlotaDetalle);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button1);
+            this.panel6.Controls.Add(this.textBox1);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1042, 45);
+            this.panel6.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::MetalLiqViajes_Forms.Properties.Resources.Terpel;
+            this.button1.Location = new System.Drawing.Point(460, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 30);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Consulta Datos";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.button1, "Cargar Datos Ventas por Factura");
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(293, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(161, 21);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "9018015368";
+            // 
+            // dlgOpenDir
+            // 
+            this.dlgOpenDir.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            // 
+            // dlgOpenFile
+            // 
+            this.dlgOpenFile.FileName = "openFileDialog";
+            // 
             // utilPlacaBindingSource
             // 
             this.utilPlacaBindingSource.DataSource = typeof(MetalLiqViajes_Forms.UtilPlaca);
@@ -1929,16 +1820,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 393);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fTerpel";
             this.Text = "Importar Terpel";
             this.Load += new System.EventHandler(this.fTerpel_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -1950,6 +1836,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDataExcel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.excelTerpelBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -1958,11 +1845,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocumento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentosBindingSource)).EndInit();
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovimiento83)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movimientosListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovimiento52V)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1973,30 +1862,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVentasDetalle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventasFlotaDetalleBindingSource)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.excelTerpelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.movimientosListBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventasFlotaDetalleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utilPlacaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.BindingSource utilPlacaBindingSource;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckedListBox ListPlacas;
-        private System.Windows.Forms.CheckBox checkBoxMarcar;
-        private System.Windows.Forms.ComboBox comboBoxYear;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxMonth;
         private System.Windows.Forms.Button btnCargaExcel;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridFiles;
@@ -2024,7 +1900,6 @@
         private System.Windows.Forms.TextBox textBoxTotalFactura;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.BindingSource documentosBindingSource;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Panel panel6;
@@ -2176,5 +2051,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn basedctoRCDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numincapacidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idincapacidadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

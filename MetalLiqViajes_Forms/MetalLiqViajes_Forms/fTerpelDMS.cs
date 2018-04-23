@@ -138,6 +138,13 @@ namespace MetalLiqViajes_Forms
             textBoxValorTotal.Text = movimientoslist.Where(c => c.cuenta== "13301504").Sum(t => t.valor).ToString("n0");
             textBoxValorTotalNiff.Text = movimientoslist.Sum(t => t.valor_niif).ToString("n0");
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            fMenuPrincipal c = (fMenuPrincipal)this.ParentForm;
+            c.panelMenu.Visible = true;
+            this.Close();
+        }
     }
 }
 
