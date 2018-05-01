@@ -107,7 +107,7 @@ namespace MetalLiqViajes_Forms
             return codificador.GetBytes(cadena);
         }
 
-        
+
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
@@ -343,51 +343,57 @@ namespace MetalLiqViajes_Forms
 
                 VentasFlotaDetalle Ventas;
                 int cantidad = 0;
-                foreach (var ExcelItem in excelterpelList)
+                if (excelterpelList.Count() > 0)
                 {
-                    Ventas = VentasFlotaDetalleController.Instance.Get(ExcelItem.Recibo);
-                    if (Ventas == null)
+                    textBoxFactura.Text = excelterpelList.FirstOrDefault().Factura;
+                    foreach (var ExcelItem in excelterpelList)
                     {
-                        Ventas = new VentasFlotaDetalle();
-                        Ventas.Recibo = ExcelItem.Recibo;
-                        Ventas.IdEDS = ExcelItem.IdEDS;
-                        Ventas.Factura = ExcelItem.Factura;
-                        Ventas.Fecha = ExcelItem.Fecha;
-                        Ventas.Hora = ExcelItem.Hora;
-                        Ventas.NombreCliente = ExcelItem.NombreCliente;
-                        Ventas.Estacion = ExcelItem.Estacion;
-                        Ventas.TipoEstacion = ExcelItem.TipoEstacion;
-                        Ventas.Destinatario = ExcelItem.Destinatario;
-                        Ventas.Ciudad = ExcelItem.Ciudad;
-                        Ventas.Placa = ExcelItem.Placa;
-                        Ventas.Producto = ExcelItem.Producto;
-                        Ventas.Cantidad = ExcelItem.Cantidad;
-                        Ventas.Precio = ExcelItem.Precio;
-                        Ventas.TotalVentas = ExcelItem.TotalVentas;
-                        Ventas.PrecioEspecial = ExcelItem.PrecioEspecial;
-                        Ventas.TotalFactura = ExcelItem.TotalFactura;
-                        Ventas.Descuento = ExcelItem.Descuento;
-                        Ventas.Kilometraje = ExcelItem.Kilometraje;
-                        Ventas.UnidadVenta = ExcelItem.UnidadVenta;
-                        Ventas.TipoVenta = ExcelItem.TipoVenta;
-                        VentasFlotaDetalleController.Instance.Create(Ventas);
-                        cantidad++;
+                        Ventas = VentasFlotaDetalleController.Instance.Get(ExcelItem.Recibo);
+                        if (Ventas == null)
+                        {
+                            #region guardar vebtas
+                            Ventas = new VentasFlotaDetalle();
+                            Ventas.Recibo = ExcelItem.Recibo;
+                            Ventas.IdEDS = ExcelItem.IdEDS;
+                            Ventas.Factura = ExcelItem.Factura;
+                            Ventas.Fecha = ExcelItem.Fecha;
+                            Ventas.Hora = ExcelItem.Hora;
+                            Ventas.NombreCliente = ExcelItem.NombreCliente;
+                            Ventas.Estacion = ExcelItem.Estacion;
+                            Ventas.TipoEstacion = ExcelItem.TipoEstacion;
+                            Ventas.Destinatario = ExcelItem.Destinatario;
+                            Ventas.Ciudad = ExcelItem.Ciudad;
+                            Ventas.Placa = ExcelItem.Placa;
+                            Ventas.Producto = ExcelItem.Producto;
+                            Ventas.Cantidad = ExcelItem.Cantidad;
+                            Ventas.Precio = ExcelItem.Precio;
+                            Ventas.TotalVentas = ExcelItem.TotalVentas;
+                            Ventas.PrecioEspecial = ExcelItem.PrecioEspecial;
+                            Ventas.TotalFactura = ExcelItem.TotalFactura;
+                            Ventas.Descuento = ExcelItem.Descuento;
+                            Ventas.Kilometraje = ExcelItem.Kilometraje;
+                            Ventas.UnidadVenta = ExcelItem.UnidadVenta;
+                            Ventas.TipoVenta = ExcelItem.TipoVenta;
+                            VentasFlotaDetalleController.Instance.Create(Ventas);
+                            cantidad++;
+                            #endregion
+                        }
+                    }
+                    btnGuadarExcel.Enabled = false;
+                    if (cantidad > 0)
+                    {
+                        m_FileExcel.Importado = true;
+                        dataGridFiles.Refresh();
+                        MessageBox.Show("Proceso concluido con éxito, registros actualizados" + cantidad.ToString("n0"), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Aviso: los registro ya existen en la base de datos de Metal.", "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
                     }
                 }
 
                 this.Cursor = Cursors.Default;
-                btnGuadarExcel.Enabled = false;
-                if (cantidad > 0)
-                {
-                    m_FileExcel.Importado = true;
-                    dataGridFiles.Refresh();
-                    MessageBox.Show("Proceso concluido con éxito, registros actualizados" + cantidad.ToString("n0"), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Aviso: los registro ya existen en la base de datos de Metal.", "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Question);
-
-                }
             }
         }
 
@@ -701,7 +707,7 @@ namespace MetalLiqViajes_Forms
                     {
                         movimientoList = movimientoslist.Where(t => t.numero == item.numero).ToList();
                         documentosController.Instance.Create(item);
-                        if (item.tipo=="83")
+                        if (item.tipo == "83")
                         {
                             consecutivo83 = item.numero;
                         }

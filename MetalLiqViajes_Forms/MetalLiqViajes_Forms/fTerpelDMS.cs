@@ -89,25 +89,25 @@ namespace MetalLiqViajes_Forms
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            //textBoxTipo
-            //textBoxNumero
+            if (textBoxTipo.Text == "") return;
 
-            CargaFecha();
+            if (textBoxTipo.Text != "83")
+            {
+                if (textBoxNumero.Text == "") return;
+                documento = documentosController.Instance.GetByTipoNumero(textBoxTipo.Text, Convert.ToInt32(textBoxNumero.Text));
+                documentoslist = new List<documentos>();
+                documentoslist.Add(documento);
+                dataGridViewDocumentos.DataSource = documentoslist;
+                dataGridViewDocumentos.Refresh();
 
-
-            documentoslist = documentosController.Instance.GetBy_TipoNitFechaGetAll(Properties.Settings.Default.TipoTerpel, Properties.Settings.Default.NitTerpel, fechaI, fechaF);
-            dataGridViewDocumentos.DataSource = documentoslist;
-            dataGridViewDocumentos.Refresh();
-
-            //Tuple<documentosList, movimientosList> resultado = documentosController.Instance.GetBy_TipoNitFecha(Properties.Settings.Default.TipoTerpel, Properties.Settings.Default.NitTerpel, fechaI, fechaF);
-            //dataGridViewDocumentos.DataSource = resultado.Item1;
-            //dataGridViewMovimiento.DataSource = resultado.Item2;
-            //dataGridViewDocumentos.Refresh();
-            //dataGridViewMovimiento.Refresh();
-
-            //DataSet
-            //Tuple<CreditosReporteList, int>
-
+            }
+            else
+            {
+                CargaFecha();
+                documentoslist = documentosController.Instance.GetBy_TipoNitFechaGetAll(Properties.Settings.Default.TipoTerpel, Properties.Settings.Default.NitTerpel, fechaI, fechaF);
+                dataGridViewDocumentos.DataSource = documentoslist;
+                dataGridViewDocumentos.Refresh();
+            }
         }
 
         private void CargaFecha()
@@ -135,7 +135,7 @@ namespace MetalLiqViajes_Forms
             dataGridViewMovimiento.DataSource = movimientoslist;
             dataGridViewMovimiento.Refresh();
 
-            textBoxValorTotal.Text = movimientoslist.Where(c => c.cuenta== "13301504").Sum(t => t.valor).ToString("n0");
+            textBoxValorTotal.Text = movimientoslist.Where(c => c.cuenta == "13301504").Sum(t => t.valor).ToString("n0");
             textBoxValorTotalNiff.Text = movimientoslist.Sum(t => t.valor_niif).ToString("n0");
         }
 
