@@ -95,18 +95,32 @@ namespace MetalLiqViajes_Forms
             {
                 if (textBoxNumero.Text == "") return;
                 documento = documentosController.Instance.GetByTipoNumero(textBoxTipo.Text, Convert.ToInt32(textBoxNumero.Text));
-                documentoslist = new List<documentos>();
-                documentoslist.Add(documento);
-                dataGridViewDocumentos.DataSource = documentoslist;
-                dataGridViewDocumentos.Refresh();
-
+                if (documento != null)
+                {
+                    documentoslist = new List<documentos>();
+                    documentoslist.Add(documento);
+                    dataGridViewDocumentos.DataSource = documentoslist;
+                    dataGridViewDocumentos.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("No existe el registro solicitado.", "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
                 CargaFecha();
                 documentoslist = documentosController.Instance.GetBy_TipoNitFechaGetAll(Properties.Settings.Default.TipoTerpel, Properties.Settings.Default.NitTerpel, fechaI, fechaF);
-                dataGridViewDocumentos.DataSource = documentoslist;
-                dataGridViewDocumentos.Refresh();
+                if (documentoslist.Count > 0)
+                {
+                    dataGridViewDocumentos.DataSource = documentoslist;
+                    dataGridViewDocumentos.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("No existe el registro solicitado.", "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
         }
 
@@ -137,6 +151,15 @@ namespace MetalLiqViajes_Forms
 
             textBoxValorTotal.Text = movimientoslist.Where(c => c.cuenta == "13301504").Sum(t => t.valor).ToString("n0");
             textBoxValorTotalNiff.Text = movimientoslist.Sum(t => t.valor_niif).ToString("n0");
+
+            checkBoxAplicado.Enabled = false;
+            checkBoxAplicado.Checked = false;
+            if (documento.valor_aplicado.Value > 0)
+                checkBoxAplicado.Checked = true;
+
+            textBoxNit.Text = documento.nit.ToString();
+            textBoxValor.Text = documento.valor_total.Value.ToString("n0");
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
