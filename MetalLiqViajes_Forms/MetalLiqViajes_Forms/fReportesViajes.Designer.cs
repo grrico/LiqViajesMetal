@@ -297,6 +297,8 @@
             this.dataGridFiles = new System.Windows.Forms.DataGridView();
             this.dataGridViewRutas = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxTabla = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.textBoxPath = new System.Windows.Forms.TextBox();
             this.btnCargaDirectorio = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -2766,9 +2768,9 @@
             // 
             this.panel5.Controls.Add(this.splitContainer7);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 100);
+            this.panel5.Location = new System.Drawing.Point(0, 99);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1028, 501);
+            this.panel5.Size = new System.Drawing.Size(1028, 502);
             this.panel5.TabIndex = 1;
             // 
             // splitContainer7
@@ -2786,7 +2788,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dataGridViewRutas);
-            this.splitContainer7.Size = new System.Drawing.Size(1028, 501);
+            this.splitContainer7.Size = new System.Drawing.Size(1028, 502);
             this.splitContainer7.SplitterDistance = 75;
             this.splitContainer7.TabIndex = 2;
             // 
@@ -2801,6 +2803,7 @@
             this.dataGridFiles.ReadOnly = true;
             this.dataGridFiles.Size = new System.Drawing.Size(1026, 73);
             this.dataGridFiles.TabIndex = 1;
+            this.dataGridFiles.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridFiles_RowEnter);
             // 
             // dataGridViewRutas
             // 
@@ -2811,11 +2814,13 @@
             this.dataGridViewRutas.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRutas.Name = "dataGridViewRutas";
             this.dataGridViewRutas.ReadOnly = true;
-            this.dataGridViewRutas.Size = new System.Drawing.Size(1026, 420);
+            this.dataGridViewRutas.Size = new System.Drawing.Size(1026, 421);
             this.dataGridViewRutas.TabIndex = 2;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBoxTabla);
+            this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.textBoxPath);
             this.panel1.Controls.Add(this.btnCargaDirectorio);
             this.panel1.Controls.Add(this.button3);
@@ -2824,16 +2829,33 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1028, 100);
+            this.panel1.Size = new System.Drawing.Size(1028, 99);
             this.panel1.TabIndex = 0;
+            // 
+            // textBoxTabla
+            // 
+            this.textBoxTabla.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTabla.Location = new System.Drawing.Point(181, 7);
+            this.textBoxTabla.Name = "textBoxTabla";
+            this.textBoxTabla.Size = new System.Drawing.Size(348, 22);
+            this.textBoxTabla.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.textBoxTabla, "Coloque el nombre de la hoja de excel");
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(98, 7);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(77, 13);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "Nombre Tabla:";
             // 
             // textBoxPath
             // 
-            this.textBoxPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.textBoxPath.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.textBoxPath.Enabled = false;
-            this.textBoxPath.Location = new System.Drawing.Point(4, 69);
+            this.textBoxPath.Location = new System.Drawing.Point(0, 74);
             this.textBoxPath.Multiline = true;
             this.textBoxPath.Name = "textBoxPath";
             this.textBoxPath.Size = new System.Drawing.Size(1028, 25);
@@ -2844,7 +2866,7 @@
             this.btnCargaDirectorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnCargaDirectorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargaDirectorio.Image = global::MetalLiqViajes_Forms.Properties.Resources.Truck;
-            this.btnCargaDirectorio.Location = new System.Drawing.Point(9, 16);
+            this.btnCargaDirectorio.Location = new System.Drawing.Point(4, 33);
             this.btnCargaDirectorio.Name = "btnCargaDirectorio";
             this.btnCargaDirectorio.Size = new System.Drawing.Size(171, 40);
             this.btnCargaDirectorio.TabIndex = 3;
@@ -2857,7 +2879,7 @@
             // button3
             // 
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(540, 16);
+            this.button3.Location = new System.Drawing.Point(535, 33);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(171, 40);
             this.button3.TabIndex = 4;
@@ -2868,7 +2890,7 @@
             // btnGuadarExcel
             // 
             this.btnGuadarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnGuadarExcel.Image")));
-            this.btnGuadarExcel.Location = new System.Drawing.Point(363, 16);
+            this.btnGuadarExcel.Location = new System.Drawing.Point(358, 33);
             this.btnGuadarExcel.Name = "btnGuadarExcel";
             this.btnGuadarExcel.Size = new System.Drawing.Size(171, 40);
             this.btnGuadarExcel.TabIndex = 5;
@@ -2879,7 +2901,7 @@
             // btnCargaExcel
             // 
             this.btnCargaExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaExcel.Image")));
-            this.btnCargaExcel.Location = new System.Drawing.Point(186, 16);
+            this.btnCargaExcel.Location = new System.Drawing.Point(181, 33);
             this.btnCargaExcel.Name = "btnCargaExcel";
             this.btnCargaExcel.Size = new System.Drawing.Size(171, 40);
             this.btnCargaExcel.TabIndex = 6;
@@ -3264,5 +3286,7 @@
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.DataGridView dataGridViewRutas;
+        private System.Windows.Forms.TextBox textBoxTabla;
+        private System.Windows.Forms.Label label13;
     }
 }
