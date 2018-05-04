@@ -1904,22 +1904,21 @@ namespace MetalLiqViajes_Forms
                 {
                     if (dt.TableName.ToUpper() == textBoxTabla.Text.ToUpper())
                     {
-                        if (dt.Rows.Count > 0)
+                        dataGridViewRutas.DataSource = dt;
+                        dataGridViewRutas.Refresh();
+                        foreach (DataGridViewRow row in this.dataGridViewRutas.Rows)
                         {
-                            for (int i = 4; i < dt.Rows.Count; i++)
+                            //{Name = "DBNull" FullName = "System.DBNull"}
+                            if (row.Cells[2].Value == DBNull.Value)
                             {
-                                itemArray = dt.Rows[i].ItemArray[0].ToString();
-                                if (itemArray != "")
-                                {
-                                    rutas = ReadData(dt, i);
-                                    rutasList.Add(rutas);
-                                }
+                                dataGridViewRutas.Rows.RemoveAt(row.Index);
+                                continue;
                             }
-                        }
+                        }                        
                     }
                 }
-                dataGridViewRutas.DataSource = rutasList;
-                dataGridViewRutas.Refresh();
+
+                stream.Close();
                 this.Cursor = Cursors.Default;
                 MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + rutasList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1957,7 +1956,7 @@ namespace MetalLiqViajes_Forms
                 if (dt.Rows[18].ItemArray[dt.Columns.IndexOf("Column18")] != null) rutas.lngIdNroPeajes = Convert.ToInt32(dt.Rows[i].ItemArray[17]);
                 if (dt.Rows[19].ItemArray[dt.Columns.IndexOf("Column19")] != null) rutas.cutPeaje = Convert.ToDecimal(dt.Rows[i].ItemArray[18]);
 
-                if (dt.Rows[20].ItemArray[dt.Columns.IndexOf("Column20")] != null) rutas.strNombrePeajes = (string)dt.Rows[i].ItemArray[19]; 
+                if (dt.Rows[20].ItemArray[dt.Columns.IndexOf("Column20")] != null) rutas.strNombrePeajes = (string)dt.Rows[i].ItemArray[19];
                 if (dt.Rows[21].ItemArray[dt.Columns.IndexOf("Column21")] != null) rutas.cutVariosLlantas = Convert.ToDecimal(dt.Rows[i].ItemArray[20]);
                 if (dt.Rows[22].ItemArray[dt.Columns.IndexOf("Column22")] != null) rutas.cutVariosCelada = Convert.ToDecimal(dt.Rows[i].ItemArray[21]);
                 if (dt.Rows[23].ItemArray[dt.Columns.IndexOf("Column23")] != null) rutas.cutVariosPropina = Convert.ToDecimal(dt.Rows[i].ItemArray[22]);
@@ -2026,5 +2025,7 @@ namespace MetalLiqViajes_Forms
             return rutas;
 
         }
+
+
     }
 }
