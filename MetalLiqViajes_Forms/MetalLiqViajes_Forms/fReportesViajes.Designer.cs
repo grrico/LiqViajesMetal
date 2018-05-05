@@ -301,7 +301,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxPath = new System.Windows.Forms.TextBox();
             this.btnCargaDirectorio = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnGuadarExcel = new System.Windows.Forms.Button();
             this.btnCargaExcel = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -2789,7 +2789,7 @@
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dataGridViewRutas);
             this.splitContainer7.Size = new System.Drawing.Size(1028, 502);
-            this.splitContainer7.SplitterDistance = 75;
+            this.splitContainer7.SplitterDistance = 183;
             this.splitContainer7.TabIndex = 2;
             // 
             // dataGridFiles
@@ -2801,7 +2801,7 @@
             this.dataGridFiles.Location = new System.Drawing.Point(0, 0);
             this.dataGridFiles.Name = "dataGridFiles";
             this.dataGridFiles.ReadOnly = true;
-            this.dataGridFiles.Size = new System.Drawing.Size(1026, 73);
+            this.dataGridFiles.Size = new System.Drawing.Size(1026, 181);
             this.dataGridFiles.TabIndex = 1;
             this.dataGridFiles.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridFiles_RowEnter);
             // 
@@ -2814,7 +2814,7 @@
             this.dataGridViewRutas.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRutas.Name = "dataGridViewRutas";
             this.dataGridViewRutas.ReadOnly = true;
-            this.dataGridViewRutas.Size = new System.Drawing.Size(1026, 421);
+            this.dataGridViewRutas.Size = new System.Drawing.Size(1026, 313);
             this.dataGridViewRutas.TabIndex = 2;
             // 
             // panel1
@@ -2823,7 +2823,7 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.textBoxPath);
             this.panel1.Controls.Add(this.btnCargaDirectorio);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnGuadarExcel);
             this.panel1.Controls.Add(this.btnCargaExcel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -2876,19 +2876,21 @@
             this.btnCargaDirectorio.UseVisualStyleBackColor = false;
             this.btnCargaDirectorio.Click += new System.EventHandler(this.btnCargaDirectorio_Click);
             // 
-            // button3
+            // btnClose
             // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(535, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(171, 40);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Salir";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(535, 33);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(171, 40);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Salir";
+            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnGuadarExcel
             // 
+            this.btnGuadarExcel.Enabled = false;
             this.btnGuadarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnGuadarExcel.Image")));
             this.btnGuadarExcel.Location = new System.Drawing.Point(358, 33);
             this.btnGuadarExcel.Name = "btnGuadarExcel";
@@ -2900,6 +2902,7 @@
             // 
             // btnCargaExcel
             // 
+            this.btnCargaExcel.Enabled = false;
             this.btnCargaExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnCargaExcel.Image")));
             this.btnCargaExcel.Location = new System.Drawing.Point(181, 33);
             this.btnCargaExcel.Name = "btnCargaExcel";
@@ -3277,7 +3280,7 @@
         private System.Windows.Forms.DataGridView dataGridFiles;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCargaDirectorio;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnGuadarExcel;
         private System.Windows.Forms.Button btnCargaExcel;
         private System.Windows.Forms.TextBox textBoxPath;
