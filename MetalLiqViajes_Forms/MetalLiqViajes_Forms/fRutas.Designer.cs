@@ -32,6 +32,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridViewRutas = new System.Windows.Forms.DataGridView();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRutas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,11 +55,21 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.dataGridViewRutas);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 100);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1308, 415);
             this.panel3.TabIndex = 2;
+            // 
+            // dataGridViewRutas
+            // 
+            this.dataGridViewRutas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRutas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewRutas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewRutas.Name = "dataGridViewRutas";
+            this.dataGridViewRutas.Size = new System.Drawing.Size(1308, 415);
+            this.dataGridViewRutas.TabIndex = 0;
             // 
             // fRutas
             // 
@@ -69,6 +82,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fRutas";
             this.Text = "Administración Rutas";
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRutas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -78,5 +93,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridViewRutas;
     }
 }

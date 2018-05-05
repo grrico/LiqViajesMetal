@@ -1873,11 +1873,21 @@ namespace MetalLiqViajes_Forms
 
         private void btnCargaExcel_Click(object sender, EventArgs e)
         {
-            if (textBoxTabla.Text != "")
+            if (comboBoxHojas.Text != "")
             {
-                btnGuadarExcel.Enabled = true;
-                ExcelDataReader();
-                DataBindingComplete();
+                this.Cursor = Cursors.WaitCursor;
+                try
+                {
+                    btnGuadarExcel.Enabled = false;
+                    ExcelDataReader();
+                    DataBindingComplete();
+                    this.Cursor = Cursors.Default;
+                }
+                catch (Exception ex)
+                {
+                    this.Cursor = Cursors.Default;
+                    MessageBox.Show("Error: se produjo un error en la carga de información, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
             }
             else
@@ -1889,6 +1899,22 @@ namespace MetalLiqViajes_Forms
         private void dataGridFiles_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             m_FileExcel = dataGridFiles.Rows[e.RowIndex].DataBoundItem as FileExcel;
+
+            this.Cursor = Cursors.WaitCursor;
+            FileStream stream = new FileStream(m_FileExcel.GetFullPath, FileMode.Open);
+            IExcelDataReader excelReader2007 = ExcelReaderFactory.CreateOpenXmlReader(stream);
+
+            DataSet result = excelReader2007.AsDataSet();
+            comboBoxHojas.Items.Clear();
+            //Data Reader methods
+            foreach (DataTable dt in result.Tables)
+            {
+                comboBoxHojas.Items.Add(dt.TableName.ToUpper());
+            }
+            comboBoxHojas.SelectedIndex = 0;
+            stream.Close();
+            this.Cursor = Cursors.Default;
+
         }
 
         public void ExcelDataReader()
@@ -1900,7 +1926,7 @@ namespace MetalLiqViajes_Forms
 
                 this.Cursor = Cursors.WaitCursor;
 
-                List<Rutas> rutasList = new List<Rutas>();
+                //List<Rutas> rutasList = new List<Rutas>();
 
                 //Reading from a OpenXml Excel file (2007 format; *.xlsx)
                 FileStream stream = new FileStream(m_FileExcel.GetFullPath, FileMode.Open);
@@ -1915,7 +1941,7 @@ namespace MetalLiqViajes_Forms
                 //Data Reader methods
                 foreach (DataTable dt in result.Tables)
                 {
-                    if (dt.TableName.ToUpper() == textBoxTabla.Text.ToUpper())
+                    if (dt.TableName.ToUpper() == comboBoxHojas.Text.ToUpper())
                     {
                         dataGridViewRutas.DataSource = dt;
 
@@ -1931,8 +1957,7 @@ namespace MetalLiqViajes_Forms
                 }
 
                 stream.Close();
-                this.Cursor = Cursors.Default;
-                //MessageBox.Show("Proceso concluido con éxito, documentos encontrados " + rutasList.Count().ToString(), "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Cursor = Cursors.Default;                
 
             }
             catch (Exception ex)
@@ -2047,134 +2072,168 @@ namespace MetalLiqViajes_Forms
 
         private void DataBindingComplete()
         {
-
-            foreach (DataGridViewRow row in this.dataGridViewRutas.Rows)
+            try
             {
-                if (row.Index == 0)
+                // marca el encabezado
+
+                foreach (DataGridViewRow row in this.dataGridViewRutas.Rows)
                 {
-                    foreach (DataGridViewCell cell in row.Cells)
+                    if (row.Index == 0)
                     {
-                        if (cell == null)
+                        foreach (DataGridViewCell cell in row.Cells)
                         {
-                            continue;
+                            if (cell == null)
+                            {
+                                continue;
+                            }
+                            //String.Concat(cell.Value, cell.ColumnIndex.ToString());
+                            dataGridViewRutas.Columns[cell.ColumnIndex].HeaderText = cell.Value.ToString();
                         }
-                        //String.Concat(cell.Value, cell.ColumnIndex.ToString());
-                        dataGridViewRutas.Columns[cell.ColumnIndex].HeaderText = cell.Value.ToString();
+                        dataGridViewRutas.Rows.RemoveAt(row.Index);
+                        break;
                     }
-                    dataGridViewRutas.Rows.RemoveAt(row.Index);
-                    break;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Cargando el encabezado, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
             // remover encabezados 
 
-            for (int i = 0; i <= 2; i++)
+            try
             {
-                RemoveRowCero();
+                for (int i = 0; i <= 2; i++)
+                {
+                    RemoveRowCero();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Eliminando filas iniciales, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            for (int i = 0; i < this.dataGridViewRutas.Rows.Count; i++)
+            try
             {
-                dataGridViewRutas.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                for (int i = 0; i < this.dataGridViewRutas.Rows.Count; i++)
+                {
+                    dataGridViewRutas.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Marcando la numeración de las filas, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             // crear registro clase rutas
-            Rutas rutas;
-            List<Rutas> rutasList = new List<Rutas>();
-            foreach (DataGridViewRow row in this.dataGridViewRutas.Rows)
+            try
             {
-                rutas = new Rutas();
+                Rutas rutas;
+                rutasList = new List<Rutas>();
+                foreach (DataGridViewRow row in this.dataGridViewRutas.Rows)
+                {
+                    rutas = CrearListRutas(rutasList, row);
+                }
 
-                rutas.lngIdRegistrRuta = Convert.ToInt64(row.Cells[0].Value);
-                rutas.RutasOrigenDestinoVehTrailerCodigo = Convert.ToInt64(row.Cells[1].Value.ToString());
-                rutas.strRutaAnticipoGrupoOrigen = (string)row.Cells[2].Value.ToString();
-                rutas.strRutaAnticipoGrupoDestino = (string)row.Cells[3].Value.ToString();
-                rutas.strRutaAnticipoGrupo = (string)row.Cells[4].Value.ToString();
-                rutas.strRutaAnticipo = (string)row.Cells[5].Value.ToString();
-                rutas.TipoVehiculoCodigo = Convert.ToInt32(row.Cells[6].Value.ToString());
-                rutas.TipoVehiculo = (string)row.Cells[7].Value.ToString();
-                rutas.TipoTrailerCodigo = Convert.ToInt32(row.Cells[8].Value.ToString());
-                rutas.DescripcionTipoTrailer = (string)row.Cells[9].Value.ToString();
-
-                rutas.Peso = Convert.ToInt32(row.Cells[10].Value);
-                rutas.Programa = (string)row.Cells[11].Value.ToString();
-                rutas.logViajeVacio = false;
-                rutas.floGalones = Convert.ToDecimal(row.Cells[13].Value);
-                rutas.curValorGalon = Convert.ToDecimal(row.Cells[14].Value);
-                rutas.cutCombustible = Convert.ToDecimal(row.Cells[15].Value);
-                rutas.CombustibleCarretera = Convert.ToDecimal(row.Cells[16].Value);
-                rutas.lngIdNroPeajes = Convert.ToInt32(row.Cells[17].Value);
-                rutas.cutPeaje = Convert.ToDecimal(row.Cells[18].Value);
-
-                rutas.strNombrePeajes = (string)row.Cells[19].Value.ToString();
-                rutas.cutVariosLlantas = Convert.ToDecimal(row.Cells[20].Value);
-                rutas.cutVariosCelada = Convert.ToDecimal(row.Cells[21].Value);
-                rutas.cutVariosPropina = Convert.ToDecimal(row.Cells[22].Value);
-                rutas.cutVarios = Convert.ToDecimal(row.Cells[23].Value);
-                rutas.Llamadas = Convert.ToDecimal(row.Cells[24].Value);
-                rutas.Taxi = Convert.ToDecimal(row.Cells[25].Value);
-                rutas.Aseo = Convert.ToDecimal(row.Cells[26].Value);
-                rutas.cutVariosLlantasVacio = Convert.ToDecimal(row.Cells[27].Value);
-                rutas.cutVariosCeladaVacio = Convert.ToDecimal(row.Cells[28].Value);
-
-                rutas.cutVariosPropinaVacio = Convert.ToDecimal(row.Cells[29].Value);
-                rutas.cutVariosVacio = Convert.ToDecimal(row.Cells[30].Value);
-                rutas.Viaticos = Convert.ToDecimal(row.Cells[31].Value);
-                rutas.cutParticipacion = Convert.ToDecimal(row.Cells[32].Value);
-                rutas.cutParticipacionVacio = Convert.ToDecimal(row.Cells[33].Value);
-                rutas.curHotelCarretera = Convert.ToInt32(row.Cells[34].Value);
-                rutas.curHotelCiudad = Convert.ToInt32(row.Cells[35].Value);
-                rutas.curHotel = Convert.ToDecimal(row.Cells[36].Value);
-                rutas.curHotelCarreteraVacio = Convert.ToInt32(row.Cells[37].Value);
-                rutas.curHotelCiudadVacio = Convert.ToInt32(row.Cells[38].Value);
-
-                rutas.curHotelVacio = Convert.ToDecimal(row.Cells[39].Value);
-                rutas.intTiempoCargue = Convert.ToDecimal(row.Cells[40].Value);
-                rutas.intTiempoDescargue = Convert.ToDecimal(row.Cells[41].Value);
-                rutas.intTiempoAduana = Convert.ToDecimal(row.Cells[42].Value);
-                rutas.intTotalTrayecto = Convert.ToDecimal(row.Cells[43].Value);
-                rutas.intTotalTiempo = Convert.ToDecimal(row.Cells[44].Value);
-                rutas.curComida = Convert.ToDecimal(row.Cells[45].Value);
-                rutas.intTiempoCargueVacio = Convert.ToDecimal(row.Cells[46].Value);
-                rutas.intTiempoDescargueVacio = Convert.ToDecimal(row.Cells[47].Value);
-                rutas.intTiempoAduanaVacio = Convert.ToDecimal(row.Cells[48].Value);
-
-                rutas.intTotalTrayectoVacio = Convert.ToDecimal(row.Cells[49].Value);
-                rutas.intTotalTiempoVacio = Convert.ToDecimal(row.Cells[50].Value);
-                rutas.curComidaVacio = Convert.ToDecimal(row.Cells[51].Value);
-                rutas.curDesvareManoRepuestos = Convert.ToDecimal(row.Cells[52].Value);
-                rutas.curDesvareManoObra = Convert.ToDecimal(row.Cells[53].Value);
-                rutas.cutSaldo = Convert.ToDecimal(row.Cells[54].Value);
-                rutas.cutSaldoVacio = Convert.ToDecimal(row.Cells[55].Value);
-                rutas.cutKmts = Convert.ToDecimal(row.Cells[56].Value);
-                rutas.logActualizaPeajes = Convert.ToDecimal(row.Cells[57].Value);
-                rutas.intFactorKmPorGalon = Convert.ToDecimal(row.Cells[58].Value);
-
-                rutas.logEstadoRuta = true;
-                rutas.ParqueaderoCarretera = Convert.ToDecimal(row.Cells[60].Value);
-                rutas.ParqueaderoCiudad = Convert.ToDecimal(row.Cells[61].Value);
-                rutas.MontadaLLantaCarretera = Convert.ToDecimal(row.Cells[62].Value);
-                rutas.MontadaLLantaCiudad = Convert.ToDecimal(row.Cells[63].Value);
-                rutas.AjusteCarretera = Convert.ToDecimal(row.Cells[64].Value);
-                rutas.Lavada = Convert.ToDecimal(row.Cells[65].Value);
-                rutas.Amarres = Convert.ToDecimal(row.Cells[66].Value);
-                rutas.Engradasa = Convert.ToDecimal(row.Cells[67].Value);
-                rutas.Calibrada = Convert.ToDecimal(row.Cells[68].Value);
-                rutas.Liquidado = false;
-                rutas.logVacio =true;
-                rutas.Papeleria = Convert.ToDecimal(row.Cells[71].Value);
-                rutas.logFavorito = false;
-                rutas.CurCargue = Convert.ToDecimal(row.Cells[73].Value);
-                rutas.CurDescargue = Convert.ToDecimal(row.Cells[74].Value);
-                rutas.LogAnticipoACPM = true;
-
-                rutasList.Add(rutas);
-
+                btnGuadarExcel.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: se produjo un error en la carga de información, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            dataGridViewRutas.DataSource = rutasList;
-            dataGridViewRutas.Refresh();
+        }
+
+        private static Rutas CrearListRutas(List<Rutas> rutasList, DataGridViewRow row)
+        {
+            Rutas rutas = new Rutas();
+            rutas.lngIdRegistrRuta = Convert.ToInt64(row.Cells[0].Value);
+            rutas.RutasOrigenDestinoVehTrailerCodigo = Convert.ToInt64(row.Cells[1].Value.ToString());
+            rutas.strRutaAnticipoGrupoOrigen = (string)row.Cells[2].Value.ToString();
+            rutas.strRutaAnticipoGrupoDestino = (string)row.Cells[3].Value.ToString();
+            rutas.strRutaAnticipoGrupo = (string)row.Cells[4].Value.ToString();
+            rutas.strRutaAnticipo = (string)row.Cells[5].Value.ToString();
+            rutas.TipoVehiculoCodigo = Convert.ToInt32(row.Cells[6].Value.ToString());
+            rutas.TipoVehiculo = (string)row.Cells[7].Value.ToString();
+            rutas.TipoTrailerCodigo = Convert.ToInt32(row.Cells[8].Value.ToString());
+            rutas.DescripcionTipoTrailer = (string)row.Cells[9].Value.ToString();
+
+            rutas.Peso = Convert.ToInt32(row.Cells[10].Value);
+            rutas.Programa = (string)row.Cells[11].Value.ToString();
+            rutas.logViajeVacio = false;
+            rutas.floGalones = Convert.ToDecimal(row.Cells[13].Value);
+            rutas.curValorGalon = Convert.ToDecimal(row.Cells[14].Value);
+            rutas.cutCombustible = Convert.ToDecimal(row.Cells[15].Value);
+            rutas.CombustibleCarretera = Convert.ToDecimal(row.Cells[16].Value);
+            rutas.lngIdNroPeajes = Convert.ToInt32(row.Cells[17].Value);
+            rutas.cutPeaje = Convert.ToDecimal(row.Cells[18].Value);
+
+            rutas.strNombrePeajes = (string)row.Cells[19].Value.ToString();
+            rutas.cutVariosLlantas = Convert.ToDecimal(row.Cells[20].Value);
+            rutas.cutVariosCelada = Convert.ToDecimal(row.Cells[21].Value);
+            rutas.cutVariosPropina = Convert.ToDecimal(row.Cells[22].Value);
+            rutas.cutVarios = Convert.ToDecimal(row.Cells[23].Value);
+            rutas.Llamadas = Convert.ToDecimal(row.Cells[24].Value);
+            rutas.Taxi = Convert.ToDecimal(row.Cells[25].Value);
+            rutas.Aseo = Convert.ToDecimal(row.Cells[26].Value);
+            rutas.cutVariosLlantasVacio = Convert.ToDecimal(row.Cells[27].Value);
+            rutas.cutVariosCeladaVacio = Convert.ToDecimal(row.Cells[28].Value);
+
+            rutas.cutVariosPropinaVacio = Convert.ToDecimal(row.Cells[29].Value);
+            rutas.cutVariosVacio = Convert.ToDecimal(row.Cells[30].Value);
+            rutas.Viaticos = Convert.ToDecimal(row.Cells[31].Value);
+            rutas.cutParticipacion = Convert.ToDecimal(row.Cells[32].Value);
+            rutas.cutParticipacionVacio = Convert.ToDecimal(row.Cells[33].Value);
+            rutas.curHotelCarretera = Convert.ToInt32(row.Cells[34].Value);
+            rutas.curHotelCiudad = Convert.ToInt32(row.Cells[35].Value);
+            rutas.curHotel = Convert.ToDecimal(row.Cells[36].Value);
+            rutas.curHotelCarreteraVacio = Convert.ToInt32(row.Cells[37].Value);
+            rutas.curHotelCiudadVacio = Convert.ToInt32(row.Cells[38].Value);
+
+            rutas.curHotelVacio = Convert.ToDecimal(row.Cells[39].Value);
+            rutas.intTiempoCargue = Convert.ToDecimal(row.Cells[40].Value);
+            rutas.intTiempoDescargue = Convert.ToDecimal(row.Cells[41].Value);
+            rutas.intTiempoAduana = Convert.ToDecimal(row.Cells[42].Value);
+            rutas.intTotalTrayecto = Convert.ToDecimal(row.Cells[43].Value);
+            rutas.intTotalTiempo = Convert.ToDecimal(row.Cells[44].Value);
+            rutas.curComida = Convert.ToDecimal(row.Cells[45].Value);
+            rutas.intTiempoCargueVacio = Convert.ToDecimal(row.Cells[46].Value);
+            rutas.intTiempoDescargueVacio = Convert.ToDecimal(row.Cells[47].Value);
+            rutas.intTiempoAduanaVacio = Convert.ToDecimal(row.Cells[48].Value);
+
+            rutas.intTotalTrayectoVacio = Convert.ToDecimal(row.Cells[49].Value);
+            rutas.intTotalTiempoVacio = Convert.ToDecimal(row.Cells[50].Value);
+            rutas.curComidaVacio = Convert.ToDecimal(row.Cells[51].Value);
+            rutas.curDesvareManoRepuestos = Convert.ToDecimal(row.Cells[52].Value);
+            rutas.curDesvareManoObra = Convert.ToDecimal(row.Cells[53].Value);
+            rutas.cutSaldo = Convert.ToDecimal(row.Cells[54].Value);
+            rutas.cutSaldoVacio = Convert.ToDecimal(row.Cells[55].Value);
+            rutas.cutKmts = Convert.ToDecimal(row.Cells[56].Value);
+            rutas.logActualizaPeajes = Convert.ToDecimal(row.Cells[57].Value);
+            rutas.intFactorKmPorGalon = Convert.ToDecimal(row.Cells[58].Value);
+
+            rutas.logEstadoRuta = true;
+            rutas.ParqueaderoCarretera = Convert.ToDecimal(row.Cells[60].Value);
+            rutas.ParqueaderoCiudad = Convert.ToDecimal(row.Cells[61].Value);
+            rutas.MontadaLLantaCarretera = Convert.ToDecimal(row.Cells[62].Value);
+            rutas.MontadaLLantaCiudad = Convert.ToDecimal(row.Cells[63].Value);
+            rutas.AjusteCarretera = Convert.ToDecimal(row.Cells[64].Value);
+            rutas.Lavada = Convert.ToDecimal(row.Cells[65].Value);
+            rutas.Amarres = Convert.ToDecimal(row.Cells[66].Value);
+            rutas.Engradasa = Convert.ToDecimal(row.Cells[67].Value);
+            rutas.Calibrada = Convert.ToDecimal(row.Cells[68].Value);
+            rutas.Liquidado = false;
+            rutas.logVacio = true;
+            rutas.Papeleria = Convert.ToDecimal(row.Cells[71].Value);
+            rutas.logFavorito = false;
+            rutas.CurCargue = Convert.ToDecimal(row.Cells[73].Value);
+            rutas.CurDescargue = Convert.ToDecimal(row.Cells[74].Value);
+            rutas.LogAnticipoACPM = true;
+
+            rutasList.Add(rutas);
+            return rutas;
         }
 
         private void RemoveRowCero()
@@ -2185,6 +2244,31 @@ namespace MetalLiqViajes_Forms
                 {
                     dataGridViewRutas.Rows.RemoveAt(row.Index);
                     break;
+                }
+            }
+        }
+
+        private void btnGuadarExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Confirma Actualizar las rutas nuevas?", "Validar Crear Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (resultado == DialogResult.Yes)
+            {
+                try
+                {
+                    this.Cursor = Cursors.WaitCursor;
+                    foreach (var rutas in rutasList)
+                    {
+                        RutasController.Instance.Create(rutas);
+                    }
+
+                    this.Cursor = Cursors.Default;
+
+                    MessageBox.Show("Proceso concluido con éxito, total rutas copiadas " + rutasList.Count().ToString(), "RUTAS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: se produjo un error en la carga de información, error: " + ex.Message, "Facturación Terpel", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

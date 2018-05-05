@@ -53,7 +53,15 @@ namespace LiqViajes_Bll_Data
                 foreach (var item in iDescripcion)
                 {
                     desRuta = item.ToString();
-                    desRuta = RutasAbreviaturaList.Find(t => t.strAbreviatura == desRuta).strNombreAbreviatura;
+                    RutasAbreviaturas abrevuatura = RutasAbreviaturaList.Find(t => t.strAbreviatura == desRuta);
+                    if (abrevuatura == null)
+                    {
+                        abrevuatura = new RutasAbreviaturas();                        
+                        abrevuatura.strAbreviatura= desRuta;
+                        abrevuatura.strNombreAbreviatura= desRuta;
+                        abrevuatura.lngIdAbreviatura =  RutasAbreviaturasController.Instance.Create(abrevuatura).lngIdAbreviatura;
+                    }
+                    desRuta = abrevuatura.strNombreAbreviatura;
                     if (descripcionTramo == "")
                         descripcionTramo += desRuta;
                     else
