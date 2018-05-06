@@ -1811,19 +1811,19 @@ namespace MetalLiqViajes_Forms
                     //FormatoCrearRutasMetal.xlsm
                     Extension = Path.GetExtension(file);
                     Nombre = Path.GetFileName(file);
-                    //if (Nombre == "FormatoCrearRutasMetal.xlsm")
-                    //{
-                    if (Extension != ".xls" || Extension != ".xlsx" || Extension != ".csv")
+                    if (Nombre.Contains("LibroRutas"))
                     {
-                        m_FileExcel = new FileExcel();
-                        m_FileExcel.nameFile = Path.GetFileName(file);
-                        m_FileExcel.GetFullPath = Path.GetFullPath(file);
-                        m_FileExcel.Importado = false;
-                        m_FileExcel.Excluir = false;
-                        m_FileExcel.Notaexcluir = "";
-                        m_FileExcelList.Add(m_FileExcel);
+                        if (Extension != ".xls" || Extension != ".xlsx" || Extension != ".csv")
+                        {
+                            m_FileExcel = new FileExcel();
+                            m_FileExcel.nameFile = Path.GetFileName(file);
+                            m_FileExcel.GetFullPath = Path.GetFullPath(file);
+                            m_FileExcel.Importado = false;
+                            m_FileExcel.Excluir = false;
+                            m_FileExcel.Notaexcluir = "";
+                            m_FileExcelList.Add(m_FileExcel);
+                        }
                     }
-                    //}
                 }
 
                 btnCargaExcel.Enabled = true;
@@ -1957,7 +1957,7 @@ namespace MetalLiqViajes_Forms
                 }
 
                 stream.Close();
-                this.Cursor = Cursors.Default;                
+                this.Cursor = Cursors.Default;
 
             }
             catch (Exception ex)
@@ -2134,6 +2134,13 @@ namespace MetalLiqViajes_Forms
                 rutasList = new List<Rutas>();
                 foreach (DataGridViewRow row in this.dataGridViewRutas.Rows)
                 {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value.ToString() == "NULL")
+                        {
+                            cell.Value = 0;
+                        }
+                    }
                     rutas = CrearListRutas(rutasList, row);
                 }
 
@@ -2149,6 +2156,7 @@ namespace MetalLiqViajes_Forms
         private static Rutas CrearListRutas(List<Rutas> rutasList, DataGridViewRow row)
         {
             Rutas rutas = new Rutas();
+
             rutas.lngIdRegistrRuta = Convert.ToInt64(row.Cells[0].Value);
             rutas.RutasOrigenDestinoVehTrailerCodigo = Convert.ToInt64(row.Cells[1].Value.ToString());
             rutas.strRutaAnticipoGrupoOrigen = (string)row.Cells[2].Value.ToString();

@@ -2875,6 +2875,7 @@
             this.btnCargaDirectorio.Text = "Cargar Arhivos";
             this.btnCargaDirectorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btnCargaDirectorio, "Haga clic aquí para buscar la carpeta donde están los archivos de Rutas");
+            this.toolTip2.SetToolTip(this.btnCargaDirectorio, "El archivo debe contener el nombre LibroRutas");
             this.btnCargaDirectorio.UseVisualStyleBackColor = false;
             this.btnCargaDirectorio.Click += new System.EventHandler(this.btnCargaDirectorio_Click);
             // 
