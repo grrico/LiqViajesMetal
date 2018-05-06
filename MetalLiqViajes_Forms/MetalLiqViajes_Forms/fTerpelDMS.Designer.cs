@@ -36,9 +36,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxTipoMivimiento = new System.Windows.Forms.ComboBox();
+            this.tipoMovimientoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
             this.textBoxNumero = new System.Windows.Forms.TextBox();
-            this.textBoxTipo = new System.Windows.Forms.TextBox();
             this.comboBoxYear = new System.Windows.Forms.ComboBox();
             this.comboBoxMonth = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -84,19 +85,19 @@
             this.movimientosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBoxAplicado = new System.Windows.Forms.CheckBox();
+            this.textBoxValor = new System.Windows.Forms.TextBox();
             this.textBoxValorTotal = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBoxNit = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBoxValorTotalNiff = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxNit = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxValor = new System.Windows.Forms.TextBox();
-            this.checkBoxAplicado = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoMovimientoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocumentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovimiento)).BeginInit();
@@ -111,9 +112,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.comboBoxTipoMivimiento);
             this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.textBoxNumero);
-            this.panel1.Controls.Add(this.textBoxTipo);
             this.panel1.Controls.Add(this.comboBoxYear);
             this.panel1.Controls.Add(this.comboBoxMonth);
             this.panel1.Controls.Add(this.label5);
@@ -126,6 +127,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(953, 76);
             this.panel1.TabIndex = 0;
+            // 
+            // comboBoxTipoMivimiento
+            // 
+            this.comboBoxTipoMivimiento.DataSource = this.tipoMovimientoBindingSource;
+            this.comboBoxTipoMivimiento.DisplayMember = "Descripcion";
+            this.comboBoxTipoMivimiento.FormattingEnabled = true;
+            this.comboBoxTipoMivimiento.Location = new System.Drawing.Point(217, 12);
+            this.comboBoxTipoMivimiento.Name = "comboBoxTipoMivimiento";
+            this.comboBoxTipoMivimiento.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxTipoMivimiento.TabIndex = 18;
+            this.comboBoxTipoMivimiento.ValueMember = "Codigo";
+            // 
+            // tipoMovimientoBindingSource
+            // 
+            this.tipoMovimientoBindingSource.DataSource = typeof(MetalLiqViajes_Forms.TipoMovimiento);
             // 
             // btnSalir
             // 
@@ -146,14 +162,6 @@
             this.textBoxNumero.Size = new System.Drawing.Size(100, 20);
             this.textBoxNumero.TabIndex = 16;
             this.toolTip1.SetToolTip(this.textBoxNumero, "Numero Documento DMS");
-            // 
-            // textBoxTipo
-            // 
-            this.textBoxTipo.Location = new System.Drawing.Point(217, 14);
-            this.textBoxTipo.Name = "textBoxTipo";
-            this.textBoxTipo.Size = new System.Drawing.Size(100, 20);
-            this.textBoxTipo.TabIndex = 16;
-            this.toolTip1.SetToolTip(this.textBoxTipo, "Tipo Movimiento DMS");
             // 
             // comboBoxYear
             // 
@@ -262,7 +270,9 @@
             this.dataGridViewDocumentos.ReadOnly = true;
             this.dataGridViewDocumentos.Size = new System.Drawing.Size(951, 84);
             this.dataGridViewDocumentos.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.dataGridViewDocumentos, "Haga Double clic para Cambiar Nit");
             this.dataGridViewDocumentos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDocumentos_RowEnter);
+            this.dataGridViewDocumentos.DoubleClick += new System.EventHandler(this.dataGridViewDocumentos_DoubleClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -540,7 +550,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.checkBoxAplicado);
             this.panel2.Controls.Add(this.textBoxValor);
             this.panel2.Controls.Add(this.textBoxValorTotal);
@@ -556,37 +565,92 @@
             this.panel2.Size = new System.Drawing.Size(953, 106);
             this.panel2.TabIndex = 3;
             // 
+            // checkBoxAplicado
+            // 
+            this.checkBoxAplicado.AutoSize = true;
+            this.checkBoxAplicado.Enabled = false;
+            this.checkBoxAplicado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAplicado.Location = new System.Drawing.Point(24, 5);
+            this.checkBoxAplicado.Name = "checkBoxAplicado";
+            this.checkBoxAplicado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxAplicado.Size = new System.Drawing.Size(171, 20);
+            this.checkBoxAplicado.TabIndex = 17;
+            this.checkBoxAplicado.Text = "Documento Aplicado";
+            this.checkBoxAplicado.UseVisualStyleBackColor = true;
+            // 
+            // textBoxValor
+            // 
+            this.textBoxValor.Enabled = false;
+            this.textBoxValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxValor.Location = new System.Drawing.Point(75, 59);
+            this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.Size = new System.Drawing.Size(102, 22);
+            this.textBoxValor.TabIndex = 16;
+            // 
             // textBoxValorTotal
             // 
             this.textBoxValorTotal.Enabled = false;
-            this.textBoxValorTotal.Location = new System.Drawing.Point(848, 31);
+            this.textBoxValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxValorTotal.Location = new System.Drawing.Point(343, 59);
             this.textBoxValorTotal.Name = "textBoxValorTotal";
-            this.textBoxValorTotal.Size = new System.Drawing.Size(102, 20);
+            this.textBoxValorTotal.Size = new System.Drawing.Size(102, 22);
             this.textBoxValorTotal.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(16, 59);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 16);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Valor:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(781, 31);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(234, 59);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.Size = new System.Drawing.Size(89, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "Valor Total:";
+            // 
+            // textBoxNit
+            // 
+            this.textBoxNit.Enabled = false;
+            this.textBoxNit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNit.Location = new System.Drawing.Point(75, 31);
+            this.textBoxNit.Name = "textBoxNit";
+            this.textBoxNit.Size = new System.Drawing.Size(102, 22);
+            this.textBoxNit.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(32, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 16);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Nit:";
             // 
             // textBoxValorTotalNiff
             // 
             this.textBoxValorTotalNiff.Enabled = false;
-            this.textBoxValorTotalNiff.Location = new System.Drawing.Point(848, 5);
+            this.textBoxValorTotalNiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxValorTotalNiff.Location = new System.Drawing.Point(343, 31);
             this.textBoxValorTotalNiff.Name = "textBoxValorTotalNiff";
-            this.textBoxValorTotalNiff.Size = new System.Drawing.Size(102, 20);
+            this.textBoxValorTotalNiff.Size = new System.Drawing.Size(102, 22);
             this.textBoxValorTotalNiff.TabIndex = 16;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(765, 5);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(215, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.Size = new System.Drawing.Size(113, 16);
             this.label3.TabIndex = 14;
             this.label3.Text = "Valor Total niif:";
             // 
@@ -618,64 +682,6 @@
             this.splitContainer1.SplitterDistance = 86;
             this.splitContainer1.TabIndex = 0;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Nit:";
-            // 
-            // textBoxNit
-            // 
-            this.textBoxNit.Enabled = false;
-            this.textBoxNit.Location = new System.Drawing.Point(52, 48);
-            this.textBoxNit.Name = "textBoxNit";
-            this.textBoxNit.Size = new System.Drawing.Size(102, 20);
-            this.textBoxNit.TabIndex = 16;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 74);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Valor:";
-            // 
-            // textBoxValor
-            // 
-            this.textBoxValor.Enabled = false;
-            this.textBoxValor.Location = new System.Drawing.Point(52, 74);
-            this.textBoxValor.Name = "textBoxValor";
-            this.textBoxValor.Size = new System.Drawing.Size(102, 20);
-            this.textBoxValor.TabIndex = 16;
-            // 
-            // checkBoxAplicado
-            // 
-            this.checkBoxAplicado.AutoSize = true;
-            this.checkBoxAplicado.Enabled = false;
-            this.checkBoxAplicado.Location = new System.Drawing.Point(29, 22);
-            this.checkBoxAplicado.Name = "checkBoxAplicado";
-            this.checkBoxAplicado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxAplicado.Size = new System.Drawing.Size(125, 17);
-            this.checkBoxAplicado.TabIndex = 17;
-            this.checkBoxAplicado.Text = "Documento Aplicado";
-            this.checkBoxAplicado.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Image = global::MetalLiqViajes_Forms.Properties.Resources.pushpin_yellow;
-            this.button1.Location = new System.Drawing.Point(160, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 46);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Salir";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
             // fTerpelDMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -690,6 +696,7 @@
             this.Load += new System.EventHandler(this.fTerpelDMS_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoMovimientoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocumentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovimiento)).EndInit();
@@ -717,7 +724,6 @@
         private System.Windows.Forms.ComboBox comboBoxMonth;
         private System.Windows.Forms.TextBox textBoxNumero;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TextBox textBoxTipo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewDocumentos;
@@ -768,6 +774,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxNit;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBoxTipoMivimiento;
+        private System.Windows.Forms.BindingSource tipoMovimientoBindingSource;
     }
 }

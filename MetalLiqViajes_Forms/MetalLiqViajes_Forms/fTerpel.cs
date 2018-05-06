@@ -284,8 +284,17 @@ namespace MetalLiqViajes_Forms
                     m_FileExcel = new FileExcel();
                     excelterpelList = new List<ExcelTerpel>();
                     dataGridDataExcel.DataSource = excelterpelList;
-                    dataGridDataExcel.Refresh();
 
+                    // Resize the master DataGridView columns to fit the newly loaded data.
+                    dataGridDataExcel.AutoResizeColumns();
+
+                    // Configure the details DataGridView so that its columns automatically
+                    // adjust their widths when the data changes.
+                    dataGridDataExcel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                    dataGridDataExcel.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                    dataGridDataExcel.Refresh();
                 }
             }
             catch (Exception ex)
@@ -320,6 +329,16 @@ namespace MetalLiqViajes_Forms
                 btnCargaExcel.Enabled = true;
 
                 dataGridFiles.DataSource = m_FileExcelList;
+
+                // Resize the master DataGridView columns to fit the newly loaded data.
+                dataGridFiles.AutoResizeColumns();
+
+                // Configure the details DataGridView so that its columns automatically
+                // adjust their widths when the data changes.
+                dataGridFiles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                dataGridFiles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
                 dataGridFiles.Refresh();
             }
             catch (Exception ex)
@@ -402,8 +421,8 @@ namespace MetalLiqViajes_Forms
             if (textBoxFactura.Text.Length > 0 && textBoxFactura.Text != "")
             {
                 ventasDetalleList = VentasFlotaDetalleController.Instance.GetByFactura(textBoxFactura.Text);
-                dataGridViewVentasDetalle.DataSource = ventasDetalleList;
-                dataGridViewVentasDetalle.Refresh();
+                //dataGridViewVentasDetalle.DataSource = ventasDetalleList;
+                //dataGridViewVentasDetalle.Refresh();
 
                 textBoxTotalVentas.Text = ventasDetalleList.Sum(t => t.TotalFactura).Value.ToString("n0");
                 textBoxTotalFactura.Text = ventasDetalleList.Sum(t => t.TotalVentas).Value.ToString("n0");
@@ -676,17 +695,7 @@ namespace MetalLiqViajes_Forms
             movimiento.nit = nit;
             movimiento.fec = fecha;
             movimiento.valor = valor;
-            //movimiento.base    NULL
-            //movimiento.documento   NULL
             movimiento.explicacion = nota;
-            //movimiento.concilio NULL;
-            //movimiento.concepto_mov NULL;
-            //movimiento.concilio_ano NULL
-            //movimiento.secuencia_extracto NULL
-            //movimiento.ano_concilia NULL
-            //movimiento.mes_concilia NULL
-            //movimiento.ID_CRUCE NULL
-            //movimiento.TIPO_CRUCE NULL
             movimiento.valor_niif = valorniif;
             return movimiento;
         }
@@ -754,113 +763,10 @@ namespace MetalLiqViajes_Forms
             this.Close();
         }
 
-        //private void btnConsultar_Click(object sender, EventArgs e)
-        //{
-        //    this.Cursor = Cursors.WaitCursor;
-
-        //    try
-        //    {
-        //        string listaPlacas = "";
-        //        string delimitador = ",";
-        //        int contador = 0;
-        //        foreach (var item in ListPlacas.CheckedItems)
-        //        {
-        //            listaPlacas += item.ToString();
-        //            contador++;
-        //            if (ListPlacas.CheckedItems.Count > contador)
-        //            {
-        //                listaPlacas += delimitador;
-        //            }
-        //        }
-
-        //        CargaFecha();
-
-
-        //        listaPlacas = listaPlacas.Replace("-", "");
-        //        Util.Terpel terpel = new Util.Terpel();
-        //        terpel.Codigo = ParametrosGeneralesController.Instance.Get(5).ValorParametro; // codigo cliente terpel
-        //        terpel.Placas = listaPlacas;
-        //        terpel.FechaInicial = FechaInicial.ToString("yyyyMMdd 12:00");
-        //        terpel.FechaFinal = FechaFinal.ToString("yyyyMMdd 23:59");
-
-        //        dynamic ObjTerpel = new ExpandoObject();
-
-        //        ObjTerpel.Codigo = terpel.Codigo;
-        //        ObjTerpel.Placas = terpel.Placas;
-        //        ObjTerpel.FechaInicio = terpel.FechaInicial;
-        //        ObjTerpel.FechaFin = terpel.FechaFinal;
-
-        //        string json = JsonConvert.SerializeObject(ObjTerpel);
-        //        var resultado = TripleDes(json);
-
-        //        com.terpel.movilidad.Integrator integr = new com.terpel.movilidad.Integrator();
-        //        integr.Credentials = new NetworkCredential(ParametrosGeneralesController.Instance.Get(3).ValorParametro, ParametrosGeneralesController.Instance.Get(4).ValorParametro);
-
-        //        var resultado2 = integr.ConsultaVentas(resultado);
-        //        List<VentasFlotaResponse> ventaTerpelList = new List<VentasFlotaResponse>();
-
-        //        List<VentasFlota> ventasFlotaList = new List<VentasFlota>();
-        //        ventasFlotaList = VentasFlotaController.Instance.GetAll();
-
-        //        //var distinctregistro = resultado2.AsEnumerable()
-        //        //.Select(row => new
-        //        //{
-        //        //    CodEds = row.CodEds,
-        //        //    Recibo = row.Recibo,
-        //        //    Fecha = row.Fecha,
-        //        //})
-        //        //.Distinct();
-
-        //        //  guarda el registro detalle
-        //        int cantidad = 0;
-        //        VentasFlota ventasflota = null;
-        //        int cantid2 = resultado2.Count();
-        //        foreach (VentasFlotaResponse itemRegiD in resultado2)
-        //        {
-        //            ventasflota = VentasFlotaController.Instance.Get(Convert.ToInt64(itemRegiD.Recibo));
-        //            if (ventasflota == null && itemRegiD.CodEds > 0)
-        //            {
-        //                ventasflota = new VentasFlota();
-        //                ventasflota.CodEds = itemRegiD.CodEds;
-        //                ventasflota.Dinero = itemRegiD.Dinero;
-        //                ventasflota.Fecha = itemRegiD.Fecha;
-        //                ventasflota.Kilometraje = itemRegiD.Kilometraje;
-        //                ventasflota.Placa = itemRegiD.Placa;
-        //                ventasflota.Producto = itemRegiD.Producto;
-        //                ventasflota.Recibo = itemRegiD.Recibo;
-        //                ventasflota.Volumen = itemRegiD.Volumen;
-        //                VentasFlotaController.Instance.Create(ventasflota);
-        //                cantidad++;
-        //            }
-        //        }
-
-        //        MessageBox.Show("proceso terminado, Cantidad: " + cantidad.ToString("#####"), "Compras Terpen", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //    }
-
-        //    this.Cursor = Cursors.Default;
-
-        //}
-
-        //private void CargaFecha()
-        //{
-
-        //    yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
-        //    monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
-        //    if (monthTerpel != null)
-        //    {
-        //        int imes = monthTerpel.CodMonth;
-        //        if (imes >= 12)
-        //            imes = 1;
-        //        imes++;
-        //        string ifecha = yearTerpel.CodYear.ToString() + "/" + monthTerpel.CodMonth.ToString("##") + "/01";
-        //        string ffecha = yearTerpel.CodYear.ToString() + "/" + imes.ToString("##") + "/01";
-        //        FechaInicial = Convert.ToDateTime(ifecha);
-        //        FechaFinal = Convert.ToDateTime(ffecha).AddDays(-1);
-        //    }
-        //}
-
+        private void dataGridDataExcel_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            excelTerpel =  dataGridDataExcel.Rows[e.RowIndex].DataBoundItem as ExcelTerpel;
+            textBoxFactura.Text = excelTerpel.Factura;
+        }
     }
 }

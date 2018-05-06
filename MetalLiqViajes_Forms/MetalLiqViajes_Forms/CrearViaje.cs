@@ -23,8 +23,6 @@ namespace MetalLiqViajes_Forms
 
         private List<RutasOrigenDestino> rutasDestinoList;
 
-        //private List<Rutas> rutasList;
-
         public CrearViaje()
         {
             InitializeComponent();

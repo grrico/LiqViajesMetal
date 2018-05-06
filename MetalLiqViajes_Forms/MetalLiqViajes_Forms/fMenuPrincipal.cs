@@ -71,7 +71,6 @@ namespace MetalLiqViajes_Forms
             panelMenu.Visible = false;
 
             fTerpelDMS terpel = new fTerpelDMS();
-            //terpel.ultilplacalist = childForm.ultilplacalist;
             terpel.MdiParent = this;
             terpel.WindowState = FormWindowState.Maximized;
             terpel.Show();

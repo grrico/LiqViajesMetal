@@ -84,17 +84,32 @@ namespace MetalLiqViajes_Forms
             comboBoxYear.SelectedValue = DateTime.Now.Year;
             yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
             monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
-
+            
+            List<TipoMovimiento> tipoMovimientoList = new List<TipoMovimiento>();
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 1, Descripcion = "23" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 2, Descripcion = "45" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 3, Descripcion = "45-A" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 4, Descripcion = "52" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 5, Descripcion = "52V" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 6, Descripcion = "55" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 7, Descripcion = "57" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 8, Descripcion = "57-A" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 9, Descripcion = "75" });
+            tipoMovimientoList.Add(new TipoMovimiento { Codigo = 10, Descripcion = "83" });
+            comboBoxTipoMivimiento.DataSource = tipoMovimientoList;
+            comboBoxTipoMivimiento.Refresh();
+            comboBoxTipoMivimiento.Text = "52V";
+            comboBoxTipoMivimiento.SelectedIndex =4;
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (textBoxTipo.Text == "") return;
+            if (comboBoxTipoMivimiento.Text == "") return;
 
-            if (textBoxTipo.Text != "83")
+            if (comboBoxTipoMivimiento.Text != "83")
             {
                 if (textBoxNumero.Text == "") return;
-                documento = documentosController.Instance.GetByTipoNumero(textBoxTipo.Text, Convert.ToInt32(textBoxNumero.Text));
+                documento = documentosController.Instance.GetByTipoNumero(comboBoxTipoMivimiento.Text, Convert.ToInt32(textBoxNumero.Text));
                 if (documento != null)
                 {
                     documentoslist = new List<documentos>();
@@ -144,7 +159,9 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewDocumentos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+
             documento = dataGridViewDocumentos.Rows[e.RowIndex].DataBoundItem as documentos;
+
             movimientoslist = movimientosController.Instance.GetByTipoNumero(documento.tipo, documento.numero);
             dataGridViewMovimiento.DataSource = movimientoslist;
             dataGridViewMovimiento.Refresh();
@@ -167,6 +184,14 @@ namespace MetalLiqViajes_Forms
             fMenuPrincipal c = (fMenuPrincipal)this.ParentForm;
             c.panelMenu.Visible = true;
             this.Close();
+        }
+
+        private void dataGridViewDocumentos_DoubleClick(object sender, EventArgs e)
+        {
+            fDmdCambioNit cambionit = new fDmdCambioNit();
+            cambionit.documentoDms = documento;
+            cambionit.movimientosList = movimientoslist;
+            cambionit.ShowDialog();
         }
     }
 }
