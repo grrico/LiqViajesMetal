@@ -89,6 +89,38 @@ namespace LiqViajes_Bll_Data
             }
         }
 
+        public DataTable GetByRange(string tipo, int numero, int numeroHasta)
+        {
+            try
+            {
+                Sinapsys.Datos.SQL LocalDataProvider;
+                bool disconnect = false;
+                if (DataProvider.Concurrente)
+                {
+                    LocalDataProvider = new Sinapsys.Datos.SQL();
+                    LocalDataProvider.Conectar(DataProvider.Alias, false);
+                }
+                else
+                {
+                    LocalDataProvider = DataProvider.Datos;
+                }
+                disconnect = DataProvider.ValidateConnection();
+                System.Data.SqlClient.SqlCommand Comando = new System.Data.SqlClient.SqlCommand();
+                System.Data.SqlClient.SqlParameterCollection paramlist = Comando.Parameters;
+                System.Collections.Hashtable nullExit = null;
+                paramlist.AddWithValue("@tipo", tipo);
+                paramlist.AddWithValue("@numero", numero);
+                paramlist.AddWithValue("@numeroHasta", numeroHasta);
+                return LocalDataProvider.EjecutarProcedimiento("dbo.Add_documentosGetByTipoRange", paramlist, disconnect, out nullExit, DataProvider.TiempoEspera);
+
+            }
+            catch (Exception ex)
+            {
+                Utilidades.LogErrores(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), DataProvider.AplicacionNombre);
+                throw ex;
+            }
+        }
+
         public DataTable GetBy_TipoNitFechaGetAll(string tipo, string nit, DateTime fechaI, DateTime fechaF)
         {
             try

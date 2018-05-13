@@ -14,7 +14,7 @@ namespace MetalLiqViajes_Forms
 {
     public partial class fTerpelDMS : Form
     {
-
+        private List<TercerosConductores> conductoresList;
         public List<UtilPlaca> ultilplacalist { get; set; }
         private List<YearTerpel> YearsList { get; set; }
         private YearTerpel yearTerpel { get; set; }
@@ -84,7 +84,7 @@ namespace MetalLiqViajes_Forms
             comboBoxYear.SelectedValue = DateTime.Now.Year;
             yearTerpel = comboBoxYear.SelectedItem as YearTerpel;
             monthTerpel = comboBoxMonth.SelectedItem as MonthTerpel;
-            
+
             List<TipoMovimiento> tipoMovimientoList = new List<TipoMovimiento>();
             tipoMovimientoList.Add(new TipoMovimiento { Codigo = 1, Descripcion = "23" });
             tipoMovimientoList.Add(new TipoMovimiento { Codigo = 2, Descripcion = "45" });
@@ -99,7 +99,7 @@ namespace MetalLiqViajes_Forms
             comboBoxTipoMivimiento.DataSource = tipoMovimientoList;
             comboBoxTipoMivimiento.Refresh();
             comboBoxTipoMivimiento.Text = "52V";
-            comboBoxTipoMivimiento.SelectedIndex =4;
+            comboBoxTipoMivimiento.SelectedIndex = 4;
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -109,33 +109,67 @@ namespace MetalLiqViajes_Forms
             if (comboBoxTipoMivimiento.Text != "83")
             {
                 if (textBoxNumero.Text == "") return;
-                documento = documentosController.Instance.GetByTipoNumero(comboBoxTipoMivimiento.Text, Convert.ToInt32(textBoxNumero.Text));
-                if (documento != null)
+                if (textBoxNumeroHasta.Text == "")
                 {
-                    documentoslist = new List<documentos>();
-                    documentoslist.Add(documento);
-                    dataGridViewDocumentos.DataSource = documentoslist;
-                    dataGridViewDocumentos.Refresh();
+                    GetByTypeNumeric();
                 }
                 else
                 {
-                    MessageBox.Show("No existe el registro solicitado.", "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetByTypeRange();
                 }
             }
             else
             {
-                CargaFecha();
-                documentoslist = documentosController.Instance.GetBy_TipoNitFechaGetAll(Properties.Settings.Default.TipoTerpel, Properties.Settings.Default.NitTerpel, fechaI, fechaF);
-                if (documentoslist.Count > 0)
-                {
-                    dataGridViewDocumentos.DataSource = documentoslist;
-                    dataGridViewDocumentos.Refresh();
-                }
-                else
-                {
-                    MessageBox.Show("No existe el registro solicitado.", "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                GetByTerpel();
 
+            }
+            TercerosConductores conductores;
+            conductoresList = TercerosConductoresController.Instance.GetAll().Where(t => t.logEstado.Value == true).ToList();
+            foreach (var item in documentoslist)
+            {
+                conductores = conductoresList.Where(t => t.IntNit.ToString() == item.nit.ToString()).FirstOrDefault();
+                if (conductor != null)
+                    item.conductor = conductores.strNombres.ToUpper();
+            }
+            dataGridViewDocumentos.Refresh();
+        }
+
+        private void GetByTerpel()
+        {
+            CargaFecha();
+            documentoslist = documentosController.Instance.GetBy_TipoNitFechaGetAll(Properties.Settings.Default.TipoTerpel, Properties.Settings.Default.NitTerpel, fechaI, fechaF);
+            if (documentoslist.Count > 0)
+            {
+                dataGridViewDocumentos.DataSource = documentoslist;
+                dataGridViewDocumentos.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("No existe el registro solicitado.", "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void GetByTypeRange()
+        {
+            documentoslist = documentosController.Instance.GetByRange(comboBoxTipoMivimiento.Text, Convert.ToInt32(textBoxNumero.Text), Convert.ToInt32(textBoxNumeroHasta.Text));
+            documentoslist.Add(documento);
+            dataGridViewDocumentos.DataSource = documentoslist;
+            dataGridViewDocumentos.Refresh();
+        }
+
+        private void GetByTypeNumeric()
+        {
+            documento = documentosController.Instance.GetByTipoNumero(comboBoxTipoMivimiento.Text, Convert.ToInt32(textBoxNumero.Text));
+            if (documento != null)
+            {
+                documentoslist = new List<documentos>();
+                documentoslist.Add(documento);
+                dataGridViewDocumentos.DataSource = documentoslist;
+                dataGridViewDocumentos.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("No existe el registro solicitado.", "Metal", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -188,11 +222,38 @@ namespace MetalLiqViajes_Forms
 
         private void dataGridViewDocumentos_DoubleClick(object sender, EventArgs e)
         {
-            fDmdCambioNit cambionit = new fDmdCambioNit();
-            cambionit.documentoDms = documento;
-            cambionit.movimientosList = movimientoslist;
-            cambionit.ShowDialog();
+            CambiatNit();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            CambiatNit();
+        }
+
+        private void CambiatNit()
+        {
+            try
+            {
+                fDmdCambioNit cambionit = new fDmdCambioNit();
+                cambionit.documentoDms = documento;
+                cambionit.movimientosList = movimientoslist;
+                cambionit.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Metal - Cambia de Nit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void RefrescarData()
+        {
+            documento = documentosController.Instance.GetByTipoNumero(documento.tipo, documento.numero);
+            int m_Index = documentoslist.FindIndex(t => t.tipo == documento.tipo && t.numero == documento.numero);
+            documentoslist[m_Index].nit = documento.nit;
+            dataGridViewDocumentos.FirstDisplayedScrollingRowIndex = m_Index;
+            dataGridViewDocumentos.Refresh();
+        }
+
     }
 }
 
