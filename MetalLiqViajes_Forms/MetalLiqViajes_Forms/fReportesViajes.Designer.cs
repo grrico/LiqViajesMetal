@@ -436,9 +436,9 @@
             // 
             this.panel3.Controls.Add(this.dataGridViewConductor);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(329, 0);
+            this.panel3.Location = new System.Drawing.Point(362, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(693, 193);
+            this.panel3.Size = new System.Drawing.Size(660, 193);
             this.panel3.TabIndex = 4;
             // 
             // dataGridViewConductor
@@ -461,7 +461,7 @@
             this.dataGridViewConductor.Name = "dataGridViewConductor";
             this.dataGridViewConductor.ReadOnly = true;
             this.dataGridViewConductor.RowHeadersWidth = 10;
-            this.dataGridViewConductor.Size = new System.Drawing.Size(693, 193);
+            this.dataGridViewConductor.Size = new System.Drawing.Size(660, 193);
             this.dataGridViewConductor.TabIndex = 0;
             this.dataGridViewConductor.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConductor_RowEnter);
             // 
@@ -526,7 +526,7 @@
             // 
             this.splitter1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitter1.Location = new System.Drawing.Point(319, 0);
+            this.splitter1.Location = new System.Drawing.Point(352, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(10, 193);
             this.splitter1.TabIndex = 3;
@@ -555,7 +555,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(319, 193);
+            this.panel2.Size = new System.Drawing.Size(352, 193);
             this.panel2.TabIndex = 2;
             // 
             // btnSalir

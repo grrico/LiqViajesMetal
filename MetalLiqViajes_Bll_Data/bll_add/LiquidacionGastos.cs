@@ -17,30 +17,30 @@ using System.Runtime.Serialization;
 
 namespace LiqViajes_Bll_Data
 {
-	
-	public partial class LiquidacionGastosController//: ILatinodeController
-	{
-		public LiquidacionGastosList GetBy_lngIdRegistrRuta(long IdRegistrRutaItemId, bool generateUndo=false)
-		{
-			try 
-			{
-				LiquidacionGastosList liquidaciongastoslist = new LiquidacionGastosList();
 
-				DataTable dt = LiquidacionGastosDataProvider.Instance.GetBy_lngIdRegistrRuta(IdRegistrRutaItemId);
-				foreach (DataRow dr in dt.Rows)
-				{
-					LiquidacionGastos liquidaciongastos = new LiquidacionGastos();
-					ReadData(liquidaciongastos, dr, generateUndo);
-					liquidaciongastoslist.Add(liquidaciongastos);
-				}
-				return liquidaciongastoslist;
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-			}
-		}
+    public partial class LiquidacionGastosController//: ILatinodeController
+    {
+        public LiquidacionGastosList GetBy_lngIdRegistrRuta(long IdRegistrRutaItemId, bool generateUndo = false)
+        {
+            LiquidacionGastosList liquidaciongastoslist = new LiquidacionGastosList();
+            try
+            {
 
-	}
+                DataTable dt = LiquidacionGastosDataProvider.Instance.GetBy_lngIdRegistrRuta(IdRegistrRutaItemId);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    LiquidacionGastos liquidaciongastos = new LiquidacionGastos();
+                    ReadData(liquidaciongastos, dr, generateUndo);
+                    liquidaciongastoslist.Add(liquidaciongastos);
+                }
+                return liquidaciongastoslist;
+            }
+            catch (Exception)
+            {
+                return liquidaciongastoslist;
+            }
+        }
+
+    }
 
 }

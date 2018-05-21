@@ -51,7 +51,10 @@ namespace MetalLiqViajes_Forms
 
             List<LiquidacionAnticipos> LiquidacionAnticiposList = LiquidacionAnticiposController.Instance.GetFilter("(intDocumento = " + documentoDms.numero + ") AND (strtipo = '" + documentoDms.tipo + "')", "lngIdRegistroViaje");
             LiquidacionAnticipos LiquidacionAnticipos = LiquidacionAnticiposList.FirstOrDefault();
-            textBoxViaje.Text = LiquidacionAnticipos.lngIdRegistroViajeTramo.ToString("n0");
+
+            textBoxViaje.Text = "";
+            if (LiquidacionAnticipos != null)
+                textBoxViaje.Text = LiquidacionAnticipos.lngIdRegistroViajeTramo.ToString("n0");
         }
 
         private void btnAplicarCambio_Click(object sender, EventArgs e)
