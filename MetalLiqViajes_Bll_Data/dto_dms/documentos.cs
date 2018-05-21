@@ -19,9 +19,9 @@ namespace LiqViajes_Bll_Data
 
 
     [DataContract]
-    public partial class documentos 
+    public partial class documentos
     {
-        
+
         public documentos()
         {
             m_id = 0;
@@ -472,6 +472,10 @@ namespace LiqViajes_Bll_Data
 
         // Field for storing the documentos's numero value
         private int m_numero;
+
+
+        // Field for storing the documentos's documento value
+        private string m_conductor;
 
         // Evaluate changed state
         private bool m_changed = false;
@@ -1440,6 +1444,23 @@ namespace LiqViajes_Bll_Data
             {
                 m_changed = true;
                 m_numero = value;
+            }
+        }
+
+        /// <summary>
+        /// Attribute for access the documentos's usuario value (string)
+        /// </summary>
+        [DataMember]
+        public string conductor
+        {
+            get { return m_conductor; }
+            set
+            {
+                m_changed = false;
+                m_conductor = value;
+                //TercerosConductores conductor = TercerosConductoresController.Instance.Get("c", Convert.ToDouble(nit));
+                //if (conductor != null)
+                //    m_conductor = conductor.strNombres.ToUpper();
             }
         }
 

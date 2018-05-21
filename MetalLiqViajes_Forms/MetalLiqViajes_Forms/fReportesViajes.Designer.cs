@@ -622,7 +622,7 @@
             // 
             // btnSatrac
             // 
-            this.btnSatrac.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
+            this.btnSatrac.Image = ((System.Drawing.Image)(resources.GetObject("btnSatrac.Image")));
             this.btnSatrac.Location = new System.Drawing.Point(230, 12);
             this.btnSatrac.Name = "btnSatrac";
             this.btnSatrac.Size = new System.Drawing.Size(43, 37);
@@ -645,7 +645,7 @@
             // 
             // btnBuscaViajes
             // 
-            this.btnBuscaViajes.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
+            this.btnBuscaViajes.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscaViajes.Image")));
             this.btnBuscaViajes.Location = new System.Drawing.Point(177, 86);
             this.btnBuscaViajes.Name = "btnBuscaViajes";
             this.btnBuscaViajes.Size = new System.Drawing.Size(43, 37);
@@ -656,7 +656,7 @@
             // 
             // btnRefrescar
             // 
-            this.btnRefrescar.Image = global::MetalLiqViajes_Forms.Properties.Resources.FindHS;
+            this.btnRefrescar.Image = ((System.Drawing.Image)(resources.GetObject("btnRefrescar.Image")));
             this.btnRefrescar.Location = new System.Drawing.Point(177, 12);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(43, 37);
@@ -1711,7 +1711,7 @@
             // 
             // btnAplicarCambio
             // 
-            this.btnAplicarCambio.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
+            this.btnAplicarCambio.Image = ((System.Drawing.Image)(resources.GetObject("btnAplicarCambio.Image")));
             this.btnAplicarCambio.Location = new System.Drawing.Point(173, 146);
             this.btnAplicarCambio.Name = "btnAplicarCambio";
             this.btnAplicarCambio.Size = new System.Drawing.Size(124, 30);

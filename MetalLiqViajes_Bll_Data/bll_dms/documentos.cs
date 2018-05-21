@@ -173,6 +173,26 @@ namespace LiqViajes_Bll_Data
             }
         }
 
+        public documentosList GetByRange(string tipo, int numero, int numeroHasta, bool generateUndo = false)
+        {
+            try
+            {
+                documentosList documentoslist = new documentosList();
+                DataTable dt = documentosDataProvider.Instance.GetByRange(tipo,numero,numeroHasta);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    documentos documentos = new documentos();
+                    ReadData(documentos, dr, generateUndo);
+                    documentoslist.Add(documentos);
+                }
+                return documentoslist;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public documentosList GetAll(bool generateUndo = false)
         {
             try

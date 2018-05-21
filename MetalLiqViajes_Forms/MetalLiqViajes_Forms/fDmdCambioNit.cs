@@ -32,29 +32,54 @@ namespace MetalLiqViajes_Forms
         }
         private void CargarDatos()
         {
-            conductoresList = TercerosConductoresController.Instance.GetAll().Where(t => t.logEstado.Value == true).ToList();
+            try
+            {
 
-            comboBoxNit.DataSource = conductoresList;
-            comboBoxNit.Refresh();
-            comboBoxNit.SelectedItem = conductoresList.FirstOrDefault(t => t.IntNit.ToString() == documentoDms.nit.ToString());
+                btnGuardar.Enabled = true;
 
-            List<movimientos> movimientoslist = movimientosController.Instance.GetByTipoNumero(documentoDms.tipo, documentoDms.numero);
-            textBoxValorTotal.Text = movimientoslist.Where(c => c.cuenta == "13301504").Sum(t => t.valor).ToString("n0");
-            textBoxValorTotalNiff.Text = movimientoslist.Sum(t => t.valor_niif).ToString("n0");
-            checkBoxAplicado.Enabled = false;
-            checkBoxAplicado.Checked = false;
-            if (documentoDms.valor_aplicado.Value > 0)
-                checkBoxAplicado.Checked = true;
+                conductoresList = TercerosConductoresController.Instance.GetAll().Where(t => t.logEstado.Value == true).ToList();
 
-            textBoxNit.Text = documentoDms.nit.ToString();
-            textBoxValor.Text = documentoDms.valor_total.Value.ToString("n0");
+                comboBoxNit.DataSource = conductoresList;
+                comboBoxNit.Refresh();
+                comboBoxNit.SelectedItem = conductoresList.FirstOrDefault(t => t.IntNit.ToString() == documentoDms.nit.ToString());
 
-            List<LiquidacionAnticipos> LiquidacionAnticiposList = LiquidacionAnticiposController.Instance.GetFilter("(intDocumento = " + documentoDms.numero + ") AND (strtipo = '" + documentoDms.tipo + "')", "lngIdRegistroViaje");
-            LiquidacionAnticipos LiquidacionAnticipos = LiquidacionAnticiposList.FirstOrDefault();
+                List<movimientos> movimientoslist = movimientosController.Instance.GetByTipoNumero(documentoDms.tipo, documentoDms.numero);
+                textBoxValorTotal.Text = movimientoslist.Where(c => c.cuenta == "13301504").Sum(t => t.valor).ToString("n0");
+                textBoxValorTotalNiff.Text = movimientoslist.Sum(t => t.valor_niif).ToString("n0");
+                checkBoxAplicado.Enabled = false;
+                checkBoxAplicado.Checked = false;
+                if (documentoDms.valor_aplicado.Value > 0)
+                {
+                    btnGuardar.Enabled = false;
+                    checkBoxAplicado.Checked = true;
+                }
 
-            textBoxViaje.Text = "";
-            if (LiquidacionAnticipos != null)
-                textBoxViaje.Text = LiquidacionAnticipos.lngIdRegistroViajeTramo.ToString("n0");
+                TercerosConductores conductores = conductoresList.Where(t => t.IntNit.ToString() == documentoDms.nit.ToString()).FirstOrDefault();
+                this.Text = "Tipo: " + documentoDms.tipo + ", Documento DMS: " + documentoDms.numero + ", Nit: " + documentoDms.nit +  " Conductor: "+ conductores.strNombres.ToUpper();
+
+                textBoxNota.Text = "";
+                textBoxNit.Text = documentoDms.nit.ToString();
+                textBoxValor.Text = documentoDms.valor_total.Value.ToString("n0");
+
+                List<LiquidacionAnticipos> LiquidacionAnticiposList = LiquidacionAnticiposController.Instance.GetFilter("(intDocumento = " + documentoDms.numero + ") AND (strtipo = '" + documentoDms.tipo + "')", "lngIdRegistroViaje");
+                LiquidacionAnticipos LiquidacionAnticipos = LiquidacionAnticiposList.FirstOrDefault();
+                if (LiquidacionAnticipos != null)
+                {
+                    textBoxViaje.Text = LiquidacionAnticipos.lngIdRegistroViajeTramo.ToString("n0");
+                    LiquidacionVehiculo liquidacionvehiculo = LiquidacionVehiculoController.Instance.Get(long.Parse(LiquidacionAnticipos.lngIdRegistroViajeTramo.ToString()));
+                    if (liquidacionvehiculo != null)
+                    {
+                        conductores = conductoresList.Where(t => t.IntNit.ToString() == liquidacionvehiculo.intNitConductor.Value.ToString()).FirstOrDefault();
+                        textBoxNota.Text = "El documento esta aplicado en el viaje " + liquidacionvehiculo.lngIdRegistro.ToString();
+                        textBoxNota.Text += "\tFecha de Asignación: " + liquidacionvehiculo.dtmFechaModif.Value.ToString("dd/MMM/yyyy");
+                        textBoxNota.Text += "\tConductor: " + liquidacionvehiculo.intNitConductor.Value + " -  Conductores: " + conductores.strNombres.ToUpper(); ;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex.Message, "Metal - Cambia de Nit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnAplicarCambio_Click(object sender, EventArgs e)
@@ -73,16 +98,34 @@ namespace MetalLiqViajes_Forms
             string error = "";
             string sql = "";
 
-            sql = "UPDATE movimientos SET nit = '" + textBoxNit.Text + "' WHERE (tipo = '" + documentoDms.tipo + "') AND (numero = " + documentoDms.numero + ")";
-            LiqViajes_Bll_Data.DataProvider.EjecutarSQL(sql, out error);
+            try
+            {
+                sql = "UPDATE movimientos SET nit = '" + textBoxNit.Text + "' WHERE (tipo = '" + documentoDms.tipo + "') AND (numero = " + documentoDms.numero + ")";
+                LiqViajes_Bll_Data.DataProvider.EjecutarSQL(sql, out error);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+            }
 
-            sql = "UPDATE documentos SET nit = " + textBoxNit.Text + " WHERE (tipo = '" + documentoDms.tipo + "') AND (numero = " + documentoDms.numero + ")";
-            LiqViajes_Bll_Data.DataProvider.EjecutarSQL(sql, out error);
-
-            sql = "DELETE FROM tblLiquidacionAnticipos WHERE (intDocumento = " + documentoDms.numero + ") AND (strtipo = '" + documentoDms.tipo + "')";
-            LiqViajes_Bll_Data.DataProvider.EjecutarSQL(sql, out error);
-
-            
+            try
+            {
+                sql = "UPDATE documentos SET nit = " + textBoxNit.Text + " WHERE (tipo = '" + documentoDms.tipo + "') AND (numero = " + documentoDms.numero + ")";
+                LiqViajes_Bll_Data.DataProvider.EjecutarSQL(sql, out error);
+            }
+            catch (Exception ex)
+            {
+            }
+            try
+            {
+                sql = "DELETE FROM tblLiquidacionAnticipos WHERE (intDocumento = " + documentoDms.numero + ") AND (strtipo = '" + documentoDms.tipo + "')";
+                LiqViajes_Bll_Data.DataProvider.EjecutarSQL(sql, out error);
+            }
+            catch (Exception ex)
+            {
+            }
+            MetalLiqViajes_Forms.fTerpelDMS c = (MetalLiqViajes_Forms.fTerpelDMS)this.ParentForm;
+            c.RefrescarData();
         }
 
         private void comboBoxNit_KeyDown(object sender, KeyEventArgs e)

@@ -46,6 +46,8 @@
             this.btnAplicarCambio = new System.Windows.Forms.Button();
             this.textBoxViaje = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBoxNota = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tercerosConductoresBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +86,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(137, 147);
+            this.label8.Location = new System.Drawing.Point(137, 144);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 16);
             this.label8.TabIndex = 18;
@@ -94,7 +96,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(97, 65);
+            this.label6.Location = new System.Drawing.Point(97, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 16);
             this.label6.TabIndex = 19;
@@ -132,7 +134,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(73, 37);
+            this.label3.Location = new System.Drawing.Point(73, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 16);
             this.label3.TabIndex = 21;
@@ -184,7 +186,7 @@
             // btnAplicarCambio
             // 
             this.btnAplicarCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicarCambio.Image = global::MetalLiqViajes_Forms.Properties.Resources.check;
+            this.btnAplicarCambio.Image = ((System.Drawing.Image)(resources.GetObject("btnAplicarCambio.Image")));
             this.btnAplicarCambio.Location = new System.Drawing.Point(760, 173);
             this.btnAplicarCambio.Name = "btnAplicarCambio";
             this.btnAplicarCambio.Size = new System.Drawing.Size(100, 28);
@@ -206,11 +208,31 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(57, 119);
+            this.label1.Location = new System.Drawing.Point(57, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 16);
             this.label1.TabIndex = 18;
             this.label1.Text = "Aplicado Viaje N.";
+            // 
+            // textBoxNota
+            // 
+            this.textBoxNota.Enabled = false;
+            this.textBoxNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNota.Location = new System.Drawing.Point(192, 205);
+            this.textBoxNota.Multiline = true;
+            this.textBoxNota.Name = "textBoxNota";
+            this.textBoxNota.Size = new System.Drawing.Size(668, 58);
+            this.textBoxNota.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(134, 205);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 20);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Nota:";
             // 
             // fDmdCambioNit
             // 
@@ -228,7 +250,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxNota);
             this.Controls.Add(this.textBoxNit);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxValorTotalNiff);
             this.Controls.Add(this.label3);
@@ -261,5 +285,7 @@
         private System.Windows.Forms.Button btnAplicarCambio;
         private System.Windows.Forms.TextBox textBoxViaje;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxNota;
+        private System.Windows.Forms.Label label2;
     }
 }
