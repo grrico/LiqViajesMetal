@@ -2141,7 +2141,13 @@ namespace MetalLiqViajes_Forms
                             cell.Value = 0;
                         }
                     }
-                    rutas = CrearListRutas(rutasList, row);
+                    try
+                    {
+                        rutas = CrearListRutas(rutasList, row);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
                 }
 
                 btnGuadarExcel.Enabled = true;
